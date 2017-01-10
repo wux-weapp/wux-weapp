@@ -1,0 +1,16 @@
+<import src="../../components/dialog.wxml"/>
+
+<template is="dialog" data="{{ ...$wux.dialog }}"/>
+
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Dialog</view>
+        <view class="page__desc">对话框</view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="default" bindtap="openConfirm">Confirm Dialog</button>
+            <button class="weui-btn" type="default" bindtap="openAlert">Alert Dialog</button>
+        </view>
+    </view>
+</view>

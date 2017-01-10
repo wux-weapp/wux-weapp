@@ -1,0 +1,15 @@
+<template name="dialog">
+    <view class="weui-mask {{ visible ? 'visible' : 'hidden' }}" hidden="{{ !visible }}"></view>
+    <view class="weui-dialog-wrapper {{ visible ? 'visible' : 'hidden' }}" hidden="{{ !visible }}">
+    	<view class="weui-dialog">
+            <view class="weui-dialog__hd" wx:if="{{ title }}">
+            	<view class="weui-dialog__title">{{ title }}</view>
+            </view>
+            <view class="weui-dialog__bd" wx:if="{{ content }}">{{ content }}</view>
+            <view class="weui-dialog__ft">
+                <view class="weui-dialog__btn weui-dialog__btn_default" wx:if="{{ showCancel }}" bindtap="{{ dialogCancel }}">{{ cancelText }}</view>
+                <view class="weui-dialog__btn weui-dialog__btn_primary" bindtap="{{ dialogConfirm }}">{{ confirmText }}</view>
+            </view>
+        </view>
+    </view>
+</template>

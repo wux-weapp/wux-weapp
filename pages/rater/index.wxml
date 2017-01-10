@@ -1,0 +1,67 @@
+<import src="../../components/rater.wxml"/>
+
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Rater</view>
+        <view class="page__desc">评分组件</view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-cells__title">Normal Usage</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">set default score = 5</view>
+                <view class="weui-cell__ft">
+                	<template is="rater" data="{{ name, ...$wux.rater.star }}"/>
+                </view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">change color</view>
+                <view class="weui-cell__ft">
+                    <template is="rater" data="{{ name, ...$wux.rater.changeColor }}"/>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__title">disabled = true</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">Your history score</view>
+                <view class="weui-cell__ft">
+                    <template is="rater" data="{{ name, ...$wux.rater.history }}"/>
+                </view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">Decimal score 3.7</view>
+                <view class="weui-cell__ft">
+                    <template is="rater" data="{{ name, ...$wux.rater.decimal }}"/>
+                </view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">custom font-size(15px)</view>
+                <view class="weui-cell__ft">
+                    <template is="rater" data="{{ name, ...$wux.rater.custom }}"/>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__title">custom star</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">Loving</view>
+                <view class="weui-cell__ft">
+                    <template is="rater" data="{{ name, ...$wux.rater.loving }}"/>
+                </view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">Sunshine</view>
+                <view class="weui-cell__ft">
+                    <template is="rater" data="{{ name, ...$wux.rater.sunshine }}"/>
+                </view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">Smilies</view>
+                <view class="weui-cell__ft">
+                    <template is="rater" data="{{ name, ...$wux.rater.smilies }}"/>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

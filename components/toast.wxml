@@ -1,0 +1,8 @@
+<template name="toast">
+	<view class="weui-toast-wrapper {{ visible ? 'visible' : 'hidden' }} {{ cls }}" hidden="{{ !visible }}">
+		<view class="weui-toast">
+	        <icon wx:if="{{ type }}" type="{{ type }}" size="55" color="{{ color }}" class="weui-icon_toast" />
+	        <view class="weui-toast__content">{{ text }}</view>
+	    </view>
+	</view>
+</template>
