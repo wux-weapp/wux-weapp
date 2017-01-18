@@ -11,13 +11,13 @@
             <view class="weui-cell">
                 <view class="weui-cell__bd">set default score = 5</view>
                 <view class="weui-cell__ft">
-                	<template is="rater" data="{{ name, ...$wux.rater.star }}"/>
+                	<template is="rater" data="{{ id, ...$wux.rater.star }}"/>
                 </view>
             </view>
             <view class="weui-cell">
                 <view class="weui-cell__bd">change color</view>
                 <view class="weui-cell__ft">
-                    <template is="rater" data="{{ name, ...$wux.rater.changeColor }}"/>
+                    <template is="rater" data="{{ id, ...$wux.rater.changeColor }}"/>
                 </view>
             </view>
         </view>
@@ -26,19 +26,19 @@
             <view class="weui-cell">
                 <view class="weui-cell__bd">Your history score</view>
                 <view class="weui-cell__ft">
-                    <template is="rater" data="{{ name, ...$wux.rater.history }}"/>
+                    <template is="rater" data="{{ id, ...$wux.rater.history }}"/>
                 </view>
             </view>
             <view class="weui-cell">
                 <view class="weui-cell__bd">Decimal score 3.7</view>
                 <view class="weui-cell__ft">
-                    <template is="rater" data="{{ name, ...$wux.rater.decimal }}"/>
+                    <template is="rater" data="{{ id, ...$wux.rater.decimal }}"/>
                 </view>
             </view>
             <view class="weui-cell">
                 <view class="weui-cell__bd">custom font-size(15px)</view>
                 <view class="weui-cell__ft">
-                    <template is="rater" data="{{ name, ...$wux.rater.custom }}"/>
+                    <template is="rater" data="{{ id, ...$wux.rater.custom }}"/>
                 </view>
             </view>
         </view>
@@ -47,19 +47,19 @@
             <view class="weui-cell">
                 <view class="weui-cell__bd">Loving</view>
                 <view class="weui-cell__ft">
-                    <template is="rater" data="{{ name, ...$wux.rater.loving }}"/>
+                    <template is="rater" data="{{ id, ...$wux.rater.loving }}"/>
                 </view>
             </view>
             <view class="weui-cell">
                 <view class="weui-cell__bd">Sunshine</view>
                 <view class="weui-cell__ft">
-                    <template is="rater" data="{{ name, ...$wux.rater.sunshine }}"/>
+                    <template is="rater" data="{{ id, ...$wux.rater.sunshine }}"/>
                 </view>
             </view>
             <view class="weui-cell">
                 <view class="weui-cell__bd">Smilies</view>
                 <view class="weui-cell__ft">
-                    <template is="rater" data="{{ name, ...$wux.rater.smilies }}"/>
+                    <template is="rater" data="{{ id, ...$wux.rater.smilies }}"/>
                 </view>
             </view>
         </view>

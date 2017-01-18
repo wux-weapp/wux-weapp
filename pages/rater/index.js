@@ -12,7 +12,6 @@ Page({
 			activeColor: '#04BE02', 
 		})
 
-
 		this.$wuxRater.render('history', {
 			value: 3, 
 			disabled: !0, 

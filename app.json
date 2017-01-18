@@ -6,6 +6,7 @@
     "pages/dialog/index",
     "pages/loading/index",
     "pages/backdrop/index",
+    "pages/picker/index",
     "pages/about/index"
   ],
   "window": {

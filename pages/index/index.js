@@ -26,6 +26,11 @@ Page({
 				url: '/pages/rater/index', 
 				icon: '../../assets/images/iconfont-rater.png', 
 			},
+			{
+				title: 'picker', 
+				url: '/pages/picker/index', 
+				icon: '../../assets/images/iconfont-picker.png', 
+			},
 		]
 	}
 })

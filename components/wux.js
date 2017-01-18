@@ -1,3 +1,5 @@
+import pickerCity from 'picker-city'
+
 /**
  * wux组件
  * @param {Object} $scope   作用域对象
@@ -37,6 +39,9 @@ class wux {
 				visible: !1, 
 			},
 			rater: {},
+			pickerCity: {
+				visible: !1, 
+			},
 		}
 		
 		this.$scope.setData({
@@ -175,6 +180,7 @@ class wux {
 		this.__initToast()
 		this.__initLoading()
 		this.__initRater()
+		this.__initPickerCity()
     }
 
     /**
@@ -503,6 +509,205 @@ class wux {
 				updateStyle()
 				updateValue()
 			}
+		}
+	}
+
+	__initPickerCity() {
+		const that = this
+		const extend = that.tools.extend
+		const clone = that.tools.clone
+		const $scope = that.$scope
+		const raw = pickerCity
+
+		// 格式化
+		const format = (data) => {
+			let result = []
+			for(let i=0; i < data.length; i++) {
+				let d = data[i]
+				if(/^请选择|市辖区/.test(d.name)) continue
+				result.push(d)
+			}
+			if(result.length) return result
+			return []
+		}
+
+		// 获取子级
+		const sub = (data) => {
+			if(!data.sub) return [{ name: '', code: data.code }]
+			return format(data.sub)
+		}
+
+		// 获取城市
+		const getCities = (d) => {
+			for(let i = 0; i < raw.length; i++) {
+				if(raw[i].code === d || raw[i].name === d) return sub(raw[i])
+			}
+			return []
+		}
+
+		// 获取区县
+		const getDistricts = (p, c) => {
+			for(let i = 0; i < raw.length; i++) {
+				if(raw[i].code === p || raw[i].name === p) {
+					for(let j = 0; j < raw[i].sub.length; j++) {
+						if(raw[i].sub[j].code === c || raw[i].sub[j].name === c) {
+							return sub(raw[i].sub[j])
+						}
+					}
+				}
+			}
+		}
+
+		// 获取组件参数
+		const updateCols = (value = [0, 0, 0]) => {
+			const provincesName = raw.map((d) => d.name)
+			const provincesCode = raw.map((d) => d.code)
+
+			const initCities = sub(raw[value[0]])
+			const initCitiesName = initCities.map((c) => c.name)
+			const initCitiesCode = initCities.map((c) => c.code)
+
+			const initDistricts = sub(raw[value[0]].sub[value[1]])
+			const initDistrictsName = initDistricts.map((c) => c.name)
+			const initDistrictsCode = initDistricts.map((c) => c.code)
+
+			return [
+				{
+					displayValues: provincesName,
+					values: provincesCode,
+				},
+				{
+					displayValues: initCitiesName,
+					values: initCitiesCode,
+				},
+				{
+					values: initDistrictsCode,
+					displayValues: initDistrictsName,
+				}
+			]
+		}
+
+		// 更新参数
+		const updateParam = (cols, value) => {
+			const params = {
+				values: [], 
+				displayValues: [], 
+			}
+
+			params.values = [cols[0].values[value[0]], cols[1].values[value[1]], cols[2].values[value[2]]]
+			params.displayValues = [cols[0].displayValues[value[0]], cols[1].displayValues[value[1]], cols[2].displayValues[value[2]]]
+
+			return params
+		}
+
+		that.$wuxPickerCity = {
+			/**
+			 * 默认参数
+			 */
+			defaults: {
+				title: '请选择', 
+				cancel: {
+					text: '取消', 
+					className: '', 
+					bindtap: function(){ 
+						return !1
+					},
+				},
+				confirm: {
+					text: '确定', 
+					className: '', 
+					bindtap: function(){ 
+						return !0
+					},
+				},
+				bindChange: function() {}
+			},
+			/**
+			 * 默认数据
+			 */
+			data() {
+				return {
+					value: [0, 0, 0], 
+					cols: updateCols(), 
+				}
+			},
+			/**
+			 * 渲染城市选择器组件
+			 * @param {String} id   唯一标识
+			 * @param {Object} opts 参数对象
+			 */
+			render(id, opts) {
+				const data = this.data()
+				const options = extend(data, clone(this.defaults), opts || {})
+
+				// 渲染组件
+				$scope.setData({
+					[`$wux.pickerCity.${id}`]: options, 
+					[`$wux.pickerCity.${id}.cancelClick`]: `${id}CancelClick`, 
+					[`$wux.pickerCity.${id}.confirmClick`]: `${id}ConfirmClick`, 
+					[`$wux.pickerCity.${id}.handleChange`]: `${id}HandleChange`, 
+				})
+
+				// 绑定cancel事件
+				$scope[`${id}CancelClick`] = (e) => {
+					that.setVisible([`pickerCity.${id}`], !1)
+					const pickerCity = $scope.data.$wux.pickerCity[id]
+					const cols = pickerCity.cols
+					const value = pickerCity.value
+					const params = updateParam(cols, value)
+					typeof options.cancel.bindtap === 'function' && options.cancel.bindtap(value, params.values, params.displayValues)
+				}
+
+				// 绑定confirm事件
+				$scope[`${id}ConfirmClick`] = (e) => {
+					that.setVisible([`pickerCity.${id}`], !1)
+					const pickerCity = $scope.data.$wux.pickerCity[id]
+					const cols = pickerCity.cols
+					const value = pickerCity.value
+					const params = updateParam(cols, value)
+					typeof options.confirm.bindtap === 'function' && options.confirm.bindtap(value, params.values, params.displayValues)
+				}
+
+				// 绑定change事件
+				$scope[`${id}HandleChange`] = (e = {}) => {
+					const value = this.updateValue(id, e.detail && e.detail.value || [0, 0, 0])
+					const cols = updateCols(value)
+					const params = updateParam(cols, value)
+					
+					$scope.setData({
+						[`$wux.pickerCity.${id}.cols`]: cols, 
+						[`$wux.pickerCity.${id}.cache`]: value, 
+					})
+					
+					typeof options.bindChange === 'function' && options.bindChange(value, params.values, params.displayValues)
+				}
+
+				that.setVisible([`pickerCity.${id}`], !0)
+				$scope[`${id}HandleChange`]()
+			},
+			/**
+			 * 更新视图
+			 * @param {String} id   唯一标识
+			 * @param {Array} value 当前选择的是第几项
+			 */
+			updateValue(id, value) {
+				let pickerCity = $scope.data.$wux.pickerCity[id]
+				let cache = pickerCity.cache || [0, 0, 0]
+				let _val  = []
+				if (cache[0] !== value[0]) {
+					_val = [value[0], 0, 0]
+				} else if (cache[1] !== value[1]) {
+					_val = [value[0], value[1], 0]
+				} else if (cache[2] !== value[2]) {
+					_val = [value[0], value[1], value[2]]
+				} else {
+					return value
+				}
+				$scope.setData({
+					[`$wux.pickerCity.${id}.value`]: _val, 
+				})
+				return _val
+			},
 		}
 	}
 

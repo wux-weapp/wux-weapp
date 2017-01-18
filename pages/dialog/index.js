@@ -1,11 +1,7 @@
 const App = getApp()
 
 Page({
-	data: {
-		$wux: {
-			aaa: 1
-		}
-	},
+	data: {},
 	onLoad() {
 		this.$wuxDialog = App.wux(this).$wuxDialog
 	},
