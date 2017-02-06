@@ -16,6 +16,8 @@
 
 - [Toptips - 顶部提示]
 
+- [Qrcode - 二维码]
+
 ## Backdrop - 背景幕
 
 ```html
@@ -620,6 +622,54 @@ Page({
 })
 ```
 
+## Qrcode - 二维码
+
+```html
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Qrcode</view>
+        <view class="page__desc">二维码</view>
+    </view>
+    <view class="page__bd">
+    	<view class="weui-cells__title">请输入文字，即时输入即时生成</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea value="{{ value }}" bindinput="bindinput" class="weui-textarea" placeholder="支持文本、网址和电子邮箱" style="height: 4.2em" maxlength="300" />
+                    <view class="weui-textarea-counter">{{ value.length }}/300</view>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__tips">提示：Canvas在微信中无法长按识别</view>
+        <canvas style="width: 200px; height: 200px; margin: 30px auto;" canvas-id="qrcode"></canvas>
+    </view>
+</view>
+```
+
+```js
+const App = getApp()
+
+Page({
+	data: {
+		value: '', 
+	},
+	onLoad() {
+		this.$wuxQrcode = App.wux(this).$wuxQrcode
+
+		this.$wuxQrcode.init('qrcode', 'wux')
+	},
+	bindinput(e) {
+		const value = e.detail.value
+
+		this.setData({
+			value, 
+		})
+
+		this.$wuxQrcode.init('qrcode', value)
+	},
+})
+```
+
 ## 项目截图:
 
 <img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-01.png" width="375px" style="display:inline;">
@@ -645,6 +695,8 @@ Page({
 <img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-11.png" width="375px" style="display:inline;">
 
 <img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-12.png" width="375px" style="display:inline;">
+
+<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-13.png" width="375px" style="display:inline;">
 
 ##	贡献
 

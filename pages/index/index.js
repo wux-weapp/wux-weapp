@@ -36,6 +36,11 @@ Page({
 				url: '/pages/toptips/index', 
 				icon: '../../assets/images/iconfont-toptips.png', 
 			},
+			{
+				title: 'qrcode', 
+				url: '/pages/qrcode/index', 
+				icon: '../../assets/images/iconfont-qrcode.png', 
+			},
 		]
 	}
 })
