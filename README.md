@@ -2,21 +2,21 @@
 
 ## Components
 
-- [Backdrop - 背景幕]
+* [Backdrop - 背景幕](#Backdrop - 背景幕)
 
-- [Dialog - 对话框]
+* [Dialog - 对话框](#Dialog - 对话框)
 
-- [Loading - 指示器]
+* [Loading - 指示器](#Loading - 指示器)
 
-- [Toast - 提示框]
+* [Toast - 提示框](#Toast - 提示框)
 
-- [Rater - 评分]
+* [Rater - 评分](#Rater - 评分)
 
-- [Picker - 城市选择器]
+* [Picker - 城市选择器](#Picker - 城市选择器)
 
-- [Toptips - 顶部提示]
+* [Toptips - 顶部提示](#Toptips - 顶部提示)
 
-- [Qrcode - 二维码]
+* [Qrcode - 二维码](#Qrcode - 二维码)
 
 ## Backdrop - 背景幕
 
