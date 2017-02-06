@@ -2,23 +2,16 @@
 
 ## Components
 
-* [Backdrop - 背景幕](#Backdrop - 背景幕)
+* [Backdrop 背景幕](#Backdrop 背景幕)
+* [Dialog 对话框](#Dialog 对话框)
+* [Loading 指示器](#Loading 指示器)
+* [Toast 提示框](#Toast 提示框)
+* [Rater 评分](#Rater 评分)
+* [Picker 城市选择器](#Picker 城市选择器)
+* [Toptips 顶部提示](#Toptips 顶部提示)
+* [Qrcode 二维码](#Qrcode 二维码)
 
-* [Dialog - 对话框](#Dialog - 对话框)
-
-* [Loading - 指示器](#Loading - 指示器)
-
-* [Toast - 提示框](#Toast - 提示框)
-
-* [Rater - 评分](#Rater - 评分)
-
-* [Picker - 城市选择器](#Picker - 城市选择器)
-
-* [Toptips - 顶部提示](#Toptips - 顶部提示)
-
-* [Qrcode - 二维码](#Qrcode - 二维码)
-
-## Backdrop - 背景幕
+## Backdrop 背景幕
 
 ```html
 <import src="../../components/backdrop.wxml"/>
@@ -65,7 +58,7 @@ Page({
 })
 ```
 
-## Dialog - 对话框
+## Dialog 对话框
 
 ```html
 <import src="../../components/dialog.wxml"/>
@@ -119,7 +112,7 @@ Page({
 })
 ```
 
-## Loading - 指示器
+## Loading 指示器
 
 ```html
 <import src="../../components/loading.wxml"/>
@@ -159,7 +152,7 @@ Page({
 })
 ```
 
-## Toast - 提示框
+## Toast 提示框
 
 ```html
 <import src="../../components/toast.wxml"/>
@@ -229,7 +222,7 @@ Page({
 })
 ```
 
-## Rater - 评分
+## Rater 评分
 
 ```html
 <import src="../../components/rater.wxml"/>
@@ -347,7 +340,7 @@ Page({
 })
 ```
 
-## Picker - 城市选择器
+## Picker 城市选择器
 
 ```html
 <import src="../../components/picker-city.wxml"/>
@@ -416,7 +409,7 @@ Page({
 })
 ```
 
-## Toptips - 顶部提示
+## Toptips 顶部提示
 
 ```html
 <import src="../../components/toptips.wxml"/>
@@ -622,7 +615,7 @@ Page({
 })
 ```
 
-## Qrcode - 二维码
+## Qrcode 二维码
 
 ```html
 <view class="page">
