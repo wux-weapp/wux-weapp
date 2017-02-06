@@ -7,6 +7,7 @@
     "pages/loading/index",
     "pages/backdrop/index",
     "pages/picker/index",
+    "pages/toptips/index",
     "pages/about/index"
   ],
   "window": {

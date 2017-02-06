@@ -42,6 +42,9 @@ class wux {
 			pickerCity: {
 				visible: !1, 
 			},
+			toptips: {
+				visible: !1, 
+			},
 		}
 		
 		this.$scope.setData({
@@ -181,6 +184,7 @@ class wux {
 		this.__initLoading()
 		this.__initRater()
 		this.__initPickerCity()
+		this.__initToptips()
     }
 
     /**
@@ -707,6 +711,57 @@ class wux {
 					[`$wux.pickerCity.${id}.value`]: _val, 
 				})
 				return _val
+			},
+		}
+	}
+
+	__initToptips() {
+		const that = this
+		const extend = that.tools.extend
+		const clone = that.tools.clone
+		const $scope = that.$scope 
+
+		let _toptips = null
+
+		that.$wuxToptips = {
+			/**
+			 * 默认参数
+			 */
+			defaults: {
+				text: '', 
+				timer: 3000, 
+				className: '', 
+				success: function() {}, 
+			},
+			/**
+			 * 显示toptips组件
+			 * @param {Object} opts 参数对象
+			 */
+			show(opts = {}) {
+				const options = extend(clone(this.defaults), opts || {})
+				const hide = () => {
+					that.setVisible(['toptips'], !1)
+					typeof options.success === 'function' && options.success()
+				}
+
+				if(_toptips){
+					clearTimeout(_toptips.timeout)
+					_toptips = null
+				}
+
+				_toptips = {
+					hide, 
+				}
+
+				_toptips.timeout = setTimeout(hide, options.timer)
+
+				$scope.setData({
+					'$wux.toptips': options, 
+				})
+
+				that.setVisible(['toptips'], !0)
+
+				return _toptips.hide
 			},
 		}
 	}

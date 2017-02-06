@@ -2,6 +2,7 @@ Object.assign = Object.assign && typeof Object.assign === 'function' ? Object.as
 Array.from = Array.from && typeof Array.from === 'function' ? Array.from : obj => [].slice.call(obj)
 
 import wux from 'components/wux'
+import WxValidate from 'assets/plugins/WxValidate'
 
 App({
 	onLaunch() {
@@ -13,5 +14,6 @@ App({
 	onHide() {
 		console.log('onHide')
 	},
-	wux: (scope) => new wux(scope)
+	wux: (scope) => new wux(scope), 
+	WxValidate: (rules, messages) => new WxValidate(rules, messages), 
 })

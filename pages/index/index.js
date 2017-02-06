@@ -31,6 +31,11 @@ Page({
 				url: '/pages/picker/index', 
 				icon: '../../assets/images/iconfont-picker.png', 
 			},
+			{
+				title: 'toptips', 
+				url: '/pages/toptips/index', 
+				icon: '../../assets/images/iconfont-toptips.png', 
+			},
 		]
 	}
 })

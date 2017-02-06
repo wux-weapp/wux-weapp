@@ -1,0 +1,4 @@
+/* pages/toptips/index.wxss */
+.bg-success {
+	background-color: #4cd964;
+}
