@@ -9,6 +9,7 @@
     "pages/picker/index",
     "pages/toptips/index",
     "pages/qrcode/index",
+    "pages/gallery/index",
     "pages/about/index"
   ],
   "window": {

@@ -41,6 +41,11 @@ Page({
 				url: '/pages/qrcode/index', 
 				icon: '../../assets/images/iconfont-qrcode.png', 
 			},
+			{
+				title: 'gallery', 
+				url: '/pages/gallery/index', 
+				icon: '../../assets/images/iconfont-gallery.png', 
+			},
 		]
 	}
 })

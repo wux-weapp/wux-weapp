@@ -46,10 +46,13 @@ class wux {
 			toptips: {
 				visible: !1, 
 			},
+			gallery: {
+				visible: !1, 
+			},
 		}
 		
 		this.$scope.setData({
-			'$wux': this.$wux
+			[`$wux`]: this.$wux
 		})
 	}
 
@@ -187,6 +190,7 @@ class wux {
 		this.__initPickerCity()
 		this.__initToptips()
 		this.__initQrcode()
+		this.__initGallery()
     }
 
     /**
@@ -266,7 +270,7 @@ class wux {
 				// 显示
 				function showDialog() {
 					$scope.setData({
-						'$wux.dialog': options, 
+						[`$wux.dialog`]: options, 
 					})
 					that.setVisible(['dialog'], !0)
 				}
@@ -335,7 +339,7 @@ class wux {
     			})
 
 				$scope.setData({
-					'$wux.toast': options, 
+					[`$wux.toast`]: options, 
 				})
 
 				that.setVisible(['toast'], !0)
@@ -376,7 +380,7 @@ class wux {
 				const options = extend(clone(this.defaults), opts || {})
 
 				$scope.setData({
-					'$wux.loading': options, 
+					[`$wux.loading`]: options, 
 				})
 
 				that.setVisible(['loading'], !0)
@@ -764,7 +768,7 @@ class wux {
 				_toptips.timeout = setTimeout(hide, options.timer)
 
 				$scope.setData({
-					'$wux.toptips': options, 
+					[`$wux.toptips`]: options, 
 				})
 
 				that.setVisible(['toptips'], !0)
@@ -825,6 +829,65 @@ class wux {
 
 				ctx.draw()
 			},
+		}
+	}
+
+	/**
+	 * 画廊组件
+	 */
+	__initGallery() {
+		const that = this
+		const extend = that.tools.extend
+		const clone = that.tools.clone
+		const $scope = that.$scope
+
+		that.$wuxGallery = {
+			/**
+			 * 默认参数
+			 */
+			defaults: {
+				current: 0, 
+				urls: [], 
+				delete: function() {}, 
+				callback: function() {}, 
+			},
+			/**
+			 * 显示gallery组件
+			 * @param {Object} opts 参数对象
+			 */
+			show(opts) {
+				const options = extend(clone(this.defaults), opts || {})
+				const hide = () => {
+					that.setVisible(['gallery'], !1)
+					typeof options.callback === 'function' && options.callback()
+				}
+
+				// 渲染组件
+				$scope.setData({
+					[`$wux.gallery`]: options, 
+					[`$wux.gallery.onHide`]: `galleryHide`, 
+					[`$wux.gallery.onDelete`]: `galleryDelete`, 
+					[`$wux.gallery.onChange`]: `galleryChange`, 
+				})
+
+				// 绑定tap事件
+				$scope[`galleryHide`] = hide
+				$scope[`galleryDelete`] = (e) => {
+					if(typeof options.delete === 'function') {
+						const gallery = $scope.data.$wux.gallery
+						if (options.delete(gallery.current, options.urls) === true) {
+							hide()
+						}
+					}
+				}
+				$scope[`galleryChange`] = (e) => {
+					$scope.setData({
+						[`$wux.gallery.current`]: e.detail.current, 
+					})
+				}
+
+				that.setVisible(['gallery'], !0)
+			}
 		}
 	}
 
