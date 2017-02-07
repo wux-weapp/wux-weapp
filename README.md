@@ -2,15 +2,23 @@
 
 ## Components
 
-* [Backdrop - 背景幕](#Backdrop)
-* [Dialog - 对话框](#Dialog)
-* [Gallery - 画廊](#Gallery)
-* [Loading - 指示器](#Loading)
-* [Picker - 城市选择器](#Picker)
-* [Qrcode - 二维码](#Qrcode)
-* [Rater - 评分](#Rater)
-* [Toast - 提示框](#Toast)
-* [Toptips - 顶部提示](#Toptips)
+* [Backdrop - 背景幕](#backdrop)
+
+* [Dialog - 对话框](#dialog)
+
+* [Gallery - 画廊](#gallery)
+
+* [Loading - 指示器](#loading)
+
+* [Picker - 城市选择器](#picker)
+
+* [Qrcode - 二维码](#qrcode)
+
+* [Rater - 评分](#rater)
+
+* [Toast - 提示框](#toast)
+
+* [Toptips - 顶部提示](#toptips)
 
 ## Backdrop
 
