@@ -2,23 +2,17 @@
 
 ## Components
 
-* [Backdrop - 背景幕](#Backdrop---背景幕)
+* [Backdrop - 背景幕](#Backdrop)
+* [Dialog - 对话框](#Dialog)
+* [Gallery - 画廊](#Gallery)
+* [Loading - 指示器](#Loading)
+* [Picker - 城市选择器](#Picker)
+* [Qrcode - 二维码](#Qrcode)
+* [Rater - 评分](#Rater)
+* [Toast - 提示框](#Toast)
+* [Toptips - 顶部提示](#Toptips)
 
-* [Dialog - 对话框](#Dialog---对话框)
-
-* [Loading - 指示器](#Loading---指示器)
-
-* [Toast - 提示框](#Toast---提示框)
-
-* [Rater - 评分](#Rater---评分)
-
-* [Picker - 城市选择器](#Picker---城市选择器)
-
-* [Toptips - 顶部提示](#Toptips---顶部提示)
-
-* [Qrcode - 二维码](#Qrcode---二维码)
-
-## Backdrop - 背景幕
+## Backdrop
 
 ```html
 <import src="../../components/backdrop.wxml"/>
@@ -65,7 +59,7 @@ Page({
 })
 ```
 
-## Dialog - 对话框
+## Dialog
 
 ```html
 <import src="../../components/dialog.wxml"/>
@@ -90,11 +84,7 @@ Page({
 const App = getApp()
 
 Page({
-	data: {
-		$wux: {
-			aaa: 1
-		}
-	},
+	data: {},
 	onLoad() {
 		this.$wuxDialog = App.wux(this).$wuxDialog
 	},
@@ -119,7 +109,111 @@ Page({
 })
 ```
 
-## Loading - 指示器
+## Gallery
+
+```html
+<import src="../../components/gallery.wxml"/>
+
+<template is="gallery" data="{{ ...$wux.gallery }}"/>
+
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Gallery</view>
+        <view class="page__desc">画廊</view>
+    </view>
+    <view class="page__bd">
+    	<view class="weui-cells__title">基于小程序原生的wx.previewImage</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <view class="weui-uploader">
+                        <view class="weui-uploader__bd">
+                            <view class="weui-uploader__files">
+                                <block wx:for-items="{{ urls }}" wx:key="{{ index }}">
+                                    <view class="weui-uploader__file" bindtap="previewImage" data-current="{{ item }}">
+                                        <image class="weui-uploader__img" src="{{ item }}" />
+                                    </view>
+                                </block>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__title">自定义gallery</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <view class="weui-uploader">
+                        <view class="weui-uploader__bd">
+                            <view class="weui-uploader__files">
+                                <block wx:for-items="{{ urls }}" wx:key="{{ index }}">
+                                    <view class="weui-uploader__file" bindtap="showGallery" data-current="{{ index }}">
+                                        <image class="weui-uploader__img" src="{{ item }}" />
+                                    </view>
+                                </block>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+```
+
+```js
+const App = getApp()
+
+Page({
+	data: {
+		urls: [
+			'https://unsplash.it/200/200', 
+			'https://unsplash.it/300/300', 
+			'https://unsplash.it/400/400', 
+			'https://unsplash.it/600/600', 
+			'https://unsplash.it/800/800', 
+			'https://unsplash.it/900/900', 
+			'https://unsplash.it/1000/1000', 
+			'https://unsplash.it/1200/1200', 
+		],
+	},
+	onLoad() {
+		this.$wuxGallery = App.wux(this).$wuxGallery
+	},
+	showGallery(e) {
+		const that = this
+		const dataset = e.currentTarget.dataset
+		const current = dataset.current
+		const urls = this.data.urls
+
+		this.$wuxGallery.show({
+			current: current, 
+			urls: urls, 
+			delete: (current, urls) => {
+				urls.splice(current, 1)
+				that.setData({
+					urls: urls, 
+				})
+				return !0
+			},
+			callback: () => console.log('Close gallery')
+		})
+	},
+	previewImage(e) {
+		const dataset = e.currentTarget.dataset
+		const current = dataset.current
+		const urls = this.data.urls
+
+		wx.previewImage({
+			current: current, 
+			urls: urls, 
+		})
+	},
+})
+```
+
+## Loading
 
 ```html
 <import src="../../components/loading.wxml"/>
@@ -159,7 +253,242 @@ Page({
 })
 ```
 
-## Toast - 提示框
+## Picker
+
+```html
+<import src="../../components/picker-city.wxml"/>
+
+<template is="picker-city" data="{{ id, ...$wux.pickerCity.start }}"/>
+<template is="picker-city" data="{{ id, ...$wux.pickerCity.end }}"/>
+
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">PickerCity</view>
+        <view class="page__desc">城市选择器</view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="default" bindtap="onTapStart">选择出发地：{{ start }}</button>
+            <button class="weui-btn" type="default" bindtap="onTapEnd">选择目的地：{{ end }}</button>
+        </view>
+    </view>
+</view>
+```
+
+```js
+const App = getApp()
+
+Page({
+	data: {},
+	onLoad() {
+		this.$wuxPickerCity = App.wux(this).$wuxPickerCity
+	},
+	onTapStart() {
+		this.$wuxPickerCity.render('start', {
+			title: '请选择出发点', 
+			cancel: {
+				text: '取消', 
+				className: '', 
+				bindtap: (value, values, displayValues) => { 
+					console.log('用户点击取消')
+				},
+			},
+			confirm: {
+				text: '确定', 
+				className: '', 
+				bindtap: (value, values, displayValues) => { 
+					console.log('用户点击确定')
+					this.setData({
+						start: displayValues
+					})
+				},
+			},
+			bindChange: (value, values, displayValues) => {
+				console.log(value, values, displayValues)
+			}
+		})
+	},
+	onTapEnd() {
+		this.$wuxPickerCity.render('end', {
+			title: '请选择目的地', 
+			bindChange: (value, values, displayValues) => {
+				console.log(value, values, displayValues)
+				this.setData({
+					end: displayValues
+				})
+			}
+		})
+	}
+})
+```
+
+## Qrcode
+
+```html
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Qrcode</view>
+        <view class="page__desc">二维码</view>
+    </view>
+    <view class="page__bd">
+    	<view class="weui-cells__title">请输入文字，即时输入即时生成</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea value="{{ value }}" bindinput="bindinput" class="weui-textarea" placeholder="支持文本、网址和电子邮箱" style="height: 4.2em" maxlength="300" />
+                    <view class="weui-textarea-counter">{{ value.length }}/300</view>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__tips">提示：Canvas在微信中无法长按识别</view>
+        <canvas style="width: 200px; height: 200px; margin: 30px auto;" canvas-id="qrcode"></canvas>
+    </view>
+</view>
+```
+
+```js
+const App = getApp()
+
+Page({
+	data: {
+		value: '', 
+	},
+	onLoad() {
+		this.$wuxQrcode = App.wux(this).$wuxQrcode
+
+		this.$wuxQrcode.init('qrcode', 'wux')
+	},
+	bindinput(e) {
+		const value = e.detail.value
+
+		this.setData({
+			value, 
+		})
+
+		this.$wuxQrcode.init('qrcode', value)
+	},
+})
+```
+
+## Rater
+
+```html
+<import src="../../components/rater.wxml"/>
+
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Rater</view>
+        <view class="page__desc">评分组件</view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-cells__title">Normal Usage</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">set default score = 5</view>
+                <view class="weui-cell__ft">
+                	<template is="rater" data="{{ ...$wux.rater.star }}"/>
+                </view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">change color</view>
+                <view class="weui-cell__ft">
+                    <template is="rater" data="{{ ...$wux.rater.changeColor }}"/>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__title">disabled = true</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">Your history score</view>
+                <view class="weui-cell__ft">
+                    <template is="rater" data="{{ ...$wux.rater.history }}"/>
+                </view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">Decimal score 3.7</view>
+                <view class="weui-cell__ft">
+                    <template is="rater" data="{{ ...$wux.rater.decimal }}"/>
+                </view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">custom font-size(15px)</view>
+                <view class="weui-cell__ft">
+                    <template is="rater" data="{{ ...$wux.rater.custom }}"/>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__title">custom star</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">Loving</view>
+                <view class="weui-cell__ft">
+                    <template is="rater" data="{{ ...$wux.rater.loving }}"/>
+                </view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">Sunshine</view>
+                <view class="weui-cell__ft">
+                    <template is="rater" data="{{ ...$wux.rater.sunshine }}"/>
+                </view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">Smilies</view>
+                <view class="weui-cell__ft">
+                    <template is="rater" data="{{ ...$wux.rater.smilies }}"/>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+```
+
+```js
+const App = getApp()
+
+Page({
+	data: {},
+	onLoad() {
+		this.$wuxRater = App.wux(this).$wuxRater
+		this.$wuxRater.render('star', {
+			value: 5, 
+		})
+		this.$wuxRater.render('changeColor', {
+			value: 3, 
+			activeColor: '#04BE02', 
+		})
+
+
+		this.$wuxRater.render('history', {
+			value: 3, 
+			disabled: !0, 
+		})
+		this.$wuxRater.render('decimal', {
+			value: 3.7, 
+			disabled: !0, 
+		})
+		this.$wuxRater.render('custom', {
+			value: 3, 
+			fontSize: 15, 
+			disabled: !0, 
+		})
+
+		this.$wuxRater.render('loving', {
+			value: 3, 
+			star: '♡', 
+		})
+		this.$wuxRater.render('sunshine', {
+			value: 3, 
+			star: '☼', 
+		})
+		this.$wuxRater.render('smilies', {
+			value: 3, 
+			star: '☻', 
+		})
+	},
+})
+```
+
+## Toast
 
 ```html
 <import src="../../components/toast.wxml"/>
@@ -229,194 +558,7 @@ Page({
 })
 ```
 
-## Rater - 评分
-
-```html
-<import src="../../components/rater.wxml"/>
-
-<view class="page">
-    <view class="page__hd">
-        <view class="page__title">Rater</view>
-        <view class="page__desc">评分组件</view>
-    </view>
-    <view class="page__bd">
-        <view class="weui-cells__title">Normal Usage</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__bd">set default score = 5</view>
-                <view class="weui-cell__ft">
-                	<template is="rater" data="{{ name, ...$wux.rater.star }}"/>
-                </view>
-            </view>
-            <view class="weui-cell">
-                <view class="weui-cell__bd">change color</view>
-                <view class="weui-cell__ft">
-                    <template is="rater" data="{{ name, ...$wux.rater.changeColor }}"/>
-                </view>
-            </view>
-        </view>
-        <view class="weui-cells__title">disabled = true</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__bd">Your history score</view>
-                <view class="weui-cell__ft">
-                    <template is="rater" data="{{ name, ...$wux.rater.history }}"/>
-                </view>
-            </view>
-            <view class="weui-cell">
-                <view class="weui-cell__bd">Decimal score 3.7</view>
-                <view class="weui-cell__ft">
-                    <template is="rater" data="{{ name, ...$wux.rater.decimal }}"/>
-                </view>
-            </view>
-            <view class="weui-cell">
-                <view class="weui-cell__bd">custom font-size(15px)</view>
-                <view class="weui-cell__ft">
-                    <template is="rater" data="{{ name, ...$wux.rater.custom }}"/>
-                </view>
-            </view>
-        </view>
-        <view class="weui-cells__title">custom star</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__bd">Loving</view>
-                <view class="weui-cell__ft">
-                    <template is="rater" data="{{ name, ...$wux.rater.loving }}"/>
-                </view>
-            </view>
-            <view class="weui-cell">
-                <view class="weui-cell__bd">Sunshine</view>
-                <view class="weui-cell__ft">
-                    <template is="rater" data="{{ name, ...$wux.rater.sunshine }}"/>
-                </view>
-            </view>
-            <view class="weui-cell">
-                <view class="weui-cell__bd">Smilies</view>
-                <view class="weui-cell__ft">
-                    <template is="rater" data="{{ name, ...$wux.rater.smilies }}"/>
-                </view>
-            </view>
-        </view>
-    </view>
-</view>
-```
-
-```js
-const App = getApp()
-
-Page({
-	data: {},
-	onLoad() {
-		this.$wuxRater = App.wux(this).$wuxRater
-		this.$wuxRater.render('star', {
-			value: 5, 
-		})
-		this.$wuxRater.render('changeColor', {
-			value: 3, 
-			activeColor: '#04BE02', 
-		})
-
-
-		this.$wuxRater.render('history', {
-			value: 3, 
-			disabled: !0, 
-		})
-		this.$wuxRater.render('decimal', {
-			value: 3.7, 
-			disabled: !0, 
-		})
-		this.$wuxRater.render('custom', {
-			value: 3, 
-			fontSize: 15, 
-			disabled: !0, 
-		})
-
-		this.$wuxRater.render('loving', {
-			value: 3, 
-			star: '♡', 
-		})
-		this.$wuxRater.render('sunshine', {
-			value: 3, 
-			star: '☼', 
-		})
-		this.$wuxRater.render('smilies', {
-			value: 3, 
-			star: '☻', 
-		})
-	},
-})
-```
-
-## Picker - 城市选择器
-
-```html
-<import src="../../components/picker-city.wxml"/>
-
-<template is="picker-city" data="{{ id, ...$wux.pickerCity.start }}"/>
-<template is="picker-city" data="{{ id, ...$wux.pickerCity.end }}"/>
-
-<view class="page">
-    <view class="page__hd">
-        <view class="page__title">PickerCity</view>
-        <view class="page__desc">城市选择器</view>
-    </view>
-    <view class="page__bd">
-        <view class="weui-btn-area">
-            <button class="weui-btn" type="default" bindtap="onTapStart">选择出发地：{{ start }}</button>
-            <button class="weui-btn" type="default" bindtap="onTapEnd">选择目的地：{{ end }}</button>
-        </view>
-    </view>
-</view>
-```
-
-```js
-const App = getApp()
-
-Page({
-	data: {},
-	onLoad() {
-		this.$wuxPickerCity = App.wux(this).$wuxPickerCity
-	},
-	onTapStart() {
-		this.$wuxPickerCity.render('start', {
-			title: '请选择出发点', 
-			cancel: {
-				text: '取消', 
-				className: '', 
-				bindtap: (value, values, displayValues) => { 
-					console.log('用户点击取消')
-				},
-			},
-			confirm: {
-				text: '确定', 
-				className: '', 
-				bindtap: (value, values, displayValues) => { 
-					console.log('用户点击确定')
-					this.setData({
-						start: displayValues
-					})
-				},
-			},
-			bindChange: (value, values, displayValues) => {
-				console.log(value, values, displayValues)
-			}
-		})
-	},
-	onTapEnd() {
-		this.$wuxPickerCity.render('end', {
-			title: '请选择目的地', 
-			bindChange: (value, values, displayValues) => {
-				console.log(value, values, displayValues)
-				this.setData({
-					end: displayValues
-				})
-			}
-		})
-	}
-})
-```
-
-## Toptips - 顶部提示
+## Toptips
 
 ```html
 <import src="../../components/toptips.wxml"/>
@@ -622,55 +764,7 @@ Page({
 })
 ```
 
-## Qrcode - 二维码
-
-```html
-<view class="page">
-    <view class="page__hd">
-        <view class="page__title">Qrcode</view>
-        <view class="page__desc">二维码</view>
-    </view>
-    <view class="page__bd">
-    	<view class="weui-cells__title">请输入文字，即时输入即时生成</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__bd">
-                    <textarea value="{{ value }}" bindinput="bindinput" class="weui-textarea" placeholder="支持文本、网址和电子邮箱" style="height: 4.2em" maxlength="300" />
-                    <view class="weui-textarea-counter">{{ value.length }}/300</view>
-                </view>
-            </view>
-        </view>
-        <view class="weui-cells__tips">提示：Canvas在微信中无法长按识别</view>
-        <canvas style="width: 200px; height: 200px; margin: 30px auto;" canvas-id="qrcode"></canvas>
-    </view>
-</view>
-```
-
-```js
-const App = getApp()
-
-Page({
-	data: {
-		value: '', 
-	},
-	onLoad() {
-		this.$wuxQrcode = App.wux(this).$wuxQrcode
-
-		this.$wuxQrcode.init('qrcode', 'wux')
-	},
-	bindinput(e) {
-		const value = e.detail.value
-
-		this.setData({
-			value, 
-		})
-
-		this.$wuxQrcode.init('qrcode', value)
-	},
-})
-```
-
-## 项目截图:
+## 项目截图
 
 <img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-01.png" width="375px" style="display:inline;">
 
@@ -698,10 +792,12 @@ Page({
 
 <img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-13.png" width="375px" style="display:inline;">
 
-##	贡献
+<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-14.png" width="375px" style="display:inline;">
+
+## 贡献
 
 有任何意见或建议都欢迎提 issue
 
-##	License
+## License
 
 MIT
