@@ -46,6 +46,11 @@ Page({
 				url: '/pages/gallery/index', 
 				icon: '../../assets/images/iconfont-gallery.png', 
 			},
+			{
+				title: 'xnumber', 
+				url: '/pages/xnumber/index', 
+				icon: '../../assets/images/iconfont-xnumber.png', 
+			},
 		]
 	}
 })

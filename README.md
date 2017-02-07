@@ -20,6 +20,8 @@
 
 * [Toptips - 顶部提示](#toptips)
 
+* [Xnumber - 数字加减](#xnumber)
+
 ## Backdrop
 
 ```html
@@ -772,6 +774,110 @@ Page({
 })
 ```
 
+## Xnumber
+
+```html
+<import src="../../components/xnumber.wxml"/>
+
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Xnumber</view>
+        <view class="page__desc">数字加减</view>
+    </view>
+    <view class="page__bd">
+    	<view class="weui-cells__title">默认</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">数量</view>
+                <view class="weui-cell__ft">
+                	<template is="xnumber" data="{{ ...$wux.xnumber.num1 }}"/>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__title">设置 callback 回调函数，在调试窗口中输出</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">数量</view>
+                <view class="weui-cell__ft">
+                	<template is="xnumber" data="{{ ...$wux.xnumber.num2 }}"/>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__title">设置宽度为100px</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">数量</view>
+                <view class="weui-cell__ft">
+                	<template is="xnumber" data="{{ ...$wux.xnumber.num3 }}"/>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__title">设置步长为0.5</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">数量</view>
+                <view class="weui-cell__ft">
+                	<template is="xnumber" data="{{ ...$wux.xnumber.num4 }}"/>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__title">设置值为1，最小值为-5，最大值为8</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">数量</view>
+                <view class="weui-cell__ft">
+                	<template is="xnumber" data="{{ ...$wux.xnumber.num5 }}"/>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__title">设置可输入</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">数量</view>
+                <view class="weui-cell__ft">
+                	<template is="xnumber" data="{{ ...$wux.xnumber.num6 }}"/>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+```
+
+```js
+const App = getApp()
+
+Page({
+	data: {},
+	onLoad() {
+		this.$wuxXnumber = App.wux(this).$wuxXnumber
+
+		this.$wuxXnumber.render('num1')
+
+		this.$wuxXnumber.render('num2', {
+			callback: (value) => console.log(value), 
+		})
+
+		this.$wuxXnumber.render('num3', {
+			className: 'custom-xnumber', 
+		})
+
+		this.$wuxXnumber.render('num4', {
+			step: .5, 
+		})
+
+		this.$wuxXnumber.render('num5', {
+			min: -5, 
+			max: 8, 
+			value: 1, 
+		})
+
+		this.$wuxXnumber.render('num6', {
+			disabled: !1, 
+		})
+	},
+})
+```
+
 ## 项目截图
 
 <img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-01.png" width="375px" style="display:inline;">
@@ -801,6 +907,8 @@ Page({
 <img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-13.png" width="375px" style="display:inline;">
 
 <img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-14.png" width="375px" style="display:inline;">
+
+<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-15.png" width="375px" style="display:inline;">
 
 ## 贡献
 

@@ -49,6 +49,7 @@ class wux {
 			gallery: {
 				visible: !1, 
 			},
+			xnumber: {},
 		}
 		
 		this.$scope.setData({
@@ -191,6 +192,7 @@ class wux {
 		this.__initToptips()
 		this.__initQrcode()
 		this.__initGallery()
+		this.__initXnumber()
     }
 
     /**
@@ -888,6 +890,95 @@ class wux {
 
 				that.setVisible(['gallery'], !0)
 			}
+		}
+	}
+
+	/**
+	 * 数字加减
+	 */
+	__initXnumber() {
+		const that = this
+		const extend = that.tools.extend
+		const clone = that.tools.clone
+		const $scope = that.$scope
+
+		that.$wuxXnumber = {
+			/**
+			 * 默认参数
+			 */
+			defaults: {
+				min: undefined, 
+				max: undefined, 
+				step: 1, 
+				value: 0, 
+				disabled: !0, 
+				className: '', 
+				callback: function() {}, 
+			},
+			/**
+			 * 渲染xnumber组件
+			 * @param {String} id   唯一标识
+			 * @param {Object} opts 参数对象
+			 */
+			render(id, opts) {
+
+				let timeout = null
+
+				const options = extend({
+					id: id, 
+				}, clone(this.defaults), opts || {})
+
+				// 更新组件
+				const updateValues = (value) => {
+					const xnumber = $scope.data.$wux.xnumber[id]
+
+					if (xnumber.min && value < xnumber.min) {
+						value = xnumber.min
+					}
+
+					if (xnumber.max && value > xnumber.max) {
+						value = xnumber.max
+					}
+
+					$scope.setData({
+						[`$wux.xnumber.${id}.value`]: value, 
+						[`$wux.xnumber.${id}.disabledMin`]: typeof xnumber.min === 'undefined' ? !1 : value <= xnumber.min, 
+						[`$wux.xnumber.${id}.disabledMax`]: typeof xnumber.max === 'undefined' ? !1 : value >= xnumber.max, 
+					})
+
+					typeof options.callback === 'function' && options.callback(value)
+				}
+
+				// 渲染组件
+				$scope.setData({
+					[`$wux.xnumber.${id}`]: options, 
+					[`$wux.xnumber.${id}.onSub`]: `${id}Sub`, 
+					[`$wux.xnumber.${id}.onAdd`]: `${id}Add`, 
+					[`$wux.xnumber.${id}.onChange`]: `${id}Change`, 
+				})
+
+				// 绑定tap事件
+				$scope[`${id}Sub`] = (e) => {
+					const xnumber = $scope.data.$wux.xnumber[id]
+					if (xnumber.disabledMin) return !1
+					updateValues(xnumber.value - xnumber.step)
+				}
+
+				$scope[`${id}Add`] = (e) => {
+					const xnumber = $scope.data.$wux.xnumber[id]
+					if (xnumber.disabledMax) return !1
+					updateValues(xnumber.value + xnumber.step)
+				}
+
+				$scope[`${id}Change`] = (e) => {
+					if (timeout) clearTimeout(timeout)
+					timeout = setTimeout(() => {
+						updateValues(Number(e.detail.value) || 0)
+					}, 300)
+				}
+
+				updateValues(options.value)
+			},
 		}
 	}
 

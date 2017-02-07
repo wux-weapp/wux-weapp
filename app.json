@@ -10,6 +10,7 @@
     "pages/toptips/index",
     "pages/qrcode/index",
     "pages/gallery/index",
+    "pages/xnumber/index",
     "pages/about/index"
   ],
   "window": {
