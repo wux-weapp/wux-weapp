@@ -1,17 +1,19 @@
-<import src="../../components/picker-city.wxml"/>
+<import src="../../components/picker.wxml"/>
 
-<template is="picker-city" data="{{ id, ...$wux.pickerCity.start }}"/>
-<template is="picker-city" data="{{ id, ...$wux.pickerCity.end }}"/>
+<template is="picker" data="{{ ...$wux.picker.default }}"/>
+<template is="picker" data="{{ ...$wux.picker.multi }}"/>
+<template is="picker" data="{{ ...$wux.pickerCity.city }}"/>
 
 <view class="page">
     <view class="page__hd">
-        <view class="page__title">PickerCity</view>
-        <view class="page__desc">城市选择器</view>
+        <view class="page__title">Picker</view>
+        <view class="page__desc">选择器</view>
     </view>
     <view class="page__bd">
         <view class="weui-btn-area">
-            <button class="weui-btn" type="default" bindtap="onTapStart">选择出发地：{{ start }}</button>
-            <button class="weui-btn" type="default" bindtap="onTapEnd">选择目的地：{{ end }}</button>
+            <button class="weui-btn" type="default" bindtap="onTapDefault">Default-Picker {{ default }}</button>
+            <button class="weui-btn" type="default" bindtap="onTapMulti">Multi-Picker {{ multi }}</button>
+            <button class="weui-btn" type="default" bindtap="onTapCity">City-Picker {{ city }}</button>
         </view>
     </view>
 </view>

@@ -364,7 +364,7 @@
 	position: absolute;
 	height: 44px;
 	line-height: 44px;
-	color: #04BE02;
+	color: #586c94;
 	z-index: 1;
 	padding: 0 .5rem;
 	box-sizing: border-box;

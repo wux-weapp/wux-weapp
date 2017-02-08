@@ -40,6 +40,7 @@ class wux {
 				visible: !1, 
 			},
 			rater: {},
+			picker: {},
 			pickerCity: {
 				visible: !1, 
 			},
@@ -188,6 +189,7 @@ class wux {
 		this.__initToast()
 		this.__initLoading()
 		this.__initRater()
+		this.__initPicker()
 		this.__initPickerCity()
 		this.__initToptips()
 		this.__initQrcode()
@@ -525,6 +527,129 @@ class wux {
 	}
 
 	/**
+	 * 选择器
+	 */
+	__initPicker() {
+		const that = this
+		const extend = that.tools.extend
+		const clone = that.tools.clone
+		const $scope = that.$scope
+
+		// 更新参数
+		const updateParam = (items, value) => {
+			const params = {
+				value: value, 
+				values: [], 
+			}
+
+			items.forEach((n, i) => {
+				params.values.push(n[value[i]])
+			})
+
+			return params
+		}
+
+		// 判断二维数组
+		const isMultiFn = (items) => {
+			for(let i = 0, len = items.length; i < len; i++) {
+				if(items[i] instanceof Array) return !0
+			}
+			return !1
+		}
+
+		that.$wuxPicker = {
+			/**
+			 * 默认参数
+			 */
+			defaults: {
+				title: '请选择', 
+				cancel: {
+					text: '取消', 
+					className: '', 
+					bindtap: function(){ 
+						return !1
+					},
+				},
+				confirm: {
+					text: '确定', 
+					className: '', 
+					bindtap: function(){ 
+						return !0
+					},
+				},
+				bindChange: function() {}
+			},
+			/**
+			 * 默认数据
+			 */
+			defaultValue(items) {
+				let value = [], len = items.length, i = 0
+				for(i = 0; i < len; i ++) {
+					value.push(0)
+				}
+				return value
+			},
+			/**
+			 * 缓存上一次滑动的位置
+			 */
+			temp: {},
+			/**
+			 * 渲染选择器组件
+			 * @param {String} id   唯一标识
+			 * @param {Object} opts 参数对象
+			 */
+			render(id, opts) {
+				const options = extend(clone(this.defaults), opts || {})
+				const isMulti = isMultiFn(options.items)
+
+				// 回调函数
+				const callback = (cb) => {
+					const picker = $scope.data.$wux.picker[id]
+					const params = updateParam(picker.items, picker.value)
+					typeof cb === 'function' && cb(params.value, params.values)
+				}
+
+				// 一位数组转化为二维数组
+				!isMulti && (options.items = [options.items])
+
+				// 渲染组件
+				$scope.setData({
+					[`$wux.picker.${id}`]: options, 
+					[`$wux.picker.${id}.onCancel`]: `${id}Cancel`, 
+					[`$wux.picker.${id}.onConfirm`]: `${id}Confirm`, 
+					[`$wux.picker.${id}.onChange`]: `${id}Change`, 
+				})
+
+				// 绑定cancel事件
+				$scope[`${id}Cancel`] = (e) => {
+					that.setVisible([`picker.${id}`], !1)
+					callback(options.cancel.bindtap)
+				}
+
+				// 绑定confirm事件
+				$scope[`${id}Confirm`] = (e) => {
+					that.setVisible([`picker.${id}`], !1)
+					callback(options.confirm.bindtap)
+				}
+
+				// 绑定change事件
+				$scope[`${id}Change`] = (e) => {
+					const value = e && e.detail && e.detail.value || this.temp[id] || options.value || this.defaultValue(options.items)
+					this.temp[id] = value
+					$scope.setData({
+						[`$wux.picker.${id}.value`]: value, 
+					})
+					callback(options.bindChange)
+				}
+
+				$scope[`${id}Change`]()
+
+				that.setVisible([`picker.${id}`], !0)
+			},
+		}
+	}
+
+	/**
 	 * 城市选择器
 	 */
 	__initPickerCity() {
@@ -603,16 +728,28 @@ class wux {
 		}
 
 		// 更新参数
-		const updateParam = (cols, value) => {
+		const updateParam = (items, value) => {
 			const params = {
+				value: value, 
 				values: [], 
 				displayValues: [], 
 			}
 
-			params.values = [cols[0].values[value[0]], cols[1].values[value[1]], cols[2].values[value[2]]]
-			params.displayValues = [cols[0].displayValues[value[0]], cols[1].displayValues[value[1]], cols[2].displayValues[value[2]]]
-
+			items.forEach((n, i) => {
+				params.values.push(n.values[value[i]])
+				params.displayValues.push(n.displayValues[value[i]])
+			})
+			
 			return params
+		}
+
+		// 更新picker数据
+		const updateItems = (cols) => {
+			let items = []
+			cols.forEach((n, i) => {
+				items.push(n.displayValues)
+			})
+			return items
 		}
 
 		that.$wuxPickerCity = {
@@ -647,6 +784,10 @@ class wux {
 				}
 			},
 			/**
+			 * 缓存上一次滑动的位置
+			 */
+			temp: {},
+			/**
 			 * 渲染城市选择器组件
 			 * @param {String} id   唯一标识
 			 * @param {Object} opts 参数对象
@@ -655,73 +796,55 @@ class wux {
 				const data = this.data()
 				const options = extend(data, clone(this.defaults), opts || {})
 
+				// 回调函数
+				const callback = (cb) => {
+					const pickerCity = $scope.data.$wux.pickerCity[id]
+					const params = updateParam(pickerCity.cols, pickerCity.value)
+					typeof cb === 'function' && cb(params.value, params.values, params.displayValues)
+				}
+
+				// 更新视图
+				const updateView = (value) => {
+					const cols = updateCols(value)
+					const items = updateItems(cols)
+					$scope.setData({
+						[`$wux.pickerCity.${id}.cols`]: cols, 
+						[`$wux.pickerCity.${id}.items`]: items, 
+						[`$wux.pickerCity.${id}.value`]: value, 
+					})
+				}
+				
 				// 渲染组件
 				$scope.setData({
 					[`$wux.pickerCity.${id}`]: options, 
-					[`$wux.pickerCity.${id}.cancelClick`]: `${id}CancelClick`, 
-					[`$wux.pickerCity.${id}.confirmClick`]: `${id}ConfirmClick`, 
-					[`$wux.pickerCity.${id}.handleChange`]: `${id}HandleChange`, 
+					[`$wux.pickerCity.${id}.onCancel`]: `${id}Cancel`, 
+					[`$wux.pickerCity.${id}.onConfirm`]: `${id}Confirm`, 
+					[`$wux.pickerCity.${id}.onChange`]: `${id}Change`, 
 				})
 
 				// 绑定cancel事件
-				$scope[`${id}CancelClick`] = (e) => {
+				$scope[`${id}Cancel`] = (e) => {
 					that.setVisible([`pickerCity.${id}`], !1)
-					const pickerCity = $scope.data.$wux.pickerCity[id]
-					const cols = pickerCity.cols
-					const value = pickerCity.value
-					const params = updateParam(cols, value)
-					typeof options.cancel.bindtap === 'function' && options.cancel.bindtap(value, params.values, params.displayValues)
+					callback(options.cancel.bindtap)
 				}
 
 				// 绑定confirm事件
-				$scope[`${id}ConfirmClick`] = (e) => {
+				$scope[`${id}Confirm`] = (e) => {
 					that.setVisible([`pickerCity.${id}`], !1)
-					const pickerCity = $scope.data.$wux.pickerCity[id]
-					const cols = pickerCity.cols
-					const value = pickerCity.value
-					const params = updateParam(cols, value)
-					typeof options.confirm.bindtap === 'function' && options.confirm.bindtap(value, params.values, params.displayValues)
+					callback(options.confirm.bindtap)
 				}
 
 				// 绑定change事件
-				$scope[`${id}HandleChange`] = (e = {}) => {
-					const value = this.updateValue(id, e.detail && e.detail.value || [0, 0, 0])
-					const cols = updateCols(value)
-					const params = updateParam(cols, value)
-					
-					$scope.setData({
-						[`$wux.pickerCity.${id}.cols`]: cols, 
-						[`$wux.pickerCity.${id}.cache`]: value, 
-					})
-					
-					typeof options.bindChange === 'function' && options.bindChange(value, params.values, params.displayValues)
+				$scope[`${id}Change`] = (e) => {
+					const value = e && e.detail && e.detail.value || this.temp[id] || options.value || [0, 0, 0]
+					this.temp[id] = value
+					updateView(value)
+					callback(options.bindChange)
 				}
 
+				$scope[`${id}Change`]()
+
 				that.setVisible([`pickerCity.${id}`], !0)
-				$scope[`${id}HandleChange`]()
-			},
-			/**
-			 * 更新视图
-			 * @param {String} id   唯一标识
-			 * @param {Array} value 当前选择的是第几项
-			 */
-			updateValue(id, value) {
-				let pickerCity = $scope.data.$wux.pickerCity[id]
-				let cache = pickerCity.cache || [0, 0, 0]
-				let _val  = []
-				if (cache[0] !== value[0]) {
-					_val = [value[0], 0, 0]
-				} else if (cache[1] !== value[1]) {
-					_val = [value[0], value[1], 0]
-				} else if (cache[2] !== value[2]) {
-					_val = [value[0], value[1], value[2]]
-				} else {
-					return value
-				}
-				$scope.setData({
-					[`$wux.pickerCity.${id}.value`]: _val, 
-				})
-				return _val
 			},
 		}
 	}
