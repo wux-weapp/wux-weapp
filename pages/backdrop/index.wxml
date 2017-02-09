@@ -1,4 +1,4 @@
-<import src="../../components/backdrop.wxml"/>
+<import src="../../components/backdrop/backdrop.wxml"/>
 
 <template is="backdrop" data="{{ ...$wux.backdrop }}"/>
 

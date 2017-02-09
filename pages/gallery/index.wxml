@@ -1,4 +1,4 @@
-<import src="../../components/gallery.wxml"/>
+<import src="../../components/gallery/gallery.wxml"/>
 
 <template is="gallery" data="{{ ...$wux.gallery }}"/>
 

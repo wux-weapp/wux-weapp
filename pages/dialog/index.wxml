@@ -1,4 +1,4 @@
-<import src="../../components/dialog.wxml"/>
+<import src="../../components/dialog/dialog.wxml"/>
 
 <template is="dialog" data="{{ ...$wux.dialog }}"/>
 

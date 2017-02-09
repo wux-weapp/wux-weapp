@@ -1,0 +1,23 @@
+<template name="picker">
+	<view class="wux-picker-container" wx:if="{{ visible }}">
+		<view class="weui-mask {{ animateCss[1] }}" hidden="{{ !visible }}" bindtap="{{ onCancel }}"></view>
+		<view class="wux-picker {{ animateCss[0] }}">
+			<view class="picker-header">
+				<view class="picker-header-inner">
+					<view class="picker-button close-picker cancel {{ cancel.className }}" bindtap="{{ onCancel }}">{{ cancel.text }}</view>
+					<view class="title">{{ title }}</view>
+					<view class="picker-button close-picker confirm {{ confirm.className }}" bindtap="{{ onConfirm }}">{{ confirm.text }}</view>
+				</view>
+			</view>
+			<picker-view class="wux-picker-view" indicator-style="height: 32px;" value="{{ value }}" bindchange="{{ onChange }}">
+				<block wx:for="{{ items }}" wx:key="">
+					<picker-view-column>
+						<view class="wux-picker-view-column" wx:for="{{ item }}" wx:key="" wx:for-item="value">
+							{{ value }}
+						</view>
+					</picker-view-column>
+				</block>
+			</picker-view>
+		</view>
+	</view>
+</template>

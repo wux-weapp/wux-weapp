@@ -1,4 +1,4 @@
-<import src="../../components/loading.wxml"/>
+<import src="../../components/loading/loading.wxml"/>
 
 <template is="loading" data="{{ ...$wux.loading }}"/>
 

@@ -1,4 +1,4 @@
-<import src="../../components/picker.wxml"/>
+<import src="../../components/picker/picker.wxml"/>
 
 <template is="picker" data="{{ ...$wux.picker.default }}"/>
 <template is="picker" data="{{ ...$wux.picker.multi }}"/>

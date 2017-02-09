@@ -14,6 +14,6 @@ App({
 	onHide() {
 		console.log('onHide')
 	},
-	wux: (scope) => new wux(scope), 
+	wux: wux, 
 	WxValidate: (rules, messages) => new WxValidate(rules, messages), 
 })

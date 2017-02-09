@@ -1,4 +1,4 @@
-<import src="../../components/toptips.wxml"/>
+<import src="../../components/toptips/toptips.wxml"/>
 
 <template is="toptips" data="{{ ...$wux.toptips }}"/>
 
