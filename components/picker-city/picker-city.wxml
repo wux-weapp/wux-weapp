@@ -1,4 +1,4 @@
-<template name="picker">
+<template name="picker-city">
 	<view class="wux-picker-container" wx:if="{{ visible }}">
 		<view class="weui-mask {{ animateCss[1] }}" hidden="{{ !visible }}" bindtap="{{ onCancel }}"></view>
 		<view class="wux-picker {{ animateCss[0] }}">

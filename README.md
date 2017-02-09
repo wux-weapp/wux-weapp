@@ -25,7 +25,7 @@
 ## Backdrop
 
 ```html
-<import src="../../components/backdrop.wxml"/>
+<import src="../../components/backdrop/backdrop.wxml"/>
 
 <template is="backdrop" data="{{ ...$wux.backdrop }}"/>
 
@@ -72,7 +72,7 @@ Page({
 ## Dialog
 
 ```html
-<import src="../../components/dialog.wxml"/>
+<import src="../../components/dialog/dialog.wxml"/>
 
 <template is="dialog" data="{{ ...$wux.dialog }}"/>
 
@@ -122,7 +122,7 @@ Page({
 ## Gallery
 
 ```html
-<import src="../../components/gallery.wxml"/>
+<import src="../../components/gallery/gallery.wxml"/>
 
 <template is="gallery" data="{{ ...$wux.gallery }}"/>
 
@@ -226,7 +226,7 @@ Page({
 ## Loading
 
 ```html
-<import src="../../components/loading.wxml"/>
+<import src="../../components/loading/loading.wxml"/>
 
 <template is="loading" data="{{ ...$wux.loading }}"/>
 
@@ -266,20 +266,22 @@ Page({
 ## Picker
 
 ```html
-<import src="../../components/picker-city.wxml"/>
+<import src="../../components/picker/picker.wxml"/>
 
-<template is="picker-city" data="{{ id, ...$wux.pickerCity.start }}"/>
-<template is="picker-city" data="{{ id, ...$wux.pickerCity.end }}"/>
+<template is="picker" data="{{ ...$wux.picker.default }}"/>
+<template is="picker" data="{{ ...$wux.picker.multi }}"/>
+<template is="picker" data="{{ ...$wux.pickerCity.city }}"/>
 
 <view class="page">
     <view class="page__hd">
-        <view class="page__title">PickerCity</view>
-        <view class="page__desc">城市选择器</view>
+        <view class="page__title">Picker</view>
+        <view class="page__desc">选择器</view>
     </view>
     <view class="page__bd">
         <view class="weui-btn-area">
-            <button class="weui-btn" type="default" bindtap="onTapStart">选择出发地：{{ start }}</button>
-            <button class="weui-btn" type="default" bindtap="onTapEnd">选择目的地：{{ end }}</button>
+            <button class="weui-btn" type="default" bindtap="onTapDefault">Default-Picker {{ default }}</button>
+            <button class="weui-btn" type="default" bindtap="onTapMulti">Multi-Picker {{ multi }}</button>
+            <button class="weui-btn" type="default" bindtap="onTapCity">City-Picker {{ city }}</button>
         </view>
     </view>
 </view>
@@ -291,44 +293,50 @@ const App = getApp()
 Page({
 	data: {},
 	onLoad() {
+		this.$wuxPicker = App.wux(this).$wuxPicker
 		this.$wuxPickerCity = App.wux(this).$wuxPickerCity
 	},
-	onTapStart() {
-		this.$wuxPickerCity.render('start', {
-			title: '请选择出发点', 
-			cancel: {
-				text: '取消', 
-				className: '', 
-				bindtap: (value, values, displayValues) => { 
-					console.log('用户点击取消')
-				},
+	onTapDefault() {
+		const that = this
+		that.$wuxPicker.render('default', {
+			items: ['飞机票', '火车票', '的士票', '住宿费', '礼品费', '活动费', '通讯费', '补助', '其他'],
+		    bindChange(value, values) {
+				console.log(value, values)
+				that.setData({
+					default: values
+				})
 			},
-			confirm: {
-				text: '确定', 
-				className: '', 
-				bindtap: (value, values, displayValues) => { 
-					console.log('用户点击确定')
-					this.setData({
-						start: displayValues
-					})
-				},
-			},
-			bindChange: (value, values, displayValues) => {
-				console.log(value, values, displayValues)
-			}
 		})
 	},
-	onTapEnd() {
-		this.$wuxPickerCity.render('end', {
-			title: '请选择目的地', 
-			bindChange: (value, values, displayValues) => {
-				console.log(value, values, displayValues)
-				this.setData({
-					end: displayValues
+	onTapMulti() {
+		const that = this
+		that.$wuxPicker.render('multi', {
+			items: [
+				['1', '2', '3'],
+				['A', 'B', 'C'],
+			],
+			value: [0, 1],
+			bindChange(value, values) {
+				console.log(value, values)
+				that.setData({
+					multi: values
 				})
-			}
+			},
 		})
-	}
+	},
+	onTapCity() {
+		const that = this
+		that.$wuxPickerCity.render('city', {
+			title: '请选择目的地', 
+			value: [8, 0, 11],
+		    bindChange(value, values, displayValues) {
+				console.log(value, values, displayValues)
+				that.setData({
+					city: displayValues
+				})
+			},
+		})
+	},
 })
 ```
 
@@ -383,7 +391,7 @@ Page({
 ## Rater
 
 ```html
-<import src="../../components/rater.wxml"/>
+<import src="../../components/rater/rater.wxml"/>
 
 <view class="page">
     <view class="page__hd">
@@ -501,7 +509,7 @@ Page({
 ## Toast
 
 ```html
-<import src="../../components/toast.wxml"/>
+<import src="../../components/toast/toast.wxml"/>
 
 <template is="toast" data="{{ ...$wux.toast }}"/>
 
@@ -571,7 +579,7 @@ Page({
 ## Toptips
 
 ```html
-<import src="../../components/toptips.wxml"/>
+<import src="../../components/toptips/toptips.wxml"/>
 
 <template is="toptips" data="{{ ...$wux.toptips }}"/>
 
@@ -777,7 +785,7 @@ Page({
 ## Xnumber
 
 ```html
-<import src="../../components/xnumber.wxml"/>
+<import src="../../components/xnumber/xnumber.wxml"/>
 
 <view class="page">
     <view class="page__hd">
@@ -900,7 +908,11 @@ Page({
 
 <img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-10.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-11.png" width="375px" style="display:inline;">
+<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-11-1.png" width="375px" style="display:inline;">
+
+<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-11-2.png" width="375px" style="display:inline;">
+
+<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-11-3.png" width="375px" style="display:inline;">
 
 <img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-12.png" width="375px" style="display:inline;">
 

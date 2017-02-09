@@ -1,8 +1,11 @@
 <import src="../../components/picker/picker.wxml"/>
 
+<import src="../../components/picker-city/picker-city.wxml"/>
+
 <template is="picker" data="{{ ...$wux.picker.default }}"/>
 <template is="picker" data="{{ ...$wux.picker.multi }}"/>
-<template is="picker" data="{{ ...$wux.pickerCity.city }}"/>
+
+<template is="picker-city" data="{{ ...$wux.pickerCity.city }}"/>
 
 <view class="page">
     <view class="page__hd">
