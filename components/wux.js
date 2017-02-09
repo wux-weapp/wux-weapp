@@ -202,7 +202,7 @@ class wux {
      */
 	__initBackdrop() {
 		const that = this
-		const $scope = that.$scope 
+		const $scope = that.$scope
 
 		that.$wuxBackdrop = {
 			/**
@@ -251,35 +251,37 @@ class wux {
 				cancelText: '取消', 
 				confirm: function() {}, 
 				cancel: function() {}, 
-				dialogConfirm: 'dialogConfirm', 
-				dialogCancel: 'dialogCancel', 
 			},
 			/**
 			 * 显示dialog组件
 			 * @param {Object} opts 参数对象
+			 * @param {Boolean} opts.showCancel 是否显示取消按钮
+			 * @param {String} opts.title 提示标题
+			 * @param {String} opts.content 提示文本
+			 * @param {String} opts.confirmText 确定按钮的文字
+			 * @param {String} opts.cancelText 取消按钮的文字
+			 * @param {Function} opts.confirm 点击确定按钮的回调函数
+			 * @param {Function} opts.cancel 点击按钮按钮的回调函数
 			 */
 			open(opts = {}) {
-				const options = extend(clone(this.defaults), opts || {})
+				const options = extend(clone(this.defaults), opts)
+				const hideDialog = (cb) => {
+					that.setVisible(['dialog'], !1)
+					typeof cb === 'function' && cb()
+				}
+
+				// 渲染组件
+				$scope.setData({
+					[`$wux.dialog`]: options, 
+					[`$wux.dialog.dialogConfirm`]: `dialogConfirm`, 
+					[`$wux.dialog.dialogCancel`]: `dialogCancel`, 
+				})
 
 				// 绑定tap事件
 				$scope.dialogConfirm = () => hideDialog(options.confirm)
 				$scope.dialogCancel = () => hideDialog(options.cancel)
 
-				// 隐藏
-				function hideDialog(cb) {
-					that.setVisible(['dialog'], !1)
-					typeof cb === 'function' && cb()
-				}
-
-				// 显示
-				function showDialog() {
-					$scope.setData({
-						[`$wux.dialog`]: options, 
-					})
-					that.setVisible(['dialog'], !0)
-				}
-
-				showDialog()
+				that.setVisible(['dialog'], !0)
 
 				return $scope.dialogCancel
 			},
@@ -293,7 +295,7 @@ class wux {
 		const that = this
 		const extend = that.tools.extend
 		const clone = that.tools.clone
-		const $scope = that.$scope 
+		const $scope = that.$scope
 		const TOAST_TYPES = [
 			{
 				type: 'success',
@@ -331,10 +333,22 @@ class wux {
 			/**
 			 * 显示toast组件
 			 * @param {Object} opts 参数对象
+			 * @param {String} opts.type 提示类型
+			 * @param {Number} opts.timer 提示延迟时间
+			 * @param {String} opts.color 图标颜色
+			 * @param {String} opts.text 提示文本
+			 * @param {Function} opts.success 关闭后的回调函数
 			 */
 			show(opts = {}) {
-				const options = extend(clone(this.defaults), opts || {})
-				
+				const options = extend(clone(this.defaults), opts)
+				const remove = (cb) => {
+					setTimeout(() => {
+						that.setVisible(['toast'], !1)
+						typeof cb === 'function' && cb()
+					}, options.timer)
+				}
+
+				// 判断提示类型，显示对应的图标
 				TOAST_TYPES.forEach((value, key) => {
     				if (value.type === opts.type) {
     					options.type = value.icon
@@ -347,13 +361,6 @@ class wux {
 				})
 
 				that.setVisible(['toast'], !0)
-
-				function remove(cb) {
-					setTimeout(() => {
-						that.setVisible(['toast'], !1)
-						typeof cb === 'function' && cb()
-					}, options.timer)
-				}
 
 				remove(options.success)
 			},
@@ -379,9 +386,10 @@ class wux {
 			/**
 			 * 显示loading组件
 			 * @param {Object} opts 参数对象
+			 * @param {String} opts.text 提示文本
 			 */
 			show(opts = {}) {
-				const options = extend(clone(this.defaults), opts || {})
+				const options = extend(clone(this.defaults), opts)
 
 				$scope.setData({
 					[`$wux.loading`]: options, 
@@ -405,7 +413,7 @@ class wux {
 		const that = this
 		const extend = that.tools.extend
 		const clone = that.tools.clone
-		const $scope = that.$scope 
+		const $scope = that.$scope
 
 		that.$wuxRater = {
 			/**
@@ -436,10 +444,19 @@ class wux {
 			 * 渲染评分组件
 			 * @param {String} id   唯一标识
 			 * @param {Object} opts 参数对象
+			 * @param {Number} opts.max 最大值
+			 * @param {String} opts.star 图标
+			 * @param {Number} opts.value 默认值
+			 * @param {String} opts.activeColor 图标激活的颜色
+			 * @param {Number} opts.margin 图标外边距
+			 * @param {Number} opts.fontSize 图标大小
+			 * @param {Boolean} opts.disabled 禁用点击
+			 * @param {Function} opts.callback 点击事件的回调函数
 			 */
-			render(id, opts) {
-				const data = this.data()
-				const options = extend(data, clone(this.defaults), opts || {})
+			render(id, opts = {}) {
+				const that = this
+				const data = that.data()
+				const options = extend(data, clone(that.defaults), opts)
 
 				// 渲染组件
 				$scope.setData({
@@ -454,7 +471,7 @@ class wux {
 					const value = rater.value
 					const disabled = rater.disabled
 
-					if (disabled) return
+					if (disabled) return !1
 
 					if (value === i + 1) {
 						$scope.setData({
@@ -466,63 +483,67 @@ class wux {
 						})
 					}
 
-					updateStyle()
-					updateValue()
+					this.updateStyle(id)
+					this.updateValue(id)
 
 					typeof options.callback === 'function' && options.callback(e)
 				}
 
-				// 更新stars
-				function updateStars() {
-					const rater = $scope.data.$wux.rater[id]
-					const max = rater.max
-					const stars = []
+				this.updateStars(id)
+				this.updateStyle(id)
+				this.updateValue(id)
+			},
+			/**
+			 * 更新stars
+			 */
+			updateStars(id) {
+				const rater = $scope.data.$wux.rater[id]
+				const max = rater.max
+				const stars = []
 
-					for (let i = 0; i < max; i++) {
-						stars.push(i)
-					}
-
-					$scope.setData({
-						[`$wux.rater.${id}.stars`]: stars
-					})
-			    }
-
-			    // 更新style
-				function updateStyle() {
-					const rater = $scope.data.$wux.rater[id]
-					const max = rater.max
-					const value = rater.value
-					const activeColor = rater.activeColor
-					const colors = []
-
-					for (let j = 0; j < max; j++) {
-						if (j <= value - 1) {
-							colors.push(activeColor)
-						} else {
-							colors.push('#ccc')
-						}
-						$scope.setData({
-							[`$wux.rater.${id}.colors`]: colors
-						})
-					}
+				for (let i = 0; i < max; i++) {
+					stars.push(i)
 				}
 
-				// 更新value
-				function updateValue() {
-					const rater = $scope.data.$wux.rater[id]
-					const value = rater.value
-					const _val = value.toString().split('.')
-					const sliceValue = _val.length === 1 ? [_val[0], 0] : _val
+				$scope.setData({
+					[`$wux.rater.${id}.stars`]: stars
+				})
+		    },
+		    /**
+		     * 更新style
+		     */
+		    updateStyle(id) {
+				const rater = $scope.data.$wux.rater[id]
+				const max = rater.max
+				const value = rater.value
+				const activeColor = rater.activeColor
+				const colors = []
+
+				for (let j = 0; j < max; j++) {
+					if (j <= value - 1) {
+						colors.push(activeColor)
+					} else {
+						colors.push('#ccc')
+					}
 					$scope.setData({
-						[`$wux.rater.${id}.cutIndex`]: sliceValue[0] * 1, 
-						[`$wux.rater.${id}.cutPercent`]: sliceValue[1] * 10, 
+						[`$wux.rater.${id}.colors`]: colors
 					})
 				}
+			},
+			/**
+			 * 更新value
+			 */
+			updateValue(id) {
+				const rater = $scope.data.$wux.rater[id]
+				const value = rater.value
+				const _val = value.toString().split('.')
+				const sliceValue = _val.length === 1 ? [_val[0], 0] : _val
 
-				updateStars()
-				updateStyle()
-				updateValue()
-			}
+				$scope.setData({
+					[`$wux.rater.${id}.cutIndex`]: sliceValue[0] * 1, 
+					[`$wux.rater.${id}.cutPercent`]: sliceValue[1] * 10, 
+				})
+			},
 		}
 	}
 
@@ -563,6 +584,7 @@ class wux {
 			 */
 			defaults: {
 				title: '请选择', 
+				items: [], 
 				cancel: {
 					text: '取消', 
 					className: '', 
@@ -597,9 +619,20 @@ class wux {
 			 * 渲染选择器组件
 			 * @param {String} id   唯一标识
 			 * @param {Object} opts 参数对象
+			 * @param {String} opts.title 提示标题
+			 * @param {Array} opts.items 选择器的数据
+			 * @param {Object} opts.cancel 取消按钮的配置项
+			 * @param {String} opts.cancel.text 取消按钮的文字
+			 * @param {String} opts.cancel.className 添加自定义取消按钮的类
+			 * @param {Function} opts.cancel.bindtap 点击取消按钮的回调函数
+			 * @param {Object} opts.confirm 确定按钮的配置项
+			 * @param {String} opts.confirm.text 确定按钮的文字
+			 * @param {String} opts.confirm.className 添加自定义确定按钮的类
+			 * @param {Function} opts.confirm.bindtap 点击确定按钮的回调函数
+			 * @param {Function} opts.bindChange 监听值变化的回调函数
 			 */
-			render(id, opts) {
-				const options = extend(clone(this.defaults), opts || {})
+			render(id, opts = {}) {
+				const options = extend(clone(this.defaults), opts)
 				const isMulti = isMultiFn(options.items)
 
 				// 回调函数
@@ -790,11 +823,20 @@ class wux {
 			/**
 			 * 渲染城市选择器组件
 			 * @param {String} id   唯一标识
-			 * @param {Object} opts 参数对象
+			 * @param {String} opts.title 提示标题
+			 * @param {Object} opts.cancel 取消按钮的配置项
+			 * @param {String} opts.cancel.text 取消按钮的文字
+			 * @param {String} opts.cancel.className 添加自定义取消按钮的类
+			 * @param {Function} opts.cancel.bindtap 点击取消按钮的回调函数
+			 * @param {Object} opts.confirm 确定按钮的配置项
+			 * @param {String} opts.confirm.text 确定按钮的文字
+			 * @param {String} opts.confirm.className 添加自定义确定按钮的类
+			 * @param {Function} opts.confirm.bindtap 点击确定按钮的回调函数
+			 * @param {Function} opts.bindChange 监听值变化的回调函数
 			 */
-			render(id, opts) {
+			render(id, opts = {}) {
 				const data = this.data()
-				const options = extend(data, clone(this.defaults), opts || {})
+				const options = extend(data, clone(this.defaults), opts)
 
 				// 回调函数
 				const callback = (cb) => {
@@ -873,9 +915,13 @@ class wux {
 			/**
 			 * 显示toptips组件
 			 * @param {Object} opts 参数对象
+			 * @param {String} opts.text 报错文本
+			 * @param {Number} opts.timer 多少毫秒后消失
+			 * @param {String} opts.className 添加自定义类
+			 * @param {Function} opts.success 消失后的回调函数
 			 */
 			show(opts = {}) {
-				const options = extend(clone(this.defaults), opts || {})
+				const options = extend(clone(this.defaults), opts)
 				const hide = () => {
 					that.setVisible(['toptips'], !1)
 					typeof options.success === 'function' && options.success()
@@ -929,9 +975,15 @@ class wux {
 			 * @param {String} id 	唯一标识
 			 * @param {String} data 文本内容
 			 * @param {Object} opts 参数对象
+			 * @param {Number} opts.typeNumber 类型
+			 * @param {Number} opts.errorCorrectLevel 误差校正等级
+			 * @param {Number} opts.width canvas宽度
+			 * @param {Number} opts.height canvas高度
+			 * @param {String} opts.fgColor 前景色
+			 * @param {String} opts.bgColor 背景色
 			 */
-			init(id, data, opts) {
-				const options = extend(clone(this.defaults), opts || {})
+			init(id, data, opts = {}) {
+				const options = extend(clone(this.defaults), opts)
 				const qrcode = qrjs(data, {
 					typeNumber: options.typeNumber, 
 					errorCorrectLevel: options.errorCorrectLevel, 
@@ -979,9 +1031,13 @@ class wux {
 			/**
 			 * 显示gallery组件
 			 * @param {Object} opts 参数对象
+			 * @param {Number} opts.current 当前显示图片的索引值
+			 * @param {Array} opts.urls 需要预览的图片链接列表
+			 * @param {Function} opts.delete 点击删除的回调函数
+			 * @param {Function} opts.callback 点击关闭的回调函数
 			 */
-			show(opts) {
-				const options = extend(clone(this.defaults), opts || {})
+			show(opts = {}) {
+				const options = extend(clone(this.defaults), opts)
 				const hide = () => {
 					that.setVisible(['gallery'], !1)
 					typeof options.callback === 'function' && options.callback()
@@ -995,8 +1051,10 @@ class wux {
 					[`$wux.gallery.onChange`]: `galleryChange`, 
 				})
 
-				// 绑定tap事件
+				// 绑定hide事件
 				$scope[`galleryHide`] = hide
+
+				// 绑定delete事件
 				$scope[`galleryDelete`] = (e) => {
 					if(typeof options.delete === 'function') {
 						const gallery = $scope.data.$wux.gallery
@@ -1005,6 +1063,8 @@ class wux {
 						}
 					}
 				}
+
+				// 绑定change事件
 				$scope[`galleryChange`] = (e) => {
 					$scope.setData({
 						[`$wux.gallery.current`]: e.detail.current, 
@@ -1017,7 +1077,7 @@ class wux {
 	}
 
 	/**
-	 * 数字加减
+	 * 计数器
 	 */
 	__initXnumber() {
 		const that = this
@@ -1042,27 +1102,37 @@ class wux {
 			 * 渲染xnumber组件
 			 * @param {String} id   唯一标识
 			 * @param {Object} opts 参数对象
+			 * @param {Number} opts.min 最小值
+			 * @param {Number} opts.max 最大值
+			 * @param {Number} opts.step 计数间隔
+			 * @param {Number} opts.value 默认值
+			 * @param {Boolean} opts.disabled 禁用点击
+			 * @param {String} opts.className 添加自定义类
+			 * @param {Function} opts.callback 监听值变化的回调函数
 			 */
-			render(id, opts) {
+			render(id, opts = {}) {
 
 				let timeout = null
 
 				const options = extend({
 					id: id, 
-				}, clone(this.defaults), opts || {})
+				}, clone(this.defaults), opts)
 
 				// 更新组件
 				const updateValues = (value) => {
 					const xnumber = $scope.data.$wux.xnumber[id]
 
+					// 最小值
 					if (xnumber.min && value < xnumber.min) {
 						value = xnumber.min
 					}
 
+					// 最大值
 					if (xnumber.max && value > xnumber.max) {
 						value = xnumber.max
 					}
 
+					// 更新数值，判断最小或最大值禁用sub或add按钮
 					$scope.setData({
 						[`$wux.xnumber.${id}.value`]: value, 
 						[`$wux.xnumber.${id}.disabledMin`]: typeof xnumber.min === 'undefined' ? !1 : value <= xnumber.min, 
@@ -1080,19 +1150,21 @@ class wux {
 					[`$wux.xnumber.${id}.onChange`]: `${id}Change`, 
 				})
 
-				// 绑定tap事件
+				// 绑定sub事件
 				$scope[`${id}Sub`] = (e) => {
 					const xnumber = $scope.data.$wux.xnumber[id]
 					if (xnumber.disabledMin) return !1
 					updateValues(xnumber.value - xnumber.step)
 				}
 
+				// 绑定add事件
 				$scope[`${id}Add`] = (e) => {
 					const xnumber = $scope.data.$wux.xnumber[id]
 					if (xnumber.disabledMax) return !1
 					updateValues(xnumber.value + xnumber.step)
 				}
 
+				// 绑定change事件
 				$scope[`${id}Change`] = (e) => {
 					if (timeout) clearTimeout(timeout)
 					timeout = setTimeout(() => {
@@ -1100,6 +1172,7 @@ class wux {
 					}, 300)
 				}
 
+				// 初始化时立即更新一次组件
 				updateValues(options.value)
 			},
 		}

@@ -20,7 +20,7 @@
 
 * [Toptips - 顶部提示](#toptips)
 
-* [Xnumber - 数字加减](#xnumber)
+* [Xnumber - 计数器](#xnumber)
 
 ## Backdrop
 
@@ -782,7 +782,7 @@ Page({
 <view class="page">
     <view class="page__hd">
         <view class="page__title">Xnumber</view>
-        <view class="page__desc">数字加减</view>
+        <view class="page__desc">计数器</view>
     </view>
     <view class="page__bd">
     	<view class="weui-cells__title">默认</view>
