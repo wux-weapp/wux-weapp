@@ -1,7 +1,7 @@
 <template name="picker">
 	<view class="wux-picker-container" wx:if="{{ visible }}">
-		<view class="weui-mask {{ visible ? 'visible' : 'hidden' }}" hidden="{{ !visible }}" bindtap="{{ onCancel }}"></view>
-		<view class="wux-picker {{ visible ? 'visible' : 'hidden' }}">
+		<view class="weui-mask {{ animateCss[1] }}" hidden="{{ !visible }}" bindtap="{{ onCancel }}"></view>
+		<view class="wux-picker {{ animateCss[0] }}">
 			<view class="picker-header">
 				<view class="picker-header-inner">
 					<view class="picker-button close-picker cancel {{ cancel.className }}" bindtap="{{ onCancel }}">{{ cancel.text }}</view>

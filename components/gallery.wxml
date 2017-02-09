@@ -1,5 +1,5 @@
 <template name="gallery">
-	<view class="weui-gallery {{ visible ? 'visible' : 'hidden' }}" wx:if="{{ visible }}">
+	<view class="weui-gallery {{ animateCss }}" wx:if="{{ visible }}">
 		<swiper class="weui-gallery__swiper" current="{{ current }}" bindchange="{{ onChange }}" hidden="{{ !urls.length }}">
 			<block wx:for="{{ urls }}" wx:key="{{ item }}">
 				<swiper-item>

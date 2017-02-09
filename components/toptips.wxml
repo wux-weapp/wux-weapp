@@ -1,5 +1,5 @@
 <template name="toptips">
-	<view class="weui-toptips weui-toptips_warn {{ visible ? 'visible' : 'hidden' }} {{ className }}" hidden="{{ !visible }}">
+	<view class="weui-toptips weui-toptips_warn {{ animateCss }} {{ className }}" hidden="{{ !visible }}">
 		{{ text }}
 	</view>
 </template>

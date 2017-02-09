@@ -215,7 +215,7 @@ class wux {
 			retain() {
 				this.backdropHolds++
 				if (this.backdropHolds === 1) {
-					that.setVisible(['backdrop'], !0)
+					that.setVisible('backdrop')
 				}
 			},
 			/**
@@ -223,7 +223,7 @@ class wux {
 			 */
 			release() {
 				if (this.backdropHolds === 1) {
-					that.setVisible(['backdrop'], !1)
+					that.setHidden('backdrop')
 				}
 				this.backdropHolds = Math.max(0, this.backdropHolds - 1)
 			},
@@ -266,7 +266,7 @@ class wux {
 			open(opts = {}) {
 				const options = extend(clone(this.defaults), opts)
 				const hideDialog = (cb) => {
-					that.setVisible(['dialog'], !1)
+					that.setHidden('dialog')
 					typeof cb === 'function' && cb()
 				}
 
@@ -281,7 +281,7 @@ class wux {
 				$scope.dialogConfirm = () => hideDialog(options.confirm)
 				$scope.dialogCancel = () => hideDialog(options.cancel)
 
-				that.setVisible(['dialog'], !0)
+				that.setVisible('dialog')
 
 				return $scope.dialogCancel
 			},
@@ -300,22 +300,22 @@ class wux {
 			{
 				type: 'success',
 				icon: 'success_no_circle',
-				cls: 'weui-toast-success',
+				className: 'weui-toast-success',
 			},
 			{
 				type: 'cancel',
 				icon: 'cancel',
-				cls: 'weui-toast-cancel',
+				className: 'weui-toast-cancel',
 			},
 			{
 				type: 'forbidden',
 				icon: 'warn',
-				cls: 'weui-toast-forbidden',
+				className: 'weui-toast-forbidden',
 			},
 			{
 				type: 'text',
 				icon: '',
-				cls: 'weui-toast-text',
+				className: 'weui-toast-text',
 			},
 		]
 
@@ -343,7 +343,7 @@ class wux {
 				const options = extend(clone(this.defaults), opts)
 				const remove = (cb) => {
 					setTimeout(() => {
-						that.setVisible(['toast'], !1)
+						that.setHidden('toast')
 						typeof cb === 'function' && cb()
 					}, options.timer)
 				}
@@ -352,7 +352,7 @@ class wux {
 				TOAST_TYPES.forEach((value, key) => {
     				if (value.type === opts.type) {
     					options.type = value.icon
-    					options.cls = value.cls
+    					options.className = value.className
     				}
     			})
 
@@ -360,7 +360,7 @@ class wux {
 					[`$wux.toast`]: options, 
 				})
 
-				that.setVisible(['toast'], !0)
+				that.setVisible('toast')
 
 				remove(options.success)
 			},
@@ -395,13 +395,13 @@ class wux {
 					[`$wux.loading`]: options, 
 				})
 
-				that.setVisible(['loading'], !0)
+				that.setVisible('loading')
 			},
 			/**
 			 * 隐藏loading组件
 			 */
 			hide() {
-				that.setVisible(['loading'], !1)
+				that.setHidden('loading')
 			},
 		}
 	}
@@ -642,6 +642,29 @@ class wux {
 					typeof cb === 'function' && cb(params.value, params.values)
 				}
 
+				// 显示
+				const show = () => {
+					$scope.setData({
+						[`$wux.pickerCity.${id}.visible`]: !0, 
+						[`$wux.pickerCity.${id}.animateCss`]: 'weui-animate-slide-up', 
+						[`$wux.pickerCity.${id}.maskAnimateCss`]: 'weui-animate-fade-in', 
+					})
+				}
+
+				// 隐藏
+				const hide = () => {
+					$scope.setData({
+						[`$wux.pickerCity.${id}.animateCss`]: 'weui-animate-slide-down', 
+						[`$wux.pickerCity.${id}.maskAnimateCss`]: 'weui-animate-fade-out', 
+					})
+
+					setTimeout(() => {
+						$scope.setData({
+							[`$wux.pickerCity.${id}.visible`]: !1, 
+						})
+					}, 300)
+				}
+
 				// 一位数组转化为二维数组
 				!isMulti && (options.items = [options.items])
 
@@ -655,13 +678,13 @@ class wux {
 
 				// 绑定cancel事件
 				$scope[`${id}Cancel`] = (e) => {
-					that.setVisible([`picker.${id}`], !1)
+					that.setHidden(`picker.${id}`, ['weui-animate-slide-down', 'weui-animate-fade-out'])
 					callback(options.cancel.bindtap)
 				}
 
 				// 绑定confirm事件
 				$scope[`${id}Confirm`] = (e) => {
-					that.setVisible([`picker.${id}`], !1)
+					that.setHidden(`picker.${id}`, ['weui-animate-slide-down', 'weui-animate-fade-out'])
 					callback(options.confirm.bindtap)
 				}
 
@@ -677,7 +700,7 @@ class wux {
 
 				$scope[`${id}Change`]()
 
-				that.setVisible([`picker.${id}`], !0)
+				that.setVisible([`picker.${id}`], ['weui-animate-slide-up', 'weui-animate-fade-in'])
 			},
 		}
 	}
@@ -866,13 +889,13 @@ class wux {
 
 				// 绑定cancel事件
 				$scope[`${id}Cancel`] = (e) => {
-					that.setVisible([`pickerCity.${id}`], !1)
+					that.setHidden(`pickerCity.${id}`, ['weui-animate-slide-down', 'weui-animate-fade-out'])
 					callback(options.cancel.bindtap)
 				}
 
 				// 绑定confirm事件
 				$scope[`${id}Confirm`] = (e) => {
-					that.setVisible([`pickerCity.${id}`], !1)
+					that.setHidden(`pickerCity.${id}`, ['weui-animate-slide-down', 'weui-animate-fade-out'])
 					callback(options.confirm.bindtap)
 				}
 
@@ -886,7 +909,7 @@ class wux {
 
 				$scope[`${id}Change`]()
 
-				that.setVisible([`pickerCity.${id}`], !0)
+				that.setVisible([`pickerCity.${id}`], ['weui-animate-slide-up', 'weui-animate-fade-in'])
 			},
 		}
 	}
@@ -923,7 +946,7 @@ class wux {
 			show(opts = {}) {
 				const options = extend(clone(this.defaults), opts)
 				const hide = () => {
-					that.setVisible(['toptips'], !1)
+					that.setHidden('toptips')
 					typeof options.success === 'function' && options.success()
 				}
 
@@ -942,7 +965,7 @@ class wux {
 					[`$wux.toptips`]: options, 
 				})
 
-				that.setVisible(['toptips'], !0)
+				that.setVisible('toptips')
 
 				return _toptips.hide
 			},
@@ -1039,7 +1062,7 @@ class wux {
 			show(opts = {}) {
 				const options = extend(clone(this.defaults), opts)
 				const hide = () => {
-					that.setVisible(['gallery'], !1)
+					that.setHidden('gallery')
 					typeof options.callback === 'function' && options.callback()
 				}
 
@@ -1071,7 +1094,7 @@ class wux {
 					})
 				}
 
-				that.setVisible(['gallery'], !0)
+				that.setVisible('gallery')
 			}
 		}
 	}
@@ -1179,14 +1202,28 @@ class wux {
 	}
 
 	/**
-	 * 设置元素显示或隐藏
+	 * 设置元素显示
 	 */
-	setVisible(keys, value) {
-    	keys.forEach(key => {
-    		this.$scope.setData({
-    			[`$wux.${key}.visible`]: value, 
-    		})
-    	})
+	setVisible(key, className = 'weui-animate-fade-in') {
+    	this.$scope.setData({
+			[`$wux.${key}.visible`]: !0, 
+			[`$wux.${key}.animateCss`]: className, 
+		})
+    }
+
+    /**
+	 * 设置元素隐藏
+	 */
+	setHidden(key, className = 'weui-animate-fade-out', timer = 300) {
+    	this.$scope.setData({
+			[`$wux.${key}.animateCss`]: className, 
+		})
+
+		setTimeout(() => {
+			this.$scope.setData({
+				[`$wux.${key}.visible`]: !1, 
+			})
+		}, timer)
     }
 }
 

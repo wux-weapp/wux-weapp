@@ -1,43 +1,15 @@
 .weui-mask {
-	position: fixed;
-	z-index: 1000;
-	top: 0;
-	right: 0;
-	left: 0;
-	bottom: 0;
-	background: rgba(0, 0, 0, 0.6);
+    background: rgba(0,0,0,.6)
 }
 
-.weui-mask.hidden {
-	visibility: hidden;
-	opacity: 0;
-	-webkit-transition: .2s opacity linear;
-	transition: .2s opacity linear;
-}
-
-.weui-mask.visible {
-	visibility: visible;
-	opacity: 1;
-}
-
-.weui-dialog-wrapper.hidden {
-	visibility: hidden;
-	opacity: 0;
-}
-
-.weui-dialog-wrapper.visible {
-	visibility: visible;
-	opacity: 1;
-}
-
-.weui-dialog-wrapper .weui-dialog {
-	opacity: 0;
-	-webkit-transition: opacity .3s;
-	transition: opacity .3s;
-}
-
-.weui-dialog-wrapper.visible .weui-dialog {
-	opacity: 1;
+.weui-mask, 
+.weui-mask_transparent {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0
 }
 
 .weui-dialog {
@@ -153,18 +125,6 @@
 	bottom: 0;
 	z-index: 1010;
 	display: block;
-	-webkit-transition: .2s opacity linear;
-	transition: .2s opacity linear;
-}
-
-.weui-toast-wrapper.hidden {
-	visibility: hidden;
-	opacity: 0;
-}
-
-.weui-toast-wrapper.visible {
-	visibility: visible;
-	opacity: 1;
 }
 
 .weui-toast-text .weui-toast {
@@ -281,7 +241,7 @@
 	z-index: 1010;
 	text-align: center;
 	border-radius: 0;
-	opacity: 0.6;
+	opacity: 1;
 	color: #3d4145;
 	height: 260px;
 	background: #EFEFF4;
@@ -472,4 +432,112 @@
     margin-right: 5px;
     padding: 3px 8px;
     border-radius: 0 2px 2px 0;
+}
+
+@-webkit-keyframes slideUp {
+    0% {
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0)
+    }
+
+    to {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0)
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0)
+    }
+
+    to {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0)
+    }
+}
+
+.weui-animate-slide-up {
+    -webkit-animation: slideUp ease .3s forwards;
+    animation: slideUp ease .3s forwards
+}
+
+@-webkit-keyframes slideDown {
+    0% {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0)
+    }
+
+    to {
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0)
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0)
+    }
+
+    to {
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0)
+    }
+}
+
+.weui-animate-slide-down {
+    -webkit-animation: slideDown ease .3s forwards;
+    animation: slideDown ease .3s forwards
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.weui-animate-fade-in {
+    -webkit-animation:fadeIn ease .3s forwards;
+    animation:fadeIn ease .3s forwards;
+}
+
+@-webkit-keyframes fadeOut {
+    0% {
+        opacity: 1
+    }
+
+    to {
+        opacity: 0
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1
+    }
+
+    to {
+        opacity: 0
+    }
+}
+
+.weui-animate-fade-out {
+    -webkit-animation: fadeOut ease .3s forwards;
+    animation: fadeOut ease .3s forwards
 }
