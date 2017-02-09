@@ -1,5 +1,6 @@
 <template name="toptips">
-	<view class="weui-toptips weui-toptips_warn {{ animateCss }} {{ className }}" hidden="{{ !visible }}">
+	<view class="weui-toptips {{ icon ? 'weui-toptips_' + icon : 'weui-toptips_cancel' }} {{ animateCss }} {{ className }}" hidden="{{ !visible }}">
 		{{ text }}
+		<icon wx:if="{{ icon && !hide }}" class="weui-toptips_icon" type="{{ icon }}" size="24" color="#fff" />
 	</view>
 </template>

@@ -66,6 +66,8 @@ class wux {
 			 * 默认参数
 			 */
 			defaults: {
+				icon: 'cancel', 
+				hide: !1, 
 				text: '', 
 				timer: 3000, 
 				className: '', 
@@ -74,6 +76,8 @@ class wux {
 			/**
 			 * 显示toptips组件
 			 * @param {Object} opts 参数对象
+			 * @param {String} opts.icon 图标类型
+			 * @param {Boolean} opts.hide 是否隐藏图标
 			 * @param {String} opts.text 报错文本
 			 * @param {Number} opts.timer 多少毫秒后消失
 			 * @param {String} opts.className 添加自定义类
@@ -104,6 +108,26 @@ class wux {
 				that.setVisible('toptips')
 
 				return _toptips.hide
+			},
+			success(opts = {}) {
+				return this.show(extend({
+					icon: 'success', 
+				}, opts))
+			},
+			info(opts = {}) {
+				return this.show(extend({
+					icon: 'info', 
+				}, opts))
+			},
+			warn(opts = {}) {
+				return this.show(extend({
+					icon: 'warn', 
+				}, opts))
+			},
+			error(opts = {}) {
+				return this.show(extend({
+					icon: 'cancel', 
+				}, opts))
 			},
 		}
 	}

@@ -64,9 +64,9 @@ Page({
 			return false
 		}
 
-		this.$wuxToptips.show({
+		this.$wuxToptips.success({
+			hide: !0, 
 			text: '提交成功', 
-			className: 'bg-success', 
 		})
 	},
 	initValidate() {
