@@ -1,0 +1,19 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">CountUp</view>
+        <view class="page__desc">计数器</view>
+    </view>
+    <view class="page__bd">
+        <view class="text-center">
+        	<view class="countup">{{ $wux.countUp.c1.value }}</view>
+        	<view class="countup">{{ $wux.countUp.c2.value }}</view>
+        	<view class="countup">{{ $wux.countUp.c3.value }}</view>
+        </view>
+        <view class="weui-btn-area text-center">
+            <button class="weui-btn" type="primary" size="mini" bindtap="start">Start</button>
+            <button class="weui-btn" type="primary" size="mini" bindtap="pauseResume">Pause/Resume</button>
+            <button class="weui-btn" type="primary" size="mini" bindtap="reset">Reset</button>
+            <button class="weui-btn" type="primary" size="mini" bindtap="update">Update</button>
+        </view>
+    </view>
+</view>

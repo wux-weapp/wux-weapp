@@ -1,4 +1,5 @@
 import Backdrop from 'backdrop/backdrop'
+import CountUp from 'countup/countup'
 import Dialog from 'dialog/dialog'
 import Gallery from 'gallery/gallery'
 import Loading from 'loading/loading'
@@ -13,6 +14,7 @@ import Xnumber from 'xnumber/xnumber'
 export default function(scope) {
 	return {
 		$wuxBackdrop  : new Backdrop(scope).$wuxBackdrop, 
+		$wuxCountUp   : new CountUp(scope).$wuxCountUp, 
 		$wuxDialog    : new Dialog(scope).$wuxDialog, 
 		$wuxGallery   : new Gallery(scope).$wuxGallery, 
 		$wuxLoading   : new Loading(scope).$wuxLoading, 

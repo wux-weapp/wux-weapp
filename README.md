@@ -4,6 +4,8 @@
 
 * [Backdrop - 背景幕](#backdrop)
 
+* [CountUp - 计数器](#countup)
+
 * [Dialog - 对话框](#dialog)
 
 * [Gallery - 画廊](#gallery)
@@ -66,6 +68,65 @@ Page({
 			locks: this.$wuxBackdrop.backdropHolds
 		})
 	}
+})
+```
+
+## CountUp
+
+```html
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">CountUp</view>
+        <view class="page__desc">计数器</view>
+    </view>
+    <view class="page__bd">
+        <view class="text-center">
+        	<view class="countup">{{ $wux.countUp.c1.value }}</view>
+        	<view class="countup">{{ $wux.countUp.c2.value }}</view>
+        	<view class="countup">{{ $wux.countUp.c3.value }}</view>
+        </view>
+        <view class="weui-btn-area text-center">
+            <button class="weui-btn" type="primary" size="mini" bindtap="start">Start</button>
+            <button class="weui-btn" type="primary" size="mini" bindtap="pauseResume">Pause/Resume</button>
+            <button class="weui-btn" type="primary" size="mini" bindtap="reset">Reset</button>
+            <button class="weui-btn" type="primary" size="mini" bindtap="update">Update</button>
+        </view>
+    </view>
+</view>
+
+```
+
+```js
+const App = getApp()
+
+Page({
+	data: {},
+	onLoad() {
+		this.$wuxCountUp = App.wux(this).$wuxCountUp
+
+		this.c1 = this.$wuxCountUp.render('c1', 1, 1024)
+		this.c2 = this.$wuxCountUp.render('c2', 0, 88.88, 2)
+		this.c3 = this.$wuxCountUp.render('c3', 0, 520)
+		
+		this.c1.start()
+		this.c2.start()
+	},
+	start() {
+		this.c3.start(() => {
+			wx.showToast({
+				title: '已完成', 
+			})
+		})
+	},
+	reset() {
+		this.c3.reset()
+	},
+	update() {
+		this.c3.update(1314)
+	},
+	pauseResume() {
+		this.c3.pauseResume()
+	},
 })
 ```
 
@@ -891,6 +952,8 @@ Page({
 <img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-01.png" width="375px" style="display:inline;">
 
 <img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-02.png" width="375px" style="display:inline;">
+
+<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-16.png" width="375px" style="display:inline;">
 
 <img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-03.png" width="375px" style="display:inline;">
 

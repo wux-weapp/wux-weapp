@@ -11,6 +11,7 @@
     "pages/qrcode/index",
     "pages/gallery/index",
     "pages/xnumber/index",
+    "pages/countup/index",
     "pages/about/index"
   ],
   "window": {

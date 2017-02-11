@@ -7,6 +7,11 @@ Page({
 				icon: '../../assets/images/iconfont-backdrop.png', 
 			},
 			{
+				title: 'CountUp', 
+				url: '/pages/countup/index', 
+				icon: '../../assets/images/iconfont-countup.png', 
+			},
+			{
 				title: 'Dialog', 
 				url: '/pages/dialog/index', 
 				icon: '../../assets/images/iconfont-dialog.png', 

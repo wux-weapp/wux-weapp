@@ -1,0 +1,14 @@
+/* pages/countup/index.wxss */
+.text-center {
+	text-align: center;
+}
+
+.countup {
+	font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    font-size: 5.2em;
+    color: #04BE02;
+}
+
+.weui-btn {
+	margin: 0 5px;
+}
