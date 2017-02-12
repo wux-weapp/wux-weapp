@@ -1,0 +1,18 @@
+<template name="actionsheet">
+	<view class="action-sheet-backdrop {{ className }} {{ animateCss[1] }}" wx:if="{{ visible }}" catchtap="{{ onCancel }}">
+		<view class="action-sheet-wrapper {{ animateCss[0] }}">
+			<view class="action-sheet">
+				<view class="action-sheet-group action-sheet-options">
+					<view class="action-sheet-title" wx:if="{{ titleText }}">{{ titleText }}</view>
+					<button class="button action-sheet-option {{ item.classNmae }}" data-index="{{ index }}" catchtap="{{ onButtonClicked }}" wx:for="{{ buttons }}" wx:key="">
+						{{ item.text }}
+					</button>
+					<button class="button destructive action-sheet-destructive" wx:if="{{ destructiveText }}" catchtap="{{ onDestructiveButtonClicked }}">{{ destructiveText }}</button>
+				</view>
+				<view class="action-sheet-group action-sheet-cancel" wx:if="{{ cancelText }}">
+					<button class="button" catchtap="{{ onCancel }}">{{ cancelText }}</button>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>

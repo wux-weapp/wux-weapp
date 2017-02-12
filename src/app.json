@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/rater/index",
+    "pages/toast/index",
+    "pages/dialog/index",
+    "pages/loading/index",
+    "pages/backdrop/index",
+    "pages/picker/index",
+    "pages/toptips/index",
+    "pages/qrcode/index",
+    "pages/gallery/index",
+    "pages/xnumber/index",
+    "pages/countup/index",
+    "pages/actionsheet/index",
+    "pages/about/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "Wux",
+    "backgroundColor": "#f8f8f8",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#888888",
+    "selectedColor": "#04BE02",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "iconPath": "assets/images/iconfont-demo.png",
+      "selectedIconPath": "assets/images/iconfont-demo-active.png",
+      "text": "Demo"
+    }, {
+      "pagePath": "pages/about/index",
+      "iconPath": "assets/images/iconfont-about.png",
+      "selectedIconPath": "assets/images/iconfont-about-active.png",
+      "text": "About"
+    }]
+  },
+  "debug": true
+}

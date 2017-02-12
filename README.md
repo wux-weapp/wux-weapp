@@ -1,6 +1,20 @@
-# 微信小程序-自定义组件
+微信小程序 - 自定义组件
+=
+
+## 预览
+
+用[微信web开发者工具](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html)打开`src`目录（请注意，是src目录，不是整个项目）
+
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-01.png" width="375px" style="display:inline;">
+
+## 使用
+
+- 组件的wxml结构请看`src/components/`下的组件
+- 样式文件可直接引用`src/components/wux.wxss`
 
 ## Components
+
+* [ActionSheet - 上拉菜单](#actionsheet)
 
 * [Backdrop - 背景幕](#backdrop)
 
@@ -23,6 +37,92 @@
 * [Toptips - 顶部提示](#toptips)
 
 * [Xnumber - 计数器](#xnumber)
+
+## ActionSheet
+
+```html
+<import src="../../components/actionsheet/actionsheet.wxml"/>
+
+<template is="actionsheet" data="{{ ...$wux.actionSheet }}"/>
+
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">ActionSheet</view>
+        <view class="page__desc">上拉菜单</view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="default" bindtap="showActionSheet1">原生 ActionSheet</button>
+            <button class="weui-btn" type="default" bindtap="showActionSheet2">自定义 ActionSheet</button>
+            <button class="weui-btn" type="default" bindtap="showActionSheet3">自定义 ActionSheet</button>
+        </view>
+    </view>
+</view>
+```
+
+```js
+const App = getApp()
+
+Page({
+	data: {},
+	onLoad() {
+		this.$wuxActionSheet = App.wux(this).$wuxActionSheet
+	},
+	showActionSheet1() {
+		wx.showActionSheet({
+			itemList: ['实例菜单', '实例菜单']
+		})
+	},
+	showActionSheet2() {
+		this.$wuxActionSheet.show({
+			titleText: '自定义操作',
+			buttons: [
+				{ 
+					text: 'Go Dialog' 
+				},
+				{ 
+					text: 'Go Toast' 
+				},
+			],
+			buttonClicked(index, item) {
+				index === 0 && wx.navigateTo({
+					url: '/pages/dialog/index'
+				})
+
+				index === 1 && wx.navigateTo({
+					url: '/pages/toast/index'
+				})
+				
+				return true
+			},
+			cancelText: '取消',
+			cancel() {},
+			destructiveText: '删除',
+			destructiveButtonClicked() {},
+		})
+	},
+	showActionSheet3() {
+		if (this.timeout) clearInterval(this.timeout)
+
+		const hideSheet = this.$wuxActionSheet.show({
+			titleText: '三秒后自动关闭',
+			buttons: [
+				{ 
+					text: '实例菜单' 
+				},
+				{ 
+					text: '实例菜单' 
+				},
+			],
+			buttonClicked(index, item) {
+				return true
+			},
+		})
+
+		this.timeout = setTimeout(hideSheet, 3000)
+	},
+})
+```
 
 ## Backdrop
 
@@ -949,41 +1049,41 @@ Page({
 
 ## 项目截图
 
-<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-01.png" width="375px" style="display:inline;">
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-17.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-02.png" width="375px" style="display:inline;">
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-02.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-16.png" width="375px" style="display:inline;">
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-16.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-03.png" width="375px" style="display:inline;">
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-03.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-04.png" width="375px" style="display:inline;">
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-04.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-05.png" width="375px" style="display:inline;">
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-05.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-06.png" width="375px" style="display:inline;">
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-06.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-07.png" width="375px" style="display:inline;">
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-07.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-08.png" width="375px" style="display:inline;">
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-08.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-09.png" width="375px" style="display:inline;">
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-09.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-10.png" width="375px" style="display:inline;">
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-10.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-11-1.png" width="375px" style="display:inline;">
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-11-1.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-11-2.png" width="375px" style="display:inline;">
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-11-2.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-11-3.png" width="375px" style="display:inline;">
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-11-3.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-12.png" width="375px" style="display:inline;">
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-12.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-13.png" width="375px" style="display:inline;">
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-13.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-14.png" width="375px" style="display:inline;">
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-14.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/assets/images/screenshots/screenshorts-15.png" width="375px" style="display:inline;">
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-15.png" width="375px" style="display:inline;">
 
 ## 贡献
 
