@@ -39,7 +39,7 @@ Page({
 		})
 	},
 	showActionSheet3() {
-		if (this.timeout) clearInterval(this.timeout)
+		if (this.timeout) clearTimeout(this.timeout)
 
 		const hideSheet = this.$wuxActionSheet.show({
 			titleText: '三秒后自动关闭',
