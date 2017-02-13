@@ -1,0 +1,12 @@
+<template name="prompt">
+	<view class="prompt-container {{ className }} {{ animateCss }}" hidden="{{ !visible }}">
+	    <view class="prompt-message">
+	        <image src="{{ icon }}" class="prompt-icon" />
+	        <view class="prompt-title">{{ title }}</view>
+	        <view class="prompt-text">{{ text }}</view>
+	        <view class="prompt-button-area" wx:if="{{ buttons && !!buttons.length }}">
+	        	<button type="{{ item.type || 'default' }}" size="{{ item.size || 'default' }}" loading="{{ item.loading }}" plain="{{ item.plain }}" disabled="{{ item.disabled }}" class="prompt-button {{ item.className }}" hover-class="{{ item.haveClass || 'button-hover' }}" wx:for="{{ buttons }}" wx:key="" bindtap="{{ onButtonClicked }}" data-index="{{ index }}">{{ item.text }}</button>
+	        </view>
+	    </view>
+	</view>
+</template>

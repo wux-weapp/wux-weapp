@@ -13,6 +13,7 @@
     "pages/xnumber/index",
     "pages/countup/index",
     "pages/actionsheet/index",
+    "pages/prompt/index",
     "pages/about/index"
   ],
   "window": {

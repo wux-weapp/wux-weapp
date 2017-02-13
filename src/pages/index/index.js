@@ -37,6 +37,11 @@ Page({
 				icon: '../../assets/images/iconfont-picker.png', 
 			},
 			{
+				title: 'Prompt', 
+				url: '/pages/prompt/index', 
+				icon: '../../assets/images/iconfont-prompt.png', 
+			},
+			{
 				title: 'Qrcode', 
 				url: '/pages/qrcode/index', 
 				icon: '../../assets/images/iconfont-qrcode.png', 

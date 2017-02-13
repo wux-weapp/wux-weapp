@@ -26,7 +26,9 @@
 
 * [Loading - 指示器](#loading)
 
-* [Picker - 城市选择器](#picker)
+* [Picker - 选择器](#picker)
+
+* [Prompt - 提示信息](#prompt)
 
 * [Qrcode - 二维码](#qrcode)
 
@@ -500,6 +502,96 @@ Page({
 			},
 		})
 	},
+})
+```
+
+## Prompt
+
+```html
+<import src="../../components/prompt/prompt.wxml"/>
+
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-tab">
+            <view class="weui-navbar">
+                <block wx:for-items="{{ tabs}}" wx:key="{{ index }}">
+                    <view id="{{ index }}" class="weui-navbar__item {{ activeIndex == index ? 'weui-bar__item_on' : '' }}" bindtap="tabClick">
+                        <view class="weui-navbar__title">{{ item }}</view>
+                    </view>
+                </block>
+                <view class="weui-navbar__slider" style="left: {{ sliderLeft }}px; transform: translateX({{ sliderOffset }}px); -webkit-transform: translateX({{ sliderOffset }}px);"></view>
+            </view>
+            <view class="weui-tab__panel">
+                <view class="weui-tab__content" hidden="{{ activeIndex != 0 }}">
+                	<template is="prompt" data="{{ ...$wux.prompt.msg1 }}"/>
+                </view>
+                <view class="weui-tab__content" hidden="{{ activeIndex != 1 }}">
+                	<template is="prompt" data="{{ ...$wux.prompt.msg2 }}"/>
+                </view>
+                <view class="weui-tab__content" hidden="{{ activeIndex != 2 }}">
+                	<template is="prompt" data="{{ ...$wux.prompt.msg3 }}"/>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+```
+
+```js
+const App = getApp()
+const sliderWidth = 96
+
+Page({	
+	data: {
+        tabs: ['全部', '待收货', '待评价'],
+        activeIndex: '0',
+        sliderOffset: 0,
+        sliderLeft: 0
+    },
+    onLoad() {
+		this.$wuxPrompt = App.wux(this).$wuxPrompt
+		this.$wuxPrompt.render('msg1', {
+			title: '空空如也', 
+			text: '暂时没有相关数据', 
+		}).show()
+
+		this.$wuxPrompt.render('msg2', {
+			icon: '../../assets/images/iconfont-order.png', 
+			title: '您还没有相关的订单', 
+			text: '可以去看看有哪些想买', 
+			buttons: [
+				{
+					text: '随便逛逛'
+				}
+			],
+			buttonClicked(index, item) {
+				console.log(index, item)
+			},
+		}).show()
+
+		this.$wuxPrompt.render('msg3', {
+			icon: '../../assets/images/iconfont-empty.png', 
+			title: '暂无待评价订单', 
+		}).show()
+
+		this.getSystemInfo()
+	},
+    getSystemInfo() {
+    	const that = this
+        wx.getSystemInfo({
+            success(res) {
+                that.setData({
+                    sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2, 
+                })
+            }
+        })
+    },
+    tabClick(e) {
+        this.setData({
+            sliderOffset: e.currentTarget.offsetLeft, 
+            activeIndex: e.currentTarget.id, 
+        })
+    },
 })
 ```
 
@@ -1078,6 +1170,8 @@ Page({
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-11-2.png" width="375px" style="display:inline;">
 
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-11-3.png" width="375px" style="display:inline;">
+
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-18.png" width="375px" style="display:inline;">
 
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-12.png" width="375px" style="display:inline;">
 

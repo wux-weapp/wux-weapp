@@ -6,6 +6,7 @@ import Gallery from 'gallery/gallery'
 import Loading from 'loading/loading'
 import Picker from 'picker/picker'
 import PickerCity from 'picker-city/picker-city'
+import Prompt from 'prompt/prompt'
 import Qrcode from 'qrcode/qrcode'
 import Rater from 'rater/rater'
 import Toast from 'toast/toast'
@@ -22,6 +23,7 @@ export default function(scope) {
 		$wuxLoading    : new Loading(scope).$wuxLoading, 
 		$wuxPicker     : new Picker(scope).$wuxPicker, 
 		$wuxPickerCity : new PickerCity(scope).$wuxPickerCity, 
+		$wuxPrompt     : new Prompt(scope).$wuxPrompt, 
 		$wuxQrcode     : new Qrcode(scope).$wuxQrcode, 
 		$wuxRater      : new Rater(scope).$wuxRater, 
 		$wuxToast      : new Toast(scope).$wuxToast, 

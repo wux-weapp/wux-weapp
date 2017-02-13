@@ -1,0 +1,7 @@
+/* pages/prompt/index.wxss */
+.page, 
+.page__bd, 
+.weui-tab__content {
+	height: 100%;
+	padding-bottom: 0;
+}
