@@ -1,6 +1,8 @@
 微信小程序 - 自定义组件
 =
 
+[![npm version](https://img.shields.io/npm/v/wux.svg)](https://www.npmjs.org/package/wux)
+
 ## 预览
 
 用[微信web开发者工具](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html)打开`src`目录（请注意，是src目录，不是整个项目）
