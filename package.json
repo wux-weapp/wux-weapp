@@ -1,0 +1,22 @@
+{
+  "name": "wux",
+  "version": "1.0.0",
+  "description": "微信小程序 - 自定义组件",
+  "main": "src/app.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skyvow/wux.git"
+  },
+  "keywords": ["wx-component", "wxapp"],
+  "author": "skyvow",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/skyvow/wux/issues"
+  },
+  "homepage": "https://github.com/skyvow/wux#readme"
+}
