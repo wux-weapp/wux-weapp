@@ -20,6 +20,8 @@
 
 * [Backdrop - 背景幕](#backdrop)
 
+* [Barcode - 条形码](#barcode)
+
 * [CountUp - 计数器](#countup)
 
 * [Dialog - 对话框](#dialog)
@@ -172,6 +174,57 @@ Page({
 			locks: this.$wuxBackdrop.backdropHolds
 		})
 	}
+})
+```
+
+## Barcode
+
+```html
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Barcode</view>
+        <view class="page__desc">条形码</view>
+    </view>
+    <view class="page__bd">
+    	<view class="weui-cells__title">请输入13位条形码，即时输入即时生成</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__bd">
+                    <input type="number" class="weui-input" bindinput="bindinput" />
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__tips">提示：扫描只能识别有效的条形码</view>
+        <canvas style="width: 200px; height: 100px; margin: 30px auto;" canvas-id="barcode"></canvas>
+    </view>
+</view>
+```
+
+```js
+const App = getApp()
+
+Page({
+	data: {
+		value: '', 
+	},
+	onLoad() {
+		this.$wuxBarcode = App.wux(this).$wuxBarcode
+
+		this.$wuxBarcode.init('barcode', '9787115335500')
+	},
+	bindinput(e) {
+		const value = e.detail.value
+
+		if (value.length > 13) return {
+			value: value.substr(0, 13), 
+		}
+
+		this.setData({
+			value, 
+		})
+
+		this.$wuxBarcode.init('barcode', value)
+	},
 })
 ```
 
@@ -1148,6 +1201,8 @@ Page({
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-17.png" width="375px" style="display:inline;">
 
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-02.png" width="375px" style="display:inline;">
+
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-18.png" width="375px" style="display:inline;">
 
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-16.png" width="375px" style="display:inline;">
 

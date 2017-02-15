@@ -14,6 +14,7 @@
     "pages/countup/index",
     "pages/actionsheet/index",
     "pages/prompt/index",
+    "pages/barcode/index",
     "pages/about/index"
   ],
   "window": {
