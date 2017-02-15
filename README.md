@@ -1202,7 +1202,7 @@ Page({
 
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-02.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-18.png" width="375px" style="display:inline;">
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-19.png" width="375px" style="display:inline;">
 
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-16.png" width="375px" style="display:inline;">
 
