@@ -32,7 +32,7 @@ Page({
 				})
 				return !0
 			},
-			callback: () => console.log('Close gallery')
+			cancel: () => console.log('Close gallery')
 		})
 	},
 	previewImage(e) {
