@@ -9,8 +9,11 @@
     </view>
     <view class="page__bd">
         <view class="weui-btn-area">
-            <button class="weui-btn" type="default" bindtap="openConfirm">Confirm Dialog</button>
-            <button class="weui-btn" type="default" bindtap="openAlert">Alert Dialog</button>
+            <button class="weui-btn" type="default" bindtap="open">Default Dialog</button>
+            <button class="weui-btn" type="default" bindtap="confirm">Confirm Dialog</button>
+            <button class="weui-btn" type="default" bindtap="alert">Alert Dialog</button>
+            <button class="weui-btn" type="default" bindtap="prompt">Prompt Dialog</button>
+            <button class="weui-btn" type="default" bindtap="custom">Custom Dialog</button>
         </view>
     </view>
 </view>

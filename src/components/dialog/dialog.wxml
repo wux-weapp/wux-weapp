@@ -1,13 +1,15 @@
 <template name="dialog">
-    <view class="weui-mask {{ animateCss }}" hidden="{{ !visible }}"></view>
-	<view class="weui-dialog {{ animateCss }}" hidden="{{ !visible }}">
+    <view class="weui-mask {{ animateCss }}" wx:if="{{ visible }}"></view>
+	<view class="weui-dialog {{ animateCss }}" wx:if="{{ visible }}">
         <view class="weui-dialog__hd" wx:if="{{ title }}">
         	<view class="weui-dialog__title">{{ title }}</view>
         </view>
-        <view class="weui-dialog__bd" wx:if="{{ content }}">{{ content }}</view>
-        <view class="weui-dialog__ft">
-            <view class="weui-dialog__btn weui-dialog__btn_default" wx:if="{{ showCancel }}" bindtap="{{ dialogCancel }}">{{ cancelText }}</view>
-            <view class="weui-dialog__btn weui-dialog__btn_primary" bindtap="{{ dialogConfirm }}">{{ confirmText }}</view>
+        <view class="weui-dialog__bd" wx:if="{{ content }}">
+            <view class="weui-dialog__content">{{ content }}</view>
+            <input wx:if="{{ prompt }}" type="{{ prompt.fieldtype }}" class="weui-input weui-prompt-input" value="{{ prompt.response }}" password="{{ prompt.password }}" placeholder="{{ prompt.placeholder }}" maxlength="{{ maxlength }}" bindinput="{{ prompt.bindinput }}" />
+        </view>
+        <view class="weui-dialog__ft" wx:if="{{ buttons.length }}">
+            <view class="weui-dialog__btn weui-dialog__btn_default {{ item.type }}" wx:for="{{ buttons }}" wx:key="" data-index="{{ index }}" bindtap="{{ buttonTapped }}">{{ item.text }}</view>
         </view>
     </view>
 </template>

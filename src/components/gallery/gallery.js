@@ -65,7 +65,7 @@ class wux {
 				current: 0, 
 				urls: [], 
 				delete: function() {}, 
-				callback: function() {}, 
+				cancel: function() {}, 
 			},
 			/**
 			 * 显示gallery组件
@@ -73,13 +73,24 @@ class wux {
 			 * @param {Number} opts.current 当前显示图片的索引值
 			 * @param {Array} opts.urls 需要预览的图片链接列表
 			 * @param {Function} opts.delete 点击删除的回调函数
-			 * @param {Function} opts.callback 点击关闭的回调函数
+			 * @param {Function} opts.cancel 点击关闭的回调函数
 			 */
 			show(opts = {}) {
 				const options = extend(clone(this.defaults), opts)
-				const hide = () => {
-					that.setHidden('gallery')
-					typeof options.callback === 'function' && options.callback()
+				const self = {}
+
+				// 隐藏
+				self.hide = () => {
+					if (self.removed) return !1
+					self.removed = !0
+					that.setHidden('gallery', 'weui-animate-slide-left')
+					typeof options.cancel === 'function' && options.cancel()
+				}
+
+				// 显示
+				self.show = () => {
+					if (self.removed) return !1
+					that.setVisible('gallery', 'weui-animate-slide-right')
 				}
 
 				// 渲染组件
@@ -91,14 +102,14 @@ class wux {
 				})
 
 				// 绑定hide事件
-				$scope[`galleryHide`] = hide
+				$scope[`galleryHide`] = self.hide
 
 				// 绑定delete事件
 				$scope[`galleryDelete`] = (e) => {
 					if(typeof options.delete === 'function') {
 						const gallery = $scope.data.$wux.gallery
 						if (options.delete(gallery.current, options.urls) === true) {
-							hide()
+							self.hide()
 						}
 					}
 				}
@@ -110,7 +121,9 @@ class wux {
 					})
 				}
 
-				that.setVisible('gallery')
+				self.show()
+
+				return self.hide
 			}
 		}
 	}

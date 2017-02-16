@@ -80,35 +80,39 @@ class wux {
 			 */
 	        show(opts = {}) {
 	        	const options = extend(clone(this.defaults), opts)
-
-	        	// 显示
-	        	const showSheet = () => {
-	        		that.setVisible('actionSheet', ['weui-animate-slide-up', 'weui-animate-fade-in'])
-	        	}
+	        	const self = {}
 
 	        	// 隐藏
-	        	const removeSheet = (callnack) => {
+	        	self.removeSheet = (callnack) => {
+	        		if (self.removed) return !1
+					self.removed = !0
 	        		that.setHidden('actionSheet', ['weui-animate-slide-down', 'weui-animate-fade-out'])
 	        		typeof callback === 'function' && callback(opts.buttons)
 	        	}
+	        	
+	        	// 显示
+	        	self.showSheet = () => {
+	        		if (self.removed) return !1
+	        		that.setVisible('actionSheet', ['weui-animate-slide-up', 'weui-animate-fade-in'])
+	        	}
 
 	        	// 按钮点击事件
-	        	const buttonClicked = (e) => {
+	        	self.buttonClicked = (e) => {
 	        		const index = e.currentTarget.dataset.index
 	        		if (options.buttonClicked(index, options.buttons[index]) === true) {
-						removeSheet()
+						self.removeSheet()
 					}
 	        	}
 
 	        	// 删除按钮点击事件
-	        	const destructiveButtonClicked = () => {
+	        	self.destructiveButtonClicked = () => {
 	        		if (options.destructiveButtonClicked() === true) {
-	        			removeSheet()
+	        			self.removeSheet()
 	        		}
 	        	}
 
 	        	// 取消按钮点击事件
-	        	const cancel = () => removeSheet(options.cancel)
+	        	self.cancel = () => self.removeSheet(options.cancel)
 
 	        	// 渲染组件
 				$scope.setData({
@@ -119,13 +123,13 @@ class wux {
 				})
 
 				// 绑定tap事件
-				$scope[`actionSheetButtonClicked`] = buttonClicked
-				$scope[`actionSheetDestructiveButtonClicked`] = destructiveButtonClicked
-				$scope[`actionSheetCancel`] = cancel
+				$scope[`actionSheetButtonClicked`] = self.buttonClicked
+				$scope[`actionSheetDestructiveButtonClicked`] = self.destructiveButtonClicked
+				$scope[`actionSheetCancel`] = self.cancel
 
-	        	showSheet()
+	        	self.showSheet()
 
-	        	return cancel
+	        	return self.cancel
 	        },
 		}
 	}
