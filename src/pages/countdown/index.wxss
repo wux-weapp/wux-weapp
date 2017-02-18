@@ -1,0 +1,15 @@
+/* pages/countdown/index.wxss */
+.text-center {
+	text-align: center;
+}
+
+.countdown {
+	font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    font-size: 1.2em;
+    color: #04BE02;
+    margin: 20px 0;
+}
+
+.weui-btn {
+	margin: 0 5px;
+}

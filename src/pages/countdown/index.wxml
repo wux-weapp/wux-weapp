@@ -1,0 +1,30 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">CountDown</view>
+        <view class="page__desc">倒计时</view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">手机号</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入手机号" />
+                </view>
+                <view class="weui-cell__ft">
+                    <view class="weui-vcode-btn" bindtap="vcode">{{ c2 || '获取验证码' }}</view>
+                </view>
+            </view>
+        </view>
+        <view class="text-center">
+        	<view class="countdown">{{ c1 }}</view>
+        	<view class="countdown">{{ c3 }}</view>
+        </view>
+        <view class="weui-btn-area text-center">
+            <button class="weui-btn" type="primary" size="mini" bindtap="stop">Stop</button>
+            <button class="weui-btn" type="primary" size="mini" bindtap="start">Start</button>
+            <button class="weui-btn" type="primary" size="mini" bindtap="update">Update</button>
+        </view>
+    </view>
+</view>

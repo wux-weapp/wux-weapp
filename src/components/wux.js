@@ -1,6 +1,7 @@
 import ActionSheet from 'actionsheet/actionsheet'
 import Backdrop from 'backdrop/backdrop'
 import Barcode from 'barcode/barcode'
+import CountDown from 'countdown/countdown'
 import CountUp from 'countup/countup'
 import Dialog from 'dialog/dialog'
 import Gallery from 'gallery/gallery'
@@ -19,6 +20,7 @@ export default function(scope) {
 		$wuxActionSheet: new ActionSheet(scope).$wuxActionSheet, 
 		$wuxBackdrop   : new Backdrop(scope).$wuxBackdrop, 
 		$wuxBarcode    : new Barcode(scope).$wuxBarcode, 
+		$wuxCountDown  : new CountDown(scope).$wuxCountDown, 
 		$wuxCountUp    : new CountUp(scope).$wuxCountUp, 
 		$wuxDialog     : new Dialog(scope).$wuxDialog, 
 		$wuxGallery    : new Gallery(scope).$wuxGallery, 

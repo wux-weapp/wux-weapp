@@ -17,6 +17,11 @@ Page({
 				icon: '../../assets/images/iconfont-barcode.png', 
 			},
 			{
+				title: 'CountDown', 
+				url: '/pages/countdown/index', 
+				icon: '../../assets/images/iconfont-countdown.png', 
+			},
+			{
 				title: 'CountUp', 
 				url: '/pages/countup/index', 
 				icon: '../../assets/images/iconfont-countup.png', 
