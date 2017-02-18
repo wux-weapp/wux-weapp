@@ -1,3 +1,8 @@
+#### v 1.0.3 (2017-02-18)
+
+- 【增强】 增加 countdown 组件
+- 【优化】 countup 组件工厂函数使用es6重写
+
 #### v 1.0.2 (2017-02-16)
 
 - 【优化】 dialog 组件，增加 open、confirm、alert、propmt 快速调用方法

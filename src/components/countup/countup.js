@@ -57,7 +57,6 @@ class wux {
 		that.$wuxCountUp = {
 			/**
 			 * 渲染Countup组件
-			 * @param {String} id id
 			 * @param {Number} startVal the value you want to begin at
 			 * @param {Number} endVal the value you want to arrive at
 			 * @param {Number} decimals number of decimal places, default 0
@@ -71,9 +70,10 @@ class wux {
 			 * @param {Function} options.formattingFn optional custom formatting function, default is self.formatNumber below
 			 * @param {String} options.prefix prefix
 			 * @param {String} options.suffix suffix
+			 * @param {Function} options.printValue printValue
 			 */
-			render(id, startVal, endVal, decimals, duration, options) {
-				return new countup($scope, id, startVal, endVal, decimals, duration, options)
+			render(startVal, endVal, decimals, duration, options) {
+				return new countup(startVal, endVal, decimals, duration, options)
 			}, 
 		}
 	}

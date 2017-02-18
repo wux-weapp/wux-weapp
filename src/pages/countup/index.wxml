@@ -5,9 +5,9 @@
     </view>
     <view class="page__bd">
         <view class="text-center">
-        	<view class="countup">{{ $wux.countUp.c1.value }}</view>
-        	<view class="countup">{{ $wux.countUp.c2.value }}</view>
-        	<view class="countup">{{ $wux.countUp.c3.value }}</view>
+        	<view class="countup">{{ c1 }}</view>
+        	<view class="countup">{{ c2 }}</view>
+        	<view class="countup">{{ c3 }}</view>
         </view>
         <view class="weui-btn-area text-center">
             <button class="weui-btn" type="primary" size="mini" bindtap="start">Start</button>

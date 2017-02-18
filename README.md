@@ -341,9 +341,9 @@ Page({
     </view>
     <view class="page__bd">
         <view class="text-center">
-        	<view class="countup">{{ $wux.countUp.c1.value }}</view>
-        	<view class="countup">{{ $wux.countUp.c2.value }}</view>
-        	<view class="countup">{{ $wux.countUp.c3.value }}</view>
+        	<view class="countup">{{ c1 }}</view>
+        	<view class="countup">{{ c2 }}</view>
+        	<view class="countup">{{ c3 }}</view>
         </view>
         <view class="weui-btn-area text-center">
             <button class="weui-btn" type="primary" size="mini" bindtap="start">Start</button>
@@ -361,14 +361,35 @@ const App = getApp()
 Page({
 	data: {},
 	onLoad() {
-		this.$wuxCountUp = App.wux(this).$wuxCountUp
+		const that = this
+		that.$wuxCountUp = App.wux(that).$wuxCountUp
 
-		this.c1 = this.$wuxCountUp.render('c1', 1, 1024)
-		this.c2 = this.$wuxCountUp.render('c2', 0, 88.88, 2)
-		this.c3 = this.$wuxCountUp.render('c3', 0, 520)
+		that.c1 = that.$wuxCountUp.render(1, 1024, 0, 2, {
+			printValue(value) {
+				that.setData({
+					c1: value, 
+				})
+			}
+		})
+
+		that.c2 = that.$wuxCountUp.render(0, 88.88, 2, 2, {
+			printValue(value) {
+				that.setData({
+					c2: value, 
+				})
+			}
+		})
+
+		that.c3 = that.$wuxCountUp.render(0, 520, 0, 2, {
+			printValue(value) {
+				that.setData({
+					c3: value, 
+				})
+			}
+		})
 		
-		this.c1.start()
-		this.c2.start()
+		that.c1.start()
+		that.c2.start()
 	},
 	start() {
 		this.c3.start(() => {

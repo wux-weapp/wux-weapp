@@ -1,195 +1,217 @@
+class CountUp {
+	constructor(startVal, endVal, decimals, duration, options = {}) {
+		Object.assign(this, {
+			startVal, 
+			endVal, 
+			decimals, 
+			duration, 
+			options, 
+		})
+		this.__init()
+	}
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(factory);
-  } else if (typeof exports === 'object') {
-    module.exports = factory(require, exports, module);
-  } else {
-    root.CountUp = factory();
-  }
-}(this, function(require, exports, module) {
+	/**
+	 * 初始化
+	 */
+	__init() {
+		this.lastTime = 0
 
-/*
+        // merge options
+		this.mergeOptions(this.options)
 
-    countUp.js
-    by @inorganik
+        this.startVal = Number(this.startVal)
+	    this.cacheVal = this.startVal
+	    this.endVal = Number(this.endVal)
+	    this.countDown = (this.startVal > this.endVal)
+	    this.frameVal = this.startVal
+	    this.decimals = Math.max(0, this.decimals || 0)
+	    this.dec = Math.pow(10, this.decimals)
+	    this.duration = Number(this.duration) * 1000 || 2000
 
-*/
+	    // format startVal on initialization
+    	this.printValue(this.formattingFn(this.startVal))
+	}
 
-// scope = scope 
-// id = id 
-// startVal = the value you want to begin at
-// endVal = the value you want to arrive at
-// decimals = number of decimal places, default 0
-// duration = duration of animation in seconds, default 2
-// options = optional object of options (see below)
+	/**
+	 * 默认参数
+	 */
+	setDefaultOptions() {
+		return {
+	        useEasing : true, // toggle easing
+	        useGrouping : true, // 1,000,000 vs 1000000
+	        separator : ',', // character to use as a separator
+	        decimal : '.', // character to use as a decimal
+	        easingFn: null, // optional custom easing closure function, default is Robert Penner's easeOutExpo
+	        formattingFn: null, // optional custom formatting function, default is this.formatNumber below
+	        printValue(value) {}, // printValue
+	    }
+	}
 
-var CountUp = function(scope, id, startVal, endVal, decimals, duration, options) {
+	/**
+	 * 合并参数
+	 */
+	mergeOptions(options) {
+		const defaultOptions = this.setDefaultOptions()
 
-    // make sure requestAnimationFrame and cancelAnimationFrame are defined
-    // polyfill for browsers without native support
-    // by Opera engineer Erik Möller
-    var lastTime = 0;
-    var requestAnimationFrame = function(callback, element) {
-        var currTime = new Date().getTime();
-        var timeToCall = Math.max(0, 16 - (currTime - lastTime));
-        var id = setTimeout(function() { callback(currTime + timeToCall); },
-          timeToCall);
-        lastTime = currTime + timeToCall;
-        return id;
-    };
+	    // extend default options with passed options object
+	    for (let key in defaultOptions) {
+	        if (defaultOptions.hasOwnProperty(key)) {
+	            this.options[key] = typeof options[key] !== 'undefined' ? options[key] : defaultOptions[key]
+	            if (typeof this.options[key] === 'function') {
+					this.options[key] = this.options[key].bind(this)
+				}
+	        }
+	    }
 
-    var cancelAnimationFrame = function(id) {
-        clearTimeout(id);
-    };
+	    if (this.options.separator === '') { this.options.useGrouping = !1 }
+	    if (!this.options.prefix) this.options.prefix = ''
+	    if (!this.options.suffix) this.options.suffix = ''
 
-    var self = this;
+	    this.easingFn = this.options.easingFn ? this.options.easingFn : this.easeOutExpo
+    	this.formattingFn = this.options.formattingFn ? this.options.formattingFn : this.formatNumber
+    	this.printValue = this.options.printValue ? this.options.printValue : function() {}
+	}
 
-     // default options
-    self.options = {
-        useEasing : true, // toggle easing
-        useGrouping : true, // 1,000,000 vs 1000000
-        separator : ',', // character to use as a separator
-        decimal : '.', // character to use as a decimal
-        easingFn: null, // optional custom easing closure function, default is Robert Penner's easeOutExpo
-        formattingFn: null // optional custom formatting function, default is self.formatNumber below
-    };
-    // extend default options with passed options object
-    for (var key in options) {
-        if (options.hasOwnProperty(key)) {
-            self.options[key] = options[key];
-        }
+    /**
+     * 创建定时器
+     */
+	requestAnimationFrame(callback) {
+        let currTime = new Date().getTime()
+        let timeToCall = Math.max(0, 16 - (currTime - this.lastTime))
+        let timeout = setTimeout(() => { 
+        	callback.bind(this)(currTime + timeToCall) 
+        }, timeToCall)
+        this.lastTime = currTime + timeToCall
+        return timeout
     }
-    if (self.options.separator === '') { self.options.useGrouping = false; }
-    if (!self.options.prefix) self.options.prefix = '';
-    if (!self.options.suffix) self.options.suffix = '';
 
-    self.startVal = Number(startVal);
-    self.endVal = Number(endVal);
-    self.countDown = (self.startVal > self.endVal);
-    self.frameVal = self.startVal;
-    self.decimals = Math.max(0, decimals || 0);
-    self.dec = Math.pow(10, self.decimals);
-    self.duration = Number(duration) * 1000 || 2000;
+    /**
+     * 清空定时器
+     */
+    cancelAnimationFrame(timeout) {
+        clearTimeout(timeout)
+    }
 
-    self.formatNumber = function(nStr) {
-        nStr = nStr.toFixed(self.decimals);
-        nStr += '';
-        var x, x1, x2, rgx;
-        x = nStr.split('.');
-        x1 = x[0];
-        x2 = x.length > 1 ? self.options.decimal + x[1] : '';
-        rgx = /(\d+)(\d{3})/;
-        if (self.options.useGrouping) {
+    /**
+     * 格式化数字
+     */
+    formatNumber(nStr) {
+        nStr = nStr.toFixed(this.decimals)
+        nStr += ''
+        let x, x1, x2, rgx
+        x = nStr.split('.')
+        x1 = x[0]
+        x2 = x.length > 1 ? this.options.decimal + x[1] : ''
+        rgx = /(\d+)(\d{3})/
+        if (this.options.useGrouping) {
             while (rgx.test(x1)) {
-                x1 = x1.replace(rgx, '$1' + self.options.separator + '$2');
+                x1 = x1.replace(rgx, '$1' + this.options.separator + '$2')
             }
         }
-        return self.options.prefix + x1 + x2 + self.options.suffix;
-    };
-    // Robert Penner's easeOutExpo
-    self.easeOutExpo = function(t, b, c, d) {
-        return c * (-Math.pow(2, -10 * t / d) + 1) * 1024 / 1023 + b;
-    };
+        return this.options.prefix + x1 + x2 + this.options.suffix
+    }
 
-    self.easingFn = self.options.easingFn ? self.options.easingFn : self.easeOutExpo;
-    self.formattingFn = self.options.formattingFn ? self.options.formattingFn : self.formatNumber;
+    /**
+     * 过渡效果
+     */
+    easeOutExpo(t, b, c, d) {
+        return c * (-Math.pow(2, -10 * t / d) + 1) * 1024 / 1023 + b
+    }
 
-    self.version = function () { return '1.7.1'; };
+    /**
+     * 计数函数
+     */
+    count(timestamp) {
+        if (!this.startTime) { this.startTime = timestamp }
 
-    // Print value to target
-    self.printValue = function(value) {
-        var result = self.formattingFn(value);
-        scope.setData({
-            [`$wux.countUp.${id}.value`]: result
-        })
-    };
-
-    self.count = function(timestamp) {
-
-        if (!self.startTime) { self.startTime = timestamp; }
-
-        self.timestamp = timestamp;
-        var progress = timestamp - self.startTime;
-        self.remaining = self.duration - progress;
+        this.timestamp = timestamp
+        const progress = timestamp - this.startTime
+        this.remaining = this.duration - progress
 
         // to ease or not to ease
-        if (self.options.useEasing) {
-            if (self.countDown) {
-                self.frameVal = self.startVal - self.easingFn(progress, 0, self.startVal - self.endVal, self.duration);
+        if (this.options.useEasing) {
+            if (this.countDown) {
+                this.frameVal = this.startVal - this.easingFn(progress, 0, this.startVal - this.endVal, this.duration)
             } else {
-                self.frameVal = self.easingFn(progress, self.startVal, self.endVal - self.startVal, self.duration);
+                this.frameVal = this.easingFn(progress, this.startVal, this.endVal - this.startVal, this.duration)
             }
         } else {
-            if (self.countDown) {
-                self.frameVal = self.startVal - ((self.startVal - self.endVal) * (progress / self.duration));
+            if (this.countDown) {
+                this.frameVal = this.startVal - ((this.startVal - this.endVal) * (progress / this.duration))
             } else {
-                self.frameVal = self.startVal + (self.endVal - self.startVal) * (progress / self.duration);
+                this.frameVal = this.startVal + (this.endVal - this.startVal) * (progress / this.duration)
             }
         }
 
         // don't go past endVal since progress can exceed duration in the last frame
-        if (self.countDown) {
-            self.frameVal = (self.frameVal < self.endVal) ? self.endVal : self.frameVal;
+        if (this.countDown) {
+            this.frameVal = (this.frameVal < this.endVal) ? this.endVal : this.frameVal
         } else {
-            self.frameVal = (self.frameVal > self.endVal) ? self.endVal : self.frameVal;
+            this.frameVal = (this.frameVal > this.endVal) ? this.endVal : this.frameVal
         }
 
         // decimal
-        self.frameVal = Math.round(self.frameVal*self.dec)/self.dec;
+        this.frameVal = Math.round(this.frameVal*this.dec)/this.dec
 
         // format and print value
-        self.printValue(self.frameVal);
+        this.printValue(this.formattingFn(this.frameVal))
 
         // whether to continue
-        if (progress < self.duration) {
-            self.rAF = requestAnimationFrame(self.count);
+        if (progress < this.duration) {
+            this.rAF = this.requestAnimationFrame(this.count)
         } else {
-            if (self.callback) { self.callback(); }
+            if (this.callback) { this.callback() }
         }
-    };
-    // start your animation
-    self.start = function(callback) {
-        self.callback = callback;
-        self.rAF = requestAnimationFrame(self.count);
-        return false;
-    };
-    // toggles pause/resume animation
-    self.pauseResume = function() {
-        if (!self.paused) {
-            self.paused = true;
-            cancelAnimationFrame(self.rAF);
+    }
+
+    /**
+     * 启动计数器
+     */
+    start(callback) {
+        this.callback = callback
+        this.rAF = this.requestAnimationFrame(this.count)
+        return !1
+    }
+
+    /**
+     * 停止计数器
+     */
+    pauseResume() {
+        if (!this.paused) {
+            this.paused = !0
+            this.cancelAnimationFrame(this.rAF)
         } else {
-            self.paused = false;
-            delete self.startTime;
-            self.duration = self.remaining;
-            self.startVal = self.frameVal;
-            requestAnimationFrame(self.count);
+            this.paused = !1
+            delete this.startTime
+            this.duration = this.remaining
+            this.startVal = this.frameVal
+            this.requestAnimationFrame(this.count)
         }
-    };
-    // reset to startVal so animation can be run again
-    self.reset = function() {
-        self.paused = false;
-        delete self.startTime;
-        self.startVal = startVal;
-        cancelAnimationFrame(self.rAF);
-        self.printValue(self.startVal);
-    };
-    // pass a new endVal and start animation
-    self.update = function (newEndVal) {
-        cancelAnimationFrame(self.rAF);
-        self.paused = false;
-        delete self.startTime;
-        self.startVal = self.frameVal;
-        self.endVal = Number(newEndVal);
-        self.countDown = (self.startVal > self.endVal);
-        self.rAF = requestAnimationFrame(self.count);
-    };
+    }
 
-    // format startVal on initialization
-    self.printValue(self.startVal);
-};
+    /**
+     * 重置计数器
+     */
+    reset() {
+        this.paused = !1
+        delete this.startTime
+        this.startVal = this.cacheVal
+        this.cancelAnimationFrame(this.rAF)
+        this.printValue(this.formattingFn(this.startVal))
+    }
 
-return CountUp;
+    /**
+     * 更新计数器
+     */
+	update(newEndVal) {
+		this.cancelAnimationFrame(this.rAF)
+        this.paused = !1
+        delete this.startTime
+        this.startVal = this.frameVal
+        this.endVal = Number(newEndVal)
+        this.countDown = (this.startVal > this.endVal)
+        this.rAF = this.requestAnimationFrame(this.count)
+	}
+}
 
-}));
+export default CountUp
