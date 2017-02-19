@@ -1,0 +1,14 @@
+<template name="refresher">
+	<view class="scroll-refresher {{ className || 'hidden' }}">
+		<view class="ionic-refresher-content {{ pullingText || refreshingText ? 'ionic-refresher-with-text' : '' }}">
+			<view class="icon-pulling {{ disablePullingRotation ? 'pulling-rotation-disabled' : '' }}">
+				<text class="{{ pullingIcon || 'icon-arrow-down' }}"></text>
+			</view>
+			<view class="text-pulling">{{ pullingText }}</view>
+			<view class="icon-refreshing">
+				<text class="{{ refreshingIcon || 'icon-refresher' }}"></text>
+			</view>
+			<view class="text-refreshing">{{ refreshingText }}</view>
+		</view>
+	</view>
+</template>

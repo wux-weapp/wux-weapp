@@ -11,6 +11,7 @@ import PickerCity from 'picker-city/picker-city'
 import Prompt from 'prompt/prompt'
 import Qrcode from 'qrcode/qrcode'
 import Rater from 'rater/rater'
+import Refresher from 'refresher/refresher'
 import Toast from 'toast/toast'
 import Toptips from 'toptips/toptips'
 import Xnumber from 'xnumber/xnumber'
@@ -30,6 +31,7 @@ export default function(scope) {
 		$wuxPrompt     : new Prompt(scope).$wuxPrompt, 
 		$wuxQrcode     : new Qrcode(scope).$wuxQrcode, 
 		$wuxRater      : new Rater(scope).$wuxRater, 
+		$wuxRefresher  : new Refresher(scope).$wuxRefresher, 
 		$wuxToast      : new Toast(scope).$wuxToast, 
 		$wuxToptips    : new Toptips(scope).$wuxToptips, 
 		$wuxXnumber    : new Xnumber(scope).$wuxXnumber, 
