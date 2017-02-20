@@ -229,6 +229,8 @@ class Refresher {
 	 * 初始化
 	 */
 	__init() {
+		this.lastTime = 0
+		this.activated = !1
 		this.events = new Events
 		this.mergeOptions(this.options)
 		this.scope.setData({
@@ -267,6 +269,26 @@ class Refresher {
 	    }
 	}
 
+    /**
+     * 创建定时器
+     */
+	requestAnimationFrame(callback) {
+        let currTime = new Date().getTime()
+        let timeToCall = Math.max(0, 16 - (currTime - this.lastTime))
+        let timeout = setTimeout(() => { 
+        	callback.bind(this)(currTime + timeToCall) 
+        }, timeToCall)
+        this.lastTime = currTime + timeToCall
+        return timeout
+    }
+
+    /**
+     * 清空定时器
+     */
+    cancelAnimationFrame(timeout) {
+        clearTimeout(timeout)
+    }
+
 	/**
 	 * 返回下拉刷新的方法
 	 */
@@ -290,6 +312,7 @@ class Refresher {
 
 		// 隐藏
 		const deactivate = () => {
+			if (this.activated) this.activated = !1
 			setData(`style`, defaultStyle)
 			setData(`className`, `hidden`)
 		}
@@ -346,9 +369,9 @@ class Refresher {
 	finishPullToRefresh() {
 		const methods = this.getRefresherMethods()
 		setTimeout(() => {
-			methods.tail()
-			setTimeout(methods.deactivate, 150)
-		}, 150)
+			this.requestAnimationFrame(methods.tail)
+			setTimeout(methods.deactivate, 200)
+		}, 200)
 	}
 
 	/**
@@ -364,7 +387,6 @@ class Refresher {
 		this.diffX = this.diffY = 0
 
 		methods.activate()
-		typeof this.options.onPulling === `function` && this.options.onPulling()
 	}
 
 	/**
@@ -383,6 +405,13 @@ class Refresher {
 
 		this.diffY = Math.pow(this.diffY, 0.8)
 		
+		if (!this.activated && this.diffY > this.options.distance) {
+			this.activated = !0
+			typeof this.options.onPulling === `function` && this.options.onPulling()
+		} else if (this.activated && this.diffY < this.options.distance) {
+			this.activated = !1
+		}
+
 		methods.move(this.diffY)
 	}
 
