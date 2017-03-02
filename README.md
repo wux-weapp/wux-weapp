@@ -16,22 +16,22 @@
 
 ## Components
 
-* [ActionSheet - 上拉菜单](https://github.com/skyvow/wux/blob/master/docs/component/actionsheet.md)
-* [Backdrop - 背景幕](https://github.com/skyvow/wux/blob/master/docs/component/backdrop.md)
-* [Barcode - 条形码](https://github.com/skyvow/wux/blob/master/docs/component/barcode.md)
-* [CountDown - 倒计时](https://github.com/skyvow/wux/blob/master/docs/component/countdown.md)
-* [CountUp - 计数器](https://github.com/skyvow/wux/blob/master/docs/component/countup.md)
-* [Dialog - 对话框](https://github.com/skyvow/wux/blob/master/docs/component/dialog.md)
-* [Gallery - 画廊](https://github.com/skyvow/wux/blob/master/docs/component/gallery.md)
-* [Loading - 指示器](https://github.com/skyvow/wux/blob/master/docs/component/loading.md)
-* [Picker - 选择器](https://github.com/skyvow/wux/blob/master/docs/component/picker.md)
-* [Prompt - 提示信息](https://github.com/skyvow/wux/blob/master/docs/component/prompt.md)
-* [Qrcode - 二维码](https://github.com/skyvow/wux/blob/master/docs/component/qrcode.md)
-* [Rater - 评分组件](https://github.com/skyvow/wux/blob/master/docs/component/rater.md)
-* [Refresher - 下拉刷新](https://github.com/skyvow/wux/blob/master/docs/component/refresher.md)
-* [Toast - 提示框](https://github.com/skyvow/wux/blob/master/docs/component/toast.md)
-* [Toptips - 顶部提示](https://github.com/skyvow/wux/blob/master/docs/component/toptips.md)
-* [Xnumber - 计数器](https://github.com/skyvow/wux/blob/master/docs/component/xnumber.md)
+* [ActionSheet - 上拉菜单](https://github.com/skyvow/wux/blob/master/docs/components/actionsheet.md)
+* [Backdrop - 背景幕](https://github.com/skyvow/wux/blob/master/docs/components/backdrop.md)
+* [Barcode - 条形码](https://github.com/skyvow/wux/blob/master/docs/components/barcode.md)
+* [CountDown - 倒计时](https://github.com/skyvow/wux/blob/master/docs/components/countdown.md)
+* [CountUp - 计数器](https://github.com/skyvow/wux/blob/master/docs/components/countup.md)
+* [Dialog - 对话框](https://github.com/skyvow/wux/blob/master/docs/components/dialog.md)
+* [Gallery - 画廊](https://github.com/skyvow/wux/blob/master/docs/components/gallery.md)
+* [Loading - 指示器](https://github.com/skyvow/wux/blob/master/docs/components/loading.md)
+* [Picker - 选择器](https://github.com/skyvow/wux/blob/master/docs/components/picker.md)
+* [Prompt - 提示信息](https://github.com/skyvow/wux/blob/master/docs/components/prompt.md)
+* [Qrcode - 二维码](https://github.com/skyvow/wux/blob/master/docs/components/qrcode.md)
+* [Rater - 评分组件](https://github.com/skyvow/wux/blob/master/docs/components/rater.md)
+* [Refresher - 下拉刷新](https://github.com/skyvow/wux/blob/master/docs/components/refresher.md)
+* [Toast - 提示框](https://github.com/skyvow/wux/blob/master/docs/components/toast.md)
+* [Toptips - 顶部提示](https://github.com/skyvow/wux/blob/master/docs/components/toptips.md)
+* [Xnumber - 计数器](https://github.com/skyvow/wux/blob/master/docs/components/xnumber.md)
 
 ## 项目截图
 
