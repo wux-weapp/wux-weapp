@@ -9,7 +9,7 @@
 					<view class="picker-button close-picker confirm {{ confirm.className }}" bindtap="{{ onConfirm }}">{{ confirm.text }}</view>
 				</view>
 			</view>
-			<picker-view class="wux-picker-view" indicator-style="height: 32px;" value="{{ value }}" bindchange="{{ onChange }}">
+			<picker-view class="wux-picker-view" indicator-style="height: 32px;" value="{{ value }}" bindchange="{{ bindChange }}">
 				<block wx:for="{{ items }}" wx:key="">
 					<picker-view-column>
 						<view class="wux-picker-view-column" wx:for="{{ item }}" wx:key="" wx:for-item="value">

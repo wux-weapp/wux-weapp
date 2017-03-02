@@ -4,9 +4,9 @@ Page({
 	data: {},
 	onLoad() {
 		const that = this
-		that.$wuxCountDown = App.wux(that).$wuxCountDown
+		that.$wuxCountDown = App.Wux().$wuxCountDown
 
-		that.c1 = that.$wuxCountDown.render({
+		that.c1 = that.$wuxCountDown({
 			date: 'June 7, 2087 15:03:25', 
 			render(date) {
 				const years = this.leadingZeros(date.years, 4)  + ' 年 '
@@ -21,7 +21,7 @@ Page({
 			}, 
 		})
 
-		that.c3 = that.$wuxCountDown.render({
+		that.c3 = that.$wuxCountDown({
 			date: +(new Date) + 60000 * 20, 
 			render(date) {
 				const min = this.leadingZeros(date.min, 2)  + ' 分 '
@@ -36,7 +36,7 @@ Page({
 	vcode() {
 		const that = this
 		if (that.c2 && that.c2.interval) return !1
-		that.c2 = that.$wuxCountDown.render({
+		that.c2 = that.$wuxCountDown({
 			date: +(new Date) + 60000, 
 			onEnd() {
 				that.setData({

@@ -5,7 +5,7 @@ Page({
 		value: '', 
 	},
 	onLoad() {
-		this.$wuxQrcode = App.wux(this).$wuxQrcode
+		this.$wuxQrcode = App.Wux().$wuxQrcode
 
 		this.$wuxQrcode.init('qrcode', 'wux')
 	},

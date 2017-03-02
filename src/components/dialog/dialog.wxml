@@ -6,7 +6,7 @@
         </view>
         <view class="weui-dialog__bd" wx:if="{{ content }}">
             <view class="weui-dialog__content">{{ content }}</view>
-            <input wx:if="{{ prompt }}" type="{{ prompt.fieldtype }}" class="weui-input weui-prompt-input" value="{{ prompt.response }}" password="{{ prompt.password }}" placeholder="{{ prompt.placeholder }}" maxlength="{{ maxlength }}" bindinput="{{ prompt.bindinput }}" />
+            <input wx:if="{{ prompt }}" type="{{ prompt.fieldtype }}" class="weui-input weui-prompt-input" value="{{ prompt.response }}" password="{{ prompt.password }}" placeholder="{{ prompt.placeholder }}" maxlength="{{ maxlength }}" bindinput="{{ bindinput }}" />
         </view>
         <view class="weui-dialog__ft" wx:if="{{ buttons.length }}">
             <view class="weui-dialog__btn weui-dialog__btn_default {{ item.type }}" wx:for="{{ buttons }}" wx:key="" data-index="{{ index }}" bindtap="{{ buttonTapped }}">{{ item.text }}</view>

@@ -16,24 +16,24 @@ import Toast from 'toast/toast'
 import Toptips from 'toptips/toptips'
 import Xnumber from 'xnumber/xnumber'
 
-export default function(scope) {
+export default function() {
 	return {
-		$wuxActionSheet: new ActionSheet(scope).$wuxActionSheet, 
-		$wuxBackdrop   : new Backdrop(scope).$wuxBackdrop, 
-		$wuxBarcode    : new Barcode(scope).$wuxBarcode, 
-		$wuxCountDown  : new CountDown(scope).$wuxCountDown, 
-		$wuxCountUp    : new CountUp(scope).$wuxCountUp, 
-		$wuxDialog     : new Dialog(scope).$wuxDialog, 
-		$wuxGallery    : new Gallery(scope).$wuxGallery, 
-		$wuxLoading    : new Loading(scope).$wuxLoading, 
-		$wuxPicker     : new Picker(scope).$wuxPicker, 
-		$wuxPickerCity : new PickerCity(scope).$wuxPickerCity, 
-		$wuxPrompt     : new Prompt(scope).$wuxPrompt, 
-		$wuxQrcode     : new Qrcode(scope).$wuxQrcode, 
-		$wuxRater      : new Rater(scope).$wuxRater, 
-		$wuxRefresher  : new Refresher(scope).$wuxRefresher, 
-		$wuxToast      : new Toast(scope).$wuxToast, 
-		$wuxToptips    : new Toptips(scope).$wuxToptips, 
-		$wuxXnumber    : new Xnumber(scope).$wuxXnumber, 
+		$wuxActionSheet: ActionSheet, 
+		$wuxBackdrop   : Backdrop, 
+		$wuxBarcode    : (id, number, options) => new Barcode(id, number, options), 
+		$wuxCountDown  : (options) => new CountDown(options), 
+		$wuxCountUp    : (startVal, endVal, decimals, duration, options) => new CountUp(startVal, endVal, decimals, duration, options), 
+		$wuxDialog     : Dialog, 
+		$wuxGallery    : Gallery, 
+		$wuxLoading    : Loading, 
+		$wuxPicker     : Picker, 
+		$wuxPickerCity : PickerCity, 
+		$wuxPrompt     : Prompt, 
+		$wuxQrcode     : Qrcode, 
+		$wuxRater      : Rater, 
+		$wuxRefresher  : (options) => new Refresher(options), 
+		$wuxToast      : Toast, 
+		$wuxToptips    : Toptips, 
+		$wuxXnumber    : Xnumber, 
 	}
 }
