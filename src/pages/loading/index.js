@@ -3,7 +3,7 @@ const App = getApp()
 Page({
 	data: {},
 	onLoad() {
-		this.$wuxLoading = App.wux(this).$wuxLoading
+		this.$wuxLoading = App.Wux().$wuxLoading
 	},
 	showLoading() {
 		this.$wuxLoading.show({

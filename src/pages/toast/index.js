@@ -3,7 +3,7 @@ const App = getApp()
 Page({
 	data: {},
 	onLoad() {
-		this.$wuxToast = App.wux(this).$wuxToast
+		this.$wuxToast = App.Wux().$wuxToast
 	},
 	showToast() {
 		this.$wuxToast.show({

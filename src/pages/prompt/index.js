@@ -9,13 +9,13 @@ Page({
         sliderLeft: 0
     },
     onLoad() {
-		this.$wuxPrompt = App.wux(this).$wuxPrompt
-		this.$wuxPrompt.render('msg1', {
+		this.$wuxPrompt = App.Wux().$wuxPrompt
+		this.$wuxPrompt.init('msg1', {
 			title: '空空如也', 
 			text: '暂时没有相关数据', 
 		}).show()
 
-		this.$wuxPrompt.render('msg2', {
+		this.$wuxPrompt.init('msg2', {
 			icon: '../../assets/images/iconfont-order.png', 
 			title: '您还没有相关的订单', 
 			text: '可以去看看有哪些想买', 
@@ -29,7 +29,7 @@ Page({
 			},
 		}).show()
 
-		this.$wuxPrompt.render('msg3', {
+		this.$wuxPrompt.init('msg3', {
 			icon: '../../assets/images/iconfont-empty.png', 
 			title: '暂无待评价订单', 
 		}).show()

@@ -14,7 +14,7 @@ Page({
 		]
 	},
 	onLoad() {
-		this.refresher = App.wux(this).$wuxRefresher.render({
+		this.refresher = App.Wux().$wuxRefresher({
 			onPulling() {
 				console.log('onPulling')
 			},

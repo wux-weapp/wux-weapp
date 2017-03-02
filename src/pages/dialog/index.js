@@ -3,7 +3,7 @@ const App = getApp()
 Page({
 	data: {},
 	onLoad() {
-		this.$wuxDialog = App.wux(this).$wuxDialog
+		this.$wuxDialog = App.Wux().$wuxDialog
 	},
 	open() {
 		if (this.timeout) clearTimeout(this.timeout)

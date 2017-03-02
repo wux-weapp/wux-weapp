@@ -14,7 +14,7 @@ Page({
 		],
 	},
 	onLoad() {
-		this.$wuxGallery = App.wux(this).$wuxGallery
+		this.$wuxGallery = App.Wux().$wuxGallery
 	},
 	showGallery(e) {
 		const that = this

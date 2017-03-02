@@ -3,7 +3,7 @@ const App = getApp()
 Page({
 	data: {},
 	onLoad() {
-		this.$wuxActionSheet = App.wux(this).$wuxActionSheet
+		this.$wuxActionSheet = App.Wux().$wuxActionSheet
 	},
 	showActionSheet1() {
 		wx.showActionSheet({

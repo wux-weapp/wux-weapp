@@ -5,9 +5,9 @@ Page({
 		value: '', 
 	},
 	onLoad() {
-		this.$wuxBarcode = App.wux(this).$wuxBarcode
+		this.$wuxBarcode = App.Wux().$wuxBarcode
 
-		this.$wuxBarcode.init('barcode', '9787115335500')
+		this.$wuxBarcode('barcode', '9787115335500')
 	},
 	bindinput(e) {
 		const value = e.detail.value
@@ -20,6 +20,6 @@ Page({
 			value, 
 		})
 
-		this.$wuxBarcode.init('barcode', value)
+		this.$wuxBarcode('barcode', value)
 	},
 })

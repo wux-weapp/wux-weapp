@@ -42,7 +42,7 @@ Page({
 	onLoad() {
 		this.initValidate()
 
-		this.$wuxToptips = App.wux(this).$wuxToptips
+		this.$wuxToptips = App.Wux().$wuxToptips
 	},
 	showToptips(error) {
 		const hideToptips = this.$wuxToptips.show({
@@ -65,7 +65,7 @@ Page({
 		}
 
 		this.$wuxToptips.success({
-			hide: !0, 
+			hidden: !0, 
 			text: '提交成功', 
 		})
 	},

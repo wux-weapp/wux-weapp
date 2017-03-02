@@ -5,7 +5,7 @@ Page({
 		locks: 0, 
 	},
 	onLoad() {
-		this.$wuxBackdrop = App.wux(this).$wuxBackdrop
+		this.$wuxBackdrop = App.Wux().$wuxBackdrop.init()
 	},
 	retain() {
 		this.$wuxBackdrop.retain()
