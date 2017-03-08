@@ -85,6 +85,6 @@ export default {
     	})
 
     	component.show()
-    	component.hide()
+    	component.hide(opts.success)
 	},
 }
