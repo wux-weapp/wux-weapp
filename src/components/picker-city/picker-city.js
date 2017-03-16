@@ -50,10 +50,12 @@ const updateCols = (value = [0, 0, 0]) => {
 	const initCities = sub(raw[value[0]])
 	const initCitiesName = initCities.map((c) => c.name)
 	const initCitiesCode = initCities.map((c) => c.code)
+	value[1] > initCities.length-1 && (value[1] = initCities.length-1)
 
 	const initDistricts = sub(raw[value[0]].sub[value[1]])
 	const initDistrictsName = initDistricts.map((c) => c.name)
 	const initDistrictsCode = initDistricts.map((c) => c.code)
+	value[2] > initDistricts.length-1 && (value[2] = initDistricts.length-1)
 
 	return [
 		{
