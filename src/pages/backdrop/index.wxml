@@ -8,7 +8,7 @@
         <view class="page__desc">背景幕</view>
     </view>
     <view class="page__bd">
-        <view class="weui-btn-area ezpop">
+        <view class="weui-btn-area btn-group">
             <button class="weui-btn" type="default" bindtap="retain">保持背景幕 retain</button>
             <button class="weui-btn" type="primary" bindtap="release">释放背景幕 release</button>
         </view>

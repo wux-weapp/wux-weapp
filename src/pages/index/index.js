@@ -1,5 +1,6 @@
 Page({
 	data: {
+		type: `grid`, 
 		components: [
 			{
 				title: 'ActionSheet', 
@@ -103,6 +104,11 @@ Page({
 				url: '/pages/xnumber/index', 
 				icon: '../../assets/images/iconfont-xnumber.png', 
 			},
-		]
-	}
+		],
+	},
+	modSwitch(e) {
+		this.setData({
+			type: e.currentTarget.dataset.type, 
+		})
+	},
 })
