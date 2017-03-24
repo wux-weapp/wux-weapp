@@ -1,3 +1,10 @@
+#### v 1.1.2 (2017-03-24)
+
+- 【优化】 toptips 组件，更新入场与离场动画效果
+- 【优化】 dialog 组件，增加配置项 verticalButtons 垂直按钮布局、buttons[].bold 是否加粗按钮的文字
+- 【优化】 xnumber 组件，增加配置项 longpress 禁用长按
+- 【增强】 增加 seats 组件
+
 #### v 1.1.1 (2017-03-08)
 
 - 【修复】 toast 组件，未触发回调函数

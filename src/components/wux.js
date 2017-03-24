@@ -12,6 +12,7 @@ import Prompt from 'prompt/prompt'
 import Qrcode from 'qrcode/qrcode'
 import Rater from 'rater/rater'
 import Refresher from 'refresher/refresher'
+import Seats from 'seats/seats'
 import Toast from 'toast/toast'
 import Toptips from 'toptips/toptips'
 import Xnumber from 'xnumber/xnumber'
@@ -32,6 +33,7 @@ export default function() {
 		$wuxQrcode     : Qrcode, 
 		$wuxRater      : Rater, 
 		$wuxRefresher  : (options) => new Refresher(options), 
+		$wuxSeats      : Seats, 
 		$wuxToast      : Toast, 
 		$wuxToptips    : Toptips, 
 		$wuxXnumber    : Xnumber, 

@@ -104,4 +104,25 @@ Page({
 			],
 		})
 	},
+	vertical() {
+		this.$wuxDialog.open({
+			title: '请问需要反馈什么问题？',
+			content: '你也可以在个人页的反馈帮助中心里找到这个功能',
+			verticalButtons: !0, 
+			buttons: [
+				{ 
+					text: '遇到问题', 
+					bold: !0, 
+				},
+				{ 
+					text: '意见建议', 
+					bold: !0, 
+				},
+				{ 
+					text: '没啥事', 
+					bold: !0, 
+				},
+			],
+		})
+	},
 })

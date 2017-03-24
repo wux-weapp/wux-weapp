@@ -9,6 +9,7 @@ export default {
 			title: undefined, 
 			content: undefined, 
 			buttons: [], 
+			verticalButtons: !1, 
 		}
 	},
 	/**
@@ -29,9 +30,11 @@ export default {
 	 * @param {Object} opts 配置项
 	 * @param {String} opts.title 提示标题
 	 * @param {String} opts.content 提示文本
+	 * @param {Boolean} opts.verticalButtons 是否显示垂直按钮布局
 	 * @param {Array} opts.buttons 按钮
 	 * @param {String} opts.buttons.text 按钮的文字
 	 * @param {String} opts.buttons.type 按钮的类型
+	 * @param {Boolean} opts.buttons.bold 是否加粗按钮的文字
 	 * @param {Function} opts.buttons.onTap 按钮的点击事件
 	 */
 	open(opts = {}) {

@@ -28,5 +28,9 @@ Page({
 		this.$wuxXnumber.init('num6', {
 			disabled: !1, 
 		})
+
+		this.$wuxXnumber.init('num7', {
+			longpress: !0, 
+		})
 	},
 })

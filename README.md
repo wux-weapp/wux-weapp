@@ -29,9 +29,10 @@
 * [Qrcode - 二维码](https://github.com/skyvow/wux/blob/master/docs/components/qrcode.md)
 * [Rater - 评分组件](https://github.com/skyvow/wux/blob/master/docs/components/rater.md)
 * [Refresher - 下拉刷新](https://github.com/skyvow/wux/blob/master/docs/components/refresher.md)
+* [Seats - 座位图](https://github.com/skyvow/wux/blob/master/docs/components/seats.md)
 * [Toast - 提示框](https://github.com/skyvow/wux/blob/master/docs/components/toast.md)
 * [Toptips - 顶部提示](https://github.com/skyvow/wux/blob/master/docs/components/toptips.md)
-* [Xnumber - 计数器](https://github.com/skyvow/wux/blob/master/docs/components/xnumber.md)
+* [Xnumber - 数字输入框](https://github.com/skyvow/wux/blob/master/docs/components/xnumber.md)
 
 ## 项目截图
 
@@ -55,6 +56,8 @@
 
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-04-3.png" width="375px" style="display:inline;">
 
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-04-4.png" width="375px" style="display:inline;">
+
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-05.png" width="375px" style="display:inline;">
 
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-06.png" width="375px" style="display:inline;">
@@ -68,6 +71,8 @@
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-10.png" width="375px" style="display:inline;">
 
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-21.png" width="375px" style="display:inline;">
+
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-22.png" width="375px" style="display:inline;">
 
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-11-1.png" width="375px" style="display:inline;">
 

@@ -14,6 +14,7 @@
             <button class="weui-btn" type="default" bindtap="alert">Alert Dialog</button>
             <button class="weui-btn" type="default" bindtap="prompt">Prompt Dialog</button>
             <button class="weui-btn" type="default" bindtap="custom">Custom Dialog</button>
+            <button class="weui-btn" type="default" bindtap="vertical">Vertical Buttons Dialog</button>
         </view>
     </view>
 </view>

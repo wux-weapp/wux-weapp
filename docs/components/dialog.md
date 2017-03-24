@@ -6,9 +6,11 @@
 | options | <code>object</code> | 配置项 |
 | options.title | <code>string</code> | 提示标题 |
 | options.content | <code>string</code> | 提示文本 |
+| options.verticalButtons | <code>boolean</code> | 是否显示垂直按钮布局 |
 | options.buttons | <code>array</code> | 按钮 |
 | options.buttons[].text | <code>string</code> | 按钮的文本 |
 | options.buttons[].type | <code>string</code> | 按钮的类型 |
+| options.buttons[].bold | <code>boolean</code> | 是否加粗按钮的文字 |
 | options.buttons[].onTap | <code>function</code> | 按钮的点击事件 |
 
 **Example**  
@@ -29,6 +31,7 @@
             <button class="weui-btn" type="default" bindtap="alert">Alert Dialog</button>
             <button class="weui-btn" type="default" bindtap="prompt">Prompt Dialog</button>
             <button class="weui-btn" type="default" bindtap="custom">Custom Dialog</button>
+            <button class="weui-btn" type="default" bindtap="vertical">Vertical Buttons Dialog</button>
         </view>
     </view>
 </view>
@@ -137,6 +140,27 @@ Page({
                 },
                 { 
                     text: '取消', 
+                },
+            ],
+        })
+    },
+    vertical() {
+        this.$wuxDialog.open({
+            title: '请问需要反馈什么问题？',
+            content: '你也可以在个人页的反馈帮助中心里找到这个功能',
+            verticalButtons: !0, 
+            buttons: [
+                { 
+                    text: '遇到问题', 
+                    bold: !0, 
+                },
+                { 
+                    text: '意见建议', 
+                    bold: !0, 
+                },
+                { 
+                    text: '没啥事', 
+                    bold: !0, 
                 },
             ],
         })

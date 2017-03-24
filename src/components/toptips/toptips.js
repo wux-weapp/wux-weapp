@@ -43,7 +43,7 @@ export default {
     			hide() {
 					if (this.removed) return !1
 					this.removed = !0
-					this.setHidden()
+					this.setHidden(`weui-animate-notify-upout`)
 					typeof options.success === `function` && options.success()
 				},
 				/**
@@ -51,7 +51,7 @@ export default {
 				 */
 				show() {
 					if (this.removed) return !1
-					this.setVisible()
+					this.setVisible(`weui-animate-notify-downin`)
 				},
     		},
     	})

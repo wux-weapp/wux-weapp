@@ -1,0 +1,19 @@
+<template name="seats">
+	<checkbox-group class="seats-container {{ animateCss }}" bindchange="{{ bindchange }}" wx:if="{{ visible }}">
+		<scroll-view scroll-x="true" scroll-y="true">
+			<view class="seats-body"> 
+				<block wx:for="{{ seats }}" wx:key="">
+					<view class="seats-row">
+						<view class="seats-cell seats-icon seats-space">{{ index + 1 }}</view>
+						<block wx:for="{{ item }}" wx:key="" wx:for-item="p">
+							<view data-id="{{ p.id }}" class="seats-seat seats-cell seats-icon {{ p.disabled ? 'unavailable' : 'available' }} {{ p.checked ? 'selected' : '' }}" wx:if="{{ !p.space }}">
+								<checkbox class="seats-checkbox" value="{{ p.id }}" checked="{{ p.checked }}" disabled="{{ p.disabled }}" />
+							</view>
+							<view wx:else class="seats-cell seats-icon seats-space"></view>
+						</block>
+					</view>
+				</block>
+			</view>
+		</scroll-view>
+	</checkbox-group>
+</template>

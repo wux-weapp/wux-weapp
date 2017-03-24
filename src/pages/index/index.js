@@ -80,6 +80,12 @@ Page({
 				icon: '../../assets/images/iconfont-refresher.png', 
 			},
 			{
+				title: 'Seats', 
+				remark: '座位图', 
+				url: '/pages/seats/index', 
+				icon: '../../assets/images/iconfont-seats.png', 
+			},
+			{
 				title: 'Toast', 
 				remark: '提示框', 
 				url: '/pages/toast/index', 
@@ -93,7 +99,7 @@ Page({
 			},
 			{
 				title: 'Xnumber', 
-				remark: '计数器', 
+				remark: '数字输入框', 
 				url: '/pages/xnumber/index', 
 				icon: '../../assets/images/iconfont-xnumber.png', 
 			},

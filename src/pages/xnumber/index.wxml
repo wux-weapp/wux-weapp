@@ -3,7 +3,7 @@
 <view class="page">
     <view class="page__hd">
         <view class="page__title">Xnumber</view>
-        <view class="page__desc">计数器</view>
+        <view class="page__desc">数字输入框</view>
     </view>
     <view class="page__bd">
     	<view class="weui-cells__title">默认</view>
@@ -57,6 +57,15 @@
                 <view class="weui-cell__bd">数量</view>
                 <view class="weui-cell__ft">
                 	<template is="xnumber" data="{{ ...$wux.xnumber.num6 }}"/>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__title">设置长按快速加减</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">数量</view>
+                <view class="weui-cell__ft">
+                    <template is="xnumber" data="{{ ...$wux.xnumber.num7 }}"/>
                 </view>
             </view>
         </view>
