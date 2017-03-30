@@ -24,6 +24,7 @@
 * [Dialog - 对话框](https://github.com/skyvow/wux/blob/master/docs/components/dialog.md)
 * [Gallery - 画廊](https://github.com/skyvow/wux/blob/master/docs/components/gallery.md)
 * [Loading - 指示器](https://github.com/skyvow/wux/blob/master/docs/components/loading.md)
+* [Notification - 通知](https://github.com/skyvow/wux/blob/master/docs/components/notification.md)
 * [Picker - 选择器](https://github.com/skyvow/wux/blob/master/docs/components/picker.md)
 * [Prompt - 提示信息](https://github.com/skyvow/wux/blob/master/docs/components/prompt.md)
 * [Qrcode - 二维码](https://github.com/skyvow/wux/blob/master/docs/components/qrcode.md)
@@ -89,6 +90,8 @@
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-14.png" width="375px" style="display:inline;">
 
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-15.png" width="375px" style="display:inline;">
+
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-23.png" width="375px" style="display:inline;">
 
 ## 贡献
 

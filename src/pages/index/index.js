@@ -51,6 +51,12 @@ Page({
 				icon: '../../assets/images/iconfont-loading.png', 
 			},
 			{
+				title: 'Notification', 
+				remark: '通知', 
+				url: '/pages/notification/index', 
+				icon: '../../assets/images/iconfont-notification.png', 
+			},
+			{
 				title: 'Picker', 
 				remark: '选择器', 
 				url: '/pages/picker/index', 

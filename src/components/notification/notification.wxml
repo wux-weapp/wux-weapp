@@ -1,0 +1,14 @@
+<template name="notification">
+	<view class="notification {{ animateCss }}" hidden="{{ !visible }}" bindtouchstart="{{ bindtouchstart }}" bindtouchmove="{{ bindtouchmove }}" bindtouchcancel="{{ bindtouchcancel }}" bindtouchend="{{ bindtouchend }}" style="{{ style }}">
+		<view class="notification-inner">
+			<view class="notification-media" wx:if="{{ image }}">
+				<image class="notification-image" src="{{ image }}" />
+			</view>
+			<view class="notification-content">
+				<view wx:if="{{ title }}" class="notification-title">{{ title }}</view>
+				<view wx:if="{{ text }}" class="notification-text">{{ text }}</view>
+			</view>
+			<view class="notification-handle-bar"></view>
+		</view>
+	</view>
+</template>

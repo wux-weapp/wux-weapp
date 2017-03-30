@@ -18,6 +18,7 @@
     "pages/barcode/index",
     "pages/refresher/index",
     "pages/seats/index",
+    "pages/notification/index",
     "pages/about/index"
   ],
   "window": {

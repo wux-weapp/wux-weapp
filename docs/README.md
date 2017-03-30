@@ -8,6 +8,7 @@
 - [Dialog - 对话框](components/dialog.md)
 - [Gallery - 画廊](components/gallery.md)
 - [Loading - 指示器](components/loading.md)
+- [Notification - 通知](components/notification.md)
 - [Picker - 选择器](components/picker.md)
 - [Prompt - 提示信息](components/prompt.md)
 - [Qrcode - 二维码](components/qrcode.md)
