@@ -76,7 +76,8 @@
 ```
 
 ```js
-const App = getApp()
+import { $wuxToptips } from '../../components/wux'
+import WxValidate from '../../assets/plugins/WxValidate'
 
 Page({
     data: {
@@ -119,11 +120,9 @@ Page({
     },
     onLoad() {
         this.initValidate()
-
-        this.$wuxToptips = App.Wux().$wuxToptips
     },
     showToptips(error) {
-        const hideToptips = this.$wuxToptips.show({
+        const hideToptips = $wuxToptips.show({
             timer: 3000,
             text: error.msg || '请填写正确的字段',
             success: () => console.log('toptips', error)
@@ -142,13 +141,13 @@ Page({
             return false
         }
 
-        this.$wuxToptips.success({
+        $wuxToptips.success({
             hidden: !0, 
             text: '提交成功', 
         })
     },
     initValidate() {
-        this.WxValidate = App.WxValidate({
+        this.WxValidate = new WxValidate({
             gender: {
                 required: true, 
             },

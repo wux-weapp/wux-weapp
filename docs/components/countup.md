@@ -40,15 +40,14 @@
 ```
 
 ```js
-const App = getApp()
+import { $wuxCountUp } from '../../components/wux'
 
 Page({
     data: {},
     onLoad() {
         const that = this
-        that.$wuxCountUp = App.Wux().$wuxCountUp
 
-        that.c1 = that.$wuxCountUp(1, 1024, 0, 2, {
+        that.c1 = new $wuxCountUp(1, 1024, 0, 2, {
             printValue(value) {
                 that.setData({
                     c1: value, 
@@ -56,7 +55,7 @@ Page({
             }
         })
 
-        that.c2 = that.$wuxCountUp(0, 88.88, 2, 2, {
+        that.c2 = new $wuxCountUp(0, 88.88, 2, 2, {
             printValue(value) {
                 that.setData({
                     c2: value, 
@@ -64,7 +63,7 @@ Page({
             }
         })
 
-        that.c3 = that.$wuxCountUp(0, 520, 0, 2, {
+        that.c3 = new $wuxCountUp(0, 520, 0, 2, {
             printValue(value) {
                 that.setData({
                     c3: value, 

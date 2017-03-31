@@ -1,4 +1,4 @@
-const App = getApp()
+import { $wuxRefresher } from '../../components/wux'
 
 Page({
 	data: {
@@ -14,7 +14,7 @@ Page({
 		]
 	},
 	onLoad() {
-		this.refresher = App.Wux().$wuxRefresher({
+		this.refresher = new $wuxRefresher({
 			onPulling() {
 				console.log('onPulling')
 			},

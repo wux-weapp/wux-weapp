@@ -1,11 +1,11 @@
-const App = getApp()
+import { $wuxBackdrop } from '../../components/wux'
 
 Page({
 	data: {
 		locks: 0, 
 	},
 	onLoad() {
-		this.$wuxBackdrop = App.Wux().$wuxBackdrop.init()
+		this.$wuxBackdrop = $wuxBackdrop.init()
 	},
 	retain() {
 		this.$wuxBackdrop.retain()

@@ -10,8 +10,8 @@
     <view class="page__bd">
         <view class="weui-btn-area">
             <button class="weui-btn" type="default" bindtap="showActionSheet1">原生 ActionSheet</button>
-            <button class="weui-btn" type="default" bindtap="showActionSheet2">自定义 ActionSheet</button>
-            <button class="weui-btn" type="default" bindtap="showActionSheet3">自定义 ActionSheet</button>
+            <button class="weui-btn" type="default" bindtap="showActionSheet2">iOS ActionSheet</button>
+            <button class="weui-btn" type="default" bindtap="showActionSheet3">wx ActionSheet</button>
         </view>
     </view>
 </view>

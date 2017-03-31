@@ -1,17 +1,15 @@
-const App = getApp()
+import { $wuxLoading } from '../../components/wux'
 
 Page({
 	data: {},
-	onLoad() {
-		this.$wuxLoading = App.Wux().$wuxLoading
-	},
+	onLoad() {},
 	showLoading() {
-		this.$wuxLoading.show({
+		$wuxLoading.show({
 			text: '数据加载中',
 		})
 
 		setTimeout(() => {
-            this.$wuxLoading.hide()
+            $wuxLoading.hide()
         }, 1500)
 	},
 })

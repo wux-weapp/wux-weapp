@@ -1,40 +1,39 @@
-const App = getApp()
+import { $wuxRater } from '../../components/wux'
 
 Page({
 	data: {},
 	onLoad() {
-		this.$wuxRater = App.Wux().$wuxRater
-		this.$wuxRater.init('star', {
+		$wuxRater.init('star', {
 			value: 5, 
 		})
-		this.$wuxRater.init('changeColor', {
+		$wuxRater.init('changeColor', {
 			value: 3, 
 			activeColor: '#04BE02', 
 		})
 
-		this.$wuxRater.init('history', {
+		$wuxRater.init('history', {
 			value: 3, 
 			disabled: !0, 
 		})
-		this.$wuxRater.init('decimal', {
+		$wuxRater.init('decimal', {
 			value: 3.7, 
 			disabled: !0, 
 		})
-		this.$wuxRater.init('custom', {
+		$wuxRater.init('custom', {
 			value: 3, 
 			fontSize: 15, 
 			disabled: !0, 
 		})
 
-		this.$wuxRater.init('loving', {
+		$wuxRater.init('loving', {
 			value: 3, 
 			star: '♡', 
 		})
-		this.$wuxRater.init('sunshine', {
+		$wuxRater.init('sunshine', {
 			value: 3, 
 			star: '☼', 
 		})
-		this.$wuxRater.init('smilies', {
+		$wuxRater.init('smilies', {
 			value: 3, 
 			star: '☻', 
 		})

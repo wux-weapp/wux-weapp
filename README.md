@@ -39,6 +39,8 @@
 
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-17.png" width="375px" style="display:inline;">
 
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-24.png" width="375px" style="display:inline;">
+
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-02.png" width="375px" style="display:inline;">
 
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-19.png" width="375px" style="display:inline;">

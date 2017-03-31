@@ -1,14 +1,12 @@
-const App = getApp()
+import { $wuxDialog } from '../../components/wux'
 
 Page({
 	data: {},
-	onLoad() {
-		this.$wuxDialog = App.Wux().$wuxDialog
-	},
+	onLoad() {},
 	open() {
 		if (this.timeout) clearTimeout(this.timeout)
 
-		const hideDialog = this.$wuxDialog.open({
+		const hideDialog = $wuxDialog.open({
 			title: '三秒后自动关闭',
 			content: '弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内', 
 			buttons: [
@@ -28,7 +26,7 @@ Page({
 		this.timeout = setTimeout(hideDialog, 3000)
 	},
 	confirm() {
-		this.$wuxDialog.confirm({
+		$wuxDialog.confirm({
 			title: '定制冰激凌', 
 			content: '你确定要吃我的冰淇淋吗？', 
 			onConfirm(e) {
@@ -40,7 +38,7 @@ Page({
 		})
 	},
 	alert() {
-		this.$wuxDialog.alert({
+		$wuxDialog.alert({
 			title: '不要吃果冻', 
 			content: '它们可能是用旧的皮鞋帮做的！', 
 			onConfirm(e) {
@@ -51,13 +49,13 @@ Page({
 	prompt() {
 		const that = this
 		const alert = (content) => {
-			this.$wuxDialog.alert({
+			$wuxDialog.alert({
 				title: '提示', 
 				content: content, 
 			})
 		}
 
-		that.$wuxDialog.prompt({
+		$wuxDialog.prompt({
 			title: '提示', 
 			content: '密码为8位数字', 
 			fieldtype: 'number', 
@@ -74,13 +72,13 @@ Page({
 	},
 	custom() {
 		const alert = (content) => {
-			this.$wuxDialog.alert({
+			$wuxDialog.alert({
 				title: '提示', 
 				content: content, 
 			})
 		}
 
-		this.$wuxDialog.open({
+		$wuxDialog.open({
 			title: '我是标题',
 			content: '我是自定义的对话框！',
 			buttons: [
@@ -105,7 +103,7 @@ Page({
 		})
 	},
 	vertical() {
-		this.$wuxDialog.open({
+		$wuxDialog.open({
 			title: '请问需要反馈什么问题？',
 			content: '你也可以在个人页的反馈帮助中心里找到这个功能',
 			verticalButtons: !0, 

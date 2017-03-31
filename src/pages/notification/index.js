@@ -1,12 +1,10 @@
-const App = getApp()
+import { $wuxNotification } from '../../components/wux'
 
 Page({
 	data: {},
-	onLoad() {
-		this.$wuxNotification = App.Wux().$wuxNotification
-	},
+	onLoad() {},
 	showNotification() {
-		this.closeNotification = this.$wuxNotification.show({
+		this.closeNotification = $wuxNotification.show({
 			image: 'http://light7.org/assets/img/i-wechat.png', 
 			title: '宝宝', 
 			text: '嘤嘤嘤，人家拿小拳拳捶你胸口!!!', 

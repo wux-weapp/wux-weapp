@@ -1,43 +1,41 @@
-import ActionSheet from 'actionsheet/actionsheet'
-import Backdrop from 'backdrop/backdrop'
-import Barcode from 'barcode/barcode'
-import CountDown from 'countdown/countdown'
-import CountUp from 'countup/countup'
-import Dialog from 'dialog/dialog'
-import Gallery from 'gallery/gallery'
-import Loading from 'loading/loading'
-import Notification from 'notification/notification'
-import Picker from 'picker/picker'
-import PickerCity from 'picker-city/picker-city'
-import Prompt from 'prompt/prompt'
-import Qrcode from 'qrcode/qrcode'
-import Rater from 'rater/rater'
-import Refresher from 'refresher/refresher'
-import Seats from 'seats/seats'
-import Toast from 'toast/toast'
-import Toptips from 'toptips/toptips'
-import Xnumber from 'xnumber/xnumber'
+import $wuxActionSheet from 'actionsheet/actionsheet'
+import $wuxBackdrop from 'backdrop/backdrop'
+import $wuxBarcode from 'barcode/barcode'
+import $wuxCountDown from 'countdown/countdown'
+import $wuxCountUp from 'countup/countup'
+import $wuxDialog from 'dialog/dialog'
+import $wuxGallery from 'gallery/gallery'
+import $wuxLoading from 'loading/loading'
+import $wuxNotification from 'notification/notification'
+import $wuxPicker from 'picker/picker'
+import $wuxPickerCity from 'picker-city/picker-city'
+import $wuxPrompt from 'prompt/prompt'
+import $wuxQrcode from 'qrcode/qrcode'
+import $wuxRater from 'rater/rater'
+import $wuxRefresher from 'refresher/refresher'
+import $wuxSeats from 'seats/seats'
+import $wuxToast from 'toast/toast'
+import $wuxToptips from 'toptips/toptips'
+import $wuxXnumber from 'xnumber/xnumber'
 
-export default function() {
-	return {
-		$wuxActionSheet: ActionSheet, 
-		$wuxBackdrop: Backdrop, 
-		$wuxBarcode: (id, number, options) => new Barcode(id, number, options), 
-		$wuxCountDown: (options) => new CountDown(options), 
-		$wuxCountUp: (startVal, endVal, decimals, duration, options) => new CountUp(startVal, endVal, decimals, duration, options), 
-		$wuxDialog: Dialog, 
-		$wuxGallery: Gallery, 
-		$wuxLoading: Loading, 
-		$wuxNotification: Notification, 
-		$wuxPicker: Picker, 
-		$wuxPickerCity: PickerCity, 
-		$wuxPrompt: Prompt, 
-		$wuxQrcode: Qrcode, 
-		$wuxRater: Rater, 
-		$wuxRefresher: (options) => new Refresher(options), 
-		$wuxSeats: Seats, 
-		$wuxToast: Toast, 
-		$wuxToptips: Toptips, 
-		$wuxXnumber: Xnumber, 
-	}
+export {
+	$wuxActionSheet, 
+	$wuxBackdrop, 
+	$wuxBarcode, 
+	$wuxCountDown, 
+	$wuxCountUp, 
+	$wuxDialog, 
+	$wuxGallery, 
+	$wuxLoading, 
+	$wuxNotification, 
+	$wuxPicker, 
+	$wuxPickerCity, 
+	$wuxPrompt, 
+	$wuxQrcode, 
+	$wuxRater, 
+	$wuxRefresher, 
+	$wuxSeats, 
+	$wuxToast, 
+	$wuxToptips, 
+	$wuxXnumber, 
 }

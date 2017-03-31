@@ -1,17 +1,15 @@
-const App = getApp()
+import { $wuxActionSheet } from '../../components/wux'
 
 Page({
 	data: {},
-	onLoad() {
-		this.$wuxActionSheet = App.Wux().$wuxActionSheet
-	},
+	onLoad() {},
 	showActionSheet1() {
 		wx.showActionSheet({
 			itemList: ['实例菜单', '实例菜单']
 		})
 	},
 	showActionSheet2() {
-		this.$wuxActionSheet.show({
+		$wuxActionSheet.show({
 			titleText: '自定义操作',
 			buttons: [
 				{ 
@@ -41,7 +39,8 @@ Page({
 	showActionSheet3() {
 		if (this.timeout) clearTimeout(this.timeout)
 
-		const hideSheet = this.$wuxActionSheet.show({
+		const hideSheet = $wuxActionSheet.show({
+			theme: 'wx', 
 			titleText: '三秒后自动关闭',
 			buttons: [
 				{ 

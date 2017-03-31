@@ -1,5 +1,5 @@
 <template name="actionsheet">
-	<view class="action-sheet-backdrop {{ className }} {{ animateCss[1] }}" wx:if="{{ visible }}" catchtap="{{ cancel }}">
+	<view class="action-sheet-backdrop {{ theme === 'wx' ? 'action-sheet-theme-wx' : '' }} {{ className }} {{ animateCss[1] }}" wx:if="{{ visible }}" catchtap="{{ cancel }}">
 		<view class="action-sheet-wrapper {{ animateCss[0] }}">
 			<view class="action-sheet">
 				<view class="action-sheet-group action-sheet-options">

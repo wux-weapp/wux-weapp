@@ -1,0 +1,145 @@
+.weui-dialog {
+	position: fixed;
+	z-index: 5000;
+	width: 80%;
+	max-width: 300px;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	background-color: #FFFFFF;
+	text-align: center;
+	border-radius: 3px;
+	overflow: hidden;
+}
+
+.weui-dialog__hd {
+	padding: 1.3em 1.6em 0.5em;
+}
+
+.weui-dialog__title {
+	font-weight: 400;
+	font-size: 18px;
+}
+
+.weui-dialog__bd {
+	padding: 0 1.6em 0.8em;
+	min-height: 40px;
+	font-size: 15px;
+	line-height: 1.3;
+	word-wrap: break-word;
+	word-break: break-all;
+	color: #999999;
+}
+
+.weui-dialog__bd:first-child {
+	padding: 2.7em 20px 1.7em;
+	color: #353535;
+}
+
+.weui-dialog__ft {
+	position: relative;
+	line-height: 48px;
+	font-size: 18px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+}
+
+.weui-dialog__ft:after {
+	content: " ";
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	height: 1px;
+	border-top: 1px solid #D5D5D6;
+	color: #D5D5D6;
+	-webkit-transform-origin: 0 0;
+	transform-origin: 0 0;
+	-webkit-transform: scaleY(0.5);
+	transform: scaleY(0.5);
+}
+
+.weui-dialog__btn {
+	display: block;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	flex: 1;
+	color: #3CC51F;
+	text-decoration: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	position: relative;
+}
+
+.weui-dialog__btn:active {
+	background-color: #EEEEEE;
+}
+
+.weui-dialog__btn:after {
+	content: " ";
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 1px;
+	bottom: 0;
+	border-left: 1px solid #D5D5D6;
+	color: #D5D5D6;
+	-webkit-transform-origin: 0 0;
+	transform-origin: 0 0;
+	-webkit-transform: scaleX(0.5);
+	transform: scaleX(0.5);
+}
+
+.weui-dialog__btn:first-child:after {
+	display: none;
+}
+
+.weui-dialog__btn_default {
+	color: #353535;
+}
+
+.weui-dialog__btn_primary {
+	color: #0BB20C;
+}
+
+.weui-dialog__bd .weui-prompt-input {
+	padding: 4px 6px;
+	border: 1px solid #ccc;
+	height: 2em;
+	width: 100%;
+	margin-top: 10px;
+	text-align: left;
+	box-sizing: border-box;
+}
+
+.weui-dialog__ft.weui-dialog__btns_vertical {
+	display: block;
+    height: auto;
+}
+
+.weui-dialog__btns_vertical .weui-dialog__btn:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: auto;
+    top: auto;
+    height: 1px;
+    width: 100%;
+    background-color: #D5D5D6;
+    display: block;
+    z-index: 15;
+    -webkit-transform-origin: 0 0;
+	transform-origin: 0 0;
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+}
+
+.weui-dialog__btns_vertical .weui-dialog__btn:last-child:after {
+    display: none;
+}
+
+.weui-dialog__btn.weui-dialog__btn_bold {
+	font-weight: 500;
+}

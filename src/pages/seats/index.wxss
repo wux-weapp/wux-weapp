@@ -96,3 +96,7 @@
     font-size: 12px;
     padding-left: 5px
 }
+
+.seats-area scroll-view {
+    height: 265px;
+}

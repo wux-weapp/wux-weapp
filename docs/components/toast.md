@@ -33,15 +33,13 @@
 ```
 
 ```js
-const App = getApp()
+import { $wuxToast } from '../../components/wux'
 
 Page({
     data: {},
-    onLoad() {
-        this.$wuxToast = App.Wux().$wuxToast
-    },
+    onLoad() {},
     showToast() {
-        this.$wuxToast.show({
+        $wuxToast.show({
             type: 'success',
             timer: 1500,
             color: '#fff',
@@ -50,7 +48,7 @@ Page({
         })
     },
     showToastCancel() {
-        this.$wuxToast.show({
+        $wuxToast.show({
             type: 'cancel',
             timer: 1500,
             color: '#fff',
@@ -59,7 +57,7 @@ Page({
         })
     },
     showToastErr() {
-        this.$wuxToast.show({
+        $wuxToast.show({
             type: 'forbidden',
             timer: 1500,
             color: '#fff',
@@ -68,7 +66,7 @@ Page({
         })
     },
     showToastText() {
-        this.$wuxToast.show({
+        $wuxToast.show({
             type: 'text',
             timer: 1500,
             color: '#fff',

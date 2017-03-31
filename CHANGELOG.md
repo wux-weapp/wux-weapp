@@ -1,3 +1,9 @@
+#### v 1.1.3 (2017-03-31)
+
+- 【增强】 增加 notification 组件
+- 【优化】 隔离所有组件样式表 components/styles
+- 【优化】 actionsheet 组件，增加配置项 theme 菜单皮肤 iOS/wx
+
 #### v 1.1.2 (2017-03-24)
 
 - 【优化】 toptips 组件，更新入场与离场动画效果

@@ -1,0 +1,19 @@
+.weui-toptips_success {
+	background-color: #09bb08 !important;
+}
+
+.weui-toptips_info {
+	background-color: #10aefe !important;
+}
+
+.weui-toptips_warn {
+	background-color: #ffbe00 !important;
+}
+
+.weui-toptips_cancel {
+	background-color: #E64340 !important;
+}
+
+.weui-toptips_icon {
+	float: left;
+}

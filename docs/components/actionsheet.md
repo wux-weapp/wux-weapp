@@ -4,6 +4,7 @@
 | 参数 | 类型 | 描述 |
 | --- | --- | --- |
 | options | <code>object</code> | 配置项 |
+| options.theme | <code>string</code> | 菜单皮肤 |
 | options.className | <code>string</code> | 自定义类名 |
 | options.titleText | <code>string</code> | 标题 |
 | options.buttons | <code>array</code> | 按钮 |
@@ -28,28 +29,26 @@
     <view class="page__bd">
         <view class="weui-btn-area">
             <button class="weui-btn" type="default" bindtap="showActionSheet1">原生 ActionSheet</button>
-            <button class="weui-btn" type="default" bindtap="showActionSheet2">自定义 ActionSheet</button>
-            <button class="weui-btn" type="default" bindtap="showActionSheet3">自定义 ActionSheet</button>
+            <button class="weui-btn" type="default" bindtap="showActionSheet2">iOS ActionSheet</button>
+            <button class="weui-btn" type="default" bindtap="showActionSheet3">wx ActionSheet</button>
         </view>
     </view>
 </view>
 ```
 
 ```js
-const App = getApp()
+import { $wuxActionSheet } from '../../components/wux'
 
 Page({
     data: {},
-    onLoad() {
-        this.$wuxActionSheet = App.Wux().$wuxActionSheet
-    },
+    onLoad() {},
     showActionSheet1() {
         wx.showActionSheet({
             itemList: ['实例菜单', '实例菜单']
         })
     },
     showActionSheet2() {
-        this.$wuxActionSheet.show({
+        $wuxActionSheet.show({
             titleText: '自定义操作',
             buttons: [
                 { 
@@ -79,7 +78,8 @@ Page({
     showActionSheet3() {
         if (this.timeout) clearTimeout(this.timeout)
 
-        const hideSheet = this.$wuxActionSheet.show({
+        const hideSheet = $wuxActionSheet.show({
+            theme: 'wx', 
             titleText: '三秒后自动关闭',
             buttons: [
                 { 

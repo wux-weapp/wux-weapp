@@ -40,16 +40,14 @@
 ```
 
 ```js
-const App = getApp()
+import { $wuxBarcode } from '../../components/wux'
 
 Page({
     data: {
         value: '', 
     },
     onLoad() {
-        this.$wuxBarcode = App.Wux().$wuxBarcode
-
-        this.$wuxBarcode('barcode', '9787115335500')
+        new $wuxBarcode('barcode', '9787115335500')
     },
     bindinput(e) {
         const value = e.detail.value
@@ -62,7 +60,7 @@ Page({
             value, 
         })
 
-        this.$wuxBarcode('barcode', value)
+        new $wuxBarcode('barcode', value)
     },
 })
 ```

@@ -1,0 +1,142 @@
+.action-sheet-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 11;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.4);
+}
+
+.action-sheet-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+}
+
+.action-sheet {
+    margin-left: 8px;
+    margin-right: 8px;
+    width: auto;
+    z-index: 11;
+    overflow: hidden;
+}
+
+.action-sheet .button {
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    min-width: 52px;
+    min-height: 48px;
+    vertical-align: top;
+    text-align: center;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.action-sheet .button {
+    display: block;
+    width: 100%;
+    border-radius: 0;
+    background-color: transparent;
+    color: #007aff;
+    font-size: 21px;
+    line-height: 48px;
+}
+
+.action-sheet .button.button-hover, 
+.action-sheet .button.button-hover {
+    box-shadow: none;
+    border-color: #d1d3d6;
+    color: #007aff;
+    background: #e4e5e7;
+}
+
+.action-sheet .button.destructive {
+    color: #ff3b30 !important;
+}
+
+.action-sheet-title {
+    padding: 16px;
+    color: #8f8f8f;
+    text-align: center;
+    font-size: 13px;
+}
+
+.action-sheet-group {
+    margin-bottom: 8px;
+    border-radius: 4px;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.action-sheet-group .button {
+    border-top: none;
+}
+
+.action-sheet-group .button:after {
+	-webkit-transform: none;
+	transform: none;
+	-webkit-transform-origin: none;
+	transform-origin: none;
+	border: none;
+    border-radius: 0;
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #d9d9d9;
+    color: #d9d9d9;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+}
+
+.action-sheet-group .button:first-child:last-child:after {
+    border-width: 0;
+}
+
+.action-sheet-options {
+    background: #f1f2f3;
+}
+
+.action-sheet-cancel .button {
+    font-weight: 500;
+}
+
+.action-sheet-theme-wx .action-sheet {
+    margin-left: 0;
+    margin-right: 0;
+    background-color: #efeff4;
+}
+
+.action-sheet-theme-wx .action-sheet-group {
+    border-radius: 0;
+    margin-bottom: 6px;
+}
+
+.action-sheet-theme-wx .action-sheet-options {
+    background-color: #fff;
+}
+
+.action-sheet-theme-wx .action-sheet .button {
+    font-size: 18px;
+    color: #000;
+}
+
+.action-sheet-theme-wx .action-sheet-cancel {
+    margin-bottom: 0;
+}
+
+.action-sheet-theme-wx .action-sheet-cancel .button {
+    font-weight: normal;
+}

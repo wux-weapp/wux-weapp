@@ -6,6 +6,7 @@ export default {
 	 */
 	setDefaults() {
 		return {
+            theme: `ios`, 
 			className: undefined, 
 	    	titleText: undefined, 
 			buttons: [], 
@@ -19,9 +20,12 @@ export default {
 	/**
 	 * 上拉菜单组件
 	 * @param {Object} opts 配置项
+     * @param {String} opts.theme 菜单皮肤
 	 * @param {String} opts.className 自定义类名
 	 * @param {String} opts.titleText 标题
 	 * @param {Array} opts.buttons 按钮
+     * @param {String} opts.buttons.classNmae 按钮的类名
+     * @param {String} opts.buttons.text 按钮的文字
 	 * @param {Function} opts.buttonClicked 按钮点击事件
 	 * @param {String} opts.cancelText 取消按钮的文本
 	 * @param {Function} opts.cancel 取消按钮点击事件

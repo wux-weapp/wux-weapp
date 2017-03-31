@@ -1,0 +1,79 @@
+.seats-cell {
+	position: relative;
+	color: #182C4E;
+	height: 15px;
+	width: 15px;
+	line-height: 15px;
+	margin: 2px;
+	text-align: center;
+	outline: none;
+	font-size: 12px;
+}
+
+.seats-icon {
+	display: inline-block;
+	width: 15px;
+    height: 15px;
+    vertical-align: middle;
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAACWCAMAAAD+DcglAAAAolBMVEUAAADh4eHh4eHh4eHh4eHh4eHh4eHh4eHi3+Dh4eHh4eHh4eHh4eHh4eH/////caP/VT2L1Czh4eHp6enpxdHpvrj39/f3jbP3eGbc4NaQ1jfm5ubl1NmO1DH7/Pvlz8y124SW1kPv7+/W4MrvrsX7f6v1hnf7Z1Kc20uo32L2/O7g4d/p99fe88P2lLbtp5225Hr9/vznzNXnx8LE6ZPT76471cxAAAAADnRSTlMAP+ewlkh5cfvdIxHOjzC1NegAAAHpSURBVFjD7dbbcqowFAbgiKB4SpsFBLZBsJ7brT1o+/6vtiHJ0ElIwNkdx17w32V9JjqzkhiEkNcHY/oeKtOn2BjaL3XMsCVQci+4H3uM0qxuGaUwQciFIAjYStcVK8rgIuAjlmlzmVheckBVpkHHV/CKKllpzAIlTHJbS1woU28oL7sIDZt2Syv3WCMjx3ZKHM4DB4xxBqjLjTKZ+WCIP5twni0XxJDFcsbZ52pwnzMQS+AW/PXcxJ/4+M2DEQCsl9/6jl8OhCzXYreNnorS019CDu9cnz+ycu21KMul/8zJ8aMsH14w/5gsV1xMKxadH/EnMbH40hP+IkbmPznDp4WVyQkf58TO89OB2FjkFzLokVy1REnVkqFsqBLZ0NHw53vNts8FT22nZMp5PAVjpmPU5f/S/iDbPRqzEw+y/NES8T8W3Y+9S5Ls67ZPEv4gS6Moyt90fcuLcuoi4KN8r83NxfKSo0TlJOr4Ct4lSnYaXyIlF8ltLXGhTL2h1YOsabe0ci9vZOTYTkn3ILtP2u+11wdjXsW9lj5YIrZDeD/2znG8rds2jvm95odhmG503aRF2XcR8FG61eamYnnJYaxyHHZ8BW9iJRuNz6GSs+SWlsh7rd7Q6l5r2i2t3EsbGTm2U3Lre+0fCs7bdVKesDQAAAAASUVORK5CYII=") no-repeat;
+    background-size: 15px 75px;
+}
+
+.seats-space {
+	background: transparent;
+}
+
+.seats-checkbox {
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	opacity: 0;
+}
+
+.seats-seat {
+	color: #fff;
+	cursor: pointer;
+}
+
+.seats-icon.available {
+	background-position: 0 0;
+}
+
+.seats-icon.selected {
+	background-position: 0 -20px;
+}
+
+.seats-icon.unavailable {
+	background-position: 0 -40px;
+}
+
+.seats-icon.double {
+	background-position: 0 -60px;
+}
+
+.seats-container {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: #eee;
+    overflow: hidden;
+}
+
+.seats-body {
+    display: flex;
+	padding: 20px 0;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.seats-row {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    white-space: nowrap;
+}

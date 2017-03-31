@@ -1,13 +1,11 @@
-const App = getApp()
+import { $wuxQrcode } from '../../components/wux'
 
 Page({
 	data: {
 		value: '', 
 	},
 	onLoad() {
-		this.$wuxQrcode = App.Wux().$wuxQrcode
-
-		this.$wuxQrcode.init('qrcode', 'wux')
+		$wuxQrcode.init('qrcode', 'wux')
 	},
 	bindinput(e) {
 		const value = e.detail.value
@@ -16,6 +14,6 @@ Page({
 			value, 
 		})
 
-		this.$wuxQrcode.init('qrcode', value)
+		$wuxQrcode.init('qrcode', value)
 	},
 })

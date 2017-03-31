@@ -1,4 +1,4 @@
-const App = getApp()
+import { $wuxGallery } from '../../components/wux'
 
 Page({
 	data: {
@@ -13,16 +13,14 @@ Page({
 			'https://unsplash.it/1200/1200', 
 		],
 	},
-	onLoad() {
-		this.$wuxGallery = App.Wux().$wuxGallery
-	},
+	onLoad() {},
 	showGallery(e) {
 		const that = this
 		const dataset = e.currentTarget.dataset
 		const current = dataset.current
 		const urls = this.data.urls
 
-		this.$wuxGallery.show({
+		$wuxGallery.show({
 			current: current, 
 			urls: urls, 
 			delete: (current, urls) => {

@@ -1,5 +1,5 @@
 import data from './data'
-const App = getApp()
+import { $wuxSeats } from '../../components/wux'
 
 Page({
 	data: {},
@@ -12,7 +12,7 @@ Page({
 		const maxRowIndex = seatingPlan.maxRowIndex
 		const maxColumnIndex = seatingPlan.maxColumnIndex
 
-		this.$wuxSeats = App.Wux().$wuxSeats.init('movie', {
+		this.$wuxSeats = $wuxSeats.init('movie', {
 			maps: maps, 
 			maxRowIndex: maxRowIndex, 
 			maxColumnIndex: maxColumnIndex, 
