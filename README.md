@@ -19,6 +19,7 @@
 * [ActionSheet - 上拉菜单](https://github.com/skyvow/wux/blob/master/docs/components/actionsheet.md)
 * [Backdrop - 背景幕](https://github.com/skyvow/wux/blob/master/docs/components/backdrop.md)
 * [Barcode - 条形码](https://github.com/skyvow/wux/blob/master/docs/components/barcode.md)
+* [Calendar - 日历](https://github.com/skyvow/wux/blob/master/docs/components/calendar.md)
 * [CountDown - 倒计时](https://github.com/skyvow/wux/blob/master/docs/components/countdown.md)
 * [CountUp - 计数器](https://github.com/skyvow/wux/blob/master/docs/components/countup.md)
 * [Dialog - 对话框](https://github.com/skyvow/wux/blob/master/docs/components/dialog.md)
@@ -44,6 +45,8 @@
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-02.png" width="375px" style="display:inline;">
 
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-19.png" width="375px" style="display:inline;">
+
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-25.png" width="375px" style="display:inline;">
 
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-20.png" width="375px" style="display:inline;">
 

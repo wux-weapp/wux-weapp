@@ -3,6 +3,7 @@
 - [ActionSheet - 上拉菜单](components/actionsheet.md)
 - [Backdrop - 背景幕](components/backdrop.md)
 - [Barcode - 条形码](components/barcode.md)
+- [Calendar - 日历](components/calendar.md)
 - [CountDown - 倒计时](components/countdown.md)
 - [CountUp - 计数器](components/countup.md)
 - [Dialog - 对话框](components/dialog.md)

@@ -1,0 +1,67 @@
+<template name="calendar">
+	<view class="weui-mask {{ animateCss[1] }}" wx:if="{{ !inline }}" hidden="{{ !visible }}" bindtap="{{ hide }}"></view>
+	<view class="picker-modal picker-calendar {{ inline ? 'picker-modal-inline' : '' }} {{ direction === 'vertical' ? 'picker-calendar-vertical' : 'picker-calendar-horizontal' }} {{ animateCss[0] }}" wx:if="{{ visible }}">
+		<view class="toolbar" wx:if="{{ toolbar }}">
+			<view class="toolbar-inner">
+				<view class="picker-calendar-month-picker">
+					<view class="link icon-only picker-calendar-prev-month" bindtap="{{ prevMonth }}">
+						<view class="icon icon-prev"></view>
+					</view>
+					<view class="current-month-value">
+						{{ currentMonthName }}
+					</view>
+					<view class="link icon-only picker-calendar-next-month" bindtap="{{ nextMonth }}">
+						<view class="icon icon-next"></view>
+					</view>
+				</view>
+				<view class="picker-calendar-year-picker">
+					<view class="link icon-only picker-calendar-prev-year" bindtap="{{ prevYear }}">
+						<view class="icon icon-prev"></view>
+					</view>
+					<text class="text current-year-value">{{ currentYear }}</text>
+					<view class="link icon-only picker-calendar-next-year" bindtap="{{ nextYear }}">
+						<view class="icon icon-next"></view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="picker-modal-inner">
+			<view class="picker-calendar-week-days" wx:if="{{ weekHeader }}">
+				<block wx:for="{{ weeks }}" wx:key="">
+					<view class="picker-calendar-week-day {{ item.weekend ? 'picker-calendar-week-day-weekend' : '' }}">
+						{{ item.dayName }}
+					</view>
+				</block>
+			</view>
+			<view class="picker-calendar-months">
+				<view class="picker-calendar-months-wrapper" bindtouchstart="{{ handleTouchStart }}" bindtouchmove="{{ handleTouchMove }}" bindtouchend="{{ handleTouchEnd }}" style="{{ style }}">
+					<block wx:for="{{ months }}" wx:for-item="month" wx:key="">
+						<view 
+							data-year="{{ month.year }}" 
+							data-month="{{ month.month }}" 
+							class="picker-calendar-month {{ index === 0 ? 'picker-calendar-month-prev' : index === 1 ? 'picker-calendar-month-current' : 'picker-calendar-month-next' }}" 
+						>
+							<block wx:for="{{ month.items }}" wx:for-item="row" wx:key="">
+								<view class="picker-calendar-row">
+									<block wx:for="{{ row }}" wx:for-item="col" wx:key="">
+										<view 
+											data-year="{{ col.year }}" 
+											data-month="{{ col.month }}" 
+											data-day="{{ col.day }}" 
+											data-date="{{ col.date }}" 
+											data-type="{{ col.type }}" 
+											class="picker-calendar-day {{ col.type.prev ? 'picker-calendar-day-prev' : '' }} {{ col.type.next ? 'picker-calendar-day-next' : '' }} {{ col.type.today ? 'picker-calendar-day-today' : '' }} {{ col.type.selected ? 'picker-calendar-day-selected' : '' }} {{ col.type.weekend ? 'picker-calendar-day-weekend' : '' }} {{ col.type.disabled ? 'picker-calendar-day-disabled' : '' }}" 
+											bindtap="{{ handleDayClick }}" 
+										>
+											<text class="text">{{ col.day }}</text>
+										</view>
+									</block>
+								</view>
+							</block>
+						</view>
+					</block>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>

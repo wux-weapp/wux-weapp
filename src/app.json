@@ -19,6 +19,7 @@
     "pages/refresher/index",
     "pages/seats/index",
     "pages/notification/index",
+    "pages/calendar/index",
     "pages/about/index"
   ],
   "window": {

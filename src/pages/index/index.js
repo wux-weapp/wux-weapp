@@ -21,6 +21,12 @@ Page({
 				icon: '../../assets/images/iconfont-barcode.png', 
 			},
 			{
+				title: 'Calendar', 
+				remark: '日历', 
+				url: '/pages/calendar/index', 
+				icon: '../../assets/images/iconfont-calendar.png', 
+			},
+			{
 				title: 'CountDown', 
 				remark: '倒计时', 
 				url: '/pages/countdown/index', 
