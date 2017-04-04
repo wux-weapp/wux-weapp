@@ -1,6 +1,7 @@
 import $wuxActionSheet from 'actionsheet/actionsheet'
 import $wuxBackdrop from 'backdrop/backdrop'
 import $wuxBarcode from 'barcode/barcode'
+import $wuxButton from 'button/button'
 import $wuxCalendar from 'calendar/calendar'
 import $wuxCountDown from 'countdown/countdown'
 import $wuxCountUp from 'countup/countup'
@@ -23,6 +24,7 @@ export {
 	$wuxActionSheet, 
 	$wuxBackdrop, 
 	$wuxBarcode, 
+	$wuxButton, 
 	$wuxCalendar, 
 	$wuxCountDown, 
 	$wuxCountUp, 

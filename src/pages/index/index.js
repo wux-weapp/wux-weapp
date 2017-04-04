@@ -21,6 +21,12 @@ Page({
 				icon: '../../assets/images/iconfont-barcode.png', 
 			},
 			{
+				title: 'Button', 
+				remark: '浮动按钮', 
+				url: '/pages/button/index', 
+				icon: '../../assets/images/iconfont-button.png', 
+			},
+			{
 				title: 'Calendar', 
 				remark: '日历', 
 				url: '/pages/calendar/index', 

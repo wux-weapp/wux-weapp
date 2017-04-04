@@ -20,6 +20,7 @@
     "pages/seats/index",
     "pages/notification/index",
     "pages/calendar/index",
+    "pages/button/index",
     "pages/about/index"
   ],
   "window": {

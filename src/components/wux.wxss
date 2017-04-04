@@ -3,6 +3,7 @@
 
 @import './styles/actionsheet.wxss';
 @import './styles/backdrop.wxss';
+@import './styles/button.wxss';
 @import './styles/calendar.wxss';
 @import './styles/dialog.wxss';
 @import './styles/gallery.wxss';
