@@ -1,11 +1,22 @@
 .wux-rater {
-	text-align: left;
-	display: inline-block;
+	display: block;
+    margin: 0;
+    padding: 0;
 	line-height: normal;
+    vertical-align: middle;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.wux-rater:after {
+	display: table;
+    content: " ";
+	clear: both;
 }
 
 .wux-rater .wux-rater-box {
-	display: inline-block;
+	display: block;
+	float: left;
 	text-align: center;
 	cursor: pointer;
 	color: #ccc;
@@ -28,13 +39,21 @@
 
 .wux-rater-inner {
 	position: relative;
-	display: inline-block;
+	display: block;
 }
 
 .wux-rater-outer {
 	position: absolute;
 	left: 0;
 	top: 0;
-	display: inline-block;
+	display: block;
 	overflow: hidden;
+}
+
+.wux-rater-text {
+	display: inline-block;
+	float: none;
+	margin-left: 10px;
+	vertical-align: middle;
+	font-size: 12px;
 }

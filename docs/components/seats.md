@@ -74,7 +74,7 @@ Page({
 			onSelect(items) {
 				console.log(items)
 
-				this.page.setData({
+				this.setData({
 					items, 
 					total: (items.length * 20).toFixed(2)
 				})

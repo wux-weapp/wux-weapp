@@ -13,7 +13,7 @@ export default {
 			disabled: !0, 
 			longpress: !1, 
 			className: undefined, 
-			callback: function() {}, 
+			callback() {}, 
 		}
 	},
 	/**
@@ -46,7 +46,7 @@ export default {
     			 * 更新值
     			 */
 	    		updateValues(value) {
-	    			const xnumber = this.page.data.$wux.xnumber[id]
+	    			const xnumber = this.getComponentData()
 
 					// 最小值
 					if (xnumber.min && value < xnumber.min) {
@@ -71,7 +71,7 @@ export default {
 	    		 * 数字计算函数
 	    		 */
 				calculation(type, meta) {
-					const xnumber = this.page.data.$wux.xnumber[id]
+					const xnumber = this.getComponentData()
 
 					if (type === `add`) {
 						if (xnumber.disabledMax) return !1

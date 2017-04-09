@@ -11,7 +11,7 @@ export default {
 			text: ``, 
 			timer: 3000, 
 			className: ``, 
-			success: function() {}, 
+			success() {}, 
 		}
 	},
 	/**

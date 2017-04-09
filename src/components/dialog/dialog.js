@@ -17,10 +17,10 @@ export default {
 	 */
 	data() {
 		return {
-			onCancel: function() {}, 
+			onCancel() {}, 
         	cancelText: `取消`, 
         	cancelType: `weui-dialog__btn_default`, 
-        	onConfirm: function() {}, 
+        	onConfirm() {}, 
         	confirmText: `确定`, 
         	confirmType: `weui-dialog__btn_primary`, 
         }
@@ -76,7 +76,7 @@ export default {
 				 * 当键盘输入时，触发 input 事件
 				 */
 				bindinput(e) {
-					this.page.setData({
+					this.setData({
 						[`$wux.dialog.prompt.response`]: e.detail.value, 
 					})
 				},

@@ -10,6 +10,8 @@ class Countdown {
 	 * 初始化
 	 */
 	__init() {
+		this.page = getCurrentPages()[getCurrentPages().length - 1]
+		this.setData = this.page.setData.bind(this.page)
 		this.restart(this.options)
 	}
 

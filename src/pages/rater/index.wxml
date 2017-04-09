@@ -63,5 +63,49 @@
                 </view>
             </view>
         </view>
+        <view class="weui-cells__title">show text</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">Star</view>
+                <view class="weui-cell__ft">
+                    <template is="rater" data="{{ ...$wux.rater.text1 }}"/>
+                </view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">Star</view>
+                <view class="weui-cell__ft">
+                    <template is="rater" data="{{ ...$wux.rater.text2 }}"/>
+                </view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">Star</view>
+                <view class="weui-cell__ft">
+                    <template is="rater" data="{{ ...$wux.rater.text3 }}"/>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__title">set callback</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">How embarrass</view>
+                <view class="weui-cell__ft">
+                    <template is="rater" data="{{ ...$wux.rater.embarrass }}"/>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__title">update value</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">Very good</view>
+                <view class="weui-cell__ft">
+                    <template is="rater" data="{{ ...$wux.rater.good }}"/>
+                </view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <slider value="{{ slider }}" show-value min="0" max="5" bindchange="sliderChange" />
+                </view>
+            </view>
+        </view>
     </view>
 </view>

@@ -18,6 +18,7 @@ class Component {
 	 */
 	__init() {
 		this.page = getCurrentPages()[getCurrentPages().length - 1]
+		this.setData = this.page.setData.bind(this.page)
 		this.__initState()
 	}
 
@@ -38,11 +39,15 @@ class Component {
 
 		this._data = {}
 
-		// 筛选非函数类型
+		// 筛选非函数类型，更改参数中函数的 this 指向
 		if (!this.isEmptyObject(data)) {
 			for(let key in data) {
-				if (data.hasOwnProperty(key) && typeof data[key] !== `function`) {
-					this._data[key] = data[key]
+				if (data.hasOwnProperty(key)) {
+					if (typeof data[key] === `function`) {
+						data[key] = data[key].bind(this)
+					} else {
+						this._data[key] = data[key]
+					}
 				}
 			}
 		}
@@ -70,12 +75,26 @@ class Component {
 					this.page[`${scope}.${key}`] = methods[key]
 
 					// 将方法名同步至 page.data 上面，方便在模板内使用 {{ method }} 方式绑定事件
-					this.page.setData({
+					this.setData({
 						[`${scope}.${key}`]: `${scope}.${key}`, 
 					})
 				}
 			}
 		}
+	}
+
+	/**
+	 * 获取组件的 data 数据
+	 */
+	getComponentData() {
+		let data = this.page.data
+		let name = this.options.scope && this.options.scope.split(`.`)
+		
+		name.forEach((n, i) => {
+			data = data[n]
+		})
+
+		return data
 	}
 
 	/**
@@ -91,7 +110,7 @@ class Component {
 	 * 设置元素显示
 	 */
 	setVisible(className = `weui-animate-fade-in`) {
-		this.page.setData({
+		this.setData({
 			[`${this.options.scope}.animateCss`]: className, 
 			[`${this.options.scope}.visible`]: !0, 
 		})
@@ -101,11 +120,11 @@ class Component {
 	 * 设置元素隐藏
 	 */
 	setHidden(className = `weui-animate-fade-out`, timer = 300) {
-    	this.page.setData({
+    	this.setData({
 			[`${this.options.scope}.animateCss`]: className, 
 		})
 		setTimeout(() => {
-			this.page.setData({
+			this.setData({
 				[`${this.options.scope}.visible`]: !1, 
 			})
 		}, timer)

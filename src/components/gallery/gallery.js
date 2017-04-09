@@ -8,8 +8,8 @@ export default {
 		return {
 			current: 0, 
 			urls: [], 
-			delete: function() {}, 
-			cancel: function() {}, 
+			[`delete`]() {}, 
+			cancel() {}, 
 		}
 	},
 	/**
@@ -47,10 +47,9 @@ export default {
 				/**
 				 * 点击删除按钮时会触发 delete 事件
 				 */
-				delete(e) {
-					if(typeof options.delete === `function`) {
-						const gallery = this.page.data.$wux.gallery
-						if (options.delete(gallery.current, options.urls) === true) {
+				[`delete`](e) {
+					if(typeof options[`delete`] === `function`) {
+						if (options[`delete`](this.getComponentData().current, options.urls) === true) {
 							this.hide()
 						}
 					}
@@ -59,7 +58,7 @@ export default {
 				 * current 改变时会触发 change 事件
 				 */
 				bindchange(e) {
-					this.page.setData({
+					this.setData({
 						[`$wux.gallery.current`]: e.detail.current, 
 					})
 				},

@@ -11,8 +11,8 @@ export default {
 			text: undefined, 
 			timer: 3000, 
 			data: undefined, 
-			onClick: function() {}, 
-			onClose: function() {}, 
+			onClick() {}, 
+			onClose() {}, 
 		}
 	},
 	/**
@@ -40,8 +40,8 @@ export default {
 			}
 		}
 
-		const setStyle = (page, diff = 0) => {
-			page.setData({
+		const setStyle = (vm, diff = 0) => {
+			vm.setData({
 				[`$wux.notification.style`]: diff ? `transform: translate3d(0, ${diff}px, 0)` : ``, 
 			})
 		}
@@ -88,14 +88,14 @@ export default {
 						this.diffY = Math.sqrt(this.diffY)
 					}
 
-					setStyle(this.page, this.diffY)
+					setStyle(this, this.diffY)
 				},
 				/**
 				 * 	手指触摸动作结束
 				 */
 				bindtouchend(e) {
 					that.touching = !1
-					setStyle(this.page)
+					setStyle(this)
 
 					if(this.diffY < 0 && (Math.abs(this.diffY) > 40)) {
 						this.hide()

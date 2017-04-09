@@ -95,7 +95,7 @@ export default {
                  * 渲染组件
                  */
                 render() {
-                    this.page.setData({
+                    this.setData({
                         [`$wux.seats.${id}.seats`]: this.getData().maps
                     })
                 },
@@ -104,7 +104,7 @@ export default {
                  */
                 bindchange(e) {
                     const values = e.detail.value
-                    const seats = this.page.data.$wux.seats[id].seats
+                    const seats = this.getComponentData().seats
                     const params = {
                         items: [], 
                     }
@@ -126,7 +126,7 @@ export default {
                         })  
                     })
 
-                    this.page.setData({
+                    this.setData({
                         [`$wux.seats.${id}.seats`]: seats
                     })
 
@@ -138,7 +138,7 @@ export default {
                  * 禁用
                  */
                 disabled(values) {
-                    const seats = this.page.data.$wux.seats[id].seats
+                    const seats = this.getComponentData().seats
                     const len = values.length
 
                     seats.forEach((value, key) => {
@@ -152,7 +152,7 @@ export default {
                         })   
                     })
 
-                    this.page.setData({
+                    this.setData({
                         [`$wux.seats.${id}.seats`]: seats
                     })
                 },

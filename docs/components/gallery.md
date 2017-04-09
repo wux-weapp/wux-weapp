@@ -79,7 +79,6 @@ Page({
     },
     onLoad() {},
     showGallery(e) {
-        const that = this
         const dataset = e.currentTarget.dataset
         const current = dataset.current
         const urls = this.data.urls
@@ -87,9 +86,9 @@ Page({
         $wuxGallery.show({
             current: current, 
             urls: urls, 
-            delete: (current, urls) => {
+            [`delete`](current, urls){
                 urls.splice(current, 1)
-                that.setData({
+                this.setData({
                     urls: urls, 
                 })
                 return !0

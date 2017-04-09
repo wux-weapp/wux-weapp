@@ -10,11 +10,11 @@ export default {
 			className: undefined, 
 	    	titleText: undefined, 
 			buttons: [], 
-			buttonClicked: function() {}, 
+			buttonClicked() {}, 
 			cancelText: `取消`, 
-			cancel: function() {}, 
+			cancel() {}, 
 			// destructiveText: '删除', 
-			// destructiveButtonClicked: function() {}, 
+			// destructiveButtonClicked() {}, 
 		}
     },
 	/**

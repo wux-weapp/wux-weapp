@@ -47,7 +47,7 @@ Page({
 				return true
 			},
 			callback(vm, opened) {
-				vm.page.setData({
+				vm.setData({
 					opened, 
 				})
 			},

@@ -11,18 +11,18 @@ export default {
 			cancel: {
 				text: `取消`, 
 				className: ``, 
-				bindtap: function() { 
+				bindtap() { 
 					return !1
 				},
 			},
 			confirm: {
 				text: `确定`, 
 				className: ``, 
-				bindtap: function() { 
+				bindtap() { 
 					return !0
 				},
 			},
-			onChange: function() {}
+			onChange() {}
 		}
 	},
 	/**
@@ -88,8 +88,8 @@ export default {
 		!isMulti && (options.items = [options.items])
     	
 		// 回调函数
-		const callback = (page, cb) => {
-			const picker = page.data.$wux.picker[id]
+		const callback = (vm, cb) => {
+			const picker = vm.getComponentData()
 			const params = that.updateParam(picker.items, picker.value)
 			typeof cb === `function` && cb(params.value, params.values)
 		}
@@ -104,14 +104,14 @@ export default {
 				 */
 				onCancel(e) {
 					this.setHidden([`weui-animate-slide-down`, `weui-animate-fade-out`])
-					callback(this.page, options.cancel.bindtap)
+					callback(this, options.cancel.bindtap)
 				},
 				/**
 				 * 点击确定按钮时会触发 confirm 事件
 				 */
 				onConfirm(e) {
 					this.setHidden([`weui-animate-slide-down`, `weui-animate-fade-out`])
-					callback(this.page, options.confirm.bindtap)
+					callback(this, options.confirm.bindtap)
 				},
 				/**
 				 * 当滚动选择，value 改变时触发 change 事件
@@ -119,10 +119,10 @@ export default {
 				bindChange(e) {
 					const value = e && e.detail && e.detail.value || that.temp[id] || options.value || that.defaultValue(options.items)
 					that.temp[id] = value
-					this.page.setData({
+					this.setData({
 						[`$wux.picker.${id}.value`]: value, 
 					})
-					callback(this.page, options.onChange)
+					callback(this, options.onChange)
 				},
 				/**
 				 * 显示

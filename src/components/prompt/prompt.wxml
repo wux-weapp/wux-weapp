@@ -5,7 +5,21 @@
 	        <view class="prompt-title">{{ title }}</view>
 	        <view class="prompt-text">{{ text }}</view>
 	        <view class="prompt-button-area" wx:if="{{ buttons && !!buttons.length }}">
-	        	<button type="{{ item.type || 'default' }}" size="{{ item.size || 'default' }}" loading="{{ item.loading }}" plain="{{ item.plain }}" disabled="{{ item.disabled }}" class="prompt-button {{ item.className }}" hover-class="{{ item.haveClass || 'button-hover' }}" wx:for="{{ buttons }}" wx:key="" bindtap="{{ buttonClicked }}" data-index="{{ index }}">{{ item.text }}</button>
+	        	<block wx:for="{{ buttons }}" wx:key="">
+	        		<button 
+	        			type="{{ item.type || 'default' }}" 
+	        			size="{{ item.size || 'default' }}" 
+	        			loading="{{ item.loading }}" 
+	        			plain="{{ item.plain }}" 
+	        			disabled="{{ item.disabled }}" 
+	        			class="prompt-button {{ item.className }}" 
+	        			hover-class="{{ item.haveClass || 'button-hover' }}" 
+	        			bindtap="{{ buttonClicked }}" 
+	        			data-index="{{ index }}" 
+	        		>
+	        			{{ item.text }}
+	        		</button>
+	        	</block>
 	        </view>
 	    </view>
 	</view>

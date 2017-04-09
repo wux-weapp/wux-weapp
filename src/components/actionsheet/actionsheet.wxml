@@ -4,9 +4,11 @@
 			<view class="action-sheet">
 				<view class="action-sheet-group action-sheet-options">
 					<view class="action-sheet-title" wx:if="{{ titleText }}">{{ titleText }}</view>
-					<button class="button action-sheet-option {{ item.classNmae }}" data-index="{{ index }}" catchtap="{{ buttonClicked }}" wx:for="{{ buttons }}" wx:key="">
-						{{ item.text }}
-					</button>
+					<block wx:for="{{ buttons }}" wx:key="">
+						<button class="button action-sheet-option {{ item.classNmae }}" data-index="{{ index }}" catchtap="{{ buttonClicked }}">
+							{{ item.text }}
+						</button>
+					</block>
 					<button class="button destructive action-sheet-destructive" wx:if="{{ destructiveText }}" catchtap="{{ destructiveButtonClicked }}">{{ destructiveText }}</button>
 				</view>
 				<view class="action-sheet-group action-sheet-cancel" wx:if="{{ cancelText }}">

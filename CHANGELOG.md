@@ -1,3 +1,8 @@
+#### v 1.1.5 (2017-04-09)
+
+- 【优化】 优化组件代码，更改参数中函数的 this 指向组件自身，若使用箭头函数 this 则指向当前 page
+- 【优化】 rater 组件，增加配置项 text 提示文字、defaultTextColor 提示的默认文字颜色，callack 回调函数增加三个参数 value 组件的当前 star 数、data 组件的 data、text 组件的提示文字
+
 #### v 1.1.4 (2017-04-04)
 
 - 【增强】 增加 button 组件

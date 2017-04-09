@@ -11,7 +11,7 @@ export default {
 			title: undefined, 
 			text: undefined, 
 			buttons: [], 
-			buttonClicked: function() {}, 
+			buttonClicked() {}, 
 		}
 	},
 	/**

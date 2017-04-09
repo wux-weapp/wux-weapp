@@ -10,8 +10,8 @@ export default {
             position: `bottomRight`, 
 			backdrop: !1, 
 			buttons: [], 
-            buttonClicked: function() {}, 
-			callback: function() {}, 
+            buttonClicked() {}, 
+			callback() {}, 
 		}
     },
     /**
@@ -68,7 +68,7 @@ export default {
 
         // 切换状态
         const toggle = (vm, opened = !1) => {
-            vm.page.setData({
+            vm.setData({
                 [`$wux.button.${id}.opened`]: opened
             })
             if (typeof options.callback === `function`) {

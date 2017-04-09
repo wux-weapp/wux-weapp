@@ -109,18 +109,18 @@ export default {
 			cancel: {
 				text: `取消`, 
 				className: ``, 
-				bindtap: function() { 
+				bindtap() { 
 					return !1
 				},
 			},
 			confirm: {
 				text: `确定`, 
 				className: ``, 
-				bindtap: function() { 
+				bindtap() { 
 					return !0
 				},
 			},
-			onChange: function() {}
+			onChange() {}
 		}
 	},
 	/**
@@ -155,17 +155,17 @@ export default {
 		const options = Object.assign({}, this.data(), this.setDefaults(), opts)
     	
 		// 回调函数
-		const callback = (page, cb) => {
-			const pickerCity = page.data.$wux.pickerCity[id]
+		const callback = (vm, cb) => {
+			const pickerCity = vm.getComponentData()
 			const params = updateParam(pickerCity.cols, pickerCity.value)
 			typeof cb === `function` && cb(params.value, params.values, params.displayValues)
 		}
 
 		// 更新视图
-		const updateView = (page, value) => {
+		const updateView = (vm, value) => {
 			const cols = updateCols(value)
 			const items = updateItems(cols)
-			page.setData({
+			vm.setData({
 				[`$wux.pickerCity.${id}.cols`]: cols, 
 				[`$wux.pickerCity.${id}.items`]: items, 
 				[`$wux.pickerCity.${id}.value`]: value, 
@@ -182,14 +182,14 @@ export default {
 				 */
 				onCancel(e) {
 					this.setHidden([`weui-animate-slide-down`, `weui-animate-fade-out`])
-					callback(this.page, options.cancel.bindtap)
+					callback(this, options.cancel.bindtap)
 				},
 				/**
 				 * 点击确定按钮时会触发 confirm 事件
 				 */
 				onConfirm(e) {
 					this.setHidden([`weui-animate-slide-down`, `weui-animate-fade-out`])
-					callback(this.page, options.confirm.bindtap)
+					callback(this, options.confirm.bindtap)
 				},
 				/**
 				 * 当滚动选择，value 改变时触发 change 事件
@@ -197,8 +197,8 @@ export default {
 				bindChange(e) {
 					const value = e && e.detail && e.detail.value || that.temp[id] || options.value || [0, 0, 0]
 					that.temp[id] = value
-					updateView(this.page, value)
-					callback(this.page, options.onChange)
+					updateView(this, value)
+					callback(this, options.onChange)
 				},
 				/**
 				 * 显示

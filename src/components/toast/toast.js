@@ -10,7 +10,7 @@ export default {
 			timer: 1500, 
 			color: `#fff`, 
 			text: `已完成`, 
-			success: function() {}, 
+			success() {}, 
 		}
 	},
 	/**
