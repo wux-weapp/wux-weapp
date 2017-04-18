@@ -36,10 +36,21 @@
     position: relative;
     overflow: hidden;
     text-overflow: ellipsis;
-	text-align: center;
     color: #9b9b9b;
     width: 100%;
     box-sizing: border-box;
+}
+
+.wux-picker .wux-picker-view-column-left {
+	text-align: left !important;
+}
+
+.wux-picker .wux-picker-view-column-right {
+	text-align: right !important;
+}
+
+.wux-picker .wux-picker-view-column-center {
+	text-align: center !important;
 }
 
 .picker-header {
@@ -97,12 +108,7 @@
 	box-sizing: border-box;
 }
 
-.picker-header .picker-button.cancel {
-	right: inherit;
-	left: 0;
-}
-
-.picker-header .picker-button.confirm {
+.picker-header .close-picker {
+	top: 0;
 	right: 0;
-	left: inherit;
 }

@@ -1,102 +1,49 @@
 import Component from '../component'
-import data from 'data'
+import data from './data'
 
-const raw = data
-
-// 格式化
 const format = (data) => {
 	let result = []
-	for(let i=0; i < data.length; i++) {
+	for(let i = 0; i < data.length; i++) {
 		let d = data[i]
-		if(/^请选择|市辖区/.test(d.name)) continue
-		result.push(d)
+		if(d.name === "请选择") continue
+		result.push(d.name)
 	}
 	if(result.length) return result
-	return []
-}
+	return [""]
+};
 
-// 获取子级
 const sub = (data) => {
-	if(!data.sub) return [{ name: ``, code: data.code }]
+	if(!data.sub) return [""]
 	return format(data.sub)
 }
 
-// 获取城市
 const getCities = (d) => {
 	for(let i = 0; i < raw.length; i++) {
-		if(raw[i].code === d || raw[i].name === d) return sub(raw[i])
+		if(raw[i].name === d) return sub(raw[i])
 	}
-	return []
+	return [""]
 }
 
-// 获取区县
 const getDistricts = (p, c) => {
 	for(let i = 0; i < raw.length; i++) {
-		if(raw[i].code === p || raw[i].name === p) {
+		if(raw[i].name === p) {
 			for(let j = 0; j < raw[i].sub.length; j++) {
-				if(raw[i].sub[j].code === c || raw[i].sub[j].name === c) {
+				if(raw[i].sub[j].name === c) {
 					return sub(raw[i].sub[j])
 				}
 			}
 		}
 	}
+	return [""]
 }
 
-// 获取组件参数
-const updateCols = (value = [0, 0, 0]) => {
-	const provincesName = raw.map((d) => d.name)
-	const provincesCode = raw.map((d) => d.code)
-
-	const initCities = sub(raw[value[0]])
-	const initCitiesName = initCities.map((c) => c.name)
-	const initCitiesCode = initCities.map((c) => c.code)
-	value[1] > initCities.length-1 && (value[1] = initCities.length-1)
-
-	const initDistricts = sub(raw[value[0]].sub[value[1]])
-	const initDistrictsName = initDistricts.map((c) => c.name)
-	const initDistrictsCode = initDistricts.map((c) => c.code)
-	value[2] > initDistricts.length-1 && (value[2] = initDistricts.length-1)
-
-	return [
-		{
-			displayValues: provincesName,
-			values: provincesCode,
-		},
-		{
-			displayValues: initCitiesName,
-			values: initCitiesCode,
-		},
-		{
-			values: initDistrictsCode,
-			displayValues: initDistrictsName,
-		}
-	]
-}
-
-// 更新参数
-const updateParam = (items, value) => {
-	const params = {
-		value: value, 
-		values: [], 
-		displayValues: [], 
-	}
-
-	items.forEach((n, i) => {
-		params.values.push(n.values[value[i]])
-		params.displayValues.push(n.displayValues[value[i]])
-	})
-	
-	return params
-}
-
-// 更新picker数据
-const updateItems = (cols) => {
-	let items = []
-	cols.forEach((n, i) => {
-		items.push(n.displayValues)
-	})
-	return items
-}
+let raw = data
+let provinces = raw.map(d => d.name)
+let currentProvince = provinces[0]
+let initCities = sub(raw[0])
+let currentCity = initCities[0]
+let initDistricts = getDistricts(currentProvince, currentCity)
+let currentDistrict = initDistricts[0]
 
 export default {
 	/**
@@ -105,31 +52,24 @@ export default {
 	setDefaults() {
 		return {
 			title: `请选择`, 
-			items: [], 
-			cancel: {
-				text: `取消`, 
-				className: ``, 
-				bindtap() { 
-					return !1
+			cols: [
+				{
+					values: provinces, 
+					className: `col-province`, 
 				},
-			},
-			confirm: {
-				text: `确定`, 
-				className: ``, 
-				bindtap() { 
-					return !0
+				{
+					values: initCities, 
+					className: `col-city`, 
 				},
-			},
+				{
+					values: initDistricts, 
+					className: `col-district`, 
+				}
+			], 
+			value: [], 
+			toolbar: true, 
+			toolbarCloseText: `完成`, 
 			onChange() {}
-		}
-	},
-	/**
-	 * 默认数据
-	 */
-	data() {
-		return {
-			value: [0, 0, 0], 
-			cols: updateCols(), 
 		}
 	},
 	/**
@@ -137,68 +77,66 @@ export default {
 	 */
 	temp: {},
 	/**
-	 * 渲染城市选择器组件
+	 * 渲染选择器组件
 	 * @param {String} id   唯一标识
+	 * @param {Object} opts 配置项
 	 * @param {String} opts.title 提示标题
-	 * @param {Object} opts.cancel 取消按钮的配置项
-	 * @param {String} opts.cancel.text 取消按钮的文字
-	 * @param {String} opts.cancel.className 添加自定义取消按钮的类
-	 * @param {Function} opts.cancel.bindtap 点击取消按钮的回调函数
-	 * @param {Object} opts.confirm 确定按钮的配置项
-	 * @param {String} opts.confirm.text 确定按钮的文字
-	 * @param {String} opts.confirm.className 添加自定义确定按钮的类
-	 * @param {Function} opts.confirm.bindtap 点击确定按钮的回调函数
+	 * @param {Array} opts.cols 选择器的数据
+	 * @param {String} opts.cols.className 自定义每一列的类
+	 * @param {Array} opts.cols.values 自定义每一列的数据
+	 * @param {Array} opts.value 选择器的默认值
+	 * @param {Boolean} opts.toolbar 是否显示工具栏
+	 * @param {String} opts.toolbarCloseText 关闭按钮的文案
 	 * @param {Function} opts.onChange 监听值变化的回调函数
 	 */
 	init(id, opts = {}) {
 		const that = this
-		const options = Object.assign({}, this.data(), this.setDefaults(), opts)
-    	
-		// 回调函数
-		const callback = (vm, cb) => {
-			const pickerCity = vm.getComponentData()
-			const params = updateParam(pickerCity.cols, pickerCity.value)
-			typeof cb === `function` && cb(params.value, params.values, params.displayValues)
-		}
+		const updateValue = (cols = [], arrValues = []) => {
+			let newValue = []
+			let newValueIndex = []
+			let newDisplayValue = []
 
-		// 更新视图
-		const updateView = (vm, value) => {
-			const cols = updateCols(value)
-			const items = updateItems(cols)
-			vm.setData({
-				[`$wux.pickerCity.${id}.cols`]: cols, 
-				[`$wux.pickerCity.${id}.items`]: items, 
-				[`$wux.pickerCity.${id}.value`]: value, 
-			})
-		}
+			for (let i = 0; i < cols.length; i++) {
+				if (cols[i]) {
+					const values = cols[i].values || []
+					const displayValue = cols[i].displayValue || []
+					const valueIndex = arrValues[i]
 
+					newValueIndex.push( typeof values[valueIndex] !== `undefined` ? valueIndex : 0)
+					newValue.push( typeof values[valueIndex] !== `undefined` ? values[valueIndex] : values[0])
+					newDisplayValue.push( typeof displayValue[valueIndex] !== `undefined` ? displayValue[valueIndex] : undefined)
+				}
+			}
+
+			if (newValue.indexOf(undefined) >= 0) {
+				return !1
+			}
+
+			return {
+				value: newValue, 
+				valueIndex: newValueIndex, 
+				displayValue: newDisplayValue, 
+			}
+		}
+		const temp = that.temp[id] = that.temp[id] ? that.temp[id] : {
+			currentProvince, 
+			currentCity, 
+		}
+		const options = Object.assign({}, this.setDefaults(), opts)
+
+		options.value = updateValue(options.cols, options.value).valueIndex
+		options.cols = temp && temp.cols || options.cols
+		
 		// 实例化组件
 		const component = new Component({
 			scope: `$wux.pickerCity.${id}`, 
 			data: options, 
 			methods: {
 				/**
-				 * 点击取消按钮时会触发 cancel 事件
+				 * 隐藏
 				 */
-				onCancel(e) {
+				hide(e) {
 					this.setHidden([`weui-animate-slide-down`, `weui-animate-fade-out`])
-					callback(this, options.cancel.bindtap)
-				},
-				/**
-				 * 点击确定按钮时会触发 confirm 事件
-				 */
-				onConfirm(e) {
-					this.setHidden([`weui-animate-slide-down`, `weui-animate-fade-out`])
-					callback(this, options.confirm.bindtap)
-				},
-				/**
-				 * 当滚动选择，value 改变时触发 change 事件
-				 */
-				bindChange(e) {
-					const value = e && e.detail && e.detail.value || that.temp[id] || options.value || [0, 0, 0]
-					that.temp[id] = value
-					updateView(this, value)
-					callback(this, options.onChange)
 				},
 				/**
 				 * 显示
@@ -206,10 +144,62 @@ export default {
 				show() {
 					this.setVisible([`weui-animate-slide-up`, `weui-animate-fade-in`])
 				},
+				/**
+				 * 当滚动选择，value 改变时触发 change 事件
+				 */
+				bindChange(e) {
+					this.render(e.detail.value)
+				},
+				/**
+				 * 更新组件
+				 */
+				updateValue: updateValue, 
+				/**
+				 * 渲染组件
+				 */
+				render(value = []) {
+					const render = (cols, value) => {
+						const params = this.updateValue(cols, value)
+						this.setData({
+							[`$wux.pickerCity.${id}.cols`]: cols, 
+							[`$wux.pickerCity.${id}.value`]: params.valueIndex, 
+						})
+						typeof options.onChange === `function` && options.onChange(params)
+					}
+
+					let cols = this.getComponentData().cols
+					let newProvince = cols[0].values[value[0]]
+					let newCity, isEnd = !1
+
+					if(newProvince !== temp.currentProvince) {
+						const newCities = getCities(newProvince)
+						newCity = newCities[0]
+						const newDistricts = getDistricts(newProvince, newCity)
+						cols[1].values = newCities
+						cols[2].values = newDistricts
+						temp.currentProvince = newProvince
+						temp.currentCity = newCity
+						isEnd = !0
+					}
+
+					const _newCity = cols[1].values[value[1]]
+
+					if(!isEnd && _newCity !== temp.currentCity) {
+						newCity = _newCity
+						const newDistricts = getDistricts(newProvince, newCity)
+						cols[2].values = newDistricts
+						temp.currentCity = newCity
+					}
+
+					render(cols, value)
+
+					temp.value = value
+					temp.cols = cols
+				},
 			}
 		})
-
-    	component.bindChange()
+		
     	component.show()
+    	component.render(temp && temp.value || options.value)
 	},
 }
