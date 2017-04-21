@@ -1,6 +1,6 @@
 {
   "name": "wux",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "微信小程序 - 自定义组件",
   "main": "src/app.js",
   "dependencies": {},

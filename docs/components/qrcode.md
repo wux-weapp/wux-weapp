@@ -30,8 +30,8 @@
                 </view>
             </view>
         </view>
-        <view class="weui-cells__tips">提示：Canvas在微信中无法长按识别</view>
-        <canvas style="width: 200px; height: 200px; margin: 30px auto;" canvas-id="qrcode"></canvas>
+        <view class="weui-cells__tips">提示：Canvas 在微信中无法长按识别, 点击图片进入保存页面长按图片可以保存</view>
+        <canvas style="width: 200px; height: 200px; margin: 30px auto;" canvas-id="qrcode" bindtap="previewImage"></canvas>
     </view>
 </view>
 ```
@@ -44,7 +44,7 @@ Page({
         value: '', 
     },
     onLoad() {
-        $wuxQrcode.init('qrcode', 'wux')
+        this.renderQrcode('qrcode', 'https://github.com/skyvow/wux')
     },
     bindinput(e) {
         const value = e.detail.value
@@ -53,7 +53,28 @@ Page({
             value, 
         })
 
-        $wuxQrcode.init('qrcode', value)
+        this.renderQrcode('qrcode', value)
+    },
+    previewImage() {
+        wx.canvasToTempFilePath({
+            canvasId: 'qrcode', 
+            success: res => {
+                wx.previewImage({
+                    urls: [res.tempFilePath]
+                })
+            }
+        })
+    },
+    randomColor() {
+        const colorStr = Math.floor(Math.random() * 0xFFFFFF).toString(16).toUpperCase()
+        const length = colorStr.length
+        const prefixStr = `000000`.substring(0, 6 - colorStr.length)
+        return `#${prefixStr}${colorStr}`
+    },
+    renderQrcode(canvasId, value) {
+        $wuxQrcode.init(canvasId, value, {
+            fgColor: this.randomColor()
+        })
     },
 })
 ```

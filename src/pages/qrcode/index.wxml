@@ -13,7 +13,7 @@
                 </view>
             </view>
         </view>
-        <view class="weui-cells__tips">提示：Canvas在微信中无法长按识别</view>
-        <canvas style="width: 200px; height: 200px; margin: 30px auto;" canvas-id="qrcode"></canvas>
+        <view class="weui-cells__tips">提示：Canvas 在微信中无法长按识别, 点击图片进入保存页面长按图片可以保存</view>
+        <canvas style="width: 200px; height: 200px; margin: 30px auto;" canvas-id="qrcode" bindtap="previewImage"></canvas>
     </view>
 </view>
