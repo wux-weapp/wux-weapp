@@ -3,9 +3,8 @@
 		<swiper class="weui-gallery__swiper" current="{{ current }}" bindchange="{{ bindchange }}" hidden="{{ !urls.length }}">
 			<block wx:for="{{ urls }}" wx:key="{{ item }}">
 				<swiper-item class="flex-col">
-                                    <image  class="weui-gallery__img" mode="aspectFit" bindtap="{{ hide }}" src="{{ item }}"></image>
+					<image  class="weui-gallery__img" mode="aspectFit" bindtap="{{ hide }}" src="{{ item }}"></image>
 				</swiper-item>
-			</block>
 			</block>
 		</swiper>
         <view class="weui-gallery__opr" bindtap="{{ delete }}">
