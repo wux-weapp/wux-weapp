@@ -9,14 +9,16 @@
 	z-index: 1000;
 }
 
+.flex-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+}
+
 .weui-gallery__img {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 60px;
-	left: 0;
-	background: center center no-repeat;
-	background-size: contain;
+        flex: none;
+        width: 100%;
+        height: 100%;
 }
 
 .weui-gallery__opr {
