@@ -51,7 +51,7 @@
 }
 
 .speed-dial {
-    position: absolute;
+    position: fixed;
     z-index: 1500;
 }
 
