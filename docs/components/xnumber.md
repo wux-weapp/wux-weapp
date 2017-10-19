@@ -16,7 +16,7 @@
 
 **Example**  
 ```html
-<import src="../../components/xnumber/xnumber.wxml"/>
+<import src="../../components/xnumber/xnumber.wxml" />
 
 <view class="page">
     <view class="page__hd">
@@ -29,7 +29,7 @@
             <view class="weui-cell">
                 <view class="weui-cell__bd">数量</view>
                 <view class="weui-cell__ft">
-                    <template is="xnumber" data="{{ ...$wux.xnumber.num1 }}"/>
+                    <template is="xnumber" data="{{ ...$wux.xnumber.num1 }}" />
                 </view>
             </view>
         </view>
@@ -38,7 +38,7 @@
             <view class="weui-cell">
                 <view class="weui-cell__bd">数量</view>
                 <view class="weui-cell__ft">
-                    <template is="xnumber" data="{{ ...$wux.xnumber.num2 }}"/>
+                    <template is="xnumber" data="{{ ...$wux.xnumber.num2 }}" />
                 </view>
             </view>
         </view>
@@ -47,7 +47,7 @@
             <view class="weui-cell">
                 <view class="weui-cell__bd">数量</view>
                 <view class="weui-cell__ft">
-                    <template is="xnumber" data="{{ ...$wux.xnumber.num3 }}"/>
+                    <template is="xnumber" data="{{ ...$wux.xnumber.num3 }}" />
                 </view>
             </view>
         </view>
@@ -56,7 +56,7 @@
             <view class="weui-cell">
                 <view class="weui-cell__bd">数量</view>
                 <view class="weui-cell__ft">
-                    <template is="xnumber" data="{{ ...$wux.xnumber.num4 }}"/>
+                    <template is="xnumber" data="{{ ...$wux.xnumber.num4 }}" />
                 </view>
             </view>
         </view>
@@ -65,7 +65,7 @@
             <view class="weui-cell">
                 <view class="weui-cell__bd">数量</view>
                 <view class="weui-cell__ft">
-                    <template is="xnumber" data="{{ ...$wux.xnumber.num5 }}"/>
+                    <template is="xnumber" data="{{ ...$wux.xnumber.num5 }}" />
                 </view>
             </view>
         </view>
@@ -74,7 +74,7 @@
             <view class="weui-cell">
                 <view class="weui-cell__bd">数量</view>
                 <view class="weui-cell__ft">
-                    <template is="xnumber" data="{{ ...$wux.xnumber.num6 }}"/>
+                    <template is="xnumber" data="{{ ...$wux.xnumber.num6 }}" />
                 </view>
             </view>
         </view>
@@ -83,9 +83,20 @@
             <view class="weui-cell">
                 <view class="weui-cell__bd">数量</view>
                 <view class="weui-cell__ft">
-                    <template is="xnumber" data="{{ ...$wux.xnumber.num7 }}"/>
+                    <template is="xnumber" data="{{ ...$wux.xnumber.num7 }}" />
                 </view>
             </view>
+        </view>
+        <view class="weui-cells__title">循环输出多个组件</view>
+        <view class="weui-cells weui-cells_after-title">
+            <block wx:for="{{ items }}" wx:key="">
+                <view class="weui-cell">
+                    <view class="weui-cell__bd">{{ item.text }}</view>
+                    <view class="weui-cell__ft">
+                        <template is="xnumber" data="{{ ...$wux.xnumber[item.id] }}" />
+                    </view>
+                </view>
+            </block>
         </view>
     </view>
 </view>
@@ -95,35 +106,52 @@
 import { $wuxXnumber } from '../../components/wux'
 
 Page({
-    data: {},
+    data: {
+        items: [{
+                id: '001',
+                text: '房间',
+                value: 1,
+            },
+            {
+                id: '002',
+                text: '成人',
+                value: 2,
+            },
+        ],
+    },
     onLoad() {
         $wuxXnumber.init('num1')
 
         $wuxXnumber.init('num2', {
-            callback: (value) => console.log(value), 
+            callback: (value) => console.log(value),
         })
 
         $wuxXnumber.init('num3', {
-            className: 'custom-xnumber', 
+            className: 'custom-xnumber',
         })
 
         $wuxXnumber.init('num4', {
-            step: .5, 
+            step: .5,
         })
 
         $wuxXnumber.init('num5', {
-            min: -5, 
-            max: 8, 
-            value: 1, 
+            min: -5,
+            max: 8,
+            value: 1,
         })
 
         $wuxXnumber.init('num6', {
-            disabled: !1, 
+            disabled: !1,
         })
 
         $wuxXnumber.init('num7', {
-            longpress: !0, 
+            longpress: !0,
         })
+
+        this.data.items.forEach(n => $wuxXnumber.init(n.id, {
+            value: n.value,
+            callback: (value) => console.log(`已选择${n.text}数量：${value}`),
+        }))
     },
 })
 ```

@@ -1,4 +1,4 @@
-<import src="../../components/xnumber/xnumber.wxml"/>
+<import src="../../components/xnumber/xnumber.wxml" />
 
 <view class="page">
     <view class="page__hd">
@@ -6,12 +6,12 @@
         <view class="page__desc">数字输入框</view>
     </view>
     <view class="page__bd">
-    	<view class="weui-cells__title">默认</view>
+        <view class="weui-cells__title">默认</view>
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell">
                 <view class="weui-cell__bd">数量</view>
                 <view class="weui-cell__ft">
-                	<template is="xnumber" data="{{ ...$wux.xnumber.num1 }}"/>
+                    <template is="xnumber" data="{{ ...$wux.xnumber.num1 }}" />
                 </view>
             </view>
         </view>
@@ -20,7 +20,7 @@
             <view class="weui-cell">
                 <view class="weui-cell__bd">数量</view>
                 <view class="weui-cell__ft">
-                	<template is="xnumber" data="{{ ...$wux.xnumber.num2 }}"/>
+                    <template is="xnumber" data="{{ ...$wux.xnumber.num2 }}" />
                 </view>
             </view>
         </view>
@@ -29,7 +29,7 @@
             <view class="weui-cell">
                 <view class="weui-cell__bd">数量</view>
                 <view class="weui-cell__ft">
-                	<template is="xnumber" data="{{ ...$wux.xnumber.num3 }}"/>
+                    <template is="xnumber" data="{{ ...$wux.xnumber.num3 }}" />
                 </view>
             </view>
         </view>
@@ -38,7 +38,7 @@
             <view class="weui-cell">
                 <view class="weui-cell__bd">数量</view>
                 <view class="weui-cell__ft">
-                	<template is="xnumber" data="{{ ...$wux.xnumber.num4 }}"/>
+                    <template is="xnumber" data="{{ ...$wux.xnumber.num4 }}" />
                 </view>
             </view>
         </view>
@@ -47,7 +47,7 @@
             <view class="weui-cell">
                 <view class="weui-cell__bd">数量</view>
                 <view class="weui-cell__ft">
-                	<template is="xnumber" data="{{ ...$wux.xnumber.num5 }}"/>
+                    <template is="xnumber" data="{{ ...$wux.xnumber.num5 }}" />
                 </view>
             </view>
         </view>
@@ -56,7 +56,7 @@
             <view class="weui-cell">
                 <view class="weui-cell__bd">数量</view>
                 <view class="weui-cell__ft">
-                	<template is="xnumber" data="{{ ...$wux.xnumber.num6 }}"/>
+                    <template is="xnumber" data="{{ ...$wux.xnumber.num6 }}" />
                 </view>
             </view>
         </view>
@@ -65,9 +65,20 @@
             <view class="weui-cell">
                 <view class="weui-cell__bd">数量</view>
                 <view class="weui-cell__ft">
-                    <template is="xnumber" data="{{ ...$wux.xnumber.num7 }}"/>
+                    <template is="xnumber" data="{{ ...$wux.xnumber.num7 }}" />
                 </view>
             </view>
+        </view>
+        <view class="weui-cells__title">循环输出多个组件</view>
+        <view class="weui-cells weui-cells_after-title">
+            <block wx:for="{{ items }}" wx:key="">
+                <view class="weui-cell">
+                    <view class="weui-cell__bd">{{ item.text }}</view>
+                    <view class="weui-cell__ft">
+                        <template is="xnumber" data="{{ ...$wux.xnumber[item.id] }}" />
+                    </view>
+                </view>
+            </block>
         </view>
     </view>
 </view>
