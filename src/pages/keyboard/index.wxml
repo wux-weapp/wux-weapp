@@ -1,0 +1,19 @@
+<import src="../../components/keyboard/keyboard.wxml" />
+
+<template is="keyboard" data="{{ ...$wux.keyboard }}" />
+
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">KeyBoard</view>
+        <view class="page__desc">键盘</view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="default" bindtap="open">Open KeyBoard</button>
+            <button class="weui-btn" type="default" bindtap="openWitdhDisorder">Open a disorderly KeyBoard</button>
+            <button class="weui-btn" type="default" bindtap="openWithPromiseCallback">Open KeyBoard with promise callback</button>
+            <button class="weui-btn" type="default" bindtap="openPlain">Plain theme</button>
+            <button class="weui-btn" type="default" bindtap="openTimed">Open and close</button>
+        </view>
+    </view>
+</view>

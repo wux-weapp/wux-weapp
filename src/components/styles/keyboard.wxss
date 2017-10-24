@@ -1,0 +1,190 @@
+.keyboard-mask {
+    background-color: rgba(0, 0, 0, .4);
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.keyboard,
+.keyboard-mask {
+    position: fixed;
+    z-index: 1502;
+    bottom: 0;
+    left: 0;
+}
+
+.keyboard {
+    width: 100%;
+    transform: translateY(100%);
+    transition: transform .3s;
+    background-color: #f7f7f7;
+}
+
+.keyboard-active {
+    transform: translate(0)
+}
+
+.keyboard-content {
+    background-color: #fff;
+    position: relative;
+}
+
+.keyboard-content:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-top: 1px solid #d9d9d9;
+    transform: scaleY(.5);
+    transform-origin: 0 0;
+}
+
+.keyboard-title {
+    overflow: hidden;
+    padding: 20rpx 0 12rpx;
+    color: #222;
+    margin-bottom: 1px;
+    font-size: 24rpx;
+    text-align: center;
+    background-color: #fff;
+}
+
+.keyboard-title:before {
+    font-size: 26rpx;
+    color: #ff2424;
+    line-height: 1;
+    margin-right: 6rpx;
+}
+
+.keyboard-numbers {
+    font-size: 48rpx;
+    background-color: #fff;
+}
+
+.keyboard-numbers .keyboard-numbers__label {
+    display: flex;
+    width: 100%;
+}
+
+.keyboard-numbers .keyboard-numbers__label .keyboard-numbers__text {
+    display: flex;
+    width: 1%;
+    flex: 1;
+    color: #222;
+    height: 100rpx;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.keyboard-numbers .keyboard-numbers__label .keyboard-numbers__text.hover {
+    background-color: #dedede;
+    color: rgba(0, 0, 0, .6);
+}
+
+.keyboard-numbers .keyboard-numbers__label .keyboard-numbers__text:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-top: 1px solid #d9d9d9;
+    transform: scaleY(.5);
+    transform-origin: 0 0;
+}
+
+.keyboard-numbers .keyboard-numbers__label .keyboard-numbers__text:not(:last-child):after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    right: 0;
+    height: 100%;
+    border-right: 1px solid #d9d9d9;
+    transform: scaleX(.5);
+    transform-origin: 0 0;
+}
+
+.keyboard-numbers .keyboard-numbers__label:last-child .keyboard-numbers__text:last-child,
+.keyboard-numbers .keyboard-numbers__label:last-child .keyboard-numbers__text:nth-last-child(3) {
+    background-color: #f7f7f7;
+    font-size: 30rpx;
+    color: #686868;
+}
+
+.keyboard-error {
+    padding: 4rpx 80rpx;
+    color: red;
+    overflow: hidden;
+    height: 50rpx;
+    line-height: 5rpx;
+    font-size: 24rpx;
+    text-align: left;
+}
+
+.keyboard-head {
+    height: 80rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #1f2324;
+    font-size: 30rpx;
+    position: relative;
+}
+
+.keyboard-head:after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px solid #d9d9d9;
+    transform: scaleY(.5);
+    transform-origin: 0 0;
+}
+
+.keyboard-password {
+    margin: 30rpx 80rpx;
+    display: flex;
+    position: relative;
+    background-color: #fff;
+}
+
+.keyboard-password .keyboard-password__label {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100rpx;
+}
+
+.keyboard-password .keyboard-password__label:not(:last-child):after {
+    content: "";
+    width: 2rpx;
+    height: 50%;
+    position: absolute;
+    right: 0;
+    top: 25%;
+    background-color: #d9d9d9;
+    transform: scaleX(.5);
+}
+
+.keyboard-password .keyboard-password__label .keyboard-password__text {
+    width: 12rpx;
+    height: 12rpx;
+    border-radius: 50%;
+    background-color: #000;
+    display: none;
+}
+
+.keyboard-password .keyboard-password__label .keyboard-password__text.active {
+    display: block;
+}
