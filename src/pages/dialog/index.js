@@ -123,4 +123,26 @@ Page({
 			],
 		})
 	},
+	checkbox(){
+		$wuxDialog.checkBox({
+			title: '请选择支付方式',
+			checkBoxs:[
+	        {
+	          icon:'qianbao',
+	          text:'钱包支付',
+	          smallText:'余额¥199.22',
+	          disabled:false,
+	          value:'WALLET'
+	        },
+	        {
+	          icon:'weixin',
+	          text:'微信支付',
+	          value:'WX'
+	        }
+	      ],
+	      onConfirm({currentTarget:{dataset:{checkvalue}}}){
+
+	      }
+		})
+	}
 })
