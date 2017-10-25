@@ -1,0 +1,35 @@
+<template name="keyboard">
+	<view class="keyboard-container {{ className }}" wx:if="{{ visible }}">
+		<view class="weui-mask {{ animateCss[1] }}" hidden="{{ !visible }}" bindtap="{{ hide }}"></view>
+		<view class="keyboard {{ animateCss[0] }}">
+			<view class="keyboard-head">{{ inputText }}</view>
+			<view class="keyboard-password">
+				<block wx:for="{{ keys }}" wx:key="">
+					<view class="keyboard-password__label">
+						<view class="keyboard-password__text {{ value.length >= (index + 1) ? 'active' : '' }}"></view>
+					</view>
+				</block>
+			</view>
+			<view class="keyboard-content">
+				<view class="keyboard-title">{{ titleText }}</view>
+				<view class="keyboard-numbers">
+					<block wx:for="{{ nums }}" wx:for-item="n" wx:key="">
+						<view class="keyboard-numbers__label" wx:if="{{ index === 3 }}">
+							<view class="keyboard-numbers__text" hover-class="hover" hover-start-time="20" hover-stay-time="170" wx:if="{{ showCancel }}" bindtap="{{ hide }}">{{ cancelText }}</view>
+							<view class="keyboard-numbers__text" hover-class="hover" hover-start-time="20" hover-stay-time="170" wx:else></view>
+							<block wx:for="{{ n }}" wx:for-item="m" wx:key="">
+								<view class="keyboard-numbers__text" hover-class="hover" hover-start-time="20" hover-stay-time="170" data-value="{{ m }}" bindtap="{{ increase }}">{{ m }}</view>
+							</block>
+							<view class="keyboard-numbers__text" bindtap="{{ decrease }}">×</view>
+						</view>
+						<view class="keyboard-numbers__label" wx:else>
+							<block wx:for="{{ n }}" wx:for-item="m" wx:key="">
+								<view class="keyboard-numbers__text" hover-class="hover" hover-start-time="20" hover-stay-time="170" data-value="{{ m }}" bindtap="{{ increase }}">{{ m }}</view>
+							</block>
+						</view>
+					</block>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>

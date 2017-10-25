@@ -17,7 +17,7 @@
     "pages/prompt/index",
     "pages/barcode/index",
     "pages/refresher/index",
-    "pages/seats/index",
+    "pages/keyboard/index",
     "pages/notification/index",
     "pages/calendar/index",
     "pages/button/index",
