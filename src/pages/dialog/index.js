@@ -63,8 +63,7 @@ Page({
 			defaultText: '', 
 			placeholder: '请输入Wi-Fi密码', 
 			maxlength: 8, 
-			onConfirm(e) {
-				const value = that.data.$wux.dialog.prompt.response
+			onConfirm({currentTarget:{dataset:{value}}}) {
 				const content = value.length === 8 ? `Wi-Fi密码到手了: ${value}` : `请输入正确的Wi-Fi密码`
 				alert(content)
 			},
@@ -140,8 +139,8 @@ Page({
 	          value:'WX'
 	        }
 	      ],
-	      onConfirm({currentTarget:{dataset:{checkvalue}}}){
-
+	      onConfirm({currentTarget:{dataset:{value}}}){
+	      	alert('你选择了 '+value)
 	      }
 		})
 	}

@@ -8,6 +8,7 @@
 | options.content | <code>string</code> | 提示文本 |
 | options.verticalButtons | <code>boolean</code> | 是否显示垂直按钮布局 |
 | options.buttons | <code>array</code> | 按钮 |
+| options.buttons[].checkBoxs | <code>array</code> | 单选框数组 |
 | options.buttons[].text | <code>string</code> | 按钮的文本 |
 | options.buttons[].type | <code>string</code> | 按钮的类型 |
 | options.buttons[].bold | <code>boolean</code> | 是否加粗按钮的文字 |
@@ -163,5 +164,26 @@ Page({
             ],
         })
     },
+    //icon 图标在/styles/font.wxss加入，管理图标字体使用阿里巴巴图标管理（http://www.iconfont.cn/）
+    $wuxDialog.checkBox({
+            title: '请选择支付方式',
+            checkBoxs:[
+            {
+              icon:'qianbao',
+              text:'钱包支付',
+              smallText:'余额¥199.22',
+              disabled:false,
+              value:'WALLET'
+            },
+            {
+              icon:'weixin',
+              text:'微信支付',
+              value:'WX'
+            }
+          ],
+          onConfirm({currentTarget:{dataset:{value}}}){
+            alert('你选择了 '+value)
+          }
+        })
 })
 ```

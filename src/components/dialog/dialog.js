@@ -86,7 +86,7 @@ export default {
 
 					this.setData({
 						[`$wux.dialog.checkBoxs`]:checkBoxs,
-						[`$wux.dialog.checkbox.response`]: item.value, 
+						[`$wux.dialog.response`]: item.value, 
 					})
 				},
 				/**
@@ -94,7 +94,7 @@ export default {
 				 */
 				bindinput(e) {
 					this.setData({
-						[`$wux.dialog.prompt.response`]: e.detail.value, 
+						[`$wux.dialog.response`]: e.detail.value, 
 					})
 				}
     		},
@@ -202,8 +202,7 @@ export default {
 				},
 			],
 		}, opts))
-	},
-	
+	},	
 	checkBox(opts={}){
 		return this.open(Object.assign({
 			checkBoxs:opts.checkBoxs,

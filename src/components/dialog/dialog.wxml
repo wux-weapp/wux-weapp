@@ -9,7 +9,7 @@
         <view class="weui-dialog__bd" wx:if="{{ content }}">
             <view class="weui-dialog__content">{{ content }}</view>
             <input wx:if="{{ prompt }}" type="{{ prompt.fieldtype }}" 
-                class="weui-input weui-prompt-input" value="{{ prompt.response }}" 
+                class="weui-input weui-prompt-input" value="{{ response }}" 
                     password="{{ prompt.password }}" placeholder="{{ prompt.placeholder }}" 
                         maxlength="{{ maxlength }}" bindinput="{{ bindinput }}" />
         </view>
@@ -27,7 +27,7 @@
         <view class="weui-dialog__ft {{ verticalButtons ? 'weui-dialog__btns_vertical' : '' }}" wx:if="{{ buttons.length }}">
             <block wx:for="{{ buttons }}" wx:key="">
                 <view class="weui-dialog__btn weui-dialog__btn_default {{ item.type }} {{ item.bold ? 'weui-dialog__btn_bold' : '' }}" 
-                    data-index="{{ index }}" data-checkValue="{{ checkbox.response }}" 
+                    data-index="{{ index }}" data-value="{{ response }}" 
                         bindtap="{{ buttonTapped }}">{{ item.text }}</view>
             </block>
         </view>
