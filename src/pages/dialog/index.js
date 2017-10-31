@@ -47,7 +47,6 @@ Page({
 		})
 	},
 	prompt() {
-		const that = this
 		const alert = (content) => {
 			$wuxDialog.alert({
 				title: '提示', 
