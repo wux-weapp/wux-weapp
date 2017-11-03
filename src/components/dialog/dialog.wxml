@@ -13,20 +13,17 @@
                         maxlength="{{ maxlength }}" bindinput="{{ bindinput }}" />
         </view>
         <view class="weui-dialog__bd " wx:if="{{checkBoxs && checkBoxs.length > 0}}">
-            <block wx:for="{{checkBoxs}}" >         
-            <view class="weui-dialog__checkbox {{item.disabled ? 'disabled' : ''}}"
+            <view wx:for="{{checkBoxs}}" class="weui-dialog__checkbox {{item.disabled ? 'disabled' : ''}}"
                 data-item="{{item}}" data-index="{{ index }}" bindtap="{{checkBoxTapped}}">
                 <view class="weui-dialog__text">{{item.text}}
                     <text wx:if="{{item.smallText}}" class="weui-dialog__smallText">( {{item.smallText}} )</text>
                 </view>
                 <icon class="fa icon-{{item.checked ? 'checked' : 'uncheck'}} " />
-            </view>
-            <view wx:if="{{index !== checkBoxs.length-1}}" class="line" />
-            </block>
+            </view>   
         </view>
         <view class="weui-dialog__ft {{ verticalButtons ? 'weui-dialog__btns_vertical' : '' }}" wx:if="{{ buttons.length }}">
             <block wx:for="{{ buttons }}" wx:key="">
-                <view class="weui-dialog__btn weui-dialog__btn_default line {{ item.type }} {{ item.bold ? 'weui-dialog__btn_bold' : '' }}"
+                <view class="weui-dialog__btn weui-dialog__btn_default {{ item.type }} {{ item.bold ? 'weui-dialog__btn_bold' : '' }}"
                     data-index="{{ index }}" data-value="{{ response }}" 
                         bindtap="{{ buttonTapped }}">{{ item.text }}</view>
             </block>
