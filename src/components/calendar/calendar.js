@@ -868,6 +868,7 @@ export default {
                 show () {
                     const animateCss = !options.inline ? [`weui-animate-slide-up`, `weui-animate-fade-in`] : [`weui-animate-fade-in`]
                     this.setVisible(animateCss)
+                    this.calendar.opened = true;
                 },
                 /**
                  * 隐藏
