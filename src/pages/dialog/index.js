@@ -1,4 +1,10 @@
 import { $wuxDialog } from '../../components/wux'
+const alert = (content) => {
+			$wuxDialog.alert({
+				title: '提示', 
+				content: content, 
+			})
+		}
 
 Page({
 	data: {},
@@ -47,13 +53,6 @@ Page({
 		})
 	},
 	prompt() {
-		const alert = (content) => {
-			$wuxDialog.alert({
-				title: '提示', 
-				content: content, 
-			})
-		}
-
 		$wuxDialog.prompt({
 			title: '提示', 
 			content: '密码为8位数字', 
@@ -126,14 +125,12 @@ Page({
 			title: '请选择支付方式',
 			checkBoxs:[
 	        {
-	          icon:'qianbao',
 	          text:'钱包支付',
 	          smallText:'余额¥199.22',
-	          disabled:false,
+	          disabled:true,
 	          value:'WALLET'
 	        },
 	        {
-	          icon:'weixin',
 	          text:'微信支付',
 	          value:'WX'
 	        }

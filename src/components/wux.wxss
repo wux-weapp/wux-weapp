@@ -1,6 +1,5 @@
 @import './styles/common.wxss';
 @import './styles/animate.wxss';
-@import './styles/font.wxss';
 
 @import './styles/actionsheet.wxss';
 @import './styles/backdrop.wxss';

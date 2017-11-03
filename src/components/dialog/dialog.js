@@ -211,6 +211,7 @@ export default {
 					text: opts.confirmText || this.data().confirmText, 
 					type: opts.confirmType || this.data().confirmType, 
 					onTap(e) {
+						if(!e.currentTarget.dataset.value) return;
 						typeof opts.onConfirm === `function` && opts.onConfirm(e)
 					}
 				}

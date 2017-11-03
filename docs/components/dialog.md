@@ -162,19 +162,16 @@ Page({
             ],
         })
     },
-    //icon 图标在/styles/font.wxss加入，管理图标字体使用阿里巴巴图标管理（http://www.iconfont.cn/）
     $wuxDialog.checkBox({
             title: '请选择支付方式',
             checkBoxs:[
             {
-              icon:'qianbao',
               text:'钱包支付',
               smallText:'余额¥199.22',
-              disabled:false,
+              disabled:true,
               value:'WALLET'
             },
             {
-              icon:'weixin',
               text:'微信支付',
               value:'WX'
             }

@@ -12,27 +12,12 @@
 	border-radius: 3px;
 	overflow: hidden;
 }
-
 .weui-dialog__hd {
 	display:flex;
 	justify-content:flex-start;
 	align-items:center;
 	padding:0.7em;
 	position:relative
-}
-.weui-dialog__hd:after{
-	border-bottom:1px solid #D5D5D6;
-	color:#D5D5D6;
-	content:" ";
-	position:absolute;
-	left:0;
-	bottom:0;
-	right:0;
-	height:1px;
-	-webkit-transform-origin:0 0;
-	transform-origin:0 0;
-	-webkit-transform:scaleY(0.5);
-	transform:scaleY(0.5);
 }
 
 .weui-dialog__title {
@@ -49,26 +34,13 @@
 	word-break: break-all;
 	color: #999999;
 	min-height:40px;
+	position:relative;
 }
 
 .weui-dialog__bd:first-child {
 	padding: 2.7em 20px 1.7em;
 	color: #353535;
 	position:relative
-}
-.weui-dialog__bd:after{
-	border-bottom:1px solid #D5D5D6;
-	color:#D5D5D6;
-	content:" ";
-	position:absolute;
-	left:0;
-	bottom:0;
-	right:0;
-	height:1px;
-	-webkit-transform-origin:0 0;
-	transform-origin:0 0;
-	-webkit-transform:scaleY(0.5);
-	transform:scaleY(0.5);
 }
 
 .weui-dialog__checkbox{
@@ -85,25 +57,9 @@
 	padding-bottom:0;
 }
 
-.weui-dialog__checkbox:first-child:after{
-	border-bottom:1px solid #D5D5D6;
-	color:#D5D5D6;
-	content:" ";
-	position:absolute;
-	left:0;
-	bottom:0;
-	right:0;
-	height:1px;
-	-webkit-transform-origin:0 0;
-	transform-origin:0 0;
-	-webkit-transform:scaleY(0.5);
-	transform:scaleY(0.5);	
-}
-
 .disabled .fa, .disabled .weui-dialog__text{
 	color:grey!important;
 }
-
 
 .weui-dialog__text{
 	color:#313131;
@@ -115,6 +71,7 @@
 .weui-dialog__smallText{
 	font-size:13px;
 }
+
 .weui-dialog__ft {
 	position: relative;
 	line-height: 48px;
@@ -139,6 +96,10 @@
 	transform: scaleY(0.5);
 }
 
+
+.horizontal-line{
+	position:relative;
+}
 .weui-dialog__btn {
 	display: block;
 	-webkit-box-flex: 1;
@@ -196,7 +157,10 @@
     height: auto;
 }
 
-.weui-dialog__btns_vertical .weui-dialog__btn:after {
+.weui-dialog__btns_vertical .weui-dialog__btn:after, 
+.weui-dialog__hd:after,
+.weui-dialog__bd .weui-dialog__checkbox:after
+ {
     content: '';
     position: absolute;
     left: 0;
@@ -214,7 +178,8 @@
     transform: scaleY(.5);
 }
 
-.weui-dialog__btns_vertical .weui-dialog__btn:last-child:after {
+.weui-dialog__btns_vertical .weui-dialog__btn:last-child:after,
+.weui-dialog__bd .weui-dialog__checkbox:last-child:after {
     display: none;
 }
 

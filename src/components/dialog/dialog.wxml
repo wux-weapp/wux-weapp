@@ -1,32 +1,32 @@
 <template name="dialog">
     <view class="weui-mask {{ animateCss }}" wx:if="{{ visible }}"></view>
-    <view class="weui-dialog {{ animateCss }}" wx:if="{{ visible }}">
-    
+    <view class="weui-dialog {{ animateCss }}" wx:if="{{ visible }}"> 
         <view class="weui-dialog__hd" wx:if="{{ title }}">
           <view class="weui-dialog__close" bindtap="{{ hide }}"><i class="fa icon-guanbi" /></view>
             <view class="weui-dialog__title">{{ title }}</view>
         </view>
-        <view class="weui-dialog__bd" wx:if="{{ content }}">
+        <view class="weui-dialog__bd " wx:if="{{ content }}">
             <view class="weui-dialog__content">{{ content }}</view>
             <input wx:if="{{ prompt }}" type="{{ prompt.fieldtype }}" 
                 class="weui-input weui-prompt-input" value="{{ response }}" 
                     password="{{ prompt.password }}" placeholder="{{ prompt.placeholder }}" 
                         maxlength="{{ maxlength }}" bindinput="{{ bindinput }}" />
         </view>
-        <view class="weui-dialog__bd" wx:if="{{checkBoxs && checkBoxs.length > 0}}">         
-            <view class="weui-dialog__checkbox {{item.disabled ? 'disabled' : '' }}" 
-                wx:for="{{checkBoxs}}" wx:key="" data-item="{{item}}" data-index="{{ index }}"
-                    bindtap="{{checkBoxTapped}}">
-                <icon class="fa icon-{{item.icon}}"/>
+        <view class="weui-dialog__bd " wx:if="{{checkBoxs && checkBoxs.length > 0}}">
+            <block wx:for="{{checkBoxs}}" >         
+            <view class="weui-dialog__checkbox {{item.disabled ? 'disabled' : ''}}"
+                data-item="{{item}}" data-index="{{ index }}" bindtap="{{checkBoxTapped}}">
                 <view class="weui-dialog__text">{{item.text}}
                     <text wx:if="{{item.smallText}}" class="weui-dialog__smallText">( {{item.smallText}} )</text>
                 </view>
                 <icon class="fa icon-{{item.checked ? 'checked' : 'uncheck'}} " />
-            </view>     
+            </view>
+            <view wx:if="{{index !== checkBoxs.length-1}}" class="line" />
+            </block>
         </view>
         <view class="weui-dialog__ft {{ verticalButtons ? 'weui-dialog__btns_vertical' : '' }}" wx:if="{{ buttons.length }}">
             <block wx:for="{{ buttons }}" wx:key="">
-                <view class="weui-dialog__btn weui-dialog__btn_default {{ item.type }} {{ item.bold ? 'weui-dialog__btn_bold' : '' }}" 
+                <view class="weui-dialog__btn weui-dialog__btn_default line {{ item.type }} {{ item.bold ? 'weui-dialog__btn_bold' : '' }}"
                     data-index="{{ index }}" data-value="{{ response }}" 
                         bindtap="{{ buttonTapped }}">{{ item.text }}</view>
             </block>
