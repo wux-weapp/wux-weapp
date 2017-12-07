@@ -15,6 +15,7 @@
             <button class="weui-btn" type="default" bindtap="prompt">Prompt Dialog</button>
             <button class="weui-btn" type="default" bindtap="custom">Custom Dialog</button>
             <button class="weui-btn" type="default" bindtap="vertical">Vertical Buttons Dialog</button>
+            <button class="weui-btn" type="default" bindtap="checkbox">Checkbox Dialog</button>
         </view>
     </view>
 </view>

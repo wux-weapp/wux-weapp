@@ -1,4 +1,10 @@
 import { $wuxDialog } from '../../components/wux'
+const alert = (content) => {
+			$wuxDialog.alert({
+				title: '提示', 
+				content: content, 
+			})
+		}
 
 Page({
 	data: {},
@@ -47,14 +53,6 @@ Page({
 		})
 	},
 	prompt() {
-		const that = this
-		const alert = (content) => {
-			$wuxDialog.alert({
-				title: '提示', 
-				content: content, 
-			})
-		}
-
 		$wuxDialog.prompt({
 			title: '提示', 
 			content: '密码为8位数字', 
@@ -63,8 +61,7 @@ Page({
 			defaultText: '', 
 			placeholder: '请输入Wi-Fi密码', 
 			maxlength: 8, 
-			onConfirm(e) {
-				const value = that.data.$wux.dialog.prompt.response
+			onConfirm({currentTarget:{dataset:{value}}}) {
 				const content = value.length === 8 ? `Wi-Fi密码到手了: ${value}` : `请输入正确的Wi-Fi密码`
 				alert(content)
 			},
@@ -123,4 +120,24 @@ Page({
 			],
 		})
 	},
+	checkbox(){
+		$wuxDialog.checkBox({
+			title: '请选择支付方式',
+			checkBoxs:[
+	        {
+	          text:'钱包支付',
+	          smallText:'余额¥199.22',
+	          disabled:true,
+	          value:'WALLET'
+	        },
+	        {
+	          text:'微信支付',
+	          value:'WX'
+	        }
+	      ],
+	      onConfirm({currentTarget:{dataset:{value}}}){
+	      	alert('你选择了 '+value)
+	      }
+		})
+	}
 })

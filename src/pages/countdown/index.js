@@ -48,7 +48,7 @@ Page({
 		})
 	},
 	stop() {
-		this.c3.stop()
+		this.c2.stop()
 	},
 	start() {
 		this.c3.start()

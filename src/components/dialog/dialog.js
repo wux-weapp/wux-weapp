@@ -9,6 +9,7 @@ export default {
 			title: undefined, 
 			content: undefined, 
 			buttons: [], 
+			checkBoxs:[],
 			verticalButtons: !1, 
 		}
 	},
@@ -38,6 +39,7 @@ export default {
 	 * @param {Function} opts.buttons.onTap 按钮的点击事件
 	 */
 	open(opts = {}) {
+
 		const options = Object.assign({
 			animateCss: undefined, 
             visible: !1, 
@@ -73,18 +75,32 @@ export default {
 					this.hide(() => typeof button.onTap === `function` && button.onTap(e))
 				},
 				/**
+				 * check tap
+				 */
+				checkBoxTapped({currentTarget:{dataset:{item,index}}}) {					
+					if(item.disabled) return;
+					let checkBoxs = this._data.checkBoxs.map((it,idx)=>{
+						it.checked = idx == index;
+						return it;
+					});
+
+					this.setData({
+						[`$wux.dialog.checkBoxs`]:checkBoxs,
+						[`$wux.dialog.response`]: item.value, 
+					})
+				},
+				/**
 				 * 当键盘输入时，触发 input 事件
 				 */
 				bindinput(e) {
 					this.setData({
-						[`$wux.dialog.prompt.response`]: e.detail.value, 
+						[`$wux.dialog.response`]: e.detail.value, 
 					})
-				},
+				}
     		},
     	})
 
 		component.show()
-
 		return component.hide
 	},
 	/**
@@ -186,5 +202,20 @@ export default {
 				},
 			],
 		}, opts))
-	},
+	},	
+	checkBox(opts={}){
+		return this.open(Object.assign({
+			checkBoxs:opts.checkBoxs,
+			buttons: [
+				{
+					text: opts.confirmText || this.data().confirmText, 
+					type: opts.confirmType || this.data().confirmType, 
+					onTap(e) {
+						if(!e.currentTarget.dataset.value) return;
+						typeof opts.onConfirm === `function` && opts.onConfirm(e)
+					}
+				}
+			]
+		},opts))
+	}
 }

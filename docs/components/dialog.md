@@ -8,6 +8,7 @@
 | options.content | <code>string</code> | 提示文本 |
 | options.verticalButtons | <code>boolean</code> | 是否显示垂直按钮布局 |
 | options.buttons | <code>array</code> | 按钮 |
+| options.buttons[].checkBoxs | <code>array</code> | 单选框数组 |
 | options.buttons[].text | <code>string</code> | 按钮的文本 |
 | options.buttons[].type | <code>string</code> | 按钮的类型 |
 | options.buttons[].bold | <code>boolean</code> | 是否加粗按钮的文字 |
@@ -87,7 +88,6 @@ Page({
         })
     },
     prompt() {
-        const that = this
         const alert = (content) => {
             $wuxDialog.alert({
                 title: '提示', 
@@ -103,8 +103,7 @@ Page({
             defaultText: '', 
             placeholder: '请输入Wi-Fi密码', 
             maxlength: 8, 
-            onConfirm(e) {
-                const value = that.data.$wux.dialog.prompt.response
+            onConfirm({currentTarget:{dataset:{value}}) {
                 const content = value.length === 8 ? `Wi-Fi密码到手了: ${value}` : `请输入正确的Wi-Fi密码`
                 alert(content)
             },
@@ -163,5 +162,23 @@ Page({
             ],
         })
     },
+    $wuxDialog.checkBox({
+            title: '请选择支付方式',
+            checkBoxs:[
+            {
+              text:'钱包支付',
+              smallText:'余额¥199.22',
+              disabled:true,
+              value:'WALLET'
+            },
+            {
+              text:'微信支付',
+              value:'WX'
+            }
+          ],
+          onConfirm({currentTarget:{dataset:{value}}}){
+            alert('你选择了 '+value)
+          }
+        })
 })
 ```
