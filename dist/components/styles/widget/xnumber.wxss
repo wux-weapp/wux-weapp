@@ -1,0 +1,36 @@
+.wux-xnumber__input {
+  float: left;
+  width: 64rpx;
+  height: 40rpx;
+  font-size: 32rpx;
+  color: #666;
+  -webkit-appearance: none;
+          appearance: none;
+  border: 2rpx solid #ececec;
+  padding: 6rpx 0;
+  text-align: center;
+  border-radius: 2rpx;
+  min-height: inherit;
+}
+.wux-xnumber__selector {
+  float: left;
+  height: 40rpx;
+  font-size: 50rpx;
+  line-height: 36rpx;
+  color: #04BE02;
+  border: 2rpx solid #ececec;
+}
+.wux-xnumber__selector--disabled {
+  color: #ccc;
+}
+.wux-xnumber__selector--sub {
+  border-right: none;
+  padding: 6rpx 20rpx;
+  border-radius: 4rpx 0 0 4rpx;
+}
+.wux-xnumber__selector--plus {
+  border-left: none;
+  margin-right: 10rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 0 4rpx 4rpx 0;
+}

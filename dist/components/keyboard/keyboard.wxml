@@ -1,0 +1,35 @@
+<template name="keyboard">
+	<view class="wux-keyboard {{ className }}" wx:if="{{ visible }}">
+		<view class="wux-backdrop {{ animateCss[1] }}" hidden="{{ !visible }}" bindtap="{{ hide }}"></view>
+		<view class="wux-keyboard__content {{ animateCss[0] }}">
+			<view class="wux-keyboard__hd">{{ inputText }}</view>
+			<view class="wux-keyboard__bd">
+				<block wx:for="{{ keys }}" wx:key="">
+					<view class="wux-keyboard__label">
+						<view class="wux-keyboard__password {{ value.length >= (index + 1) ? 'wux-keyboard__password--active' : '' }}"></view>
+					</view>
+				</block>
+			</view>
+			<view class="wux-keyboard__ft">
+				<view class="wux-keyboard__title">{{ titleText }}</view>
+				<view class="wux-keyboard__numbers">
+					<block wx:for="{{ nums }}" wx:for-item="n" wx:key="">
+						<view class="wux-keyboard__number" wx:if="{{ index === 3 }}">
+							<view class="wux-keyboard__text" hover-class="wux-keyboard__text--hover" hover-start-time="20" hover-stay-time="170" wx:if="{{ showCancel }}" bindtap="{{ hide }}">{{ cancelText }}</view>
+							<view class="wux-keyboard__text" hover-class="wux-keyboard__text--hover" hover-start-time="20" hover-stay-time="170" wx:else></view>
+							<block wx:for="{{ n }}" wx:for-item="m" wx:key="">
+								<view class="wux-keyboard__text" hover-class="wux-keyboard__text--hover" hover-start-time="20" hover-stay-time="170" data-value="{{ m }}" bindtap="{{ increase }}">{{ m }}</view>
+							</block>
+							<view class="wux-keyboard__text" bindtap="{{ decrease }}">×</view>
+						</view>
+						<view class="wux-keyboard__number" wx:else>
+							<block wx:for="{{ n }}" wx:for-item="m" wx:key="">
+								<view class="wux-keyboard__text" hover-class="wux-keyboard__text--hover" hover-start-time="20" hover-stay-time="170" data-value="{{ m }}" bindtap="{{ increase }}">{{ m }}</view>
+							</block>
+						</view>
+					</block>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>

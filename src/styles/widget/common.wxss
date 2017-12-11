@@ -1,0 +1,13 @@
+@import "../base/fn.wxss";
+
+.hidden {
+    visibility: hidden !important;
+}
+
+.visible {
+    visibility: visible !important;
+}
+
+.clearfix {
+	.clearfix();
+}

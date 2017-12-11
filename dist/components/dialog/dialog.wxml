@@ -1,0 +1,17 @@
+<template name="dialog">
+    <view class="wux-backdrop {{ animateCss }}" wx:if="{{ visible }}"></view>
+	<view class="wux-dialog {{ animateCss }}" wx:if="{{ visible }}">
+        <view class="wux-dialog__hd" wx:if="{{ title }}">
+        	<view class="wux-dialog__title">{{ title }}</view>
+        </view>
+        <view class="wux-dialog__bd" wx:if="{{ content }}">
+            <view class="wux-dialog__content">{{ content }}</view>
+            <input wx:if="{{ prompt }}" type="{{ prompt.fieldtype }}" class="wux-dialog__input" value="{{ prompt.response }}" password="{{ prompt.password }}" placeholder="{{ prompt.placeholder }}" maxlength="{{ maxlength }}" bindinput="{{ bindinput }}" />
+        </view>
+        <view class="wux-dialog__ft {{ verticalButtons ? 'wux-dialog__btns--vertical' : '' }}" wx:if="{{ buttons.length }}">
+            <block wx:for="{{ buttons }}" wx:key="">
+                <view class="wux-dialog__btn wux-dialog__btn--default {{ item.type }} {{ item.bold ? 'wux-dialog__btn--bold' : '' }}" data-index="{{ index }}" bindtap="{{ buttonTapped }}">{{ item.text }}</view>
+            </block>
+        </view>
+    </view>
+</template>

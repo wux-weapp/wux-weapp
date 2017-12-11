@@ -1,0 +1,14 @@
+<template name="refresher">
+	<view class="wux-refresher {{ className || 'hidden' }}">
+		<view class="wux-refresher__content {{ pullingText || refreshingText ? 'wux-refresher__content--text' : '' }}">
+			<view class="wux-refresher__icon-pulling {{ disablePullingRotation ? 'wux-refresher__icon-pulling--disabled' : '' }}">
+				<text class="{{ pullingIcon || 'wux-refresher__icon--arrow-down' }}"></text>
+			</view>
+			<view class="wux-refresher__text-pulling">{{ pullingText }}</view>
+			<view class="wux-refresher__icon-refreshing">
+				<text class="{{ refreshingIcon || 'wux-refresher__icon--refresher' }}"></text>
+			</view>
+			<view class="wux-refresher__text-refreshing">{{ refreshingText }}</view>
+		</view>
+	</view>
+</template>

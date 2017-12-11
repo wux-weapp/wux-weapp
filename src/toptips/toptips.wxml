@@ -1,0 +1,6 @@
+<template name="toptips">
+	<view class="wux-toptips {{ icon ? 'wux-toptips--' + icon : 'wux-toptips--cancel' }} {{ animateCss }} {{ className }}" hidden="{{ !visible }}">
+		{{ text }}
+		<icon wx:if="{{ icon && !hidden }}" class="wux-toptips__icon" type="{{ icon }}" size="24" color="#fff" />
+	</view>
+</template>

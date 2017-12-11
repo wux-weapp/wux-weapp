@@ -1,8 +1,0 @@
-<template name="loading">
-	<view class="weui-toast-wrapper {{ animateCss }}" hidden="{{ !visible }}">
-		<view class="weui-toast">
-	        <view class="weui-loading weui-icon_toast"></view>
-	        <view class="weui-loading__content">{{ text }}</view>
-	    </view>
-	</view>
-</template>

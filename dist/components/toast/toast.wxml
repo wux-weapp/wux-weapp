@@ -1,0 +1,8 @@
+<template name="toast">
+	<view class="wux-toast {{ animateCss }} {{ className }}" hidden="{{ !visible }}">
+		<view class="wux-toast__bd">
+	        <icon wx:if="{{ type }}" type="{{ type }}" size="55" color="{{ color }}" class="wux-toast__icon" />
+	        <view class="wux-toast__text">{{ text }}</view>
+	    </view>
+	</view>
+</template>

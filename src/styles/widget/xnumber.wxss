@@ -1,0 +1,41 @@
+@import "../base/fn.wxss";
+
+.wux-xnumber__input {
+    float: left;
+    width: 32px;
+    height: 20px;
+    font-size: 16px;
+    color: #666;
+    appearance: none;
+    border: 1px solid #ececec;
+    padding: 3px 0;
+    text-align: center;
+    border-radius: 1px;
+    min-height: inherit;
+}
+
+.wux-xnumber__selector {
+    float: left;
+    height: 20px;
+    font-size: 25px;
+    line-height: 18px;
+    color: #04BE02;
+    border: 1px solid #ececec;
+}
+
+.wux-xnumber__selector--disabled {
+    color: #ccc;
+}
+
+.wux-xnumber__selector--sub {
+    border-right: none;
+    padding: 3px 10px;
+    border-radius: 2px 0 0 2px;
+}
+
+.wux-xnumber__selector--plus {
+    border-left: none;
+    margin-right: 5px;
+    padding: 3px 8px;
+    border-radius: 0 2px 2px 0;
+}

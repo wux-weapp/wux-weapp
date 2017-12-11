@@ -1,0 +1,25 @@
+// color
+@wuxColorPrimary: #1AAD19;
+// @wuxColorWarn: #E64340;
+@wuxColorSuccess: #09bb08;
+@wuxColorInfo: #10aefe;
+@wuxColorWarn: #ffbe00;
+@wuxColorCancel: #E64340;
+@wuxColorError: #E64340;
+
+// link
+@wuxLinkColorDefault: #586C94;
+
+// background
+@wuxBgColorDefault: #EFEFF4;
+@wuxBgColorActive: #ECECEC;
+
+// line
+@wuxLineColorLight: #E5E5E5;
+@wuxLineColorDark: #BCBAB6;
+
+// text
+@wuxTextColorTitle: #000000;
+@wuxTextColorTips: #B2B2B2;
+@wuxTextColorWarn: @wuxColorWarn;
+@wuxTextColorGray: #999999;

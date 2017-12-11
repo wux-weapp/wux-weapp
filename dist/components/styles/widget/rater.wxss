@@ -1,0 +1,53 @@
+.wux-rater {
+  display: block;
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+  vertical-align: middle;
+  font-weight: 400;
+  font-style: normal;
+}
+.wux-rater:before,
+.wux-rater:after {
+  display: table;
+  content: " ";
+}
+.wux-rater:after {
+  clear: both;
+}
+.wux-rater__box {
+  position: relative;
+  display: block;
+  float: left;
+  text-align: center;
+  cursor: pointer;
+  color: #ccc;
+  -webkit-transition: color .3s ease;
+  transition: color .3s ease;
+}
+.wux-rater__box:last-child {
+  padding-right: 4rpx !important;
+  margin-right: 0 !important;
+}
+.wux-rater__box--disabled {
+  color: #ccc !important;
+  cursor: not-allowed;
+}
+.wux-rater__inner {
+  position: relative;
+  display: block;
+}
+.wux-rater__outer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  overflow: hidden;
+}
+.wux-rater__text {
+  display: inline-block;
+  float: none;
+  margin-left: 20rpx;
+  vertical-align: middle;
+  font-size: 24rpx;
+}

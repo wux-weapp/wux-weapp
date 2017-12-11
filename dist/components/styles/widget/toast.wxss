@@ -1,0 +1,44 @@
+.wux-toast {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1010;
+  display: block;
+}
+.wux-toast__bd {
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  margin-left: 0!important;
+  position: fixed;
+  z-index: 5000;
+  width: 7.6em;
+  min-height: 7.6em;
+  top: 360rpx;
+  left: 50%;
+  margin-left: -3.8em;
+  background: rgba(40, 40, 40, 0.75);
+  text-align: center;
+  border-radius: 10rpx;
+  color: #FFFFFF;
+}
+.wux-toast__icon {
+  margin: 44rpx 0 0;
+  display: block;
+}
+.wux-toast--text {
+  margin: 0 0 30rpx;
+}
+.wux-toast--text .wux-toast__bd {
+  width: 12em;
+  min-height: 0;
+  padding: 40rpx;
+  text-overflow: ellipsis;
+}
+.wux-toast--text .wux-toast__text {
+  margin: 0;
+}
+.wux-toast--text .wux-toast__icon {
+  display: none;
+}

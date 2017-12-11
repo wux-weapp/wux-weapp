@@ -1,0 +1,51 @@
+@import "../base/fn.wxss";
+
+.wux-toast {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1010;
+	display: block;
+}
+
+.wux-toast__bd {
+	transform: translateX(-50%);
+	margin-left: 0!important;
+	position: fixed;
+	z-index: 5000;
+	width: 7.6em;
+	min-height: 7.6em;
+	top: 180px;
+	left: 50%;
+	margin-left: -3.8em;
+	background: rgba(40, 40, 40, 0.75);
+	text-align: center;
+	border-radius: 5px;
+	color: #FFFFFF;
+}
+
+.wux-toast__icon {
+	margin: 22px 0 0;
+	display: block;
+}
+
+.wux-toast--text {
+	margin: 0 0 15px;
+
+	.wux-toast__bd {
+		width: 12em;
+		min-height: 0;
+		padding: 20px;
+		text-overflow: ellipsis;
+	}
+
+	.wux-toast__text {
+		margin: 0;
+	}
+
+	.wux-toast__icon {
+		display: none;
+	}
+}

@@ -1,7 +1,0 @@
-<template name="xnumber">
-	<view class="wux-xnumber {{ className }}">
-		<view bindtouchstart="{{ bindtouchstart }}" bindtouchcancel="{{ bindtouchcancel }}" bindtouchend="{{ bindtouchend }}" bindlongtap="{{ bindlongtap }}" bindtap="{{ bindtap }}" data-type="sub" class="wux-number-selector wux-number-selector-sub {{ disabledMin ? 'wux-number-disabled' : '' }}">-</view>
-		<input bindinput="{{ bindinput }}" name="{{ id }}" value="{{ value }}" disabled="{{ disabled }}" type="number" class="wux-number-input" />
-		<view bindtouchstart="{{ bindtouchstart }}" bindtouchcancel="{{ bindtouchcancel }}" bindtouchend="{{ bindtouchend }}" bindlongtap="{{ bindlongtap }}" bindtap="{{ bindtap }}" data-type="add" class="wux-number-selector wux-number-selector-plus {{ disabledMax ? 'wux-number-disabled' : '' }}">+</view>
-	</view>
-</template>

@@ -1,0 +1,190 @@
+.wux-speed-dial {
+  position: fixed;
+  z-index: 1500;
+}
+.wux-speed-dial__action {
+  position: absolute;
+  right: 30rpx;
+  bottom: 30rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  z-index: 1500;
+  background-color: #E40A5D;
+  color: #fff;
+  overflow: hidden;
+  -webkit-transition-duration: .3s;
+          transition-duration: .3s;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  box-shadow: 0 0 8rpx rgba(0, 0, 0, 0.14), 0 8rpx 16rpx rgba(0, 0, 0, 0.28);
+  right: 0;
+  bottom: 0;
+  position: relative;
+}
+.wux-speed-dial__action--hover {
+  -webkit-transition-duration: 0s;
+          transition-duration: 0s;
+  opacity: .8 !important;
+}
+.wux-speed-dial__icon,
+.wux-speed-dial__text {
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
+  font-size: 40rpx;
+  line-height: 1;
+}
+.wux-speed-dial__text {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAQAAAAAYLlVAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAHdElNRQfhBAQLCR5MtjrbAAAAjUlEQVRo3u3ZMRKAIAxEUbDirp4nXnctFFDHBtDQ/O1Nnk6aHUMgZCBKMkmmNAtgOmL9M+IQQGVM95zljy8DAAAAAAAAAAAAAACALsDZcppSx7Q+WdtUvA5xffUtrjeA8/qQ21S9gc15/3Nfzw0M5O0G2kM5BQAAAAAAAAAAAAAAQGk33q0qZ/p/Q/JFdmei9usomnwIAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE3LTA0LTA0VDExOjA5OjMwKzA4OjAw1U4c3wAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNy0wNC0wNFQxMTowOTozMCswODowMKQTpGMAAAAASUVORK5CYII=");
+  background-repeat: no-repeat;
+  background-size: contain;
+  -webkit-transition: -webkit-transform 150ms cubic-bezier(0.4, 0, 1, 1);
+  transition: -webkit-transform 150ms cubic-bezier(0.4, 0, 1, 1);
+  transition: transform 150ms cubic-bezier(0.4, 0, 1, 1);
+  transition: transform 150ms cubic-bezier(0.4, 0, 1, 1), -webkit-transform 150ms cubic-bezier(0.4, 0, 1, 1);
+}
+.wux-speed-dial__buttons {
+  position: absolute;
+  width: 80rpx;
+  left: 50%;
+  margin-left: -40rpx;
+  bottom: 100%;
+  margin-bottom: 32rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  visibility: hidden;
+  pointer-events: none;
+}
+.wux-speed-dial__button {
+  width: 80rpx;
+  height: 80rpx;
+  opacity: 0;
+  color: #fff;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+  background-color: #E40A5D;
+  -webkit-transition-duration: .3s;
+          transition-duration: .3s;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-transform: translate3d(0, 16rpx, 0) scale(0.3);
+          transform: translate3d(0, 16rpx, 0) scale(0.3);
+  -webkit-transform-origin: center bottom;
+          transform-origin: center bottom;
+  box-shadow: 0 0 8rpx rgba(0, 0, 0, 0.14), 0 8rpx 16rpx rgba(0, 0, 0, 0.28);
+}
+.wux-speed-dial__button + .wux-speed-dial__button {
+  margin-bottom: 32rpx;
+}
+.wux-speed-dial__button[data-label]:after {
+  content: attr(data-label);
+  position: absolute;
+  top: 50%;
+  padding: 8rpx 20rpx;
+  font-size: 24rpx;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 6rpx;
+  color: rgba(255, 255, 255, 0.8);
+  pointer-events: none;
+  white-space: nowrap;
+  opacity: 0;
+  box-sizing: border-box;
+  -webkit-transform: translate3d(0, -50%, 0);
+          transform: translate3d(0, -50%, 0);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.wux-speed-dial__button--hover {
+  -webkit-transition-duration: 0s;
+          transition-duration: 0s;
+  opacity: .8 !important;
+}
+.wux-speed-dial--opened .wux-speed-dial__text {
+  -webkit-transform: scale(1) rotate(135deg);
+          transform: scale(1) rotate(135deg);
+}
+.wux-speed-dial--opened .wux-speed-dial__buttons {
+  visibility: visible;
+  pointer-events: auto;
+}
+.wux-speed-dial--opened .wux-speed-dial__button {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0) scaleY(1);
+          transform: translate3d(0, 0, 0) scaleY(1);
+}
+.wux-speed-dial--opened .wux-speed-dial__button[data-label]:after {
+  opacity: 1;
+}
+.wux-speed-dial--opened .wux-speed-dial__button:nth-child(2) {
+  -webkit-transition-delay: 50ms;
+          transition-delay: 50ms;
+}
+.wux-speed-dial--opened .wux-speed-dial__button:nth-child(3) {
+  -webkit-transition-delay: .1s;
+          transition-delay: .1s;
+}
+.wux-speed-dial--opened .wux-speed-dial__button:nth-child(4) {
+  -webkit-transition-delay: 150ms;
+          transition-delay: 150ms;
+}
+.wux-speed-dial--opened .wux-speed-dial__button:nth-child(5) {
+  -webkit-transition-delay: .2s;
+          transition-delay: .2s;
+}
+.wux-speed-dial--opened .wux-speed-dial__button:nth-child(6) {
+  -webkit-transition-delay: 250ms;
+          transition-delay: 250ms;
+}
+.wux-speed-dial--top-left {
+  left: 30rpx;
+  top: 30rpx;
+}
+.wux-speed-dial--top-right {
+  right: 30rpx;
+  top: 30rpx;
+}
+.wux-speed-dial--bottom-left {
+  left: 30rpx;
+  bottom: 30rpx;
+}
+.wux-speed-dial--bottom-right {
+  right: 30rpx;
+  bottom: 30rpx;
+}
+.wux-speed-dial--top-left .wux-speed-dial__button[data-label]:after,
+.wux-speed-dial--bottom-left .wux-speed-dial__button[data-label]:after {
+  left: 120rpx;
+}
+.wux-speed-dial--top-right .wux-speed-dial__button[data-label]:after,
+.wux-speed-dial--bottom-right .wux-speed-dial__button[data-label]:after {
+  right: 120rpx;
+}
+.wux-speed-dial--top-left .wux-speed-dial__buttons,
+.wux-speed-dial--top-right .wux-speed-dial__buttons {
+  bottom: inherit;
+  top: 100%;
+  margin-bottom: 0;
+  margin-top: 32rpx;
+}

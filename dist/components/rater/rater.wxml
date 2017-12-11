@@ -1,0 +1,19 @@
+<template name="rater">
+	<view class="wux-rater {{ animateCss }}" wx:if="{{ visible }}">
+		<block wx:for="{{ stars }}" wx:key="">
+			<view class="wux-rater__box {{ value > index ? 'wux-rater__box--active' : '' }}" bindtap="{{ handlerClick }}" data-index="{{ index }}" style="color: {{ colors && colors[index] ? colors[index]: '#ccc' }}; margin-right: {{ margin+'px' }}; font-size: {{ fontSize + 'px' }}; width: {{ fontSize + 'px' }}; height: {{ fontSize + 'px' }}; line-height: {{ fontSize + 'px' }}">
+				<view class="wux-rater__inner">
+					{{ star }}
+					<view class="wux-rater__outer" style="color: {{ activeColor }}; width: {{ cutPercent + '%' }}" wx:if="{{ cutPercent > 0 && cutIndex === index }}">
+						{{ star }}
+					</view>
+				</view>
+			</view>
+		</block>
+		<block wx:for="{{ text }}" wx:key="">
+			<view class="wux-rater__text {{ item.className }}" wx:if="{{ value === index + 1 }}" style="color: {{ item.color || defaultTextColor }}">
+				{{ item.text || item }}
+			</view>
+		</block>
+	</view>
+</template>

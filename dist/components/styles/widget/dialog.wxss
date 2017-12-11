@@ -1,0 +1,122 @@
+.wux-dialog {
+  position: fixed;
+  z-index: 5000;
+  width: 80%;
+  max-width: 600rpx;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #FFFFFF;
+  text-align: center;
+  border-radius: 6rpx;
+  overflow: hidden;
+}
+.wux-dialog__hd {
+  padding: 1.3em 1.6em 0.5em;
+}
+.wux-dialog__title {
+  font-weight: 400;
+  font-size: 36rpx;
+}
+.wux-dialog__bd {
+  padding: 0 1.6em 0.8em;
+  min-height: 80rpx;
+  font-size: 30rpx;
+  line-height: 1.3;
+  word-wrap: break-word;
+  word-break: break-all;
+  color: #999999;
+}
+.wux-dialog__bd:first-child {
+  padding: 2.7em 40rpx 1.7em;
+  color: #353535;
+}
+.wux-dialog__ft {
+  position: relative;
+  line-height: 96rpx;
+  font-size: 36rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.wux-dialog__ft:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 2rpx;
+  border-top: 2rpx solid #D5D5D6;
+  color: #D5D5D6;
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+}
+.wux-dialog__btn {
+  display: block;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  color: #3CC51F;
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  position: relative;
+}
+.wux-dialog__btn:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2rpx;
+  bottom: 0;
+  border-left: 2rpx solid #D5D5D6;
+  color: #D5D5D6;
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transform: scaleX(0.5);
+          transform: scaleX(0.5);
+}
+.wux-dialog__btn:first-child:after {
+  display: none;
+}
+.wux-dialog__btn--default {
+  color: #353535;
+}
+.wux-dialog__btn--primary {
+  color: #0BB20C;
+}
+.wux-dialog__input {
+  padding: 8rpx 12rpx;
+  border: 2rpx solid #ccc;
+  height: 2em;
+  width: 100%;
+  margin-top: 20rpx;
+  text-align: left;
+  box-sizing: border-box;
+}
+.wux-dialog__btns--vertical {
+  display: block;
+  height: auto;
+}
+.wux-dialog__btns--vertical .wux-dialog__btn:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 2rpx;
+  border-top: 2rpx solid #D5D5D6;
+  color: #D5D5D6;
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+}
+.wux-dialog__btns--vertical .wux-dialog__btn:last-child:after {
+  display: none;
+}
+.wux-dialog__btn--bold {
+  font-weight: 500;
+}

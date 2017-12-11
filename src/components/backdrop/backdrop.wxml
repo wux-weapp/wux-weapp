@@ -1,3 +1,0 @@
-<template name="backdrop">
-	<view class="weui-mask {{ animateCss }}" hidden="{{ !visible }}"></view>
-</template>

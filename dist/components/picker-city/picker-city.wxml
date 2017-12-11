@@ -1,0 +1,24 @@
+<template name="picker-city">
+	<view class="wux-picker" wx:if="{{ visible }}">
+		<view class="wux-backdrop {{ animateCss[1] }}" hidden="{{ !visible }}" bindtap="{{ hide }}"></view>
+		<view class="wux-picker__content {{ animateCss[0] }}">
+			<view class="wux-picker__hd" wx:if="{{ toolbar }}">
+				<view class="wux-picker__toolbar">
+					<view class="wux-picker__title">{{ title }}</view>
+					<view class="wux-picker__button wux-picker__button--close" bindtap="{{ hide }}">{{ toolbarCloseText }}</view>
+				</view>
+			</view>
+			<picker-view class="wux-picker__bd" indicator-style="height: 32px;" value="{{ value }}" bindchange="{{ bindChange }}">
+				<block wx:for="{{ cols }}" wx:for-item="col" wx:key="">
+					<picker-view-column class="wux-picker__cols {{ col.className }} {{ col.textAlign ? 'wux-picker__cols--' + col.textAlign : '' }}">
+						<block wx:for="{{ col.values }}" wx:for-item="value" wx:key="">
+							<view class="wux-picker__col" data-picker-value="{{ value }}">
+								{{ col.displayValues && col.displayValues.length ? (col.displayValues[index] || 'undefined') : value }}
+							</view>
+						</block>
+					</picker-view-column>
+				</block>
+			</picker-view>
+		</view>
+	</view>
+</template>

@@ -1,0 +1,205 @@
+.wux-keyboard {
+  background-color: rgba(0, 0, 0, 0.4);
+  right: 0;
+  top: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.wux-keyboard__content,
+.wux-keyboard {
+  position: fixed;
+  z-index: 1502;
+  bottom: 0;
+  left: 0;
+}
+.wux-keyboard__content {
+  width: 100%;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: -webkit-transform .3s;
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s, -webkit-transform .3s;
+  background-color: #f7f7f7;
+}
+.wux-keyboard__hd {
+  height: 80rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  color: #1f2324;
+  font-size: 30rpx;
+  position: relative;
+}
+.wux-keyboard__hd:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 2rpx;
+  border-bottom: 2rpx solid #D9D9D9;
+  color: #D9D9D9;
+  -webkit-transform-origin: 0 100%;
+          transform-origin: 0 100%;
+  -webkit-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+}
+.wux-keyboard__bd {
+  margin: 30rpx 80rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  position: relative;
+  background-color: #fff;
+}
+.wux-keyboard__label {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  height: 100rpx;
+}
+.wux-keyboard__label:not(:last-child):after {
+  content: "";
+  width: 2rpx;
+  height: 50%;
+  position: absolute;
+  right: 0;
+  top: 25%;
+  background-color: #d9d9d9;
+  -webkit-transform: scaleX(0.5);
+          transform: scaleX(0.5);
+}
+.wux-keyboard__password {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background-color: #000;
+  display: none;
+}
+.wux-keyboard__password--active {
+  display: block;
+}
+.wux-keyboard__ft {
+  background-color: #fff;
+  position: relative;
+}
+.wux-keyboard__ft:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 2rpx;
+  border-top: 2rpx solid #D9D9D9;
+  color: #D9D9D9;
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+}
+.wux-keyboard__title {
+  overflow: hidden;
+  padding: 20rpx 0 12rpx;
+  color: #222;
+  margin-bottom: 2rpx;
+  font-size: 24rpx;
+  text-align: center;
+  background-color: #fff;
+}
+.wux-keyboard__title:before {
+  font-size: 26rpx;
+  color: #ff2424;
+  line-height: 1;
+  margin-right: 6rpx;
+}
+.wux-keyboard__numbers {
+  font-size: 48rpx;
+  background-color: #fff;
+}
+.wux-keyboard__number {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+}
+.wux-keyboard__text {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  width: 1%;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  color: #222;
+  height: 100rpx;
+  position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  overflow: hidden;
+}
+.wux-keyboard__text:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 2rpx;
+  border-top: 2rpx solid #D9D9D9;
+  color: #D9D9D9;
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+}
+.wux-keyboard__text:not(:last-child):after {
+  content: " ";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 2rpx;
+  bottom: 0;
+  border-right: 2rpx solid #D9D9D9;
+  color: #D9D9D9;
+  -webkit-transform-origin: 100% 0;
+          transform-origin: 100% 0;
+  -webkit-transform: scaleX(0.5);
+          transform: scaleX(0.5);
+}
+.wux-keyboard__text--hover {
+  background-color: #dedede;
+  color: rgba(0, 0, 0, 0.6);
+}
+.wux-keyboard__number:last-child .wux-keyboard__text:last-child,
+.wux-keyboard__number:last-child .wux-keyboard__text:nth-last-child(3) {
+  background-color: #f7f7f7;
+  font-size: 30rpx;
+  color: #686868;
+}

@@ -1,0 +1,195 @@
+@keyframes slideInDown {
+    0% {
+        transform: translate3d(0, -100%, 0);
+        visibility: visible;
+    }
+    to {
+        transform: translateZ(0);
+    }
+}
+
+.wux-animate--slide-in-down {
+    animation: slideInDown ease .3s forwards;
+}
+
+@keyframes slideInLeft {
+    0% {
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    to {
+        transform: translateZ(0);
+    }
+}
+
+.wux-animate--slide-in-left {
+    animation: slideInLeft ease .3s forwards;
+}
+
+@keyframes slideInRight {
+    0% {
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+    }
+    to {
+        transform: translateZ(0);
+    }
+}
+
+.wux-animate--slide-in-right {
+    animation: slideInRight ease .3s forwards;
+}
+
+@keyframes slideInUp {
+    0% {
+        transform: translate3d(0, 100%, 0);
+        visibility: visible;
+    }
+    to {
+        transform: translateZ(0);
+    }
+}
+
+.wux-animate--slide-in-up {
+    animation: slideInUp ease .3s forwards;
+}
+
+@keyframes slideOutDown {
+    0% {
+        transform: translateZ(0);
+    }
+    to {
+        visibility: hidden;
+        transform: translate3d(0, 100%, 0);
+    }
+}
+
+.wux-animate--slide-out-down {
+    animation: slideOutDown ease .3s forwards;
+}
+
+@keyframes slideOutLeft {
+    0% {
+        transform: translateZ(0);
+    }
+    to {
+        visibility: hidden;
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+
+.wux-animate--slide-out-left {
+    animation: slideOutLeft ease .3s forwards;
+}
+
+@keyframes slideOutRight {
+    0% {
+        transform: translateZ(0);
+    }
+    to {
+        visibility: hidden;
+        transform: translate3d(100%, 0, 0);
+    }
+}
+
+.wux-animate--slide-out-right {
+    animation: slideOutRight ease .3s forwards;
+}
+
+@keyframes slideOutUp {
+    0% {
+        transform: translateZ(0);
+    }
+    to {
+        visibility: hidden;
+        transform: translate3d(0, -100%, 0);
+    }
+}
+
+.wux-animate--slide-out-up {
+    animation: slideOutUp ease .3s forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.wux-animate--fade-in {
+    animation: fadeIn ease .3s forwards;
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.wux-animate--fade-in-down {
+    animation: fadeInDown ease .3s forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.wux-animate--fade-in-up {
+    animation: fadeInUp ease .3s forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.wux-animate--fade-out {
+    animation: fadeOut ease .3s forwards;
+}
+
+@keyframes fadeOutDown {
+    0% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+}
+
+.wux-animate--fade-out-down {
+    animation: fadeOutDown ease .3s forwards;
+}
+
+@keyframes fadeOutUp {
+    0% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+    }
+}
+
+.wux-animate--fade-out-up {
+    animation: fadeOutUp ease .3s forwards;
+}
