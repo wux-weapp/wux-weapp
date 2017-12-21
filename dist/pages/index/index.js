@@ -121,6 +121,12 @@ Page({
                 url: '/pages/xnumber/index',
                 icon: '../../assets/images/iconfont-xnumber.png',
             },
+            {
+                title: 'Vcode',
+                remark: '验证码',
+                url: '/pages/vcode/index',
+                icon: '../../assets/images/iconfont-vcode.png',
+            },
         ],
     },
     modSwitch(e) {

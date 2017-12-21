@@ -868,6 +868,7 @@ export default {
                 show () {
                     const animateCss = !options.inline ? [`wux-animate--slide-in-up`, `wux-animate--fade-in`] : [`wux-animate--fade-in`]
                     this.setVisible(animateCss)
+                    this.calendar.opened = true
                 },
                 /**
                  * 隐藏

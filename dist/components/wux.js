@@ -18,6 +18,7 @@ import $wuxRater from 'rater/rater'
 import $wuxRefresher from 'refresher/refresher'
 import $wuxToast from 'toast/toast'
 import $wuxToptips from 'toptips/toptips'
+import $wuxVcode from 'vcode/vcode'
 import $wuxXnumber from 'xnumber/xnumber'
 
 export {
@@ -41,5 +42,6 @@ export {
     $wuxRefresher,
     $wuxToast,
     $wuxToptips,
+    $wuxVcode,
     $wuxXnumber,
 }

@@ -5,16 +5,16 @@
 
 ## 预览
 
-用[微信web开发者工具](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html)打开`src`目录（请注意，是src目录，不是整个项目）
+用[微信web开发者工具](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html)打开`dist`目录（请注意，是dist目录，不是整个项目）
 
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-01.png" width="375px" style="display:inline;">
 
 ## 使用
 
-- 组件的wxml结构请看`src/components/`下的组件
-- 样式文件可直接引用`src/components/wux.wxss`
+- 组件的wxml结构请看`dist/components/`下的组件
+- 样式文件可直接引用`dist/components/wux.wxss`
 
-## Components
+## 插件及文档
 
 * [ActionSheet - 上拉菜单](https://github.com/skyvow/wux/blob/master/docs/components/actionsheet.md)
 * [Backdrop - 背景幕](https://github.com/skyvow/wux/blob/master/docs/components/backdrop.md)
@@ -35,7 +35,12 @@
 * [Refresher - 下拉刷新](https://github.com/skyvow/wux/blob/master/docs/components/refresher.md)
 * [Toast - 提示框](https://github.com/skyvow/wux/blob/master/docs/components/toast.md)
 * [Toptips - 顶部提示](https://github.com/skyvow/wux/blob/master/docs/components/toptips.md)
+* [Vcode - 验证码](https://github.com/skyvow/wux/blob/master/docs/components/vcode.md)
 * [Xnumber - 数字输入框](https://github.com/skyvow/wux/blob/master/docs/components/xnumber.md)
+
+## 更新日志
+
+* [CHANGELOG](CHANGELOG.md)
 
 ## 项目截图
 
@@ -100,6 +105,8 @@
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-15.png" width="375px" style="display:inline;">
 
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-23.png" width="375px" style="display:inline;">
+
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-27.png" width="375px" style="display:inline;">
 
 ## 贡献
 

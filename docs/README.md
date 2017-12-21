@@ -19,4 +19,5 @@
 - [Refresher - 下拉刷新](components/refresher.md)
 - [Toast - 提示框](components/toast.md)
 - [Toptips - 顶部提示](components/toptips.md)
+- [Vcode - 验证码](components/vcode.md)
 - [Xnumber - 数字输入框](components/xnumber.md)
