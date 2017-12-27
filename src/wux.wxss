@@ -6,6 +6,7 @@
 @import './styles/widget/button.wxss';
 @import './styles/widget/calendar.wxss';
 @import './styles/widget/dialog.wxss';
+@import './styles/widget/filterbar.wxss';
 @import './styles/widget/gallery.wxss';
 @import './styles/widget/keyboard.wxss';
 @import './styles/widget/loading.wxss';

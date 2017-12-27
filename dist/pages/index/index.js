@@ -50,6 +50,12 @@ Page({
                 icon: '../../assets/images/iconfont-dialog.png',
             },
             {
+                title: 'FilterBar',
+                remark: '筛选栏',
+                url: '/pages/filterbar/index',
+                icon: '../../assets/images/iconfont-filterbar.png',
+            },
+            {
                 title: 'Gallery',
                 remark: '画廊',
                 url: '/pages/gallery/index',

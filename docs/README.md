@@ -8,6 +8,7 @@
 - [CountDown - 倒计时](components/countdown.md)
 - [CountUp - 计数器](components/countup.md)
 - [Dialog - 对话框](components/dialog.md)
+- [FilterBar - 筛选栏](components/filterbar.md)
 - [Gallery - 画廊](components/gallery.md)
 - [KeyBoard - 键盘](components/keyboard.md)
 - [Loading - 指示器](components/loading.md)

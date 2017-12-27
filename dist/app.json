@@ -22,6 +22,7 @@
         "pages/calendar/index",
         "pages/button/index",
         "pages/vcode/index",
+        "pages/filterbar/index",
         "pages/about/index"
     ],
     "window": {

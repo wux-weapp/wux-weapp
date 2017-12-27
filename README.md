@@ -24,6 +24,7 @@
 * [CountDown - 倒计时](https://github.com/skyvow/wux/blob/master/docs/components/countdown.md)
 * [CountUp - 计数器](https://github.com/skyvow/wux/blob/master/docs/components/countup.md)
 * [Dialog - 对话框](https://github.com/skyvow/wux/blob/master/docs/components/dialog.md)
+* [FilterBar - 筛选栏](https://github.com/skyvow/wux/blob/master/docs/components/filterbar.md)
 * [Gallery - 画廊](https://github.com/skyvow/wux/blob/master/docs/components/gallery.md)
 * [KeyBoard - 键盘](https://github.com/skyvow/wux/blob/master/docs/components/keyboard.md)
 * [Loading - 指示器](https://github.com/skyvow/wux/blob/master/docs/components/loading.md)
@@ -107,6 +108,8 @@
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-23.png" width="375px" style="display:inline;">
 
 <img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-27.png" width="375px" style="display:inline;">
+
+<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-28.png" width="375px" style="display:inline;">
 
 ## 贡献
 

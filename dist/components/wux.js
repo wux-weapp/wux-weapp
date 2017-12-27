@@ -6,6 +6,7 @@ import $wuxCalendar from 'calendar/calendar'
 import $wuxCountDown from 'countdown/countdown'
 import $wuxCountUp from 'countup/countup'
 import $wuxDialog from 'dialog/dialog'
+import $wuxFilterBar from 'filterbar/filterbar'
 import $wuxGallery from 'gallery/gallery'
 import $wuxKeyBoard from 'keyboard/keyboard'
 import $wuxLoading from 'loading/loading'
@@ -30,6 +31,7 @@ export {
     $wuxCountDown,
     $wuxCountUp,
     $wuxDialog,
+    $wuxFilterBar,
     $wuxGallery,
     $wuxKeyBoard,
     $wuxLoading,
