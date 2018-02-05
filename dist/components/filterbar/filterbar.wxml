@@ -9,7 +9,7 @@
 			</block>
 		</view>
 		<block wx:for="{{ items }}" wx:key="">
-			<view class="wux-backdrop {{ animateCss }}" hidden="{{ !item.visible }}" wx:if="{{ item.type === 'filter' }}"></view>
+			<view class="wux-backdrop {{ animateCss }}" hidden="{{ !item.visible }}" wx:if="{{ item.type === 'filter' }}" data-index="{{ index }}" bindtap="{{ onConfirm }}"></view>
 			<view class="wux-filterbar__pop {{ item.visible ? 'wux-animate--slide-in-right' : 'wux-animate--slide-out-right' }}" hidden="{{ !item.visible }}" wx:if="{{ item.type === 'filter' }}">
 				<scroll-view class="wux-filterbar__scroll-view" scroll-y>
 					<block wx:for="{{ item.children }}" wx:for-item="p" wx:for-index="pIndex" wx:key="">
@@ -67,7 +67,7 @@
 							<icon class="wux-icon-checkbox--circle" type="circle" size="23" wx:if="{{ !p.checked }}"></icon>
 							<icon class="wux-icon-checkbox--success" type="success" size="23" wx:if="{{ p.checked }}"></icon>
 						</view>
-						<view class="wux-cell__bd">{{ item.label }}</view>
+						<view class="wux-cell__bd">{{ p.label }}</view>
 					</label>
 				</checkbox-group>
 			</view>

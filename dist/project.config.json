@@ -24,8 +24,12 @@
 			"current": -1,
 			"list": []
 		},
-		"miniprogram": {
+		"game": {
 			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
