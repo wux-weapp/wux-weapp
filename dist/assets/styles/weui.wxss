@@ -108,10 +108,8 @@ icon {
   border-style: solid;
   -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
           transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
-  /*
-  position: relative;
-  top: -2px;
-  */
+  /*position: relative;
+  top: -2px;*/
   position: absolute;
   top: 50%;
   margin-top: -4px;
