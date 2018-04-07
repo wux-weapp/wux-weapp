@@ -7,7 +7,7 @@
 
 用[微信web开发者工具](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html)打开`dist`目录（请注意，是dist目录，不是整个项目）
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-01.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-01.png" width="375px" style="display:inline;">
 
 ## 使用
 
@@ -45,71 +45,71 @@
 
 ## 项目截图
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-17.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-17.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-24.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-24.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-02.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-02.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-19.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-19.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-26.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-26.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-25.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-25.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-20.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-20.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-16.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-16.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-03.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-03.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-04.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-04.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-04-1.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-04-1.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-04-2.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-04-2.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-04-3.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-04-3.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-04-4.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-04-4.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-05.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-05.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-06.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-06.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-07.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-07.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-08.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-08.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-09.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-09.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-10.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-10.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-21.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-21.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-22.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-22.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-11-1.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-11-1.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-11-2.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-11-2.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-11-3.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-11-3.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-18.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-18.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-12.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-12.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-13.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-13.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-14.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-14.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-15.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-15.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-23.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-23.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-27.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-27.png" width="375px" style="display:inline;">
 
-<img src="https://github.com/skyvow/wux/blob/master/screenshots/screenshorts-28.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-28.png" width="375px" style="display:inline;">
 
 ## 贡献
 
