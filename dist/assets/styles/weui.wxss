@@ -63,7 +63,7 @@ icon {
 .weui-cell:before {
   content: " ";
   position: absolute;
-  left: 0;
+/*  left: 0;*/
   top: 0;
   right: 0;
   height: 1px;
@@ -108,8 +108,8 @@ icon {
   border-style: solid;
   -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
           transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
-  position: relative;
-  top: -2px;
+  /*position: relative;
+  top: -2px;*/
   position: absolute;
   top: 50%;
   margin-top: -4px;
