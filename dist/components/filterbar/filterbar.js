@@ -34,10 +34,11 @@ export default {
                 /**
                  * 重置按钮
                  * @param {Object} e 事件对象
+                 * @param {Object} prevState 上一个状态值
                  */
-                onReset(e) {
+                onReset(e, prevState) {
                     const { index, item } = e.currentTarget.dataset
-                    const children = item.children.map((n) => {
+                    const children = prevState && prevState.children || item.children.map((n) => {
                         return Object.assign({}, n, {
                             children: n.children.map((m) => Object.assign({}, m, {
                                 checked: false,
@@ -45,8 +46,26 @@ export default {
                             selected: '',
                         })
                     })
+
                     this.setData({
                         [`$wux.filterbar.items[${index}].children`]: children,
+                    })
+                },
+                /**
+                 * 关闭侧边栏筛选框
+                 * @param {Object} e 事件对象
+                 * @param {Function} callback 回调函数
+                 */
+                onClose(e, callback) {
+                    const { index } = e.currentTarget.dataset
+                    this.setData({
+                        [`$wux.filterbar.items[${index}].visible`]: false,
+                    }, () => {
+                        if (typeof callback === 'function') {
+                            callback.call(this, e)
+                        } else {
+                            this.onReset(e, this.prevState)
+                        }
                     })
                 },
                 /**
@@ -54,10 +73,7 @@ export default {
                  * @param {Object} e 事件对象
                  */
                 onConfirm(e) {
-                    const { index } = e.currentTarget.dataset
-                    this.setData({
-                        [`$wux.filterbar.items[${index}].visible`]: false,
-                    }, this.onChange)
+                    this.onClose(e, this.onChange)
                 },
                 /**
                  * 筛选栏内单项选择触发 change 事件
@@ -188,6 +204,7 @@ export default {
                     this.setData({
                         [`$wux.filterbar.items`]: items,
                     }, () => {
+                        this.prevState = current
                         if (!['radio', 'checkbox', 'filter'].includes(current.type)) {
                             this.onChange()
                         }
