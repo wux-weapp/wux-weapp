@@ -6,6 +6,7 @@ export default {
      * @param {Object} opts 配置项
      * @param {Array} opts.items 按钮的配置数组
      * @param {Function} opts.onChange 选中值变化的回调函数
+     * @param {Function} opts.onScroll scroll-view 滚动时触发的事件
      */
     init(opts = {}) {
         const options = Object.assign({}, opts)
@@ -232,6 +233,15 @@ export default {
                     const checkedItems = items.filter((n) => n.checked)
                     if (typeof options.onChange === 'function') {
                         options.onChange.call(this, checkedItems, items)
+                    }
+                },
+                /**
+                 * scroll-view 滚动时触发的事件
+                 * @param {Object} e 事件对象
+                 */
+                onScroll(e) {
+                    if (typeof options.onScroll === 'function') {
+                        options.onScroll.call(this, e)
                     }
                 },
             },

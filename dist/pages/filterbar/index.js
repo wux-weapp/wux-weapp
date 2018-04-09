@@ -2,6 +2,7 @@ import { $wuxFilterBar } from '../../components/wux'
 
 Page({
     data: {
+        pageStyle: undefined,
         items: [{
                 type: 'radio',
                 label: 'Updated',
@@ -256,6 +257,12 @@ Page({
                 })
 
                 this.getRepos(params)
+            },
+            onScroll(e) {
+                console.log('onScroll', e)
+                this.setData({
+                    pageStyle: 'height: 100vh; overflow: hidden;',
+                })
             },
         })
         this.getRepos()

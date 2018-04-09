@@ -6,6 +6,7 @@
 | options | <code>object</code> | 配置项 |
 | options.items | <code>array</code> | 按钮的配置数组 |
 | options.onChange | <code>function</code> | 选中值变化的回调函数 |
+| options.onScroll | <code>function</code> | scroll-view 滚动时触发的事件 |
 
 items 参数说明
 
@@ -27,7 +28,7 @@ items 参数说明
 ```html
 <import src="../../components/filterbar/filterbar.wxml" />
 
-<view class="page">
+<view class="page" style="{{ pageStyle }}">
     <view class="page__hd">
         <view class="page__title">FilterBar</view>
         <view class="page__desc">筛选栏</view>
@@ -61,6 +62,7 @@ import { $wuxFilterBar } from '../../components/wux'
 
 Page({
     data: {
+        pageStyle: undefined,
         items: [{
                 type: 'radio',
                 label: 'Updated',
@@ -315,6 +317,12 @@ Page({
                 })
 
                 this.getRepos(params)
+            },
+            onScroll(e) {
+                console.log('onScroll', e)
+                this.setData({
+                    pageStyle: 'height: 100vh; overflow: hidden;',
+                })
             },
         })
         this.getRepos()

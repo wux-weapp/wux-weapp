@@ -11,7 +11,7 @@
 		<block wx:for="{{ items }}" wx:key="">
 			<view class="wux-backdrop {{ animateCss }}" hidden="{{ !item.visible }}" wx:if="{{ item.type === 'filter' }}" data-index="{{ index }}" bindtap="{{ onConfirm }}"></view>
 			<view class="wux-filterbar__pop {{ item.visible ? 'wux-animate--slide-in-right' : 'wux-animate--slide-out-right' }}" hidden="{{ !item.visible }}" wx:if="{{ item.type === 'filter' }}">
-				<scroll-view class="wux-filterbar__scroll-view" scroll-y>
+				<scroll-view class="wux-filterbar__scroll-view" scroll-y bindscroll="{{ onScroll }}">
 					<block wx:for="{{ item.children }}" wx:for-item="p" wx:for-index="pIndex" wx:key="">
 						<view class="wux-filterbar__panel">
 							<view class="wux-filterbar__panel-hd">
