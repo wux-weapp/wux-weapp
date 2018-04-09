@@ -2,20 +2,20 @@ import { $wuxCalendar } from '../../components/wux'
 
 Page({
     data: {
-        birthday: '', 
-        start: '', 
-        end: '', 
+        birthday: '',
+        start: '',
+        end: '',
     },
-	onLoad() {},
+    onLoad() {},
     openCalendar() {
         if (this.birthday) {
             return this.birthday.show()
         }
 
         this.birthday = $wuxCalendar.init('birthday', {
-            value: ['2017-04-15'], 
-            onChange(p, v, d) {
-                console.log(p, v, d)
+            value: ['2017-04-15'],
+            onChange(v, d) {
+                console.log(v, d)
                 this.setData({
                     birthday: d.join(', ')
                 })
@@ -28,9 +28,9 @@ Page({
         }
 
         this.start = $wuxCalendar.init('start', {
-            dateFormat: 'DD, MM dd, yyyy', 
-            onChange(p, v, d) {
-                console.log(p, v, d)
+            dateFormat: 'DD, MM dd, yyyy',
+            onChange(v, d) {
+                console.log(v, d)
                 this.setData({
                     start: d.join(', ')
                 })
@@ -41,12 +41,12 @@ Page({
         if (this.end) {
             return this.end.show()
         }
-        
+
         this.end = $wuxCalendar.init('end', {
-            multiple: true, 
-            closeOnSelect: false, 
-            onChange(p, v, d) {
-                console.log(p, v, d)
+            multiple: true,
+            closeOnSelect: false,
+            onChange(v, d) {
+                console.log(v, d)
                 this.setData({
                     end: d.join(', ')
                 })
