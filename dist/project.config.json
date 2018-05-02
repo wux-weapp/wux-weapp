@@ -9,8 +9,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.6.6",
-	"appid": "wxd41ba77543863605",
-	"projectname": "wux",
+	"appid": "touristappid",
+	"projectname": "wux_fork",
 	"svr": "",
 	"client": "",
 	"qcloudRoot": "",
@@ -24,20 +24,17 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"current": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
-			"list": [
-				{
-					"id": 0,
-					"name": "filterbar",
-					"pathName": "pages/filterbar/index",
-					"query": ""
-				}
-			]
+			"current": -1,
+			"list": []
 		}
 	}
 }
