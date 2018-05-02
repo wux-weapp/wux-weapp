@@ -72,7 +72,7 @@ export default {
                 /**
                  * 手指触摸动作开始
                  */
-                bindtouchstart(e) {
+                catchtouchstart(e) {
                     that.touching = !0
                     this.start = getTouchPosition(e)
                     this.diffX = this.diffY = 0
@@ -80,7 +80,7 @@ export default {
                 /**
                  * 	手指触摸后移动
                  */
-                bindtouchmove(e) {
+                catchtouchmove(e) {
                     if (!this.start) return !1
                     this.move = getTouchPosition(e)
                     this.diffX = this.move.x - this.start.x
@@ -95,7 +95,7 @@ export default {
                 /**
                  * 	手指触摸动作结束
                  */
-                bindtouchend(e) {
+                catchtouchend(e) {
                     that.touching = !1
                     setStyle(this)
 
