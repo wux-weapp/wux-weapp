@@ -1,5 +1,5 @@
 <template name="notification">
-	<view class="wux-notification {{ animateCss }}" hidden="{{ !visible }}" bindtouchstart="{{ bindtouchstart }}" bindtouchmove="{{ bindtouchmove }}" bindtouchcancel="{{ bindtouchcancel }}" bindtouchend="{{ bindtouchend }}" style="{{ style }}">
+	<view class="wux-notification {{ animateCss }}" hidden="{{ !visible }}" catchtouchstart="{{ catchtouchstart }}" catchtouchmove="{{ catchtouchmove }}" catchtouchcancel="{{ catchtouchcancel }}" catchtouchend="{{ catchtouchend }}" style="{{ style }}">
 		<view class="wux-notification__content">
 			<view class="wux-notification__hd" wx:if="{{ image }}">
 				<image class="wux-notification__image" src="{{ image }}" />
