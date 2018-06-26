@@ -17,7 +17,16 @@
 | options.onSuccess | <code>function</code> | 接口调用成功的回调函数 | - |
 | options.onError | <code>function</code> | 接口调用失败的回调函数 | - |
 
-**Example**  
+**Example**
+```json
+{
+    "navigationBarTitleText": "Barcode",
+    "usingComponents": {
+        "wux-barcode": "../../dist/barcode/index"
+    }
+}
+```
+
 ```html
 <view class="page">
     <view class="page__hd">

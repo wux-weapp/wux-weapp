@@ -6,7 +6,16 @@
 | options | <code>object</code> | 配置项 | - |
 | options.text | <code>string</code> | 提示文本 | 数据加载中 |
 
-**Example**  
+**Example**
+```json
+{
+    "navigationBarTitleText": "Loading",
+    "usingComponents": {
+        "wux-loading": "../../dist/loading/index"
+    }
+}
+```
+
 ```html
 <wux-loading id="wux-loading" />
 

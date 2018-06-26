@@ -17,7 +17,16 @@
 | bind:exiting | <code>function</code> | 离开过渡的结束状态时触发的回调函数 | - |
 | bind:exited | <code>function</code> | 离开过渡的完成状态时触发的回调函数 | - |
 
-**Example**  
+**Example**
+```json
+{
+    "navigationBarTitleText": "AnimationGroup",
+    "usingComponents": {
+        "wux-animation-group": "../../dist/animation-group/index"
+    }
+}
+```
+
 ```html
 <view class="page">
     <view class="page__hd">

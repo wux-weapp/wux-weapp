@@ -1,7 +1,16 @@
 ## Backdrop
 背景幕
 
-**Example**  
+**Example**
+```json
+{
+    "navigationBarTitleText": "Backdrop",
+    "usingComponents": {
+        "wux-backdrop": "../../dist/backdrop/index"
+    }
+}
+```
+
 ```html
 <wux-backdrop id="wux-backdrop" />
 

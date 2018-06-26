@@ -11,7 +11,16 @@
 | fgColor | <code>string</code> | 前景色 | black |
 | bgColor | <code>string</code> | 背景色 | white |
 
-**Example**  
+**Example**
+```json
+{
+    "navigationBarTitleText": "Qrcode",
+    "usingComponents": {
+        "wux-qrcode": "../../dist/qrcode/index"
+    }
+}
+```
+
 ```html
 <view class="page">
     <view class="page__hd">

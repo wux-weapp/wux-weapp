@@ -6,7 +6,16 @@
 | color | <code>string</code> | 标签色 | - |
 | bind:click | <code>function</code> | 点击事件 | - |
 
-**Example**  
+**Example**
+```json
+{
+    "navigationBarTitleText": "Tag",
+    "usingComponents": {
+        "wux-tag": "../../dist/tag/index"
+    }
+}
+```
+
 ```html
 <view class="page">
     <view class="page__hd">

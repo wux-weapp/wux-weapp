@@ -8,7 +8,17 @@
 | push | <code>number</code> | 栅格向右移动格数 | 0 |
 | offset | <code>number</code> | 栅格左侧的间隔格数 | 0 |
 
-**Example**  
+**Example**
+```json
+{
+    "navigationBarTitleText": "Grid",
+    "usingComponents": {
+        "wux-row": "../../dist/row/index",
+        "wux-col": "../../dist/col/index"
+    }
+}
+```
+
 ```html
 <view class="page">
     <view class="page__hd">

@@ -12,7 +12,17 @@
 | options.onClick | <code>function</code> | 点击后的回调函数 | - |
 | options.onClose | <code>function</code> | 消失后的回调函数 | - |
 
-**Example**  
+**Example**
+```json
+{
+    "navigationBarTitleText": "Notification",
+    "usingComponents": {
+        "wux-notification": "../../dist/notification/index"
+    },
+    "disableScroll": true
+}
+```
+
 ```html
 <wux-notification id="wux-notification" />
 

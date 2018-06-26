@@ -12,7 +12,16 @@
 | visible | <code>boolean</code> | 是否显示组件 | false |
 | bind:click | <code>function</code> | 按钮点击事件 | - |
 
-**Example**  
+**Example**
+```json
+{
+    "navigationBarTitleText": "Prompt",
+    "usingComponents": {
+        "wux-prompt": "../../dist/prompt/index"
+    }
+}
+```
+
 ```html
 <view class="page">
     <view class="page__bd">

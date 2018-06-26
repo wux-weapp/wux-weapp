@@ -13,7 +13,16 @@
 | bind:click | <code>function</code> | 按钮点击事件 | - |
 | bind:change | <code>function</code> | 监听状态变化的回调函数 | - |
 
-**Example**  
+**Example**
+```json
+{
+    "navigationBarTitleText": "FloatingButton",
+    "usingComponents": {
+        "wux-floating-button": "../../dist/floating-button/index"
+    }
+}
+```
+
 ```html
 <wux-button id="wux-button" visible="{{ visible }}" position="{{ position }}" buttons="{{ buttons }}" bind:change="bindchange" bind:click="buttonClicked" />
 

@@ -12,7 +12,16 @@
 | bind:pulling | <code>function</code> | 下拉开始的回调函数 | - |
 | bind:refresh | <code>function</code> | 下拉完成的回调函数 | - |
 
-**Example**  
+**Example**
+```json
+{
+    "navigationBarTitleText": "Refresher",
+    "usingComponents": {
+        "wux-refresher": "../../dist/refresher/index"
+    }
+}
+```
+
 ```html
 <wux-refresher id="wux-refresher" bind:pulling="onPulling" bind:refresh="onRefresh">
     <view class="weui-panel weui-panel_access">

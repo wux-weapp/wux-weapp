@@ -7,7 +7,16 @@
 | size | <code>string</code> | 组件大小，可选值为 small/default/large | default |
 | spinning | <code>boolean</code> | 是否旋转 | false |
 
-**Example**  
+**Example**
+```json
+{
+    "navigationBarTitleText": "Spin",
+    "usingComponents": {
+        "wux-spin": "../../dist/spin/index"
+    }
+}
+```
+
 ```html
 <view class="page">
     <view class="page__hd">

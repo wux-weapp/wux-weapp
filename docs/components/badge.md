@@ -10,7 +10,16 @@
 | status | <code>string</code> | 设置 Badge 为状态点，可选值为 success、processing、default、error、warning | - |
 | text | <code>string</code> | 在设置了 status 的前提下有效，设置状态点的文本 | - |
 
-**Example**  
+**Example**
+```json
+{
+    "navigationBarTitleText": "Badge",
+    "usingComponents": {
+        "wux-badge": "../../dist/badge/index"
+    }
+}
+```
+
 ```html
 <view class="page">
     <view class="page__hd">

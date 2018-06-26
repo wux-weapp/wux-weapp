@@ -12,7 +12,16 @@
 | className | <code>string</code> | 自定义类名 | - |
 | bind:change | <code>function</code> | 监听值变化的回调函数 | - |
 
-**Example**  
+**Example**
+```json
+{
+	"navigationBarTitleText": "InputNumber",
+	"usingComponents": {
+        "wux-input-number": "../../dist/input-number/index"
+    }
+}
+```
+
 ```html
 <view class="page">
     <view class="page__hd">

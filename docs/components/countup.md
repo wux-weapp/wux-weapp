@@ -16,7 +16,7 @@
 | options.formattingFn | <code>function</code> | 自定义格式化函数 | - |
 | options.printValue | <code>function</code> | 渲染组件的回调函数 | - |
 
-**Example**  
+**Example**
 ```html
 <view class="page">
     <view class="page__hd">

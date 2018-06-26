@@ -13,7 +13,16 @@
 | options.buttons[].bold | <code>boolean</code> | 是否加粗按钮的文字 | - |
 | options.buttons[].onTap | <code>function</code> | 按钮的点击事件 | - |
 
-**Example**  
+**Example**
+```json
+{
+	"navigationBarTitleText": "Dialog",
+	"usingComponents": {
+        "wux-dialog": "../../dist/dialog/index"
+    }
+}
+```
+
 ```html
 <wux-dialog id="wux-dialog" />
 

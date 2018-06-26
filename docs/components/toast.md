@@ -10,7 +10,16 @@
 | options.text | <code>string</code> | 提示文本 | 已完成 |
 | options.success | <code>function</code> | 关闭后的回调函数 | - |
 
-**Example**  
+**Example**
+```json
+{
+    "navigationBarTitleText": "Toast",
+    "usingComponents": {
+        "wux-toast": "../../dist/toast/index"
+    }
+}
+```
+
 ```html
 <wux-toast id="wux-toast" />
 

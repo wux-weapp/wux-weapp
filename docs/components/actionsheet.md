@@ -15,7 +15,16 @@
 | options.destructiveText | <code>string</code> | 删除按钮的文本 | - |
 | options.destructiveButtonClicked | <code>function</code> | 删除按钮点击事件 | - |
 
-**Example**  
+**Example**
+```json
+{
+    "navigationBarTitleText": "ActionSheet",
+    "usingComponents": {
+        "wux-actionsheet": "../../dist/actionsheet/index"
+    }
+}
+```
+
 ```html
 <wux-actionsheet id="wux-actionsheet" />
 

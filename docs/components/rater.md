@@ -12,7 +12,16 @@
 | disabled | <code>boolean</code> | 禁用点击 | false |
 | bind:change | <code>function</code> | 点击事件的回调函数 | - |
 
-**Example**  
+**Example**
+```json
+{
+    "navigationBarTitleText": "Rater",
+    "usingComponents": {
+        "wux-rater": "../../dist/rater/index"
+    }
+}
+```
+
 ```html
 <view class="page">
     <view class="page__hd">

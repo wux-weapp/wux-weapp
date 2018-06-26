@@ -12,7 +12,17 @@
 | options.disorder | <code>boolean</code> | 是否打乱键盘 | false |
 | options.callback | <code>function</code> | 输入完成后的回调函数 | - |
 
-**Example**  
+**Example**
+```json
+{
+    "navigationBarTitleText": "KeyBoard",
+    "usingComponents": {
+        "wux-keyboard": "../../dist/keyboard/index"
+    }
+}
+```
+
+
 ```html
 <wux-keyboard id="wux-keyboard" />
 

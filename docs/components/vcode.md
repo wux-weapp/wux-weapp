@@ -13,7 +13,16 @@
 | hasLine | <code>boolean</code> | 是否显示干扰线 | true |
 | bind:change | <code>function</code> | 点击事件的回调函数 | - |
 
-**Example**  
+**Example**
+```json
+{
+    "navigationBarTitleText": "Vcode",
+    "usingComponents": {
+        "wux-vcode": "../../dist/vcode/index"
+    }
+}
+```
+
 ```html
 <view class="page">
     <view class="page__hd">

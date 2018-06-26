@@ -19,7 +19,16 @@
 | options.cancel | <code>function</code> | 点击关闭的回调函数 | - |
 | options.onTap | <code>function</code> | 图片点击事件 | - |
 
-**Example**  
+**Example**
+```json
+{
+    "navigationBarTitleText": "Gallery",
+    "usingComponents": {
+        "wux-gallery": "../../dist/gallery/index"
+    }
+}
+```
+
 ```html
 <wux-gallery id="wux-gallery" />
 
