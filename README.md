@@ -1,7 +1,7 @@
 微信小程序 - 自定义组件
 =
 
-[![npm version](https://img.shields.io/npm/v/wux.svg)](https://www.npmjs.org/package/wux)
+[![npm version](https://img.shields.io/npm/v/wux-weapp.svg)](https://www.npmjs.org/package/wux-weapp)
 
 ## 预览
 
@@ -17,30 +17,30 @@
 
 ## 插件及文档
 
-* [ActionSheet - 上拉菜单](https://github.com/skyvow/wux/blob/master/docs/components/actionsheet.md)
-* [AnimationGroup - 动画组](https://github.com/skyvow/wux/blob/master/docs/components/animation-group.md)
-* [Backdrop - 背景幕](https://github.com/skyvow/wux/blob/master/docs/components/backdrop.md)
-* [Badge - 徽章](https://github.com/skyvow/wux/blob/master/docs/components/badge.md)
-* [Barcode - 条形码](https://github.com/skyvow/wux/blob/master/docs/components/barcode.md)
-* [CountDown - 倒计时](https://github.com/skyvow/wux/blob/master/docs/components/countdown.md)
-* [CountUp - 计数器](https://github.com/skyvow/wux/blob/master/docs/components/countup.md)
-* [Dialog - 对话框](https://github.com/skyvow/wux/blob/master/docs/components/dialog.md)
-* [FloatingButton - 浮动按钮](https://github.com/skyvow/wux/blob/master/docs/components/button.md)
-* [Gallery - 画廊](https://github.com/skyvow/wux/blob/master/docs/components/gallery.md)
-* [Grid - 栅格布局](https://github.com/skyvow/wux/blob/master/docs/components/grid.md)
-* [InputNumber - 数字输入框](https://github.com/skyvow/wux/blob/master/docs/components/xnumber.md)
-* [KeyBoard - 键盘](https://github.com/skyvow/wux/blob/master/docs/components/keyboard.md)
-* [Loading - 指示器](https://github.com/skyvow/wux/blob/master/docs/components/loading.md)
-* [Notification - 通知](https://github.com/skyvow/wux/blob/master/docs/components/notification.md)
-* [Prompt - 提示信息](https://github.com/skyvow/wux/blob/master/docs/components/prompt.md)
-* [Qrcode - 二维码](https://github.com/skyvow/wux/blob/master/docs/components/qrcode.md)
-* [Rater - 评分组件](https://github.com/skyvow/wux/blob/master/docs/components/rater.md)
-* [Refresher - 下拉刷新](https://github.com/skyvow/wux/blob/master/docs/components/refresher.md)
-* [Spin - 加载中](https://github.com/skyvow/wux/blob/master/docs/components/spin.md)
-* [Tag - 标签](https://github.com/skyvow/wux/blob/master/docs/components/tag.md)
-* [Toast - 提示框](https://github.com/skyvow/wux/blob/master/docs/components/toast.md)
-* [Toptips - 顶部提示](https://github.com/skyvow/wux/blob/master/docs/components/toptips.md)
-* [Vcode - 验证码](https://github.com/skyvow/wux/blob/master/docs/components/vcode.md)
+* [ActionSheet - 上拉菜单](https://github.com/wux-weapp/wux-weapp/blob/master/docs/components/actionsheet.md)
+* [AnimationGroup - 动画组](https://github.com/wux-weapp/wux-weapp/blob/master/docs/components/animation-group.md)
+* [Backdrop - 背景幕](https://github.com/wux-weapp/wux-weapp/blob/master/docs/components/backdrop.md)
+* [Badge - 徽章](https://github.com/wux-weapp/wux-weapp/blob/master/docs/components/badge.md)
+* [Barcode - 条形码](https://github.com/wux-weapp/wux-weapp/blob/master/docs/components/barcode.md)
+* [CountDown - 倒计时](https://github.com/wux-weapp/wux-weapp/blob/master/docs/components/countdown.md)
+* [CountUp - 计数器](https://github.com/wux-weapp/wux-weapp/blob/master/docs/components/countup.md)
+* [Dialog - 对话框](https://github.com/wux-weapp/wux-weapp/blob/master/docs/components/dialog.md)
+* [FloatingButton - 浮动按钮](https://github.com/wux-weapp/wux-weapp/blob/master/docs/components/button.md)
+* [Gallery - 画廊](https://github.com/wux-weapp/wux-weapp/blob/master/docs/components/gallery.md)
+* [Grid - 栅格布局](https://github.com/wux-weapp/wux-weapp/blob/master/docs/components/grid.md)
+* [InputNumber - 数字输入框](https://github.com/wux-weapp/wux-weapp/blob/master/docs/components/xnumber.md)
+* [KeyBoard - 键盘](https://github.com/wux-weapp/wux-weapp/blob/master/docs/components/keyboard.md)
+* [Loading - 指示器](https://github.com/wux-weapp/wux-weapp/blob/master/docs/components/loading.md)
+* [Notification - 通知](https://github.com/wux-weapp/wux-weapp/blob/master/docs/components/notification.md)
+* [Prompt - 提示信息](https://github.com/wux-weapp/wux-weapp/blob/master/docs/components/prompt.md)
+* [Qrcode - 二维码](https://github.com/wux-weapp/wux-weapp/blob/master/docs/components/qrcode.md)
+* [Rater - 评分组件](https://github.com/wux-weapp/wux-weapp/blob/master/docs/components/rater.md)
+* [Refresher - 下拉刷新](https://github.com/wux-weapp/wux-weapp/blob/master/docs/components/refresher.md)
+* [Spin - 加载中](https://github.com/wux-weapp/wux-weapp/blob/master/docs/components/spin.md)
+* [Tag - 标签](https://github.com/wux-weapp/wux-weapp/blob/master/docs/components/tag.md)
+* [Toast - 提示框](https://github.com/wux-weapp/wux-weapp/blob/master/docs/components/toast.md)
+* [Toptips - 顶部提示](https://github.com/wux-weapp/wux-weapp/blob/master/docs/components/toptips.md)
+* [Vcode - 验证码](https://github.com/wux-weapp/wux-weapp/blob/master/docs/components/vcode.md)
 
 ## 更新日志
 

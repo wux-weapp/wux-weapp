@@ -1,7 +1,7 @@
 Page({
 	data: {
 		motto: 'Star me', 
-		github: 'https://github.com/skyvow/wux', 
+		github: 'https://github.com/wux-weapp/wux-weapp', 
 		userInfo: {}
 	},
 	onLoad() {
