@@ -1,16 +1,14 @@
-## loading(options)
+## Loading
 指示器
 
-| 参数 | 类型 | 描述 |
-| --- | --- | --- |
-| options | <code>object</code> | 配置项 |
-| options.text | <code>string</code> | 提示文本 |
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| options | <code>object</code> | 配置项 | - |
+| options.text | <code>string</code> | 提示文本 | 数据加载中 |
 
 **Example**  
 ```html
-<import src="../../components/loading/loading.wxml"/>
-
-<template is="loading" data="{{ ...$wux.loading }}"/>
+<wux-loading id="wux-loading" />
 
 <view class="page">
     <view class="page__hd">
@@ -19,25 +17,26 @@
     </view>
     <view class="page__bd">
         <view class="weui-btn-area">
-            <button class="weui-btn" type="default" bindtap="showLoading">加载中提示</button>
+	        <button class="weui-btn" type="default" bindtap="showLoading">加载中提示</button>
         </view>
     </view>
 </view>
 ```
 
 ```js
-import { $wuxLoading } from '../../components/wux'
+import { $wuxLoading } from '../../dist/base/index'
 
 Page({
     data: {},
     onLoad() {},
     showLoading() {
-        $wuxLoading.show({
+        this.$wuxLoading = $wuxLoading()
+        this.$wuxLoading.show({
             text: '数据加载中',
         })
 
         setTimeout(() => {
-            $wuxLoading.hide()
+            this.$wuxLoading.hide()
         }, 1500)
     },
 })

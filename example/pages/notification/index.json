@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "Notification",
+    "usingComponents": {
+        "wux-notification": "../../dist/notification/index"
+    },
+    "disableScroll": true
+}

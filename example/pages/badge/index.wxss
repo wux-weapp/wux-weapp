@@ -1,0 +1,17 @@
+/* pages/badge/index.wxss */
+.example {
+    display: inline-block;
+    margin: 20px;
+}
+
+.example__badge {
+    width: 42px;
+    height: 42px;
+    background: #ddd;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.bg-green {
+    background-color: #52c41a !important;
+}

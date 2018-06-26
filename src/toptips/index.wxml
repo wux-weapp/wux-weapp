@@ -1,0 +1,6 @@
+<wux-animation-group wux-class="wux-toptips" in="{{ in }}" class-names="wux-animate--slideInDown">
+    <view class="wux-toptips__content {{ icon ? 'wux-toptips__content--' + icon : 'wux-toptips__content--cancel' }}">
+        <text>{{ text }}</text>
+        <icon wx:if="{{ icon && !hidden }}" class="wux-toptips__icon" type="{{ icon }}" size="24" color="#fff" />
+    </view>
+</wux-animation-group>

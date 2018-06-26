@@ -1,13 +1,15 @@
 {
-  "name": "wux",
-  "version": "2.0.3",
+  "name": "wux-weapp",
+  "version": "3.0.0",
   "description": "微信小程序 - 自定义组件",
-  "main": "src/app.js",
+  "main": "src/index.js",
   "dependencies": {
-    "babel": "^6.23.0",
+    "babel": "6.23.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "cross-env": "1.0.8",
     "gulp": "^3.9.1",
     "gulp-cssnano": "^2.1.2",
     "gulp-less": "^3.3.2",
@@ -18,11 +20,12 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cross-env NODE_ENV=development gulp",
+    "build": "cross-env NODE_ENV=production gulp build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/skyvow/wux.git"
+    "url": "git+https://github.com/wux-weapp/wux-weapp.git"
   },
   "keywords": [
     "wx-component",
@@ -31,7 +34,7 @@
   "author": "skyvow",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/skyvow/wux/issues"
+    "url": "https://github.com/wux-weapp/wux-weapp/issues"
   },
-  "homepage": "https://github.com/skyvow/wux#readme"
+  "homepage": "https://github.com/wux-weapp/wux-weapp#readme"
 }

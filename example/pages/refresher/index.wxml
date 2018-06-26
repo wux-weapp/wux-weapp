@@ -1,0 +1,11 @@
+<wux-refresher id="wux-refresher" bind:pulling="onPulling" bind:refresh="onRefresh">
+    <view class="weui-panel weui-panel_access">
+        <view class="weui-panel__hd">文字组合列表</view>
+        <view class="weui-panel__bd">
+            <view class="weui-media-box weui-media-box_text" wx:for="{{ items }}" wx:key="">
+                <view class="weui-media-box__title weui-media-box__title_in-text">{{ item.title }}</view>
+                <view class="weui-media-box__desc">{{ item.content }}</view>
+            </view>
+        </view>
+    </view>
+</wux-refresher>

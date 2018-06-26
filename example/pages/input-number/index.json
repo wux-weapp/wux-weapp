@@ -1,0 +1,6 @@
+{
+	"navigationBarTitleText": "InputNumber",
+	"usingComponents": {
+        "wux-input-number": "../../dist/input-number/index"
+    }
+}

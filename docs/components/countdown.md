@@ -1,14 +1,14 @@
-## countdown(options)
+## CountDown
 倒计时
 
-| 参数 | 类型 | 描述 |
-| --- | --- | --- |
-| options | <code>object</code> | 配置项 |
-| options.date | <code>string</code> | 日期 |
-| options.refresh | <code>number</code> | 刷新时间 |
-| options.offset | <code>number</code> | 偏移量 |
-| options.onEnd | <code>function</code> | 倒计时结束后的回调函数 |
-| options.render | <code>function</code> | 渲染组件的回调函数 |
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| options | <code>object</code> | 配置项 | - |
+| options.date | <code>string</code> | 日期 | June 7, 2087 15:03:25 |
+| options.refresh | <code>number</code> | 刷新时间 | 1000 |
+| options.offset | <code>number</code> | 偏移量 | 0 |
+| options.onEnd | <code>function</code> | 倒计时结束后的回调函数 | - |
+| options.render | <code>function</code> | 渲染组件的回调函数 | - |
 
 **Example**  
 ```html
@@ -32,8 +32,8 @@
             </view>
         </view>
         <view class="text-center">
-            <view class="countdown">{{ c1 }}</view>
-            <view class="countdown">{{ c3 }}</view>
+        	<view class="countdown">{{ c1 }}</view>
+        	<view class="countdown">{{ c3 }}</view>
         </view>
         <view class="weui-btn-area text-center">
             <button class="weui-btn" type="primary" size="mini" bindtap="stop">Stop</button>
@@ -45,34 +45,34 @@
 ```
 
 ```js
-import { $wuxCountDown } from '../../components/wux'
+import { $wuxCountDown } from '../../dist/base/index'
 
 Page({
     data: {},
-    onLoad() {      
+    onLoad() {
         this.c1 = new $wuxCountDown({
-            date: 'June 7, 2087 15:03:25', 
+            date: 'June 7, 2087 15:03:25',
             render(date) {
-                const years = this.leadingZeros(date.years, 4)  + ' 年 '
-                const days = this.leadingZeros(date.days, 3)  + ' 天 '
-                const hours = this.leadingZeros(date.hours, 2)  + ' 时 '
-                const min = this.leadingZeros(date.min, 2)  + ' 分 '
-                const sec = this.leadingZeros(date.sec, 2)  + ' 秒 '
+                const years = this.leadingZeros(date.years, 4) + ' 年 '
+                const days = this.leadingZeros(date.days, 3) + ' 天 '
+                const hours = this.leadingZeros(date.hours, 2) + ' 时 '
+                const min = this.leadingZeros(date.min, 2) + ' 分 '
+                const sec = this.leadingZeros(date.sec, 2) + ' 秒 '
 
                 this.setData({
-                    c1: years + days + hours + min + sec, 
+                    c1: years + days + hours + min + sec,
                 })
-            }, 
+            },
         })
 
         this.c3 = new $wuxCountDown({
-            date: +(new Date) + 60000 * 20, 
+            date: +(new Date) + 60000 * 20,
             render(date) {
-                const min = this.leadingZeros(date.min, 2)  + ' 分 '
-                const sec = this.leadingZeros(date.sec, 2)  + ' 秒 '
+                const min = this.leadingZeros(date.min, 2) + ' 分 '
+                const sec = this.leadingZeros(date.sec, 2) + ' 秒 '
 
                 this.setData({
-                    c3: min + sec, 
+                    c3: min + sec,
                 })
             },
         })
@@ -80,16 +80,16 @@ Page({
     vcode() {
         if (this.c2 && this.c2.interval) return !1
         this.c2 = new $wuxCountDown({
-            date: +(new Date) + 60000, 
+            date: +(new Date) + 60000,
             onEnd() {
                 this.setData({
-                    c2: '重新获取验证码', 
+                    c2: '重新获取验证码',
                 })
             },
             render(date) {
-                const sec = this.leadingZeros(date.sec, 2)  + ' 秒 '
+                const sec = this.leadingZeros(date.sec, 2) + ' 秒 '
                 date.sec !== 0 && this.setData({
-                    c2: sec, 
+                    c2: sec,
                 })
             },
         })

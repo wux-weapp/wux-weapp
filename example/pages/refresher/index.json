@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "Refresher",
+    "usingComponents": {
+        "wux-refresher": "../../dist/refresher/index"
+    }
+}

@@ -1,4 +1,0 @@
-/* pages/xnumber/index.wxss */
-.custom-xnumber .wux-number-input {
-	width: 100px;
-}

@@ -1,0 +1,15 @@
+<wux-animation-group wux-class="wux-prompt" in="{{ visible }}" class-names="wux-animate--fadeIn">
+    <view class="wux-prompt__bd">
+        <image src="{{ icon }}" class="wux-prompt__icon" wx:if="{{ icon }}" />
+        <view class="wux-prompt__title" wx:if="{{ title }}">{{ title }}</view>
+        <view class="wux-prompt__text" wx:if="{{ text }}">{{ text }}</view>
+        <view class="wux-prompt__buttons" wx:if="{{ buttons && !!buttons.length }}">
+            <block wx:for="{{ buttons }}" wx:key="">
+                <button type="{{ item.type || 'default' }}" size="{{ item.size || 'default' }}" loading="{{ item.loading }}" plain="{{ item.plain }}" disabled="{{ item.disabled }}" class="wux-prompt__button {{ item.className }}" hover-class="{{ item.haveClass || 'wux-prompt__button--hover' }}"
+                    bindtap="buttonClicked" data-index="{{ index }}">
+	        		{{ item.text }}
+	        	</button>
+            </block>
+        </view>
+    </view>
+</wux-animation-group>

@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "Qrcode",
+    "usingComponents": {
+        "wux-qrcode": "../../dist/qrcode/index"
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "Vcode",
+    "usingComponents": {
+        "wux-vcode": "../../dist/vcode/index"
+    }
+}

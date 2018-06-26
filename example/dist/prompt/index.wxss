@@ -1,0 +1,47 @@
+.wux-prompt {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  height: 100%;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  color: #939393;
+  background-color: #f2f3f4;
+}
+.wux-prompt__bd {
+  margin-top: 0;
+  text-align: center;
+}
+.wux-prompt__icon {
+  width: 128rpx;
+  height: 128rpx;
+}
+.wux-prompt__title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin: 4rpx 0;
+}
+.wux-prompt__text {
+  font-size: 24rpx;
+  margin: 4rpx 0;
+}
+.wux-prompt__button {
+  font-size: 26rpx;
+  line-height: 2;
+  margin: 8rpx auto;
+  width: 200rpx;
+  padding: 4rpx 0;
+  border: 2rpx solid #eee;
+}
+.wux-prompt__button:after {
+  display: none;
+}
+.wux-prompt__button--hover {
+  color: rgba(0, 0, 0, 0.6) !important;
+  background-color: #DEDEDE !important;
+}

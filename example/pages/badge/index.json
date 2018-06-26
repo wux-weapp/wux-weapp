@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "Badge",
+    "usingComponents": {
+        "wux-badge": "../../dist/badge/index"
+    }
+}

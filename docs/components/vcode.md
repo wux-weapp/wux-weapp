@@ -1,18 +1,17 @@
-## vcode(id, options)
+## Vcode
 验证码
 
-| 参数 | 类型 | 描述 |
-| --- | --- | --- |
-| id | <code>string</code> | canvas 组件的唯一标识符 |
-| options | <code>object</code> | 配置项 |
-| options.str | <code>string</code> | 验证码范围 |
-| options.num | <code>number</code> | 验证码长度，默认值 6 |
-| options.width | <code>number</code> | 画布宽度，默认值 120 |
-| options.height | <code>number</code> | 画布高度，默认值 40 |
-| options.bgColor | <code>string</code> | 画布背景色 |
-| options.fontColor | <code>string</code> | 画布字体颜色 |
-| options.hasPoint | <code>boolean</code> | 是否显示干扰点，默认 true |
-| options.hasLine | <code>boolean</code> | 是否显示干扰线，默认 true |
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| str | <code>string</code> | 验证码范围 | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 |
+| num | <code>number</code> | 验证码长度 | 6 |
+| width | <code>number</code> | 画布宽度 | 120 |
+| height | <code>number</code> | 画布高度 | 40 |
+| bgColor | <code>string</code> | 画布背景色 | - |
+| fontColor | <code>string</code> | 画布字体颜色 | - |
+| hasPoint | <code>boolean</code> | 是否显示干扰点 | true |
+| hasLine | <code>boolean</code> | 是否显示干扰线 | true |
+| bind:change | <code>function</code> | 点击事件的回调函数 | - |
 
 **Example**  
 ```html
@@ -32,7 +31,7 @@
                     <input class="weui-input" placeholder="请输入验证码" />
                 </view>
                 <view class="weui-cell__ft" style="text-align: left">
-                    <canvas class="weui-vcode-img" style="width: 120px; height: 40px;" canvas-id="vcode" bindtap="getDeafultVcode"></canvas>
+                    <wux-vcode bind:change="onChange" />
                 </view>
             </view>
             <view class="weui-cell weui-cell_input weui-cell_vcode">
@@ -43,7 +42,7 @@
                     <input class="weui-input" placeholder="请输入验证码" />
                 </view>
                 <view class="weui-cell__ft" style="text-align: left">
-                    <canvas class="weui-vcode-img" style="width: 120px; height: 40px;" canvas-id="custom_vcode" bindtap="getCustomVcode"></canvas>
+                    <wux-vcode canvas-id="custom-canvas" bg-color="#e6f6ff" font-color="#165189" has-point="{{ false }}" has-line="{{ false }}" bind:change="onChange" />
                 </view>
             </view>
         </view>
@@ -52,39 +51,11 @@
 ```
 
 ```js
-import { $wuxVcode } from '../../components/wux'
-
 Page({
     data: {},
-    onLoad() {
-        this.getDeafultVcode()
-        this.getCustomVcode()
-    },
-    getDeafultVcode() {
-        if (!this.defaultVcode) {
-            this.defaultVcode = $wuxVcode.init('vcode')
-        }
-
-        this.defaultVcode.draw(true, (value) => {
-            console.log(`验证码：${value}`)
-        })
-    },
-    getCustomVcode() {
-        if (!this.customVcode) {
-            this.customVcode = $wuxVcode.init('custom_vcode', {
-                num: 6,
-                width: 120,
-                height: 40,
-                bgColor: '#e6f6ff',
-                fontColor: '#165189',
-                hasPoint: false,
-                hasLine: false,
-            })
-        }
-
-        this.customVcode.draw(true, (value) => {
-            console.log(`验证码：${value}`)
-        })
+    onLoad() {},
+    onChange(e) {
+        console.log(`验证码：${e.detail.value}`)
     },
 })
 ```

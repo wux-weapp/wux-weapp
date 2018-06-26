@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "Rater",
+    "usingComponents": {
+        "wux-rater": "../../dist/rater/index"
+    }
+}

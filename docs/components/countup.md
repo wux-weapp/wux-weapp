@@ -1,20 +1,20 @@
-## countup(startVal, endVal, decimals, duration, options)
+## CountUp
 计数器
 
-| 参数 | 类型 | 描述 |
-| --- | --- | --- |
-| startVal | <code>number</code> | 起始值 |
-| endVal | <code>number</code> | 结束值 |
-| decimals | <code>number</code> | 小数点位数 |
-| duration | <code>number</code> | 刷新时间 |
-| options | <code>object</code> | 配置项 |
-| options.useEasing | <code>boolean</code> | 是否开启过渡动画 |
-| options.useGrouping | <code>boolean</code> | 是否分隔数值 |
-| options.separator | <code>string</code> | 分隔符 |
-| options.decimal | <code>string</code> | 小数点符号 |
-| options.easingFn | <code>function</code> | 自定义过渡动画 |
-| options.formattingFn | <code>function</code> | 自定义格式化函数 |
-| options.printValue | <code>function</code> | 渲染组件的回调函数 |
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| startVal | <code>number</code> | 起始值 | - |
+| endVal | <code>number</code> | 结束值 | - |
+| decimals | <code>number</code> | 小数点位数 | 0 |
+| duration | <code>number</code> | 刷新时间 | 0 |
+| options | <code>object</code> | 配置项 | - |
+| options.useEasing | <code>boolean</code> | 是否开启过渡动画 | true |
+| options.useGrouping | <code>boolean</code> | 是否分隔数值 | true |
+| options.separator | <code>string</code> | 分隔符 | - |
+| options.decimal | <code>string</code> | 小数点符号 | . |
+| options.easingFn | <code>function</code> | 自定义过渡动画 | - |
+| options.formattingFn | <code>function</code> | 自定义格式化函数 | - |
+| options.printValue | <code>function</code> | 渲染组件的回调函数 | - |
 
 **Example**  
 ```html
@@ -40,7 +40,7 @@
 ```
 
 ```js
-import { $wuxCountUp } from '../../components/wux'
+import { $wuxCountUp } from '../../dist/base/index'
 
 Page({
     data: {},
@@ -48,7 +48,7 @@ Page({
         this.c1 = new $wuxCountUp(1, 1024, 0, 2, {
             printValue(value) {
                 this.setData({
-                    c1: value, 
+                    c1: value,
                 })
             }
         })
@@ -56,7 +56,7 @@ Page({
         this.c2 = new $wuxCountUp(0, 88.88, 2, 2, {
             printValue(value) {
                 this.setData({
-                    c2: value, 
+                    c2: value,
                 })
             }
         })
@@ -64,18 +64,18 @@ Page({
         this.c3 = new $wuxCountUp(0, 520, 0, 2, {
             printValue(value) {
                 this.setData({
-                    c3: value, 
+                    c3: value,
                 })
             }
         })
-        
+
         this.c1.start()
         this.c2.start()
     },
     start() {
         this.c3.start(() => {
             wx.showToast({
-                title: '已完成', 
+                title: '已完成',
             })
         })
     },

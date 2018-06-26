@@ -1,0 +1,30 @@
+.wux-toptips {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5000;
+}
+.wux-toptips__content {
+  padding: 10rpx;
+  font-size: 28rpx;
+  text-align: center;
+  color: #FFFFFF;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.wux-toptips__content--success {
+  background-color: #09bb08;
+}
+.wux-toptips__content--info {
+  background-color: #10aefe;
+}
+.wux-toptips__content--warn {
+  background-color: #ffbe00;
+}
+.wux-toptips__content--cancel {
+  background-color: #E64340;
+}
+.wux-toptips__icon {
+  float: left;
+}

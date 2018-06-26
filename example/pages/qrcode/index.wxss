@@ -1,0 +1,4 @@
+/* pages/qrcode/index.wxss */
+.qrcode {
+    margin: 30px auto;
+}

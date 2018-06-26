@@ -1,21 +1,21 @@
-## barcode(id, number, options)
+## Barcode
 条形码
 
-| 参数 | 类型 | 描述 |
-| --- | --- | --- |
-| id | <code>string</code> | canvas 组件的唯一标识符 |
-| number | <code>number|</code> | 条形码的数值 |
-| options | <code>object</code> | 配置项 |
-| options.width | <code>number</code> | canvas 组件的宽度 |
-| options.height | <code>number</code> | canvas 组件的高度 |
-| options.number | <code>true</code> | 是否显示数字 |
-| options.prefix | <code>true</code> | 是否显示国家前缀 |
-| options.color | <code>string</code> | 条形码的颜色 |
-| options.debug | <code>true</code> | 是否开启调试 |
-| options.onValid | <code>function</code> | 验证条形码合法的回调函数 |
-| options.onInvalid | <code>function</code> | 验证条形码不合法的回调函数 |
-| options.onSuccess | <code>function</code> | 接口调用成功的回调函数 |
-| options.onError | <code>function</code> | 接口调用失败的回调函数 |
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| canvasId | <code>string</code> | canvas 组件的唯一标识符 | wux-barcode |
+| number | <code>number|</code> | 条形码的数值 | - |
+| width | <code>number</code> | canvas 组件的宽度 | 200 |
+| height | <code>number</code> | canvas 组件的高度 | 100 |
+| options | <code>object</code> | 配置项 | - |
+| options.number | <code>true</code> | 是否显示数字 | true |
+| options.prefix | <code>true</code> | 是否显示国家前缀 | true |
+| options.color | <code>string</code> | 条形码的颜色 | black |
+| options.debug | <code>true</code> | 是否开启调试 | false |
+| options.onValid | <code>function</code> | 验证条形码合法的回调函数 | - |
+| options.onInvalid | <code>function</code> | 验证条形码不合法的回调函数 | - |
+| options.onSuccess | <code>function</code> | 接口调用成功的回调函数 | - |
+| options.onError | <code>function</code> | 接口调用失败的回调函数 | - |
 
 **Example**  
 ```html
@@ -29,38 +29,36 @@
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell weui-cell_input">
                 <view class="weui-cell__bd">
-                    <input type="number" class="weui-input" bindinput="bindinput" />
+                    <input value="{{ number }}" type="number" class="weui-input" bindinput="bindinput" />
                 </view>
             </view>
         </view>
         <view class="weui-cells__tips">提示：扫描只能识别有效的条形码</view>
-        <canvas style="width: 200px; height: 100px; margin: 30px auto;" canvas-id="barcode"></canvas>
+        <wux-barcode wux-class="barcode" number="{{ number }}" options="{{ options }}" width="200" height="100" />
     </view>
 </view>
 ```
 
 ```js
-import { $wuxBarcode } from '../../components/wux'
-
 Page({
     data: {
-        value: '', 
-    },
-    onLoad() {
-        new $wuxBarcode('barcode', '9787115335500')
-    },
-    bindinput(e) {
-        const value = e.detail.value
-
-        if (value.length > 13) return {
-            value: value.substr(0, 13), 
+        number: '9787115335524',
+        options: {
+            // number: true,
+            // prefix: true,
+            // color: 'black',
+            // debug: false,
+            onValid() { console.log('onValid') },
+            onInvalid() { console.log('onInvalid') },
+            onSuccess() { console.log('onSuccess') },
+            onError() { console.log('onError') },
         }
-
+    },
+    onLoad() {},
+    bindinput(e) {
         this.setData({
-            value, 
+            number: e.detail.value,
         })
-
-        new $wuxBarcode('barcode', value)
     },
 })
 ```

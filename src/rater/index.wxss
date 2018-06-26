@@ -1,0 +1,45 @@
+@import "../styles/base/fn.wxss";
+
+.wux-rater {
+	display: inline-block;
+    margin: 0;
+    padding: 0;
+	line-height: normal;
+    vertical-align: middle;
+    font-weight: 400;
+    font-style: normal;
+	.clearfix();
+
+	&__box {
+		position: relative;
+		display: inline-block;
+		float: left;
+		text-align: center;
+		cursor: pointer;
+		color: #ccc;
+		transition: color .3s ease;
+
+		&:last-child {
+			padding-right: 2px !important;
+			margin-right: 0px !important;
+		}
+
+		&--disabled {
+			color: #ccc !important;
+			cursor: not-allowed;
+		}
+	}
+
+	&__inner {
+		position: relative;
+		display: inline-block;
+	}
+
+	&__outer {
+		position: absolute;
+		left: 0;
+		top: 0;
+		display: inline-block;
+		overflow: hidden;
+	}
+}

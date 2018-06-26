@@ -1,25 +1,23 @@
-## actionsheet(options)
+## ActionSheet
 上拉菜单
 
-| 参数 | 类型 | 描述 |
-| --- | --- | --- |
-| options | <code>object</code> | 配置项 |
-| options.theme | <code>string</code> | 菜单皮肤 |
-| options.className | <code>string</code> | 自定义类名 |
-| options.titleText | <code>string</code> | 标题 |
-| options.buttons | <code>array</code> | 按钮 |
-| options.buttons[].text | <code>string</code> | 按钮的文本 |
-| options.buttonClicked | <code>function</code> | 按钮点击事件 |
-| options.cancelText | <code>string</code> | 取消按钮的文本 |
-| options.cancel | <code>function</code> | 取消按钮点击事件 |
-| options.destructiveText | <code>string</code> | 删除按钮的文本 |
-| options.destructiveButtonClicked | <code>function</code> | 删除按钮点击事件 |
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| options | <code>object</code> | 配置项 | - |
+| options.theme | <code>string</code> | 菜单皮肤 | ios |
+| options.className | <code>string</code> | 自定义类名 | - |
+| options.titleText | <code>string</code> | 标题 | - |
+| options.buttons | <code>array</code> | 按钮 | [] |
+| options.buttons[].text | <code>string</code> | 按钮的文本 | - |
+| options.buttonClicked | <code>function</code> | 按钮点击事件 | - |
+| options.cancelText | <code>string</code> | 取消按钮的文本 | 取消 |
+| options.cancel | <code>function</code> | 取消按钮点击事件 | - |
+| options.destructiveText | <code>string</code> | 删除按钮的文本 | - |
+| options.destructiveButtonClicked | <code>function</code> | 删除按钮点击事件 | - |
 
 **Example**  
 ```html
-<import src="../../components/actionsheet/actionsheet.wxml"/>
-
-<template is="actionsheet" data="{{ ...$wux.actionSheet }}"/>
+<wux-actionsheet id="wux-actionsheet" />
 
 <view class="page">
     <view class="page__hd">
@@ -37,7 +35,7 @@
 ```
 
 ```js
-import { $wuxActionSheet } from '../../components/wux'
+import { $wuxActionSheet } from '../../dist/base/index'
 
 Page({
     data: {},
@@ -48,14 +46,13 @@ Page({
         })
     },
     showActionSheet2() {
-        $wuxActionSheet.show({
+        $wuxActionSheet().showSheet({
             titleText: '自定义操作',
-            buttons: [
-                { 
-                    text: 'Go Dialog' 
+            buttons: [{
+                    text: 'Go Dialog'
                 },
-                { 
-                    text: 'Go Toast' 
+                {
+                    text: 'Go Toast'
                 },
             ],
             buttonClicked(index, item) {
@@ -66,7 +63,7 @@ Page({
                 index === 1 && wx.navigateTo({
                     url: '/pages/toast/index'
                 })
-                
+
                 return true
             },
             cancelText: '取消',
@@ -78,15 +75,14 @@ Page({
     showActionSheet3() {
         if (this.timeout) clearTimeout(this.timeout)
 
-        const hideSheet = $wuxActionSheet.show({
-            theme: 'wx', 
+        const hideSheet = $wuxActionSheet().showSheet({
+            theme: 'wx',
             titleText: '三秒后自动关闭',
-            buttons: [
-                { 
-                    text: '实例菜单' 
+            buttons: [{
+                    text: '实例菜单'
                 },
-                { 
-                    text: '实例菜单' 
+                {
+                    text: '实例菜单'
                 },
             ],
             buttonClicked(index, item) {

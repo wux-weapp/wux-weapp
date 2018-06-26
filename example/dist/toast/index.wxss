@@ -1,0 +1,35 @@
+.wux-toast {
+  position: fixed;
+  z-index: 5000;
+  top: 360rpx;
+  left: 50%;
+  background: rgba(40, 40, 40, 0.75);
+  text-align: center;
+  border-radius: 10rpx;
+  color: #FFFFFF;
+  -webkit-transform: translate3d(-50%, 0, 0);
+          transform: translate3d(-50%, 0, 0);
+}
+.wux-toast__bd {
+  width: 7.6em;
+  min-height: 7.6em;
+  padding: 44rpx 0;
+  box-sizing: border-box;
+}
+.wux-toast__bd--text {
+  margin: 0;
+  width: 12em;
+  min-height: 0;
+  padding: 40rpx;
+  text-overflow: ellipsis;
+}
+.wux-toast__bd--text .wux-toast__text {
+  margin: 0;
+}
+.wux-toast__bd--text .wux-toast__icon {
+  display: none;
+}
+.wux-toast__icon {
+  margin: 0;
+  display: block;
+}

@@ -1,11 +1,9 @@
-## backdrop()
+## Backdrop
 背景幕
 
 **Example**  
 ```html
-<import src="../../components/backdrop/backdrop.wxml"/>
-
-<template is="backdrop" data="{{ ...$wux.backdrop }}"/>
+<wux-backdrop id="wux-backdrop" />
 
 <view class="page">
     <view class="page__hd">
@@ -13,7 +11,7 @@
         <view class="page__desc">背景幕</view>
     </view>
     <view class="page__bd">
-        <view class="weui-btn-area ezpop">
+        <view class="weui-btn-area btn-group">
             <button class="weui-btn" type="default" bindtap="retain">保持背景幕 retain</button>
             <button class="weui-btn" type="primary" bindtap="release">释放背景幕 release</button>
         </view>
@@ -23,14 +21,14 @@
 ```
 
 ```js
-import { $wuxBackdrop } from '../../components/wux'
+import { $wuxBackdrop } from '../../dist/base/index'
 
 Page({
     data: {
-        locks: 0, 
+        locks: 0,
     },
     onLoad() {
-        this.$wuxBackdrop = $wuxBackdrop.init()
+        this.$wuxBackdrop = $wuxBackdrop()
     },
     retain() {
         this.$wuxBackdrop.retain()

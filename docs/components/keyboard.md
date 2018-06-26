@@ -1,27 +1,25 @@
-## keyboard(options)
-键盘
+## KeyBoard
+数字键盘
 
-| 参数 | 类型 | 描述 |
-| --- | --- | --- |
-| options | <code>object</code> | 配置项 |
-| options.className | <code>string</code> | 自定义类名 |
-| options.titleText | <code>string</code> | 标题 |
-| options.cancelText | <code>string</code> | 取消按钮的文字 |
-| options.inputText | <code>string</code> | 提示文本 |
-| options.showCancel | <code>boolean</code> | 是否显示取消按钮 |
-| options.disorder | <code>boolean</code> | 是否打乱键盘 |
-| options.callback | <code>function</code> | 输入完成后的回调函数 |
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| options | <code>object</code> | 配置项 | - |
+| options.className | <code>string</code> | 自定义类名 | - |
+| options.titleText | <code>string</code> | 标题 | 安全键盘 |
+| options.cancelText | <code>string</code> | 取消按钮的文字 | 取消 |
+| options.inputText | <code>string</code> | 提示文本 | 输入数字密码 |
+| options.showCancel | <code>boolean</code> | 是否显示取消按钮 | true |
+| options.disorder | <code>boolean</code> | 是否打乱键盘 | false |
+| options.callback | <code>function</code> | 输入完成后的回调函数 | - |
 
 **Example**  
 ```html
-<import src="../../components/keyboard/keyboard.wxml" />
-
-<template is="keyboard" data="{{ ...$wux.keyboard }}" />
+<wux-keyboard id="wux-keyboard" />
 
 <view class="page">
     <view class="page__hd">
         <view class="page__title">KeyBoard</view>
-        <view class="page__desc">键盘</view>
+        <view class="page__desc">数字键盘</view>
     </view>
     <view class="page__bd">
         <view class="weui-btn-area">
@@ -36,13 +34,13 @@
 ```
 
 ```js
-import { $wuxKeyBoard } from '../../components/wux'
+import { $wuxKeyBoard } from '../../dist/base/index'
 
 Page({
     data: {},
     onLoad() {},
     open() {
-        $wuxKeyBoard.show({
+        $wuxKeyBoard().show({
             callback(value) {
                 console.log(`输入的密码是：${value}`)
                 return true
@@ -50,7 +48,7 @@ Page({
         })
     },
     openWitdhDisorder() {
-        $wuxKeyBoard.show({
+        $wuxKeyBoard().show({
             disorder: true,
             callback(value) {
                 console.log(`输入的密码是：${value}`)
@@ -67,7 +65,7 @@ Page({
             })
         }
 
-        $wuxKeyBoard.show({
+        $wuxKeyBoard().show({
             callback(value) {
                 console.log(`输入的密码是：${value}`)
 
@@ -111,7 +109,7 @@ Page({
             })
         }
 
-        $wuxKeyBoard.show({
+        $wuxKeyBoard().show({
             className: 'className',
             titleText: '安全键盘',
             cancelText: '取消',
@@ -132,14 +130,14 @@ Page({
         })
     },
     openTimed() {
-        const keyboard = $wuxKeyBoard.show({
+        const hide = $wuxKeyBoard().show({
             callback(value) {
                 console.log(`输入的密码是：${value}`)
                 return true
             },
         })
 
-        setTimeout(keyboard.hide, 3000)
+        setTimeout(hide, 3000)
     },
 })
 ```

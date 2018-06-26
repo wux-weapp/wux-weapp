@@ -1,0 +1,185 @@
+@import "../styles/base/fn.wxss";
+
+.wux-tag {
+    font-family: Monospaced Number,Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(0,0,0,.65);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+    line-height: 20px;
+    height: 22px;
+    padding: 0 7px;
+    border-radius: 4px;
+    border: 1px solid #d9d9d9;
+    background: #fafafa;
+    font-size: 12px;
+    transition: all .3s cubic-bezier(.215,.61,.355,1);
+    opacity: 1;
+    margin-right: 8px;
+    cursor: pointer;
+    white-space: nowrap;
+
+    &--hover {
+        opacity: .85;
+    }
+
+    &--pink {
+        color: #eb2f96;
+        background: #fff0f6;
+        border-color: #ffadd2;
+    }
+    
+    &--pink-inverse {
+        background: #eb2f96;
+        border-color: #eb2f96;
+        color: #fff;
+    }
+    
+    &--magenta {
+        color: #eb2f96;
+        background: #fff0f6;
+        border-color: #ffadd2;
+    }
+    
+    &--magenta-inverse {
+        background: #eb2f96;
+        border-color: #eb2f96;
+        color: #fff;
+    }
+    
+    &--red {
+        color: #f5222d;
+        background: #fff1f0;
+        border-color: #ffa39e;
+    }
+    
+    &--red-inverse {
+        background: #f5222d;
+        border-color: #f5222d;
+        color: #fff;
+    }
+    
+    &--volcano {
+        color: #fa541c;
+        background: #fff2e8;
+        border-color: #ffbb96;
+    }
+    
+    &--volcano-inverse {
+        background: #fa541c;
+        border-color: #fa541c;
+        color: #fff;
+    }
+    
+    &--orange {
+        color: #fa8c16;
+        background: #fff7e6;
+        border-color: #ffd591;
+    }
+    
+    &--orange-inverse {
+        background: #fa8c16;
+        border-color: #fa8c16;
+        color: #fff;
+    }
+    
+    &--yellow {
+        color: #fadb14;
+        background: #feffe6;
+        border-color: #fffb8f;
+    }
+    
+    &--yellow-inverse {
+        background: #fadb14;
+        border-color: #fadb14;
+        color: #fff;
+    }
+    
+    &--gold {
+        color: #faad14;
+        background: #fffbe6;
+        border-color: #ffe58f;
+    }
+    
+    &--gold-inverse {
+        background: #faad14;
+        border-color: #faad14;
+        color: #fff;
+    }
+    
+    &--cyan {
+        color: #13c2c2;
+        background: #e6fffb;
+        border-color: #87e8de;
+    }
+    
+    &--cyan-inverse {
+        background: #13c2c2;
+        border-color: #13c2c2;
+        color: #fff;
+    }
+    
+    &--lime {
+        color: #a0d911;
+        background: #fcffe6;
+        border-color: #eaff8f;
+    }
+    
+    &--lime-inverse {
+        background: #a0d911;
+        border-color: #a0d911;
+        color: #fff;
+    }
+    
+    &--green {
+        color: #52c41a;
+        background: #f6ffed;
+        border-color: #b7eb8f;
+    }
+    
+    &--green-inverse {
+        background: #52c41a;
+        border-color: #52c41a;
+        color: #fff;
+    }
+    
+    &--blue {
+        color: #1890ff;
+        background: #e6f7ff;
+        border-color: #91d5ff;
+    }
+    
+    &--blue-inverse {
+        background: #1890ff;
+        border-color: #1890ff;
+        color: #fff;
+    }
+    
+    &--geekblue {
+        color: #2f54eb;
+        background: #f0f5ff;
+        border-color: #adc6ff;
+    }
+    
+    &--geekblue-inverse {
+        background: #2f54eb;
+        border-color: #2f54eb;
+        color: #fff;
+    }
+    
+    &--purple {
+        color: #722ed1;
+        background: #f9f0ff;
+        border-color: #d3adf7;
+    }
+    
+    &--purple-inverse {
+        background: #722ed1;
+        border-color: #722ed1;
+        color: #fff;
+    }
+}

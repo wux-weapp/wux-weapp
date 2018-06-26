@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "Backdrop",
+    "usingComponents": {
+        "wux-backdrop": "../../dist/backdrop/index"
+    }
+}

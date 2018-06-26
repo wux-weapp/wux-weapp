@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "Tag",
+    "usingComponents": {
+        "wux-tag": "../../dist/tag/index"
+    }
+}

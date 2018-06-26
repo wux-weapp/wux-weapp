@@ -1,0 +1,54 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Badge</view>
+        <view class="page__desc">徽章</view>
+    </view>
+    <view class="page__bd">
+        <view class="example">
+            <wux-badge dot="{{ true }}">
+                <view class="example__badge"></view>
+            </wux-badge>
+        </view>
+        <view class="example">
+            <wux-badge count="0" show-zero="{{ true }}">
+                <view class="example__badge"></view>
+            </wux-badge>
+        </view>
+        <view class="example">
+            <wux-badge count="3">
+                <view class="example__badge"></view>
+            </wux-badge>
+        </view>
+        <view class="example">
+            <wux-badge count="100">
+                <view class="example__badge"></view>
+            </wux-badge>
+        </view>
+        <view class="example">
+            <wux-badge count="9999" overflow-count="1024">
+                <view class="example__badge"></view>
+            </wux-badge>
+        </view>
+        <view class="example">
+            <wux-badge count="66" />
+        </view>
+        <view class="example">
+            <wux-badge count="88" wux-class-badge="bg-green" />
+        </view>
+        <view class="example">
+            <wux-badge status="success" />
+        </view>
+        <view class="example">
+            <wux-badge status="error" />
+        </view>
+        <view class="example">
+            <wux-badge status="default" />
+        </view>
+        <view class="example">
+            <wux-badge status="processing" />
+        </view>
+        <view class="example">
+            <wux-badge status="warning" text="Warning" />
+        </view>
+    </view>
+</view>

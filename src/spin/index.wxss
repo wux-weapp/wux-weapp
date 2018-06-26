@@ -1,0 +1,159 @@
+@import "../styles/base/fn.wxss";
+
+.wux-spin {
+	position: relative;
+}
+
+.wux-spin__hd {
+	color: #108ee9;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 12px;
+    display: block;
+    overflow: hidden;
+    position: absolute;
+	height: 100%;
+	max-height: 320px;
+	width: 100%;
+	z-index: 4;
+}
+
+.wux-spin__hd--spinning {
+	opacity: 1;
+	position: static;
+	display: inline-block;
+}
+
+.wux-spin__tip {
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	padding-top: 6px;
+}
+
+.wux-spin--show-text .wux-spin__dots {
+	margin-top: -20px;
+}
+
+.wux-spin__bd--spin-blur {
+	overflow: hidden;
+	opacity: .7;
+	filter: blur(.5px);
+    transform: translateZ(0);
+    
+    &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: #fff;
+        opacity: .3;
+        transition: all .3s;
+        z-index: 10;
+    }
+}
+
+.wux-spin__dots {
+    position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -10px;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	transform: rotate(45deg);
+	animation: rotate 1.2s infinite linear;
+
+    .wux-spin__dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 100%;
+        background-color: #108ee9;
+        transform: scale(.75);
+        display: block;
+        position: absolute;
+        opacity: .3;
+        animation: spinMove 1s infinite linear alternate;
+        transform-origin: 50% 50%;
+        text-indent: -999em;
+
+        &:first-child {
+            left: 0;
+            top: 0;
+        }
+
+        &:nth-child(2) {
+            right: 0;
+            top: 0;
+            animation-delay: .4s;
+        }
+
+        &:nth-child(3) {
+            right: 0;
+            bottom: 0;
+            animation-delay: .8s;
+        }
+
+        &:nth-child(4) {
+            left: 0;
+            bottom: 0;
+            animation-delay: 1.2s;
+        }
+    }
+}
+
+.wux-spin--sm {
+    .wux-spin__tip {
+        padding-top: 3px;
+    }
+
+    &.wux-spin--show-text .wux-spin__dots {
+        margin-top: -17px;
+    }
+
+    .wux-spin__dots {
+        width: 14px;
+        height: 14px;
+        margin: -7px;
+
+        .wux-spin__dot {
+            width: 6px;
+            height: 6px;
+        }
+    }
+}
+
+.wux-spin--lg {
+    .wux-spin__tip {
+        padding-top: 12px;
+    }
+
+    &.wux-spin--show-text .wux-spin__dots {
+        margin-top: -26px;
+    }
+
+    .wux-spin__dots {
+        width: 32px;
+        height: 32px;
+        margin: -16px;
+
+        .wux-spin__dot {
+            width: 14px;
+            height: 14px;
+        }
+    }
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(405deg);
+    }
+}
+
+@keyframes spinMove {
+	to {
+		opacity: 1;
+	}
+}

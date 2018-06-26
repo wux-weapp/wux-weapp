@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "Loading",
+    "usingComponents": {
+        "wux-loading": "../../dist/loading/index"
+    }
+}

@@ -1,3 +1,0 @@
-<template name="backdrop">
-	<view class="wux-backdrop {{ animateCss }}" hidden="{{ !visible }}"></view>
-</template>

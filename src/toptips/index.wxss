@@ -1,0 +1,38 @@
+@import "../styles/base/fn.wxss";
+
+.wux-toptips {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 5000;
+
+	&__content {
+		padding: 5px;
+		font-size: 14px;
+		text-align: center;
+		color: #FFFFFF;
+		word-wrap: break-word;
+		word-break: break-all;
+
+		&--success {
+			background-color: @wuxColorSuccess;
+		}
+
+		&--info {
+			background-color: @wuxColorInfo;
+		}
+
+		&--warn {
+			background-color: @wuxColorWarn;
+		}
+
+		&--cancel {
+			background-color: @wuxColorCancel;
+		}
+	}
+
+	&__icon {
+		float: left;
+	}
+}

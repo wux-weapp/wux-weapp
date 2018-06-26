@@ -1,0 +1,5 @@
+<view class="wux-input-number wux-class">
+    <view bindlongpress="bindlongpress" bindtap="bindtap" bindtouchend="bindtouchend" touchcancel="touchcancel" data-type="sub" class="wux-input-number__selector wux-input-number__selector--sub {{ disabledMin ? 'wux-input-number__selector--disabled' : '' }}">-</view>
+    <input bindinput="bindinput" value="{{ value }}" disabled="{{ disabled }}" type="number" class="wux-input-number__input wux-input-class" />
+    <view bindlongpress="bindlongpress" bindtap="bindtap" bindtouchend="bindtouchend" touchcancel="touchcancel" data-type="add" class="wux-input-number__selector wux-input-number__selector--plus {{ disabledMax ? 'wux-input-number__selector--disabled' : '' }}">+</view>
+</view>

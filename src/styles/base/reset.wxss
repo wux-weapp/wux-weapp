@@ -5,6 +5,6 @@ page {
     font-family: @wuxFontDefault;
 }
 
-icon{
+icon {
     vertical-align: middle;
 }

@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "Toast",
+    "usingComponents": {
+        "wux-toast": "../../dist/toast/index"
+    }
+}

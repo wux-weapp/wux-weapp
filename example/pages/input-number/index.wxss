@@ -1,0 +1,4 @@
+/* pages/input-number/index.wxss */
+.wux-input-number__input--custom {
+	width: 100px !important;
+}

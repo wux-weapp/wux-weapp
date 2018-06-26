@@ -1,0 +1,154 @@
+.wux-spin {
+  position: relative;
+}
+.wux-spin__hd {
+  color: #108ee9;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 24rpx;
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  height: 100%;
+  max-height: 640rpx;
+  width: 100%;
+  z-index: 4;
+}
+.wux-spin__hd--spinning {
+  opacity: 1;
+  position: static;
+  display: inline-block;
+}
+.wux-spin__tip {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  padding-top: 12rpx;
+}
+.wux-spin--show-text .wux-spin__dots {
+  margin-top: -40rpx;
+}
+.wux-spin__bd--spin-blur {
+  overflow: hidden;
+  opacity: .7;
+  -webkit-filter: blur(1rpx);
+          filter: blur(1rpx);
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+}
+.wux-spin__bd--spin-blur:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #fff;
+  opacity: .3;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  z-index: 10;
+}
+.wux-spin__dots {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -20rpx;
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-animation: rotate 1.2s infinite linear;
+          animation: rotate 1.2s infinite linear;
+}
+.wux-spin__dots .wux-spin__dot {
+  width: 18rpx;
+  height: 18rpx;
+  border-radius: 100%;
+  background-color: #108ee9;
+  -webkit-transform: scale(0.75);
+          transform: scale(0.75);
+  display: block;
+  position: absolute;
+  opacity: .3;
+  -webkit-animation: spinMove 1s infinite linear alternate;
+          animation: spinMove 1s infinite linear alternate;
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  text-indent: -999em;
+}
+.wux-spin__dots .wux-spin__dot:first-child {
+  left: 0;
+  top: 0;
+}
+.wux-spin__dots .wux-spin__dot:nth-child(2) {
+  right: 0;
+  top: 0;
+  -webkit-animation-delay: .4s;
+          animation-delay: .4s;
+}
+.wux-spin__dots .wux-spin__dot:nth-child(3) {
+  right: 0;
+  bottom: 0;
+  -webkit-animation-delay: .8s;
+          animation-delay: .8s;
+}
+.wux-spin__dots .wux-spin__dot:nth-child(4) {
+  left: 0;
+  bottom: 0;
+  -webkit-animation-delay: 1.2s;
+          animation-delay: 1.2s;
+}
+.wux-spin--sm .wux-spin__tip {
+  padding-top: 6rpx;
+}
+.wux-spin--sm.wux-spin--show-text .wux-spin__dots {
+  margin-top: -34rpx;
+}
+.wux-spin--sm .wux-spin__dots {
+  width: 28rpx;
+  height: 28rpx;
+  margin: -14rpx;
+}
+.wux-spin--sm .wux-spin__dots .wux-spin__dot {
+  width: 12rpx;
+  height: 12rpx;
+}
+.wux-spin--lg .wux-spin__tip {
+  padding-top: 24rpx;
+}
+.wux-spin--lg.wux-spin--show-text .wux-spin__dots {
+  margin-top: -52rpx;
+}
+.wux-spin--lg .wux-spin__dots {
+  width: 64rpx;
+  height: 64rpx;
+  margin: -32rpx;
+}
+.wux-spin--lg .wux-spin__dots .wux-spin__dot {
+  width: 28rpx;
+  height: 28rpx;
+}
+@-webkit-keyframes rotate {
+  to {
+    -webkit-transform: rotate(405deg);
+            transform: rotate(405deg);
+  }
+}
+@keyframes rotate {
+  to {
+    -webkit-transform: rotate(405deg);
+            transform: rotate(405deg);
+  }
+}
+@-webkit-keyframes spinMove {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes spinMove {
+  to {
+    opacity: 1;
+  }
+}

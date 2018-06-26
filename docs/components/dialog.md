@@ -1,23 +1,21 @@
-## dialog(options)
+## Dialog
 对话框
 
-| 参数 | 类型 | 描述 |
-| --- | --- | --- |
-| options | <code>object</code> | 配置项 |
-| options.title | <code>string</code> | 提示标题 |
-| options.content | <code>string</code> | 提示文本 |
-| options.verticalButtons | <code>boolean</code> | 是否显示垂直按钮布局 |
-| options.buttons | <code>array</code> | 按钮 |
-| options.buttons[].text | <code>string</code> | 按钮的文本 |
-| options.buttons[].type | <code>string</code> | 按钮的类型 |
-| options.buttons[].bold | <code>boolean</code> | 是否加粗按钮的文字 |
-| options.buttons[].onTap | <code>function</code> | 按钮的点击事件 |
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| options | <code>object</code> | 配置项 | - |
+| options.title | <code>string</code> | 提示标题 | - |
+| options.content | <code>string</code> | 提示文本 | - |
+| options.verticalButtons | <code>boolean</code> | 是否显示垂直按钮布局 | false |
+| options.buttons | <code>array</code> | 按钮 | [] |
+| options.buttons[].text | <code>string</code> | 按钮的文本 | - |
+| options.buttons[].type | <code>string</code> | 按钮的类型 | - |
+| options.buttons[].bold | <code>boolean</code> | 是否加粗按钮的文字 | - |
+| options.buttons[].onTap | <code>function</code> | 按钮的点击事件 | - |
 
 **Example**  
 ```html
-<import src="../../components/dialog/dialog.wxml"/>
-
-<template is="dialog" data="{{ ...$wux.dialog }}"/>
+<wux-dialog id="wux-dialog" />
 
 <view class="page">
     <view class="page__hd">
@@ -38,7 +36,7 @@
 ```
 
 ```js
-import { $wuxDialog } from '../../components/wux'
+import { $wuxDialog } from '../../dist/base/index'
 
 Page({
     data: {},
@@ -46,16 +44,15 @@ Page({
     open() {
         if (this.timeout) clearTimeout(this.timeout)
 
-        const hideDialog = $wuxDialog.open({
+        const hideDialog = $wuxDialog().open({
             title: '三秒后自动关闭',
-            content: '弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内', 
-            buttons: [
-                { 
-                    text: '取消', 
+            content: '弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内',
+            buttons: [{
+                    text: '取消',
                 },
                 {
-                    text: '确定', 
-                    type: 'weui-dialog__btn_primary', 
+                    text: '确定',
+                    type: 'weui-dialog__btn--primary',
                     onTap(e) {
                         console.log(e)
                     },
@@ -66,9 +63,9 @@ Page({
         this.timeout = setTimeout(hideDialog, 3000)
     },
     confirm() {
-        $wuxDialog.confirm({
-            title: '定制冰激凌', 
-            content: '你确定要吃我的冰淇淋吗？', 
+        $wuxDialog().confirm({
+            title: '定制冰激凌',
+            content: '你确定要吃我的冰淇淋吗？',
             onConfirm(e) {
                 console.log('凭什么吃我的冰淇淋！')
             },
@@ -78,9 +75,9 @@ Page({
         })
     },
     alert() {
-        $wuxDialog.alert({
-            title: '不要吃果冻', 
-            content: '它们可能是用旧的皮鞋帮做的！', 
+        $wuxDialog().alert({
+            title: '不要吃果冻',
+            content: '它们可能是用旧的皮鞋帮做的！',
             onConfirm(e) {
                 console.log('感谢上帝，你没吃鞋帮！')
             },
@@ -89,20 +86,20 @@ Page({
     prompt() {
         const that = this
         const alert = (content) => {
-            $wuxDialog.alert({
-                title: '提示', 
-                content: content, 
+            $wuxDialog().alert({
+                title: '提示',
+                content: content,
             })
         }
 
-        $wuxDialog.prompt({
-            title: '提示', 
-            content: '密码为8位数字', 
-            fieldtype: 'number', 
-            password: !0, 
-            defaultText: '', 
-            placeholder: '请输入Wi-Fi密码', 
-            maxlength: 8, 
+        $wuxDialog().prompt({
+            title: '提示',
+            content: '密码为8位数字',
+            fieldtype: 'number',
+            password: !0,
+            defaultText: '',
+            placeholder: '请输入Wi-Fi密码',
+            maxlength: 8,
             onConfirm(e) {
                 const value = that.data.$wux.dialog.prompt.response
                 const content = value.length === 8 ? `Wi-Fi密码到手了: ${value}` : `请输入正确的Wi-Fi密码`
@@ -112,53 +109,51 @@ Page({
     },
     custom() {
         const alert = (content) => {
-            $wuxDialog.alert({
-                title: '提示', 
-                content: content, 
+            $wuxDialog().alert({
+                title: '提示',
+                content: content,
             })
         }
 
-        $wuxDialog.open({
+        $wuxDialog().open({
             title: '我是标题',
             content: '我是自定义的对话框！',
-            buttons: [
-                { 
-                    text: '现金支付', 
-                    type: 'weui-dialog__btn_primary', 
+            buttons: [{
+                    text: '现金支付',
+                    type: 'weui-dialog__btn--primary',
                     onTap(e) {
                         alert('你选择了现金支付！')
                     },
                 },
-                { 
-                    text: '微信支付', 
-                    type: 'weui-dialog__btn_primary', 
+                {
+                    text: '微信支付',
+                    type: 'weui-dialog__btn--primary',
                     onTap(e) {
                         alert('你选择了微信支付！')
                     },
                 },
-                { 
-                    text: '取消', 
+                {
+                    text: '取消',
                 },
             ],
         })
     },
     vertical() {
-        $wuxDialog.open({
+        $wuxDialog().open({
             title: '请问需要反馈什么问题？',
             content: '你也可以在个人页的反馈帮助中心里找到这个功能',
-            verticalButtons: !0, 
-            buttons: [
-                { 
-                    text: '遇到问题', 
-                    bold: !0, 
+            verticalButtons: !0,
+            buttons: [{
+                    text: '遇到问题',
+                    bold: !0,
                 },
-                { 
-                    text: '意见建议', 
-                    bold: !0, 
+                {
+                    text: '意见建议',
+                    bold: !0,
                 },
-                { 
-                    text: '没啥事', 
-                    bold: !0, 
+                {
+                    text: '没啥事',
+                    bold: !0,
                 },
             ],
         })

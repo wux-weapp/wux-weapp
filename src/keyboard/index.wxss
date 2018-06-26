@@ -1,0 +1,145 @@
+@import "../styles/base/fn.wxss";
+
+.wux-keyboard {
+    background-color: rgba(0, 0, 0, .4);
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &, 
+    &__content {
+        position: fixed;
+        z-index: 1502;
+        bottom: 0;
+        left: 0;
+    }
+
+    &__content {
+        width: 100%;
+        background-color: #f7f7f7;
+    }
+
+    &__hd {
+        height: 80rpx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #1f2324;
+        font-size: 30rpx;
+        position: relative;
+        
+        &:after {
+            .setBottomLine(#D9D9D9)
+        }
+    }
+
+    &__bd {
+        margin: 30rpx 80rpx;
+        display: flex;
+        position: relative;
+        background-color: #fff;
+    }
+
+    &__label {
+        flex: 1;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100rpx;
+        
+        &:not(:last-child):after {
+            content: "";
+            width: 2rpx;
+            height: 50%;
+            position: absolute;
+            right: 0;
+            top: 25%;
+            background-color: #d9d9d9;
+            transform: scaleX(.5);
+        }
+    }
+    
+    &__password {
+        width: 12rpx;
+        height: 12rpx;
+        border-radius: 50%;
+        background-color: #000;
+        display: none;
+    
+        &--active {
+            display: block;
+        }
+    }
+    
+    &__ft {
+        background-color: #fff;
+        position: relative;
+        
+        &:before {
+            .setTopLine(#D9D9D9)
+        }
+    }
+    
+    &__title {
+        overflow: hidden;
+        padding: 20rpx 0 12rpx;
+        color: #222;
+        margin-bottom: 1px;
+        font-size: 24rpx;
+        text-align: center;
+        background-color: #fff;
+        
+        &:before {
+            font-size: 26rpx;
+            color: #ff2424;
+            line-height: 1;
+            margin-right: 6rpx;
+        }
+    }
+    
+    &__numbers {
+        font-size: 48rpx;
+        background-color: #fff;
+    }
+    
+    &__number {
+        display: flex;
+        width: 100%;
+    }
+    
+    &__text {
+        display: flex;
+        width: 1%;
+        flex: 1;
+        color: #222;
+        height: 100rpx;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    
+        &:before {
+            .setTopLine(#D9D9D9)
+        }
+    
+    
+        &:not(:last-child):after {
+            .setRightLine(#D9D9D9)
+        }
+    
+        &--hover {
+            background-color: #dedede;
+            color: rgba(0, 0, 0, .6);
+        }
+    }
+
+    &__number:last-child &__text:last-child,
+    &__number:last-child &__text:nth-last-child(3) {
+        background-color: #f7f7f7;
+        font-size: 30rpx;
+        color: #686868;
+    }
+}

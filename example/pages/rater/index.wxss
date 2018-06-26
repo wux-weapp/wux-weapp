@@ -1,0 +1,7 @@
+/* pages/rater/index.wxss */
+.wux-rater__text {
+    margin-left: 16rpx;
+    display: inline-block;
+    font-size: 28rpx;
+    line-height: 50rpx;
+}

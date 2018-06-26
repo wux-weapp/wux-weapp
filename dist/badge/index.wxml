@@ -1,0 +1,10 @@
+<view class="wux-class wux-badge">
+    <slot></slot>
+    <view class="wux-badge__status" wx:if="{{ status }}">
+        <view class="wux-badge__status-dot {{ status ? 'wux-badge__status-dot--' + status : '' }}"></view>
+        <view class="wux-badge__status-text" wx:if="{{ text }}">{{ text }}</view>
+    </view>
+    <view class="wux-badge__dot" wx:elif="{{ dot }}"></view>
+    <view class="wux-badge__count wux-class-badge" wx:elif="{{ showZero && count === 0 }}">{{ finalCount }}</view>
+    <view class="wux-badge__count wux-class-badge" wx:elif="{{ count !== 0 }}">{{ finalCount }}</view>
+</view>

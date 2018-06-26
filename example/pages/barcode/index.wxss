@@ -1,0 +1,4 @@
+/* pages/barcode/index.wxss */
+.barcode {
+    margin: 30px auto;
+}

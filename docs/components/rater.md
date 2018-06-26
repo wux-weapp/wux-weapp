@@ -1,28 +1,19 @@
-## rater(id, options)
+## Rater
 评分组件
 
-| 参数 | 类型 | 描述 |
-| --- | --- | --- |
-| id | <code>string</code> | 唯一标识 |
-| options | <code>object</code> | 配置项 |
-| options.max | <code>number</code> | 最大值 |
-| options.star | <code>string</code> | 图标 |
-| options.value | <code>number</code> | 默认值 |
-| options.activeColor | <code>string</code> | 图标激活的颜色 |
-| options.margin | <code>number</code> | 图标外边距 |
-| options.fontSize | <code>number</code> | 图标大小 |
-| options.disabled | <code>boolean</code> | 禁用点击 |
-| options.text | <code>array</code> | 设置提示文字 |
-| options.text[].className | <code>string</code> | 提示的类 |
-| options.text[].text | <code>string</code> | 提示的文字 |
-| options.text[].color | <code>string</code> | 提示的文字颜色 |
-| options.defaultTextColor | <code>string</code> | 设置提示的默认文字颜色 |
-| options.callback | <code>function</code> | 点击事件的回调函数 |
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| max | <code>number</code> | 最大值 | 5 |
+| star | <code>string</code> | 图标 | ★ |
+| value | <code>number</code> | 默认值 | 0 |
+| activeColor | <code>string</code> | 图标激活的颜色 | #fc6 |
+| margin | <code>number</code> | 图标外边距 | 2 |
+| fontSize | <code>number</code> | 图标大小 | 25 |
+| disabled | <code>boolean</code> | 禁用点击 | false |
+| bind:change | <code>function</code> | 点击事件的回调函数 | - |
 
 **Example**  
 ```html
-<import src="../../components/rater/rater.wxml" />
-
 <view class="page">
     <view class="page__hd">
         <view class="page__title">Rater</view>
@@ -34,13 +25,13 @@
             <view class="weui-cell">
                 <view class="weui-cell__bd">set default score = 5</view>
                 <view class="weui-cell__ft">
-                    <template is="rater" data="{{ ...$wux.rater.star }}" />
+                    <wux-rater value="{{ 5 }}" />
                 </view>
             </view>
             <view class="weui-cell">
                 <view class="weui-cell__bd">change color</view>
                 <view class="weui-cell__ft">
-                    <template is="rater" data="{{ ...$wux.rater.changeColor }}" />
+                    <wux-rater value="{{ 3 }}" active-color="#04BE02" />
                 </view>
             </view>
         </view>
@@ -49,19 +40,19 @@
             <view class="weui-cell">
                 <view class="weui-cell__bd">Your history score</view>
                 <view class="weui-cell__ft">
-                    <template is="rater" data="{{ ...$wux.rater.history }}" />
+                    <wux-rater value="{{ 3 }}" disabled="{{ true }}" />
                 </view>
             </view>
             <view class="weui-cell">
                 <view class="weui-cell__bd">Decimal score 3.7</view>
                 <view class="weui-cell__ft">
-                    <template is="rater" data="{{ ...$wux.rater.decimal }}" />
+                    <wux-rater value="{{ 3.7 }}" disabled="{{ true }}" />
                 </view>
             </view>
             <view class="weui-cell">
                 <view class="weui-cell__bd">custom font-size(15px)</view>
                 <view class="weui-cell__ft">
-                    <template is="rater" data="{{ ...$wux.rater.custom }}" />
+                    <wux-rater value="{{ 3 }}" font-size="{{ 15 }}" disabled="{{ true }}" />
                 </view>
             </view>
         </view>
@@ -70,40 +61,29 @@
             <view class="weui-cell">
                 <view class="weui-cell__bd">Loving</view>
                 <view class="weui-cell__ft">
-                    <template is="rater" data="{{ ...$wux.rater.loving }}" />
+                    <wux-rater value="{{ 3 }}" margin="{{ 15 }}" star="♡" />
                 </view>
             </view>
             <view class="weui-cell">
                 <view class="weui-cell__bd">Sunshine</view>
                 <view class="weui-cell__ft">
-                    <template is="rater" data="{{ ...$wux.rater.sunshine }}" />
+                    <wux-rater value="{{ 3 }}" margin="{{ 15 }}" star="☼" />
                 </view>
             </view>
             <view class="weui-cell">
                 <view class="weui-cell__bd">Smilies</view>
                 <view class="weui-cell__ft">
-                    <template is="rater" data="{{ ...$wux.rater.smilies }}" />
+                    <wux-rater value="{{ 3 }}" margin="{{ 15 }}" star="☻" />
                 </view>
             </view>
         </view>
-        <view class="weui-cells__title">show text</view>
+        <view class="weui-cells__title">custom text</view>
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell">
                 <view class="weui-cell__bd">Star</view>
                 <view class="weui-cell__ft">
-                    <template is="rater" data="{{ ...$wux.rater.text1 }}" />
-                </view>
-            </view>
-            <view class="weui-cell">
-                <view class="weui-cell__bd">Star</view>
-                <view class="weui-cell__ft">
-                    <template is="rater" data="{{ ...$wux.rater.text2 }}" />
-                </view>
-            </view>
-            <view class="weui-cell">
-                <view class="weui-cell__bd">Star</view>
-                <view class="weui-cell__ft">
-                    <template is="rater" data="{{ ...$wux.rater.text3 }}" />
+                    <wux-rater value="{{ value }}" bind:change="onChange" />
+                    <text class="wux-rater__text">{{ value }} stars</text>
                 </view>
             </view>
         </view>
@@ -112,7 +92,7 @@
             <view class="weui-cell">
                 <view class="weui-cell__bd">How embarrass</view>
                 <view class="weui-cell__ft">
-                    <template is="rater" data="{{ ...$wux.rater.embarrass }}" />
+                    <wux-rater value="{{ 3 }}" star="囧" bind:change="onChange" />
                 </view>
             </view>
         </view>
@@ -121,7 +101,7 @@
             <view class="weui-cell">
                 <view class="weui-cell__bd">Very good</view>
                 <view class="weui-cell__ft">
-                    <template is="rater" data="{{ ...$wux.rater.good }}" />
+                    <wux-rater value="{{ slider }}" star="屌" bind:change="sliderChange" />
                 </view>
             </view>
             <view class="weui-cell">
@@ -136,7 +116,7 @@
                 <view class="weui-cell">
                     <view class="weui-cell__bd">{{ item.text }}</view>
                     <view class="weui-cell__ft">
-                        <template is="rater" data="{{ ...$wux.rater[item.id] }}" />
+                        <wux-rater value="{{ item.value }}" />
                     </view>
                 </view>
             </block>
@@ -146,8 +126,6 @@
 ```
 
 ```js
-import { $wuxRater } from '../../components/wux'
-
 Page({
     data: {
         items: [{
@@ -161,116 +139,15 @@ Page({
                 value: 2,
             },
         ],
-    },
-    onLoad() {
-        $wuxRater.init('star', {
-            value: 5,
-        })
-
-        $wuxRater.init('changeColor', {
-            value: 3,
-            activeColor: '#04BE02',
-        })
-
-        $wuxRater.init('history', {
-            value: 3,
-            disabled: !0,
-        })
-
-        $wuxRater.init('decimal', {
-            value: 3.7,
-            disabled: !0,
-        })
-
-        $wuxRater.init('custom', {
-            value: 3,
-            fontSize: 15,
-            disabled: !0,
-        })
-
-        $wuxRater.init('loving', {
-            value: 3,
-            margin: 15,
-            star: '♡',
-        })
-
-        $wuxRater.init('sunshine', {
-            value: 3,
-            margin: 15,
-            star: '☼',
-        })
-
-        $wuxRater.init('smilies', {
-            value: 3,
-            margin: 15,
-            star: '☻',
-        })
-
-        $wuxRater.init('text1', {
-            value: 3,
-            star: '✩',
-            text: ['一星', '二星', '三星', '四星', '五星'],
-        })
-
-        $wuxRater.init('text2', {
-            value: 3,
-            star: '✩',
-            text: [1, 2, 3, 4, 5],
-            defaultTextColor: '#f5a623',
-        })
-
-        $wuxRater.init('text3', {
-            value: 3,
-            star: '✩',
-            text: [{
-                    text: '非常差',
-                    color: 'red',
-                },
-                {
-                    text: '很差',
-                    color: 'red',
-                },
-                {
-                    text: '一般',
-                    color: 'blue',
-                },
-                {
-                    text: '很好',
-                    color: 'green',
-                },
-                {
-                    text: '非常好',
-                    color: 'orange',
-                },
-            ],
-            callback(value, data, text) {
-                console.log(value, data, text)
-            }
-        })
-
-        $wuxRater.init('embarrass', {
-            value: 3,
-            star: '囧',
-            callback(value, data, text) {
-                console.log(value, data, text)
-            }
-        })
-
-        this.good = $wuxRater.init('good', {
-            star: '屌',
-            callback(value, data, text) {
-                this.setData({
-                    slider: value
-                })
-            }
-        })
-
-        this.data.items.forEach(n => $wuxRater.init(n.id, {
-            value: n.value,
-        }))
+        slider: 0,
     },
     sliderChange(e) {
-        this.good.update(e.detail.value)
+        this.setData({
+            slider: e.detail.value,
+        })
+    },
+    bindchange(e) {
+        console.log(e)
     },
 })
 ```

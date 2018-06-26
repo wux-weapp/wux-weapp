@@ -1,0 +1,25 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-tab">
+            <view class="weui-navbar">
+                <block wx:for-items="{{ tabs}}" wx:key="{{ index }}">
+                    <view data-id="{{ index }}" class="weui-navbar__item {{ activeIndex == index ? 'weui-bar__item_on' : '' }}" bindtap="tabClick">
+                        <view class="weui-navbar__title">{{ item }}</view>
+                    </view>
+                </block>
+                <view class="weui-navbar__slider" style="left: {{ sliderLeft }}px; transform: translateX({{ sliderOffset }}px); -webkit-transform: translateX({{ sliderOffset }}px);"></view>
+            </view>
+            <view class="weui-tab__panel">
+                <view class="weui-tab__content" hidden="{{ activeIndex !== 0 }}">
+                    <wux-prompt visible="{{ activeIndex === 0 }}" title="{{ msg1.title }}" text="{{ msg1.text }}" />
+                </view>
+                <view class="weui-tab__content" hidden="{{ activeIndex !== 1 }}">
+                    <wux-prompt visible="{{ activeIndex === 1 }}" icon="{{ msg2.icon }}" title="{{ msg2.title }}" text="{{ msg2.text }}" buttons="{{ msg2.buttons }}" bind:click="buttonClicked" />
+                </view>
+                <view class="weui-tab__content" hidden="{{ activeIndex !== 2 }}">
+                    <wux-prompt visible="{{ activeIndex === 2 }}" icon="{{ msg3.icon }}" title="{{ msg3.title }}" />
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

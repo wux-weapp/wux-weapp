@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "KeyBoard",
+    "usingComponents": {
+        "wux-keyboard": "../../dist/keyboard/index"
+    }
+}

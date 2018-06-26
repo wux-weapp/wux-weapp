@@ -1,3 +1,4 @@
+import path from 'path'
 import gulp from 'gulp'
 import less from 'gulp-less'
 import rename from 'gulp-rename'
@@ -6,6 +7,12 @@ import cssnano from 'gulp-cssnano'
 import util from 'gulp-util'
 import through2 from 'through2'
 import autoprefixer from 'autoprefixer'
+
+// 配置环境
+const ENV = process.env.NODE_ENV
+const isDev = ENV === 'development' || ENV === 'dev'
+const isProd = ENV === 'production' || ENV === 'prod'
+const buildPath = path.join(__dirname, isProd ? 'dist' : 'example/dist')
 
 /**
  * 自定义插件 - px to rpx
@@ -69,10 +76,10 @@ gulp.task('build:styles', () => {
         .pipe(
             rename((path) => (path.extname = '.wxss'))
         )
-        .pipe(gulp.dest('dist/components'))
+        .pipe(gulp.dest(buildPath))
 })
 
-gulp.task('build:exmaple', () => {
+gulp.task('build:example', () => {
     gulp
         .src(
             [
@@ -80,18 +87,23 @@ gulp.task('build:exmaple', () => {
                 '!src/**/*.wxss',
             ], { base: 'src' },
         )
-        .pipe(gulp.dest('dist/components'))
+        .pipe(gulp.dest(buildPath))
 })
 
 gulp.task('watch', () => {
     gulp.watch('src/**', [
         'build:styles',
-        'build:exmaple',
+        'build:example',
     ])
 })
 
 gulp.task('default', [
     'watch',
     'build:styles',
-    'build:exmaple',
+    'build:example',
+])
+
+gulp.task('build', [
+    'build:styles',
+    'build:example',
 ])

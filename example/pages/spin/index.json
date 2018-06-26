@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "Spin",
+    "usingComponents": {
+        "wux-spin": "../../dist/spin/index"
+    }
+}

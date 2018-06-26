@@ -1,0 +1,8 @@
+/* pages/grid/index.wxss */
+.placeholder {
+    margin: 10rpx;
+    padding: 20rpx;
+    background-color: #04BE02;
+    text-align: center;
+    color: #fff;
+}

@@ -1,0 +1,20 @@
+<wux-animation-group wux-class="wux-gallery" in="{{ in }}" class-names="wux-animate--slideInRight">
+    <swiper class="wux-gallery__swiper" indicator-dots="{{ indicatorDots }}" indicator-color="{{ indicatorColor }}" indicator-active-color="{{ indicatorActiveColor }}" autoplay="{{ autoplay }}" interval="{{ interval }}" duration="{{ duration }}" circular="{{ circular }}"
+        vertical="{{ vertical }}" current="{{ current }}" bindchange="onChange" hidden="{{ !urls.length }}">
+        <block wx:for="{{ common.getItems(urls) }}" wx:key="index">
+            <swiper-item class="wux-gallery__item">
+                <image class="wux-gallery__img" mode="aspectFit" src="{{ item.image }}" data-index="{{ index }}" bindtap="onTap"></image>
+                <view class="wux-gallery__remark {{ current === index ? 'wux-gallery__remark--active' : '' }}" wx:if="{{ item.remark }}">{{ item.remark }}</view>
+            </swiper-item>
+        </block>
+    </swiper>
+    <view class="wux-gallery__opr" wx:if="{{ showDelete }}" bindtap="onDelete">
+        <view class="wux-gallery__del">
+            <view class="wux-gallery__icon"></view>
+        </view>
+    </view>
+</wux-animation-group>
+
+<wxs module="common">
+    module.exports.getItems = function(array) { return array.map(function(n) { if (n.constructor !== 'Object') { return { image: n, remark: '', } } return n }) }
+</wxs>

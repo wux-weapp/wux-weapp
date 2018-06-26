@@ -1,17 +1,15 @@
-## qrcode(id, data, options)
+## Qrcode
 二维码
 
-| 参数 | 类型 | 描述 |
-| --- | --- | --- |
-| id | <code>string</code> | canvas 组件的唯一标识符 |
-| data | <code>string</code> | 文本内容 |
-| options | <code>object</code> | 配置项 |
-| options.typeNumber | <code>number</code> | 类型 |
-| options.errorCorrectLevel | <code>number</code> | 误差校正等级 |
-| options.width | <code>number</code> | canvas 组件的宽度 |
-| options.height | <code>number</code> | canvas 组件的高度 |
-| options.fgColor | <code>string</code> | 前景色 |
-| options.bgColor | <code>string</code> | 背景色 |
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| data | <code>string</code> | 文本内容 | - |
+| typeNumber | <code>number</code> | 类型 | -1 |
+| errorCorrectLevel | <code>number</code> | 误差校正等级 | 2 |
+| width | <code>number</code> | canvas 组件的宽度 | 200 |
+| height | <code>number</code> | canvas 组件的高度 | 200 |
+| fgColor | <code>string</code> | 前景色 | black |
+| bgColor | <code>string</code> | 背景色 | white |
 
 **Example**  
 ```html
@@ -31,33 +29,30 @@
             </view>
         </view>
         <view class="weui-cells__tips">提示：Canvas 在微信中无法长按识别, 点击图片进入保存页面长按图片可以保存</view>
-        <canvas style="width: 200px; height: 200px; margin: 30px auto;" canvas-id="qrcode" bindtap="previewImage"></canvas>
+        <wux-qrcode wux-class="qrcode" data="{{ value }}" fg-color="{{ fgColor }}" width="200" height="200" bind:tap="previewImage" />
     </view>
 </view>
 ```
 
 ```js
-import { $wuxQrcode } from '../../components/wux'
-
 Page({
     data: {
-        value: '', 
+        value: 'https://github.com/skyvow/wux',
+        fgColor: 'black',
     },
-    onLoad() {
-        this.renderQrcode('qrcode', 'https://github.com/skyvow/wux')
-    },
+    onLoad() {},
     bindinput(e) {
         const value = e.detail.value
+        const fgColor = this.randomColor()
 
         this.setData({
-            value, 
+            value,
+            fgColor,
         })
-
-        this.renderQrcode('qrcode', value)
     },
     previewImage() {
         wx.canvasToTempFilePath({
-            canvasId: 'qrcode', 
+            canvasId: 'wux-qrcode',
             success: res => {
                 wx.previewImage({
                     urls: [res.tempFilePath]
@@ -70,11 +65,6 @@ Page({
         const length = colorStr.length
         const prefixStr = `000000`.substring(0, 6 - colorStr.length)
         return `#${prefixStr}${colorStr}`
-    },
-    renderQrcode(canvasId, value) {
-        $wuxQrcode.init(canvasId, value, {
-            fgColor: this.randomColor()
-        })
     },
 })
 ```
