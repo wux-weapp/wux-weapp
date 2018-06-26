@@ -34,7 +34,7 @@
 ```
 
 ```js
-import { $wuxKeyBoard } from '../../dist/base/index'
+import { $wuxKeyBoard } from '../../dist/index'
 
 Page({
     data: {},

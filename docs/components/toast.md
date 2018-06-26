@@ -31,7 +31,7 @@
 ```
 
 ```js
-import { $wuxToast } from '../../dist/base/index'
+import { $wuxToast } from '../../dist/index'
 
 Page({
     data: {},

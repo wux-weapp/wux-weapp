@@ -88,7 +88,7 @@
 ```
 
 ```js
-import { $wuxGallery } from '../../dist/base/index'
+import { $wuxGallery } from '../../dist/index'
 
 Page({
     data: {

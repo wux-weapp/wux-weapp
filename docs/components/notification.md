@@ -31,7 +31,7 @@
 ```
 
 ```js
-import { $wuxNotification } from '../../dist/base/index'
+import { $wuxNotification } from '../../dist/index'
 
 Page({
     data: {},

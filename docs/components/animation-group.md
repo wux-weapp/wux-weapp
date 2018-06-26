@@ -80,8 +80,12 @@ Page({
         items: [
             'fadeIn',
             'fadeInDown',
+            'fadeInLeft',
+            'fadeInRight',
+            'fadeInUp',
             'slideInUp',
             'slideInDown',
+            'slideInLeft',
             'slideInRight',
         ],
         index: 0,
@@ -109,7 +113,7 @@ Page({
             [model]: e.detail.value,
         })
     },
-    onTap() { console.log('onTap') },
+    onClick() { console.log('onClick') },
     onEnter() { console.log('onEnter') },
     onEntering() { console.log('onEntering') },
     onEntered() { console.log('onEntered') },

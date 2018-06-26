@@ -40,7 +40,7 @@
 ```
 
 ```js
-import { $wuxCountUp } from '../../dist/base/index'
+import { $wuxCountUp } from '../../dist/index'
 
 Page({
     data: {},

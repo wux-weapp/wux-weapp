@@ -24,7 +24,7 @@
 ```
 
 ```js
-import { $wuxLoading } from '../../dist/base/index'
+import { $wuxLoading } from '../../dist/index'
 
 Page({
     data: {},

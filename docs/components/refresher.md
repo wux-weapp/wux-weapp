@@ -28,7 +28,7 @@
 ```
 
 ```js
-import { $stopWuxRefresher } from '../../dist/base/index'
+import { $stopWuxRefresher } from '../../dist/index'
 
 Page({
     data: {

@@ -21,7 +21,7 @@
 ```
 
 ```js
-import { $wuxBackdrop } from '../../dist/base/index'
+import { $wuxBackdrop } from '../../dist/index'
 
 Page({
     data: {

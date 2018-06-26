@@ -45,7 +45,7 @@
 ```
 
 ```js
-import { $wuxCountDown } from '../../dist/base/index'
+import { $wuxCountDown } from '../../dist/index'
 
 Page({
     data: {},

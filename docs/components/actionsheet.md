@@ -35,7 +35,7 @@
 ```
 
 ```js
-import { $wuxActionSheet } from '../../dist/base/index'
+import { $wuxActionSheet } from '../../dist/index'
 
 Page({
     data: {},

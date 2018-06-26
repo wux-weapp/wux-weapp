@@ -36,7 +36,7 @@
 ```
 
 ```js
-import { $wuxDialog } from '../../dist/base/index'
+import { $wuxDialog } from '../../dist/index'
 
 Page({
     data: {},

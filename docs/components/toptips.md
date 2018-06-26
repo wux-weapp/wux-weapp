@@ -74,7 +74,7 @@
 ```
 
 ```js
-import { $wuxToptips } from '../../dist/base/index'
+import { $wuxToptips } from '../../dist/index'
 import WxValidate from '../../assets/plugins/WxValidate'
 
 Page({
