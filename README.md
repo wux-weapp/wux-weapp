@@ -33,7 +33,7 @@
 
 您可以扫描下方的小程序码体验或用 [微信web开发者工具](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html) 打开 `example` 目录（请注意，是 example 目录，不是整个项目）。
 
-![logo](_images/qrcode.jpg)
+![logo](./screenshots/qrcode.jpg)
 
 <img src="./screenshots/screenshorts-01.png" width="375px" style="display:inline;">
 
