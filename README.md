@@ -1,5 +1,12 @@
+<p align="center">
+    <a href="https://wux-weapp.github.io/wux-weapp/">
+        <img width="200" src="./screenshots/logo.png">
+    </a>
+</p>
+
+# Wux Weapp
+
 微信小程序自定义 UI 组件
-=
 
 [![npm version](https://img.shields.io/npm/v/wux-weapp.svg)](https://www.npmjs.org/package/wux-weapp)
 
