@@ -83,6 +83,10 @@
 </view>
 ```
 
+## 视频
+
+[Grid](./_media/grid.mp4 ':include :type=iframe width=375px height=667px')
+
 ## API
 
 ### Col

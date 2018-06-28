@@ -74,6 +74,10 @@ Page({
 })
 ```
 
+## 视频
+
+[Qrcode](./_media/qrcode.mp4 ':include :type=iframe width=375px height=667px')
+
 ## API
 
 | 参数 | 类型 | 描述 | 默认值 |

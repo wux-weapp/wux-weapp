@@ -43,6 +43,10 @@
 </view>
 ```
 
+## 视频
+
+[Tag](./_media/tag.mp4 ':include :type=iframe width=375px height=667px')
+
 ## API
 
 | 参数 | 类型 | 描述 | 默认值 |
