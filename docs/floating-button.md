@@ -1,19 +1,11 @@
-## FloatingButton
-浮动按钮
+# FloatingButton 浮动按钮
 
-| 参数 | 类型 | 描述 | 默认值 |
-| --- | --- | --- | --- |
-| position | <code>string</code> | 按钮的位置，可选值 topLeft、topRight、bottomLeft、bottomRight | bottomRight |
-| backdrop | <code>boolean</code> | 是否显示透明蒙层 | false |
-| buttons | <code>array</code> | 按钮 | [] |
-| buttons[].className | <code>string</code> | 按钮的类名 | - |
-| buttons[].label | <code>string</code> | 按钮的文字 | - |
-| buttons[].icon | <code>string</code> | 按钮的图标 | - |
-| visible | <code>boolean</code> | 是否显示组件 | false |
-| bind:click | <code>function</code> | 按钮点击事件 | - |
-| bind:change | <code>function</code> | 监听状态变化的回调函数 | - |
+用于展现浮动按钮。
 
-**Example**
+## 使用指南
+
+### 在 page.json 中引入组件
+
 ```json
 {
     "navigationBarTitleText": "FloatingButton",
@@ -22,6 +14,8 @@
     }
 }
 ```
+
+### 示例
 
 ```html
 <wux-button id="wux-button" visible="{{ visible }}" position="{{ position }}" buttons="{{ buttons }}" bind:change="bindchange" bind:click="buttonClicked" />
@@ -111,3 +105,17 @@ Page({
     },
 })
 ```
+
+## API
+
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| position | <code>string</code> | 按钮的位置，可选值 topLeft、topRight、bottomLeft、bottomRight | bottomRight |
+| backdrop | <code>boolean</code> | 是否显示透明蒙层 | false |
+| buttons | <code>array</code> | 按钮 | [] |
+| buttons[].className | <code>string</code> | 按钮的类名 | - |
+| buttons[].label | <code>string</code> | 按钮的文字 | - |
+| buttons[].icon | <code>string</code> | 按钮的图标 | - |
+| visible | <code>boolean</code> | 是否显示组件 | false |
+| bind:click | <code>function</code> | 按钮点击事件 | - |
+| bind:change | <code>function</code> | 监听状态变化的回调函数 | - |

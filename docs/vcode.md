@@ -1,19 +1,11 @@
-## Vcode
-验证码
+# Vcode 验证码
 
-| 参数 | 类型 | 描述 | 默认值 |
-| --- | --- | --- | --- |
-| str | <code>string</code> | 验证码范围 | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 |
-| num | <code>number</code> | 验证码长度 | 6 |
-| width | <code>number</code> | 画布宽度 | 120 |
-| height | <code>number</code> | 画布高度 | 40 |
-| bgColor | <code>string</code> | 画布背景色 | - |
-| fontColor | <code>string</code> | 画布字体颜色 | - |
-| hasPoint | <code>boolean</code> | 是否显示干扰点 | true |
-| hasLine | <code>boolean</code> | 是否显示干扰线 | true |
-| bind:change | <code>function</code> | 点击事件的回调函数 | - |
+用于展现验证码。
 
-**Example**
+## 使用指南
+
+### 在 page.json 中引入组件
+
 ```json
 {
     "navigationBarTitleText": "Vcode",
@@ -22,6 +14,8 @@
     }
 }
 ```
+
+### 示例
 
 ```html
 <view class="page">
@@ -68,3 +62,17 @@ Page({
     },
 })
 ```
+
+## API
+
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| str | <code>string</code> | 验证码范围 | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 |
+| num | <code>number</code> | 验证码长度 | 6 |
+| width | <code>number</code> | 画布宽度 | 120 |
+| height | <code>number</code> | 画布高度 | 40 |
+| bgColor | <code>string</code> | 画布背景色 | - |
+| fontColor | <code>string</code> | 画布字体颜色 | - |
+| hasPoint | <code>boolean</code> | 是否显示干扰点 | true |
+| hasLine | <code>boolean</code> | 是否显示干扰线 | true |
+| bind:change | <code>function</code> | 点击事件的回调函数 | - |

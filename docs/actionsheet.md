@@ -1,21 +1,11 @@
-## ActionSheet
-上拉菜单
+# ActionSheet 上拉菜单
 
-| 参数 | 类型 | 描述 | 默认值 |
-| --- | --- | --- | --- |
-| options | <code>object</code> | 配置项 | - |
-| options.theme | <code>string</code> | 菜单皮肤 | ios |
-| options.className | <code>string</code> | 自定义类名 | - |
-| options.titleText | <code>string</code> | 标题 | - |
-| options.buttons | <code>array</code> | 按钮 | [] |
-| options.buttons[].text | <code>string</code> | 按钮的文本 | - |
-| options.buttonClicked | <code>function</code> | 按钮点击事件 | - |
-| options.cancelText | <code>string</code> | 取消按钮的文本 | 取消 |
-| options.cancel | <code>function</code> | 取消按钮点击事件 | - |
-| options.destructiveText | <code>string</code> | 删除按钮的文本 | - |
-| options.destructiveButtonClicked | <code>function</code> | 删除按钮点击事件 | - |
+从底部弹出的模态框，提供和当前场景相关的操作菜单。
 
-**Example**
+## 使用指南
+
+### 在 page.json 中引入组件
+
 ```json
 {
     "navigationBarTitleText": "ActionSheet",
@@ -24,6 +14,10 @@
     }
 }
 ```
+
+### 示例
+
+!> 该组件主要依靠 JavaScript 主动调用，所以一般只需在 wxml 中添加一个组件，并设置 id 为 `#wux-actionsheet` 或其他，之后在 page.js 中调用 `$wuxActionSheet(id)` 获取匹配到的第一个组件实例对象。
 
 ```html
 <wux-actionsheet id="wux-actionsheet" />
@@ -103,3 +97,19 @@ Page({
     },
 })
 ```
+
+## API
+
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| options | <code>object</code> | 配置项 | - |
+| options.theme | <code>string</code> | 菜单皮肤 | ios |
+| options.className | <code>string</code> | 自定义类名 | - |
+| options.titleText | <code>string</code> | 标题 | - |
+| options.buttons | <code>array</code> | 按钮 | [] |
+| options.buttons[].text | <code>string</code> | 按钮的文本 | - |
+| options.buttonClicked | <code>function</code> | 按钮点击事件 | - |
+| options.cancelText | <code>string</code> | 取消按钮的文本 | 取消 |
+| options.cancel | <code>function</code> | 取消按钮点击事件 | - |
+| options.destructiveText | <code>string</code> | 删除按钮的文本 | - |
+| options.destructiveButtonClicked | <code>function</code> | 删除按钮点击事件 | - |

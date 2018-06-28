@@ -1,5 +1,8 @@
 <view class="page__bd">
-    <view class="logo">Wux</view>
+    <view class="logo">
+        <image src="../../assets/images/logo.png" />
+        <view class="logo__text">Wux Weapp</view>
+    </view>
     <view class="page-body">
         <block wx:for="{{ components }}" wx:key="">
             <view class="weui-cells__title">{{ item.title }}</view>

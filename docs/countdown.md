@@ -1,16 +1,11 @@
-## CountDown
-倒计时
+# CountDown 倒计时
 
-| 参数 | 类型 | 描述 | 默认值 |
-| --- | --- | --- | --- |
-| options | <code>object</code> | 配置项 | - |
-| options.date | <code>string</code> | 日期 | June 7, 2087 15:03:25 |
-| options.refresh | <code>number</code> | 刷新时间 | 1000 |
-| options.offset | <code>number</code> | 偏移量 | 0 |
-| options.onEnd | <code>function</code> | 倒计时结束后的回调函数 | - |
-| options.render | <code>function</code> | 渲染组件的回调函数 | - |
+用于展现倒计时。
 
-**Example**
+## 使用指南
+
+### 示例
+
 ```html
 <view class="page">
     <view class="page__hd">
@@ -105,3 +100,14 @@ Page({
     },
 })
 ```
+
+## API
+
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| options | <code>object</code> | 配置项 | - |
+| options.date | <code>string</code> | 日期 | June 7, 2087 15:03:25 |
+| options.refresh | <code>number</code> | 刷新时间 | 1000 |
+| options.offset | <code>number</code> | 偏移量 | 0 |
+| options.onEnd | <code>function</code> | 倒计时结束后的回调函数 | - |
+| options.render | <code>function</code> | 渲染组件的回调函数 | - |

@@ -1,23 +1,20 @@
-## AnimationGroup
-动画组
+# AnimationGroup 动画组
 
-| 参数 | 类型 | 描述 | 默认值 |
-| --- | --- | --- | --- |
-| in | <code>boolean</code> | 触发组件进入或离开过渡的状态 | false |
-| classNames | <code>any</code> | 过渡的类名 | - |
-| duration | <code>any</code> | 过渡持续时间 | - |
-| type | <code>string</code> | 过渡动效的类型 | transition |
-| enter | <code>boolean</code> | 是否启用进入过渡 | true |
-| exit | <code>boolean</code> | 是否启用离开过渡 | true |
-| bind:click | <code>function</code> | 点击组件时触发的回调函数 | - |
-| bind:enter | <code>function</code> | 进入过渡的开始状态时触发的回调函数 | - |
-| bind:entering | <code>function</code> | 进入过渡的结束状态时触发的回调函数 | - |
-| bind:entered | <code>function</code> | 进入过渡的完成状态时触发的回调函数 | - |
-| bind:exit | <code>function</code> | 离开过渡的开始状态时触发的回调函数 | - |
-| bind:exiting | <code>function</code> | 离开过渡的结束状态时触发的回调函数 | - |
-| bind:exited | <code>function</code> | 离开过渡的完成状态时触发的回调函数 | - |
+将自定义的组件包裹在 `animation-group` 组件内，可以实现过渡/动画效果，预设 9 种过渡效果 `fadeIn`, `fadeInDown`, `fadeInLeft`, `fadeInRight`, `fadeInUp`, `slideInUp`, `slideInDown`, `slideInLeft`, `slideInRight` 可选用。
 
-**Example**
+在进入/离开的过渡中，会有 6 个 class 切换：
+
+- `-enter`: 进入过渡的开始状态，在过渡过程完成之后移除
+- `-enter-active`: 进入过渡的结束状态，在过渡过程完成之后移除
+- `-enter-done`: 进入过渡的完成状态
+- `-exit`: 离开过渡的开始状态，在过渡过程完成之后移除
+- `-exit-active`: 离开过渡的结束状态，在过渡过程完成之后移除
+- `-exit-done`: 离开过渡的完成状态
+
+## 使用指南
+
+### 在 page.json 中引入组件
+
 ```json
 {
     "navigationBarTitleText": "AnimationGroup",
@@ -26,6 +23,8 @@
     }
 }
 ```
+
+### 示例
 
 ```html
 <view class="page">
@@ -131,3 +130,21 @@ Page({
     onExited() { console.log('onExited') },
 })
 ```
+
+## API
+
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| in | <code>boolean</code> | 触发组件进入或离开过渡的状态 | false |
+| classNames | <code>any</code> | 过渡的类名 | - |
+| duration | <code>any</code> | 过渡持续时间 | - |
+| type | <code>string</code> | 过渡动效的类型 | transition |
+| enter | <code>boolean</code> | 是否启用进入过渡 | true |
+| exit | <code>boolean</code> | 是否启用离开过渡 | true |
+| bind:click | <code>function</code> | 点击组件时触发的回调函数 | - |
+| bind:enter | <code>function</code> | 进入过渡的开始状态时触发的回调函数 | - |
+| bind:entering | <code>function</code> | 进入过渡的结束状态时触发的回调函数 | - |
+| bind:entered | <code>function</code> | 进入过渡的完成状态时触发的回调函数 | - |
+| bind:exit | <code>function</code> | 离开过渡的开始状态时触发的回调函数 | - |
+| bind:exiting | <code>function</code> | 离开过渡的结束状态时触发的回调函数 | - |
+| bind:exited | <code>function</code> | 离开过渡的完成状态时触发的回调函数 | - |

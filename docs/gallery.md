@@ -1,25 +1,11 @@
-## Gallery
-画廊
+# Gallery 画廊
 
-| 参数 | 类型 | 描述 | 默认值 |
-| --- | --- | --- | --- |
-| options | <code>object</code> | 配置项 | - |
-| options.indicatorDots | <code>boolean</code> | 是否显示面板指示点 | false |
-| options.indicatorColor | <code>string</code> | 指示点颜色 | rgba(0, 0, 0, .3) |
-| options.indicatorActiveColor | <code>string</code> | 当前选中的指示点颜色 | #000000 |
-| options.autoplay | <code>boolean</code> | 是否自动切换 | false |
-| options.interval | <code>number</code> | 自动切换时间间隔 | 5000 |
-| options.duration | <code>number</code> | 滑动动画时长 | 500 |
-| options.circular | <code>boolean</code> | 是否采用衔接滑动 | false |
-| options.vertical | <code>boolean</code> | 滑动方向是否为纵向 | false |
-| options.showDelete | <code>boolean</code> | 是否显示删除按钮 | true |
-| options.current | <code>number</code> | 当前显示图片的索引值 | 0 |
-| options.urls | <code>array</code> | 需要预览的图片链接列表 | [] |
-| options.delete | <code>function</code> | 点击删除的回调函数 | - |
-| options.cancel | <code>function</code> | 点击关闭的回调函数 | - |
-| options.onTap | <code>function</code> | 图片点击事件 | - |
+用于预览图片或其他操作。
 
-**Example**
+## 使用指南
+
+### 在 page.json 中引入组件
+
 ```json
 {
     "navigationBarTitleText": "Gallery",
@@ -28,6 +14,10 @@
     }
 }
 ```
+
+### 示例
+
+!> 该组件主要依靠 JavaScript 主动调用，所以一般只需在 wxml 中添加一个组件，并设置 id 为 `#wux-gallery` 或其他，之后在 page.js 中调用 `$wuxGallery(id)` 获取匹配到的第一个组件实例对象。
 
 ```html
 <wux-gallery id="wux-gallery" />
@@ -165,3 +155,23 @@ Page({
     },
 })
 ```
+
+## API
+
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| options | <code>object</code> | 配置项 | - |
+| options.indicatorDots | <code>boolean</code> | 是否显示面板指示点 | false |
+| options.indicatorColor | <code>string</code> | 指示点颜色 | rgba(0, 0, 0, .3) |
+| options.indicatorActiveColor | <code>string</code> | 当前选中的指示点颜色 | #000000 |
+| options.autoplay | <code>boolean</code> | 是否自动切换 | false |
+| options.interval | <code>number</code> | 自动切换时间间隔 | 5000 |
+| options.duration | <code>number</code> | 滑动动画时长 | 500 |
+| options.circular | <code>boolean</code> | 是否采用衔接滑动 | false |
+| options.vertical | <code>boolean</code> | 滑动方向是否为纵向 | false |
+| options.showDelete | <code>boolean</code> | 是否显示删除按钮 | true |
+| options.current | <code>number</code> | 当前显示图片的索引值 | 0 |
+| options.urls | <code>array</code> | 需要预览的图片链接列表 | [] |
+| options.delete | <code>function</code> | 点击删除的回调函数 | - |
+| options.cancel | <code>function</code> | 点击关闭的回调函数 | - |
+| options.onTap | <code>function</code> | 图片点击事件 | - |

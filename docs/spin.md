@@ -1,13 +1,11 @@
-## Spin
-加载中
+# Spin 加载中
 
-| 参数 | 类型 | 描述 | 默认值 |
-| --- | --- | --- | --- |
-| tip | <code>string</code> | 当作为包裹元素时，可以自定义描述文案 | - |
-| size | <code>string</code> | 组件大小，可选值为 small/default/large | default |
-| spinning | <code>boolean</code> | 是否旋转 | false |
+用于页面和区块的加载中状态。
 
-**Example**
+## 使用指南
+
+### 在 page.json 中引入组件
+
 ```json
 {
     "navigationBarTitleText": "Spin",
@@ -16,6 +14,8 @@
     }
 }
 ```
+
+### 示例
 
 ```html
 <view class="page">
@@ -59,3 +59,11 @@ Page({
     },
 })
 ```
+
+## API
+
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| tip | <code>string</code> | 当作为包裹元素时，可以自定义描述文案 | - |
+| size | <code>string</code> | 组件大小，可选值为 small/default/large | default |
+| spinning | <code>boolean</code> | 是否旋转 | false |

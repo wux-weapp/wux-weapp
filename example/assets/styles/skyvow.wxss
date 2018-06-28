@@ -59,8 +59,17 @@ page{
 }
 
 .logo {
-    padding: 15px;
-    font-size: 60px;
+    padding: 30rpx;
+    text-align: center;
+}
+
+.logo image {
+    width: 200rpx;
+    height: 200rpx;
+}
+
+.logo__text {
+    font-size: 48rpx;
     font-weight: bold;
     font-style: italic;
     background: -webkit-linear-gradient(left, #04BE02 , #2d8cf0);

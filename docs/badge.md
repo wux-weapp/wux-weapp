@@ -1,16 +1,11 @@
-## Badge
-徽章
+# Badge 徽章
 
-| 参数 | 类型 | 描述 | 默认值 |
-| --- | --- | --- | --- |
-| count | <code>number</code> | 展示的数字，大于 overflowCount 时显示为 ${overflowCount}+，为 0 时隐藏 | 0 |
-| overflowCount | <code>number</code> | 展示封顶的数字值 | 99 |
-| dot | <code>boolean</code> | 不展示数字，只有一个小红点 | false |
-| showZero | <code>boolean</code> | 当数值为 0 时，是否展示 Badge | false |
-| status | <code>string</code> | 设置 Badge 为状态点，可选值为 success、processing、default、error、warning | - |
-| text | <code>string</code> | 在设置了 status 的前提下有效，设置状态点的文本 | - |
+图标右上角的圆形徽标数字。
 
-**Example**
+## 使用指南
+
+### 在 page.json 中引入组件
+
 ```json
 {
     "navigationBarTitleText": "Badge",
@@ -19,6 +14,8 @@
     }
 }
 ```
+
+### 示例
 
 ```html
 <view class="page">
@@ -76,3 +73,14 @@
     </view>
 </view>
 ```
+
+## API
+
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| count | <code>number</code> | 展示的数字，大于 overflowCount 时显示为 ${overflowCount}+，为 0 时隐藏 | 0 |
+| overflowCount | <code>number</code> | 展示封顶的数字值 | 99 |
+| dot | <code>boolean</code> | 不展示数字，只有一个小红点 | false |
+| showZero | <code>boolean</code> | 当数值为 0 时，是否展示 Badge | false |
+| status | <code>string</code> | 设置 Badge 为状态点，可选值为 success、processing、default、error、warning | - |
+| text | <code>string</code> | 在设置了 status 的前提下有效，设置状态点的文本 | - |

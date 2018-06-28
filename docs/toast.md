@@ -1,16 +1,11 @@
-## Toast
-提示框
+# Toast 提示框
 
-| 参数 | 类型 | 描述 | 默认值 |
-| --- | --- | --- | --- |
-| options | <code>object</code> | 配置项 | - |
-| options.type | <code>string</code> | 提示类型，可选值为 success、cancel、forbidden、text | success |
-| options.duration | <code>number</code> | 提示延迟时间 | 1500 |
-| options.color | <code>string</code> | 图标颜色 | #fff |
-| options.text | <code>string</code> | 提示文本 | 已完成 |
-| options.success | <code>function</code> | 关闭后的回调函数 | - |
+一种轻量级反馈/提示，可以用来显示不会打断用户操作的内容，适合用于页面转场、数据交互的等场景中。
 
-**Example**
+## 使用指南
+
+### 在 page.json 中引入组件
+
 ```json
 {
     "navigationBarTitleText": "Toast",
@@ -19,6 +14,10 @@
     }
 }
 ```
+
+### 示例
+
+!> 该组件主要依靠 JavaScript 主动调用，所以一般只需在 wxml 中添加一个组件，并设置 id 为 `#wux-toast` 或其他，之后在 page.js 中调用 `$wuxToast(id)` 获取匹配到的第一个组件实例对象。
 
 ```html
 <wux-toast id="wux-toast" />
@@ -83,3 +82,14 @@ Page({
     },
 })
 ```
+
+## API
+
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| options | <code>object</code> | 配置项 | - |
+| options.type | <code>string</code> | 提示类型，可选值为 success、cancel、forbidden、text | success |
+| options.duration | <code>number</code> | 提示延迟时间 | 1500 |
+| options.color | <code>string</code> | 图标颜色 | #fff |
+| options.text | <code>string</code> | 提示文本 | 已完成 |
+| options.success | <code>function</code> | 关闭后的回调函数 | - |

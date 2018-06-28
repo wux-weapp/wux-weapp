@@ -1,18 +1,11 @@
-## Notification
-通知
+# Notification 通知
 
-| 参数 | 类型 | 描述 | 默认值 |
-| --- | --- | --- | --- |
-| options | <code>object</code> | 配置项 | - |
-| options.image | <code>string</code> | 通知的图标 | - |
-| options.title | <code>string</code> | 通知的标题 | - |
-| options.text | <code>string</code> | 通知的文本 | - |
-| options.duration | <code>number</code> | 多少毫秒后消失 | 3000 |
-| options.data | <code>any</code> | 自定义数据传给 onClick、onClose | - |
-| options.onClick | <code>function</code> | 点击后的回调函数 | - |
-| options.onClose | <code>function</code> | 消失后的回调函数 | - |
+用于展现通知提示框，在窗口顶部显示。
 
-**Example**
+## 使用指南
+
+### 在 page.json 中引入组件
+
 ```json
 {
     "navigationBarTitleText": "Notification",
@@ -22,6 +15,10 @@
     "disableScroll": true
 }
 ```
+
+### 示例
+
+!> 该组件主要依靠 JavaScript 主动调用，所以一般只需在 wxml 中添加一个组件，并设置 id 为 `#wux-notification` 或其他，之后在 page.js 中调用 `$wuxNotification(id)` 获取匹配到的第一个组件实例对象。
 
 ```html
 <wux-notification id="wux-notification" />
@@ -65,3 +62,16 @@ Page({
     },
 })
 ```
+
+## API
+
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| options | <code>object</code> | 配置项 | - |
+| options.image | <code>string</code> | 通知的图标 | - |
+| options.title | <code>string</code> | 通知的标题 | - |
+| options.text | <code>string</code> | 通知的文本 | - |
+| options.duration | <code>number</code> | 多少毫秒后消失 | 3000 |
+| options.data | <code>any</code> | 自定义数据传给 onClick、onClose | - |
+| options.onClick | <code>function</code> | 点击后的回调函数 | - |
+| options.onClose | <code>function</code> | 消失后的回调函数 | - |

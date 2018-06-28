@@ -137,4 +137,9 @@ Page({
             },
         ],
     },
+    onShareAppMessage() {
+        return {
+            title: 'Wux Weapp',
+        }
+    },
 })

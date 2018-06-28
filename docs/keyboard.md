@@ -1,18 +1,11 @@
-## KeyBoard
-数字键盘
+# KeyBoard 数字键盘
 
-| 参数 | 类型 | 描述 | 默认值 |
-| --- | --- | --- | --- |
-| options | <code>object</code> | 配置项 | - |
-| options.className | <code>string</code> | 自定义类名 | - |
-| options.titleText | <code>string</code> | 标题 | 安全键盘 |
-| options.cancelText | <code>string</code> | 取消按钮的文字 | 取消 |
-| options.inputText | <code>string</code> | 提示文本 | 输入数字密码 |
-| options.showCancel | <code>boolean</code> | 是否显示取消按钮 | true |
-| options.disorder | <code>boolean</code> | 是否打乱键盘 | false |
-| options.callback | <code>function</code> | 输入完成后的回调函数 | - |
+用于展现数字键盘。
 
-**Example**
+## 使用指南
+
+### 在 page.json 中引入组件
+
 ```json
 {
     "navigationBarTitleText": "KeyBoard",
@@ -22,6 +15,9 @@
 }
 ```
 
+### 示例
+
+!> 该组件主要依靠 JavaScript 主动调用，所以一般只需在 wxml 中添加一个组件，并设置 id 为 `#wux-keyboard` 或其他，之后在 page.js 中调用 `$wuxKeyBoard(id)` 获取匹配到的第一个组件实例对象。
 
 ```html
 <wux-keyboard id="wux-keyboard" />
@@ -151,3 +147,16 @@ Page({
     },
 })
 ```
+
+## API
+
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| options | <code>object</code> | 配置项 | - |
+| options.className | <code>string</code> | 自定义类名 | - |
+| options.titleText | <code>string</code> | 标题 | 安全键盘 |
+| options.cancelText | <code>string</code> | 取消按钮的文字 | 取消 |
+| options.inputText | <code>string</code> | 提示文本 | 输入数字密码 |
+| options.showCancel | <code>boolean</code> | 是否显示取消按钮 | true |
+| options.disorder | <code>boolean</code> | 是否打乱键盘 | false |
+| options.callback | <code>function</code> | 输入完成后的回调函数 | - |

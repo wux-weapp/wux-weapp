@@ -1,19 +1,11 @@
-## Dialog
-对话框
+# Dialog 对话框
 
-| 参数 | 类型 | 描述 | 默认值 |
-| --- | --- | --- | --- |
-| options | <code>object</code> | 配置项 | - |
-| options.title | <code>string</code> | 提示标题 | - |
-| options.content | <code>string</code> | 提示文本 | - |
-| options.verticalButtons | <code>boolean</code> | 是否显示垂直按钮布局 | false |
-| options.buttons | <code>array</code> | 按钮 | [] |
-| options.buttons[].text | <code>string</code> | 按钮的文本 | - |
-| options.buttons[].type | <code>string</code> | 按钮的类型 | - |
-| options.buttons[].bold | <code>boolean</code> | 是否加粗按钮的文字 | - |
-| options.buttons[].onTap | <code>function</code> | 按钮的点击事件 | - |
+模态对话框，在浮层中显示，引导用户进行相关操作。
 
-**Example**
+## 使用指南
+
+### 在 page.json 中引入组件
+
 ```json
 {
 	"navigationBarTitleText": "Dialog",
@@ -22,6 +14,10 @@
     }
 }
 ```
+
+### 示例
+
+!> 该组件主要依靠 JavaScript 主动调用，所以一般只需在 wxml 中添加一个组件，并设置 id 为 `#wux-dialog` 或其他，之后在 page.js 中调用 `$wuxDialog(id)` 获取匹配到的第一个组件实例对象。
 
 ```html
 <wux-dialog id="wux-dialog" />
@@ -169,3 +165,17 @@ Page({
     },
 })
 ```
+
+## API
+
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| options | <code>object</code> | 配置项 | - |
+| options.title | <code>string</code> | 提示标题 | - |
+| options.content | <code>string</code> | 提示文本 | - |
+| options.verticalButtons | <code>boolean</code> | 是否显示垂直按钮布局 | false |
+| options.buttons | <code>array</code> | 按钮 | [] |
+| options.buttons[].text | <code>string</code> | 按钮的文本 | - |
+| options.buttons[].type | <code>string</code> | 按钮的类型 | - |
+| options.buttons[].bold | <code>boolean</code> | 是否加粗按钮的文字 | - |
+| options.buttons[].onTap | <code>function</code> | 按钮的点击事件 | - |

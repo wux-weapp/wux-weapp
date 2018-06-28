@@ -1,7 +1,11 @@
-## Backdrop
-背景幕
+# Backdrop 背景幕
 
-**Example**
+在组件中设置显示蒙层。
+
+## 使用指南
+
+### 在 page.json 中引入组件
+
 ```json
 {
     "navigationBarTitleText": "Backdrop",
@@ -10,6 +14,10 @@
     }
 }
 ```
+
+### 示例
+
+!> 该组件主要依靠 JavaScript 主动调用，所以一般只需在 wxml 中添加一个组件，并设置 id 为 `#wux-backdrop` 或其他，之后在 page.js 中调用 `$wuxBackdrop(id)` 获取匹配到的第一个组件实例对象。
 
 ```html
 <wux-backdrop id="wux-backdrop" />
@@ -53,3 +61,9 @@ Page({
     }
 })
 ```
+
+## API
+
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| transparent | <code>boolean</code> | 是否显示透明蒙层 | false |

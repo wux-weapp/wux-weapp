@@ -1,23 +1,11 @@
-## Barcode
-条形码
+# Barcode 条形码
 
-| 参数 | 类型 | 描述 | 默认值 |
-| --- | --- | --- | --- |
-| canvasId | <code>string</code> | canvas 组件的唯一标识符 | wux-barcode |
-| number | <code>number|</code> | 条形码的数值 | - |
-| width | <code>number</code> | canvas 组件的宽度 | 200 |
-| height | <code>number</code> | canvas 组件的高度 | 100 |
-| options | <code>object</code> | 配置项 | - |
-| options.number | <code>true</code> | 是否显示数字 | true |
-| options.prefix | <code>true</code> | 是否显示国家前缀 | true |
-| options.color | <code>string</code> | 条形码的颜色 | black |
-| options.debug | <code>true</code> | 是否开启调试 | false |
-| options.onValid | <code>function</code> | 验证条形码合法的回调函数 | - |
-| options.onInvalid | <code>function</code> | 验证条形码不合法的回调函数 | - |
-| options.onSuccess | <code>function</code> | 接口调用成功的回调函数 | - |
-| options.onError | <code>function</code> | 接口调用失败的回调函数 | - |
+用于展现条形码。
 
-**Example**
+## 使用指南
+
+### 在 page.json 中引入组件
+
 ```json
 {
     "navigationBarTitleText": "Barcode",
@@ -26,6 +14,8 @@
     }
 }
 ```
+
+### 示例
 
 ```html
 <view class="page">
@@ -71,3 +61,21 @@ Page({
     },
 })
 ```
+
+## API
+
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| canvasId | <code>string</code> | canvas 组件的唯一标识符 | wux-barcode |
+| number | <code>number</code> | 条形码的数值 | - |
+| width | <code>number</code> | canvas 组件的宽度 | 200 |
+| height | <code>number</code> | canvas 组件的高度 | 100 |
+| options | <code>object</code> | 配置项 | - |
+| options.number | <code>true</code> | 是否显示数字 | true |
+| options.prefix | <code>true</code> | 是否显示国家前缀 | true |
+| options.color | <code>string</code> | 条形码的颜色 | black |
+| options.debug | <code>true</code> | 是否开启调试 | false |
+| options.onValid | <code>function</code> | 验证条形码合法的回调函数 | - |
+| options.onInvalid | <code>function</code> | 验证条形码不合法的回调函数 | - |
+| options.onSuccess | <code>function</code> | 接口调用成功的回调函数 | - |
+| options.onError | <code>function</code> | 接口调用失败的回调函数 | - |

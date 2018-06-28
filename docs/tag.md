@@ -1,12 +1,11 @@
-## Tag
-标签
+# Tag 标签
 
-| 参数 | 类型 | 描述 | 默认值 |
-| --- | --- | --- | --- |
-| color | <code>string</code> | 标签色 | - |
-| bind:click | <code>function</code> | 点击事件 | - |
+进行标记和分类的小标签。添加了多种预设色彩的标签样式如 `pink`、`red`、`yellow`、`orange`、`cyan`、`green`、`blue`、`purple`、`geekblue`、`magenta`、`volcano`、`gold`、`lime` 可选用。
 
-**Example**
+## 使用指南
+
+### 在 page.json 中引入组件
+
 ```json
 {
     "navigationBarTitleText": "Tag",
@@ -15,6 +14,8 @@
     }
 }
 ```
+
+### 示例
 
 ```html
 <view class="page">
@@ -41,3 +42,10 @@
     </view>
 </view>
 ```
+
+## API
+
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| color | <code>string</code> | 标签色 | - |
+| bind:click | <code>function</code> | 点击事件 | - |

@@ -1,18 +1,11 @@
-## InputNumber
-数字输入框
+# InputNumber 数字输入框
 
-| 参数 | 类型 | 描述 | 默认值 |
-| --- | --- | --- | --- |
-| min | <code>number</code> | 最小值 | -999999 |
-| max | <code>number</code> | 最大值 | 999999 |
-| step | <code>number</code> | 计数间隔 | 1 |
-| value | <code>number</code> | 默认值 | 0 |
-| disabled | <code>boolean</code> | 禁用输入 | true |
-| longpress | <code>boolean</code> | 禁用长按 | false |
-| className | <code>string</code> | 自定义类名 | - |
-| bind:change | <code>function</code> | 监听值变化的回调函数 | - |
+通过鼠标或键盘，输入范围内的数值。
 
-**Example**
+## 使用指南
+
+### 在 page.json 中引入组件
+
 ```json
 {
 	"navigationBarTitleText": "InputNumber",
@@ -21,6 +14,8 @@
     }
 }
 ```
+
+### 示例
 
 ```html
 <view class="page">
@@ -127,3 +122,16 @@ Page({
     },
 })
 ```
+
+## API
+
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| min | <code>number</code> | 最小值 | -999999 |
+| max | <code>number</code> | 最大值 | 999999 |
+| step | <code>number</code> | 计数间隔 | 1 |
+| value | <code>number</code> | 默认值 | 0 |
+| disabled | <code>boolean</code> | 禁用输入 | true |
+| longpress | <code>boolean</code> | 禁用长按 | false |
+| className | <code>string</code> | 自定义类名 | - |
+| bind:change | <code>function</code> | 监听值变化的回调函数 | - |

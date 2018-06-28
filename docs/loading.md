@@ -1,12 +1,11 @@
-## Loading
-指示器
+# Loading 指示器
 
-| 参数 | 类型 | 描述 | 默认值 |
-| --- | --- | --- | --- |
-| options | <code>object</code> | 配置项 | - |
-| options.text | <code>string</code> | 提示文本 | 数据加载中 |
+用于展现 loading 提示框。
 
-**Example**
+## 使用指南
+
+### 在 page.json 中引入组件
+
 ```json
 {
     "navigationBarTitleText": "Loading",
@@ -15,6 +14,10 @@
     }
 }
 ```
+
+### 示例
+
+!> 该组件主要依靠 JavaScript 主动调用，所以一般只需在 wxml 中添加一个组件，并设置 id 为 `#wux-loading` 或其他，之后在 page.js 中调用 `$wuxLoading(id)` 获取匹配到的第一个组件实例对象。
 
 ```html
 <wux-loading id="wux-loading" />
@@ -50,3 +53,10 @@ Page({
     },
 })
 ```
+
+## API
+
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| options | <code>object</code> | 配置项 | - |
+| options.text | <code>string</code> | 提示文本 | 数据加载中 |

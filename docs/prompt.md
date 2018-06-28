@@ -1,18 +1,11 @@
-## Prompt
-提示信息
+# Prompt 提示信息
 
-| 参数 | 类型 | 描述 | 默认值 |
-| --- | --- | --- | --- |
-| className | <code>string</code> | 自定义类名 | - |
-| icon | <code>string</code> | 图标 | - |
-| title | <code>string</code> | 标题 | - |
-| text | <code>string</code> | 文本 | - |
-| buttons | <code>array</code> | 按钮 | [] |
-| buttons[].text | <code>string</code> | 按钮的文本 | - |
-| visible | <code>boolean</code> | 是否显示组件 | false |
-| bind:click | <code>function</code> | 按钮点击事件 | - |
+用于展现异常流提示信息。
 
-**Example**
+## 使用指南
+
+### 在 page.json 中引入组件
+
 ```json
 {
     "navigationBarTitleText": "Prompt",
@@ -21,6 +14,8 @@
     }
 }
 ```
+
+### 示例
 
 ```html
 <view class="page">
@@ -103,3 +98,16 @@ Page({
     },
 })
 ```
+
+## API
+
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| className | <code>string</code> | 自定义类名 | - |
+| icon | <code>string</code> | 图标 | - |
+| title | <code>string</code> | 标题 | - |
+| text | <code>string</code> | 文本 | - |
+| buttons | <code>array</code> | 按钮 | [] |
+| buttons[].text | <code>string</code> | 按钮的文本 | - |
+| visible | <code>boolean</code> | 是否显示组件 | false |
+| bind:click | <code>function</code> | 按钮点击事件 | - |

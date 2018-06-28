@@ -1,18 +1,11 @@
-## Rater
-评分组件
+# Rater 评分组件
 
-| 参数 | 类型 | 描述 | 默认值 |
-| --- | --- | --- | --- |
-| max | <code>number</code> | 最大值 | 5 |
-| star | <code>string</code> | 图标 | ★ |
-| value | <code>number</code> | 默认值 | 0 |
-| activeColor | <code>string</code> | 图标激活的颜色 | #fc6 |
-| margin | <code>number</code> | 图标外边距 | 2 |
-| fontSize | <code>number</code> | 图标大小 | 25 |
-| disabled | <code>boolean</code> | 禁用点击 | false |
-| bind:change | <code>function</code> | 点击事件的回调函数 | - |
+对评价进行展示或对事物进行快速的评级操作。
 
-**Example**
+## 使用指南
+
+### 在 page.json 中引入组件
+
 ```json
 {
     "navigationBarTitleText": "Rater",
@@ -21,6 +14,8 @@
     }
 }
 ```
+
+### 示例
 
 ```html
 <view class="page">
@@ -160,3 +155,16 @@ Page({
     },
 })
 ```
+
+## API
+
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| max | <code>number</code> | 最大值 | 5 |
+| star | <code>string</code> | 图标 | ★ |
+| value | <code>number</code> | 默认值 | 0 |
+| activeColor | <code>string</code> | 图标激活的颜色 | #fc6 |
+| margin | <code>number</code> | 图标外边距 | 2 |
+| fontSize | <code>number</code> | 图标大小 | 25 |
+| disabled | <code>boolean</code> | 禁用点击 | false |
+| bind:change | <code>function</code> | 点击事件的回调函数 | - |
