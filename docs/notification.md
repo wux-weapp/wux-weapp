@@ -63,7 +63,7 @@ Page({
 })
 ```
 
-## 视频
+## 视频演示
 
 [Notification](./_media/notification.mp4 ':include :type=iframe width=375px height=667px')
 

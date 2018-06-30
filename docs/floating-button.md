@@ -106,7 +106,7 @@ Page({
 })
 ```
 
-## 视频
+## 视频演示
 
 [FloatingButton](./_media/floating-button.mp4 ':include :type=iframe width=375px height=667px')
 

@@ -83,7 +83,7 @@
 </view>
 ```
 
-## 视频
+## 视频演示
 
 [Grid](./_media/grid.mp4 ':include :type=iframe width=375px height=667px')
 

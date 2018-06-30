@@ -66,7 +66,7 @@ Page({
 })
 ```
 
-## 视频
+## 视频演示
 
 [Refresher](./_media/refresher.mp4 ':include :type=iframe width=375px height=667px')
 

@@ -166,7 +166,7 @@ Page({
 })
 ```
 
-## 视频
+## 视频演示
 
 [Dialog](./_media/dialog.mp4 ':include :type=iframe width=375px height=667px')
 

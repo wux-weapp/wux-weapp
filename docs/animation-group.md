@@ -131,7 +131,7 @@ Page({
 })
 ```
 
-## 视频
+## 视频演示
 
 [AnimationGroup](./_media/animation-group.mp4 ':include :type=iframe width=375px height=667px')
 

@@ -74,7 +74,7 @@
 </view>
 ```
 
-## 视频
+## 视频演示
 
 [Badge](./_media/badge.mp4 ':include :type=iframe width=375px height=667px')
 

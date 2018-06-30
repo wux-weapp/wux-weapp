@@ -101,7 +101,7 @@ Page({
 })
 ```
 
-## 视频
+## 视频演示
 
 [CountDown](./_media/countdown.mp4 ':include :type=iframe width=375px height=667px')
 

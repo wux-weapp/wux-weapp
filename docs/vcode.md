@@ -63,7 +63,7 @@ Page({
 })
 ```
 
-## 视频
+## 视频演示
 
 [Vcode](./_media/vcode.mp4 ':include :type=iframe width=375px height=667px')
 

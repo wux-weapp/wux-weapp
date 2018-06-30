@@ -98,7 +98,7 @@ Page({
 })
 ```
 
-## 视频
+## 视频演示
 
 [ActionSheet](./_media/actionsheet.mp4 ':include :type=iframe width=375px height=667px')
 
