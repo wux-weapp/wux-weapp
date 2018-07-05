@@ -1,0 +1,33 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Swicth</view>
+        <view class="page__desc">滑动开关</view>
+    </view>
+    <view class="page__bd">
+        <form bindsubmit="formSubmit">
+            <wux-cell-group title="Form switch">
+                <wux-cell title="On">
+                    <wux-switch name="a" slot="footer" value="{{ value1 }}" bind:change="onChange1" />
+                </wux-cell>
+                <wux-cell title="Off">
+                    <wux-switch name="b" slot="footer" value="{{ value2 }}" bind:change="onChange2" />
+                </wux-cell>
+                <wux-cell title="Custom color">
+                    <wux-switch name="c" slot="footer" value="{{ value3 }}" color="red" bind:change="onChange3" />
+                </wux-cell>
+                <wux-cell title="Custom color">
+                    <wux-switch name="d" slot="footer" value="{{ value4 }}" color="yellow" bind:change="onChange4" />
+                </wux-cell>
+                <wux-cell title="Disabled on">
+                    <wux-switch name="e" slot="footer" value="{{ true }}" disabled />
+                </wux-cell>
+                <wux-cell title="Disabled off">
+                    <wux-switch name="f" slot="footer" value="{{ false }}" disabled />
+                </wux-cell>
+            </wux-cell-group>
+            <view class="btn-area">
+                <button formType="submit">Submit</button>
+            </view>
+        </form>
+    </view>
+</view>

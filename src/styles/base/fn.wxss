@@ -1,6 +1,7 @@
 // mixin
 @import "mixin/common.wxss";
 @import "mixin/setOnepx.wxss";
+@import "mixin/setBorder.wxss";
 @import "mixin/setArrow.wxss";
 @import "mixin/text.wxss";
 

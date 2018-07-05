@@ -1,0 +1,6 @@
+<wux-cell wux-class="wux-checkbox" title="{{ title }}" label="{{ label }}" extra="{{ extra }}" bind:click="checkboxChange">
+    <label slot="header">
+        <checkbox value="{{ value }}" checked="{{ checked }}" color="{{ color }}" disabled="{{ disabled }}" class="wux-checkbox__input" />
+        <icon class="wux-checkbox__icon" type="{{ checked ? 'success' : 'circle' }}" size="23" color="{{ !disabled ? color : '#666' }}" />
+    </label>
+</wux-cell>

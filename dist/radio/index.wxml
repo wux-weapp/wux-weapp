@@ -1,0 +1,6 @@
+<wux-cell wux-class="wux-radio" thumb="{{ thumb }}" title="{{ title }}" label="{{ label }}" bind:click="radioChange">
+    <label slot="footer">
+        <radio value="{{ value }}" checked="{{ checked }}" color="{{ color }}" disabled="{{ disabled }}" class="wux-radio__input" />
+        <icon class="wux-radio__icon" type="success_no_circle" size="16" color="{{ !disabled ? color : '#666' }}" hidden="{{ !checked }}" />
+    </label>
+</wux-cell>

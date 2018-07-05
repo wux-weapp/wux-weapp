@@ -1,0 +1,33 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Checkbox</view>
+        <view class="page__desc">复选框</view>
+    </view>
+    <view class="page__bd">
+        <form bindsubmit="formSubmit">
+            <wux-checkbox-group name="a" value="{{ value1 }}" title="Default" bind:change="onChange1">
+                <wux-checkbox title="Java" value="1" />
+                <wux-checkbox title="PHP" value="2" />
+            </wux-checkbox-group>
+            <wux-checkbox-group name="b" value="{{ value2 }}" title="Label" bind:change="onChange2">
+                <wux-checkbox title="Java" label="details" value="1" />
+                <wux-checkbox title="PHP" label="details" value="2" />
+            </wux-checkbox-group>
+            <wux-checkbox-group name="c" value="{{ value3 }}" title="Extra" bind:change="onChange3">
+                <wux-checkbox title="Java" extra="extra" value="1" />
+                <wux-checkbox title="PHP" extra="extra" value="2" />
+            </wux-checkbox-group>
+            <wux-checkbox-group name="d" value="{{ value4 }}" title="Trigger onChange" bind:change="onChange4">
+                <wux-checkbox title="Java" value="1" />
+                <wux-checkbox title="PHP" value="2" />
+            </wux-checkbox-group>
+            <wux-checkbox-group name="e" value="{{ ['1'] }}" title="Disabled">
+                <wux-checkbox title="AV" value="1" disabled />
+                <wux-checkbox title="PHP" value="2" disabled />
+            </wux-checkbox-group>
+            <view class="btn-area">
+                <button formType="submit">Submit</button>
+            </view>
+        </form>
+    </view>
+</view>

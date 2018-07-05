@@ -1,0 +1,28 @@
+@import "../styles/base/fn.wxss";
+
+.wux-cell-group {
+    &__hd {
+        padding: 15px 15px 9px;
+        font-size: 14px;
+        color: #888;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    &__bd {
+        position: relative;
+        background-color: #fff;
+
+        &:after {
+            .setBorder(#D9D9D9);
+            border-top-width: 1px;
+            border-bottom-width: 1px;
+        }
+    }
+
+    &__ft {
+        padding: 9px 15px 15px;
+        font-size: 14px;
+        color: #888;
+    }
+}

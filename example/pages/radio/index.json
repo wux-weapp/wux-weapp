@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "Radio",
+    "usingComponents": {
+        "wux-radio-group": "../../dist/radio-group/index",
+        "wux-radio": "../../dist/radio/index"
+    }
+}

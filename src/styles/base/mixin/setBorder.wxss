@@ -1,16 +1,4 @@
-.clearfix() {
-	&:before,
-	&:after {
-		display: table;
-	    content: " ";
-	}
-
-	&:after {
-		clear: both;
-	}
-}
-
-.hairline() {
+.setBorder(@c: #C7C7C7) {
     content: " ";
     position: absolute;
     top: 0;
@@ -21,5 +9,5 @@
     transform-origin: 0 0;
     pointer-events: none;
     box-sizing: border-box;
-    border: 0 solid #D9D9D9;
+    border: 0 solid @c;
 }

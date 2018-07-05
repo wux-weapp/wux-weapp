@@ -21,6 +21,11 @@ Page({
                         url: '/pages/barcode/index',
                     },
                     {
+                        title: 'Checkbox',
+                        remark: '复选框',
+                        url: '/pages/checkbox/index',
+                    },
+                    {
                         title: 'CountDown',
                         remark: '倒计时',
                         url: '/pages/countdown/index',
@@ -46,6 +51,11 @@ Page({
                         url: '/pages/input-number/index',
                     },
                     {
+                        title: 'List',
+                        remark: '列表',
+                        url: '/pages/list/index',
+                    },
+                    {
                         title: 'Prompt',
                         remark: '提示消息',
                         url: '/pages/prompt/index',
@@ -56,9 +66,24 @@ Page({
                         url: '/pages/qrcode/index',
                     },
                     {
+                        title: 'Radio',
+                        remark: '单选框',
+                        url: '/pages/radio/index',
+                    },
+                    {
                         title: 'Rater',
                         remark: '评分',
                         url: '/pages/rater/index',
+                    },
+                    {
+                        title: 'Rater',
+                        remark: '评分',
+                        url: '/pages/rater/index',
+                    },
+                    {
+                        title: 'Switch',
+                        remark: '滑动开关',
+                        url: '/pages/switch/index',
                     },
                     {
                         title: 'Tag',

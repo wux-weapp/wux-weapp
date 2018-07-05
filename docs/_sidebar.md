@@ -10,14 +10,18 @@
   
   * [Badge 徽章](badge.md)
   * [Barcode 条形码](barcode.md)
+  * [Checkbox 复选框](checkbox.md)
   * [CountDown 倒计时](countdown.md)
   * [CountUp 计数器](countup.md)
   * [FloatingButton 浮动按钮](floating-button.md)
   * [Grid 栅格布局](grid.md)
   * [InputNumber 数字输入框](input-number.md)
+  * [List 列表](list.md)
   * [Prompt 提示消息](prompt.md)
   * [Qrcode 二维码](qrcode.md)
+  * [Radio 单选框](radio.md)
   * [Rater 评分](rater.md)
+  * [Switch 滑动开关](switch.md)
   * [Tag 标签](tag.md)
   * [Vcode 验证码](vcode.md)
 

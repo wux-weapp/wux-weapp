@@ -1,0 +1,3 @@
+<wux-cell-group wux-class="wux-checkbox-group" title="{{ title }}" label="{{ label }}">
+    <slot></slot>
+</wux-cell-group>
