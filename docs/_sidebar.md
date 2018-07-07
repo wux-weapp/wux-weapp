@@ -10,6 +10,7 @@
   
   * [Badge 徽章](badge.md)
   * [Barcode 条形码](barcode.md)
+  * [Card 卡片](card.md)
   * [Checkbox 复选框](checkbox.md)
   * [CountDown 倒计时](countdown.md)
   * [CountUp 计数器](countup.md)
@@ -24,6 +25,8 @@
   * [Switch 滑动开关](switch.md)
   * [Tag 标签](tag.md)
   * [Vcode 验证码](vcode.md)
+  * [WhiteSpace 上下留白](white-space.md)
+  * [WingBlank 两翼留白](wing-blank.md)
 
 * 操作反馈
 

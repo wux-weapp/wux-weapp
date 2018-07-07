@@ -1,0 +1,8 @@
+/* pages/card/index.wxss */
+.title {
+    padding: 30rpx 30rpx 18rpx;
+    font-size: 28rpx;
+    color: #888;
+    width: 100%;
+    box-sizing: border-box;
+}

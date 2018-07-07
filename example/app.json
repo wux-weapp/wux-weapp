@@ -19,6 +19,7 @@
         "pages/animation-group/index",
         "pages/prompt/index",
         "pages/barcode/index",
+        "pages/card/index",
         "pages/checkbox/index",
         "pages/refresher/index",
         "pages/spin/index",
@@ -29,6 +30,8 @@
         "pages/notification/index",
         "pages/floating-button/index",
         "pages/vcode/index",
+        "pages/white-space/index",
+        "pages/wing-blank/index",
         "pages/about/index"
     ],
     "window": {

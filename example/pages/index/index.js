@@ -21,6 +21,11 @@ Page({
                         url: '/pages/barcode/index',
                     },
                     {
+                        title: 'Card',
+                        remark: '卡片',
+                        url: '/pages/card/index',
+                    },
+                    {
                         title: 'Checkbox',
                         remark: '复选框',
                         url: '/pages/checkbox/index',
@@ -76,11 +81,6 @@ Page({
                         url: '/pages/rater/index',
                     },
                     {
-                        title: 'Rater',
-                        remark: '评分',
-                        url: '/pages/rater/index',
-                    },
-                    {
                         title: 'Switch',
                         remark: '滑动开关',
                         url: '/pages/switch/index',
@@ -94,6 +94,16 @@ Page({
                         title: 'Vcode',
                         remark: '验证码',
                         url: '/pages/vcode/index',
+                    },
+                    {
+                        title: 'WhiteSpace',
+                        remark: '上下留白',
+                        url: '/pages/white-space/index',
+                    },
+                    {
+                        title: 'WingBlank',
+                        remark: '两翼留白',
+                        url: '/pages/wing-blank/index',
                     },
                 ],
             },

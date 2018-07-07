@@ -1,0 +1,15 @@
+@import "../styles/base/fn.wxss";
+
+.wux-whitespace {
+    &--small {
+        height: 5px;
+    }
+
+    &--default {
+        height: 10px;
+    }
+
+    &--large {
+        height: 15px;
+    }
+}

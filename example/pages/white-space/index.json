@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "WhiteSpace",
+    "usingComponents": {
+        "wux-white-space": "../../dist/white-space/index"
+    }
+}

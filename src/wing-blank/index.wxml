@@ -1,0 +1,3 @@
+<view class="wux-class wux-wingblank {{ size ? 'wux-wingblank--' + size : '' }}" style="{{ bodyStyle }}">
+    <slot></slot>
+</view>

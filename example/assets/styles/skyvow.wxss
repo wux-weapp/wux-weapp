@@ -3,7 +3,7 @@ page{
 	height: 100%;
 	position: relative;
 	color: #333;
-    background-color: #efeff4;
+    background-color: #f8f8f8;
     font-size: 16px;
     font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
     -ms-text-size-adjust: 100%;
@@ -40,6 +40,15 @@ page{
     color: #888888;
     text-align: left;
     font-size: 14px;
+}
+
+.placeholder {
+    background-color: #ebebef;
+    color: #bbb;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
 }
 
 .button-sp-area {

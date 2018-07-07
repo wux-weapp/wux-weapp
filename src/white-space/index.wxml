@@ -1,0 +1,1 @@
+<view class="wux-class wux-whitespace {{ size ? 'wux-whitespace--' + size : '' }}" style="{{ bodyStyle }}" onTap="onTap"></view>

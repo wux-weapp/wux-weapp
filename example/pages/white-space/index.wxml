@@ -1,0 +1,16 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">WhiteSpace</view>
+        <view class="page__desc">上下留白</view>
+    </view>
+    <view class="page__bd">
+        <wux-white-space size="small" />
+        <view class="placeholder">Wux</view>
+        <wux-white-space size="default" />
+        <view class="placeholder">Wux</view>
+        <wux-white-space size="large" />
+        <view class="placeholder">Wux</view>
+        <wux-white-space body-style="height: 20px" />
+        <view class="placeholder">Wux</view>
+    </view>
+</view>

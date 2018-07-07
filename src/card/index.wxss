@@ -1,0 +1,80 @@
+@import "../styles/base/fn.wxss";
+
+.wux-card {
+    position: relative;
+    min-height: 96px;
+    padding-bottom: 6px;
+    display: flex;
+    -webkit-box-orient: vertical;
+    flex-direction: column;
+    background-color: #fff;
+    
+    &--bordered {
+        &:before {
+            .setBorder(#D9D9D9);
+            border-radius: 10px;
+            border-top-width: 1px;
+            border-right-width: 1px;
+            border-bottom-width: 1px;
+            border-left-width: 1px;
+        }
+    }
+
+    &--full {
+        &:before {
+            border-radius: 0;
+            border-right-width: 0;
+            border-left-width: 0;
+        }
+    }
+
+    &__hd {
+        display: flex;
+        font-size: 17px;
+        padding: 9px 15px;
+        align-items: center;
+    }
+
+    &__content {
+        flex: 1;
+        text-align: left;
+        color: #000;
+    }
+
+    &__thumb {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        position: relative;
+        margin-left: auto;
+        margin-right: 5px;
+        overflow: hidden;
+        vertical-align: middle;
+    }
+    
+    &__extra {
+        flex: 1;
+        text-align: right;
+        font-size: 17px;
+        color: #888;
+    }
+
+    &__bd {
+        position: relative;
+        padding: 15px 15px 6px;
+        font-size: 15px;
+        color: #333;
+        min-height: 40px;
+
+        &:before {
+            .setTopLine(#D9D9D9);
+        }
+    }
+
+    &__ft {
+        display: flex;
+        font-size: 14px;
+        color: #888;
+        padding: 0 15px;
+    }
+}
