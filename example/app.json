@@ -5,6 +5,7 @@
         "pages/toast/index",
         "pages/dialog/index",
         "pages/loading/index",
+        "pages/media/index",
         "pages/backdrop/index",
         "pages/badge/index",
         "pages/toptips/index",

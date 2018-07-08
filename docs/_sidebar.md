@@ -18,6 +18,7 @@
   * [Grid 栅格布局](grid.md)
   * [InputNumber 数字输入框](input-number.md)
   * [List 列表](list.md)
+  * [Media 媒体对象](media.md)
   * [Prompt 提示消息](prompt.md)
   * [Qrcode 二维码](qrcode.md)
   * [Radio 单选框](radio.md)

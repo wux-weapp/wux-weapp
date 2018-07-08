@@ -61,6 +61,11 @@ Page({
                         url: '/pages/list/index',
                     },
                     {
+                        title: 'Media',
+                        remark: '媒体对象',
+                        url: '/pages/media/index',
+                    },
+                    {
                         title: 'Prompt',
                         remark: '提示消息',
                         url: '/pages/prompt/index',
