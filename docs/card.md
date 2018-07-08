@@ -25,49 +25,41 @@
         <view class="page__desc">卡片</view>
     </view>
     <view class="page__bd">
-        <view class="title">Default</view>
+        <view class="sub-title">Default</view>
         <wux-wing-blank size="default">
             <wux-card title="卡片标题" extra="额外内容">
                 <view slot="body">卡片内容</view>
                 <view slot="footer">尾部内容</view>
             </wux-card>
         </wux-wing-blank>
-        <view class="title">Thumb</view>
+        <view class="sub-title">Thumb</view>
         <wux-wing-blank size="default">
-            <wux-card title="卡片标题" extra="额外内容" thumb="{{ thumb }}">
+            <wux-card title="卡片标题" extra="额外内容" thumb="../../assets/images/logo.png">
                 <view slot="body">卡片内容</view>
                 <view slot="footer">尾部内容</view>
             </wux-card>
         </wux-wing-blank>
-        <view class="title">Custom thumb style</view>
+        <view class="sub-title">Custom thumb style</view>
         <wux-wing-blank size="default">
-            <wux-card title="卡片标题" extra="额外内容" thumb="{{ thumb }}" thumb-style="border-radius: 50%;">
+            <wux-card title="卡片标题" extra="额外内容" thumb="../../assets/images/logo.png" thumb-style="border-radius: 50%;">
                 <view slot="body">卡片内容</view>
                 <view slot="footer">尾部内容</view>
             </wux-card>
         </wux-wing-blank>
-        <view class="title">No border</view>
+        <view class="sub-title">No border</view>
         <wux-wing-blank size="default">
-            <wux-card bordered="{{ false }}" title="卡片标题" extra="额外内容" thumb="{{ thumb }}">
+            <wux-card bordered="{{ false }}" title="卡片标题" extra="额外内容" thumb="../../assets/images/logo.png">
                 <view slot="body">卡片内容</view>
                 <view slot="footer">尾部内容</view>
             </wux-card>
         </wux-wing-blank>
-        <view class="title">Full</view>
-        <wux-card full="{{ true }}" title="卡片标题" extra="额外内容" thumb="{{ thumb }}">
+        <view class="sub-title">Full</view>
+        <wux-card full="{{ true }}" title="卡片标题" extra="额外内容" thumb="../../assets/images/logo.png">
             <view slot="body">卡片内容</view>
             <view slot="footer">尾部内容</view>
         </wux-card>
     </view>
 </view>
-```
-
-```js
-Page({
-    data: {
-        thumb: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=',
-    },
-})
 ```
 
 ## 视频演示

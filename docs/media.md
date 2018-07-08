@@ -24,26 +24,18 @@
         <view class="page__desc">媒体对象</view>
     </view>
     <view class="page__bd">
-        <view class="title">Default</view>
+        <view class="sub-title">Default</view>
         <wux-media title="标题一" label="由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"></wux-media>
-        <view class="title">Thumb</view>
-        <wux-media thumb="{{ thumb }}" title="标题一" label="由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"></wux-media>
-        <view class="title">Custom thumb style</view>
-        <wux-media thumb="{{ thumb }}" thumb-style="border-radius: 50%" title="标题一" label="由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"></wux-media>
-        <view class="title">Nesting</view>
-        <wux-media align="flex-start" thumb="{{ thumb }}" title="标题一" label="由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。">
-            <wux-media align="flex-start" thumb="{{ thumb }}" title="标题一" label="由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"></wux-media>
+        <view class="sub-title">Thumb</view>
+        <wux-media thumb="../../assets/images/logo.png" title="标题一" label="由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"></wux-media>
+        <view class="sub-title">Custom thumb style</view>
+        <wux-media thumb="../../assets/images/logo.png" thumb-style="border-radius: 50%" title="标题一" label="由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"></wux-media>
+        <view class="sub-title">Nesting</view>
+        <wux-media align="flex-start" thumb="../../assets/images/logo.png" title="标题一" label="由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。">
+            <wux-media align="flex-start" thumb="../../assets/images/logo.png" title="标题一" label="由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"></wux-media>
         </wux-media>
     </view>
 </view>
-```
-
-```js
-Page({
-    data: {
-        thumb: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=',
-    },
-})
 ```
 
 ## 视频演示
