@@ -1,6 +1,6 @@
 {
   "name": "wux-weapp",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "微信小程序 - 自定义组件",
   "main": "src/index.js",
   "dependencies": {
