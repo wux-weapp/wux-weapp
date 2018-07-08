@@ -9,6 +9,54 @@ Page({
                 }],
             },
             {
+                title: '布局组件',
+                children: [{
+                        title: 'Grid',
+                        remark: '栅格布局',
+                        url: '/pages/grid/index',
+                    },
+                    {
+                        title: 'WhiteSpace',
+                        remark: '上下留白',
+                        url: '/pages/white-space/index',
+                    },
+                    {
+                        title: 'WingBlank',
+                        remark: '两翼留白',
+                        url: '/pages/wing-blank/index',
+                    },
+                ],
+            },
+            {
+                title: '数据录入',
+                children: [{
+                        title: 'Checkbox',
+                        remark: '复选框',
+                        url: '/pages/checkbox/index',
+                    },
+                    {
+                        title: 'InputNumber',
+                        remark: '数字输入框',
+                        url: '/pages/input-number/index',
+                    },
+                    {
+                        title: 'Radio',
+                        remark: '单选框',
+                        url: '/pages/radio/index',
+                    },
+                    {
+                        title: 'Rater',
+                        remark: '评分',
+                        url: '/pages/rater/index',
+                    },
+                    {
+                        title: 'Switch',
+                        remark: '滑动开关',
+                        url: '/pages/switch/index',
+                    },
+                ],
+            },
+            {
                 title: '数据展示',
                 children: [{
                         title: 'Badge',
@@ -26,11 +74,6 @@ Page({
                         url: '/pages/card/index',
                     },
                     {
-                        title: 'Checkbox',
-                        remark: '复选框',
-                        url: '/pages/checkbox/index',
-                    },
-                    {
                         title: 'CountDown',
                         remark: '倒计时',
                         url: '/pages/countdown/index',
@@ -44,16 +87,6 @@ Page({
                         title: 'FloatingButton',
                         remark: '浮动按钮',
                         url: '/pages/floating-button/index',
-                    },
-                    {
-                        title: 'Grid',
-                        remark: '栅格布局',
-                        url: '/pages/grid/index',
-                    },
-                    {
-                        title: 'InputNumber',
-                        remark: '数字输入框',
-                        url: '/pages/input-number/index',
                     },
                     {
                         title: 'List',
@@ -76,21 +109,6 @@ Page({
                         url: '/pages/qrcode/index',
                     },
                     {
-                        title: 'Radio',
-                        remark: '单选框',
-                        url: '/pages/radio/index',
-                    },
-                    {
-                        title: 'Rater',
-                        remark: '评分',
-                        url: '/pages/rater/index',
-                    },
-                    {
-                        title: 'Switch',
-                        remark: '滑动开关',
-                        url: '/pages/switch/index',
-                    },
-                    {
                         title: 'Tag',
                         remark: '标签',
                         url: '/pages/tag/index',
@@ -99,16 +117,6 @@ Page({
                         title: 'Vcode',
                         remark: '验证码',
                         url: '/pages/vcode/index',
-                    },
-                    {
-                        title: 'WhiteSpace',
-                        remark: '上下留白',
-                        url: '/pages/white-space/index',
-                    },
-                    {
-                        title: 'WingBlank',
-                        remark: '两翼留白',
-                        url: '/pages/wing-blank/index',
                     },
                 ],
             },
@@ -162,7 +170,7 @@ Page({
                 ],
             },
             {
-                title: '扩展组件',
+                title: '拓展组件',
                 children: [{
                         title: 'KeyBoard',
                         remark: '数字键盘',

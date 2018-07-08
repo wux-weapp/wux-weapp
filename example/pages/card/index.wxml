@@ -4,36 +4,36 @@
         <view class="page__desc">卡片</view>
     </view>
     <view class="page__bd">
-        <view class="title">Default</view>
+        <view class="sub-title">Default</view>
         <wux-wing-blank size="default">
             <wux-card title="卡片标题" extra="额外内容">
                 <view slot="body">卡片内容</view>
                 <view slot="footer">尾部内容</view>
             </wux-card>
         </wux-wing-blank>
-        <view class="title">Thumb</view>
+        <view class="sub-title">Thumb</view>
         <wux-wing-blank size="default">
-            <wux-card title="卡片标题" extra="额外内容" thumb="{{ thumb }}">
+            <wux-card title="卡片标题" extra="额外内容" thumb="../../assets/images/logo.png">
                 <view slot="body">卡片内容</view>
                 <view slot="footer">尾部内容</view>
             </wux-card>
         </wux-wing-blank>
-        <view class="title">Custom thumb style</view>
+        <view class="sub-title">Custom thumb style</view>
         <wux-wing-blank size="default">
-            <wux-card title="卡片标题" extra="额外内容" thumb="{{ thumb }}" thumb-style="border-radius: 50%;">
+            <wux-card title="卡片标题" extra="额外内容" thumb="../../assets/images/logo.png" thumb-style="border-radius: 50%;">
                 <view slot="body">卡片内容</view>
                 <view slot="footer">尾部内容</view>
             </wux-card>
         </wux-wing-blank>
-        <view class="title">No border</view>
+        <view class="sub-title">No border</view>
         <wux-wing-blank size="default">
-            <wux-card bordered="{{ false }}" title="卡片标题" extra="额外内容" thumb="{{ thumb }}">
+            <wux-card bordered="{{ false }}" title="卡片标题" extra="额外内容" thumb="../../assets/images/logo.png">
                 <view slot="body">卡片内容</view>
                 <view slot="footer">尾部内容</view>
             </wux-card>
         </wux-wing-blank>
-        <view class="title">Full</view>
-        <wux-card full="{{ true }}" title="卡片标题" extra="额外内容" thumb="{{ thumb }}">
+        <view class="sub-title">Full</view>
+        <wux-card full="{{ true }}" title="卡片标题" extra="额外内容" thumb="../../assets/images/logo.png">
             <view slot="body">卡片内容</view>
             <view slot="footer">尾部内容</view>
         </wux-card>

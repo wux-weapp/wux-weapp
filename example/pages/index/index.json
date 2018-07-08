@@ -1,3 +1,7 @@
 {
-	"navigationBarTitleText": "Demo"
+    "navigationBarTitleText": "Demo",
+    "usingComponents": {
+        "wux-cell-group": "../../dist/cell-group/index",
+        "wux-cell": "../../dist/cell/index"
+    }
 }

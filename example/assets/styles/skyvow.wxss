@@ -49,6 +49,15 @@ page{
     height: 30px;
     line-height: 30px;
     width: 100%;
+    box-sizing: border-box;
+}
+
+.sub-title {
+    padding: 30rpx 30rpx 18rpx;
+    font-size: 28rpx;
+    color: #888;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .button-sp-area {

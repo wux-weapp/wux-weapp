@@ -5,15 +5,11 @@
     </view>
     <view class="page-body">
         <block wx:for="{{ components }}" wx:key="">
-            <view class="weui-cells__title">{{ item.title }}</view>
-            <view class="weui-cells weui-cells_after-title">
+            <wux-cell-group title="{{ item.title }}">
                 <block wx:for="{{ item.children }}" wx:key="" wx:for-item="child">
-                    <navigator url="{{ child.url }}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                        <view class="weui-cell__bd">{{ child.title }}</view>
-                        <view class="weui-cell__ft weui-cell__ft_in-access">{{ child.remark }}</view>
-                    </navigator>
+                    <wux-cell title="{{ child.title }}" extra="{{ child.remark }}" is-link url="{{ child.url }}"></wux-cell>
                 </block>
-            </view>
+            </wux-cell-group>
         </block>
     </view>
 </view>
