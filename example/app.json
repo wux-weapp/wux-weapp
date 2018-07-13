@@ -4,6 +4,7 @@
         "pages/about/index",
         "pages/actionsheet/index",
         "pages/animation-group/index",
+        "pages/avatar/index",
         "pages/backdrop/index",
         "pages/badge/index",
         "pages/barcode/index",
@@ -31,6 +32,7 @@
         "pages/tag/index",
         "pages/toast/index",
         "pages/toptips/index",
+        "pages/upload/index",
         "pages/vcode/index",
         "pages/white-space/index",
         "pages/wing-blank/index"

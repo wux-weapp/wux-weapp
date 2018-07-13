@@ -54,11 +54,21 @@ Page({
                         remark: '滑动开关',
                         url: '/pages/switch/index',
                     },
+                    {
+                        title: 'Upload',
+                        remark: '上传',
+                        url: '/pages/upload/index',
+                    },
                 ],
             },
             {
                 title: '数据展示',
                 children: [{
+                        title: 'Avatar',
+                        remark: '头像',
+                        url: '/pages/avatar/index',
+                    },
+                    {
                         title: 'Badge',
                         remark: '徽章',
                         url: '/pages/badge/index',

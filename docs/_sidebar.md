@@ -19,9 +19,11 @@
   * [Radio 单选框](radio.md)
   * [Rater 评分](rater.md)
   * [Switch 滑动开关](switch.md)
+  * [Upload 上传](upload.md)
 
 * 数据展示
   
+  * [Avatar 头像](avatar.md)
   * [Badge 徽章](badge.md)
   * [Barcode 条形码](barcode.md)
   * [Card 卡片](card.md)

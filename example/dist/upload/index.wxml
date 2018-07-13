@@ -1,0 +1,15 @@
+<view class="wux-class wux-upload {{ listType ? 'wux-upload--' + listType : '' }} {{ disabled ? 'wux-upload--disabled' : '' }}">
+    <view class="wux-upload__files" wx:if="{{ listType === 'picture-card' && showUploadList && fileList }}">
+        <block wx:for="{{ fileList }}" wx:for-item="file" wx:key="uid">
+            <view class="wux-upload__file {{ file.status ? 'wux-upload__file--' + file.status : '' }}" data-file="{{ file }}" data-index="{{ index }}" bindtap="onPreview">
+                <image class="wux-upload__thumb" src="{{ file.url }}" />
+                <view class="wux-upload__remove" data-file="{{ file }}" data-index="{{ index }}" catchtap="onRemove" wx:if="{{ showRemoveIcon }}"></view>
+            </view>
+        </block>
+    </view>
+    <view class="wux-upload__select" bindtap="onSelect">
+        <view class="wux-upload__button">
+            <slot></slot>
+        </view>
+    </view>
+</view>

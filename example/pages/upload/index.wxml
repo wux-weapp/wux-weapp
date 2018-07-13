@@ -1,0 +1,35 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Upload</view>
+        <view class="page__desc">上传</view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+        <view class="sub-title">Default</view>
+        <wux-upload url="https://www.skyvow.cn/api/common/file" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete">
+            <button type="default">Click to Upload</button>
+        </wux-upload>
+        <view class="sub-title">Disabled</view>
+        <wux-upload disabled url="https://www.skyvow.cn/api/common/file" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete">
+            <button disabled type="default">Click to Upload</button>
+        </wux-upload>
+        <view class="sub-title">Picture card</view>
+        <wux-upload list-type="picture-card" file-list="{{ fileList }}" url="https://www.skyvow.cn/api/common/file" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete" bind:preview="onPreview">
+            <text>Upload</text>
+        </wux-upload>
+        <view class="sub-title">ShowUploadList = false</view>
+        <wux-upload list-type="picture-card" show-upload-list="{{ false }}" url="https://www.skyvow.cn/api/common/file" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete" bind:preview="onPreview">
+            <image src="{{ imageUrl }}" wx:if="{{ imageUrl }}" />
+            <text wx:else>Upload</text>
+        </wux-upload>
+        <view class="sub-title">Progress = true</view>
+        <progress percent="{{ progress }}" show-info />
+        <wux-upload progress list-type="picture-card" show-upload-list="{{ false }}" url="https://www.skyvow.cn/api/common/file" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete" bind:progress="onProgress" bind:preview="onPreview">
+            <image src="{{ imageUrl }}" wx:if="{{ imageUrl }}" />
+            <text wx:else>Upload</text>
+        </wux-upload>
+        <view class="sub-title">Remove</view>
+        <wux-upload list-type="picture-card" file-list="{{ fileList }}" url="https://www.skyvow.cn/api/common/file" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete" bind:preview="onRemove">
+            <text>Upload</text>
+        </wux-upload>
+    </view>
+</view>

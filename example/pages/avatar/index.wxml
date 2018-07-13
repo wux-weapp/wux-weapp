@@ -1,0 +1,24 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Avatar</view>
+        <view class="page__desc">头像</view>
+    </view>
+    <view class="page__bd">
+        <view>
+            <wux-avatar size="small">U</wux-avatar>
+            <wux-avatar>U</wux-avatar>
+            <wux-avatar size="large">U</wux-avatar>
+        </view>
+        <view>
+            <wux-avatar shape="square" size="small">U</wux-avatar>
+            <wux-avatar shape="square">U</wux-avatar>
+            <wux-avatar shape="square" size="large">U</wux-avatar>
+        </view>
+        <view>
+            <wux-avatar wux-class="wux-avatar--custom">U</wux-avatar>
+            <wux-avatar body-style="background-color: #87d068">U</wux-avatar>
+            <wux-avatar><text class="wux-avatar__text">wux</text></wux-avatar>
+            <wux-avatar src="../../assets/images/logo.png" />
+        </view>
+    </view>
+</view>
