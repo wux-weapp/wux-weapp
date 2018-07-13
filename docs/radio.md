@@ -35,8 +35,8 @@
                 <wux-radio title="PHP" label="details" value="2" />
             </wux-radio-group>
             <wux-radio-group name="c" value="{{ value3 }}" title="Thumb" bind:change="onChange3">
-                <wux-radio thumb="../../assets/images/logo.png" title="Java" value="1" />
-                <wux-radio thumb="../../assets/images/logo.png" title="PHP" value="2" />
+                <wux-radio thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" title="Java" value="1" />
+                <wux-radio thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" title="PHP" value="2" />
             </wux-radio-group>
             <wux-radio-group name="d" value="{{ value4 }}" title="Trigger onChange" bind:change="onChange4">
                 <wux-radio title="Java" value="1" />

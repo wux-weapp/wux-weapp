@@ -9,8 +9,8 @@
             <wux-cell title="标题文字"></wux-cell>
         </wux-cell-group>
         <wux-cell-group title="带图标、说明的列表项">
-            <wux-cell thumb="../../assets/images/logo.png" title="标题文字" extra="说明文字"></wux-cell>
-            <wux-cell thumb="../../assets/images/logo.png" title="标题文字" extra="说明文字"></wux-cell>
+            <wux-cell thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" title="标题文字" extra="说明文字"></wux-cell>
+            <wux-cell thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" title="标题文字" extra="说明文字"></wux-cell>
         </wux-cell-group>
         <wux-cell-group title="带跳转的列表项" label="底部说明文字">
             <wux-cell title="标题文字" is-link extra="说明文字"></wux-cell>

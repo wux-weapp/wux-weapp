@@ -27,12 +27,12 @@
         <view class="sub-title">Default</view>
         <wux-media title="标题一" label="由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"></wux-media>
         <view class="sub-title">Thumb</view>
-        <wux-media thumb="../../assets/images/logo.png" title="标题一" label="由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"></wux-media>
+        <wux-media thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" title="标题一" label="由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"></wux-media>
         <view class="sub-title">Custom thumb style</view>
-        <wux-media thumb="../../assets/images/logo.png" thumb-style="border-radius: 50%" title="标题一" label="由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"></wux-media>
+        <wux-media thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" thumb-style="border-radius: 50%" title="标题一" label="由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"></wux-media>
         <view class="sub-title">Nesting</view>
-        <wux-media align="flex-start" thumb="../../assets/images/logo.png" title="标题一" label="由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。">
-            <wux-media align="flex-start" thumb="../../assets/images/logo.png" title="标题一" label="由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"></wux-media>
+        <wux-media align="flex-start" thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" title="标题一" label="由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。">
+            <wux-media align="flex-start" thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" title="标题一" label="由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"></wux-media>
         </wux-media>
     </view>
 </view>

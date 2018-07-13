@@ -18,7 +18,7 @@
             <wux-avatar wux-class="wux-avatar--custom">U</wux-avatar>
             <wux-avatar body-style="background-color: #87d068">U</wux-avatar>
             <wux-avatar><text class="wux-avatar__text">wux</text></wux-avatar>
-            <wux-avatar src="../../assets/images/logo.png" />
+            <wux-avatar src="http://pbqg2m54r.bkt.clouddn.com/logo.png" />
         </view>
     </view>
 </view>
