@@ -34,6 +34,7 @@
   * [Media 媒体对象](media.md)
   * [Prompt 提示消息](prompt.md)
   * [Qrcode 二维码](qrcode.md)
+  * [Tabs 标签页](tabs.md)
   * [Tag 标签](tag.md)
   * [Vcode 验证码](vcode.md)
 

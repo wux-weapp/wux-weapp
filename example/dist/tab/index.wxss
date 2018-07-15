@@ -1,0 +1,40 @@
+.wux-tabs__tab {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  text-align: center;
+  position: relative;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  color: #80848f;
+}
+.wux-tabs__tab-bar {
+  display: block;
+  width: 100%;
+  height: 4rpx;
+  background: transparent;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #2d8cf0;
+}
+.wux-tabs__tab--current {
+  color: #2d8cf0;
+}
+.wux-tabs__tab--scroll {
+  display: inline-block;
+  width: 120rpx;
+}
+.wux-tabs__tab--disabled {
+  opacity: .3;
+}

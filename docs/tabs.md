@@ -1,0 +1,125 @@
+# Tabs 标签页
+
+选项卡切换组件。
+
+## 使用指南
+
+### 在 page.json 中引入组件
+
+```json
+{
+    "navigationBarTitleText": "Tabs",
+    "usingComponents": {
+        "wux-tabs": "../../dist/tabs/index",
+        "wux-tab": "../../dist/tab/index",
+        "wux-badge": "../../dist/badge/index"
+    }
+}
+```
+
+### 示例
+
+```html
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Tabs</view>
+        <view class="page__desc">标签页</view>
+    </view>
+    <view class="page__bd">
+        <view class="sub-title">Default</view>
+        <wux-tabs current="{{ current }}" bindchange="onChange">
+            <wux-tab key="tab1" title="Tab 1"></wux-tab>
+            <wux-tab key="tab2" title="Tab 2"></wux-tab>
+            <wux-tab key="tab3" title="Tab 3"></wux-tab>
+        </wux-tabs>
+        <view class="sub-title">Disabled</view>
+        <wux-tabs current="{{ current }}" bindchange="onChange">
+            <wux-tab key="tab1" title="Tab 1"></wux-tab>
+            <wux-tab disabled key="tab2" title="Tab 2"></wux-tab>
+            <wux-tab key="tab3" title="Tab 3"></wux-tab>
+        </wux-tabs>
+        <view class="sub-title">Autofocus</view>
+        <wux-tabs autofocus>
+            <wux-tab key="tab1" title="Tab 1"></wux-tab>
+            <wux-tab key="tab2" title="Tab 2"></wux-tab>
+            <wux-tab key="tab3" title="Tab 3"></wux-tab>
+        </wux-tabs>
+        <view class="sub-title">Slot</view>
+        <wux-tabs current="{{ current }}" bindchange="onChange">
+            <wux-tab disabled key="tab1">
+                <image src="http://pbqg2m54r.bkt.clouddn.com/logo.png" style="width: 20px; height: 20px; margin-right: 5px;" />
+                <text>Tab 1</text>
+            </wux-tab>
+            <wux-tab key="tab2">
+                <image src="http://pbqg2m54r.bkt.clouddn.com/logo.png" style="width: 20px; height: 20px; margin-right: 5px;" />
+                <text>Tab 2</text>
+            </wux-tab>
+            <wux-tab key="tab3">
+                <image src="http://pbqg2m54r.bkt.clouddn.com/logo.png" style="width: 20px; height: 20px; margin-right: 5px;" />
+                <text>Tab 3</text>
+            </wux-tab>
+        </wux-tabs>
+        <view class="sub-title">Scroll</view>
+        <wux-tabs scroll current="{{ current }}" bindchange="onChange">
+            <wux-tab key="tab1" title="Tab 1"></wux-tab>
+            <wux-tab key="tab2" title="Tab 2"></wux-tab>
+            <wux-tab key="tab3" title="Tab 3"></wux-tab>
+            <wux-tab key="tab4" title="Tab 4"></wux-tab>
+            <wux-tab key="tab5" title="Tab 5"></wux-tab>
+            <wux-tab key="tab6" title="Tab 6"></wux-tab>
+            <wux-tab key="tab7" title="Tab 7"></wux-tab>
+            <wux-tab key="tab8" title="Tab 8"></wux-tab>
+            <wux-tab key="tab9" title="Tab 9"></wux-tab>
+        </wux-tabs>
+        <view class="sub-title">Badge</view>
+        <wux-tabs autofocus>
+            <wux-tab key="tab1">
+                <wux-badge count="3">Tab 1</wux-badge>
+            </wux-tab>
+            <wux-tab key="tab2">
+                <wux-badge count="1024">Tab 2</wux-badge>
+            </wux-tab>
+            <wux-tab key="tab3">
+                <wux-badge dot>Tab 3</wux-badge>
+            </wux-tab>
+        </wux-tabs>
+    </view>
+</view>
+```
+
+```js
+Page({
+    data: {
+        current: 'tab1',
+    },
+    onChange(e) {
+        console.log('onChange', e)
+        this.setData({
+            current: e.detail.key,
+        })
+    },
+})
+```
+
+## 视频演示
+
+[Tabs](./_media/tabs.mp4 ':include :type=iframe width=375px height=667px')
+
+## API
+
+### Tabs
+
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| current | <code>string</code> | 当前激活 tab 面板的 key | - |
+| scroll | <code>boolean</code> | 是否开启横向滚动 | false |
+| autofocus | <code>boolean</code> | 是否自动获得焦点 | false |
+| bind:change | <code>function</code> | 切换面板的回调函数 | - |
+
+### Tab
+
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| key | <code>string</code> | 对应 key | - |
+| title | <code>string</code> | 选项卡标题 | - |
+| disabled | <code>boolean</code> | 是否禁用 | false |

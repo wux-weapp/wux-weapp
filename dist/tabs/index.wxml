@@ -1,0 +1,6 @@
+<scroll-view wx:if="{{ scroll }}" scroll-x="true" class="wux-class wux-tabs wux-tabs--scroll">
+    <slot></slot>
+</scroll-view>
+<view wx:else class="wux-class wux-tabs">
+    <slot></slot>
+</view>

@@ -29,6 +29,7 @@
         "pages/refresher/index",
         "pages/spin/index",
         "pages/switch/index",
+        "pages/tabs/index",
         "pages/tag/index",
         "pages/toast/index",
         "pages/toptips/index",

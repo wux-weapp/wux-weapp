@@ -1,0 +1,21 @@
+.wux-tabs {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  box-sizing: border-box;
+  position: relative;
+  -webkit-justify-content: space-around;
+          justify-content: space-around;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  background: #fff;
+}
+.wux-tabs--scroll {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}

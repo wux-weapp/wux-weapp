@@ -119,6 +119,11 @@ Page({
                         url: '/pages/qrcode/index',
                     },
                     {
+                        title: 'Tabs',
+                        remark: '标签页',
+                        url: '/pages/tabs/index',
+                    },
+                    {
                         title: 'Tag',
                         remark: '标签',
                         url: '/pages/tag/index',
