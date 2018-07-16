@@ -13,6 +13,7 @@
         "pages/countdown/index",
         "pages/countup/index",
         "pages/dialog/index",
+        "pages/filterbar/index",
         "pages/floating-button/index",
         "pages/gallery/index",
         "pages/grid/index",

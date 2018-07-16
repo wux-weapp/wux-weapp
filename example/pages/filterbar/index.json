@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "FilterBar",
+    "usingComponents": {
+        "wux-filterbar": "../../dist/filterbar/index"
+    }
+}

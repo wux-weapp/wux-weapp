@@ -1,0 +1,11 @@
+{
+    "component": true,
+    "usingComponents": {
+        "wux-animation-group": "../animation-group/index",
+        "wux-backdrop": "../backdrop/index",
+        "wux-radio-group": "../radio-group/index",
+        "wux-radio": "../radio/index",
+        "wux-checkbox-group": "../checkbox-group/index",
+        "wux-checkbox": "../checkbox/index"
+    }
+}

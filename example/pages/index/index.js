@@ -187,6 +187,11 @@ Page({
             {
                 title: '拓展组件',
                 children: [{
+                        title: 'FilterBar',
+                        remark: '筛选栏',
+                        url: '/pages/filterbar/index',
+                    },
+                    {
                         title: 'KeyBoard',
                         remark: '数字键盘',
                         url: '/pages/keyboard/index',

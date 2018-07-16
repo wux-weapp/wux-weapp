@@ -52,5 +52,6 @@
 
 * 扩展组件
 
+  * [FilterBar 筛选栏](filterbar.md)
   * [KeyBoard 数字键盘](keyboard.md)
   * [Refresher 下拉刷新](refresher.md)
