@@ -17,7 +17,6 @@ const defaults = {
 Component({
     behaviors: [baseBehavior],
     externalClasses: ['wux-class'],
-    externalClasses: ['wux-class'],
     data: mergeOptionsToData(defaults),
     methods: {
         /**
