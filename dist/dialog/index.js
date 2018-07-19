@@ -7,6 +7,7 @@ const defaults = {
     content: '',
     buttons: [],
     verticalButtons: !1,
+    resetOnClose: false,
 }
 
 const defaultOptions = {
@@ -23,6 +24,19 @@ Component({
     externalClasses: ['wux-class'],
     data: mergeOptionsToData(defaults),
     methods: {
+        /**
+         * 组件关闭时重置其内部数据
+         */
+        onExit() {
+            if (this.data.resetOnClose) {
+                const params = {
+                    ...mergeOptionsToData(defaults),
+                    prompt: null,
+                }
+
+                this.$$setData(params)
+            }
+        },
         /**
          * 隐藏
          */
@@ -54,7 +68,7 @@ Component({
          * 当键盘输入时，触发 input 事件
          */
         bindinput(e) {
-            this.setData({
+            this.$$setData({
                 'prompt.response': e.detail.value,
             })
         },
@@ -87,7 +101,7 @@ Component({
                 buttons: [{
                     text: opts.confirmText || defaultOptions.confirmText,
                     type: opts.confirmType || defaultOptions.confirmType,
-                    onTap(e) {
+                    onTap: (e) => {
                         typeof opts.onConfirm === 'function' && opts.onConfirm(e)
                     },
                 }, ],
@@ -110,14 +124,14 @@ Component({
                 buttons: [{
                         text: opts.cancelText || defaultOptions.cancelText,
                         type: opts.cancelType || defaultOptions.cancelType,
-                        onTap(e) {
+                        onTap: (e) => {
                             typeof opts.onCancel === 'function' && opts.onCancel(e)
                         },
                     },
                     {
                         text: opts.confirmText || defaultOptions.confirmText,
                         type: opts.confirmType || defaultOptions.confirmType,
-                        onTap(e) {
+                        onTap: (e) => {
                             typeof opts.onConfirm === 'function' && opts.onConfirm(e)
                         },
                     },
@@ -155,15 +169,15 @@ Component({
                 buttons: [{
                         text: opts.cancelText || defaultOptions.cancelText,
                         type: opts.cancelType || defaultOptions.cancelType,
-                        onTap(e) {
+                        onTap: (e) => {
                             typeof opts.onCancel === 'function' && opts.onCancel(e)
                         },
                     },
                     {
                         text: opts.confirmText || defaultOptions.confirmText,
                         type: opts.confirmType || defaultOptions.confirmType,
-                        onTap(e) {
-                            typeof opts.onConfirm === 'function' && opts.onConfirm(e)
+                        onTap: (e) => {
+                            typeof opts.onConfirm === 'function' && opts.onConfirm(e, this.data.prompt.response)
                         },
                     },
                 ],

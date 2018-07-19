@@ -1,5 +1,5 @@
 <wux-backdrop id="wux-backdrop" />
-<wux-animation-group wux-class="wux-dialog" in="{{ in }}" class-names="wux-animate--fadeIn">
+<wux-animation-group wux-class="wux-dialog" in="{{ in }}" class-names="wux-animate--fadeIn" bind:exit="onExit">
     <view class="wux-dialog__hd" wx:if="{{ title }}">
         <view class="wux-dialog__title">{{ title }}</view>
     </view>

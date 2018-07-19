@@ -1,4 +1,5 @@
 <wux-dialog id="wux-dialog" />
+<wux-dialog id="wux-dialog--alert" />
 
 <view class="page">
     <view class="page__hd">

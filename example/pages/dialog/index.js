@@ -7,6 +7,7 @@ Page({
         if (this.timeout) clearTimeout(this.timeout)
 
         const hideDialog = $wuxDialog().open({
+            resetOnClose: true,
             title: '三秒后自动关闭',
             content: '弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内',
             buttons: [{
@@ -26,6 +27,7 @@ Page({
     },
     confirm() {
         $wuxDialog().confirm({
+            resetOnClose: true,
             title: '定制冰激凌',
             content: '你确定要吃我的冰淇淋吗？',
             onConfirm(e) {
@@ -38,6 +40,7 @@ Page({
     },
     alert() {
         $wuxDialog().alert({
+            resetOnClose: true,
             title: '不要吃果冻',
             content: '它们可能是用旧的皮鞋帮做的！',
             onConfirm(e) {
@@ -46,15 +49,16 @@ Page({
         })
     },
     prompt() {
-        const that = this
         const alert = (content) => {
-            $wuxDialog().alert({
+            $wuxDialog('#wux-dialog--alert').alert({
+                resetOnClose: true,
                 title: '提示',
                 content: content,
             })
         }
 
         $wuxDialog().prompt({
+            resetOnClose: true,
             title: '提示',
             content: '密码为8位数字',
             fieldtype: 'number',
@@ -62,22 +66,23 @@ Page({
             defaultText: '',
             placeholder: '请输入Wi-Fi密码',
             maxlength: 8,
-            onConfirm(e) {
-                const value = that.data.$wux.dialog.prompt.response
-                const content = value.length === 8 ? `Wi-Fi密码到手了: ${value}` : `请输入正确的Wi-Fi密码`
+            onConfirm(e, response) {
+                const content = response.length === 8 ? `Wi-Fi密码到手了: ${response}` : `请输入正确的Wi-Fi密码`
                 alert(content)
             },
         })
     },
     custom() {
         const alert = (content) => {
-            $wuxDialog().alert({
+            $wuxDialog('#wux-dialog--alert').alert({
+                resetOnClose: true,
                 title: '提示',
                 content: content,
             })
         }
 
         $wuxDialog().open({
+            resetOnClose: true,
             title: '我是标题',
             content: '我是自定义的对话框！',
             buttons: [{
@@ -102,6 +107,7 @@ Page({
     },
     vertical() {
         $wuxDialog().open({
+            resetOnClose: true,
             title: '请问需要反馈什么问题？',
             content: '你也可以在个人页的反馈帮助中心里找到这个功能',
             verticalButtons: !0,
