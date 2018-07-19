@@ -40,7 +40,7 @@ Component({
 
             this.triggerEvent('click', { key })
 
-            parent.emitEvent(key)
+            parent.setActiveKey(key)
         },
     },
 })

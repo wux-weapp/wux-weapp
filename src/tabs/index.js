@@ -10,6 +10,11 @@ const activeKeyIsValid = (elements, key) => {
     return elements.map((element) => element.data.key).includes(key)
 }
 
+const getActiveKey = (elements, activeKey) => {
+    const defaultActiveKey = getDefaultActiveKey(elements)
+    return !activeKey ? defaultActiveKey : !activeKeyIsValid(elements, activeKey) ? defaultActiveKey : activeKey
+}
+
 Component({
     externalClasses: ['wux-class'],
     relations: {
@@ -27,6 +32,10 @@ Component({
         },
     },
     properties: {
+        defaultCurrent: {
+            type: String,
+            value: '',
+        },
         current: {
             type: String,
             value: '',
@@ -36,34 +45,29 @@ Component({
             type: Boolean,
             value: false,
         },
-        autofocus: {
+        auto: {
             type: Boolean,
-            value: false,
+            value: true,
         },
     },
     data: {
+        activeKey: '',
         keys: [],
     },
     methods: {
-        changeCurrent(value = this.data.current) {
+        updated(value, condition) {
             const elements = this.getRelationNodes('../tab/index')
+            const activeKey = getActiveKey(elements, value)
 
             if (elements.length > 0) {
-                elements.forEach((element) => {
-                    element.changeCurrent(element.data.key === value, this.data.scroll)
-                })
+                if (condition) {
+                    this.setData({
+                        activeKey,
+                    })
 
-                if (this.data.autofocus) {
-                    const activeKey = getDefaultActiveKey(elements)
-                    const { current } = this.data
-
-                    if (current) {
-                        if (!activeKeyIsValid(elements, current)) {
-                            this.setActiveKey(activeKey)
-                        }
-                    } else {
-                        this.setActiveKey(activeKey)
-                    }
+                    elements.forEach((element) => {
+                        element.changeCurrent(element.data.key === activeKey, this.data.scroll)
+                    })
                 }
             }
 
@@ -73,15 +77,27 @@ Component({
                 })
             }
         },
+        changeCurrent(value = this.data.current) {
+            this.updated(value, !this.data.auto)
+        },
         emitEvent(key) {
-            this.triggerEvent('change', { key, keys: this.data.keys })
+            this.triggerEvent('change', {
+                key,
+                keys: this.data.keys,
+            })
         },
         setActiveKey(activeKey) {
-            if (activeKey !== this.data.current) {
-                this.setData({
-                    current: activeKey,
-                })
+            if (this.data.activeKey !== activeKey) {
+                this.updated(activeKey, this.data.auto)
             }
+
+            this.emitEvent(activeKey)
         },
+    },
+    ready() {
+        const { defaultCurrent, current, auto } = this.data
+        const activeKey = !auto ? current : defaultCurrent
+
+        this.updated(activeKey, true)
     },
 })
