@@ -32,6 +32,7 @@
   * [FloatingButton 浮动按钮](floating-button.md)
   * [List 列表](list.md)
   * [Media 媒体对象](media.md)
+  * [Popover 气泡框](popover.md)
   * [Prompt 提示消息](prompt.md)
   * [Qrcode 二维码](qrcode.md)
   * [Tabs 标签页](tabs.md)

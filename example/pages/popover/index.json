@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "Popover",
+    "usingComponents": {
+        "wux-popover": "../../dist/popover/index"
+    }
+}

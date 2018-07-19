@@ -23,6 +23,7 @@
         "pages/loading/index",
         "pages/media/index",
         "pages/notification/index",
+        "pages/popover/index",
         "pages/prompt/index",
         "pages/qrcode/index",
         "pages/radio/index",

@@ -1,0 +1,102 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Popover</view>
+        <view class="page__desc">气泡框</view>
+    </view>
+    <view class="page__bd">
+        <view class="sub-title">Placement</view>
+        <view class="button-sp-area">
+            <wux-popover placement="topLeft" title="Title" content="Content">
+                <button size="mini">topLeft</button>
+            </wux-popover>
+        </view>
+        <view class="button-sp-area">
+            <wux-popover placement="top" title="Title" content="Content">
+                <button size="mini">top</button>
+            </wux-popover>
+        </view>
+        <view class="button-sp-area">
+            <wux-popover placement="topRight" title="Title" content="Content">
+                <button size="mini">topRight</button>
+            </wux-popover>
+        </view>
+        <view class="button-sp-area text-left">
+            <wux-popover placement="rightTop" title="Title" content="Content">
+                <button size="mini">rightTop</button>
+            </wux-popover>
+        </view>
+        <view class="button-sp-area text-left">
+            <wux-popover placement="right" title="Title" content="Content">
+                <button size="mini">right</button>
+            </wux-popover>
+        </view>
+        <view class="button-sp-area text-left">
+            <wux-popover placement="rightBottom" title="Title" content="Content">
+                <button size="mini">rightBottom</button>
+            </wux-popover>
+        </view>
+        <view class="button-sp-area">
+            <wux-popover placement="bottomRight" title="Title" content="Content">
+                <button size="mini">bottomRight</button>
+            </wux-popover>
+        </view>
+        <view class="button-sp-area">
+            <wux-popover placement="bottom" title="Title" content="Content">
+                <button size="mini">bottom</button>
+            </wux-popover>
+        </view>
+        <view class="button-sp-area">
+            <wux-popover placement="bottomLeft" title="Title" content="Content">
+                <button size="mini">bottomLeft</button>
+            </wux-popover>
+        </view>
+        <view class="button-sp-area text-right">
+            <wux-popover placement="leftBottom" title="Title" content="Content">
+                <button size="mini">leftBottom</button>
+            </wux-popover>
+        </view>
+        <view class="button-sp-area text-right">
+            <wux-popover placement="left" title="Title" content="Content">
+                <button size="mini">left</button>
+            </wux-popover>
+        </view>
+        <view class="button-sp-area text-right">
+            <wux-popover placement="leftTop" title="Title" content="Content">
+                <button size="mini">leftTop</button>
+            </wux-popover>
+        </view>
+        <view class="sub-title">Default Visible</view>
+        <view class="button-sp-area text-left">
+            <wux-popover default-visible="{{ true }}" placement="rightBottom" title="Title" content="Content">
+                <button size="mini">rightBottom</button>
+            </wux-popover>
+        </view>
+        <view class="sub-title">Custom style</view>
+        <view class="button-sp-area">
+            <wux-popover placement="top" title="Title" content="Content" body-style="width: 300px;">
+                <button size="mini">top</button>
+            </wux-popover>
+        </view>
+        <view class="sub-title">Theme = dark</view>
+        <view class="button-sp-area">
+            <wux-popover theme="dark" placement="top" title="Title" content="Content">
+                <button size="mini">top</button>
+            </wux-popover>
+        </view>
+        <view class="sub-title">Slot</view>
+        <view class="button-sp-area">
+            <wux-popover placement="top">
+                <button size="mini">top</button>
+                <view slot="title" style="color: red;">Title</view>
+                <view slot="content">Content</view>
+            </wux-popover>
+        </view>
+        <view class="sub-title">Auto = false</view>
+        <view class="button-sp-area">
+            <wux-popover visible="{{ visible }}" auto="{{ false }}" placement="top" title="Title" bind:change="onChange">
+                <view slot="content" bindtap="hide">Close</view>
+                <button size="mini">top</button>
+            </wux-popover>
+        </view>
+    </view>
+</view>

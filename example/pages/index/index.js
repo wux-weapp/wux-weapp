@@ -109,6 +109,11 @@ Page({
                         url: '/pages/media/index',
                     },
                     {
+                        title: 'Popover',
+                        remark: '气泡框',
+                        url: '/pages/popover/index',
+                    },
+                    {
                         title: 'Prompt',
                         remark: '提示消息',
                         url: '/pages/prompt/index',
