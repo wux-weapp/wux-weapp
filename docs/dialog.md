@@ -179,6 +179,8 @@ Page({
 
 ## API
 
+### Dialog.open
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | options | <code>object</code> | 配置项 | - |
@@ -191,3 +193,54 @@ Page({
 | options.buttons[].type | <code>string</code> | 按钮的类型 | - |
 | options.buttons[].bold | <code>boolean</code> | 是否加粗按钮的文字 | - |
 | options.buttons[].onTap | <code>function</code> | 按钮的点击事件 | - |
+
+### Dialog.alert
+
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| options | <code>object</code> | 配置项 | - |
+| options.title | <code>string</code> | 提示标题 | - |
+| options.content | <code>string</code> | 提示文本 | - |
+| options.confirmText | <code>string</code> | 确定按钮的文字 | - |
+| options.confirmType | <code>string</code> | 确定按钮的类型 | - |
+| options.onConfirm | <code>function</code> | 确定按钮的点击事件 | - |
+
+### Dialog.confirm
+
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| options | <code>object</code> | 配置项 | - |
+| options.title | <code>string</code> | 提示标题 | - |
+| options.content | <code>string</code> | 提示文本 | - |
+| options.confirmText | <code>string</code> | 确定按钮的文字 | - |
+| options.confirmType | <code>string</code> | 确定按钮的类型 | - |
+| options.onConfirm | <code>function</code> | 确定按钮的点击事件 | - |
+| options.cancelText | <code>string</code> | 取消按钮的文字 | - |
+| options.cancelType | <code>string</code> | 取消按钮的类型 | - |
+| options.onCancel | <code>function</code> | 取消按钮的点击事件 | - |
+
+### Dialog.prompt
+
+| 参数 | 类型 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| options | <code>object</code> | 配置项 | - |
+| options.title | <code>string</code> | 提示标题 | - |
+| options.content | <code>string</code> | 提示文本 | - |
+| options.fieldtype | <code>string</code> | input 的类型，可选值为 text、number、idcard、digit | text |
+| options.password | <code>boolean</code> | 是否是密码类型 | false |
+| options.defaultText | <code>string</code> | 默认值 | - |
+| options.placeholder | <code>string</code> | 输入框为空时占位符 | - |
+| options.maxlength | <code>number</code> | 最大输入长度，设置为 -1 的时候不限制最大长度 | -1 |
+| options.confirmText | <code>string</code> | 确定按钮的文字 | - |
+| options.confirmType | <code>string</code> | 确定按钮的类型 | - |
+| options.onConfirm | <code>function</code> | 确定按钮的点击事件 | - |
+| options.cancelText | <code>string</code> | 取消按钮的文字 | - |
+| options.cancelType | <code>string</code> | 取消按钮的类型 | - |
+| options.onCancel | <code>function</code> | 取消按钮的点击事件 | - |
+
+> 以上函数调用后，会返回一个引用，可以通过该引用手动关闭对话框
+
+```
+const hideDialog = Dialog.open()
+hideDialog()
+```
