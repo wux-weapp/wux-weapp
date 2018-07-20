@@ -233,3 +233,11 @@ Page({
 | options.duration | <code>number</code> | 多少毫秒后消失 | 3000 |
 | options.className | <code>string</code> | 自定义类名 | - |
 | options.success | <code>function</code> | 消失后的回调函数 | - |
+
+### Toptips.method
+
+- Toptips.show
+- Toptips.success
+- Toptips.info
+- Toptips.warn
+- Toptips.error
