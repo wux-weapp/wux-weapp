@@ -3,8 +3,3 @@
     color: #f56a00 !important;
     background-color: #fde3cf !important;
 }
-
-.wux-avatar__text {
-    display: inline-block;
-    transform: scale(0.66667);
-}

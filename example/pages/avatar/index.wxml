@@ -17,7 +17,8 @@
         <view>
             <wux-avatar wux-class="wux-avatar--custom">U</wux-avatar>
             <wux-avatar body-style="background-color: #87d068">U</wux-avatar>
-            <wux-avatar><text class="wux-avatar__text">wux</text></wux-avatar>
+            <wux-avatar scale>Wux</wux-avatar>
+            <wux-avatar scale>Weapp</wux-avatar>
             <wux-avatar src="http://pbqg2m54r.bkt.clouddn.com/logo.png" />
         </view>
     </view>

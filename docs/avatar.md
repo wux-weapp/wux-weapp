@@ -37,7 +37,8 @@
         <view>
             <wux-avatar wux-class="wux-avatar--custom">U</wux-avatar>
             <wux-avatar body-style="background-color: #87d068">U</wux-avatar>
-            <wux-avatar><text class="wux-avatar__text">wux</text></wux-avatar>
+            <wux-avatar scale>Wux</wux-avatar>
+            <wux-avatar scale>Weapp</wux-avatar>
             <wux-avatar src="http://pbqg2m54r.bkt.clouddn.com/logo.png" />
         </view>
     </view>
@@ -56,3 +57,4 @@
 | size | <code>string</code> | 设置头像的大小，可选值为 small、default、large | default |
 | src | <code>string</code> | 图片类头像的资源地址 | - |
 | bodyStyle | <code>string</code> | 自定义样式 | - |
+| scale | <code>boolean</code> | 是否自动调整大小 | false |
