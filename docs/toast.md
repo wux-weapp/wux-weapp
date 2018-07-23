@@ -10,6 +10,7 @@
 {
     "navigationBarTitleText": "Toast",
     "usingComponents": {
+        "wux-button": "../../dist/button/index",
         "wux-toast": "../../dist/toast/index"
     }
 }
@@ -27,13 +28,11 @@
         <view class="page__title">Toast</view>
         <view class="page__desc">提示框</view>
     </view>
-    <view class="page__bd">
-        <view class="weui-btn-area">
-            <button class="weui-btn" type="default" bindtap="showToast">成功提示</button>
-	        <button class="weui-btn" type="default" bindtap="showToastCancel">取消提示</button>
-	        <button class="weui-btn" type="default" bindtap="showToastErr">禁止提示</button>
-	        <button class="weui-btn" type="default" bindtap="showToastText">文本提示</button>
-        </view>
+    <view class="page__bd page__bd_spacing">
+        <wux-button block type="light" bind:click="showToast">Success</wux-button>
+        <wux-button block type="light" bind:click="showToastCancel">Cancel</wux-button>
+        <wux-button block type="light" bind:click="showToastErr">Forbidden</wux-button>
+        <wux-button block type="light" bind:click="showToastText">Text</wux-button>
     </view>
 </view>
 ```

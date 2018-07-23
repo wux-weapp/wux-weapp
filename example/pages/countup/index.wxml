@@ -10,10 +10,10 @@
         	<view class="countup">{{ c3 }}</view>
         </view>
         <view class="weui-btn-area text-center">
-            <button class="weui-btn" type="primary" size="mini" bindtap="start">Start</button>
-            <button class="weui-btn" type="primary" size="mini" bindtap="pauseResume">Pause/Resume</button>
-            <button class="weui-btn" type="primary" size="mini" bindtap="reset">Reset</button>
-            <button class="weui-btn" type="primary" size="mini" bindtap="update">Update</button>
+            <button type="primary" size="mini" bindtap="start">Start</button>
+            <button type="primary" size="mini" bindtap="pauseResume">Pause/Resume</button>
+            <button type="primary" size="mini" bindtap="reset">Reset</button>
+            <button type="primary" size="mini" bindtap="update">Update</button>
         </view>
     </view>
 </view>

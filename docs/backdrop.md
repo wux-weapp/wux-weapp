@@ -10,6 +10,7 @@
 {
     "navigationBarTitleText": "Backdrop",
     "usingComponents": {
+        "wux-button": "../../dist/button/index",
         "wux-backdrop": "../../dist/backdrop/index"
     }
 }
@@ -27,10 +28,10 @@
         <view class="page__title">Backdrop</view>
         <view class="page__desc">背景幕</view>
     </view>
-    <view class="page__bd">
-        <view class="weui-btn-area btn-group">
-            <button class="weui-btn" type="default" bindtap="retain">保持背景幕 retain</button>
-            <button class="weui-btn" type="primary" bindtap="release">释放背景幕 release</button>
+    <view class="page__bd page__bd_spacing">
+        <view class="btn-group">
+            <wux-button block type="light" bind:click="retain">保持背景幕 retain</wux-button>
+            <wux-button block type="light" bind:click="release">释放背景幕 release</wux-button>
         </view>
         <view class="text-center">背景幕锁：{{ locks }}</view>
     </view>

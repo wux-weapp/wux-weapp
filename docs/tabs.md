@@ -1,6 +1,6 @@
 # Tabs 标签页
 
-选项卡切换组件。
+选项卡切换组件，预设 9 种颜色 `light`, `stable`, `positive`, `calm`, `assertive`, `balanced`, `energized`, `royal`, `dark` 可选用。
 
 ## 使用指南
 
@@ -27,7 +27,13 @@
     </view>
     <view class="page__bd">
         <view class="sub-title">Default</view>
-        <wux-tabs default-current="tab1" current="">
+        <wux-tabs default-current="tab1">
+            <wux-tab key="tab1" title="Tab 1"></wux-tab>
+            <wux-tab key="tab2" title="Tab 2"></wux-tab>
+            <wux-tab key="tab3" title="Tab 3"></wux-tab>
+        </wux-tabs>
+        <view class="sub-title">Theme = positive</view>
+        <wux-tabs default-current="tab1" theme="positive">
             <wux-tab key="tab1" title="Tab 1"></wux-tab>
             <wux-tab key="tab2" title="Tab 2"></wux-tab>
             <wux-tab key="tab3" title="Tab 3"></wux-tab>
@@ -115,6 +121,7 @@ Page({
 | current | <code>string</code> | 用于手动激活 tab 面板的 key，当 auto 为 false 时才生效 | - |
 | scroll | <code>boolean</code> | 是否开启横向滚动 | false |
 | auto | <code>boolean</code> | 是否自动控制激活 tab 面板 | true |
+| theme | <code>boolean</code> | 主题色，可选值为 light、stable、positive、calm、assertive、balanced、energized、royal、dark | balanced |
 | bind:change | <code>function</code> | 切换面板的回调函数 | - |
 
 ### Tab

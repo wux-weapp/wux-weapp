@@ -31,9 +31,9 @@
         	<view class="countdown">{{ c3 }}</view>
         </view>
         <view class="weui-btn-area text-center">
-            <button class="weui-btn" type="primary" size="mini" bindtap="stop">Stop</button>
-            <button class="weui-btn" type="primary" size="mini" bindtap="start">Start</button>
-            <button class="weui-btn" type="primary" size="mini" bindtap="update">Update</button>
+            <button type="primary" size="mini" bindtap="stop">Stop</button>
+            <button type="primary" size="mini" bindtap="start">Start</button>
+            <button type="primary" size="mini" bindtap="update">Update</button>
         </view>
     </view>
 </view>

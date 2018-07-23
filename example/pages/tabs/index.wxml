@@ -5,7 +5,13 @@
     </view>
     <view class="page__bd">
         <view class="sub-title">Default</view>
-        <wux-tabs default-current="tab1" current="">
+        <wux-tabs default-current="tab1">
+            <wux-tab key="tab1" title="Tab 1"></wux-tab>
+            <wux-tab key="tab2" title="Tab 2"></wux-tab>
+            <wux-tab key="tab3" title="Tab 3"></wux-tab>
+        </wux-tabs>
+        <view class="sub-title">Theme = positive</view>
+        <wux-tabs default-current="tab1" theme="positive">
             <wux-tab key="tab1" title="Tab 1"></wux-tab>
             <wux-tab key="tab2" title="Tab 2"></wux-tab>
             <wux-tab key="tab3" title="Tab 3"></wux-tab>

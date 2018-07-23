@@ -3,10 +3,16 @@ Page({
         components: [{
                 title: '核心组件',
                 children: [{
-                    title: 'AnimationGroup',
-                    remark: '动画组',
-                    url: '/pages/animation-group/index',
-                }],
+                        title: 'AnimationGroup',
+                        remark: '动画组',
+                        url: '/pages/animation-group/index',
+                    },
+                    {
+                        title: 'Button',
+                        remark: '按钮',
+                        url: '/pages/button/index',
+                    },
+                ],
             },
             {
                 title: '布局组件',

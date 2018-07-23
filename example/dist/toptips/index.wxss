@@ -12,18 +12,20 @@
   color: #FFFFFF;
   word-wrap: break-word;
   word-break: break-all;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
 }
 .wux-toptips__content--success {
-  background-color: #09bb08;
+  background-color: #33cd5f;
 }
 .wux-toptips__content--info {
-  background-color: #10aefe;
+  background-color: #387ef5;
 }
 .wux-toptips__content--warn {
-  background-color: #ffbe00;
+  background-color: #ffc900;
 }
 .wux-toptips__content--cancel {
-  background-color: #E64340;
+  background-color: #ef473a;
 }
 .wux-toptips__icon {
   float: left;

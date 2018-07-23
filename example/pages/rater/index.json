@@ -1,6 +1,8 @@
 {
     "navigationBarTitleText": "Rater",
     "usingComponents": {
+        "wux-cell-group": "../../dist/cell-group/index",
+        "wux-cell": "../../dist/cell/index",
         "wux-rater": "../../dist/rater/index"
     }
 }

@@ -5,10 +5,8 @@
         <view class="page__title">Notification</view>
         <view class="page__desc">通知</view>
     </view>
-    <view class="page__bd">
-        <view class="weui-btn-area">
-            <button class="weui-btn" type="default" bindtap="showNotification">Show Notification</button>
-            <button class="weui-btn" type="default" bindtap="closeNotification">Close Notification</button>
-        </view>
+    <view class="page__bd page__bd_spacing">
+        <wux-button block type="light" bind:click="showNotification">Show Notification</wux-button>
+        <wux-button block type="light" bind:click="closeNotification">Close Notification</wux-button>
     </view>
 </view>

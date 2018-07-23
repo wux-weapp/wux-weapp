@@ -60,12 +60,13 @@
 
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
+| hoverClass | <code>string</code> | 指定按下去的样式类。当 hover-class="none" 时，没有点击态效果 | wux-cell--hover |
 | thumb | <code>string</code> | 左侧缩略图 | - |
 | title | <code>string</code> | 左侧标题 | - |
 | label | <code>string</code> | 标题下方的描述信息 | - |
 | extra | <code>string</code> | 右侧内容 | - |
 | isLink | <code>boolean</code> | 是否展示右侧箭头并开启尝试以 url 跳转 | - |
-| open-type | <code>string</code> | 跳转方式，可选值为 navigateTo、redirectTo、switchTab、navigateBack、reLaunch | navigateTo |
+| openType | <code>string</code> | 跳转方式，可选值为 navigateTo、redirectTo、switchTab、navigateBack、reLaunch | navigateTo |
 | url | <code>string</code> | 跳转链接 | - |
 | delta | <code>number</code> | 当 open-type 为 'navigateBack' 时有效，表示回退的层数 | 1 |
 | bind:click | <code>function</code> | 点击事件 | - |

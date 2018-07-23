@@ -1,4 +1,5 @@
 // mixin
+@import "mixin/button.wxss";
 @import "mixin/common.wxss";
 @import "mixin/setOnepx.wxss";
 @import "mixin/setBorder.wxss";

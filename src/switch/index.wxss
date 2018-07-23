@@ -38,8 +38,8 @@
         }
 
         &--checked {
-            border-color: #09BB07;
-            background-color: #09BB07;
+            border-color: @balanced;
+            background-color: @balanced;
 
             &:before {
                 transform: scale(0);

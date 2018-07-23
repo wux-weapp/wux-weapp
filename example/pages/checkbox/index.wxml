@@ -6,8 +6,15 @@
     <view class="page__bd">
         <form bindsubmit="formSubmit">
             <wux-checkbox-group name="a" value="{{ value1 }}" title="Default" bind:change="onChange1">
-                <wux-checkbox title="Java" value="1" />
-                <wux-checkbox title="PHP" value="2" />
+                <wux-checkbox color="light" title="Light" value="1" />
+                <wux-checkbox color="stable" title="Stable" value="2" />
+                <wux-checkbox color="positive" title="Positive" value="3" />
+                <wux-checkbox color="calm" title="Calm" value="4" />
+                <wux-checkbox color="balanced" title="Balanced" value="5" />
+                <wux-checkbox color="energized" title="Energized" value="6" />
+                <wux-checkbox color="assertive" title="Assertive" value="7" />
+                <wux-checkbox color="royal" title="Royal" value="8" />
+                <wux-checkbox color="dark" title="Dark" value="9" />
             </wux-checkbox-group>
             <wux-checkbox-group name="b" value="{{ value2 }}" title="Label" bind:change="onChange2">
                 <wux-checkbox title="Java" label="details" value="1" />

@@ -10,6 +10,7 @@
 {
     "navigationBarTitleText": "ActionSheet",
     "usingComponents": {
+        "wux-button": "../../dist/button/index",
         "wux-actionsheet": "../../dist/actionsheet/index"
     }
 }
@@ -27,12 +28,10 @@
         <view class="page__title">ActionSheet</view>
         <view class="page__desc">上拉菜单</view>
     </view>
-    <view class="page__bd">
-        <view class="weui-btn-area">
-            <button class="weui-btn" type="default" bindtap="showActionSheet1">原生 ActionSheet</button>
-            <button class="weui-btn" type="default" bindtap="showActionSheet2">iOS ActionSheet</button>
-            <button class="weui-btn" type="default" bindtap="showActionSheet3">wx ActionSheet</button>
-        </view>
+    <view class="page__bd page__bd_spacing">
+        <wux-button block type="light" bind:click="showActionSheet1">原生 ActionSheet</wux-button>
+        <wux-button block type="light" bind:click="showActionSheet2">iOS ActionSheet</wux-button>
+        <wux-button block type="light" bind:click="showActionSheet3">wx ActionSheet</wux-button>
     </view>
 </view>
 ```

@@ -10,6 +10,7 @@
 {
     "navigationBarTitleText": "KeyBoard",
     "usingComponents": {
+        "wux-button": "../../dist/button/index",
         "wux-keyboard": "../../dist/keyboard/index"
     }
 }
@@ -27,14 +28,12 @@
         <view class="page__title">KeyBoard</view>
         <view class="page__desc">数字键盘</view>
     </view>
-    <view class="page__bd">
-        <view class="weui-btn-area">
-            <button class="weui-btn" type="default" bindtap="open">Open KeyBoard</button>
-            <button class="weui-btn" type="default" bindtap="openWitdhDisorder">Open a disorderly KeyBoard</button>
-            <button class="weui-btn" type="default" bindtap="openWithPromiseCallback">Open KeyBoard with promise callback</button>
-            <button class="weui-btn" type="default" bindtap="openPlain">Plain theme</button>
-            <button class="weui-btn" type="default" bindtap="openTimed">Open and close</button>
-        </view>
+    <view class="page__bd page__bd_spacing">
+        <wux-button block type="light" bind:click="open">Open KeyBoard</wux-button>
+        <wux-button block type="light" bind:click="openWitdhDisorder">Open a disorderly KeyBoard</wux-button>
+        <wux-button block type="light" bind:click="openWithPromiseCallback">Open KeyBoard with promise callback</wux-button>
+        <wux-button block type="light" bind:click="openPlain">Plain theme</wux-button>
+        <wux-button block type="light" bind:click="openTimed">Open and close</wux-button>
     </view>
 </view>
 ```

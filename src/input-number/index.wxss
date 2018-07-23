@@ -22,8 +22,44 @@
         height: 20px;
         font-size: 25px;
         line-height: 18px;
-        color: #04BE02;
+        color: @balanced;
         border: 1px solid #ececec;
+
+        &--light {
+            color: @light-inverse;
+        }
+
+        &--stable {
+            color: @stable-inverse;
+        }
+
+        &--positive {
+            color: @positive;
+        }
+
+        &--calm {
+            color: @calm;
+        }
+
+        &--assertive {
+            color: @assertive;
+        }
+
+        &--balanced {
+            color: @balanced;
+        }
+
+        &--energized {
+            color: @energized;
+        }
+
+        &--royal {
+            color: @royal;
+        }
+
+        &--dark {
+            color: @dark;
+        }
 
         &--disabled {
             color: #ccc;

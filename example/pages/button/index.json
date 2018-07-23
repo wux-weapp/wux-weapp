@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "Button",
+    "usingComponents": {
+        "wux-button": "../../dist/button/index"
+    }
+}

@@ -5,6 +5,7 @@
 * 核心组件
 
   * [AnimationGroup 动画组](animation-group.md)
+  * [Button 按钮](button.md)
 
 * 布局组件
 

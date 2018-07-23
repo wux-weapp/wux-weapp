@@ -1,6 +1,6 @@
 # FloatingButton 浮动按钮
 
-用于展现浮动按钮。
+用于展现浮动按钮，预设 9 种颜色 `light`, `stable`, `positive`, `calm`, `assertive`, `balanced`, `energized`, `royal`, `dark` 可选用。
 
 ## 使用指南
 
@@ -18,7 +18,7 @@
 ### 示例
 
 ```html
-<wux-button id="wux-button" visible="{{ visible }}" position="{{ position }}" buttons="{{ buttons }}" bind:change="bindchange" bind:click="buttonClicked" />
+<wux-floating-button id="wux-floating-button" visible="{{ visible }}" position="{{ position }}" theme="{{ theme }}" buttons="{{ buttons }}" bind:change="bindchange" bind:click="buttonClicked" />
 
 <view class="page">
     <view class="page__hd">
@@ -29,16 +29,26 @@
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell weui-cell_select">
                 <view class="weui-cell__hd weui-cell__hd_in-select-after">
-                    <view class="weui-label">切换位置</view>
+                    <view class="weui-label">Position</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <picker bindchange="pickerChange" value="{{ index }}" range="{{ types }}">
-                        <view class="weui-select weui-select_in-select-after">{{ types[index] }}</view>
+                    <picker bindchange="pickerChange1" value="{{ typeIndex }}" range="{{ types }}">
+                        <view class="weui-select weui-select_in-select-after">{{ types[typeIndex] }}</view>
+                    </picker>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_select">
+                <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                    <view class="weui-label">Theme</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <picker bindchange="pickerChange2" value="{{ colorIndex }}" range="{{ colors }}">
+                        <view class="weui-select weui-select_in-select-after">{{ colors[colorIndex] }}</view>
                     </picker>
                 </view>
             </view>
             <view class="weui-cell weui-cell_switch">
-                <view class="weui-cell__bd">切换状态</view>
+                <view class="weui-cell__bd">Switch state</view>
                 <view class="weui-cell__ft">
                     <switch bindchange="switchChange" checked="{{ opened }}" />
                 </view>
@@ -52,7 +62,9 @@
 Page({
     data: {
         types: ['topLeft', 'topRight', 'bottomLeft', 'bottomRight'],
-        index: 3,
+        typeIndex: 3,
+        colors: ['light', 'stable', 'positive', 'calm', 'balanced', 'energized', 'assertive', 'royal', 'dark'],
+        colorIndex: 4,
         opened: false,
         buttons: [{
                 label: 'View on Github',
@@ -96,11 +108,18 @@ Page({
             visible: e.detail.value,
         })
     },
-    pickerChange(e) {
+    pickerChange1(e) {
         const index = e.detail.value
         const position = this.data.types[index]
         this.setData({
             position,
+        })
+    },
+    pickerChange2(e) {
+        const index = e.detail.value
+        const theme = this.data.colors[index]
+        this.setData({
+            theme,
         })
     },
 })
@@ -114,6 +133,7 @@ Page({
 
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
+| theme | <code>string</code> | 主题色，可选值为 light、stable、positive、calm、assertive、balanced、energized、royal、dark | balanced |
 | position | <code>string</code> | 按钮的位置，可选值 topLeft、topRight、bottomLeft、bottomRight | bottomRight |
 | backdrop | <code>boolean</code> | 是否显示透明蒙层 | false |
 | buttons | <code>array</code> | 按钮 | [] |

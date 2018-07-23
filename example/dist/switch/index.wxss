@@ -40,8 +40,8 @@
   transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35), -webkit-transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
 }
 .wux-switch__input--checked {
-  border-color: #09BB07;
-  background-color: #09BB07;
+  border-color: #33cd5f;
+  background-color: #33cd5f;
 }
 .wux-switch__input--checked:before {
   -webkit-transform: scale(0);

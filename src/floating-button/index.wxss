@@ -1,8 +1,25 @@
 @import "../styles/base/fn.wxss";
 
+.speed-dial-style(@theme, @color) {
+    &--@{theme} &__action,
+    &--@{theme} &__button {
+        background-color: @color;
+    }
+}
+
 .wux-speed-dial {
     position: fixed;
     z-index: 1500;
+
+    .speed-dial-style(light, #ddd);
+    .speed-dial-style(stable, #b2b2b2);
+    .speed-dial-style(positive, @positive);
+    .speed-dial-style(calm, @calm);
+    .speed-dial-style(assertive, @assertive);
+    .speed-dial-style(balanced, @balanced);
+    .speed-dial-style(energized, @energized);
+    .speed-dial-style(royal, @royal);
+    .speed-dial-style(dark, @dark);
 }
 
 .wux-speed-dial__action {
@@ -13,7 +30,7 @@
     height: 50px;
     border-radius: 50%;
     z-index: 1500;
-    background-color: #E40A5D;
+    background-color: @balanced;
     color: #fff;
     overflow: hidden;
     transition-duration: .3s;
@@ -69,7 +86,7 @@
     position: relative;
     z-index: 1;
     overflow: visible;
-    background-color: #E40A5D;
+    background-color: @balanced;
     transition-duration: .3s;
     display: flex;
     align-items: center;
@@ -145,38 +162,38 @@
     }
 }
 
-.wux-speed-dial--top-left {
+.wux-speed-dial--topLeft {
     left: 15px;
     top: 15px;
 }
 
-.wux-speed-dial--top-right {
+.wux-speed-dial--topRight {
     right: 15px;
     top: 15px;
 }
 
-.wux-speed-dial--bottom-left {
+.wux-speed-dial--bottomLeft {
     left: 15px;
     bottom: 15px;
 }
 
-.wux-speed-dial--bottom-right {
+.wux-speed-dial--bottomRight {
     right: 15px;
     bottom: 15px;
 }
 
-.wux-speed-dial--top-left .wux-speed-dial__button:after, 
-.wux-speed-dial--bottom-left .wux-speed-dial__button:after {
+.wux-speed-dial--topLeft .wux-speed-dial__button:after, 
+.wux-speed-dial--bottomLeft .wux-speed-dial__button:after {
     left: 60px;
 }
 
-.wux-speed-dial--top-right .wux-speed-dial__button:after, 
-.wux-speed-dial--bottom-right .wux-speed-dial__button:after {
+.wux-speed-dial--topRight .wux-speed-dial__button:after, 
+.wux-speed-dial--bottomRight .wux-speed-dial__button:after {
     right: 60px;
 }
 
-.wux-speed-dial--top-left .wux-speed-dial__buttons, 
-.wux-speed-dial--top-right .wux-speed-dial__buttons {
+.wux-speed-dial--topLeft .wux-speed-dial__buttons, 
+.wux-speed-dial--topRight .wux-speed-dial__buttons {
     bottom: inherit;
     top: 100%;
     margin-bottom: 0;

@@ -2,6 +2,42 @@
   position: fixed;
   z-index: 1500;
 }
+.wux-speed-dial--light .wux-speed-dial__action,
+.wux-speed-dial--light .wux-speed-dial__button {
+  background-color: #ddd;
+}
+.wux-speed-dial--stable .wux-speed-dial__action,
+.wux-speed-dial--stable .wux-speed-dial__button {
+  background-color: #b2b2b2;
+}
+.wux-speed-dial--positive .wux-speed-dial__action,
+.wux-speed-dial--positive .wux-speed-dial__button {
+  background-color: #387ef5;
+}
+.wux-speed-dial--calm .wux-speed-dial__action,
+.wux-speed-dial--calm .wux-speed-dial__button {
+  background-color: #11c1f3;
+}
+.wux-speed-dial--assertive .wux-speed-dial__action,
+.wux-speed-dial--assertive .wux-speed-dial__button {
+  background-color: #ef473a;
+}
+.wux-speed-dial--balanced .wux-speed-dial__action,
+.wux-speed-dial--balanced .wux-speed-dial__button {
+  background-color: #33cd5f;
+}
+.wux-speed-dial--energized .wux-speed-dial__action,
+.wux-speed-dial--energized .wux-speed-dial__button {
+  background-color: #ffc900;
+}
+.wux-speed-dial--royal .wux-speed-dial__action,
+.wux-speed-dial--royal .wux-speed-dial__button {
+  background-color: #886aea;
+}
+.wux-speed-dial--dark .wux-speed-dial__action,
+.wux-speed-dial--dark .wux-speed-dial__button {
+  background-color: #444;
+}
 .wux-speed-dial__action {
   position: absolute;
   right: 30rpx;
@@ -10,7 +46,7 @@
   height: 100rpx;
   border-radius: 50%;
   z-index: 1500;
-  background-color: #E40A5D;
+  background-color: #33cd5f;
   color: #fff;
   overflow: hidden;
   -webkit-transition-duration: .3s;
@@ -77,7 +113,7 @@
   position: relative;
   z-index: 1;
   overflow: visible;
-  background-color: #E40A5D;
+  background-color: #33cd5f;
   -webkit-transition-duration: .3s;
           transition-duration: .3s;
   display: -webkit-box;
@@ -157,32 +193,32 @@
   -webkit-transition-delay: 250ms;
           transition-delay: 250ms;
 }
-.wux-speed-dial--top-left {
+.wux-speed-dial--topLeft {
   left: 30rpx;
   top: 30rpx;
 }
-.wux-speed-dial--top-right {
+.wux-speed-dial--topRight {
   right: 30rpx;
   top: 30rpx;
 }
-.wux-speed-dial--bottom-left {
+.wux-speed-dial--bottomLeft {
   left: 30rpx;
   bottom: 30rpx;
 }
-.wux-speed-dial--bottom-right {
+.wux-speed-dial--bottomRight {
   right: 30rpx;
   bottom: 30rpx;
 }
-.wux-speed-dial--top-left .wux-speed-dial__button:after,
-.wux-speed-dial--bottom-left .wux-speed-dial__button:after {
+.wux-speed-dial--topLeft .wux-speed-dial__button:after,
+.wux-speed-dial--bottomLeft .wux-speed-dial__button:after {
   left: 120rpx;
 }
-.wux-speed-dial--top-right .wux-speed-dial__button:after,
-.wux-speed-dial--bottom-right .wux-speed-dial__button:after {
+.wux-speed-dial--topRight .wux-speed-dial__button:after,
+.wux-speed-dial--bottomRight .wux-speed-dial__button:after {
   right: 120rpx;
 }
-.wux-speed-dial--top-left .wux-speed-dial__buttons,
-.wux-speed-dial--top-right .wux-speed-dial__buttons {
+.wux-speed-dial--topLeft .wux-speed-dial__buttons,
+.wux-speed-dial--topRight .wux-speed-dial__buttons {
   bottom: inherit;
   top: 100%;
   margin-bottom: 0;

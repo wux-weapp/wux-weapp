@@ -5,7 +5,7 @@ Page({
     onLoad() {},
     showNotification() {
         this.closeNotification = $wuxNotification().show({
-            image: 'https://unsplash.it/40/40/?random',
+            image: 'http://pbqg2m54r.bkt.clouddn.com/logo.png',
             title: '宝宝',
             text: '嘤嘤嘤，人家拿小拳拳捶你胸口!!!',
             data: {

@@ -1,6 +1,6 @@
 # Swicth 滑动开关
 
-用于展现两个互斥对象的选择。
+用于展现两个互斥对象的选择，预设 9 种颜色 `light`, `stable`, `positive`, `calm`, `assertive`, `balanced`, `energized`, `royal`, `dark` 可选用。
 
 ## 使用指南
 
@@ -28,17 +28,44 @@
     <view class="page__bd">
         <form bindsubmit="formSubmit">
             <wux-cell-group title="Form switch">
+                <wux-cell title="Light">
+                    <wux-switch name="light" slot="footer" color="light" value="{{ value1 }}" bind:change="onChange1" />
+                </wux-cell>
+                <wux-cell title="Stable">
+                    <wux-switch name="stable" slot="footer" color="stable" value="{{ value1 }}" bind:change="onChange1" />
+                </wux-cell>
+                <wux-cell title="Positive">
+                    <wux-switch name="positive" slot="footer" color="positive" value="{{ value1 }}" bind:change="onChange1" />
+                </wux-cell>
+                <wux-cell title="Calm">
+                    <wux-switch name="calm" slot="footer" color="calm" value="{{ value1 }}" bind:change="onChange1" />
+                </wux-cell>
+                <wux-cell title="Balanced">
+                    <wux-switch name="balanced" slot="footer" color="balanced" value="{{ value1 }}" bind:change="onChange1" />
+                </wux-cell>
+                <wux-cell title="Energized">
+                    <wux-switch name="energized" slot="footer" color="energized" value="{{ value1 }}" bind:change="onChange1" />
+                </wux-cell>
+                <wux-cell title="Assertive">
+                    <wux-switch name="assertive" slot="footer" color="assertive" value="{{ value1 }}" bind:change="onChange1" />
+                </wux-cell>
+                <wux-cell title="Royal">
+                    <wux-switch name="royal" slot="footer" color="royal" value="{{ value1 }}" bind:change="onChange1" />
+                </wux-cell>
+                <wux-cell title="Dark">
+                    <wux-switch name="dark" slot="footer" color="dark" value="{{ value1 }}" bind:change="onChange1" />
+                </wux-cell>
                 <wux-cell title="On">
-                    <wux-switch name="a" slot="footer" value="{{ value1 }}" bind:change="onChange1" />
+                    <wux-switch name="a" slot="footer" value="{{ value2 }}" bind:change="onChange2" />
                 </wux-cell>
                 <wux-cell title="Off">
-                    <wux-switch name="b" slot="footer" value="{{ value2 }}" bind:change="onChange2" />
+                    <wux-switch name="b" slot="footer" value="{{ value3 }}" bind:change="onChange3" />
                 </wux-cell>
                 <wux-cell title="Custom color">
-                    <wux-switch name="c" slot="footer" value="{{ value3 }}" color="red" bind:change="onChange3" />
+                    <wux-switch name="c" slot="footer" value="{{ value4 }}" color="red" bind:change="onChange4" />
                 </wux-cell>
                 <wux-cell title="Custom color">
-                    <wux-switch name="d" slot="footer" value="{{ value4 }}" color="yellow" bind:change="onChange4" />
+                    <wux-switch name="d" slot="footer" value="{{ value5 }}" color="yellow" bind:change="onChange5" />
                 </wux-cell>
                 <wux-cell title="Disabled on">
                     <wux-switch name="e" slot="footer" value="{{ true }}" disabled />
@@ -83,6 +110,9 @@ Page({
     onChange4(e) {
         this.onChange('value4', e)
     },
+    onChange5(e) {
+        this.onChange('value5', e)
+    },
     formSubmit(e) {
         console.log('form发生了submit事件，携带数据为：', e.detail.value)
     },
@@ -100,5 +130,5 @@ Page({
 | name | <code>string</code> | 在表单中的字段名 | - |
 | value | <code>boolean</code> | 在表单中的字段值（当前选中项的值） | - |
 | disabled | <code>boolean</code> | 是否不可修改 | false |
-| color | <code>string</code> | 主题色 | #09BB07 |
+| color | <code>string</code> | 主题色，可选值为 light、stable、positive、calm、assertive、balanced、energized、royal、dark | balanced |
 | bind:change | <code>function</code> | change 事件触发的回调函数 | - |

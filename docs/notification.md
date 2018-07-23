@@ -10,9 +10,9 @@
 {
     "navigationBarTitleText": "Notification",
     "usingComponents": {
+        "wux-button": "../../dist/button/index",
         "wux-notification": "../../dist/notification/index"
-    },
-    "disableScroll": true
+    }
 }
 ```
 
@@ -28,11 +28,9 @@
         <view class="page__title">Notification</view>
         <view class="page__desc">通知</view>
     </view>
-    <view class="page__bd">
-        <view class="weui-btn-area">
-            <button class="weui-btn" type="default" bindtap="showNotification">Show Notification</button>
-            <button class="weui-btn" type="default" bindtap="closeNotification">Close Notification</button>
-        </view>
+    <view class="page__bd page__bd_spacing">
+        <wux-button block type="light" bind:click="showNotification">Show Notification</wux-button>
+        <wux-button block type="light" bind:click="closeNotification">Close Notification</wux-button>
     </view>
 </view>
 ```
@@ -45,7 +43,7 @@ Page({
     onLoad() {},
     showNotification() {
         this.closeNotification = $wuxNotification().show({
-            image: 'https://unsplash.it/40/40/?random',
+            image: 'http://pbqg2m54r.bkt.clouddn.com/logo.png',
             title: '宝宝',
             text: '嘤嘤嘤，人家拿小拳拳捶你胸口!!!',
             data: {

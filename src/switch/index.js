@@ -1,3 +1,5 @@
+import { isPresetColor } from '../helpers/colors'
+
 Component({
     externalClasses: ['wux-class'],
     behaviors: ['wx://form-field'],
@@ -18,8 +20,10 @@ Component({
         },
         color: {
             type: String,
-            value: '#09BB07',
-            observer: 'updateStyle',
+            value: 'balanced',
+            observer(newVal) {
+                this.updateStyle(isPresetColor(newVal))
+            },
         },
     },
     methods: {
@@ -34,13 +38,13 @@ Component({
                 value: !value,
             })
         },
-        updateStyle(newVal = this.data.color) {
+        updateStyle(color) {
             this.setData({
-                style: `border-color: ${newVal}; background-color: ${newVal};`,
+                style: `border-color: ${color}; background-color: ${color};`,
             })
         },
     },
     attached() {
-        this.updateStyle()
+        this.updateStyle(isPresetColor(this.data.color))
     },
 })

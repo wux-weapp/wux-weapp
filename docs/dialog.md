@@ -8,8 +8,9 @@
 
 ```json
 {
-	"navigationBarTitleText": "Dialog",
-	"usingComponents": {
+    "navigationBarTitleText": "Dialog",
+    "usingComponents": {
+        "wux-button": "../../dist/button/index",
         "wux-dialog": "../../dist/dialog/index"
     }
 }
@@ -28,15 +29,13 @@
         <view class="page__title">Dialog</view>
         <view class="page__desc">对话框</view>
     </view>
-    <view class="page__bd">
-        <view class="weui-btn-area">
-            <button class="weui-btn" type="default" bindtap="open">Default Dialog</button>
-            <button class="weui-btn" type="default" bindtap="confirm">Confirm Dialog</button>
-            <button class="weui-btn" type="default" bindtap="alert">Alert Dialog</button>
-            <button class="weui-btn" type="default" bindtap="prompt">Prompt Dialog</button>
-            <button class="weui-btn" type="default" bindtap="custom">Custom Dialog</button>
-            <button class="weui-btn" type="default" bindtap="vertical">Vertical Buttons Dialog</button>
-        </view>
+    <view class="page__bd page__bd_spacing">
+        <wux-button block type="light" bind:click="open">Default Dialog</wux-button>
+        <wux-button block type="light" bind:click="confirm">Confirm Dialog</wux-button>
+        <wux-button block type="light" bind:click="alert">Alert Dialog</wux-button>
+        <wux-button block type="light" bind:click="prompt">Prompt Dialog</wux-button>
+        <wux-button block type="light" bind:click="custom">Custom Dialog</wux-button>
+        <wux-button block type="light" bind:click="vertical">Vertical Buttons Dialog</wux-button>
     </view>
 </view>
 ```

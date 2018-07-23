@@ -1,7 +1,9 @@
 Page({
     data: {
         types: ['topLeft', 'topRight', 'bottomLeft', 'bottomRight'],
-        index: 3,
+        typeIndex: 3,
+        colors: ['light', 'stable', 'positive', 'calm', 'balanced', 'energized', 'assertive', 'royal', 'dark'],
+        colorIndex: 4,
         opened: false,
         buttons: [{
                 label: 'View on Github',
@@ -45,11 +47,18 @@ Page({
             visible: e.detail.value,
         })
     },
-    pickerChange(e) {
+    pickerChange1(e) {
         const index = e.detail.value
         const position = this.data.types[index]
         this.setData({
             position,
+        })
+    },
+    pickerChange2(e) {
+        const index = e.detail.value
+        const theme = this.data.colors[index]
+        this.setData({
+            theme,
         })
     },
 })

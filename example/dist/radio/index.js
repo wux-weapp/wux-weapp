@@ -1,3 +1,5 @@
+import { isPresetColor } from '../helpers/colors'
+
 Component({
     externalClasses: ['wux-class'],
     relations: {
@@ -32,7 +34,12 @@ Component({
         },
         color: {
             type: String,
-            value: '#09BB07',
+            value: 'balanced',
+            observer(newVal) {
+                this.setData({
+                    radioColor: isPresetColor(newVal),
+                })
+            },
         },
     },
     methods: {
@@ -55,5 +62,10 @@ Component({
                 checked,
             })
         },
+    },
+    attached() {
+        this.setData({
+            radioColor: isPresetColor(this.data.color),
+        })
     },
 })

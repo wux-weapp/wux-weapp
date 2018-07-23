@@ -8,6 +8,7 @@
         "pages/backdrop/index",
         "pages/badge/index",
         "pages/barcode/index",
+        "pages/button/index",
         "pages/card/index",
         "pages/checkbox/index",
         "pages/countdown/index",

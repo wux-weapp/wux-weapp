@@ -49,6 +49,10 @@ Component({
             type: Boolean,
             value: true,
         },
+        theme: {
+            type: String,
+            value: 'balanced',
+        },
     },
     data: {
         activeKey: '',
@@ -66,7 +70,7 @@ Component({
                     })
 
                     elements.forEach((element) => {
-                        element.changeCurrent(element.data.key === activeKey, this.data.scroll)
+                        element.changeCurrent(element.data.key === activeKey, this.data.scroll, this.data.theme)
                     })
                 }
             }

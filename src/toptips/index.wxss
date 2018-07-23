@@ -14,21 +14,22 @@
 		color: #FFFFFF;
 		word-wrap: break-word;
 		word-break: break-all;
+		transition: background-color .3s;
 
 		&--success {
-			background-color: @wuxColorSuccess;
+			background-color: @balanced;
 		}
 
 		&--info {
-			background-color: @wuxColorInfo;
+			background-color: @positive;
 		}
 
 		&--warn {
-			background-color: @wuxColorWarn;
+			background-color: @energized;
 		}
 
 		&--cancel {
-			background-color: @wuxColorCancel;
+			background-color: @assertive;
 		}
 	}
 

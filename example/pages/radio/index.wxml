@@ -6,8 +6,15 @@
     <view class="page__bd">
         <form bindsubmit="formSubmit">
             <wux-radio-group name="a" value="{{ value1 }}" title="Default" bind:change="onChange1">
-                <wux-radio title="Java" value="1" />
-                <wux-radio title="PHP" value="2" />
+                <wux-radio color="light" title="Light" value="1" />
+                <wux-radio color="stable" title="Stable" value="2" />
+                <wux-radio color="positive" title="Positive" value="3" />
+                <wux-radio color="calm" title="Calm" value="4" />
+                <wux-radio color="balanced" title="Balanced" value="5" />
+                <wux-radio color="energized" title="Energized" value="6" />
+                <wux-radio color="assertive" title="Assertive" value="7" />
+                <wux-radio color="royal" title="Royal" value="8" />
+                <wux-radio color="dark" title="Dark" value="9" />
             </wux-radio-group>
             <wux-radio-group name="b" value="{{ value2 }}" title="Label" bind:change="onChange2">
                 <wux-radio title="Java" label="details" value="1" />

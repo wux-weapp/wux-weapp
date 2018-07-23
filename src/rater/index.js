@@ -24,7 +24,7 @@ Component({
         },
         activeColor: {
             type: String,
-            value: '#fc6',
+            value: '#ffc900',
         },
         margin: {
             type: Number,

@@ -1,0 +1,21 @@
+.button-style(@bg-color, @border-color: transparent, @color: #fff) {
+    border-color: @border-color;
+    background-color: @bg-color;
+    color: @color;
+}
+
+.button-hover(@active-bg-color, @active-color: inheart) {
+    background-color: darken(@active-bg-color, 10%);
+    color: @active-color;
+}
+
+.button-clear(@color) {
+    background-color: transparent;
+    color: darken(@color, 10%);
+}
+
+.button-outline(@border-color, @bg-color: transparent) {
+    border-color: @border-color;
+    background-color: @bg-color;
+    color: @border-color;
+}

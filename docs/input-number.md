@@ -1,6 +1,6 @@
 # InputNumber 数字输入框
 
-通过鼠标或键盘，输入范围内的数值。
+通过鼠标或键盘，输入范围内的数值，预设 9 种颜色 `light`, `stable`, `positive`, `calm`, `assertive`, `balanced`, `energized`, `royal`, `dark` 可选用。
 
 ## 使用指南
 
@@ -10,6 +10,8 @@
 {
 	"navigationBarTitleText": "InputNumber",
 	"usingComponents": {
+        "wux-cell-group": "../../dist/cell-group/index",
+        "wux-cell": "../../dist/cell/index",
         "wux-input-number": "../../dist/input-number/index"
     }
 }
@@ -24,80 +26,77 @@
         <view class="page__desc">数字输入框</view>
     </view>
     <view class="page__bd">
-        <view class="weui-cells__title">默认</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__bd">数量</view>
-                <view class="weui-cell__ft">
-                    <wux-input-number />
-                </view>
-            </view>
-        </view>
-        <view class="weui-cells__title">设置 callback 回调函数，在调试窗口中输出</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__bd">数量</view>
-                <view class="weui-cell__ft">
-                    <wux-input-number bind:change="bindchange" />
-                </view>
-            </view>
-        </view>
-        <view class="weui-cells__title">设置宽度为100px</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__bd">数量</view>
-                <view class="weui-cell__ft">
-                    <wux-input-number wux-input-class="wux-input-number__input--custom" />
-                </view>
-            </view>
-        </view>
-        <view class="weui-cells__title">设置步长为0.5</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__bd">数量</view>
-                <view class="weui-cell__ft">
-                    <wux-input-number step="{{ .5 }}" />
-                </view>
-            </view>
-        </view>
-        <view class="weui-cells__title">设置值为1，最小值为-5，最大值为8</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__bd">数量</view>
-                <view class="weui-cell__ft">
-                    <wux-input-number value="{{ 1 }}" min="{{ -5 }}" max="{{ 8 }}" />
-                </view>
-            </view>
-        </view>
-        <view class="weui-cells__title">设置可输入</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__bd">数量</view>
-                <view class="weui-cell__ft">
-                    <wux-input-number disabled="{{ false }}" />
-                </view>
-            </view>
-        </view>
-        <view class="weui-cells__title">设置长按快速加减</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__bd">数量</view>
-                <view class="weui-cell__ft">
-                    <wux-input-number longpress="{{ true }}" />
-                </view>
-            </view>
-        </view>
-        <view class="weui-cells__title">循环输出多个组件</view>
-        <view class="weui-cells weui-cells_after-title">
+        <wux-cell-group title="默认">
+            <wux-cell title="数量" hover-class="none">
+                <wux-input-number slot="footer" />
+            </wux-cell>
+        </wux-cell-group>
+        <wux-cell-group title="主题色">
+            <wux-cell title="Light" hover-class="none">
+                <wux-input-number color="light" slot="footer" />
+            </wux-cell>
+            <wux-cell title="Stable" hover-class="none">
+                <wux-input-number color="stable" slot="footer" />
+            </wux-cell>
+            <wux-cell title="Positive" hover-class="none">
+                <wux-input-number color="positive" slot="footer" />
+            </wux-cell>
+            <wux-cell title="Calm" hover-class="none">
+                <wux-input-number color="calm" slot="footer" />
+            </wux-cell>
+            <wux-cell title="Balanced" hover-class="none">
+                <wux-input-number color="balanced" slot="footer" />
+            </wux-cell>
+            <wux-cell title="Energized" hover-class="none">
+                <wux-input-number color="energized" slot="footer" />
+            </wux-cell>
+            <wux-cell title="Assertive" hover-class="none">
+                <wux-input-number color="assertive" slot="footer" />
+            </wux-cell>
+            <wux-cell title="Royal" hover-class="none">
+                <wux-input-number color="royal" slot="footer" />
+            </wux-cell>
+            <wux-cell title="Dark" hover-class="none">
+                <wux-input-number color="dark" slot="footer" />
+            </wux-cell>
+        </wux-cell-group>
+        <wux-cell-group title="设置 callback 回调函数，在调试窗口中输出">
+            <wux-cell title="数量" hover-class="none">
+                <wux-input-number bind:change="bindchange" slot="footer" />
+            </wux-cell>
+        </wux-cell-group>
+        <wux-cell-group title="设置宽度为100px">
+            <wux-cell title="数量" hover-class="none">
+                <wux-input-number wux-input-class="wux-input-number__input--custom" slot="footer" />
+            </wux-cell>
+        </wux-cell-group>
+        <wux-cell-group title="设置步长为0.5">
+            <wux-cell title="数量" hover-class="none">
+                <wux-input-number step="{{ .5 }}" slot="footer" />
+            </wux-cell>
+        </wux-cell-group>
+        <wux-cell-group title="设置值为1，最小值为-5，最大值为8">
+            <wux-cell title="数量" hover-class="none">
+                <wux-input-number value="{{ 1 }}" min="{{ -5 }}" max="{{ 8 }}" slot="footer" />
+            </wux-cell>
+        </wux-cell-group>
+        <wux-cell-group title="设置可输入">
+            <wux-cell title="数量" hover-class="none">
+                <wux-input-number disabled="{{ false }}" slot="footer" />
+            </wux-cell>
+        </wux-cell-group>
+        <wux-cell-group title="设置长按快速加减">
+            <wux-cell title="数量" hover-class="none">
+                <wux-input-number longpress slot="footer" />
+            </wux-cell>
+        </wux-cell-group>
+        <wux-cell-group title="循环输出多个组件">
             <block wx:for="{{ items }}" wx:key="">
-                <view class="weui-cell">
-                    <view class="weui-cell__bd">{{ item.text }}</view>
-                    <view class="weui-cell__ft">
-                        <wux-input-number value="{{ item.value }}" />
-                    </view>
-                </view>
+                <wux-cell title="{{ item.text }}" hover-class="none">
+                    <wux-input-number value="{{ item.value }}" slot="footer" />
+                </wux-cell>
             </block>
-        </view>
+        </wux-cell-group>
     </view>
 </view>
 ```
@@ -137,5 +136,5 @@ Page({
 | value | <code>number</code> | 默认值 | 0 |
 | disabled | <code>boolean</code> | 禁用输入 | true |
 | longpress | <code>boolean</code> | 禁用长按 | false |
-| className | <code>string</code> | 自定义类名 | - |
+| color | <code>string</code> | 主题色，可选值为 light、stable、positive、calm、assertive、balanced、energized、royal、dark | balanced |
 | bind:change | <code>function</code> | 监听值变化的回调函数 | - |

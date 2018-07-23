@@ -1,4 +1,5 @@
 import baseBehavior from '../helpers/baseBehavior'
+import { isPresetColor } from '../helpers/colors'
 
 Component({
     behaviors: [baseBehavior],
@@ -31,6 +32,10 @@ Component({
         longpress: {
             type: Boolean,
             value: false,
+        },
+        color: {
+            type: String,
+            value: 'balanced',
         },
     },
     methods: {

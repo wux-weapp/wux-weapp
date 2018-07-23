@@ -10,6 +10,7 @@
 {
     "navigationBarTitleText": "Loading",
     "usingComponents": {
+        "wux-button": "../../dist/button/index",
         "wux-loading": "../../dist/loading/index"
     }
 }
@@ -27,10 +28,8 @@
         <view class="page__title">Loading</view>
         <view class="page__desc">指示器</view>
     </view>
-    <view class="page__bd">
-        <view class="weui-btn-area">
-	        <button class="weui-btn" type="default" bindtap="showLoading">加载中提示</button>
-        </view>
+    <view class="page__bd page__bd_spacing">
+        <wux-button block type="light" bind:click="showLoading">加载中提示</wux-button>
     </view>
 </view>
 ```

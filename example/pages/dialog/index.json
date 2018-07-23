@@ -1,6 +1,7 @@
 {
-	"navigationBarTitleText": "Dialog",
-	"usingComponents": {
+    "navigationBarTitleText": "Dialog",
+    "usingComponents": {
+        "wux-button": "../../dist/button/index",
         "wux-dialog": "../../dist/dialog/index"
     }
 }

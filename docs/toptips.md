@@ -10,6 +10,7 @@
 {
     "navigationBarTitleText": "Toptips",
     "usingComponents": {
+        "wux-button": "../../dist/button/index",
         "wux-toptips": "../../dist/toptips/index"
     }
 }
@@ -27,192 +28,64 @@
         <view class="page__title">Toptips</view>
         <view class="page__desc">顶部提示</view>
     </view>
-    <view class="page__bd">
-        <form bindsubmit="submitForm">
-        	<view class="weui-cells__title">性别</view>
-		    <view class="weui-cells weui-cells_after-title">
-		        <radio-group name="gender" bindchange="radioChange">
-		            <label class="weui-cell weui-check__label" wx:for="{{ radio }}" wx:key="{{ item.value }}">
-		                <radio class="weui-check" value="{{ item.value }}" checked="{{ item.checked }}"/>
-		                <view class="weui-cell__bd">{{ item.name }}</view>
-		                <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{ item.checked }}">
-		                    <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
-		                </view>
-		            </label>
-		        </radio-group>
-		    </view>
-		    <view class="weui-cells__title">编码助手(1-2个)</view>
-	        <view class="weui-cells weui-cells_after-title">
-	            <checkbox-group name="assistance" bindchange="checkboxChange">
-	                <label class="weui-cell weui-check__label" wx:for="{{ checkbox }}" wx:key="">
-	                    <checkbox class="weui-check" value="{{ item.value }}" checked="{{ item.checked }}"/>
-	                    <view class="weui-cell__hd weui-check__hd_in-checkbox">
-	                        <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{ !item.checked }}"></icon>
-	                        <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{ item.checked }}"></icon>
-	                    </view>
-	                    <view class="weui-cell__bd">{{ item.name }}</view>
-	                </label>
-	            </checkbox-group>
-	        </view>
-		    <view class="weui-cells">
-		        <view class="weui-cell weui-cell_input">
-		            <view class="weui-cell__hd">
-		                <view class="weui-label">手机号</view>
-		            </view>
-		            <view class="weui-cell__bd">
-		                <input name="tel" value="{{ form.tel }}" class="weui-input" type="number" placeholder="请输入手机号" />
-		            </view>
-		        </view>
-		        <view class="weui-cell weui-cell_input">
-		            <view class="weui-cell__hd">
-		                <view class="weui-label">身份证号码</view>
-		            </view>
-		            <view class="weui-cell__bd">
-		                <input name="idcard" value="{{ form.idcard }}" class="weui-input" type="idcard" placeholder="请输入身份证号码" />
-		            </view>
-		        </view>
-		    </view>
-		    <view class="button-sp-area">
-		        <button class="weui-btn" type="primary" formType="submit">提交</button>
-		    </view>
-		</form>
+    <view class="page__bd page__bd_spacing">
+        <wux-button block type="light" bind:click="showToptips1">Show</wux-button>
+        <wux-button block type="light" bind:click="showToptips2">Success</wux-button>
+        <wux-button block type="light" bind:click="showToptips3">Info</wux-button>
+        <wux-button block type="light" bind:click="showToptips4">Warn</wux-button>
+        <wux-button block type="light" bind:click="showToptips5">Error</wux-button>
     </view>
 </view>
 ```
 
 ```js
 import { $wuxToptips } from '../../dist/index'
-import WxValidate from '../../assets/plugins/WxValidate'
 
 Page({
-    data: {
-        form: {
-            gender: '',
-            assistance: '',
-            tel: '',
-            idcard: '',
-        },
-        radio: [{
-                name: '男',
-                value: 'male',
-                checked: !1,
-            },
-            {
-                name: '女',
-                value: 'female',
-            },
-        ],
-        checkbox: [{
-                name: '黄药师',
-                value: '0001',
-                checked: !1,
-            },
-            {
-                name: '欧阳锋',
-                value: '0002',
-            },
-            {
-                name: '段智兴',
-                value: '0003',
-            },
-            {
-                name: '洪七公',
-                value: '0004',
-            },
-        ],
-    },
-    onLoad() {
-        this.initValidate()
-    },
-    showToptips(error) {
-        const hideToptips = $wuxToptips().show({
+    showToptips1() {
+        $wuxToptips().show({
+            icon: 'cancel',
+            hidden: false,
+            text: 'Toptips Title',
             duration: 3000,
-            text: error.msg || '请填写正确的字段',
-            success: () => console.log('toptips', error)
+            className: '',
+            success() {},
         })
-
-        // setTimeout(hideToptips, 1500)
     },
-    submitForm(e) {
-        const params = e.detail.value
-
-        console.log(params)
-
-        if (!this.WxValidate.checkForm(e)) {
-            const error = this.WxValidate.errorList[0]
-            this.showToptips(error)
-            return false
-        }
-
+    showToptips2() {
         $wuxToptips().success({
-            hidden: !0,
-            text: '提交成功',
+            hidden: false,
+            text: 'Toptips Title',
+            duration: 3000,
+            className: '',
+            success() {},
         })
     },
-    initValidate() {
-        this.WxValidate = new WxValidate({
-            gender: {
-                required: true,
-            },
-            assistance: {
-                required: true,
-                assistance: true,
-            },
-            tel: {
-                required: true,
-                tel: true,
-            },
-            idcard: {
-                required: true,
-                idcard: true,
-            },
-        }, {
-            gender: {
-                required: '请选择性别',
-            },
-            assistance: {
-                required: '请勾选1-2个敲码助手',
-            },
-            tel: {
-                required: '请输入手机号',
-                tel: '请输入正确的手机号',
-            },
-            idcard: {
-                required: '请输入身份证号码',
-                idcard: '请输入正确的身份证号码',
-            },
-        })
-
-        this.WxValidate.addMethod('assistance', (value, param) => {
-            return this.WxValidate.optional(value) || (value.length >= 1 && value.length <= 2)
-        }, '请勾选1-2个敲码助手')
-    },
-    radioChange(e) {
-        const value = e.detail.value
-        const radio = this.data.radio
-        radio.forEach(n => n.checked = n.value === value)
-        this.setData({
-            radio: radio,
-            'form.gender': value,
+    showToptips3() {
+        $wuxToptips().info({
+            hidden: false,
+            text: 'Toptips Title',
+            duration: 3000,
+            className: '',
+            success() {},
         })
     },
-    checkboxChange(e) {
-        const values = e.detail.value
-        const checkbox = this.data.checkbox
-
-        for (let i = 0, lenI = checkbox.length; i < lenI; ++i) {
-            checkbox[i].checked = !1
-            for (let j = 0, lenJ = values.length; j < lenJ; ++j) {
-                if (checkbox[i].value == values[j]) {
-                    checkbox[i].checked = !0
-                    break
-                }
-            }
-        }
-
-        this.setData({
-            checkbox: checkbox,
-            'form.assistance': values,
+    showToptips4() {
+        $wuxToptips().warn({
+            hidden: false,
+            text: 'Toptips Title',
+            duration: 3000,
+            className: '',
+            success() {},
+        })
+    },
+    showToptips5() {
+        $wuxToptips().error({
+            hidden: false,
+            text: 'Toptips Title',
+            duration: 3000,
+            className: '',
+            success() {},
         })
     },
 })
