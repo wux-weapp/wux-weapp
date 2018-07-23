@@ -48,6 +48,12 @@
 
 [Document](https://wux-weapp.github.io/wux-weapp/)
 
+## 讨论组
+
+您可以扫描下方的小助手微信并备注 Wux Weapp 进交流群。
+
+<img src="http://pbqg2m54r.bkt.clouddn.com/wechat.png" style="display:inline;">
+
 ## 贡献
 
 有任何意见或建议都欢迎提 issue
