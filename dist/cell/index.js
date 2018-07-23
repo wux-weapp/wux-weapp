@@ -12,6 +12,10 @@ Component({
         isLast: false,
     },
     properties: {
+        hoverClass: {
+            type: String,
+            value: 'wux-cell--hover',
+        },
         thumb: {
             type: String,
             value: '',

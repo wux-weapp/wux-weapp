@@ -24,10 +24,11 @@ Component({
         scroll: false,
     },
     methods: {
-        changeCurrent(current, scroll) {
+        changeCurrent(current, scroll, theme) {
             this.setData({
                 current,
                 scroll,
+                theme,
             })
         },
         onTap() {

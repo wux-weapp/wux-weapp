@@ -20,8 +20,35 @@
   height: 40rpx;
   font-size: 50rpx;
   line-height: 36rpx;
-  color: #04BE02;
+  color: #33cd5f;
   border: 2rpx solid #ececec;
+}
+.wux-input-number__selector--light {
+  color: #ddd;
+}
+.wux-input-number__selector--stable {
+  color: #b2b2b2;
+}
+.wux-input-number__selector--positive {
+  color: #387ef5;
+}
+.wux-input-number__selector--calm {
+  color: #11c1f3;
+}
+.wux-input-number__selector--assertive {
+  color: #ef473a;
+}
+.wux-input-number__selector--balanced {
+  color: #33cd5f;
+}
+.wux-input-number__selector--energized {
+  color: #ffc900;
+}
+.wux-input-number__selector--royal {
+  color: #886aea;
+}
+.wux-input-number__selector--dark {
+  color: #444;
 }
 .wux-input-number__selector--disabled {
   color: #ccc;
