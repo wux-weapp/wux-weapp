@@ -42,7 +42,7 @@
 
 ![logo](./screenshots/qrcode.jpg)
 
-<img src="./screenshots/screenshorts-01.png" width="375px" style="display:inline;">
+<img src="./screenshots/screenshorts-01.png" style="display:inline;">
 
 ## 文档
 
