@@ -7,7 +7,6 @@ Page({
             hidden: false,
             text: 'Toptips Title',
             duration: 3000,
-            className: '',
             success() {},
         })
     },
@@ -16,7 +15,6 @@ Page({
             hidden: false,
             text: 'Toptips Title',
             duration: 3000,
-            className: '',
             success() {},
         })
     },
@@ -25,7 +23,6 @@ Page({
             hidden: false,
             text: 'Toptips Title',
             duration: 3000,
-            className: '',
             success() {},
         })
     },
@@ -34,7 +31,6 @@ Page({
             hidden: false,
             text: 'Toptips Title',
             duration: 3000,
-            className: '',
             success() {},
         })
     },
@@ -43,8 +39,30 @@ Page({
             hidden: false,
             text: 'Toptips Title',
             duration: 3000,
-            className: '',
             success() {},
         })
+    },
+    showToptips6() {
+        if (this.timeout) clearTimeout(this.timeout)
+
+        const hide = $wuxToptips().show({
+            icon: 'cancel',
+            hidden: false,
+            text: 'Toptips Title',
+            duration: 3000,
+        })
+
+        this.timeout = setTimeout(hide, 1000)
+    },
+    showToptips7() {
+        const hide = $wuxToptips().show({
+            icon: 'cancel',
+            hidden: false,
+            text: 'Toptips Title',
+            duration: 3000,
+        })
+
+        // hide.promise.then(() => console.log('success'))
+        hide.then(() => console.log('success'))
     },
 })

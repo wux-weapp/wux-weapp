@@ -34,6 +34,8 @@
         <wux-button block type="light" bind:click="showToptips3">Info</wux-button>
         <wux-button block type="light" bind:click="showToptips4">Warn</wux-button>
         <wux-button block type="light" bind:click="showToptips5">Error</wux-button>
+        <wux-button block type="light" bind:click="showToptips6">Use return value to close</wux-button>
+        <wux-button block type="light" bind:click="showToptips7">Use promise to know when closed</wux-button>
     </view>
 </view>
 ```
@@ -48,7 +50,6 @@ Page({
             hidden: false,
             text: 'Toptips Title',
             duration: 3000,
-            className: '',
             success() {},
         })
     },
@@ -57,7 +58,6 @@ Page({
             hidden: false,
             text: 'Toptips Title',
             duration: 3000,
-            className: '',
             success() {},
         })
     },
@@ -66,7 +66,6 @@ Page({
             hidden: false,
             text: 'Toptips Title',
             duration: 3000,
-            className: '',
             success() {},
         })
     },
@@ -75,7 +74,6 @@ Page({
             hidden: false,
             text: 'Toptips Title',
             duration: 3000,
-            className: '',
             success() {},
         })
     },
@@ -84,9 +82,31 @@ Page({
             hidden: false,
             text: 'Toptips Title',
             duration: 3000,
-            className: '',
             success() {},
         })
+    },
+    showToptips6() {
+        if (this.timeout) clearTimeout(this.timeout)
+
+        const hide = $wuxToptips().show({
+            icon: 'cancel',
+            hidden: false,
+            text: 'Toptips Title',
+            duration: 3000,
+        })
+
+        this.timeout = setTimeout(hide, 1000)
+    },
+    showToptips7() {
+        const hide = $wuxToptips().show({
+            icon: 'cancel',
+            hidden: false,
+            text: 'Toptips Title',
+            duration: 3000,
+        })
+
+        // hide.promise.then(() => console.log('success'))
+        hide.then(() => console.log('success'))
     },
 })
 ```
@@ -104,7 +124,6 @@ Page({
 | options.hidden | <code>boolean</code> | 是否隐藏图标 | false |
 | options.text | <code>string</code> | 报错文本 | - |
 | options.duration | <code>number</code> | 多少毫秒后消失 | 3000 |
-| options.className | <code>string</code> | 自定义类名 | - |
 | options.success | <code>function</code> | 消失后的回调函数 | - |
 
 ### Toptips.method
@@ -114,3 +133,14 @@ Page({
 - Toptips.info
 - Toptips.warn
 - Toptips.error
+
+> 以上函数调用后，会返回一个引用，可以通过该引用手动关闭组件
+
+```
+const hide = Toptips.show()
+hide()
+
+// 返回值支持 promise 接口，可以通过 then/promise.then 方法在关闭后运行 callback
+hide.then(callback)
+hide.promise.then(callback)
+```

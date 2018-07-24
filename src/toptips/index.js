@@ -6,7 +6,6 @@ const defaults = {
     hidden: false,
     text: '',
     duration: 3000,
-    className: '',
     success() {},
 }
 
@@ -30,21 +29,36 @@ Component({
          * 显示
          */
         show(opts = {}) {
-            const options = this.$$mergeOptionsAndBindMethods(Object.assign({}, defaults, opts))
-            this.$$setData({ in: true, ...options })
+            const closePromise = new Promise((resolve) => {
+                const options = this.$$mergeOptionsAndBindMethods(Object.assign({}, defaults, opts))
+                const callback = () => {
+                    this.hide()
+                    return resolve(true)
+                }
+                this.$$setData({ in: true, ...options })
 
-            if (_toptips) {
-                clearTimeout(_toptips.timeout)
-                _toptips = null
+                if (_toptips) {
+                    clearTimeout(_toptips.timeout)
+                    _toptips = null
+                }
+
+                _toptips = {
+                    hide: this.hide,
+                }
+
+                _toptips.timeout = setTimeout(callback, options.duration)
+            })
+
+            const result = () => {
+                if (_toptips) {
+                    _toptips.hide.call(this)
+                }
             }
 
-            _toptips = {
-                hide: this.hide,
-            }
+            result.then = (resolve, reject) => closePromise.then(resolve, reject)
+            result.promise = closePromise
 
-            _toptips.timeout = setTimeout(() => this.hide(), options.duration)
-
-            return _toptips.hide.bind(this)
+            return result
         },
         success(opts = {}) {
             return this.show(Object.assign({

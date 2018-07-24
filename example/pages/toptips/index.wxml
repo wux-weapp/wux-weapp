@@ -11,5 +11,7 @@
         <wux-button block type="light" bind:click="showToptips3">Info</wux-button>
         <wux-button block type="light" bind:click="showToptips4">Warn</wux-button>
         <wux-button block type="light" bind:click="showToptips5">Error</wux-button>
+        <wux-button block type="light" bind:click="showToptips6">Use return value to close</wux-button>
+        <wux-button block type="light" bind:click="showToptips7">Use promise to know when closed</wux-button>
     </view>
 </view>
