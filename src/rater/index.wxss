@@ -10,19 +10,24 @@
     font-style: normal;
 	.clearfix();
 
-	&__box {
+	&__star {
 		position: relative;
 		display: inline-block;
 		float: left;
+	}
+
+	&__star:last-child &__box {
+		padding-right: 2px !important;
+		margin-right: 0px !important;
+	}
+
+	&__box {
+		position: relative;
+		display: inline-block;
 		text-align: center;
 		cursor: pointer;
 		color: #ccc;
 		transition: color .3s ease;
-
-		&:last-child {
-			padding-right: 2px !important;
-			margin-right: 0px !important;
-		}
 
 		&--disabled {
 			color: #ccc !important;

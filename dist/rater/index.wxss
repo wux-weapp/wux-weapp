@@ -15,19 +15,23 @@
 .wux-rater:after {
   clear: both;
 }
-.wux-rater__box {
+.wux-rater__star {
   position: relative;
   display: inline-block;
   float: left;
+}
+.wux-rater__star:last-child .wux-rater__box {
+  padding-right: 4rpx !important;
+  margin-right: 0 !important;
+}
+.wux-rater__box {
+  position: relative;
+  display: inline-block;
   text-align: center;
   cursor: pointer;
   color: #ccc;
   -webkit-transition: color .3s ease;
   transition: color .3s ease;
-}
-.wux-rater__box:last-child {
-  padding-right: 4rpx !important;
-  margin-right: 0 !important;
 }
 .wux-rater__box--disabled {
   color: #ccc !important;

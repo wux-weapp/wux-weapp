@@ -28,50 +28,61 @@
     <view class="page__bd">
         <wux-cell-group title="Normal Usage">
             <wux-cell title="Set default score = 5" hover-class="none">
-                <wux-rater slot="footer" value="{{ 5 }}" />
+                <wux-rater slot="footer" default-value="{{ 5 }}" />
             </wux-cell>
             <wux-cell title="Change color" hover-class="none">
-                <wux-rater slot="footer" value="{{ 3 }}" active-color="#33cd5f" />
+                <wux-rater slot="footer" default-value="{{ 3 }}" active-color="#33cd5f" />
+            </wux-cell>
+        </wux-cell-group>
+        <wux-cell-group title="AllowHalf & AllowClear">
+            <wux-cell title="AllowHalf = true" hover-class="none">
+                <wux-rater slot="footer" allow-half default-value="{{ 2.5 }}" />
+            </wux-cell>
+            <wux-cell title="AllowClear = true" hover-class="none">
+                <wux-rater slot="footer" allow-half allow-clear default-value="{{ 2.5 }}" />
+            </wux-cell>
+            <wux-cell title="AllowTouchMove = true" hover-class="none">
+                <wux-rater slot="footer" allow-half allow-clear allow-touch-move default-value="{{ 2.5 }}" />
             </wux-cell>
         </wux-cell-group>
         <wux-cell-group title="Disabled = true">
             <wux-cell title="Your history score" hover-class="none">
-                <wux-rater slot="footer" value="{{ 3 }}" disabled />
+                <wux-rater slot="footer" default-value="{{ 3 }}" disabled />
             </wux-cell>
             <wux-cell title="Decimal score 3.7" hover-class="none">
-                <wux-rater slot="footer" value="{{ 3.7 }}" disabled />
+                <wux-rater slot="footer" default-value="{{ 3.7 }}" disabled />
             </wux-cell>
             <wux-cell title="Custom font-size(15px)" hover-class="none">
-                <wux-rater slot="footer" value="{{ 3 }}" font-size="{{ 15 }}" disabled />
+                <wux-rater slot="footer" default-value="{{ 3 }}" font-size="{{ 15 }}" disabled />
             </wux-cell>
         </wux-cell-group>
         <wux-cell-group title="Custom star">
             <wux-cell title="Loving" hover-class="none">
-                <wux-rater slot="footer" value="{{ 3 }}" margin="{{ 15 }}" star="♡" />
+                <wux-rater slot="footer" default-value="{{ 3 }}" margin="{{ 15 }}" star="♡" />
             </wux-cell>
             <wux-cell title="Sunshine" hover-class="none">
-                <wux-rater slot="footer" value="{{ 3 }}" margin="{{ 15 }}" star="☼" />
+                <wux-rater slot="footer" default-value="{{ 3 }}" margin="{{ 15 }}" star="☼" />
             </wux-cell>
             <wux-cell title="Smilies" hover-class="none">
-                <wux-rater slot="footer" value="{{ 3 }}" margin="{{ 15 }}" star="☻" />
+                <wux-rater slot="footer" default-value="{{ 3 }}" margin="{{ 15 }}" star="☻" />
             </wux-cell>
         </wux-cell-group>
         <wux-cell-group title="Custom text">
             <wux-cell title="Star" hover-class="none">
                 <view slot="footer">
-                    <wux-rater value="{{ value }}" bind:change="onChange" />
+                    <wux-rater auto="{{ false }}" value="{{ value }}" bind:change="onChange" />
                     <text class="wux-rater__text">{{ value }} stars</text>
                 </view>
             </wux-cell>
         </wux-cell-group>
         <wux-cell-group title="Set callback">
             <wux-cell title="How embarrass" hover-class="none">
-                <wux-rater slot="footer" value="{{ 3 }}" star="囧" bind:change="onChange" />
+                <wux-rater slot="footer" auto="{{ false }}" value="{{ value }}" star="囧" bind:change="onChange" />
             </wux-cell>
         </wux-cell-group>
-        <wux-cell-group title="Update value">
+        <wux-cell-group title="Auto = false">
             <wux-cell title="Very good" hover-class="none">
-                <wux-rater slot="footer" value="{{ slider }}" star="屌" bind:change="sliderChange" />
+                <wux-rater slot="footer" auto="{{ false }}" value="{{ slider }}" star="屌" bind:change="sliderChange" />
             </wux-cell>
             <wux-cell hover-class="none">
                 <slider value="{{ slider }}" show-value min="0" max="5" bindchange="sliderChange" />
@@ -80,7 +91,7 @@
         <wux-cell-group title="Set callback">
             <block wx:for="{{ items }}" wx:key="">
                 <wux-cell title="{{ item.text }}" hover-class="none">
-                    <wux-rater slot="footer" value="{{ item.value }}" />
+                    <wux-rater slot="footer" default-value="{{ item.value }}" />
                 </wux-cell>
             </block>
         </wux-cell-group>
@@ -125,9 +136,14 @@ Page({
 | --- | --- | --- | --- |
 | max | <code>number</code> | 最大值 | 5 |
 | star | <code>string</code> | 图标 | ★ |
-| value | <code>number</code> | 默认值 | 0 |
+| defaultValue | <code>number</code> | 默认值，当 auto 为 true 时才生效 | 0 |
+| value | <code>number</code> | 当前数，当 auto 为 false 时才生效 | 0 |
 | activeColor | <code>string</code> | 图标激活的颜色 | #ffc900 |
 | margin | <code>number</code> | 图标外边距 | 2 |
 | fontSize | <code>number</code> | 图标大小 | 25 |
 | disabled | <code>boolean</code> | 禁用点击 | false |
+| allowHalf | <code>boolean</code> | 是否允许半选 | false |
+| allowClear | <code>boolean</code> | 是否允许再次点击后清除 | false |
+| allowTouchMove | <code>boolean</code> | 是否允许触摸移动选中 | false |
+| auto | <code>boolean</code> | 是否组件内部控制当前数 | true |
 | bind:change | <code>function</code> | 点击事件的回调函数 | - |
