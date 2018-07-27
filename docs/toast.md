@@ -33,6 +33,8 @@
         <wux-button block type="light" bind:click="showToastCancel">Cancel</wux-button>
         <wux-button block type="light" bind:click="showToastErr">Forbidden</wux-button>
         <wux-button block type="light" bind:click="showToastText">Text</wux-button>
+        <wux-button block type="light" bind:click="showToastReturn">Use return value to close</wux-button>
+        <wux-button block type="light" bind:click="showToastPromie">Use promise to know when closed</wux-button>
     </view>
 </view>
 ```
@@ -79,6 +81,29 @@ Page({
             success: () => console.log('文本提示')
         })
     },
+    showToastReturn() {
+        if (this.timeout) clearTimeout(this.timeout)
+
+        const hide = $wuxToast().show({
+            type: 'success',
+            duration: 1500,
+            color: '#fff',
+            text: '已完成',
+        })
+
+        this.timeout = setTimeout(hide, 1000)
+    },
+    showToastPromie() {
+        const hide = $wuxToast().show({
+            type: 'success',
+            duration: 1500,
+            color: '#fff',
+            text: '已完成',
+        })
+
+        // hide.promise.then(() => console.log('success'))
+        hide.then(() => console.log('success'))
+    },
 })
 ```
 
@@ -96,3 +121,19 @@ Page({
 | options.color | <code>string</code> | 图标颜色 | #fff |
 | options.text | <code>string</code> | 提示文本 | 已完成 |
 | options.success | <code>function</code> | 关闭后的回调函数 | - |
+
+### Toast.method
+
+- Toast.show
+- Toast.hide
+
+> Toast.show 函数调用后，会返回一个引用，可以通过该引用手动关闭组件
+
+```
+const hide = Toast.show()
+hide()
+
+// 返回值支持 promise 接口，可以通过 then/promise.then 方法在关闭后运行 callback
+hide.then(callback)
+hide.promise.then(callback)
+```

@@ -39,4 +39,27 @@ Page({
             success: () => console.log('文本提示')
         })
     },
+    showToastReturn() {
+        if (this.timeout) clearTimeout(this.timeout)
+
+        const hide = $wuxToast().show({
+            type: 'success',
+            duration: 1500,
+            color: '#fff',
+            text: '已完成',
+        })
+
+        this.timeout = setTimeout(hide, 1000)
+    },
+    showToastPromie() {
+        const hide = $wuxToast().show({
+            type: 'success',
+            duration: 1500,
+            color: '#fff',
+            text: '已完成',
+        })
+
+        // hide.promise.then(() => console.log('success'))
+        hide.then(() => console.log('success'))
+    },
 })

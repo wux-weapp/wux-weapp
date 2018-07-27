@@ -31,7 +31,7 @@ const TOAST_TYPES = [{
     },
 ]
 
-let timeout = null
+let _toast = null
 
 Component({
     behaviors: [baseBehavior],
@@ -52,25 +52,48 @@ Component({
          * 显示
          */
         show(opts = {}) {
-            const options = this.$$mergeOptionsAndBindMethods(Object.assign({}, defaults, opts))
-
-            // 判断提示类型，显示对应的图标
-            TOAST_TYPES.forEach((value, key) => {
-                if (value.type === opts.type) {
-                    options.type = value.icon
-                    options.className = value.className
+            const closePromise = new Promise((resolve) => {
+                const options = this.$$mergeOptionsAndBindMethods(Object.assign({}, defaults, opts))
+                const callback = () => {
+                    this.hide()
+                    return resolve(true)
                 }
+
+                // 判断提示类型，显示对应的图标
+                TOAST_TYPES.forEach((value) => {
+                    if (value.type === opts.type) {
+                        Object.assign(options, {
+                            type: value.type,
+                            className: value.className,
+                        })
+                    }
+                })
+
+                this.$$setData({ in: true, ...options })
+                this.$wuxBackdrop.retain()
+
+                if (_toast) {
+                    clearTimeout(_toast.timeout)
+                    _toast = null
+                }
+
+                _toast = {
+                    hide: this.hide,
+                }
+
+                _toast.timeout = setTimeout(callback, options.duration)
             })
 
-            this.$$setData({ in: true, ...options })
-            this.$wuxBackdrop.retain()
-
-            if (timeout) {
-                clearTimeout(timeout)
-                timeout = null
+            const result = () => {
+                if (_toast) {
+                    _toast.hide.call(this)
+                }
             }
 
-            setTimeout(() => this.hide(), this.data.duration)
+            result.then = (resolve, reject) => closePromise.then(resolve, reject)
+            result.promise = closePromise
+
+            return result
         },
     },
     created() {
