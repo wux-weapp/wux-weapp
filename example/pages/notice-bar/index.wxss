@@ -1,0 +1,5 @@
+/* pages/notice-bar/index.wxss */
+.notice-bar {
+    background-color: #33cd5f !important;
+    color: #fff !important;
+}

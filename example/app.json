@@ -23,6 +23,7 @@
         "pages/list/index",
         "pages/loading/index",
         "pages/media/index",
+        "pages/notice-bar/index",
         "pages/notification/index",
         "pages/popover/index",
         "pages/prompt/index",

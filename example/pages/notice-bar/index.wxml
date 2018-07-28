@@ -1,0 +1,30 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">NoticeBar</view>
+        <view class="page__desc">通告栏</view>
+    </view>
+    <view class="page__bd">
+        <view class="sub-title">Default</view>
+        <wux-notice-bar content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp" />
+        <view class="sub-title">Loop = true</view>
+        <wux-notice-bar loop>
+            微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp
+        </wux-notice-bar>
+        <view class="sub-title">Speed = 100</view>
+        <wux-notice-bar loop speed="100" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp" />
+        <view class="sub-title">Leading = 3000</view>
+        <wux-notice-bar loop leading="3000" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp" />
+        <view class="sub-title">Trailing = 1500</view>
+        <wux-notice-bar loop trailing="1500" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp" />
+        <view class="sub-title">No Icon</view>
+        <wux-notice-bar icon="" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp" />
+        <view class="sub-title">Mode = closable</view>
+        <wux-notice-bar mode="closable" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp" />
+        <view class="sub-title">Mode = link</view>
+        <wux-notice-bar mode="link" action="" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp" bind:click="onClick">
+            <text slot="footer" style="color: #a1a1a1; margin-left: 10px;">去看看</text>
+        </wux-notice-bar>
+        <view class="sub-title">Custom Style</view>
+        <wux-notice-bar wux-class="notice-bar" icon="http://pbqg2m54r.bkt.clouddn.com/logo.png" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp" />
+    </view>
+</view>

@@ -1,0 +1,58 @@
+.wux-notice-bar {
+  background-color: #fefcec;
+  height: 72rpx;
+  overflow: hidden;
+  font-size: 28rpx;
+  line-height: 72rpx;
+  color: #f76a24;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  padding: 0 20rpx;
+}
+.wux-notice-bar__icon {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 20rpx;
+}
+.wux-notice-bar__action {
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 20rpx;
+}
+.wux-notice-bar__hd {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.wux-notice-bar__bd {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  width: 100%;
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.wux-notice-bar__marquee-container {
+  overflow: hidden;
+}
+.wux-notice-bar__marquee {
+  position: relative;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  white-space: nowrap;
+  display: inline-block;
+}
+.wux-notice-bar__ft {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}

@@ -120,6 +120,11 @@ Page({
                         url: '/pages/media/index',
                     },
                     {
+                        title: 'NoticeBar',
+                        remark: '通告栏',
+                        url: '/pages/notice-bar/index',
+                    },
+                    {
                         title: 'Popover',
                         remark: '气泡框',
                         url: '/pages/popover/index',

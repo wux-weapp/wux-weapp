@@ -1,0 +1,22 @@
+<view class="wux-class wux-notice-bar" wx:if="{{ visible }}" bindtap="onClick">
+    <view class="wux-notice-bar__hd">
+        <image class="wux-notice-bar__icon" src="{{ icon }}" wx:if="{{ icon }}" />
+        <block wx:else>
+            <slot name="header"></slot>
+        </block>
+    </view>
+    <view class="wux-notice-bar__bd">
+        <view class="wux-notice-bar__marquee-container">
+            <view class="wux-notice-bar__marquee" style="transform: translate3d({{ -animatedWidth + 'px' }}, 0px, 0px)">
+                <block wx:if="{{ content }}">{{ content }}</block>
+                <slot></slot>
+            </view>
+        </view>
+    </view>
+    <view class="wux-notice-bar__ft" catchtap="onAction" wx:if="{{ mode === 'closable' || mode === 'link' }}">
+        <image class="wux-notice-bar__action" src="{{ action }}" wx:if="{{ action }}" />
+        <block wx:else>
+            <slot name="footer"></slot>
+        </block>
+    </view>
+</view>
