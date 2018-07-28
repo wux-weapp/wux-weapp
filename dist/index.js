@@ -25,6 +25,7 @@ const $wuxToptips = (selector = '#wux-toptips', ctx) => getCtx(selector, ctx)
 const $wuxGallery = (selector = '#wux-gallery', ctx) => getCtx(selector, ctx)
 const $wuxNotification = (selector = '#wux-notification', ctx) => getCtx(selector, ctx)
 const $wuxKeyBoard = (selector = '#wux-keyboard', ctx) => getCtx(selector, ctx)
+const $wuxSelect = (selector = '#wux-select', ctx) => getCtx(selector, ctx)
 const $stopWuxRefresher = (selector = '#wux-refresher', ctx) => getCtx(selector, ctx).finishPullToRefresh()
 
 export {
@@ -37,6 +38,7 @@ export {
     $wuxGallery,
     $wuxNotification,
     $wuxKeyBoard,
+    $wuxSelect,
     $stopWuxRefresher,
     $wuxCountDown,
     $wuxCountUp,

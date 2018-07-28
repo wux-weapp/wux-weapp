@@ -56,6 +56,11 @@ Page({
                         url: '/pages/rater/index',
                     },
                     {
+                        title: 'Select',
+                        remark: '下拉框',
+                        url: '/pages/select/index',
+                    },
+                    {
                         title: 'Switch',
                         remark: '滑动开关',
                         url: '/pages/switch/index',
