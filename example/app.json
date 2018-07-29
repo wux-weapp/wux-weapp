@@ -33,6 +33,7 @@
         "pages/refresher/index",
         "pages/select/index",
         "pages/spin/index",
+        "pages/steps/index",
         "pages/switch/index",
         "pages/tabs/index",
         "pages/tag/index",

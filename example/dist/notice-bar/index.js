@@ -61,7 +61,7 @@ Component({
                 let animatedWidth = this.data.animatedWidth + 1
                 const isRoundOver = animatedWidth > overflowWidth
 
-                // 判断是否完成一次循环
+                // 判断是否完成一次滚动
                 if (isRoundOver) {
                     if (!loop) {
                         return false
@@ -70,7 +70,7 @@ Component({
                     animatedWidth = 0
                 }
 
-                // 判断是否等待一段时间后进行下一次循环
+                // 判断是否等待一段时间后进行下一次滚动
                 if (isRoundOver && trailing) {
                     setTimeout(() => {
                         this.setData({

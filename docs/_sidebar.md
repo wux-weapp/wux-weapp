@@ -38,6 +38,7 @@
   * [Popover 气泡框](popover.md)
   * [Prompt 提示消息](prompt.md)
   * [Qrcode 二维码](qrcode.md)
+  * [Steps 步骤条](steps.md)
   * [Tabs 标签页](tabs.md)
   * [Tag 标签](tag.md)
   * [Vcode 验证码](vcode.md)

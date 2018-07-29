@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "Steps",
+    "usingComponents": {
+        "wux-steps": "../../dist/steps/index",
+        "wux-step": "../../dist/step/index"
+    }
+}

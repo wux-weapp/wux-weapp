@@ -1,0 +1,4 @@
+.wux-steps {
+  position: relative;
+  width: 100%;
+}

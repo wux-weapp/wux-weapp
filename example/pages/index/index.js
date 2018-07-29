@@ -140,6 +140,11 @@ Page({
                         url: '/pages/qrcode/index',
                     },
                     {
+                        title: 'Steps',
+                        remark: '步骤条',
+                        url: '/pages/steps/index',
+                    },
+                    {
                         title: 'Tabs',
                         remark: '标签页',
                         url: '/pages/tabs/index',

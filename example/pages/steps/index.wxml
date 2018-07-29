@@ -1,0 +1,29 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Steps</view>
+        <view class="page__desc">步骤条</view>
+    </view>
+    <view class="page__bd">
+        <view class="sub-title">Default</view>
+        <wux-steps>
+            <wux-step status="finish" title="Finished" content="This is description"></wux-step>
+            <wux-step status="process" title="In Progress" content="This is description"></wux-step>
+            <wux-step status="wait" title="Waiting" content="This is description"></wux-step>
+        </wux-steps>
+        <view class="sub-title">Direction = vertical</view>
+        <wux-steps direction="vertical">
+            <wux-step status="finish" title="Finished" content="This is description"></wux-step>
+            <wux-step status="process" title="In Progress" content="This is description"></wux-step>
+            <wux-step status="error" title="Error" content="This is description"></wux-step>
+        </wux-steps>
+        <view class="sub-title">Current</view>
+        <wux-steps current="{{ current }}">
+            <wux-step title="First"></wux-step>
+            <wux-step title="Second"></wux-step>
+            <wux-step title="Third"></wux-step>
+        </wux-steps>
+        <view class="button-sp-area">
+            <button type="default" bindtap="onClick">Next step</button>
+        </view>
+    </view>
+</view>
