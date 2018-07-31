@@ -7,13 +7,13 @@
 	line-height: normal;
     vertical-align: middle;
     font-weight: 400;
-    font-style: normal;
+	font-style: normal;
+	text-align: left;
 	.clearfix();
 
 	&__star {
 		position: relative;
 		display: inline-block;
-		float: left;
 	}
 
 	&__star:last-child &__box {

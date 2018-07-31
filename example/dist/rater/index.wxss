@@ -6,6 +6,7 @@
   vertical-align: middle;
   font-weight: 400;
   font-style: normal;
+  text-align: left;
 }
 .wux-rater:before,
 .wux-rater:after {
@@ -18,7 +19,6 @@
 .wux-rater__star {
   position: relative;
   display: inline-block;
-  float: left;
 }
 .wux-rater__star:last-child .wux-rater__box {
   padding-right: 4rpx !important;
