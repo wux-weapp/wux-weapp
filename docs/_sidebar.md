@@ -15,6 +15,7 @@
 
 * 数据录入
 
+  * [Calendar 日历](calendar.md)
   * [Checkbox 复选框](checkbox.md)
   * [InputNumber 数字输入框](input-number.md)
   * [Radio 单选框](radio.md)

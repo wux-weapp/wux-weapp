@@ -36,6 +36,11 @@ Page({
             {
                 title: '数据录入',
                 children: [{
+                        title: 'Calendar',
+                        remark: '日历',
+                        url: '/pages/calendar/index',
+                    },
+                    {
                         title: 'Checkbox',
                         remark: '复选框',
                         url: '/pages/checkbox/index',
