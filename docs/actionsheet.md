@@ -116,3 +116,16 @@ Page({
 | options.cancel | <code>function</code> | 取消按钮点击事件 | - |
 | options.destructiveText | <code>string</code> | 删除按钮的文本 | - |
 | options.destructiveButtonClicked | <code>function</code> | 删除按钮点击事件 | - |
+
+### ActionSheet.method
+
+- ActionSheet.showSheet
+- ActionSheet.removeSheet
+- ActionSheet.cancel
+
+> ActionSheet.showSheet 函数调用后，会返回一个引用，可以通过该引用手动关闭组件
+
+```
+const hide = ActionSheet.showSheet()
+hide()
+```
