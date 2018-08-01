@@ -63,3 +63,8 @@ Page({
 | --- | --- | --- | --- |
 | options | <code>object</code> | 配置项 | - |
 | options.text | <code>string</code> | 提示文本 | 数据加载中 |
+
+### Loading.method
+
+- Loading.show
+- Loading.hide
