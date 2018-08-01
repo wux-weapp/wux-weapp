@@ -31,6 +31,8 @@
     <view class="page__bd page__bd_spacing">
         <wux-button block type="light" bind:click="showNotification">Show Notification</wux-button>
         <wux-button block type="light" bind:click="closeNotification">Close Notification</wux-button>
+        <wux-button block type="light" bind:click="showNotificationReturn">Use return value to close</wux-button>
+        <wux-button block type="light" bind:click="showNotificationPromise">Use promise to know when closed</wux-button>
     </view>
 </view>
 ```
@@ -58,6 +60,35 @@ Page({
             },
         })
     },
+    showNotificationReturn() {
+        if (this.timeout) clearTimeout(this.timeout)
+
+        const hide = $wuxNotification().show({
+            image: 'http://pbqg2m54r.bkt.clouddn.com/logo.png',
+            title: '宝宝',
+            text: '嘤嘤嘤，人家拿小拳拳捶你胸口!!!',
+            data: {
+                message: '逗你玩的!!!'
+            },
+            duration: 3000,
+        })
+
+        this.timeout = setTimeout(hide, 1000)
+    },
+    showNotificationPromise() {
+        const hide = $wuxNotification().show({
+            image: 'http://pbqg2m54r.bkt.clouddn.com/logo.png',
+            title: '宝宝',
+            text: '嘤嘤嘤，人家拿小拳拳捶你胸口!!!',
+            data: {
+                message: '逗你玩的!!!'
+            },
+            duration: 3000,
+        })
+
+        // hide.promise.then(() => console.log('success'))
+        hide.then(() => console.log('success'))
+    },
 })
 ```
 
@@ -77,3 +108,19 @@ Page({
 | options.data | <code>any</code> | 自定义数据传给 onClick、onClose | - |
 | options.onClick | <code>function</code> | 点击后的回调函数 | - |
 | options.onClose | <code>function</code> | 消失后的回调函数 | - |
+
+### Notification.method
+
+- Notification.show
+- Notification.hide
+
+> Notification.show 函数调用后，会返回一个引用，可以通过该引用手动关闭组件
+
+```
+const hide = Notification.show()
+hide()
+
+// 返回值支持 promise 接口，可以通过 then/promise.then 方法在关闭后运行 callback
+hide.then(callback)
+hide.promise.then(callback)
+```

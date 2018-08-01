@@ -31,21 +31,36 @@ Component({
          * 显示
          */
         show(opts = {}) {
-            const options = this.$$mergeOptionsAndBindMethods(Object.assign({}, defaults, opts))
-            this.$$setData({ in: true, ...options })
+            const closePromise = new Promise((resolve) => {
+                const options = this.$$mergeOptionsAndBindMethods(Object.assign({}, defaults, opts))
+                const callback = () => {
+                    this.hide()
+                    return resolve(true)
+                }
+                this.$$setData({ in: true, ...options })
 
-            if (_notification) {
-                clearTimeout(_notification.timeout)
-                _notification = null
+                if (_notification) {
+                    clearTimeout(_notification.timeout)
+                    _notification = null
+                }
+
+                _notification = {
+                    hide: this.hide,
+                }
+
+                _notification.timeout = setTimeout(callback, options.duration)
+            })
+
+            const result = () => {
+                if (_notification) {
+                    _notification.hide.call(this)
+                }
             }
 
-            _notification = {
-                hide: this.hide,
-            }
+            result.then = (resolve, reject) => closePromise.then(resolve, reject)
+            result.promise = closePromise
 
-            _notification.timeout = setTimeout(() => this.hide(), options.duration)
-
-            return _notification.hide.bind(this)
+            return result
         },
         /**
          * 点击事件

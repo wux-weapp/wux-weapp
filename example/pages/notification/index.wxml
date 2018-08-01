@@ -8,5 +8,7 @@
     <view class="page__bd page__bd_spacing">
         <wux-button block type="light" bind:click="showNotification">Show Notification</wux-button>
         <wux-button block type="light" bind:click="closeNotification">Close Notification</wux-button>
+        <wux-button block type="light" bind:click="showNotificationReturn">Use return value to close</wux-button>
+        <wux-button block type="light" bind:click="showNotificationPromise">Use promise to know when closed</wux-button>
     </view>
 </view>
