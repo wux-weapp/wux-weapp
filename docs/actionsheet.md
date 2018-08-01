@@ -106,14 +106,14 @@ Page({
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | options | <code>object</code> | 配置项 | - |
-| options.theme | <code>string</code> | 菜单皮肤 | ios |
+| options.theme | <code>string</code> | 菜单皮肤，可选值为 ios、wx | ios |
 | options.className | <code>string</code> | 自定义类名 | - |
 | options.titleText | <code>string</code> | 标题 | - |
 | options.buttons | <code>array</code> | 按钮 | [] |
 | options.buttons[].text | <code>string</code> | 按钮的文本 | - |
-| options.buttonClicked | <code>function</code> | 按钮点击事件 | - |
+| options.buttonClicked | <code>function</code> | 按钮点击事件，返回值为 true 时将会关闭组件 | - |
 | options.cancelText | <code>string</code> | 取消按钮的文本 | 取消 |
-| options.cancel | <code>function</code> | 取消按钮点击事件 | - |
+| options.cancel | <code>function</code> | 取消按钮或蒙层点击事件 | - |
 | options.destructiveText | <code>string</code> | 删除按钮的文本 | - |
 | options.destructiveButtonClicked | <code>function</code> | 删除按钮点击事件 | - |
 
