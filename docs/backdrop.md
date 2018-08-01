@@ -72,3 +72,8 @@ Page({
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | transparent | <code>boolean</code> | 是否显示透明蒙层 | false |
+
+### Backdrop.method
+
+- Backdrop.retain
+- Backdrop.release
