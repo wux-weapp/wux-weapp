@@ -1,0 +1,38 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Accordion</view>
+        <view class="page__desc">手风琴</view>
+    </view>
+    <view class="page__bd">
+        <wux-accordion-group title="Default" default-current="{{ ['0', '1'] }}">
+            <wux-accordion title="Accordion 1" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>
+            <wux-accordion title="Accordion 2" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>
+            <wux-accordion title="Accordion 3" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>
+        </wux-accordion-group>
+        <wux-accordion-group title="Thumb">
+            <wux-accordion thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" title="Accordion 1" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>
+            <wux-accordion thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" title="Accordion 2" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>
+            <wux-accordion thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" title="Accordion 3" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>
+        </wux-accordion-group>
+        <wux-accordion-group title="Disabled">
+            <wux-accordion disabled title="Accordion 1" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>
+            <wux-accordion disabled title="Accordion 2" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>
+            <wux-accordion disabled title="Accordion 3" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>
+        </wux-accordion-group>
+        <wux-accordion-group title="Custom key" default-current="{{ ['key2'] }}">
+            <wux-accordion key="key1" title="Accordion 1" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>
+            <wux-accordion key="key2" title="Accordion 2" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>
+            <wux-accordion key="key3" title="Accordion 3" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>
+        </wux-accordion-group>
+        <wux-accordion-group title="Accordion = true" label="Accordion model" accordion default-current="{{ ['0'] }}">
+            <wux-accordion title="Accordion 1">微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp</wux-accordion>
+            <wux-accordion title="Accordion 2">微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp</wux-accordion>
+            <wux-accordion title="Accordion 3">微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp</wux-accordion>
+        </wux-accordion-group>
+        <wux-accordion-group title="Auto = false" auto="{{ false }}" current="{{ current }}" bind:change="onChange">
+            <wux-accordion title="Accordion 1" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>
+            <wux-accordion title="Accordion 2" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>
+            <wux-accordion title="Accordion 3" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>
+        </wux-accordion-group>
+    </view>
+</view>

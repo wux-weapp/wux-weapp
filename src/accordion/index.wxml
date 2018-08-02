@@ -1,0 +1,18 @@
+<view class="wux-class wux-accordion {{ current ? 'wux-accordion--current' : '' }}" bindtap="onTap">
+    <view class="wux-accordion__hd">
+        <block wx:if="{{ thumb }}">
+            <image class="wux-accordion__thumb" src="{{ thumb }}" />
+        </block>
+        <block wx:if="{{ title }}">
+            <view class="wux-accordion__title">{{ title }}</view>
+        </block>
+        <block wx:else>
+            <slot name="header"></slot>
+        </block>
+        <view class="wux-accordion__arrow"></view>
+    </view>
+    <view class="wux-accordion__bd">
+        <view class="wux-accordion__content" wx:if="{{ content }}">{{ content }}</view>
+        <slot></slot>
+    </view>
+</view>

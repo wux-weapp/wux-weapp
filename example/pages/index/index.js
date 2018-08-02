@@ -80,6 +80,11 @@ Page({
             {
                 title: '数据展示',
                 children: [{
+                        title: 'Accordion',
+                        remark: '手风琴',
+                        url: '/pages/accordion/index',
+                    },
+                    {
                         title: 'Avatar',
                         remark: '头像',
                         url: '/pages/avatar/index',

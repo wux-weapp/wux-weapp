@@ -2,6 +2,7 @@
     "pages": [
         "pages/index/index",
         "pages/about/index",
+        "pages/accordion/index",
         "pages/actionsheet/index",
         "pages/animation-group/index",
         "pages/avatar/index",
