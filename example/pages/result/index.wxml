@@ -1,0 +1,10 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Result</view>
+        <view class="page__desc">结果页</view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+        <wux-button block type="light" bind:click="onSuccess">Success</wux-button>
+        <wux-button block type="light" bind:click="onError">Error</wux-button>
+    </view>
+</view>

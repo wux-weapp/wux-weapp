@@ -1,0 +1,8 @@
+<wux-result
+    title="支付成功"
+    label="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"
+    buttons="{{ buttons }}"
+    extra="Copyright © 2018 wux weapp"
+    fixed
+    bind:click="onClick"
+/>

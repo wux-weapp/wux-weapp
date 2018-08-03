@@ -237,6 +237,11 @@ Page({
                         remark: '下拉刷新',
                         url: '/pages/refresher/index',
                     },
+                    {
+                        title: 'Result',
+                        remark: '结果页',
+                        url: '/pages/result/index',
+                    },
                 ],
             },
         ],
