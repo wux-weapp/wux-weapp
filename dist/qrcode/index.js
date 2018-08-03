@@ -1,5 +1,5 @@
 import baseBehavior from '../helpers/baseBehavior'
-import qrjs from 'qr.js/index'
+import qrjs from './qr.js/index'
 
 /**
  * 字符串转换成 UTF-8
