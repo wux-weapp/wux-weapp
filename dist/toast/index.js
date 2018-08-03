@@ -63,7 +63,7 @@ Component({
                 TOAST_TYPES.forEach((value) => {
                     if (value.type === opts.type) {
                         Object.assign(options, {
-                            type: value.type,
+                            type: value.icon,
                             className: value.className,
                         })
                     }
