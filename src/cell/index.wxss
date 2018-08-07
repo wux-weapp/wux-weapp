@@ -31,7 +31,12 @@
         flex: 1;
     }
 
+    &__text {
+        text-align: left;
+    }
+
     &__desc {
+        text-align: left;
         line-height: 1.2;
         font-size: 12px;
         color: #808080;

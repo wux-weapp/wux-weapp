@@ -41,7 +41,11 @@
   -webkit-flex: 1;
           flex: 1;
 }
+.wux-cell__text {
+  text-align: left;
+}
 .wux-cell__desc {
+  text-align: left;
   line-height: 1.2;
   font-size: 24rpx;
   color: #808080;
