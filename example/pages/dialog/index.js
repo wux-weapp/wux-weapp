@@ -15,7 +15,7 @@ Page({
                 },
                 {
                     text: '确定',
-                    type: 'weui-dialog__btn--primary',
+                    type: 'primary',
                     onTap(e) {
                         console.log(e)
                     },
@@ -28,6 +28,7 @@ Page({
     confirm() {
         $wuxDialog().confirm({
             resetOnClose: true,
+            closable: true,
             title: '定制冰激凌',
             content: '你确定要吃我的冰淇淋吗？',
             onConfirm(e) {
@@ -87,14 +88,14 @@ Page({
             content: '我是自定义的对话框！',
             buttons: [{
                     text: '现金支付',
-                    type: 'weui-dialog__btn--primary',
+                    type: 'primary',
                     onTap(e) {
                         alert('你选择了现金支付！')
                     },
                 },
                 {
                     text: '微信支付',
-                    type: 'weui-dialog__btn--primary',
+                    type: 'primary',
                     onTap(e) {
                         alert('你选择了微信支付！')
                     },

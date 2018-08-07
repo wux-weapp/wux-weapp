@@ -1,15 +1,23 @@
-<wux-backdrop id="wux-backdrop" />
-<wux-animation-group wux-class="wux-dialog" in="{{ in }}" class-names="wux-animate--fadeIn" bind:exit="onExit">
-    <view class="wux-dialog__hd" wx:if="{{ title }}">
-        <view class="wux-dialog__title">{{ title }}</view>
+<wux-popup visible="{{ in }}" closable="{{ closable }}" mask="{{ mask }}" mask-closable="{{ maskClosable }}" bind:close="onClose" bind:closed="onClosed">
+    <view slot="header">{{ title }}</view>
+    <view>
+        <text>{{ content }}</text>
+        <view class="wux-popup__input-container" wx:if="{{ prompt }}">
+            <label>
+                <input type="{{ prompt.fieldtype }}" class="wux-popup__input" value="{{ prompt.response }}" password="{{ prompt.password }}" placeholder="{{ prompt.placeholder }}" maxlength="{{ maxlength }}" bindinput="bindinput" />
+            </label>
+        </view>
     </view>
-    <view class="wux-dialog__bd" wx:if="{{ content }}">
-        <view class="wux-dialog__content">{{ content }}</view>
-        <input wx:if="{{ prompt }}" type="{{ prompt.fieldtype }}" class="wux-dialog__input" value="{{ prompt.response }}" password="{{ prompt.password }}" placeholder="{{ prompt.placeholder }}" maxlength="{{ maxlength }}" bindinput="bindinput" />
-    </view>
-    <view class="wux-dialog__ft {{ verticalButtons ? 'wux-dialog__btns--vertical' : '' }}" wx:if="{{ buttons.length }}">
-        <block wx:for="{{ buttons }}" wx:key="">
-            <view class="wux-dialog__btn wux-dialog__btn--default {{ item.type }} {{ item.bold ? 'wux-dialog__btn--bold' : '' }}" data-index="{{ index }}" bindtap="buttonTapped">{{ item.text }}</view>
+    <view slot="footer" class="wux-popup__buttons {{ verticalButtons ? 'wux-popup__buttons--vertical' : 'wux-popup__buttons--horizontal' }}">
+        <block wx:for="{{ buttons }}" wx:for-item="button" wx:key="">
+            <view
+                class="wux-popup__button {{ 'wux-popup__button--' + (button.type || 'default') }} {{ button.bold ? 'wux-popup__button--bold' : '' }}"
+                hover-class="wux-popup__button--hover"
+                data-index="{{ index }}"
+                bindtap="buttonTapped"
+            >
+                {{ button.text }}
+            </view>
         </block>
     </view>
-</wux-animation-group>
+</wux-popup>

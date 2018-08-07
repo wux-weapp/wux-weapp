@@ -1,6 +1,5 @@
 import baseBehavior from '../helpers/baseBehavior'
 import mergeOptionsToData from '../helpers/mergeOptionsToData'
-import { $wuxBackdrop } from '../index'
 
 const defaults = {
     title: '',
@@ -8,15 +7,18 @@ const defaults = {
     buttons: [],
     verticalButtons: !1,
     resetOnClose: false,
+    closable: false,
+    mask: true,
+    maskClosable: true,
 }
 
 const defaultOptions = {
     onCancel() {},
     cancelText: '取消',
-    cancelType: 'wux-dialog__btn--default',
+    cancelType: 'default',
     onConfirm() {},
     confirmText: '确定',
-    confirmType: 'wux-dialog__btn--primary',
+    confirmType: 'primary',
 }
 
 Component({
@@ -27,7 +29,7 @@ Component({
         /**
          * 组件关闭时重置其内部数据
          */
-        onExit() {
+        onClosed() {
             if (this.data.resetOnClose) {
                 const params = {
                     ...mergeOptionsToData(defaults),
@@ -38,13 +40,18 @@ Component({
             }
         },
         /**
+         * 点击 x 或 mask 回调
+         */
+        onClose() {
+            this.hide()
+        },
+        /**
          * 隐藏
          */
         hide(cb) {
             this.$$setData({ in: false })
-            this.$wuxBackdrop.release()
             if (typeof cb === 'function') {
-                cb()
+                cb.call(this)
             }
         },
         /**
@@ -53,7 +60,6 @@ Component({
         show(opts = {}) {
             const options = this.$$mergeOptionsAndBindMethods(Object.assign({}, defaults, opts))
             this.$$setData({ in: true, ...options })
-            this.$wuxBackdrop.retain()
             return this.hide.bind(this)
         },
         /**
@@ -183,8 +189,5 @@ Component({
                 ],
             }, opts))
         },
-    },
-    created() {
-        this.$wuxBackdrop = $wuxBackdrop('#wux-backdrop', this)
     },
 })
