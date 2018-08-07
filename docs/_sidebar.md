@@ -53,6 +53,7 @@
   * [Gallery 画廊](gallery.md)
   * [Loading 指示器](loading.md)
   * [Notification 通知](notification.md)
+  * [Popup 弹出框](popup.md)
   * [Spin 加载中](spin.md)
   * [Toast 提示框](toast.md)
   * [Toptips 顶部提示](toptips.md)

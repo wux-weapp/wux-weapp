@@ -1,0 +1,26 @@
+<wux-backdrop id="wux-backdrop" wx:if="{{ mask }}" bind:click="onMaskClick" />
+<view class="wux-popup-position {{ position ? 'wux-popup-position--' + position : '' }}" style="{{ wrapStyle }}" hidden="{{ hidden }}">
+    <wux-animation-group wux-class="wux-popup" in="{{ visible }}" class-names="{{ transitionName }}" bind:exited="onExited">
+        <view class="wux-popup__content">
+            <view class="wux-popup__hd">
+                <view class="wux-popup__title" wx:if="{{ title }}">{{ title }}</view>
+                <block wx:else>
+                    <slot name="header"></slot>
+                </block>
+            </view>
+            <view class="wux-popup__bd">
+                <view wx:if="{{ content }}">{{ content }}</view>
+                <slot></slot>
+            </view>
+            <view class="wux-popup__ft">
+                <view class="wux-popup__extra" wx:if="{{ extra }}">{{ extra }}</view>
+                <block wx:else>
+                    <slot name="footer"></slot>
+                </block>
+            </view>
+            <view class="wux-popup__close" wx:if="{{ closable }}" bindtap="close">
+                <text class="wux-popup__close-x"></text>
+            </view>
+        </view>
+    </wux-animation-group>
+</view>

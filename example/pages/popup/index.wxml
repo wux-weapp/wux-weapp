@@ -1,0 +1,24 @@
+<wux-popup closable visible="{{ visible1 }}" title="Delete" content="Are you sure???" bind:change="onChange1" bind:close="onClose1" bind:closed="onClosed1">
+    <view slot="footer" class="popup__button" bindtap="close1">OK</view>
+</wux-popup>
+
+<wux-popup position="bottom" class-names="slideInUp" visible="{{ visible2 }}" bind:close="onClose2">
+    <wux-cell-group title="Your fathers">
+        <wux-cell hover-class="none" title="Jack Ma"></wux-cell>
+        <wux-cell hover-class="none" title="Pony"></wux-cell>
+        <wux-cell hover-class="none">
+            <wux-button block type="balanced" bindtap="close2">Yes</wux-button>
+        </wux-cell>
+    </wux-cell-group>
+</wux-popup>
+
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Popup</view>
+        <view class="page__desc">弹出框</view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+        <wux-button block type="light" bind:click="open1">Default</wux-button>
+        <wux-button block type="light" bind:click="open2">Popup</wux-button>
+    </view>
+</view>

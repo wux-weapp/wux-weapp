@@ -204,6 +204,11 @@ Page({
                         url: '/pages/notification/index',
                     },
                     {
+                        title: 'Popup',
+                        remark: '弹出框',
+                        url: '/pages/popup/index',
+                    },
+                    {
                         title: 'Spin',
                         remark: '加载中',
                         url: '/pages/spin/index',
