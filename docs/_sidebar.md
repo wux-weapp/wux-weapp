@@ -6,6 +6,7 @@
 
   * [AnimationGroup 动画组](animation-group.md)
   * [Button 按钮](button.md)
+  * [Icon 图标](icon.md)
 
 * 布局组件
 

@@ -1,0 +1,34 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Icon</view>
+        <view class="page__desc">图标</view>
+    </view>
+    <view class="page__bd">
+        <view class="segment">
+            <view class="segment-item {{ selected === 'ios' && 'segment-item-selected' }}" data-style="ios" bindtap="onSelect">iOS style</view>
+            <view class="segment-item {{ selected === 'md' && 'segment-item-selected' }}" data-style="md" bindtap="onSelect">Material style</view>
+        </view>
+        <view class="sub-title">App icons</view>
+        <wux-row>
+            <block wx:for="{{ icons }}" wx:key="">
+                <wux-col span="3">
+                    <view class="cell">
+                        <wux-icon type="{{ selected + '-' + item }}" />
+                        <view class="title">{{ selected + '-' + item }}</view>
+                    </view>
+                </wux-col>
+            </block>
+        </wux-row>
+        <view class="sub-title">Logos</view>
+        <wux-row>
+            <block wx:for="{{ logos }}" wx:key="">
+                <wux-col span="3">
+                    <view class="cell">
+                        <wux-icon type="{{ item }}" />
+                        <view class="title">{{ item }}</view>
+                    </view>
+                </wux-col>
+            </block>
+        </wux-row>
+    </view>
+</view>

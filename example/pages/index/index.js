@@ -12,6 +12,11 @@ Page({
                         remark: '按钮',
                         url: '/pages/button/index',
                     },
+                    {
+                        title: 'Icon',
+                        remark: '图标',
+                        url: '/pages/icon/index',
+                    },
                 ],
             },
             {
