@@ -36,7 +36,7 @@ Wux Weapp 的图标使用开源项目 [ionicons](https://ionicons.com/) 4.3.0 �
 
 ## 视频演示
 
-[Tag](./_media/tag.mp4 ':include :type=iframe width=375px height=667px')
+[Icon](./_media/icon.mp4 ':include :type=iframe width=375px height=667px')
 
 ## API
 
