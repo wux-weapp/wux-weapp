@@ -59,6 +59,7 @@ gulp.task('build:styles', () => {
         .src(
             [
                 'src/**/*.wxss',
+                '!src/icon/*.wxss',
             ], { base: 'src' }
         )
         .pipe(less())
