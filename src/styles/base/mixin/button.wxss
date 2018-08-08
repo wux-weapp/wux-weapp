@@ -4,7 +4,7 @@
     color: @color;
 }
 
-.button-hover(@active-bg-color, @active-color: inheart) {
+.button-hover(@active-bg-color, @active-color: #fff) {
     background-color: darken(@active-bg-color, 10%);
     color: @active-color;
 }

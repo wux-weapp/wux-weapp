@@ -64,5 +64,13 @@
         <wux-button block disabled type="energized">energized</wux-button>
         <wux-button block disabled type="royal">royal</wux-button>
         <wux-button block disabled type="dark">dark</wux-button>
+        <view class="sub-title">Icon</view>
+        <wux-button block type="balanced" icon="ios-save">balanced</wux-button>
+        <wux-button block outline type="balanced" icon="ios-save">balanced</wux-button>
+        <wux-button block size="small" type="balanced" icon="ios-save">balanced</wux-button>
+        <wux-button block size="default" type="balanced" icon="ios-save">balanced</wux-button>
+        <wux-button block size="large" type="balanced" icon="ios-save">balanced</wux-button>
+        <wux-button block clear type="balanced" icon="ios-save">balanced</wux-button>
+        <wux-button block disabled type="balanced" icon="ios-save">balanced</wux-button>
     </view>
 </view>

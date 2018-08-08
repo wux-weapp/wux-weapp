@@ -8,7 +8,7 @@
   min-height: 88rpx;
   border: 2rpx solid transparent;
   border-radius: 8rpx;
-  vertical-align: top;
+  vertical-align: middle;
   text-align: center;
   text-overflow: ellipsis;
   font-size: 32rpx;
@@ -93,7 +93,7 @@
 }
 .wux-button--light.wux-button--hover {
   background-color: #e6e6e6;
-  color: inheart;
+  color: #fff;
 }
 .wux-button--stable {
   border-color: transparent;
@@ -115,7 +115,7 @@
 }
 .wux-button--stable.wux-button--hover {
   background-color: #dfdfdf;
-  color: inheart;
+  color: #fff;
 }
 .wux-button--positive {
   border-color: transparent;
@@ -137,7 +137,7 @@
 }
 .wux-button--positive.wux-button--hover {
   background-color: #0c60ee;
-  color: inheart;
+  color: #fff;
 }
 .wux-button--calm {
   border-color: transparent;
@@ -159,7 +159,7 @@
 }
 .wux-button--calm.wux-button--hover {
   background-color: #0a9dc7;
-  color: inheart;
+  color: #fff;
 }
 .wux-button--assertive {
   border-color: transparent;
@@ -181,7 +181,7 @@
 }
 .wux-button--assertive.wux-button--hover {
   background-color: #e42112;
-  color: inheart;
+  color: #fff;
 }
 .wux-button--balanced {
   border-color: transparent;
@@ -203,7 +203,7 @@
 }
 .wux-button--balanced.wux-button--hover {
   background-color: #28a54c;
-  color: inheart;
+  color: #fff;
 }
 .wux-button--energized {
   border-color: transparent;
@@ -225,7 +225,7 @@
 }
 .wux-button--energized.wux-button--hover {
   background-color: #cca100;
-  color: inheart;
+  color: #fff;
 }
 .wux-button--royal {
   border-color: transparent;
@@ -247,7 +247,7 @@
 }
 .wux-button--royal.wux-button--hover {
   background-color: #643de4;
-  color: inheart;
+  color: #fff;
 }
 .wux-button--dark {
   border-color: transparent;
@@ -269,7 +269,7 @@
 }
 .wux-button--dark.wux-button--hover {
   background-color: #2b2b2b;
-  color: inheart;
+  color: #fff;
 }
 .wux-button--light {
   border-color: transparent;
@@ -287,7 +287,7 @@
 }
 .wux-button--light.wux-button--hover {
   background-color: #e6e6e6;
-  color: inheart;
+  color: #fff;
 }
 .wux-button--stable {
   border-color: transparent;
@@ -305,5 +305,10 @@
 }
 .wux-button--stable.wux-button--hover {
   background-color: #dfdfdf;
-  color: inheart;
+  color: #fff;
+}
+.wux-button__icon {
+  font-size: inherit !important;
+  margin-right: 16rpx;
+  vertical-align: middle;
 }

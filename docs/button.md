@@ -84,6 +84,14 @@
         <wux-button block disabled type="energized">energized</wux-button>
         <wux-button block disabled type="royal">royal</wux-button>
         <wux-button block disabled type="dark">dark</wux-button>
+        <view class="sub-title">Icon</view>
+        <wux-button block type="balanced" icon="ios-save">balanced</wux-button>
+        <wux-button block outline type="balanced" icon="ios-save">balanced</wux-button>
+        <wux-button block size="small" type="balanced" icon="ios-save">balanced</wux-button>
+        <wux-button block size="default" type="balanced" icon="ios-save">balanced</wux-button>
+        <wux-button block size="large" type="balanced" icon="ios-save">balanced</wux-button>
+        <wux-button block clear type="balanced" icon="ios-save">balanced</wux-button>
+        <wux-button block disabled type="balanced" icon="ios-save">balanced</wux-button>
     </view>
 </view>
 ```
@@ -115,6 +123,7 @@
 | sendMessagePath | <code>string</code> | 会话内消息卡片点击跳转小程序路径 | 当前分享路径 |
 | sendMessageImg | <code>string</code> | 会话内消息卡片图片 | 截图 |
 | showMessageCard | <code>boolean</code> | 显示会话内消息卡片 | false |
+| icon | <code>string</code> | 图标名称 | - |
 | bind:click | <code>function</code> | 点击事件 | - |
 | bind:getuserinfo | <code>function</code> | 用户点击该按钮时，会返回获取到的用户信息，回调的detail数据与wx.getUserInfo返回的一致 | - |
 | bind:contact | <code>function</code> | 客服消息回调 | - |

@@ -18,5 +18,6 @@
     bindgetphonenumber="bindgetphonenumber"
     bindtap="onTap"
 >
+    <wux-icon wux-class="wux-button__icon" type="{{ icon }}" wx:if="{{ icon }}"></wux-icon>
     <slot></slot>
 </button>

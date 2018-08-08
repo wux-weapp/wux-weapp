@@ -46,7 +46,7 @@
     min-height: 44px;
     border: 1px solid transparent;
     border-radius: 4px;
-    vertical-align: top;
+    vertical-align: middle;
     text-align: center;
     text-overflow: ellipsis;
     font-size: 16px;
@@ -158,5 +158,13 @@
 
     &--stable&--hover {
         .button-hover(@stable);
+    }
+
+    &__icon {
+        font-size: inherit !important;
+        margin-right: 8px;
+        // position: relative;
+        // top: -1px;
+        vertical-align: middle;
     }
 }
