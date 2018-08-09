@@ -10,6 +10,7 @@
         <wux-button block type="light" bind:click="showToastCancel">Cancel</wux-button>
         <wux-button block type="light" bind:click="showToastErr">Forbidden</wux-button>
         <wux-button block type="light" bind:click="showToastText">Text</wux-button>
+        <wux-button block type="light" bind:click="showToastIcon">Custom Icon</wux-button>
         <wux-button block type="light" bind:click="showToastReturn">Use return value to close</wux-button>
         <wux-button block type="light" bind:click="showToastPromie">Use promise to know when closed</wux-button>
     </view>

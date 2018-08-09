@@ -3,25 +3,26 @@ import mergeOptionsToData from '../helpers/mergeOptionsToData'
 import { $wuxBackdrop } from '../index'
 
 const defaults = {
-    type: 'success',
+    type: 'default',
     duration: 1500,
     color: '#fff',
-    text: '已完成',
+    text: '',
+    icon: '',
     success() {},
 }
 const TOAST_TYPES = [{
         type: 'success',
-        icon: 'success_no_circle',
+        icon: 'ios-checkmark-circle-outline',
         className: 'wux-toast__bd--success',
     },
     {
         type: 'cancel',
-        icon: 'cancel',
+        icon: 'ios-close-circle-outline',
         className: 'wux-toast__bd--cancel',
     },
     {
         type: 'forbidden',
-        icon: 'warn',
+        icon: 'ios-alert',
         className: 'wux-toast__bd--forbidden',
     },
     {
@@ -59,15 +60,26 @@ Component({
                     return resolve(true)
                 }
 
+                let isToastType = false
+
                 // 判断提示类型，显示对应的图标
                 TOAST_TYPES.forEach((value) => {
-                    if (value.type === opts.type) {
+                    if (value.type === options.type) {
                         Object.assign(options, {
-                            type: value.icon,
+                            icon: options.icon || value.icon,
                             className: value.className,
                         })
+
+                        isToastType = true
                     }
                 })
+
+                if (!isToastType) {
+                    Object.assign(options, {
+                        icon: options.icon,
+                        className: '',
+                    })
+                }
 
                 this.$$setData({ in: true, ...options })
                 this.$wuxBackdrop.retain()

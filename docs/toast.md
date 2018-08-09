@@ -33,6 +33,7 @@
         <wux-button block type="light" bind:click="showToastCancel">Cancel</wux-button>
         <wux-button block type="light" bind:click="showToastErr">Forbidden</wux-button>
         <wux-button block type="light" bind:click="showToastText">Text</wux-button>
+        <wux-button block type="light" bind:click="showToastIcon">Custom Icon</wux-button>
         <wux-button block type="light" bind:click="showToastReturn">Use return value to close</wux-button>
         <wux-button block type="light" bind:click="showToastPromie">Use promise to know when closed</wux-button>
     </view>
@@ -81,6 +82,16 @@ Page({
             success: () => console.log('文本提示')
         })
     },
+    showToastIcon() {
+        $wuxToast().show({
+            type: 'default',
+            duration: 1500,
+            color: '#fff',
+            icon: 'ios-happy',
+            text: '自定义图标',
+            success: () => console.log('自定义图标')
+        })
+    },
     showToastReturn() {
         if (this.timeout) clearTimeout(this.timeout)
 
@@ -116,10 +127,11 @@ Page({
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | options | <code>object</code> | 配置项 | - |
-| options.type | <code>string</code> | 提示类型，可选值为 success、cancel、forbidden、text | success |
+| options.type | <code>string</code> | 提示类型，可选值为 default、success、cancel、forbidden、text | default |
 | options.duration | <code>number</code> | 提示延迟时间 | 1500 |
 | options.color | <code>string</code> | 图标颜色 | #fff |
-| options.text | <code>string</code> | 提示文本 | 已完成 |
+| options.text | <code>string</code> | 提示文本 | - |
+| options.icon | <code>string</code> | 图标名称 | - |
 | options.success | <code>function</code> | 关闭后的回调函数 | - |
 
 ### Toast.method

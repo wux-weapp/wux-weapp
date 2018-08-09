@@ -39,6 +39,16 @@ Page({
             success: () => console.log('文本提示')
         })
     },
+    showToastIcon() {
+        $wuxToast().show({
+            type: 'default',
+            duration: 1500,
+            color: '#fff',
+            icon: 'ios-happy',
+            text: '自定义图标',
+            success: () => console.log('自定义图标')
+        })
+    },
     showToastReturn() {
         if (this.timeout) clearTimeout(this.timeout)
 
