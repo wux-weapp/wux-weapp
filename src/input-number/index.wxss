@@ -1,68 +1,47 @@
 @import "../styles/base/fn.wxss";
 
+.input-number(@theme, @color) {
+    .wux-input-number__selector--@{theme} {
+        color: @color;
+    }
+
+    &--circle .wux-input-number__selector--@{theme} {
+        border-color: @color;
+    }
+}
+
 .wux-input-number {
     position: relative;
+    display: flex;
 
     &__input {
-        float: left;
-        width: 32px;
-        height: 20px;
+        width: 48px;
+        height: 26px;
         font-size: 16px;
+        line-height: 26px;
         color: #666;
         appearance: none;
         border: 1px solid #ececec;
         padding: 3px 0;
         text-align: center;
-        border-radius: 1px;
         min-height: inherit;
+        box-sizing: border-box;
     }
 
     &__selector {
-        float: left;
-        height: 20px;
-        font-size: 25px;
-        line-height: 18px;
+        width: 34px;
+        height: 26px;
+        font-size: 24px;
+        line-height: 26px;
         color: @balanced;
         border: 1px solid #ececec;
-
-        &--light {
-            color: @light-inverse;
-        }
-
-        &--stable {
-            color: @stable-inverse;
-        }
-
-        &--positive {
-            color: @positive;
-        }
-
-        &--calm {
-            color: @calm;
-        }
-
-        &--assertive {
-            color: @assertive;
-        }
-
-        &--balanced {
-            color: @balanced;
-        }
-
-        &--energized {
-            color: @energized;
-        }
-
-        &--royal {
-            color: @royal;
-        }
-
-        &--dark {
-            color: @dark;
-        }
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         &--disabled {
-            color: #ccc;
+            color: #ccc !important;
         }
     
         &--sub {
@@ -71,11 +50,42 @@
             border-radius: 2px 0 0 2px;
         }
     
-        &--plus {
+        &--add {
             border-left: none;
-            margin-right: 5px;
             padding: 3px 8px;
             border-radius: 0 2px 2px 0;
         }
     }
+
+    &__icon {
+        font-size: inherit !important;
+        vertical-align: middle;
+        line-height: inherit;
+    }
+
+    &--circle {
+        .wux-input-number__input {
+            border-color: transparent;
+        }
+
+        .wux-input-number__selector {
+            width: 26px;
+            border-radius: 50%;
+            border: 1px solid @balanced;
+
+            &--disabled {
+                border-color: #ccc !important;
+            }
+        }
+    }
+
+    .input-number(light, @light-inverse);
+    .input-number(stable, @stable-inverse);
+    .input-number(positive, @positive);
+    .input-number(calm, @calm);
+    .input-number(assertive, @assertive);
+    .input-number(balanced, @balanced);
+    .input-number(energized, @energized);
+    .input-number(royal, @royal);
+    .input-number(dark, @dark);
 }

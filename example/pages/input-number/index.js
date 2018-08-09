@@ -11,8 +11,12 @@ Page({
                 value: 2,
             },
         ],
+        value: 1,
     },
-    bindchange(e) {
+    onChange(e) {
         console.log(e)
+        this.setData({
+            value: e.detail.value,
+        })
     },
 })

@@ -1,4 +1,12 @@
 /* pages/input-number/index.wxss */
-.wux-input-number__input--custom {
-	width: 100px !important;
+.input {
+	width: 120rpx !important;
+	border-color: transparent !important;
+}
+
+.sub,
+.add {
+	width: 52rpx !important;
+	border: 2rpx solid #ececec !important;
+    border-radius: 10rpx !important;
 }

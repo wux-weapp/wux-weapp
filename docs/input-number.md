@@ -28,7 +28,7 @@
     <view class="page__bd">
         <wux-cell-group title="默认">
             <wux-cell title="数量" hover-class="none">
-                <wux-input-number slot="footer" />
+                <wux-input-number default-value="1024" slot="footer" />
             </wux-cell>
         </wux-cell-group>
         <wux-cell-group title="主题色">
@@ -60,14 +60,43 @@
                 <wux-input-number color="dark" slot="footer" />
             </wux-cell>
         </wux-cell-group>
-        <wux-cell-group title="设置 callback 回调函数，在调试窗口中输出">
-            <wux-cell title="数量" hover-class="none">
-                <wux-input-number bind:change="bindchange" slot="footer" />
+        <wux-cell-group title="圆形按钮">
+            <wux-cell title="Light" hover-class="none">
+                <wux-input-number shape="circle" color="light" slot="footer" />
+            </wux-cell>
+            <wux-cell title="Stable" hover-class="none">
+                <wux-input-number shape="circle" color="stable" slot="footer" />
+            </wux-cell>
+            <wux-cell title="Positive" hover-class="none">
+                <wux-input-number shape="circle" color="positive" slot="footer" />
+            </wux-cell>
+            <wux-cell title="Calm" hover-class="none">
+                <wux-input-number shape="circle" color="calm" slot="footer" />
+            </wux-cell>
+            <wux-cell title="Balanced" hover-class="none">
+                <wux-input-number shape="circle" color="balanced" slot="footer" />
+            </wux-cell>
+            <wux-cell title="Energized" hover-class="none">
+                <wux-input-number shape="circle" color="energized" slot="footer" />
+            </wux-cell>
+            <wux-cell title="Assertive" hover-class="none">
+                <wux-input-number shape="circle" color="assertive" slot="footer" />
+            </wux-cell>
+            <wux-cell title="Royal" hover-class="none">
+                <wux-input-number shape="circle" color="royal" slot="footer" />
+            </wux-cell>
+            <wux-cell title="Dark" hover-class="none">
+                <wux-input-number shape="circle" color="dark" slot="footer" />
             </wux-cell>
         </wux-cell-group>
-        <wux-cell-group title="设置宽度为100px">
+        <wux-cell-group title="设置 callback 回调函数，在调试窗口中输出">
             <wux-cell title="数量" hover-class="none">
-                <wux-input-number wux-input-class="wux-input-number__input--custom" slot="footer" />
+                <wux-input-number longpress disabled="{{ false }}" value="{{ value }}" auto="{{ false }}" min="{{ -10 }}" max="{{ 10 }}" bind:change="onChange" slot="footer" />
+            </wux-cell>
+        </wux-cell-group>
+        <wux-cell-group title="自定义样式">
+            <wux-cell title="数量" hover-class="none">
+                <wux-input-number wux-sub-class="sub" wux-input-class="input" wux-add-class="add" slot="footer" />
             </wux-cell>
         </wux-cell-group>
         <wux-cell-group title="设置步长为0.5">
@@ -77,7 +106,7 @@
         </wux-cell-group>
         <wux-cell-group title="设置值为1，最小值为-5，最大值为8">
             <wux-cell title="数量" hover-class="none">
-                <wux-input-number value="{{ 1 }}" min="{{ -5 }}" max="{{ 8 }}" slot="footer" />
+                <wux-input-number default-value="1" min="{{ -5 }}" max="{{ 8 }}" slot="footer" />
             </wux-cell>
         </wux-cell-group>
         <wux-cell-group title="设置可输入">
@@ -93,7 +122,7 @@
         <wux-cell-group title="循环输出多个组件">
             <block wx:for="{{ items }}" wx:key="">
                 <wux-cell title="{{ item.text }}" hover-class="none">
-                    <wux-input-number value="{{ item.value }}" slot="footer" />
+                    <wux-input-number default-value="{{ item.value }}" slot="footer" />
                 </wux-cell>
             </block>
         </wux-cell-group>
@@ -115,9 +144,13 @@ Page({
                 value: 2,
             },
         ],
+        value: 1,
     },
-    bindchange(e) {
+    onChange(e) {
         console.log(e)
+        this.setData({
+            value: e.detail.value,
+        })
     },
 })
 ```
@@ -130,11 +163,16 @@ Page({
 
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
-| min | <code>number</code> | 最小值 | -999999 |
-| max | <code>number</code> | 最大值 | 999999 |
+| min | <code>number</code> | 最小值 | -Infinity |
+| max | <code>number</code> | 最大值 | Infinity |
 | step | <code>number</code> | 计数间隔 | 1 |
-| value | <code>number</code> | 默认值 | 0 |
-| disabled | <code>boolean</code> | 禁用输入 | true |
-| longpress | <code>boolean</code> | 禁用长按 | false |
+| defaultValue | <code>number</code> | 默认值，当 auto 为 true 时才生效 | 0 |
+| value | <code>number</code> | 当前值，当 auto 为 false 时才生效 | 0 |
+| auto | <code>boolean</code> | 是否组件内部控制当前值 | true |
+| disabled | <code>boolean</code> | 是否禁用输入 | true |
+| longpress | <code>boolean</code> | 是否支持长按 | false |
 | color | <code>string</code> | 主题色，可选值为 light、stable、positive、calm、assertive、balanced、energized、royal、dark | balanced |
+| shape | <code>string</code> | 形状，可选值为 circle、square | square |
 | bind:change | <code>function</code> | 监听值变化的回调函数 | - |
+| bind:focus | <code>function</code> | 输入框聚焦时触发的回调函数 | - |
+| bind:blur | <code>function</code> | 输入框失去焦点时触发的回调函数 | - |
