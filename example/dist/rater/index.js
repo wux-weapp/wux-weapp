@@ -8,6 +8,10 @@ Component({
                 this.updateValue()
             },
         },
+        icon: {
+            type: String,
+            value: '',
+        },
         star: {
             type: String,
             value: '★',

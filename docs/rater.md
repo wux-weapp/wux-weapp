@@ -67,6 +67,17 @@
                 <wux-rater slot="footer" default-value="{{ 3 }}" margin="{{ 15 }}" star="☻" />
             </wux-cell>
         </wux-cell-group>
+        <wux-cell-group title="Custom Icon">
+            <wux-cell title="Loving" hover-class="none">
+                <wux-rater slot="footer" default-value="{{ 3 }}" margin="{{ 15 }}" icon="ios-heart" />
+            </wux-cell>
+            <wux-cell title="Sunshine" hover-class="none">
+                <wux-rater slot="footer" default-value="{{ 3 }}" margin="{{ 15 }}" icon="ios-sunny" />
+            </wux-cell>
+            <wux-cell title="Smilies" hover-class="none">
+                <wux-rater slot="footer" default-value="{{ 3 }}" margin="{{ 15 }}" icon="ios-happy" />
+            </wux-cell>
+        </wux-cell-group>
         <wux-cell-group title="Custom text">
             <wux-cell title="Star" hover-class="none">
                 <view slot="footer">
@@ -77,7 +88,7 @@
         </wux-cell-group>
         <wux-cell-group title="Set callback">
             <wux-cell title="How embarrass" hover-class="none">
-                <wux-rater slot="footer" auto="{{ false }}" value="{{ value }}" star="囧" bind:change="onChange" />
+                <wux-rater slot="footer" auto="{{ false }}" value="{{ 3.6 }}" star="囧" bind:change="onChange" />
             </wux-cell>
         </wux-cell-group>
         <wux-cell-group title="Auto = false">
@@ -135,6 +146,7 @@ Page({
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | max | <code>number</code> | 最大值 | 5 |
+| icon | <code>string</code> | 图标名称，优先级高于 star | - |
 | star | <code>string</code> | 图标 | ★ |
 | defaultValue | <code>number</code> | 默认值，当 auto 为 true 时才生效 | 0 |
 | value | <code>number</code> | 当前数，当 auto 为 false 时才生效 | 0 |

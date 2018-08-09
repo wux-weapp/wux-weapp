@@ -35,6 +35,10 @@
 		}
 	}
 
+	&__icon {
+		transition: color .3s ease;
+	}
+
 	&__inner {
 		position: relative;
 		display: inline-block;

@@ -37,6 +37,10 @@
   color: #ccc !important;
   cursor: not-allowed;
 }
+.wux-rater__icon {
+  -webkit-transition: color .3s ease;
+  transition: color .3s ease;
+}
 .wux-rater__inner {
   position: relative;
   display: inline-block;
