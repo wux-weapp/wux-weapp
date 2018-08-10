@@ -120,6 +120,11 @@ Page({
                         url: '/pages/countup/index',
                     },
                     {
+                        title: 'Divider',
+                        remark: '分割线',
+                        url: '/pages/divider/index',
+                    },
+                    {
                         title: 'FloatingButton',
                         remark: '浮动按钮',
                         url: '/pages/floating-button/index',

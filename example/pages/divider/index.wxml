@@ -1,0 +1,22 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Divider</view>
+        <view class="page__desc">分割线</view>
+    </view>
+    <view class="page__bd">
+    	<wux-divider show-text="{{ false }}" />
+    	<wux-divider show-text="{{ false }}" dashed />
+    	<wux-divider position="left" text="Wux Weapp" />
+        <wux-divider text="Wux Weapp" />
+        <wux-divider position="right" text="Wux Weapp" />
+        <wux-divider dashed position="left" text="Wux Weapp" />
+        <wux-divider dashed text="Wux Weapp" />
+        <wux-divider dashed position="right" text="Wux Weapp" />
+        <wux-divider>
+        	<view class="loadmore">
+        		<view class="loading"></view>
+        		<text class="text">正在加载</text>
+        	</view>
+        </wux-divider>
+    </view>
+</view>

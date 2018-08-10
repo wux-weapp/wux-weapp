@@ -15,6 +15,7 @@
         "pages/checkbox/index",
         "pages/countdown/index",
         "pages/countup/index",
+        "pages/divider/index",
         "pages/dialog/index",
         "pages/filterbar/index",
         "pages/floating-button/index",
