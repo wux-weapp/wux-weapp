@@ -2,7 +2,7 @@
     <view class="wux-step__hd">
         <view class="wux-step__icon" wx:if="{{ !hasIcon }}">{{ index + 1 }}</view>
         <view class="wux-step__icon" wx:else>
-            <image class="wux-step__thumb" src="{{ thumb }}" />
+            <wux-icon wux-class="wux-step__thumb" type="{{ thumb }}" size="24" wx:if="{{ thumb }}"></wux-icon>
         </view>
     </view>
     <view class="wux-step__bd">
