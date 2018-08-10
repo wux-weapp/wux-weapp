@@ -34,8 +34,8 @@ Component({
         changeValue(value = this.data.value) {
             const elements = this.getRelationNodes('../checkbox/index')
             if (elements.length > 0) {
-                elements.forEach((element) => {
-                    element.changeValue(value.includes(element.data.value))
+                elements.forEach((element, index) => {
+                    element.changeValue(value.includes(element.data.value), index)
                 })
             }
         },

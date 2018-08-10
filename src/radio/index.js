@@ -42,13 +42,17 @@ Component({
             },
         },
     },
+    data: {
+        index: 0,
+    },
     methods: {
         radioChange() {
-            const { value, checked, disabled } = this.data
+            const { value, checked, index, disabled } = this.data
             const parent = this.getRelationNodes('../radio-group/index')[0]
             const item = {
                 checked: !checked,
                 value,
+                index,
             }
 
             if (disabled) {
@@ -57,9 +61,10 @@ Component({
 
             parent ? parent.emitEvent(item) : this.triggerEvent('change', item)
         },
-        changeValue(checked) {
+        changeValue(checked = false, index = 0) {
             this.setData({
                 checked,
+                index,
             })
         },
     },

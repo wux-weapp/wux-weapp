@@ -3,8 +3,11 @@ import { $wuxSelect } from '../../dist/index'
 Page({
     data: {
         value1: '',
+        title1: '',
         value2: '',
+        title2: '',
         value3: '',
+        title3: '',
     },
     onClick1() {
         $wuxSelect('#wux-select1').open({
@@ -17,9 +20,11 @@ Page({
                 '记者',
                 '其他',
             ],
-            onConfirm: (value) => {
+            onConfirm: (value, index, options) => {
+                console.log(value, index, options)
                 this.setData({
-                    value1: value
+                    value1: value,
+                    title1: options[index],
                 })
             },
         })
@@ -64,9 +69,11 @@ Page({
                     value: '009',
                 },
             ],
-            onConfirm: (value) => {
+            onConfirm: (value, index, options) => {
+                console.log(value, index, options)
                 this.setData({
-                    value2: value
+                    value2: value,
+                    title2: options[index].title,
                 })
             },
         })
@@ -104,9 +111,11 @@ Page({
                     value: '6',
                 },
             ],
-            onConfirm: (value) => {
+            onConfirm: (value, index, options) => {
+                console.log(value, index, options)
                 this.setData({
-                    value3: value
+                    value3: value,
+                    title3: index.map((n) => options[n].title),
                 })
             },
         })

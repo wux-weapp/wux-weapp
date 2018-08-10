@@ -15,6 +15,16 @@ const defaults = {
     onCancel() {},
 }
 
+const getSelectIndex = ({ value = '', options = [], multiple = false }) => {
+    const origins = options.map((n) => n.value || n)
+
+    if (!multiple) {
+        return origins.indexOf(value)
+    }
+
+    return (value || []).map((n) => origins.indexOf(n))
+}
+
 Component({
     behaviors: [baseBehavior],
     externalClasses: ['wux-class'],
@@ -22,14 +32,18 @@ Component({
     methods: {
         open(opts = {}) {
             const options = this.$$mergeOptionsAndBindMethods(Object.assign({}, defaults, opts))
-            this.$$setData({ in: true, ...options })
+            const index = getSelectIndex(options)
+
+            this.$$setData({ in: true, ...options, index })
             this.$wuxBackdrop.retain()
         },
         close(callback) {
             this.$$setData({ in: false })
             this.$wuxBackdrop.release()
+
             if (typeof callback === 'function') {
-                callback(this.data.value)
+                const { value, index, options } = this.data
+                callback.call(this, value, index, options)
             }
         },
         onConfirm() {
@@ -40,15 +54,21 @@ Component({
         },
         onCheckboxChange(e) {
             const oldValue = this.data.value
-            const value = e.detail.value
+            const { value: newValue, checked } = e.detail
+            const value = checked ? [...oldValue, newValue] : oldValue.filter((n) => n !== newValue)
+            const index = getSelectIndex({ ...this.data, value })
 
-            this.setData({
-                value: value && !oldValue.includes(value) ? [...oldValue, value] : oldValue.filter((n) => n !== value),
+            this.$$setData({
+                value,
+                index,
             })
         },
         onRadioChange(e) {
-            this.setData({
-                value: e.detail.value,
+            const { value, index } = e.detail
+
+            this.$$setData({
+                value,
+                index,
             })
         },
     },
