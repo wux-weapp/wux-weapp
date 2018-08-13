@@ -1,5 +1,6 @@
 import baseBehavior from '../helpers/baseBehavior'
 import mergeOptionsToData from '../helpers/mergeOptionsToData'
+import { getTouchPoints, getPointsNumber, getPointsDistance } from '../helpers/gestures'
 
 const defaults = {
     indicatorDots: false,
@@ -11,12 +12,35 @@ const defaults = {
     circular: false,
     vertical: false,
     showDelete: true,
+    allowScale: true,
     current: 0,
     urls: [],
     ['delete']() {},
     cancel() {},
     onChange() {},
     onTap() { return true },
+}
+
+const MIN_RATIO = 1
+const MAX_RATIO = 1.2
+
+const defaultTouchOptions = {
+    scale: 1,
+    offset: [.5, 3],
+}
+
+const getImages = (urls = []) => {
+    return urls.map((n) => {
+        if (typeof n !== 'object') {
+            return {
+                image: n,
+                remark: '',
+                touch: { ...defaultTouchOptions },
+            }
+        }
+
+        return { ...n, touch: { ...defaultTouchOptions } }
+    })
 }
 
 Component({
@@ -37,17 +61,112 @@ Component({
          * 显示
          */
         show(opts = {}) {
-            const options = this.$$mergeOptionsAndBindMethods(Object.assign({}, defaults, opts))
+            const options = this.$$mergeOptionsAndBindMethods(Object.assign({}, defaults, opts, {
+                images: getImages(opts.urls),
+            }))
+
             this.$$setData({ in: true, ...options })
         },
         /**
          * 图片点击事件
          */
         onTap(e) {
-            const { index } = e.currentTarget.dataset
-            if (this.fns.onTap(index, this.data.urls) === true) {
-                this.hide()
+            if (this.allowItemClick) {
+                const { index } = e.currentTarget.dataset
+                if (this.fns.onTap(index, this.data.urls) === true) {
+                    this.hide()
+                }
             }
+        },
+        /**
+         * 手指触摸动作开始
+         */
+        onTouchStart(e) {
+            this.allowItemClick = true
+
+            if (!this.data.allowScale || getPointsNumber(e) === 1 || this.touching) {
+                return false
+            }
+
+            const p1 = getTouchPoints(e)
+            const p2 = getTouchPoints(e, 1)
+            const distance = getPointsDistance(p1, p2)
+
+            this.touching = false
+            this.prevDistance = distance
+
+            this.$$setData({
+                transition: 'none',
+            })
+        },
+        /**
+         * 手指触摸后移动
+         */
+        onTouchMove(e) {
+            if (!this.data.allowScale || getPointsNumber(e) === 1 || this.isRendered) {
+                return false
+            }
+
+            const p1 = getTouchPoints(e)
+            const p2 = getTouchPoints(e, 1)
+            const distance = getPointsDistance(p1, p2)
+            const { touch, index } = e.currentTarget.dataset
+            const distanceDiff = distance - this.prevDistance
+            let scale = touch.scale + 0.005 * distanceDiff
+
+            if (index !== this.data.current) {
+                return false
+            }
+
+            if (scale <= touch.offset[0] * MIN_RATIO) {
+                scale = touch.offset[0] * MIN_RATIO
+            } else if (scale >= touch.offset[1] * MAX_RATIO) {
+                scale = touch.offset[1] * MAX_RATIO
+            }
+
+            const params = {
+                [`images[${index}].touch.scale`]: scale,
+            }
+
+            if (!this.touching) {
+                this.touching = true
+            }
+
+            this.prevDistance = distance
+            this.allowItemClick = false
+            this.isRendered = true
+
+            this.$$setData(params).then(() => (this.isRendered = false))
+        },
+        /**
+         * 手指触摸动作结束
+         */
+        onTouchEnd(e) {
+            if (!this.data.allowScale || !this.touching) {
+                return false
+            }
+
+            const { touch, index } = e.currentTarget.dataset
+            
+            let scale = touch.scale
+
+            if (scale <= 1) {
+                scale = 1
+            } else if (scale >= touch.offset[1] * MAX_RATIO) {
+                scale = touch.offset[1]
+            }
+
+            const params = {
+                [`images[${index}].touch.scale`]: scale,
+                transition: 'transform .3s',
+            }
+
+            this.touching = false
+
+            this.$$setData(params).then(() => {
+                // Allow click
+                setTimeout(() => (this.allowItemClick = true), 400)
+            })
         },
         /**
          * 点击删除按钮时会触发 delete 事件

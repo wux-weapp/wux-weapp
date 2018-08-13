@@ -174,6 +174,7 @@ Page({
 | options.circular | <code>boolean</code> | 是否采用衔接滑动 | false |
 | options.vertical | <code>boolean</code> | 滑动方向是否为纵向 | false |
 | options.showDelete | <code>boolean</code> | 是否显示删除按钮 | true |
+| options.allowScale | <code>boolean</code> | 是否支持手势缩放 | true |
 | options.current | <code>number</code> | 当前显示图片的索引值 | 0 |
 | options.urls | <code>array</code> | 需要预览的图片链接列表 | [] |
 | options.delete | <code>function</code> | 点击删除的回调函数，返回值为 true 时将会关闭组件 | - |
