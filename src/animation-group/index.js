@@ -1,11 +1,11 @@
 import baseBehavior from '../helpers/baseBehavior'
 
-export const ENTER = 'enter'
-export const ENTERING = 'entering'
-export const ENTERED = 'entered'
-export const EXIT = 'exit'
-export const EXITING = 'exiting'
-export const EXITED = 'exited'
+const ENTER = 'enter'
+const ENTERING = 'entering'
+const ENTERED = 'entered'
+const EXIT = 'exit'
+const EXITING = 'exiting'
+const EXITED = 'exited'
 
 const TRANSITION = 'transition'
 const ANIMATION = 'animation'
