@@ -1,0 +1,26 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">SegmentedControl</view>
+        <view class="page__desc">分段器</view>
+    </view>
+    <view class="page__bd">
+    	<view class="sub-title">Default</view>
+    	<wux-segmented-control values="{{ ['Segment1', 'Segment2'] }}" />
+    	<view class="sub-title">Theme</view>
+    	<wux-segmented-control theme="light" values="{{ ['Segment1', 'Segment2'] }}" />
+    	<wux-segmented-control theme="stable" values="{{ ['Segment1', 'Segment2'] }}" />
+    	<wux-segmented-control theme="positive" values="{{ ['Segment1', 'Segment2'] }}" />
+    	<wux-segmented-control theme="calm" values="{{ ['Segment1', 'Segment2'] }}" />
+    	<wux-segmented-control theme="balanced" values="{{ ['Segment1', 'Segment2'] }}" />
+    	<wux-segmented-control theme="energized" values="{{ ['Segment1', 'Segment2'] }}" />
+    	<wux-segmented-control theme="assertive" values="{{ ['Segment1', 'Segment2'] }}" />
+    	<wux-segmented-control theme="royal" values="{{ ['Segment1', 'Segment2'] }}" />
+    	<wux-segmented-control theme="dark" values="{{ ['Segment1', 'Segment2'] }}" />
+    	<view class="sub-title">Disabled</view>
+    	<wux-segmented-control disabled values="{{ ['Segment1', 'Segment2'] }}" />
+    	<view class="sub-title">DefaultCurrent</view>
+    	<wux-segmented-control default-current="2" values="{{ ['Segment1', 'Segment2', 'Segment3'] }}" />
+    	<view class="sub-title">Auto = false</view>
+    	<wux-segmented-control current="{{ current }}" auto="{{ false }}" values="{{ ['Segment1', 'Segment2', 'Segment3'] }}" bind:change="onChange" />
+    </view>
+</view>

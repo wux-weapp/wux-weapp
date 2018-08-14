@@ -160,6 +160,11 @@ Page({
                         url: '/pages/qrcode/index',
                     },
                     {
+                        title: 'SegmentedControl',
+                        remark: '分段器',
+                        url: '/pages/segmented-control/index',
+                    },
+                    {
                         title: 'Steps',
                         remark: '步骤条',
                         url: '/pages/steps/index',

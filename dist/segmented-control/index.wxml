@@ -1,0 +1,5 @@
+<view class="wux-class wux-segment {{ theme ? 'wux-segment--' + theme : '' }} {{ disabled ? 'wux-segment--disabled' : '' }}" wx:if="{{ values.length }}">
+    <block wx:for="{{ values }}" wx:key="index">
+    	<view class="wux-segment-item {{ activeKey === index ? 'wux-segment-item--current' : '' }}" data-index="{{ index }}" bindtap="onTap">{{ item }}</view>
+    </block>
+</view>
