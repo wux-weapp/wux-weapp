@@ -307,8 +307,3 @@
   background-color: #dfdfdf;
   color: #fff;
 }
-.wux-button__icon {
-  font-size: inherit !important;
-  margin-right: 16rpx;
-  vertical-align: middle;
-}

@@ -159,12 +159,4 @@
     &--stable&--hover {
         .button-hover(@stable);
     }
-
-    &__icon {
-        font-size: inherit !important;
-        margin-right: 8px;
-        // position: relative;
-        // top: -1px;
-        vertical-align: middle;
-    }
 }
