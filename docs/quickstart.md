@@ -36,7 +36,6 @@ demo/
   |-badge/
   |-button/
   |-helpers/
-  |-icon/
   |-index.js
 ```
 
