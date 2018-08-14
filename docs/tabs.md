@@ -121,7 +121,7 @@ Page({
 | current | <code>string</code> | 用于手动激活 tab 面板的 key，当 auto 为 false 时才生效 | - |
 | scroll | <code>boolean</code> | 是否开启横向滚动 | false |
 | auto | <code>boolean</code> | 是否自动控制激活 tab 面板 | true |
-| theme | <code>boolean</code> | 主题色，可选值为 light、stable、positive、calm、assertive、balanced、energized、royal、dark | balanced |
+| theme | <code>string</code> | 主题色，可选值为 light、stable、positive、calm、assertive、balanced、energized、royal、dark | balanced |
 | bind:change | <code>function</code> | 切换面板的回调函数 | - |
 
 ### Tab
