@@ -1,3 +1,18 @@
+# v 3.0.4 (2018-08-15)
+
+- 增加组件：Popup - 弹出框
+- 增加组件：Icon - 图标
+- 增加组件：Divider - 分割线
+- 增加组件：SegmentedControl - 分段器
+- 增加组件：Grid - 宫格
+- 更新组件：Dialog - 对话框 基于 Popup 封装 Dialog 组件
+- 更新组件：Gallery - 画廊 新增 allowScale 属性
+- 更新组件：Row - 新增 gutter 属性
+- 更新组件：InputNumber - 数字输入框 语法有变动具体使用方法请参考对应文档
+- 更新组件：Rater - 评分 新增 icon 属性，支持传入图标
+- 更新组件：Toast - 提示框 新增 icon 属性，支持传入图标
+- 更新组件：Select - 下拉框 callback 新增 index、options 属性
+
 # v 3.0.3 (2018-08-03)
 
 - 增加组件：Select - 下拉框
