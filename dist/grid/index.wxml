@@ -1,0 +1,16 @@
+<view class="wux-class wux-grid {{ bordered ? 'wux-grid--bordered' : '' }} {{ square ? 'wux-grid--square' : '' }}" hover-class="wux-grid--hover" style="width: {{ width }}" bindtap="onTap">
+    <view class="wux-grid__content">
+        <view class="wux-grid__inner">
+            <view class="wux-grid__hd">
+                <image class="wux-grid__thumb" src="{{ thumb }}" wx:if="{{ thumb }}" />
+                <block wx:else>
+                    <slot name="header"></slot>
+                </block>
+            </view>
+            <view class="wux-grid__bd">
+                <view class="wux-grid__label" wx:if="{{ label }}">{{ label }}</view>
+                <slot></slot>
+            </view>
+        </view>
+    </view>
+</view>

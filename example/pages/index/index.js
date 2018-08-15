@@ -22,6 +22,11 @@ Page({
             {
                 title: '布局组件',
                 children: [{
+                        title: 'Grid',
+                        remark: '宫格',
+                        url: '/pages/grid/index',
+                    },
+                    {
                         title: 'Layout',
                         remark: '栅格布局',
                         url: '/pages/layout/index',

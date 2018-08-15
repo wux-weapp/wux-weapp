@@ -20,6 +20,7 @@
         "pages/filterbar/index",
         "pages/floating-button/index",
         "pages/gallery/index",
+        "pages/grid/index",
         "pages/icon/index",
         "pages/input-number/index",
         "pages/keyboard/index",

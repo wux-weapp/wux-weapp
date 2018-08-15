@@ -1,0 +1,3 @@
+<view class="wux-class wux-grids {{ bordered ? 'wux-grids--bordered' : '' }}">
+    <slot></slot>
+</view>
