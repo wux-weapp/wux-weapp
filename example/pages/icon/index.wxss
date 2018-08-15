@@ -1,44 +1,4 @@
 /* pages/icon/index.wxss */
-
-.segment {
-    display: flex;
-    border-radius: 5px;
-    overflow: hidden;
-    min-height: 27px;
-    opacity: 1;
-    margin: 0 15px 15px;
-}
-
-.segment-item {
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-    color: #33cd5f;
-    font-size: 14px;
-    line-height: 1;
-    transition: background .2s;
-    position: relative;
-    border: 1px solid #33cd5f;
-    width: 100%;
-    box-sizing: border-box;
-    border-left-width: 0;
-}
-
-.segment-item:first-child {
-    border-left-width: 1px;
-    border-radius: 5px 0 0 5px;
-}
-
-.segment-item:last-child {
-    border-radius: 0 5px 5px 0;
-}
-
-.segment-item-selected {
-    background: #33cd5f;
-    color: #fff;
-}
-
 .cell {
     text-align: center;
 }
