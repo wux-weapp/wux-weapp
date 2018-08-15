@@ -1,4 +1,4 @@
-/* pages/grid/index.wxss */
+/* pages/layout/index.wxss */
 .placeholder {
     margin: 10rpx;
     width: auto;

@@ -22,9 +22,9 @@ Page({
             {
                 title: '布局组件',
                 children: [{
-                        title: 'Grid',
+                        title: 'Layout',
                         remark: '栅格布局',
-                        url: '/pages/grid/index',
+                        url: '/pages/layout/index',
                     },
                     {
                         title: 'WhiteSpace',
