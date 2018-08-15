@@ -2,13 +2,15 @@ import { icons, logos } from './data'
 
 Page({
     data: {
-        selected: 'ios',
+        style: 'ios',
         icons,
         logos,
     },
-    onSelect(e) {
+    onChange(e) {
+        const style = e.detail.key === 0 ? 'ios' : 'md'
+
         this.setData({
-            selected: e.currentTarget.dataset.style,
+            style,
         })
     },
 })

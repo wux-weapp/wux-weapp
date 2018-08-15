@@ -4,17 +4,14 @@
         <view class="page__desc">图标</view>
     </view>
     <view class="page__bd">
-        <view class="segment">
-            <view class="segment-item {{ selected === 'ios' && 'segment-item-selected' }}" data-style="ios" bindtap="onSelect">iOS style</view>
-            <view class="segment-item {{ selected === 'md' && 'segment-item-selected' }}" data-style="md" bindtap="onSelect">Material style</view>
-        </view>
+        <wux-segmented-control values="{{ ['iOS style', 'Material style'] }}" bind:change="onChange" />
         <view class="sub-title">App icons</view>
         <wux-row>
             <block wx:for="{{ icons }}" wx:key="">
                 <wux-col span="3">
                     <view class="cell">
-                        <wux-icon type="{{ selected + '-' + item }}" />
-                        <view class="title">{{ selected + '-' + item }}</view>
+                        <wux-icon type="{{ style + '-' + item }}" />
+                        <view class="title">{{ style + '-' + item }}</view>
                     </view>
                 </wux-col>
             </block>
