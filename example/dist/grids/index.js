@@ -18,14 +18,17 @@ Component({
         col: {
             type: Number,
             value: 3,
+            observer: 'changeCurrent',
         },
         bordered: {
             type: Boolean,
             value: true,
+            observer: 'changeCurrent',
         },
         square: {
             type: Boolean,
             value: false,
+            observer: 'changeCurrent',
         },
     },
     methods: {
