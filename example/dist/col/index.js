@@ -8,19 +8,31 @@ Component({
     properties: {
         span: {
             value: 0,
-            type: Number
+            type: Number,
         },
         offset: {
             value: 0,
-            type: Number
+            type: Number,
         },
         pull: {
             value: 0,
-            type: Number
+            type: Number,
         },
         push: {
             value: 0,
-            type: Number
+            type: Number,
+        },
+    },
+    data: {
+        colStyle: '',
+    },
+    methods: {
+        updateStyle(colStyle) {
+            if (this.data.colStyle !== colStyle) {
+                this.setData({
+                    colStyle,
+                })
+            }
         },
     },
 })
