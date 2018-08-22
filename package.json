@@ -1,9 +1,11 @@
 {
   "name": "wux-weapp",
   "version": "3.0.4",
-  "description": "微信小程序 - 自定义组件",
-  "main": "src/index.js",
-  "dependencies": {
+  "description": "微信小程序自定义 UI 组件",
+  "main": "dist/index.js",
+  "miniprogram": "dist",
+  "dependencies": {},
+  "devDependencies": {
     "babel": "6.23.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -18,7 +20,6 @@
     "gulp-util": "^3.0.8",
     "through2": "^2.0.3"
   },
-  "devDependencies": {},
   "scripts": {
     "start": "cross-env NODE_ENV=development gulp",
     "build": "cross-env NODE_ENV=production gulp build"
