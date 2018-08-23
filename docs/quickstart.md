@@ -6,7 +6,8 @@
 
 ## 如何使用
 
-首先到 [GitHub](https://github.com/wux-weapp/wux-weapp/) 下载 `Wux Weapp` 的代码，然后 将`dist/` 目录拷贝到自己的项目中。按照如下的方式使用组件，以 Badge 为例，其它组件在对应的文档页查看：
+1. 通过 `npm` 安装，需要依赖小程序基础库 2.2.1 以上版本，同时依赖开发者工具的 `npm` 构建。具体详情可查阅 [官方 npm 文档](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)。
+2. 通过 [GitHub](https://github.com/wux-weapp/wux-weapp/) 下载 `Wux Weapp` 的代码，然后 将`dist/` 目录拷贝到自己的项目中。按照如下的方式使用组件，以 Badge 为例，其它组件在对应的文档页查看：
 
 ### 在 page.json 中引入组件
 
