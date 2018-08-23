@@ -1,6 +1,6 @@
 ![logo](_images/logo.png)
 
-# Wux Weapp <small>3.0.4</small>
+# Wux Weapp <small>3.0.5</small>
 
 <p align="center">
     <a href="https://github.com/wux-weapp/wux-weapp/" target="_blank">
@@ -9,7 +9,6 @@
 	<a href="https://github.com/wux-weapp/wux-weapp/fork" target="_blank">
 		<img alt="fork this repo" src="http://githubbadges.com/fork.svg?user=wux-weapp&repo=wux-weapp&style=flat" />
 	</a>
-	
 	<a href="https://www.npmjs.com/package/wux-weapp" target="_blank">
     	<img src='https://img.shields.io/npm/v/wux-weapp.svg' />
     </a>
