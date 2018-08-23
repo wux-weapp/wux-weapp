@@ -18,6 +18,8 @@ Page({
             exit: true,
             in: false,
         },
+        show: false,
+        status: '',
     },
     pickerChange(e) {
         const index = e.detail.value
@@ -43,4 +45,27 @@ Page({
     onExit() { console.log('onExit') },
     onExiting() { console.log('onExiting') },
     onExited() { console.log('onExited') },
+    onToggle() {
+        this.setData({
+            show: !this.data.show,
+        })
+    },
+    onChange(e) {
+        const { animateStatus } = e.detail
+        
+        switch (animateStatus) {
+            case 'entering':
+                this.setData({ status: 'Entering…' })
+                break
+            case 'entered':
+                this.setData({ status: 'Entered!' })
+                break
+            case 'exiting':
+                this.setData({ status: 'Exiting…' })
+                break
+            case 'exited':
+                this.setData({ status: 'Exited!' })
+                break
+        }
+    },
 })

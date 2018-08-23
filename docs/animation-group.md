@@ -62,20 +62,24 @@
                     <switch data-model="example.in" bindchange="switchChange" checked="{{ example.in }}" />
                 </view>
             </view>
+            <view class="weui-cell weui-cell_switch">
+                <view class="weui-cell__bd">Toggle</view>
+                <view class="weui-cell__ft">
+                    <switch bindchange="onToggle" checked="{{ show }}" />
+                </view>
+            </view>
         </view>
         <wux-animation-group wux-class="example" in="{{ example.in }}" enter="{{ example.enter }}" exit="{{ example.exit }}" class-names="{{ example.classNames }}" bind:click="onClick" bind:enter="onEnter" bind:entering="onEntering" bind:entered="onEntered" bind:exit="onExit"
             bind:exiting="onExiting" bind:exited="onExited">
             <view class="weui-article">
-                <view class="weui-article__h1">大标题</view>
-                <view class="weui-article__section">
-                    <view class="weui-article__title">章标题</view>
-                    <view class="weui-article__section">
-                        <view class="weui-article__h3">1.1 节标题</view>
-                        <view class="weui-article__p">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </view>
-                    </view>
+                <view class="weui-article__p">
+                    微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp
                 </view>
+            </view>
+        </wux-animation-group>
+        <wux-animation-group wux-class="example" in="{{ show }}" duration="{{ 1000 }}" unmountOnExit="{{ false }}" bind:change="onChange">
+            <view class="weui-article">
+                <view class="weui-article__p">{{ status }}</view>
             </view>
         </wux-animation-group>
     </view>
@@ -103,6 +107,8 @@ Page({
             exit: true,
             in: false,
         },
+        show: false,
+        status: '',
     },
     pickerChange(e) {
         const index = e.detail.value
@@ -128,6 +134,29 @@ Page({
     onExit() { console.log('onExit') },
     onExiting() { console.log('onExiting') },
     onExited() { console.log('onExited') },
+    onToggle() {
+        this.setData({
+            show: !this.data.show,
+        })
+    },
+    onChange(e) {
+        const { animateStatus } = e.detail
+        
+        switch (animateStatus) {
+            case 'entering':
+                this.setData({ status: 'Entering…' })
+                break
+            case 'entered':
+                this.setData({ status: 'Entered!' })
+                break
+            case 'exiting':
+                this.setData({ status: 'Exiting…' })
+                break
+            case 'exited':
+                this.setData({ status: 'Exited!' })
+                break
+        }
+    },
 })
 ```
 
@@ -145,6 +174,8 @@ Page({
 | type | <code>string</code> | 过渡动效的类型 | transition |
 | enter | <code>boolean</code> | 是否启用进入过渡 | true |
 | exit | <code>boolean</code> | 是否启用离开过渡 | true |
+| mountOnEnter | <code>boolean</code> | 首次进入过渡时是否懒挂载组件 | true |
+| unmountOnExit | <code>boolean</code> | 离开过渡完成时是否卸载组件 | true |
 | bind:click | <code>function</code> | 点击组件时触发的回调函数 | - |
 | bind:enter | <code>function</code> | 进入过渡的开始状态时触发的回调函数 | - |
 | bind:entering | <code>function</code> | 进入过渡的结束状态时触发的回调函数 | - |
@@ -152,3 +183,4 @@ Page({
 | bind:exit | <code>function</code> | 离开过渡的开始状态时触发的回调函数 | - |
 | bind:exiting | <code>function</code> | 离开过渡的结束状态时触发的回调函数 | - |
 | bind:exited | <code>function</code> | 离开过渡的完成状态时触发的回调函数 | - |
+| bind:change | <code>function</code> | 监听状态变化的回调函数 | - |
