@@ -1,3 +1,7 @@
+# v 3.0.6 (2018-08-24)
+
+- 更新组件：ActionSheet - 上拉菜单 修复组件定位问题 [#88](https://github.com/wux-weapp/wux-weapp/issues/88)
+
 # v 3.0.5 (2018-08-23)
 
 - 更新组件：AnimationGroup - 动画组 新增 mountOnEnter、unmountOnExit 属性，并修复一些已知问题 [#86](https://github.com/wux-weapp/wux-weapp/issues/86)
