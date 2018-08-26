@@ -33,6 +33,7 @@
         "pages/notification/index",
         "pages/popover/index",
         "pages/popup/index",
+        "pages/progress/index",
         "pages/prompt/index",
         "pages/qrcode/index",
         "pages/radio/index",

@@ -1,0 +1,55 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Progress</view>
+        <view class="page__desc">进度条</view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+        <view class="sub-title">Theme</view>
+        <wux-progress active-color="light" percent="50" />
+        <wux-white-space />
+        <wux-progress active-color="stable" percent="50" />
+        <wux-white-space />
+        <wux-progress active-color="positive" percent="50" />
+        <wux-white-space />
+        <wux-progress active-color="calm" percent="50" />
+        <wux-white-space />
+        <wux-progress active-color="assertive" percent="50" />
+        <wux-white-space />
+        <wux-progress active-color="balanced" percent="50" />
+        <wux-white-space />
+        <wux-progress active-color="royal" percent="50" />
+        <wux-white-space />
+        <wux-progress active-color="energized" percent="50" />
+        <wux-white-space />
+        <wux-progress active-color="dark" percent="50" />
+        <view class="sub-title">BackgroundColor</view>
+        <wux-progress background-color="#fff" percent="25" />
+        <wux-white-space />
+        <wux-progress background-color="#f3f3f3" percent="50" />
+        <wux-white-space />
+        <wux-progress background-color="#f8f8f8" percent="75" />
+        <view class="sub-title">No border</view>
+        <wux-progress bordered="{{ false }}" percent="25" />
+        <wux-white-space />
+        <wux-progress bordered="{{ false }}" percent="50" />
+        <wux-white-space />
+        <wux-progress bordered="{{ false }}" percent="75" />
+        <view class="sub-title">BarStyle</view>
+        <wux-progress bar-style="background-color: #5cb85c" percent="25" />
+        <wux-white-space />
+        <wux-progress bar-style="background-color: #5bc0de" percent="50" />
+        <wux-white-space />
+        <wux-progress bar-style="background-color: #f0ad4e" percent="75" />
+        <view class="sub-title">StrokeWidth</view>
+        <wux-progress stroke-width="8" percent="25" />
+        <wux-white-space />
+        <wux-progress stroke-width="10" percent="50" />
+        <wux-white-space />
+        <wux-progress stroke-width="12" percent="75" />
+        <view class="sub-title">ShowInfo</view>
+        <wux-progress show-info percent="{{ percent }}" />
+        <wux-progress show-info percent="{{ percent }}" />
+        <wux-progress show-info percent="{{ percent }}" />
+        <wux-button block type="light" bind:click="add">Add</wux-button>
+    </view>
+</view>

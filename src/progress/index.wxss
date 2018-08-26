@@ -1,0 +1,30 @@
+@import "../styles/base/fn.wxss";
+
+.wux-progress {
+	display: flex;
+    align-items: center;
+
+    &__outer {
+    	flex: 1;
+    }
+
+    &__inner {
+    	background-color: #f3f3f3;
+    }
+
+    &__bar {
+    	background-color: @balanced;
+    	transition: all .3s linear 0s;
+    }
+
+    &__text {
+		margin-left: 5px;
+		text-align: left;
+		vertical-align: middle;
+    }
+
+    &--bordered &__inner,
+    &--bordered &__bar {
+        border-radius: 100px;
+    }
+}

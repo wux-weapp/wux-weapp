@@ -234,6 +234,11 @@ Page({
                         url: '/pages/popup/index',
                     },
                     {
+                        title: 'Progress',
+                        remark: '进度条',
+                        url: '/pages/progress/index',
+                    },
+                    {
                         title: 'Spin',
                         remark: '加载中',
                         url: '/pages/spin/index',
