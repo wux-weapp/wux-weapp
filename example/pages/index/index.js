@@ -95,6 +95,11 @@ Page({
                         url: '/pages/accordion/index',
                     },
                     {
+                        title: 'Alert',
+                        remark: '警告框',
+                        url: '/pages/alert/index',
+                    },
+                    {
                         title: 'Avatar',
                         remark: '头像',
                         url: '/pages/avatar/index',

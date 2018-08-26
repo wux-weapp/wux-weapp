@@ -29,6 +29,7 @@
 * 数据展示
   
   * [Accordion 手风琴](accordion.md)
+  * [Alert 警告框](alert.md)
   * [Avatar 头像](avatar.md)
   * [Badge 徽章](badge.md)
   * [Barcode 条形码](barcode.md)

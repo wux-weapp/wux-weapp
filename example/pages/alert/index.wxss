@@ -1,0 +1,10 @@
+/* pages/alert/index.wxss */
+.thumb {
+	vertical-align: middle;
+	margin-right: 5px;
+}
+
+.close {
+	vertical-align: middle;
+	margin-left: 5px;
+}

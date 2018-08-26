@@ -1,0 +1,25 @@
+<wux-animation-group in="{{ visible }}" class-names="wux-animate--fadeIn">
+	<view class="wux-class wux-alert {{ theme ? 'wux-alert--' + theme : '' }}" bindtap="onClick">
+	    <view class="wux-alert__hd">
+	        <block wx:if="{{ thumb }}">
+	            <image class="wux-alert__thumb" src="{{ thumb }}" />
+	        </block>
+	        <block wx:else>
+	            <slot name="header"></slot>
+	        </block>
+	    </view>
+	    <view class="wux-alert__bd">
+	        <view wx:if="{{ title }}" class="wux-alert__text">{{ title }}</view>
+	        <view wx:if="{{ label }}" class="wux-alert__desc">{{ label }}</view>
+	        <slot></slot>
+	    </view>
+	    <view class="wux-alert__ft">
+	        <block wx:if="{{ closable }}">
+	        	<view class="wux-alert__closable" catchtap="onClose">×</view>
+	        </block>
+	        <block wx:else>
+	            <slot name="footer"></slot>
+	        </block>
+	    </view>
+	</view>
+</wux-animation-group>
