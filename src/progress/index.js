@@ -22,9 +22,9 @@ Component({
             type: String,
             value: '#f3f3f3',
         },
-        bordered: {
-            type: Boolean,
-            value: true,
+        shape: {
+            type: String,
+            value: 'circle',
         },
         barStyle: {
             type: String,

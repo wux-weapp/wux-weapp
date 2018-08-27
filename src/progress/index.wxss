@@ -23,8 +23,8 @@
 		vertical-align: middle;
     }
 
-    &--bordered &__inner,
-    &--bordered &__bar {
+    &--circle &__inner,
+    &--circle &__bar {
         border-radius: 100px;
     }
 }

@@ -24,7 +24,7 @@
   text-align: left;
   vertical-align: middle;
 }
-.wux-progress--bordered .wux-progress__inner,
-.wux-progress--bordered .wux-progress__bar {
+.wux-progress--circle .wux-progress__inner,
+.wux-progress--circle .wux-progress__bar {
   border-radius: 200rpx;
 }

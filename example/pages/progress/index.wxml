@@ -28,12 +28,12 @@
         <wux-progress background-color="#f3f3f3" percent="50" />
         <wux-white-space />
         <wux-progress background-color="#f8f8f8" percent="75" />
-        <view class="sub-title">No border</view>
-        <wux-progress bordered="{{ false }}" percent="25" />
+        <view class="sub-title">Shape</view>
+        <wux-progress shape="square" percent="25" />
         <wux-white-space />
-        <wux-progress bordered="{{ false }}" percent="50" />
+        <wux-progress shape="square" percent="50" />
         <wux-white-space />
-        <wux-progress bordered="{{ false }}" percent="75" />
+        <wux-progress shape="square" percent="75" />
         <view class="sub-title">BarStyle</view>
         <wux-progress bar-style="background-color: #5cb85c" percent="25" />
         <wux-white-space />

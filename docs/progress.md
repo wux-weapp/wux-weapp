@@ -50,12 +50,12 @@
         <wux-progress background-color="#f3f3f3" percent="50" />
         <wux-white-space />
         <wux-progress background-color="#f8f8f8" percent="75" />
-        <view class="sub-title">No border</view>
-        <wux-progress bordered="{{ false }}" percent="25" />
+        <view class="sub-title">Shape</view>
+        <wux-progress shape="square" percent="25" />
         <wux-white-space />
-        <wux-progress bordered="{{ false }}" percent="50" />
+        <wux-progress shape="square" percent="50" />
         <wux-white-space />
-        <wux-progress bordered="{{ false }}" percent="75" />
+        <wux-progress shape="square" percent="75" />
         <view class="sub-title">BarStyle</view>
         <wux-progress bar-style="background-color: #5cb85c" percent="25" />
         <wux-white-space />
@@ -109,5 +109,5 @@ Page({
 | activeColor | <code>string</code> | 已选择的进度条的颜色，可选值为 light、stable、positive、calm、assertive、balanced、energized、royal、dark | balanced |
 | backgroundColor | <code>string</code> | 未选择的进度条的颜色 | - |
 | barStyle | <code>string</code> | 进度样式 | - |
-| bordered | <code>boolean</code> | 是否有边框 | true |
+| shape | <code>string</code> | 形状，可选值为 circle、square | circle |
 | showInfo | <code>boolean</code> | 在进度条右侧显示百分比 | false |
