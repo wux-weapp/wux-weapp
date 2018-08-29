@@ -21,7 +21,7 @@ Component({
         icon: {
             type: null,
             value: defaultIcon,
-            observe(newVal) {
+            observer(newVal) {
                 this.setData({
                     resultIcon: getIcon(newVal),
                 })
