@@ -25,7 +25,7 @@ Component({
     data: {
         animateCss: '', // 动画样式
         animateStatus: EXITED, // 动画状态，可选值 entering、entered、exiting、exited
-        isFirstMounted: true, // 是否首次挂载
+        isMounting: false, // 是否首次挂载
     },
     properties: {
         // 触发组件进入或离开过渡的状态
@@ -33,7 +33,7 @@ Component({
             type: Boolean,
             value: false,
             observer(newVal) {
-                if (!this.data.isFirstMounted) {
+                if (this.data.isMounting) {
                     this.updated(newVal)
                 }
             },
@@ -52,6 +52,11 @@ Component({
         type: {
             type: String,
             value: TRANSITION,
+        },
+        // 首次挂载时是否触发进入过渡
+        appear: {
+            type: Boolean,
+            value: false,
         },
         // 是否启用进入过渡
         enter: {
@@ -109,10 +114,12 @@ Component({
         /**
          * 更新组件状态
          * @param {String} nextStatus 下一状态，ENTERING 或 EXITING
+         * @param {Boolean} mounting 是否首次挂载
          */
-        updateStatus(nextStatus) {
+        updateStatus(nextStatus, mounting = false) {
             if (nextStatus !== null) {
                 this.cancelNextCallback()
+                this.isAppearing = mounting
 
                 if (nextStatus === ENTERING) {
                     this.performEnter()
@@ -137,7 +144,7 @@ Component({
             }
 
             // 若已禁用进入过渡，则更新状态至 ENTERED
-            if (!this.data.enter) {
+            if (!this.isAppearing && !this.data.enter) {
                 return this.performEntered()
             }
 
@@ -146,14 +153,14 @@ Component({
             // 第三阶段：若已设置过渡的持续时间，则延迟指定时间后触发进入过渡完成 performEntered，否则等待触发 onTransitionEnd 或 onAnimationEnd
             this.safeSetData(enterParams, () => {
                 this.triggerEvent('change', { animateStatus: ENTER })
-                this.triggerEvent(ENTER)
+                this.triggerEvent(ENTER, { isAppearing: this.isAppearing })
 
                 // 由于有些时候不能正确的触发动画完成的回调，具体原因未知
                 // 所以采用延迟一帧的方式来确保可以触发回调
                 this.delayHandler(TIMEOUT, () => {
                     this.safeSetData(enteringParams, () => {
                         this.triggerEvent('change', { animateStatus: ENTERING })
-                        this.triggerEvent(ENTERING)
+                        this.triggerEvent(ENTERING, { isAppearing: this.isAppearing })
 
                         if (enter) {
                             this.delayHandler(enter, this.performEntered)
@@ -175,7 +182,7 @@ Component({
             // 第三阶段：设置进入过渡的完成状态，并触发 ENTERED 事件            
             this.safeSetData(enteredParams, () => {
                 this.triggerEvent('change', { animateStatus: ENTERED })
-                this.triggerEvent(ENTERED)
+                this.triggerEvent(ENTERED, { isAppearing: this.isAppearing })
             })
         },
         /**
@@ -295,12 +302,6 @@ Component({
                     nextStatus = ENTERING
                 }
             } else {
-                if (animateStatus === UNMOUNTED) {
-                    animateStatus = ENTERED
-                    this.setData({ animateStatus: ENTERED }, () => {
-                        this.triggerEvent('change', { animateStatus: ENTERED })
-                    })
-                }
                 if (animateStatus === ENTER || animateStatus === ENTERING || animateStatus === ENTERED) {
                     nextStatus = EXITING
                 }
@@ -375,22 +376,29 @@ Component({
         this.nextCallback = null
     },
     attached() {
-        // 默认状态
-        let animateStatus = EXITED
+        let animateStatus = null
+        let appearStatus = null
 
-        // 首次挂载时是否显示节点
-        if (this.data.unmountOnExit || this.data.mountOnEnter) {
-            animateStatus = UNMOUNTED
+        if (this.data.in) {
+            if (this.data.appear) {
+                animateStatus = EXITED
+                appearStatus = ENTERING
+            } else {
+                animateStatus = ENTERED
+            }
+        } else {
+            if (this.data.unmountOnExit || this.data.mountOnEnter) {
+                animateStatus = UNMOUNTED
+            } else {
+                animateStatus = EXITED
+            }
         }
 
         // 由于小程序组件首次挂载时 observer 事件总是优先于 attached 事件
-        // 所以使用 isFirstMounted 来强制优先触发 attached 事件
-        this.safeSetData({ animateStatus, isFirstMounted: false }, () => {
+        // 所以使用 isMounting 来强制优先触发 attached 事件
+        this.safeSetData({ animateStatus, isMounting: true }, () => {
             this.triggerEvent('change', { animateStatus })
-
-            if (this.data.in) {
-                this.updated(this.data.in)
-            }
+            this.updateStatus(appearStatus, true)
         })
     },
     detached() {

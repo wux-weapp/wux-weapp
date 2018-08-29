@@ -128,9 +128,9 @@ Page({
         })
     },
     onClick() { console.log('onClick') },
-    onEnter() { console.log('onEnter') },
-    onEntering() { console.log('onEntering') },
-    onEntered() { console.log('onEntered') },
+    onEnter(e) { console.log('onEnter', e.detail) },
+    onEntering(e) { console.log('onEntering', e.detail) },
+    onEntered(e) { console.log('onEntered', e.detail) },
     onExit() { console.log('onExit') },
     onExiting() { console.log('onExiting') },
     onExited() { console.log('onExited') },
@@ -172,6 +172,7 @@ Page({
 | classNames | <code>any</code> | 过渡的类名 | - |
 | duration | <code>any</code> | 过渡持续时间 | - |
 | type | <code>string</code> | 过渡动效的类型 | transition |
+| appear | <code>boolean</code> | 首次挂载时是否触发进入过渡 | false |
 | enter | <code>boolean</code> | 是否启用进入过渡 | true |
 | exit | <code>boolean</code> | 是否启用离开过渡 | true |
 | mountOnEnter | <code>boolean</code> | 首次进入过渡时是否懒挂载组件 | true |

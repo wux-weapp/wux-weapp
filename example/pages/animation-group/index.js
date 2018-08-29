@@ -39,9 +39,9 @@ Page({
         })
     },
     onClick() { console.log('onClick') },
-    onEnter() { console.log('onEnter') },
-    onEntering() { console.log('onEntering') },
-    onEntered() { console.log('onEntered') },
+    onEnter(e) { console.log('onEnter', e.detail) },
+    onEntering(e) { console.log('onEntering', e.detail) },
+    onEntered(e) { console.log('onEntered', e.detail) },
     onExit() { console.log('onExit') },
     onExiting() { console.log('onExiting') },
     onExited() { console.log('onExited') },
