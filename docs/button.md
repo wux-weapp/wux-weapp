@@ -18,6 +18,8 @@
 
 ### 示例
 
+!> 目前，设置了 form-type 的 button 只会对当前组件中的 form 有效。因而，将 button 封装在自定义组件中，而 from 在自定义组件外，将会使这个 button 的 form-type 失效。
+
 ```html
 <view class="page">
     <view class="page__hd">
