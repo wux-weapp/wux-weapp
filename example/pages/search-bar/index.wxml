@@ -1,0 +1,14 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">SearchBar</view>
+        <view class="page__desc">搜索栏</view>
+    </view>
+    <view class="page__bd">
+        <view class="sub-title">Normal</view>
+        <wux-search-bar maxlength="8" />
+        <view class="sub-title">Focus</view>
+        <wux-search-bar focus />
+        <view class="sub-title">Show cancel button</view>
+        <wux-search-bar show-cancel value="{{ value }}" auto="{{ false }}" placeholder="Search" bind:change="onChange" bind:focus="onFocus" bind:blur="onBlur" bind:confirm="onConfirm" bind:clear="onClear" bind:cancel="onCancel" />
+    </view>
+</view>

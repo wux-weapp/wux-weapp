@@ -22,6 +22,7 @@
   * [InputNumber 数字输入框](input-number.md)
   * [Radio 单选框](radio.md)
   * [Rater 评分](rater.md)
+  * [SearchBar 搜索栏](search-bar.md)
   * [Select 下拉框](select.md)
   * [Switch 滑动开关](switch.md)
   * [Upload 上传](upload.md)

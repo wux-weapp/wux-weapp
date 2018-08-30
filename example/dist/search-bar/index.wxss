@@ -1,0 +1,107 @@
+.wux-search-bar {
+  position: relative;
+  padding: 16rpx 20rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  box-sizing: border-box;
+  background-color: #EFEFF4;
+}
+.wux-search-bar:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 2rpx;
+  border-top: 2rpx solid #D9D9D9;
+  color: #D9D9D9;
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+}
+.wux-search-bar:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 2rpx;
+  border-bottom: 2rpx solid #D9D9D9;
+  color: #D9D9D9;
+  -webkit-transform-origin: 0 100%;
+          transform-origin: 0 100%;
+  -webkit-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+}
+.wux-search-bar__form {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  width: 100%;
+  height: 56rpx;
+  overflow: hidden;
+  background-color: #fff;
+  background-clip: padding-box;
+  border-radius: 6rpx;
+}
+.wux-search-bar__box {
+  position: relative;
+  padding-left: 60rpx;
+  padding-right: 60rpx;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+}
+.wux-search-bar__input {
+  padding: 8rpx 0;
+  width: 100%;
+  height: 56rpx;
+  min-height: inherit;
+  border: 0;
+  font-size: 28rpx;
+  line-height: 56rpx;
+  box-sizing: border-box;
+  background: transparent;
+}
+.wux-search-bar__label {
+  position: absolute;
+  top: 2rpx;
+  right: 2rpx;
+  bottom: 2rpx;
+  left: 2rpx;
+  z-index: 2;
+  border-radius: 6rpx;
+  text-align: center;
+  color: #808080;
+  background: #FFFFFF;
+}
+.wux-search-bar__text {
+  display: inline-block;
+  font-size: 28rpx;
+  vertical-align: middle;
+  margin-left: 10rpx;
+}
+.wux-search-bar__cancel {
+  margin-left: 20rpx;
+  line-height: 56rpx;
+  color: #33cd5f;
+  white-space: nowrap;
+}
+.wux-search-bar__icon {
+  vertical-align: middle;
+}
+.wux-search-bar__search {
+  position: absolute;
+  left: 20rpx;
+  top: 16rpx;
+}
+.wux-search-bar__clear {
+  position: absolute;
+  top: 16rpx;
+  right: 0;
+  padding: 0 20rpx;
+}

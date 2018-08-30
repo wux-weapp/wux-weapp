@@ -42,6 +42,7 @@
         "pages/result/index",
         "pages/result/success",
         "pages/result/error",
+        "pages/search-bar/index",
         "pages/segmented-control/index",
         "pages/select/index",
         "pages/spin/index",

@@ -71,6 +71,11 @@ Page({
                         url: '/pages/rater/index',
                     },
                     {
+                        title: 'SearchBar',
+                        remark: '搜索栏',
+                        url: '/pages/search-bar/index',
+                    },
+                    {
                         title: 'Select',
                         remark: '下拉框',
                         url: '/pages/select/index',
