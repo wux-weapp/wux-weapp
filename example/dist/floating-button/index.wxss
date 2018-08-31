@@ -2,41 +2,36 @@
   position: fixed;
   z-index: 1500;
 }
-.wux-speed-dial--light .wux-speed-dial__action,
-.wux-speed-dial--light .wux-speed-dial__button {
-  background-color: #ddd;
+.wux-speed-dial--topLeft {
+  left: 30rpx;
+  top: 30rpx;
 }
-.wux-speed-dial--stable .wux-speed-dial__action,
-.wux-speed-dial--stable .wux-speed-dial__button {
-  background-color: #b2b2b2;
+.wux-speed-dial--topRight {
+  right: 30rpx;
+  top: 30rpx;
 }
-.wux-speed-dial--positive .wux-speed-dial__action,
-.wux-speed-dial--positive .wux-speed-dial__button {
-  background-color: #387ef5;
+.wux-speed-dial--bottomLeft {
+  left: 30rpx;
+  bottom: 30rpx;
 }
-.wux-speed-dial--calm .wux-speed-dial__action,
-.wux-speed-dial--calm .wux-speed-dial__button {
-  background-color: #11c1f3;
+.wux-speed-dial--bottomRight {
+  right: 30rpx;
+  bottom: 30rpx;
 }
-.wux-speed-dial--assertive .wux-speed-dial__action,
-.wux-speed-dial--assertive .wux-speed-dial__button {
-  background-color: #ef473a;
+.wux-speed-dial--topLeft .wux-speed-dial__button:after,
+.wux-speed-dial--bottomLeft .wux-speed-dial__button:after {
+  left: 120rpx;
 }
-.wux-speed-dial--balanced .wux-speed-dial__action,
-.wux-speed-dial--balanced .wux-speed-dial__button {
-  background-color: #33cd5f;
+.wux-speed-dial--topRight .wux-speed-dial__button:after,
+.wux-speed-dial--bottomRight .wux-speed-dial__button:after {
+  right: 120rpx;
 }
-.wux-speed-dial--energized .wux-speed-dial__action,
-.wux-speed-dial--energized .wux-speed-dial__button {
-  background-color: #ffc900;
-}
-.wux-speed-dial--royal .wux-speed-dial__action,
-.wux-speed-dial--royal .wux-speed-dial__button {
-  background-color: #886aea;
-}
-.wux-speed-dial--dark .wux-speed-dial__action,
-.wux-speed-dial--dark .wux-speed-dial__button {
-  background-color: #444;
+.wux-speed-dial--topLeft .wux-speed-dial__buttons,
+.wux-speed-dial--topRight .wux-speed-dial__buttons {
+  bottom: inherit;
+  top: 100%;
+  margin-bottom: 0;
+  margin-top: 32rpx;
 }
 .wux-speed-dial__action {
   position: absolute;
@@ -70,8 +65,7 @@
           transition-duration: 0s;
   opacity: .8 !important;
 }
-.wux-speed-dial__icon,
-.wux-speed-dial__text {
+.wux-speed-dial__icon {
   display: inline-block;
   width: 40rpx;
   height: 40rpx;
@@ -79,13 +73,19 @@
   line-height: 1;
 }
 .wux-speed-dial__text {
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAQAAAAAYLlVAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAHdElNRQfhBAQLCR5MtjrbAAAAjUlEQVRo3u3ZMRKAIAxEUbDirp4nXnctFFDHBtDQ/O1Nnk6aHUMgZCBKMkmmNAtgOmL9M+IQQGVM95zljy8DAAAAAAAAAAAAAACALsDZcppSx7Q+WdtUvA5xffUtrjeA8/qQ21S9gc15/3Nfzw0M5O0G2kM5BQAAAAAAAAAAAAAAQGk33q0qZ/p/Q/JFdmei9usomnwIAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE3LTA0LTA0VDExOjA5OjMwKzA4OjAw1U4c3wAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNy0wNC0wNFQxMTowOTozMCswODowMKQTpGMAAAAASUVORK5CYII=");
-  background-repeat: no-repeat;
-  background-size: contain;
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
+  font-size: 40rpx;
+  line-height: 1;
   -webkit-transition: -webkit-transform 150ms cubic-bezier(0.4, 0, 1, 1);
   transition: -webkit-transform 150ms cubic-bezier(0.4, 0, 1, 1);
   transition: transform 150ms cubic-bezier(0.4, 0, 1, 1);
   transition: transform 150ms cubic-bezier(0.4, 0, 1, 1), -webkit-transform 150ms cubic-bezier(0.4, 0, 1, 1);
+}
+.wux-speed-dial__text--rotate {
+  -webkit-transform: scale(1) rotate(135deg);
+          transform: scale(1) rotate(135deg);
 }
 .wux-speed-dial__buttons {
   position: absolute;
@@ -134,7 +134,7 @@
 .wux-speed-dial__button + .wux-speed-dial__button {
   margin-bottom: 32rpx;
 }
-.wux-speed-dial__button:after {
+.wux-speed-dial__button--label.wux-speed-dial__button:after {
   content: attr(data-label);
   position: absolute;
   top: 50%;
@@ -152,14 +152,10 @@
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
-.wux-speed-dial__button--hover {
+.wux-speed-dial__button__button--hover {
   -webkit-transition-duration: 0s;
           transition-duration: 0s;
   opacity: .8 !important;
-}
-.wux-speed-dial--opened .wux-speed-dial__text {
-  -webkit-transform: scale(1) rotate(135deg);
-          transform: scale(1) rotate(135deg);
 }
 .wux-speed-dial--opened .wux-speed-dial__buttons {
   visibility: visible;
@@ -173,54 +169,39 @@
 .wux-speed-dial--opened .wux-speed-dial__button:after {
   opacity: 1;
 }
-.wux-speed-dial--opened .wux-speed-dial__button:nth-child(2) {
-  -webkit-transition-delay: 50ms;
-          transition-delay: 50ms;
+.wux-speed-dial--light .wux-speed-dial__action,
+.wux-speed-dial--light .wux-speed-dial__button {
+  background-color: #ddd;
 }
-.wux-speed-dial--opened .wux-speed-dial__button:nth-child(3) {
-  -webkit-transition-delay: .1s;
-          transition-delay: .1s;
+.wux-speed-dial--stable .wux-speed-dial__action,
+.wux-speed-dial--stable .wux-speed-dial__button {
+  background-color: #b2b2b2;
 }
-.wux-speed-dial--opened .wux-speed-dial__button:nth-child(4) {
-  -webkit-transition-delay: 150ms;
-          transition-delay: 150ms;
+.wux-speed-dial--positive .wux-speed-dial__action,
+.wux-speed-dial--positive .wux-speed-dial__button {
+  background-color: #387ef5;
 }
-.wux-speed-dial--opened .wux-speed-dial__button:nth-child(5) {
-  -webkit-transition-delay: .2s;
-          transition-delay: .2s;
+.wux-speed-dial--calm .wux-speed-dial__action,
+.wux-speed-dial--calm .wux-speed-dial__button {
+  background-color: #11c1f3;
 }
-.wux-speed-dial--opened .wux-speed-dial__button:nth-child(6) {
-  -webkit-transition-delay: 250ms;
-          transition-delay: 250ms;
+.wux-speed-dial--assertive .wux-speed-dial__action,
+.wux-speed-dial--assertive .wux-speed-dial__button {
+  background-color: #ef473a;
 }
-.wux-speed-dial--topLeft {
-  left: 30rpx;
-  top: 30rpx;
+.wux-speed-dial--balanced .wux-speed-dial__action,
+.wux-speed-dial--balanced .wux-speed-dial__button {
+  background-color: #33cd5f;
 }
-.wux-speed-dial--topRight {
-  right: 30rpx;
-  top: 30rpx;
+.wux-speed-dial--energized .wux-speed-dial__action,
+.wux-speed-dial--energized .wux-speed-dial__button {
+  background-color: #ffc900;
 }
-.wux-speed-dial--bottomLeft {
-  left: 30rpx;
-  bottom: 30rpx;
+.wux-speed-dial--royal .wux-speed-dial__action,
+.wux-speed-dial--royal .wux-speed-dial__button {
+  background-color: #886aea;
 }
-.wux-speed-dial--bottomRight {
-  right: 30rpx;
-  bottom: 30rpx;
-}
-.wux-speed-dial--topLeft .wux-speed-dial__button:after,
-.wux-speed-dial--bottomLeft .wux-speed-dial__button:after {
-  left: 120rpx;
-}
-.wux-speed-dial--topRight .wux-speed-dial__button:after,
-.wux-speed-dial--bottomRight .wux-speed-dial__button:after {
-  right: 120rpx;
-}
-.wux-speed-dial--topLeft .wux-speed-dial__buttons,
-.wux-speed-dial--topRight .wux-speed-dial__buttons {
-  bottom: inherit;
-  top: 100%;
-  margin-bottom: 0;
-  margin-top: 32rpx;
+.wux-speed-dial--dark .wux-speed-dial__action,
+.wux-speed-dial--dark .wux-speed-dial__button {
+  background-color: #444;
 }

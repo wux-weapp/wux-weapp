@@ -1,4 +1,4 @@
-<wux-floating-button id="wux-floating-button" visible="{{ visible }}" position="{{ position }}" theme="{{ theme }}" buttons="{{ buttons }}" bind:change="bindchange" bind:click="buttonClicked" />
+<wux-floating-button position="{{ position }}" theme="{{ theme }}" buttons="{{ buttons }}" bind:change="bindchange" bind:click="buttonClicked" />
 
 <view class="page">
     <view class="page__hd">
@@ -25,12 +25,6 @@
                     <picker bindchange="pickerChange2" value="{{ colorIndex }}" range="{{ colors }}">
                         <view class="weui-select weui-select_in-select-after">{{ colors[colorIndex] }}</view>
                     </picker>
-                </view>
-            </view>
-            <view class="weui-cell weui-cell_switch">
-                <view class="weui-cell__bd">Switch state</view>
-                <view class="weui-cell__ft">
-                    <switch bindchange="switchChange" checked="{{ opened }}" />
                 </view>
             </view>
         </view>

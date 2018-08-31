@@ -1,11 +1,11 @@
-<view class="wux-backdrop--transparent" wx:if="{{ backdrop && visible }}"></view>
-<view class="wux-speed-dial wux-class {{ position ? 'wux-speed-dial--' + position : '' }} {{ theme ? 'wux-speed-dial--' + theme : '' }} {{ visible ? 'wux-speed-dial--opened' : '' }}" catchtap="toggle">
+<view class="wux-backdrop--transparent" wx:if="{{ backdrop && buttonVisible }}"></view>
+<view class="wux-class wux-speed-dial {{ position ? 'wux-speed-dial--' + position : '' }} {{ theme ? 'wux-speed-dial--' + theme : '' }} {{ buttonVisible ? 'wux-speed-dial--opened' : '' }}" catchtap="onToggle">
 	<view class="wux-speed-dial__action" hover-class="wux-speed-dial__action--hover">
-		<text class="wux-speed-dial__text"></text>
+		<image class="wux-speed-dial__text {{ buttonVisible && actionRotate ? 'wux-speed-dial__text--rotate' : '' }}" src="{{ action }}" />
 	</view>
 	<view class="wux-speed-dial__buttons" wx:if="{{ buttons.length }}">
 		<block wx:for="{{ buttons }}" wx:key="">
-			<view class="wux-speed-dial__button {{ item.className }}" data-index="{{ index }}" data-value="{{ item }}" data-label="{{ item.label }}" catchtap="buttonClicked" hover-class="wux-speed-dial__button--hover">
+			<view class="wux-speed-dial__button {{ item.label ? 'wux-speed-dial__button--label' : '' }} {{ item.className }}" data-index="{{ index }}" data-value="{{ item }}" data-label="{{ item.label }}" catchtap="buttonClicked" hover-class="wux-speed-dial__button--hover" style="transition-delay: {{ index * 50 + 'ms' }}">
 				<image class="wux-speed-dial__icon" src="{{ item.icon }}" />
 			</view>
 		</block>
