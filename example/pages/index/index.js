@@ -214,6 +214,11 @@ Page({
                         url: '/pages/backdrop/index',
                     },
                     {
+                        title: 'Circle',
+                        remark: '进度环',
+                        url: '/pages/circle/index',
+                    },
+                    {
                         title: 'Dialog',
                         remark: '对话框',
                         url: '/pages/dialog/index',

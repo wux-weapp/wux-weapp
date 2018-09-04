@@ -14,6 +14,7 @@
         "pages/calendar/index",
         "pages/card/index",
         "pages/checkbox/index",
+        "pages/circle/index",
         "pages/countdown/index",
         "pages/countup/index",
         "pages/divider/index",

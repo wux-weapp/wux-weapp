@@ -55,6 +55,7 @@
 
   * [ActionSheet 上拉菜单](actionsheet.md)
   * [Backdrop 背景幕](backdrop.md)
+  * [Circle 进度环](circle.md)
   * [Dialog 对话框](dialog.md)
   * [Gallery 画廊](gallery.md)
   * [Loading 指示器](loading.md)

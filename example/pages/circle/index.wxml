@@ -1,0 +1,15 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Circle</view>
+        <view class="page__desc">进度环</view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+    	<view class="sub-title">Color</view>
+    	<wux-circle percent="80" color="#33cd5f">#33cd5f</wux-circle>
+    	<view class="sub-title">BackgroundColor</view>
+    	<wux-circle percent="80" background-color="#ef473a">#ef473a</wux-circle>
+    	<view class="sub-title">Other</view>
+    	<wux-circle percent="{{ percent }}">{{ percent + '%' }}</wux-circle>
+    	<wux-button block type="light" bind:click="add">Add</wux-button>
+    </view>
+</view>
