@@ -65,10 +65,9 @@ demo/
 
 <img src="./screenshots/screenshorts-01.png" style="display:inline;">
 
-## 相关链接
+## 文档
 
-- [Wux Weapp 源码地址](https://github.com/wux-weapp/wux-weapp/)
-- [Wux Weapp 文档地址](https://wux-weapp.github.io/wux-weapp/)
+[Document](https://wux-weapp.github.io/wux-weapp/)
 
 ## 讨论组
 
@@ -80,10 +79,8 @@ demo/
 
 请作者喝营养快线补补小身体(`・ω・´)
 
-<p>
-  <img src="http://pbqg2m54r.bkt.clouddn.com/alipay.jpg" width="256" height="350" style="display:inline;">
-  <img src="http://pbqg2m54r.bkt.clouddn.com/wxpay.jpg" width="256" height="350" style="display:inline;">
-</p>
+<img src="http://pbqg2m54r.bkt.clouddn.com/alipay.jpg" width="256" height="350" style="display:inline;">
+<img src="http://pbqg2m54r.bkt.clouddn.com/wxpay.jpg" width="256" height="350" style="display:inline;">
 
 ## 贡献
 
