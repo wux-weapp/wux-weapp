@@ -1,6 +1,6 @@
 # Progress 进度条
 
-用于展现某个任务的当前进度，预设 9 种颜色 `light`, `stable`, `positive`, `calm`, `assertive`, `balanced`, `energized`, `royal`, `dark` 可选用。
+用于展现某个任务的当前进度。
 
 ## 使用指南
 
@@ -26,24 +26,20 @@
         <view class="page__desc">进度条</view>
     </view>
     <view class="page__bd page__bd_spacing">
-        <view class="sub-title">Theme</view>
-        <wux-progress active-color="light" percent="50" />
+        <view class="sub-title">Status</view>
+        <wux-progress status="normal" percent="50" />
         <wux-white-space />
-        <wux-progress active-color="stable" percent="50" />
+        <wux-progress status="progress" percent="50" />
         <wux-white-space />
-        <wux-progress active-color="positive" percent="50" />
+        <wux-progress status="error" percent="50" />
         <wux-white-space />
-        <wux-progress active-color="calm" percent="50" />
+        <wux-progress status="success" percent="50" />
+        <view class="sub-title">ActiveColor</view>
+        <wux-progress active-color="#11c1f3" percent="50" />
         <wux-white-space />
-        <wux-progress active-color="assertive" percent="50" />
+        <wux-progress active-color="#ffc900" percent="50" />
         <wux-white-space />
-        <wux-progress active-color="balanced" percent="50" />
-        <wux-white-space />
-        <wux-progress active-color="royal" percent="50" />
-        <wux-white-space />
-        <wux-progress active-color="energized" percent="50" />
-        <wux-white-space />
-        <wux-progress active-color="dark" percent="50" />
+        <wux-progress active-color="#886aea" percent="50" />
         <view class="sub-title">BackgroundColor</view>
         <wux-progress background-color="#fff" percent="25" />
         <wux-white-space />
@@ -104,10 +100,11 @@ Page({
 
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
-| percent | <code>number</code> | 百分比 0~100 | - |
-| strokeWidth | <code>string</code> | 进度条线的宽度，单位 px | - |
-| activeColor | <code>string</code> | 已选择的进度条的颜色，可选值为 light、stable、positive、calm、assertive、balanced、energized、royal、dark | balanced |
-| backgroundColor | <code>string</code> | 未选择的进度条的颜色 | - |
+| percent | <code>number</code> | 百分比 0~100 | 0 |
+| strokeWidth | <code>string</code> | 进度条线的宽度，单位 px | 10 |
+| activeColor | <code>string</code> | 已选择的进度条的颜色，优先级高于 status 的默认颜色 | - |
+| backgroundColor | <code>string</code> | 未选择的进度条的颜色 | #f3f3f3 |
 | barStyle | <code>string</code> | 进度样式 | - |
-| shape | <code>string</code> | 形状，可选值为 circle、square | circle |
+| status | <code>string</code> | 状态，可选值为 normal、progress、error、success | normal |
+| shape | <code>string</code> | 形状，可选值为 round、square | round |
 | showInfo | <code>boolean</code> | 在进度条右侧显示百分比 | false |

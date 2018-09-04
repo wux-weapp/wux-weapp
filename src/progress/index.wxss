@@ -23,8 +23,37 @@
 		vertical-align: middle;
     }
 
-    &--circle &__inner,
-    &--circle &__bar {
+    &--round &__inner,
+    &--round &__bar {
         border-radius: 100px;
+    }
+
+    &--progress &__bar {
+        position: relative;
+
+        &:before {
+            content: '';
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #fff;
+            border-radius: 10px;
+            animation: progress 2s ease-in-out infinite;
+        }
+    }
+}
+
+@keyframes progress {
+    0% {
+        opacity: .3;
+        width: 0;
+    }
+
+    100% {
+        opacity: 0;
+        width: 100%;
     }
 }
