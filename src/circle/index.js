@@ -110,7 +110,7 @@ Component({
             this.ctx = this.ctx || wx.createCanvasContext('circle', this)
 
             // 清除画布
-            this.ctx.clearRect(0, 0, position, position)
+            this.ctx.clearRect(0, 0, size, size)
 
             // 绘制背景
             if (background) {
