@@ -89,6 +89,19 @@
                 <wux-badge dot>Tab 3</wux-badge>
             </wux-tab>
         </wux-tabs>
+        <view class="sub-title">With Swiper</view>
+        <wux-tabs wux-class="bordered" auto="{{ false }}" current="{{ key }}" bindchange="onTabsChange">
+            <block wx:for="{{ tabs }}" wx:key="key">
+                <wux-tab key="{{ item.key }}" title="{{ item.title }}"></wux-tab>
+            </block>
+        </wux-tabs>
+        <swiper current="{{ index }}" bindchange="onSwiperChange">
+            <block wx:for="{{ tabs }}" wx:key="key">
+                <swiper-item>
+                    <view class="content">{{ item.content }}</view>
+                </swiper-item>
+            </block>
+        </swiper>
     </view>
 </view>
 ```
@@ -97,12 +110,51 @@
 Page({
     data: {
         current: 'tab1',
+        tabs: [
+            {
+                key: 'tab1',
+                title: 'Tab 1',
+                content: 'Content of tab 1',
+            },
+            {
+                key: 'tab2',
+                title: 'Tab 2',
+                content: 'Content of tab 2',
+            },
+            {
+                key: 'tab3',
+                title: 'Tab 3',
+                content: 'Content of tab 3',
+            },
+        ],
     },
     onChange(e) {
         console.log('onChange', e)
         this.setData({
             current: e.detail.key,
         })
+    },
+    onTabsChange(e) {
+        console.log('onTabsChange', e)
+        const { key } = e.detail
+        const index = this.data.tabs.map((n) => n.key).indexOf(key)
+
+        this.setData({
+            key,
+            index,
+        })
+    },
+    onSwiperChange(e) {
+        console.log('onSwiperChange', e)
+        const { current: index, source } = e.detail
+        const { key } = this.data.tabs[index]
+
+        if (!!source) {
+            this.setData({
+                key,
+                index,
+            })
+        }
     },
 })
 ```

@@ -67,5 +67,18 @@
                 <wux-badge dot>Tab 3</wux-badge>
             </wux-tab>
         </wux-tabs>
+        <view class="sub-title">With Swiper</view>
+        <wux-tabs wux-class="bordered" auto="{{ false }}" current="{{ key }}" bindchange="onTabsChange">
+            <block wx:for="{{ tabs }}" wx:key="key">
+                <wux-tab key="{{ item.key }}" title="{{ item.title }}"></wux-tab>
+            </block>
+        </wux-tabs>
+        <swiper current="{{ index }}" bindchange="onSwiperChange">
+            <block wx:for="{{ tabs }}" wx:key="key">
+                <swiper-item>
+                    <view class="content">{{ item.content }}</view>
+                </swiper-item>
+            </block>
+        </swiper>
     </view>
 </view>
