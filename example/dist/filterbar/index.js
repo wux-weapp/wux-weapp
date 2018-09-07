@@ -247,6 +247,20 @@ Component({
         onScroll(e) {
             this.triggerEvent('scroll', e)
         },
+        /**
+         * 打开 select 或 filter 时触发的回调函数
+         * @param {Object} e 事件对象
+         */
+        onEnter(e) {
+            this.triggerEvent('open', e)
+        },
+        /**
+         * 关闭 select 或 filter 时触发的回调函数
+         * @param {Object} e 事件对象
+         */
+        onExit(e) {
+            this.triggerEvent('close', e)
+        },
     },
     created() {
         this.$wuxBackdrop = $wuxBackdrop('#wux-backdrop', this)

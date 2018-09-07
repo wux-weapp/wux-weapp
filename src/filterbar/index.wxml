@@ -9,7 +9,7 @@
         </block>
     </view>
     <block wx:for="{{ items }}" wx:key="">
-        <wux-animation-group wux-class="wux-filterbar__pop" in="{{ item.visible }}" class-names="wux-animate--slideInRight" wx:if="{{ item.type === 'filter' }}">
+        <wux-animation-group wux-class="wux-filterbar__pop" in="{{ item.visible }}" class-names="wux-animate--slideInRight" bind:enter="onEnter" bind:exit="onExit" wx:if="{{ item.type === 'filter' }}">
             <scroll-view class="wux-filterbar__scroll-view" scroll-y bindscroll="onScroll">
                 <block wx:for="{{ item.children }}" wx:for-item="p" wx:for-index="pIndex" wx:key="">
                     <view class="wux-filterbar__panel">
@@ -47,14 +47,14 @@
                 <view class="wux-filterbar__btn wux-filterbar__btn--danger" data-index="{{ index }}" bindtap="onConfirm">确定</view>
             </div>
         </wux-animation-group>
-        <wux-animation-group wux-class="wux-filterbar__select" in="{{ item.visible }}" class-names="wux-animate--fadeIn" wx:if="{{ item.type === 'radio' }}">
+        <wux-animation-group wux-class="wux-filterbar__select" in="{{ item.visible }}" class-names="wux-animate--fadeIn" bind:enter="onEnter" bind:exit="onExit" wx:if="{{ item.type === 'radio' }}">
             <wux-radio-group value="{{ common.getRadioValue(item.children) }}" bind:change="radioChange" data-index="{{ index }}"  data-item="{{ item }}">
                 <block wx:for="{{ item.children }}" wx:for-item="p" wx:key="{{ item.value }}">
                     <wux-radio title="{{ p.label }}" value="{{ p.value }}" />
                 </block>
             </wux-radio-group>
         </wux-animation-group>
-        <wux-animation-group wux-class="wux-filterbar__select" in="{{ item.visible }}" class-names="wux-animate--fadeIn" wx:if="{{ item.type === 'checkbox' }}">
+        <wux-animation-group wux-class="wux-filterbar__select" in="{{ item.visible }}" class-names="wux-animate--fadeIn" bind:enter="onEnter" bind:exit="onExit" wx:if="{{ item.type === 'checkbox' }}">
             <wux-checkbox-group name="a" value="{{ common.getCheckboxValue(item.children) }}" bind:change="checkboxChange" data-index="{{ index }}"  data-item="{{ item }}">
                 <block wx:for="{{ item.children }}" wx:for-item="p" wx:key="{{ item.value }}">
                     <wux-checkbox title="{{ p.label }}" value="{{ p.value }}" />

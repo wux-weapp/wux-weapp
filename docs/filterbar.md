@@ -18,13 +18,13 @@
 ### 示例
 
 ```html
-<view class="page">
+<view class="page" style="{{ pageStyle }}">
     <view class="page__hd">
         <view class="page__title">FilterBar</view>
         <view class="page__desc">筛选栏</view>
     </view>
     <view class="page__bd">
-        <wux-filterbar items="{{ items }}" bind:change="onChange" />
+        <wux-filterbar items="{{ items }}" bind:change="onChange" bind:open="onOpen" bind:close="onClose" />
         <view class="weui-panel weui-panel_access">
             <view class="weui-panel__bd">
                 <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{ repos }}" wx:key="">
@@ -331,6 +331,16 @@ Page({
             },
         })
     },
+    onOpen(e) {
+        this.setData({
+            pageStyle: 'height: 100%; overflow: hidden',
+        })
+    },
+    onClose(e) {
+        this.setData({
+            pageStyle: '',
+        })
+    },
 })
 ```
 
@@ -350,3 +360,5 @@ Page({
 | items[].groups | <code>array</code> | 所属分组 | [] |
 | bind:change | <code>function</code> | change 事件触发的回调函数 | - |
 | bind:scroll | <code>function</code> | scroll 事件触发的回调函数 | - |
+| bind:open | <code>function</code> | 打开 select 或 filter 时触发的回调函数 | - |
+| bind:close | <code>function</code> | 关闭 select 或 filter 时触发的回调函数 | - |
