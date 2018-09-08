@@ -122,7 +122,7 @@
 
 ## API
 
-### Grids
+### Grids props
 
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
@@ -130,10 +130,18 @@
 | bordered | <code>boolean</code> | 是否有边框 | true |
 | square | <code>boolean</code> | 每个格子是否固定为正方形 | false |
 
-### Grid
+### Grid props
 
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | thumb | <code>string</code> | 缩略图 | - |
 | label | <code>string</code> | 描述信息 | - |
 | bind:click | <code>function</code> | 点击事件 | - |
+
+
+### Grid slot
+
+| 名称 | 描述 |
+| --- | --- |
+| - | 自定义内容 |
+| header | 自定义缩略图，当 thumb 为 false 时生效 |
