@@ -80,6 +80,8 @@
 
 ## API
 
+### Badge props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | count | <code>number</code> | 展示的数字，大于 overflowCount 时显示为 ${overflowCount}+，为 0 时隐藏 | 0 |
@@ -88,3 +90,9 @@
 | showZero | <code>boolean</code> | 当数值为 0 时，是否展示 Badge | false |
 | status | <code>string</code> | 设置 Badge 为状态点，可选值为 success、processing、default、error、warning | - |
 | text | <code>string</code> | 在设置了 status 的前提下有效，设置状态点的文本 | - |
+
+### Badge slot
+
+| 名称 | 描述 |
+| --- | --- |
+| - | 自定义内容 |
