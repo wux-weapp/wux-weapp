@@ -40,6 +40,8 @@ Wux Weapp 的图标使用开源项目 [ionicons](https://ionicons.com/) 4.3.0 �
 
 ## API
 
+### Icon props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | type | <code>string</code> | 图标名称，可选值参考 [ionicons](https://ionicons.com/) 4.3.0 版本 | - |
