@@ -105,6 +105,8 @@
 
 ## API
 
+### Button props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | type | <code>string</code> | 按钮类型，可选值为 light、stable、positive、calm、assertive、balanced、energized、royal、dark | stable |
@@ -130,3 +132,9 @@
 | bind:getuserinfo | <code>function</code> | 用户点击该按钮时，会返回获取到的用户信息，回调的detail数据与wx.getUserInfo返回的一致 | - |
 | bind:contact | <code>function</code> | 客服消息回调 | - |
 | bind:getphonenumber | <code>function</code> | 获取用户手机号回调 | - |
+
+### Button slot
+
+| 名称 | 描述 |
+| --- | --- |
+| - | 自定义内容 |
