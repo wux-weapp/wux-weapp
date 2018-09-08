@@ -98,6 +98,8 @@ Page({
 
 ## API
 
+### Progress props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | percent | <code>number</code> | 百分比 0~100 | 0 |
