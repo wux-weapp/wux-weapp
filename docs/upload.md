@@ -135,6 +135,8 @@ Page({
 
 ## API
 
+### Upload props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | count | <code>number</code> | 最多可以选择的图片张数 | 9 |
@@ -159,3 +161,9 @@ Page({
 | bind:progress | <code>function</code> | 监听上传进度变化的回调函数 | - |
 | bind:preview | <code>function</code> | 点击文件时的回调函数 | - |
 | bind:remove | <code>function</code> | 点击删除图标时的回调函数 | - |
+
+### Upload slot
+
+| 名称 | 描述 |
+| --- | --- |
+| - | 自定义内容 |
