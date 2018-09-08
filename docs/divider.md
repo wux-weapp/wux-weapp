@@ -48,9 +48,17 @@
 
 ## API
 
+### Divider props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | position | <code>string</code> | 分割线文字的位置，可选值为 left、center、right | center |
 | dashed | <code>boolean</code> | 是否显示虚线 | false |
 | text | <code>string</code> | 文字 | - |
 | showText | <code>boolean</code> | 是否显示文字 | true |
+
+### Divider slot
+
+| 名称 | 描述 |
+| --- | --- |
+| - | 自定义内容 |
