@@ -44,6 +44,8 @@
 
 ## API
 
+### Media props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | title | <code>string</code> | 标题 | - |
@@ -51,3 +53,9 @@
 | thumbStyle | <code>string</code> | 标题图片样式 | - |
 | label | <code>string</code> | 标题辅助内容 | - |
 | align | <code>string</code> | 对齐方式，可选值为 start、center、end、baseline、stretch | center |
+
+### Media slot
+
+| 名称 | 描述 |
+| --- | --- |
+| - | 自定义内容 |
