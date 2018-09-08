@@ -143,6 +143,8 @@ Page({
 
 ## API
 
+### Rater props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | max | <code>number</code> | 最大值 | 5 |
