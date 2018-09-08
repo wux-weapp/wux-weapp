@@ -1,0 +1,64 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Image</view>
+        <view class="page__desc">图片</view>
+    </view>
+    <view class="page__bd">
+    	<view class="sub-title">Shape</view>
+    	<wux-row>
+            <wux-col span="4">
+                <wux-image wux-class="image" shape="rounded" src="https://picsum.photos/750/750/?random&s=1" />
+            </wux-col>
+            <wux-col span="4">
+                <wux-image wux-class="image" shape="circle" src="https://picsum.photos/750/750/?random&s=2" loading="Loading" />
+            </wux-col>
+            <wux-col span="4">
+                <wux-image wux-class="image" shape="thumbnail" src="https://picsum.photos/750/750/?random&s=3">
+                	<image src="https://loading.io/spinners/spinner/index.ajax-spinner-preloader.svg" slot="loading" />
+            	</wux-image>
+            </wux-col>
+        </wux-row>
+    	<view class="sub-title">Loading</view>
+    	<wux-row>
+            <wux-col span="4">
+                <wux-image wux-class="image" src="https://picsum.photos/750/750/?random&s=4" />
+            </wux-col>
+            <wux-col span="4">
+                <wux-image wux-class="image" src="https://picsum.photos/750/750/?random&s=5" loading="Loading" />
+            </wux-col>
+            <wux-col span="4">
+                <wux-image wux-class="image" src="https://picsum.photos/750/750/?random&s=6">
+                	<image src="https://loading.io/spinners/spinner/index.ajax-spinner-preloader.svg" slot="loading" />
+            	</wux-image>
+            </wux-col>
+        </wux-row>
+        <view class="sub-title">Empty</view>
+    	<wux-row>
+            <wux-col span="4">
+                <wux-image wux-class="image" src="" />
+            </wux-col>
+            <wux-col span="4">
+                <wux-image wux-class="image" src="" empty="Empty" />
+            </wux-col>
+            <wux-col span="4">
+                <wux-image wux-class="image" src="">
+                	<image src="data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" slot="empty" />
+            	</wux-image>
+            </wux-col>
+        </wux-row>
+    	<view class="sub-title">Error</view>
+    	<wux-row>
+            <wux-col span="4">
+                <wux-image wux-class="image" src="error" />
+            </wux-col>
+            <wux-col span="4">
+                <wux-image wux-class="image" src="error" error="Error" />
+            </wux-col>
+            <wux-col span="4">
+                <wux-image wux-class="image" src="error">
+                	<image src="http://pbqg2m54r.bkt.clouddn.com/logo.png" slot="error" />
+            	</wux-image>
+            </wux-col>
+        </wux-row>
+    </view>
+</view>

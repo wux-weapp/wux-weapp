@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "Image",
+    "usingComponents": {
+    	"wux-row": "../../dist/row/index",
+    	"wux-col": "../../dist/col/index",
+        "wux-image": "../../dist/image/index"
+    }
+}

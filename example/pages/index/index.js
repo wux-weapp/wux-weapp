@@ -145,6 +145,11 @@ Page({
                         url: '/pages/floating-button/index',
                     },
                     {
+                        title: 'Image',
+                        remark: '图片',
+                        url: '/pages/image/index',
+                    },
+                    {
                         title: 'List',
                         remark: '列表',
                         url: '/pages/list/index',
