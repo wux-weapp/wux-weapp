@@ -64,6 +64,8 @@
 
 ## API
 
+### Avatar props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | shape | <code>string</code> | 指定头像的形状，可选值为 circle、square | circle |
@@ -71,3 +73,9 @@
 | src | <code>string</code> | 图片类头像的资源地址 | - |
 | bodyStyle | <code>string</code> | 自定义样式 | - |
 | scale | <code>boolean</code> | 是否自动调整大小 | false |
+
+### Avatar slot
+
+| 名称 | 描述 |
+| --- | --- |
+| - | 自定义内容 |
