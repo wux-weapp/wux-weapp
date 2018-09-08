@@ -69,6 +69,8 @@ Page({
 
 ## API
 
+### Vcode props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | str | <code>string</code> | 验证码范围 | ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 |
