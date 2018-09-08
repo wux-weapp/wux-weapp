@@ -80,6 +80,8 @@ Page({
 
 ## API
 
+### Qrcode props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | data | <code>string</code> | 文本内容 | - |
