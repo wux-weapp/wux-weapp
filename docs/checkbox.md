@@ -105,7 +105,7 @@ Page({
 
 ## API
 
-### CheckboxGroup
+### CheckboxGroup props
 
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
@@ -115,7 +115,7 @@ Page({
 | label | <code>string</code> | 描述 | - |
 | bind:change | <code>function</code> | change 事件触发的回调函数 | - |
 
-### Checkbox
+### Checkbox props
 
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
