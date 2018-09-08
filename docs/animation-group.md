@@ -166,6 +166,8 @@ Page({
 
 ## API
 
+### AnimationGroup props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | in | <code>boolean</code> | 触发组件进入或离开过渡的状态 | false |
@@ -185,3 +187,9 @@ Page({
 | bind:exiting | <code>function</code> | 离开过渡的结束状态时触发的回调函数 | - |
 | bind:exited | <code>function</code> | 离开过渡的完成状态时触发的回调函数 | - |
 | bind:change | <code>function</code> | 监听状态变化的回调函数 | - |
+
+### AnimationGroup slot
+
+| 名称 | 描述 |
+| --- | --- |
+| - | 自定义内容 |
