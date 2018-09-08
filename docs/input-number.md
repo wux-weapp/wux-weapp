@@ -161,6 +161,8 @@ Page({
 
 ## API
 
+### InputNumber props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | min | <code>number</code> | 最小值 | -Infinity |
