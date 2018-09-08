@@ -72,6 +72,8 @@ Page({
 
 ## API
 
+### Refresher props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | pullingIcon | <code>string</code> | 下拉时图标 | wux-refresher__icon--arrow-down |
@@ -82,3 +84,9 @@ Page({
 | distance | <code>number</code> | 下拉的距离 | 30 |
 | bind:pulling | <code>function</code> | 下拉开始的回调函数 | - |
 | bind:refresh | <code>function</code> | 下拉完成的回调函数 | - |
+
+### Refresher slot
+
+| 名称 | 描述 |
+| --- | --- |
+| - | 自定义内容 |
