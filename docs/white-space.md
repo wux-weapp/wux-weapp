@@ -42,7 +42,15 @@
 
 ## API
 
+### WhiteSpace props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | size | <code>string</code> | 上下留白的间距，可选值为 small、default、large | default |
 | body-style | <code>string</code> | 自定义样式 | - |
+
+### WhiteSpace slot
+
+| 名称 | 描述 |
+| --- | --- |
+| - | 自定义内容 |
