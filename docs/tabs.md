@@ -165,7 +165,7 @@ Page({
 
 ## API
 
-### Tabs
+### Tabs props
 
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
@@ -176,10 +176,16 @@ Page({
 | theme | <code>string</code> | 主题色，可选值为 light、stable、positive、calm、assertive、balanced、energized、royal、dark | balanced |
 | bind:change | <code>function</code> | 切换面板的回调函数 | - |
 
-### Tab
+### Tab props
 
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | key | <code>string</code> | 对应 key | - |
 | title | <code>string</code> | 选项卡标题 | - |
 | disabled | <code>boolean</code> | 是否禁用 | false |
+
+### Tab slot
+
+| 名称 | 描述 |
+| --- | --- |
+| - | 自定义内容 |
