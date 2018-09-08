@@ -72,6 +72,8 @@ Page({
 
 ## API
 
+### SearchBar props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | defaultValue | <code>string</code> | 输入框的默认值，当 auto 为 true 时才生效 | - |
