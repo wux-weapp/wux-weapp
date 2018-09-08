@@ -71,18 +71,25 @@ Page({
 
 ## API
 
-### Steps
+### Steps props
 
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | current | <code>number</code> | 指定当前步骤，从 0 开始记数。在子 `Step` 元素中，可以通过 status 属性覆盖状态 | 0 |
 | direction | <code>string</code> | step 样式，可选值为 vertical、horizontal | horizontal |
 
-### Step
+### Step props
 
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | status | <code>string</code> | 指定状态，可选值为 wait、process、finish、error。当不配置该属性时，会使用 `Steps` 的 current 来自动指定状态 | - |
-| thumb | <code>string</code> | 标题 | - |
+| title | <code>string</code> | 标题 | - |
 | content | <code>string</code> | 步骤的详情描述 | - |
 | icon | <code>string</code> | 步骤图标 | - |
+
+### Step slot
+
+| 名称 | 描述 |
+| --- | --- |
+| title | 自定义标题 |
+| content | 自定义描述 |
