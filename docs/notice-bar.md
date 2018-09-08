@@ -67,6 +67,8 @@ Page({
 
 ## API
 
+### NoticeBar props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | mode | <code>string</code> | 提示类型，可选值为 closable、link | - |
@@ -78,3 +80,11 @@ Page({
 | trailing | <code>number</code> | 进入下一次滚动所需等待的时间 | 800 |
 | speed | <code>number</code> | 滚动显示的速度 | 25 |
 | bind:click | <code>function</code> | 点击关闭或者操作区域的回调函数 | - |
+
+### NoticeBar slot
+
+| 名称 | 描述 |
+| --- | --- |
+| - | 自定义内容 |
+| header | 自定义左侧内容 |
+| footer | 自定义右侧内容 |
