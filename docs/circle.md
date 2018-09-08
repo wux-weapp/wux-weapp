@@ -61,6 +61,8 @@ Page({
 
 ## API
 
+### Circle props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | percent | <code>number</code> | 百分比 0~100 | 0 |
@@ -75,3 +77,9 @@ Page({
 | animate | <code>boolean</code> | 进度环动画是否执行平滑动画效果 | true |
 | background | <code>boolean</code> | 是否显示进度环的运动轨迹 | true |
 | bind:change | <code>function</code> | 每一个动画帧之后的回调函数| - |
+
+### Circle slot
+
+| 名称 | 描述 |
+| --- | --- |
+| - | 自定义内容 |
