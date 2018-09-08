@@ -92,6 +92,8 @@
 
 ## API
 
+### Image props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | src | <code>string</code> | 图片资源地址 | - |
@@ -102,10 +104,19 @@
 | height | <code>any</code> | 默认高度，单位 px | 225 |
 | unmountOnEmpty | <code>boolean</code> | 资源不存在时是否卸载组件 | false |
 | unmountOnError | <code>boolean</code> | 资源加载失败时是否卸载组件 | false |
-| empty | <code>string</code> | 资源不存在的提示文字 | - |
-| loading | <code>string</code> | 资源加载中的提示文字 | - |
-| error | <code>string</code> | 资源加载失败的提示文字 | - |
+| empty | <code>string</code> | 资源不存在的提示内容 | - |
+| loading | <code>string</code> | 资源加载中的提示内容 | - |
+| error | <code>string</code> | 资源加载失败的提示内容 | - |
 | bind:change | <code>function</code> | 监听状态变化的回调函数 | - |
 | bind:load | <code>function</code> | 资源加载完成时的回调函数 | - |
 | bind:error | <code>function</code> | 资源加载失败时的回调函数 | - |
 | bind:click | <code>function</code> | 点击事件 | - |
+
+### Image slot
+
+| 名称 | 描述 |
+| --- | --- |
+| - | 自定义内容 |
+| empty | 自定义资源不存在的提示内容 |
+| loading | 自定义资源加载中的提示内容 |
+| error | 自定义资源加载失败的提示内容 |
