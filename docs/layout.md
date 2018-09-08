@@ -89,13 +89,13 @@
 
 ## API
 
-### Row
+### Row props
 
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | gutter | <code>number</code> | 栅格间隔 | 0 |
 
-### Col
+### Col props
 
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
@@ -103,3 +103,9 @@
 | pull | <code>number</code> | 栅格向左移动格数 | 0 |
 | push | <code>number</code> | 栅格向右移动格数 | 0 |
 | offset | <code>number</code> | 栅格左侧的间隔格数 | 0 |
+
+### Col slot
+
+| 名称 | 描述 |
+| --- | --- |
+| - | 自定义内容 |
