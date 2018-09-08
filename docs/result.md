@@ -63,6 +63,8 @@ Page({
 
 ## API
 
+### Result props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | icon | <code>any</code> | 图标的配置项 | - |
@@ -80,3 +82,11 @@ Page({
 | bind:getphonenumber | <code>function</code> | 获取用户手机号回调 | - |
 
 > 按钮列表：buttons 参数请参考 [Button](button.md)。
+
+### Result slot
+
+| 名称 | 描述 |
+| --- | --- |
+| - | 自定义标题或描述 |
+| header | 自定义图标 |
+| footer | 自定义底部内容 |
