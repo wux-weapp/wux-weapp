@@ -125,6 +125,8 @@ Page({
 
 ## API
 
+### Switch props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | name | <code>string</code> | 在表单中的字段名 | - |
