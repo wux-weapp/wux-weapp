@@ -49,7 +49,15 @@
 
 ## API
 
+### Tag props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | color | <code>string</code> | 标签色 | - |
 | bind:click | <code>function</code> | 点击事件 | - |
+
+### Tag slot
+
+| 名称 | 描述 |
+| --- | --- |
+| - | 自定义内容 |
