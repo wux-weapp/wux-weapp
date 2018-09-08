@@ -147,6 +147,8 @@ Page({
 
 ## API
 
+### Popover props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | theme | <code>string</code> | 气泡框主题，可选值为 light、dark | light |
@@ -159,3 +161,11 @@ Page({
 | visible | <code>boolean</code> | 用于手动控制浮层显隐，当 auto 为 false 时才生效 | false |
 | auto | <code>boolean</code> | 是否自动控制浮层显隐 | true |
 | bind:change | <code>function</code> | 显示隐藏的回调函数 | - |
+
+### Popover slot
+
+| 名称 | 描述 |
+| --- | --- |
+| - | 自定义内容 |
+| title | 自定义提示标题 |
+| content | 自定义提示内容 |
