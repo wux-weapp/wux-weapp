@@ -68,6 +68,8 @@
 
 ## API
 
+### Card props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | bordered | <code>boolean</code> | 是否有边框 | false |
@@ -76,3 +78,10 @@
 | thumb | <code>string</code> | 卡片标题图片 | - |
 | thumbStyle | <code>string</code> | 标题图片样式 | - |
 | extra | <code>string</code> | 卡片标题辅助内容 | - |
+
+### Card slot
+
+| 名称 | 描述 |
+| --- | --- |
+| body | 自定义内容 |
+| footer | 自定义尾部内容 |
