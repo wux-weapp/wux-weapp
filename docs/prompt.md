@@ -105,9 +105,10 @@ Page({
 
 ## API
 
+### Prompt props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
-| className | <code>string</code> | 自定义类名 | - |
 | icon | <code>string</code> | 图标 | - |
 | title | <code>string</code> | 标题 | - |
 | text | <code>string</code> | 文本 | - |
