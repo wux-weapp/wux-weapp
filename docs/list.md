@@ -49,14 +49,14 @@
 
 ## API
 
-### CellGroup
+### CellGroup props
 
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | title | <code>string</code> | 标题 | - |
 | label | <code>string</code> | 描述 | - |
 
-### Cell
+### Cell props
 
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
@@ -70,3 +70,11 @@
 | url | <code>string</code> | 跳转链接 | - |
 | delta | <code>number</code> | 当 open-type 为 'navigateBack' 时有效，表示回退的层数 | 1 |
 | bind:click | <code>function</code> | 点击事件 | - |
+
+### Cell slot
+
+| 名称 | 描述 |
+| --- | --- |
+| - | 自定义标题或描述 |
+| header | 自定义左侧缩略图 |
+| footer | 自定义右侧内容 |
