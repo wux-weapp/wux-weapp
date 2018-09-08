@@ -66,8 +66,16 @@ Page({
 
 ## API
 
+### Spin props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | tip | <code>string</code> | 当作为包裹元素时，可以自定义描述文案 | - |
 | size | <code>string</code> | 组件大小，可选值为 small/default/large | default |
 | spinning | <code>boolean</code> | 是否旋转 | false |
+
+### Spin slot
+
+| 名称 | 描述 |
+| --- | --- |
+| - | 自定义内容 |
