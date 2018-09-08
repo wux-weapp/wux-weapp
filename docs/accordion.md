@@ -90,7 +90,7 @@ Page({
 
 ## API
 
-### AccordionGroup
+### AccordionGroup props
 
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
@@ -102,7 +102,7 @@ Page({
 | label | <code>string</code> | 描述 | - |
 | bind:change | <code>function</code> | 切换面板的回调函数 | - |
 
-### Accordion
+### Accordion props
 
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
@@ -111,3 +111,10 @@ Page({
 | title | <code>string</code> | 左侧标题 | - |
 | content | <code>string</code> | 面板内容 | - |
 | disabled | <code>boolean</code> | 是否禁用 | - |
+
+### Accordion slot
+
+| 名称 | 描述 |
+| --- | --- |
+| - | 自定义内容 |
+| header | 自定义左侧标题 |
