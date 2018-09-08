@@ -82,6 +82,8 @@
 
 ## API
 
+### Alert props
+
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
 | theme | <code>string</code> | 主题色，可选值为 light、stable、positive、calm、assertive、balanced、energized、royal、dark | balanced |
@@ -90,3 +92,11 @@
 | label | <code>string</code> | 描述 | - |
 | closable | <code>boolean</code> | 是否显示关闭按钮 | false |
 | bind:click | <code>function</code> | 点击关闭或者操作区域的回调函数 | - |
+
+### Alert slot
+
+| 名称 | 描述 |
+| --- | --- |
+| - | 自定义标题或描述 |
+| header | 自定义缩略图 |
+| footer | 自定义右侧内容 |
