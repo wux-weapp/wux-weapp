@@ -11,7 +11,24 @@ Component({
         },
         spinning: {
             type: Boolean,
+            value: true,
+            observer: 'updated',
+        },
+        nested: {
+            type: Boolean,
             value: false,
+        },
+    },
+    data: {
+        spinVisible: true,
+    },
+    methods: {
+        updated(spinVisible) {
+            if (this.data.nested) {
+                this.setData({
+                    spinVisible,
+                })
+            }
         },
     },
 })

@@ -2,71 +2,61 @@
 
 .wux-spin {
 	position: relative;
-}
+    display: inline-block;
 
-.wux-spin__hd {
-	color: #108ee9;
-	vertical-align: middle;
-	text-align: center;
-	font-size: 12px;
-    display: block;
-    overflow: hidden;
-    position: absolute;
-	height: 100%;
-	max-height: 320px;
-	width: 100%;
-	z-index: 4;
-}
+    &__spinning {
+        opacity: 1;
+        position: static;
+        display: inline-block;
+        vertical-align: middle;
+        text-align: center;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #108ee9;
 
-.wux-spin__hd--spinning {
-	opacity: 1;
-	position: static;
-	display: inline-block;
-}
-
-.wux-spin__tip {
-	position: absolute;
-	top: 50%;
-	width: 100%;
-	padding-top: 6px;
-}
-
-.wux-spin--show-text .wux-spin__dots {
-	margin-top: -20px;
-}
-
-.wux-spin__bd--spin-blur {
-	overflow: hidden;
-	opacity: .7;
-	filter: blur(.5px);
-    transform: translateZ(0);
-    
-    &:after {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        background: #fff;
-        opacity: .3;
-        transition: all .3s;
-        z-index: 10;
+        &--nested {
+            vertical-align: middle;
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #108ee9;
+            display: block;
+            position: absolute;
+            height: 100%;
+            max-height: 320px;
+            width: 100%;
+            z-index: 4;
+        }
     }
-}
+        
+    &--nested {
+        display: block;
+    }
 
-.wux-spin__dots {
-    position: absolute;
-	top: 50%;
-	left: 50%;
-	margin: -10px;
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-	transform: rotate(45deg);
-	animation: rotate 1.2s infinite linear;
+    &--nested &__tip {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        padding-top: 6px;
+        text-shadow: 0 1px 2px #fff;
+    }
 
-    .wux-spin__dot {
+    &__dots {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        transform: rotate(45deg);
+        animation: rotate 1.2s infinite linear;
+    }
+
+    &--nested &__dots {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -10px;
+    }
+
+    &__dot {
         width: 9px;
         height: 9px;
         border-radius: 100%;
@@ -102,47 +92,79 @@
             animation-delay: 1.2s;
         }
     }
-}
 
-.wux-spin--sm {
-    .wux-spin__tip {
+    &--show-text&--nested &__dots {
+        margin-top: -20px;
+    }
+
+    &__container {
+        position: relative;
+        transition: opacity .3s;
+        zoom: 1;
+
+        &--blur {
+            overflow: hidden;
+            opacity: .5;
+            filter: blur(.5px);
+            transform: translateZ(0);
+            
+            /*&:after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                background: #fff;
+                opacity: .3;
+                transition: all .3s;
+                z-index: 10;
+            }*/
+        }
+    }
+
+    &--small &__tip {
         padding-top: 3px;
     }
 
-    &.wux-spin--show-text .wux-spin__dots {
+    &--small &__dots {
+        width: 14px;
+        height: 14px;
+    }
+
+    &--small&--nested &__dots {
+        margin: -7px;
+    }
+
+    &--small &__dot {
+        width: 6px;
+        height: 6px;
+    }
+
+    &--small&--show-text&--nested &__dots {
         margin-top: -17px;
     }
 
-    .wux-spin__dots {
-        width: 14px;
-        height: 14px;
-        margin: -7px;
-
-        .wux-spin__dot {
-            width: 6px;
-            height: 6px;
-        }
-    }
-}
-
-.wux-spin--lg {
-    .wux-spin__tip {
+    &--large &__tip {
         padding-top: 12px;
     }
 
-    &.wux-spin--show-text .wux-spin__dots {
-        margin-top: -26px;
-    }
-
-    .wux-spin__dots {
+    &--large &__dots {
         width: 32px;
         height: 32px;
-        margin: -16px;
+    }
 
-        .wux-spin__dot {
-            width: 14px;
-            height: 14px;
-        }
+    &--large&--nested &__dots {
+        margin: -16px;
+    }
+
+    &--large &__dot {
+        width: 14px;
+        height: 14px;
+    }
+
+    &--large&--show-text&--nested &__dots {
+        margin-top: -26px;
     }
 }
 

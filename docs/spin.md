@@ -10,6 +10,7 @@
 {
     "navigationBarTitleText": "Spin",
     "usingComponents": {
+        "wux-button": "../../dist/button/index",
         "wux-spin": "../../dist/spin/index"
     }
 }
@@ -23,38 +24,29 @@
         <view class="page__title">Spin</view>
         <view class="page__desc">加载中</view>
     </view>
-    <view class="page__bd">
-        <wux-spin spinning="{{ spinning }}" tip="Loading..." size="default">
-            <view class="weui-article">
-                <view class="weui-article__h1">大标题</view>
-                <view class="weui-article__section">
-                    <view class="weui-article__title">章标题</view>
-                    <view class="weui-article__section">
-                        <view class="weui-article__h3">1.1 节标题</view>
-                        <view class="weui-article__p">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </view>
-                    </view>
-                </view>
-            </view>
+    <view class="page__bd page__bd_spacing">
+        <view class="sub-title">Default</view>
+        <wux-spin wux-class="spin" />
+        <view class="sub-title">Size</view>
+        <wux-spin wux-class="spin" size="small" />
+        <wux-spin wux-class="spin" size="default" />
+        <wux-spin wux-class="spin" size="large" />
+        <view class="sub-title">Nested</view>
+        <wux-spin nested spinning="{{ spinning }}" tip="Loading...">
+            <view>微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp</view>
+            <view>微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp</view>
+            <view>微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp</view>
         </wux-spin>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_switch">
-                <view class="weui-cell__bd">Loading state</view>
-                <view class="weui-cell__ft">
-                    <switch bindchange="switchChange" checked="{{ spinning }}" />
-                </view>
-            </view>
-        </view>
+        <wux-button block type="light" bind:click="onClick">Switch State</wux-button>
     </view>
 </view>
 ```
 
 ```js
 Page({
-    switchChange(e) {
+    onClick(e) {
         this.setData({
-            spinning: e.detail.value,
+            spinning: !this.data.spinning,
         })
     },
 })
@@ -70,9 +62,10 @@ Page({
 
 | 参数 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
-| tip | <code>string</code> | 当作为包裹元素时，可以自定义描述文案 | - |
-| size | <code>string</code> | 组件大小，可选值为 small/default/large | default |
-| spinning | <code>boolean</code> | 是否旋转 | false |
+| tip | <code>string</code> | 自定义描述文案 | - |
+| size | <code>string</code> | 组件大小，可选值为 small、default、large | default |
+| spinning | <code>boolean</code> | 是否为加载中状态，仅当 nested 为 true 时生效 | true |
+| nested | <code>boolean</code> | 是否作为包裹元素 | false |
 
 ### Spin slot
 

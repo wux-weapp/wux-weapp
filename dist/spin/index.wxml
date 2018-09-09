@@ -1,5 +1,5 @@
-<view class="wux-class wux-spin {{ size === 'small' ? 'wux-spin--sm' : size === 'large' ? 'wux-spin--lg' : '' }} {{ tip ? 'wux-spin--show-text' : '' }}">
-    <wux-animation-group wux-class="wux-spin__hd wux-spin__hd--spinning" in="{{ spinning }}" class-names="wux-animate--fadeIn">
+<view class="wux-class wux-spin {{ size ? 'wux-spin--' + size : '' }} {{ nested ? 'wux-spin--nested' : '' }} {{ tip ? 'wux-spin--show-text' : '' }}">
+    <wux-animation-group wux-class="{{ !nested ? 'wux-spin__spinning' : 'wux-spin__spinning--nested' }}" in="{{ spinVisible }}" class-names="wux-animate--fadeIn">
         <view class="wux-spin__dots">
             <view class="wux-spin__dot">dot</view>
             <view class="wux-spin__dot">dot</view>
@@ -8,7 +8,7 @@
         </view>
         <view class="wux-spin__tip" wx:if="{{ tip }}">{{ tip }}</view>
     </wux-animation-group>
-    <view class="wux-spin__bd {{ spinning ? 'wux-spin__bd--spin-blur' : '' }}">
+    <view class="wux-spin__container {{ spinVisible ? 'wux-spin__container--blur' : '' }}" wx:if="{{ nested }}">
         <slot></slot>
     </view>
 </view>

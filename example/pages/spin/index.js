@@ -1,7 +1,7 @@
 Page({
-    switchChange(e) {
+    onClick(e) {
         this.setData({
-            spinning: e.detail.value,
+            spinning: !this.data.spinning,
         })
     },
 })
