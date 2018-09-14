@@ -8,6 +8,7 @@
 - 增加组件：TabBar - 标签栏
 - 更新组件：AnimationGroup - 动画组 新增 appear 属性
 - 更新组件：Result - 结果页 修复 observer 单词错误
+- 更新组件：Upload - 上传 Fix upload button style [#94](https://github.com/wux-weapp/wux-weapp/pull/94)
 
 # v 3.0.6 (2018-08-24)
 
