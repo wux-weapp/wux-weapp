@@ -1,3 +1,14 @@
+# v 3.1.0 (2018-09-14)
+
+- 增加组件：Alert - 警告框
+- 增加组件：Progress - 进度条
+- 增加组件：Circle - 进度环
+- 增加组件：Image - 图片
+- 增加组件：SearchBar - 搜索栏
+- 增加组件：TabBar - 标签栏
+- 更新组件：AnimationGroup - 动画组 新增 appear 属性
+- 更新组件：Result - 结果页 修复 observer 单词错误
+
 # v 3.0.6 (2018-08-24)
 
 - 更新组件：ActionSheet - 上拉菜单 修复组件定位问题 [#88](https://github.com/wux-weapp/wux-weapp/issues/88)
