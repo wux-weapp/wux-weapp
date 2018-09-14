@@ -1,0 +1,16 @@
+<view class="wux-class wux-tabbar-item {{ theme ? 'wux-tabbar-item--' + theme : '' }} {{ current ? 'wux-tabbar-item--current' : '' }} {{ disabled ? 'wux-tabbar-item--disabled' : '' }}" style="width: {{ width }}" bindtap="onTap">
+	<view class="wux-tabbar-item__icon">
+		<block wx:if="{{ current }}">
+			<slot name="icon-off"></slot>
+		</block>
+		<block wx:else>
+			<slot name="icon-on"></slot>
+		</block>
+	</view>
+	<view class="wux-tabbar-item__title">
+		<text wx:if="{{ title }}">{{ title }}</text>
+	    <block wx:else>
+	        <slot></slot>
+	    </block>
+	</view>
+</view>

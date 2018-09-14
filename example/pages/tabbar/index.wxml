@@ -1,0 +1,91 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">TabBar</view>
+        <view class="page__desc">标签栏</view>
+    </view>
+    <view class="page__bd">
+        <view class="sub-title">Default</view>
+        <wux-tabbar default-current="tab2">
+            <wux-tabbar-item key="tab1" title="Tab 1">
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-on" />
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-off" />
+            </wux-tabbar-item>
+            <wux-tabbar-item key="tab2" title="Tab 2">
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-on" />
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-off" />
+            </wux-tabbar-item>
+            <wux-tabbar-item key="tab3" title="Tab 3">
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-on" />
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-off" />
+            </wux-tabbar-item>
+        </wux-tabbar>
+        <view class="sub-title">Theme = positive</view>
+        <wux-tabbar default-current="1" theme="positive">
+            <wux-tabbar-item title="Tab 1">
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-on" />
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-off" />
+            </wux-tabbar-item>
+            <wux-tabbar-item title="Tab 2">
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-on" />
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-off" />
+            </wux-tabbar-item>
+            <wux-tabbar-item title="Tab 3">
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-on" />
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-off" />
+            </wux-tabbar-item>
+        </wux-tabbar>
+        <view class="sub-title">Disabled</view>
+        <wux-tabbar default-current="1">
+            <wux-tabbar-item title="Tab 1">
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-on" />
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-off" />
+            </wux-tabbar-item>
+            <wux-tabbar-item title="Tab 2" disabled>
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-on" />
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-off" />
+            </wux-tabbar-item>
+            <wux-tabbar-item title="Tab 3">
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-on" />
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-off" />
+            </wux-tabbar-item>
+        </wux-tabbar>
+        <view class="sub-title">Auto = false</view>
+        <wux-tabbar auto="{{ false }}" current="{{ current }}" bindchange="onChange">
+            <wux-tabbar-item title="Tab 1">
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-on" />
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-off" />
+            </wux-tabbar-item>
+            <wux-tabbar-item title="Tab 2">
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-on" />
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-off" />
+            </wux-tabbar-item>
+            <wux-tabbar-item title="Tab 3">
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-on" />
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-off" />
+            </wux-tabbar-item>
+        </wux-tabbar>
+        <view class="sub-title">With Badge</view>
+        <wux-tabbar default-current="1" position="bottom">
+            <wux-tabbar-item title="Tab 1">
+                <wux-badge count="1" slot="icon-on">
+                    <wux-icon wux-class="icon" type="ios-home" size="22" />
+                </wux-badge>
+                <wux-badge count="1" slot="icon-off">
+                    <wux-icon wux-class="icon" type="ios-home" size="22" />
+                </wux-badge>
+            </wux-tabbar-item>
+            <wux-tabbar-item title="Tab 2">
+                <wux-badge dot slot="icon-on">
+                    <wux-icon wux-class="icon" type="ios-home" size="22" />
+                </wux-badge>
+                <wux-badge dot slot="icon-off">
+                    <wux-icon wux-class="icon" type="ios-home" size="22" />
+                </wux-badge>
+            </wux-tabbar-item>
+            <wux-tabbar-item title="Tab 3">
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-on" />
+                <wux-icon wux-class="icon" type="ios-home" size="22" slot="icon-off" />
+            </wux-tabbar-item>
+        </wux-tabbar>
+    </view>
+</view>

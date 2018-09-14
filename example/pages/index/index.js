@@ -190,6 +190,11 @@ Page({
                         url: '/pages/steps/index',
                     },
                     {
+                        title: 'TabBar',
+                        remark: '标签栏',
+                        url: '/pages/tabbar/index',
+                    },
+                    {
                         title: 'Tabs',
                         remark: '标签页',
                         url: '/pages/tabs/index',
