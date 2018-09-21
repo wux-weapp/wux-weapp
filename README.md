@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://wux-weapp.github.io/wux-weapp/">
+    <a href="https://wux-weapp.github.io/wux-weapp-docs/">
         <img width="200" src="./screenshots/logo.png">
     </a>
 </p>
@@ -68,8 +68,8 @@ demo/
 ## 相关链接
 
 - [Wux Weapp 源码地址](https://github.com/wux-weapp/wux-weapp/)
-- [Wux Weapp 文档地址](https://wux-weapp.github.io/wux-weapp/)
-- [Wux Weapp 更新日志](https://wux-weapp.github.io/wux-weapp/#/changelog)
+- [Wux Weapp 文档地址](https://wux-weapp.github.io/wux-weapp-docs/)
+- [Wux Weapp 更新日志](https://wux-weapp.github.io/wux-weapp-docs/#/changelog)
 
 ## 讨论组
 
