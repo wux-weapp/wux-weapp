@@ -1,6 +1,6 @@
 <wux-backdrop id="wux-backdrop" wx:if="{{ mask }}" bind:click="onMaskClick" />
-<view class="wux-popup-position {{ position ? 'wux-popup-position--' + position : '' }}" style="{{ wrapStyle }}" hidden="{{ hidden }}">
-    <wux-animation-group wux-class="wux-popup" in="{{ visible }}" class-names="{{ transitionName }}" bind:exited="onExited">
+<view class="wux-popup-position {{ position ? 'wux-popup-position--' + position : '' }}" style="{{ wrapStyle }}">
+    <wux-animation-group wux-class="wux-popup" in="{{ popupVisible }}" class-names="{{ transitionName }}" bind:exited="onExited">
         <view class="wux-popup__content">
             <view class="wux-popup__hd">
                 <view class="wux-popup__title" wx:if="{{ title }}">{{ title }}</view>

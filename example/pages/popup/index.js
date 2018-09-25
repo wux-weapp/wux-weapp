@@ -38,7 +38,4 @@ Page({
     onClosed1() {
         console.log('onClosed')
     },
-    onChange1(e) {
-        console.log('onChange', e.detail.visible)
-    },
 })
