@@ -168,6 +168,7 @@ Component({
                 response: opts.defaultText ? opts.defaultText : '',
                 placeholder: opts.placeholder ? opts.placeholder : '',
                 maxlength: opts.maxlength ? parseInt(opts.maxlength) : '',
+                cursorSpacing: opts.cursorSpacing ? opts.cursorSpacing : 0
             }
 
             return this.open(Object.assign({
