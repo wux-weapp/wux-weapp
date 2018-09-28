@@ -4,7 +4,7 @@
         <text>{{ content }}</text>
         <view class="wux-popup__input-container" wx:if="{{ prompt }}">
             <label>
-                <input type="{{ prompt.fieldtype }}" class="wux-popup__input" value="{{ prompt.response }}" password="{{ prompt.password }}" placeholder="{{ prompt.placeholder }}" maxlength="{{ maxlength }}" bindinput="bindinput" />
+                <input type="{{ prompt.fieldtype }}" class="wux-popup__input" value="{{ prompt.response }}" password="{{ prompt.password }}" placeholder="{{ prompt.placeholder }}" maxlength="{{ maxlength }}" cursor-spacing="{{ prompt.cursorSpacing }}" bindinput="bindinput" />
             </label>
         </view>
     </view>
