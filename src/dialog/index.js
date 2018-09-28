@@ -154,6 +154,7 @@ Component({
          * @param {String} opts.defaultText 默认值
          * @param {String} opts.placeholder 输入框为空时占位符
          * @param {Number} opts.maxlength 最大输入长度，设置为 -1 的时候不限制最大长度
+         * @param {Number} opts.cursorSpacing 指定input光标与键盘的距离,单位px，默认为0
          * @param {String} opts.confirmText 确定按钮的文字，默认为"确定"
          * @param {String} opts.confirmType 确定按钮的类型
          * @param {Function} opts.onConfirm 确定按钮的点击事件
