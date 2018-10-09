@@ -1,0 +1,33 @@
+<wux-popup position="bottom" visible="{{ visible }}" bind:close="onPopupClose">
+	<view class="wux-class wux-cascader">
+	    <view class="wux-cascader__hd">
+	    	<view class="wux-cascader__title" wx:if="{{ title }}">{{ title }}</view>
+	    	<view class="wux-cascader__menus" wx:if="{{ activeOptions.length }}">
+	    		<block wx:for="{{ activeOptions }}" wx:key="">
+	    			<view class="wux-cascader__menu {{ activeIndex === index ? 'wux-cascader__menu--active' : '' }}" data-menu-index="{{ index }}" bindtap="onMenuClick">{{ item.label }}</view>
+	    		</block>
+	    	</view>
+	    </view>
+	    <view class="wux-cascader__bd" style="{{ bodyStyle }}">
+	    	<block wx:for="{{ showOptions }}" wx:for-item="option" wx:for-index="optionIndex" wx:key="">
+	    		<view class="wux-cascader__inner">
+		    		<scroll-view scroll-y class="wux-scroll-view-class wux-cascader__scroll-view">
+			    		<view class="wux-cascader__option">
+			    			<block wx:for="{{ option }}" wx:key="">
+					    		<view
+						    		class="wux-cascader__item {{ activeValue[optionIndex] === item.value ? 'wux-cascader__item--active' : '' }} {{ item.disabled ? 'wux-cascader__item--disabled' : '' }}"
+						    		data-option-index="{{ optionIndex }}"
+						    		data-item="{{ item }}"
+						    		bindtap="onItemSelect"
+					    		>
+					    			<text>{{ item.label }}</text>
+					    			<icon class="wux-cascader__icon" type="success_no_circle" size="16" color="#ef473a" wx:if="{{ activeValue[optionIndex] === item.value }}" />
+					    		</view>
+					    	</block>
+			    		</view>
+		    		</scroll-view>
+	    		</view>
+	    	</block>
+	    </view>
+	</view>
+</wux-popup>

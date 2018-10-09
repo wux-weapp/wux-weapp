@@ -51,6 +51,11 @@ Page({
                         url: '/pages/calendar/index',
                     },
                     {
+                        title: 'Cascader',
+                        remark: '级联选择器',
+                        url: '/pages/cascader/index',
+                    },
+                    {
                         title: 'Checkbox',
                         remark: '复选框',
                         url: '/pages/checkbox/index',

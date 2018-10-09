@@ -13,6 +13,7 @@
         "pages/button/index",
         "pages/calendar/index",
         "pages/card/index",
+        "pages/cascader/index",
         "pages/checkbox/index",
         "pages/circle/index",
         "pages/countdown/index",
