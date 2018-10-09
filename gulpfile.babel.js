@@ -46,7 +46,7 @@ const px2Rpx = () => {
         // 内容转换，处理好后，再转成 Buffer 形式
         const content = pxReplace(file.contents.toString())
 
-        file.contents = new Buffer(content)
+        file.contents = typeof Buffer.from === 'function' ? Buffer.from(content) : new Buffer(content)
 
         // 下面这两句基本是标配，可参考 through2 的 API
         this.push(file)
