@@ -48,6 +48,7 @@
         "pages/search-bar/index",
         "pages/segmented-control/index",
         "pages/select/index",
+        "pages/slider/index",
         "pages/spin/index",
         "pages/steps/index",
         "pages/switch/index",
