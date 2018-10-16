@@ -35,16 +35,16 @@ Component({
             type: Boolean,
             value: false,
             observer(newVal) {
-                if (!this.data.auto) {
+                if (this.data.controlled) {
                     this.setData({
                         buttonVisible: newVal,
                     })
                 }
             },
         },
-        auto: {
+        controlled: {
             type: Boolean,
-            value: true,
+            value: false,
         },
     },
     methods: {
@@ -53,7 +53,7 @@ Component({
          */
         fireEvents(buttonVisible) {
             if (this.data.buttonVisible !== buttonVisible) {
-                if (this.data.auto) {
+                if (!this.data.controlled) {
                     this.setData({
                         buttonVisible,
                     })
@@ -87,8 +87,8 @@ Component({
         buttonVisible: false,
     },
     attached() {
-        const { defaultVisible, visible, auto } = this.data
-        const buttonVisible = !auto ? visible : defaultVisible
+        const { defaultVisible, visible, controlled } = this.data
+        const buttonVisible = controlled ? visible : defaultVisible
 
         this.setData({
             buttonVisible,
