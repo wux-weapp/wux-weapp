@@ -17,8 +17,8 @@
         <wux-slider defaultValue="{{ [100] }}" showMark step="25" markStyle="{{ ['background-color: red', 'background-color: yellow', 'background-color: blue'] }}" />
         <view class="sub-title">Min and max</view>
     	<wux-slider defaultValue="{{ [12] }}" showValue step="11" min="0" max="88" />
-    	<view class="sub-title">Auto = false</view>
-    	<wux-slider value="{{ value }}" auto="{{ false }}" bind:change="onChange" bind:afterChange="afterChange" />
+    	<view class="sub-title">Controlled</view>
+    	<wux-slider value="{{ value }}" controlled bind:change="onChange" bind:afterChange="afterChange" />
         <view class="sub-title">Custom style</view>
         <wux-slider defaultValue="{{ [10] }}" railStyle="background-color: blue" trackStyle="background-color: red" handleStyle="background-color: yellow" />
         <wux-slider defaultValue="{{ [10, 30, 50] }}" railStyle="background-color: blue" trackStyle="{{ ['background-color: red', 'background-color: yellow'] }}" handleStyle="{{ ['background-color: yellow', 'background-color: red', 'background-color: blue'] }}" />

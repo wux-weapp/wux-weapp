@@ -43,14 +43,14 @@ Component({
             type: Array,
             value: [0],
             observer(newVal) {
-                if (!this.data.auto) {
+                if (this.data.controlled) {
                     this.updated(newVal)
                 }
             },
         },
-        auto: {
+        controlled: {
             type: Boolean,
-            value: true,
+            value: false,
         },
         disabled: {
             type: Boolean,
@@ -147,7 +147,7 @@ Component({
                     if (sliderValue[index] !== currentValue) {
                         const value = this.getValue(nextOffsets)
                         
-                        if (this.data.auto) {
+                        if (!this.data.controlled) {
                             this.setData({ offsets: nextOffsets, sliderValue: value })
                         }
 
@@ -246,8 +246,8 @@ Component({
         },
     },
     attached() {
-        const { defaultValue, value, auto } = this.data
-        const sliderValue = !auto ? value : defaultValue
+        const { defaultValue, value, controlled } = this.data
+        const sliderValue = controlled ? value : defaultValue
         
         this.updated(sliderValue)
         this.getMarks()
