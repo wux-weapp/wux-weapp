@@ -57,7 +57,7 @@ Component({
             type: Number,
             value: 0,
             observer(newVal, oldVal) {
-                if (!this.data.auto) {
+                if (this.data.controlled) {
                     this.updated(newVal)
                 }
             },
@@ -74,9 +74,9 @@ Component({
             type: String,
             value: 'balanced',
         },
-        auto: {
+        controlled: {
             type: Boolean,
-            value: true,
+            value: false,
         },
     },
     data: {
@@ -112,18 +112,18 @@ Component({
          * 数字计算函数
          */
         calculation(type, meta) {
-            const { disabledMax, disabledMin, inputValue, step, longpress, auto } = this.data
+            const { disabledMax, disabledMin, inputValue, step, longpress, controlled } = this.data
 
             // add
             if (type === 'add') {
                 if (disabledMax) return false
-                this.updated(inputValue + step, auto, true)
+                this.updated(inputValue + step, !controlled, true)
             }
 
             // sub
             if (type === 'sub') {
                 if (disabledMin) return false
-                this.updated(inputValue - step, auto, true)
+                this.updated(inputValue - step, !controlled, true)
             }
 
             // longpress
@@ -138,7 +138,7 @@ Component({
             this.clearInputTimer()
             this.inputTime = setTimeout(() => {
                 const value = toNumberWhenUserInput(e.detail.value)
-                this.updated(value, this.data.auto)
+                this.updated(value, !this.data.controlled)
                 this.triggerEvent('change', { value })
             }, 300)
         },
@@ -211,8 +211,8 @@ Component({
         },
     },
     attached() {
-        const { defaultValue, value, auto } = this.data
-        const inputValue = !auto ? value : defaultValue
+        const { defaultValue, value, controlled } = this.data
+        const inputValue = controlled ? value : defaultValue
 
         this.updated(inputValue)
     },
