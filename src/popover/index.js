@@ -114,16 +114,16 @@ Component({
             type: Boolean,
             value: false,
             observer(newVal) {
-                if (!this.data.auto) {
+                if (this.data.controlled) {
                     this.setData({
                         popoverVisible: newVal,
                     })
                 }
             },
         },
-        auto: {
+        controlled: {
             type: Boolean,
-            value: true,
+            value: false,
         },
     },
     data: {
@@ -161,10 +161,10 @@ Component({
             this.getPopoverStyle()
         },
         fireEvents() {
-            const { popoverVisible, auto } = this.data
+            const { popoverVisible, controlled } = this.data
             const nextVisible = !popoverVisible
 
-            if (auto) {
+            if (!controlled) {
                 this.setData({
                     popoverVisible: nextVisible,
                 })
@@ -179,8 +179,8 @@ Component({
         },
     },
     attached() {
-        const { popoverBodyStyle, defaultVisible, visible, auto } = this.data
-        const popoverVisible = !auto ? visible : defaultVisible
+        const { popoverBodyStyle, defaultVisible, visible, controlled } = this.data
+        const popoverVisible = controlled ? visible : defaultVisible
 
         this.setData({
             popoverVisible,
