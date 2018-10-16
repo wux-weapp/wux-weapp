@@ -59,19 +59,19 @@
         <wux-cell-group title="Custom text">
             <wux-cell title="Star" hover-class="none">
                 <view slot="footer">
-                    <wux-rater auto="{{ false }}" value="{{ value }}" bind:change="onChange" />
+                    <wux-rater controlled value="{{ value }}" bind:change="onChange" />
                     <text class="wux-rater__text">{{ value }} stars</text>
                 </view>
             </wux-cell>
         </wux-cell-group>
         <wux-cell-group title="Set callback">
             <wux-cell title="How embarrass" hover-class="none">
-                <wux-rater slot="footer" auto="{{ false }}" value="{{ 3.6 }}" star="囧" bind:change="onChange" />
+                <wux-rater slot="footer" controlled value="{{ value }}" star="囧" bind:change="onChange" />
             </wux-cell>
         </wux-cell-group>
-        <wux-cell-group title="Auto = false">
+        <wux-cell-group title="Controlled">
             <wux-cell title="Very good" hover-class="none">
-                <wux-rater slot="footer" auto="{{ false }}" value="{{ slider }}" star="屌" bind:change="sliderChange" />
+                <wux-rater slot="footer" controlled value="{{ slider }}" star="屌" bind:change="sliderChange" />
             </wux-cell>
             <wux-cell hover-class="none">
                 <slider value="{{ slider }}" show-value min="0" max="5" bindchange="sliderChange" />
