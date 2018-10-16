@@ -13,14 +13,14 @@ Component({
             type: Array,
             value: [],
             observer(newVal) {
-                if (!this.data.auto) {
+                if (this.data.controlled) {
                     this.setData({ activeValue: newVal }, () => this.getCurrentOptions(newVal))
                 }
             },
         },
-        auto: {
+        controlled: {
             type: Boolean,
-            value: true,
+            value: false,
         },
         title: {
             type: String,
@@ -152,7 +152,7 @@ Component({
             }
 
             // updated
-            this.updated(item, optionIndex, this.data.auto, this.onChange)
+            this.updated(item, optionIndex, !this.data.controlled, this.onChange)
         },
         /**
          * 组件关闭时的回调函数
@@ -187,8 +187,8 @@ Component({
         },
     },
     attached() {
-        const { defaultValue, value, auto } = this.data
-        const activeValue = !auto ? value : defaultValue
+        const { defaultValue, value, controlled } = this.data
+        const activeValue = controlled ? value : defaultValue
 
         this.setData({ activeValue }, () => this.getCurrentOptions(activeValue))
     },
