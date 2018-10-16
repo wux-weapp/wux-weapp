@@ -91,7 +91,7 @@
                 <view slot="content">Content</view>
             </wux-popover>
         </view>
-        <view class="sub-title">Auto = false</view>
+        <view class="sub-title">Controlled</view>
         <view class="button-sp-area">
             <wux-popover visible="{{ visible }}" controlled placement="top" title="Title" bind:change="onChange">
                 <view slot="content" bindtap="hide">Close</view>
