@@ -13,7 +13,7 @@ Component({
             type: Number,
             value: 0,
             observer(newVal) {
-            	if (!this.data.auto) {
+            	if (this.data.controlled) {
             		this.setData({
             			activeKey: newVal,
             		})
@@ -28,9 +28,9 @@ Component({
             type: Boolean,
             value: false,
         },
-        auto: {
+        controlled: {
             type: Boolean,
-            value: true,
+            value: false,
         },
     },
     data: {
@@ -52,7 +52,7 @@ Component({
         },
         setActiveKey(activeKey) {
             if (this.data.activeKey !== activeKey) {
-            	if (this.data.auto) {
+            	if (!this.data.controlled) {
             		this.setData({
                         activeKey,
                     })
@@ -63,8 +63,8 @@ Component({
         },
     },
     attached() {
-        const { defaultCurrent, current, auto } = this.data
-        const activeKey = !auto ? current : defaultCurrent
+        const { defaultCurrent, current, controlled } = this.data
+        const activeKey = controlled ? current : defaultCurrent
 
         if (this.data.activeKey !== activeKey) {
 	        this.setData({

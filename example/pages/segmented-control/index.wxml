@@ -20,7 +20,7 @@
     	<wux-segmented-control disabled values="{{ ['Segment1', 'Segment2'] }}" />
     	<view class="sub-title">DefaultCurrent</view>
     	<wux-segmented-control default-current="2" values="{{ ['Segment1', 'Segment2', 'Segment3'] }}" />
-    	<view class="sub-title">Auto = false</view>
-    	<wux-segmented-control current="{{ current }}" auto="{{ false }}" values="{{ ['Segment1', 'Segment2', 'Segment3'] }}" bind:change="onChange" />
+    	<view class="sub-title">Controlled</view>
+    	<wux-segmented-control current="{{ current }}" controlled values="{{ ['Segment1', 'Segment2', 'Segment3'] }}" bind:change="onChange" />
     </view>
 </view>
