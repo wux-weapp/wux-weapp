@@ -22,14 +22,14 @@
             <wux-tab disabled key="tab2" title="Tab 2"></wux-tab>
             <wux-tab key="tab3" title="Tab 3"></wux-tab>
         </wux-tabs>
-        <view class="sub-title">Auto = false</view>
-        <wux-tabs auto="{{ false }}" current="{{ current }}" bindchange="onChange">
+        <view class="sub-title">Controlled</view>
+        <wux-tabs controlled current="{{ current }}" bindchange="onChange">
             <wux-tab key="tab1" title="Tab 1"></wux-tab>
             <wux-tab key="tab2" title="Tab 2"></wux-tab>
             <wux-tab key="tab3" title="Tab 3"></wux-tab>
         </wux-tabs>
         <view class="sub-title">Slot</view>
-        <wux-tabs auto="{{ false }}" current="{{ current }}" bindchange="onChange">
+        <wux-tabs controlled current="{{ current }}" bindchange="onChange">
             <wux-tab disabled key="tab1">
                 <image src="http://pbqg2m54r.bkt.clouddn.com/logo.png" style="width: 20px; height: 20px; margin-right: 5px;" />
                 <text>Tab 1</text>
@@ -44,7 +44,7 @@
             </wux-tab>
         </wux-tabs>
         <view class="sub-title">Scroll</view>
-        <wux-tabs auto="{{ false }}" scroll current="{{ current }}" bindchange="onChange">
+        <wux-tabs controlled scroll current="{{ current }}" bindchange="onChange">
             <wux-tab key="tab1" title="Tab 1"></wux-tab>
             <wux-tab key="tab2" title="Tab 2"></wux-tab>
             <wux-tab key="tab3" title="Tab 3"></wux-tab>
@@ -56,7 +56,7 @@
             <wux-tab key="tab9" title="Tab 9"></wux-tab>
         </wux-tabs>
         <view class="sub-title">Badge</view>
-        <wux-tabs auto="{{ false }}" current="{{ current }}" bindchange="onChange">
+        <wux-tabs controlled current="{{ current }}" bindchange="onChange">
             <wux-tab key="tab1">
                 <wux-badge count="3">Tab 1</wux-badge>
             </wux-tab>
@@ -68,7 +68,7 @@
             </wux-tab>
         </wux-tabs>
         <view class="sub-title">With Swiper</view>
-        <wux-tabs wux-class="bordered" auto="{{ false }}" current="{{ key }}" bindchange="onTabsChange">
+        <wux-tabs wux-class="bordered" controlled current="{{ key }}" bindchange="onTabsChange">
             <block wx:for="{{ tabs }}" wx:key="key">
                 <wux-tab key="{{ item.key }}" title="{{ item.title }}"></wux-tab>
             </block>
