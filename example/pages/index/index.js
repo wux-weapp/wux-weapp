@@ -61,6 +61,11 @@ Page({
                         url: '/pages/checkbox/index',
                     },
                     {
+                        title: 'Input',
+                        remark: '文本输入框',
+                        url: '/pages/input/index',
+                    },
+                    {
                         title: 'InputNumber',
                         remark: '数字输入框',
                         url: '/pages/input-number/index',
