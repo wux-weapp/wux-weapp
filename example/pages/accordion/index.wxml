@@ -29,7 +29,7 @@
             <wux-accordion title="Accordion 2">微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp</wux-accordion>
             <wux-accordion title="Accordion 3">微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp</wux-accordion>
         </wux-accordion-group>
-        <wux-accordion-group title="Auto = false" auto="{{ false }}" current="{{ current }}" bind:change="onChange">
+        <wux-accordion-group title="Controlled" controlled current="{{ current }}" bind:change="onChange">
             <wux-accordion title="Accordion 1" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>
             <wux-accordion title="Accordion 2" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>
             <wux-accordion title="Accordion 3" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>

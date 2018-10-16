@@ -24,9 +24,9 @@ Component({
             value: [],
             observer: 'changeCurrent',
         },
-        auto: {
+        controlled: {
             type: Boolean,
-            value: true,
+            value: false,
         },
         accordion: {
             type: Boolean,
@@ -71,7 +71,7 @@ Component({
             }
         },
         changeCurrent(activeKey = this.data.current) {
-            this.updated(activeKey, !this.data.auto)
+            this.updated(activeKey, this.data.controlled)
         },
         emitEvent(key) {
             this.triggerEvent('change', {
@@ -81,7 +81,7 @@ Component({
         },
         setActiveKey(activeKey) {
             if (this.data.activeKey !== activeKey) {
-                this.updated(activeKey, this.data.auto)
+                this.updated(activeKey, !this.data.controlled)
             }
 
             this.emitEvent(this.data.accordion ? activeKey[0] : activeKey)
@@ -99,8 +99,8 @@ Component({
         },
     },
     ready() {
-        const { defaultCurrent, current, auto } = this.data
-        const activeKey = !auto ? current : defaultCurrent
+        const { defaultCurrent, current, controlled } = this.data
+        const activeKey = controlled ? current : defaultCurrent
 
         this.updated(activeKey, true)
     },
