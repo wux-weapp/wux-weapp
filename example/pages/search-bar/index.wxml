@@ -9,6 +9,6 @@
         <view class="sub-title">Focus</view>
         <wux-search-bar focus />
         <view class="sub-title">Show cancel button</view>
-        <wux-search-bar show-cancel value="{{ value }}" auto="{{ false }}" placeholder="Search" bind:change="onChange" bind:focus="onFocus" bind:blur="onBlur" bind:confirm="onConfirm" bind:clear="onClear" bind:cancel="onCancel" />
+        <wux-search-bar show-cancel value="{{ value }}" controlled placeholder="Search" bind:change="onChange" bind:focus="onFocus" bind:blur="onBlur" bind:confirm="onConfirm" bind:clear="onClear" bind:cancel="onCancel" />
     </view>
 </view>
