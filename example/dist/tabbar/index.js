@@ -24,9 +24,9 @@ Component({
             value: '',
             observer: 'changeCurrent',
         },
-        auto: {
+        controlled: {
             type: Boolean,
-            value: true,
+            value: false,
         },
         theme: {
             type: String,
@@ -67,7 +67,7 @@ Component({
             }
         },
         changeCurrent(value = this.data.current) {
-            this.updated(value, !this.data.auto)
+            this.updated(value, this.data.controlled)
         },
         emitEvent(key) {
             this.triggerEvent('change', {
@@ -77,15 +77,15 @@ Component({
         },
         setActiveKey(activeKey) {
             if (this.data.activeKey !== activeKey) {
-                this.updated(activeKey, this.data.auto)
+                this.updated(activeKey, !this.data.controlled)
             }
 
             this.emitEvent(activeKey)
         },
     },
     ready() {
-        const { defaultCurrent, current, auto } = this.data
-        const activeKey = !auto ? current : defaultCurrent
+        const { defaultCurrent, current, controlled } = this.data
+        const activeKey = controlled ? current : defaultCurrent
 
         this.updated(activeKey, true)
     },
