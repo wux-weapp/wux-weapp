@@ -1,4 +1,4 @@
-<view class="wux-class wux-search-bar">
+<view class="wux-class wux-search-bar {{ inputFocus ? 'wux-search-bar--focus' : '' }} {{ disabled ? 'wux-search-bar--disabled' : '' }}">
     <view class="wux-search-bar__form">
         <view class="wux-search-bar__box">
             <icon class="wux-search-bar__search" type="search" color="#B2B2B2" size="14" />
@@ -7,15 +7,24 @@
             	class="wux-search-bar__input"
             	value="{{ inputValue }}"
             	placeholder="{{ placeholder }}"
-            	maxlength="{{ maxlength }}"
-            	focus="{{ inputFocus }}"
-            	disabled="{{ disabled }}"
+                placeholder-style="{{ placeholderStyle }}"
+                placeholder-class="{{ placeholderClass }}"
+                disabled="{{ disabled }}"
+                maxlength="{{ maxlength }}"
+                cursor-spacing="{{ cursorSpacing }}"
+                focus="{{ inputFocus }}"
+                confirm-type="{{ confirmType }}"
+                confirm-hold="{{ confirmHold }}"
+                cursor="{{ cursor }}"
+                selection-start="{{ selectionStart }}"
+                selection-end="{{ selectionEnd }}"
+                adjust-position="{{ adjustPosition }}"
             	bindinput="onChange"
             	bindfocus="onFocus"
             	bindblur="onBlur"
             	bindconfirm="onConfirm"
             />
-            <icon class="wux-search-bar__clear" type="clear" color="#B2B2B2" size="14" wx:if="{{ inputValue && inputValue.length > 0 }}" bindtap="onClear" />
+            <icon class="wux-search-bar__clear" type="clear" color="#B2B2B2" size="14" wx:if="{{ clear && !disabled && inputValue && inputValue.length > 0 }}" bindtap="onClear" />
         </view>
         <label class="wux-search-bar__label" wx:if="{{ !inputFocus && !inputValue }}" bindtap="onClick">
             <icon class="wux-search-bar__icon" type="search" color="#B2B2B2" size="14" />

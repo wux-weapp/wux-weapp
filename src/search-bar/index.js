@@ -18,9 +18,25 @@ Component({
             type: String,
             value: '搜索',
         },
+        placeholderStyle: {
+            type: String,
+            value: '',
+        },
+        placeholderClass: {
+            type: String,
+            value: 'input-placeholder',
+        },
+        disabled: {
+            type: Boolean,
+            value: false,
+        },
         maxlength: {
             type: Number,
             value: 140,
+        },
+        cursorSpacing: {
+            type: Number,
+            value: 11,
         },
         focus: {
             type: Boolean,
@@ -31,7 +47,31 @@ Component({
                 })
             },
         },
-        disabled: {
+        confirmType: {
+            type: String,
+            value: 'search',
+        },
+        confirmHold: {
+            type: Boolean,
+            value: false,
+        },
+        cursor: {
+            type: Number,
+            value: -1,
+        },
+        selectionStart: {
+            type: Number,
+            value: -1,
+        },
+        selectionEnd: {
+            type: Number,
+            value: -1,
+        },
+        adjustPosition: {
+            type: Boolean,
+            value: true,
+        },
+        clear: {
             type: Boolean,
             value: false,
         },
@@ -104,6 +144,8 @@ Component({
             this.triggerEvent('cancel', { value: this.data.inputValue })
         },
         onClick() {
+            if (this.data.disabled) return
+
             this.setData({
                 inputFocus: true,
             })
