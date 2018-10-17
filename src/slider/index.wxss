@@ -27,12 +27,12 @@
 	&__handle {
 		background-color: #fff;
 		border-radius: 50%;
-		height: 24px;
+		height: 28px;
 		left: 0;
 		top: 50%;
 		position: absolute;
-		width: 24px;
-		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+		width: 28px;
+		box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 		transform: translate3d(-50%, -50%, 0);
 
 		&--last {
@@ -51,7 +51,7 @@
 
 	&__min, 
 	&__max {
-		font-size: 13px;
+		font-size: 14px;
 		color: #888;
 	}
 

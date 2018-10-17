@@ -1,4 +1,4 @@
-import { getTouchPoints } from '../helpers/gestures'
+import { getTouchPoints, getPointsNumber } from '../helpers/gestures'
 
 /**
  * 获取小数位数
@@ -101,7 +101,7 @@ Component({
          * 手指触摸动作开始
          */
         onTouchStart(e) {
-            if (this.data.disabled) return
+            if (this.data.disabled || getPointsNumber(e) > 1) return
             const { index } = e.currentTarget.dataset
             this.isMoved = false
             this.startX = getTouchPoints(e).x
@@ -115,7 +115,7 @@ Component({
          * 手指触摸后移动
          */
         onTouchMove(e) {
-            if (this.data.disabled) return
+            if (this.data.disabled || getPointsNumber(e) > 1) return
             const { index } = e.currentTarget.dataset
             this.isMoved = true
             this.moveX = getTouchPoints(e).x
@@ -160,7 +160,7 @@ Component({
          * 手指触摸动作结束
          */
         onTouchEnd(e) {
-            if (this.data.disabled) return
+            if (this.data.disabled || getPointsNumber(e) > 1) return
             this.isMoved = false
             const { offsets } = this.data
             const value = this.getValue(offsets)

@@ -8,7 +8,7 @@
 	    	<view
 	    		class="wux-slider__track"
 	    		style="{{ common.getTrackStyle(offsets, index, sliderValue.length > 1) }}; {{ common.getStyle(trackStyle, index) }}"
-	    		wx:if="index !== sliderValue.length - 1"
+	    		wx:if="{{ sliderValue.length === 1 || index !== sliderValue.length - 1 }}"
 	    	/>
 	    	<view
 	    		class="wux-slider__handle {{ last === index ? 'wux-slider__handle--last' : '' }}"
