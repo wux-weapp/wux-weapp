@@ -16,6 +16,9 @@
     show-message-card="{{ showMessageCard }}"
     bindcontact="bindcontact"
     bindgetphonenumber="bindgetphonenumber"
+    app-parameter="{{ appParameter }}"
+    binderror="onError"
+    bindopensetting="bindopensetting"
     bindtap="onTap"
 >
     <slot></slot>

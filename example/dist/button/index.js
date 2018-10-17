@@ -77,11 +77,15 @@ Component({
             type: Boolean,
             value: false,
         },
+        appParameter: {
+            type: String,
+            value: '',
+        },
     },
 
     methods: {
         onTap() {
-            if (!this.data.disabled) {
+            if (!this.data.disabled && !this.data.loading) {
                 this.triggerEvent('click')
             }
         },
@@ -93,6 +97,12 @@ Component({
         },
         bindgetphonenumber(e) {
             this.triggerEvent('getphonenumber', e.detail)
+        },
+        bindopensetting(e) {
+            this.triggerEvent('opensetting', e.detail)
+        },
+        onError(e) {
+            this.triggerEvent('error', e.detail)
         },
     },
 })
