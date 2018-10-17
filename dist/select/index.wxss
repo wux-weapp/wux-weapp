@@ -8,7 +8,7 @@
   background-color: #fff;
 }
 .wux-select__content {
-  height: 540rpx;
+  max-height: 540rpx;
 }
 .wux-select__toolbar {
   position: relative;
@@ -56,7 +56,7 @@
   box-sizing: border-box;
   height: 88rpx;
   line-height: 88rpx;
-  padding: 0 20rpx;
+  padding: 0 30rpx;
   z-index: 10;
 }
 .wux-select__toolbar-button--cancel {
@@ -66,4 +66,7 @@
 .wux-select__toolbar-button--confirm {
   right: 0;
   color: #33cd5f;
+}
+.wux-select__toolbar-button--hover {
+  background-color: #ECECEC;
 }

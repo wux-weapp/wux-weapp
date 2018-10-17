@@ -11,6 +11,7 @@ const defaults = {
         cancelText: '取消',
         confirmText: '确定',
     },
+    onChange() {},
     onConfirm() {},
     onCancel() {},
 }
@@ -58,18 +59,19 @@ Component({
             const value = checked ? [...oldValue, newValue] : oldValue.filter((n) => n !== newValue)
             const index = getSelectIndex({ ...this.data, value })
 
-            this.$$setData({
-                value,
-                index,
-            })
+            this.onChange(value, index)
         },
         onRadioChange(e) {
             const { value, index } = e.detail
+            
+            this.onChange(value, index)
+        },
+        onChange(value, index, options = this.data.options) {
+            this.$$setData({ value, index })
 
-            this.$$setData({
-                value,
-                index,
-            })
+            if (typeof this.fns.onChange === 'function') {
+                this.fns.onChange.call(this, value, index, options)
+            }
         },
     },
     created() {
