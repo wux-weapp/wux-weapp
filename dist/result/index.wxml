@@ -35,6 +35,9 @@
                     show-message-card="{{ button.showMessageCard }}"
                     bind:contact="bindcontact"
                     bind:getphonenumber="bindgetphonenumber"
+                    app-parameter="{{ button.appParameter }}"
+                    binderror="onError"
+                    bindopensetting="bindopensetting"
                     data-index="{{ index }}"
                     bind:click="onClick"
                 >

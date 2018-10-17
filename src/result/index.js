@@ -61,6 +61,12 @@ Component({
         bindgetphonenumber(e) {
             this.triggerEvent('getphonenumber', { ...e.detail, ...e.currentTarget.dataset })
         },
+        bindopensetting(e) {
+            this.triggerEvent('opensetting', { ...e.detail, ...e.currentTarget.dataset })
+        },
+        onError(e) {
+            this.triggerEvent('error', { ...e.detail, ...e.currentTarget.dataset })
+        },
     },
     data: {
         resultIcon: null,
