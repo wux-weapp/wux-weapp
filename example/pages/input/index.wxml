@@ -15,7 +15,7 @@
                 <wux-input label="QQ" placeholder="Input your QQ" />
             </wux-cell>
             <wux-cell hover-class="none">
-                <wux-input label="Password" placeholder="Input your password" type="password" />
+                <wux-input label="Password" placeholder="Input your password" password type="number" />
             </wux-cell>
         </wux-cell-group>
         <wux-cell-group title="Custom title">
