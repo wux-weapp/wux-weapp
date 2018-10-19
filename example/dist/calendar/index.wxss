@@ -1,10 +1,5 @@
 .wux-calendar {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  height: 13rem;
-  z-index: 1500;
-  background: #cfd5da;
+  position: relative;
   background: #fff;
   height: 600rpx;
   width: 100%;
@@ -29,76 +24,21 @@
   width: 100%;
 }
 .wux-calendar__hd:before {
-  content: '';
+  content: " ";
   position: absolute;
   left: 0;
   top: 0;
-  bottom: auto;
-  right: auto;
+  right: 0;
   height: 2rpx;
-  width: 100%;
-  background-color: #999999;
-  display: block;
-  z-index: 15;
-  -webkit-transform-origin: 50% 0%;
-          transform-origin: 50% 0%;
+  border-top: 2rpx solid #D9D9D9;
+  color: #D9D9D9;
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+          transform: scaleY(0.5);
 }
 .wux-calendar__hd + .wux-calendar__bd {
   height: calc(97.8%);
-}
-@media only screen and (-webkit-min-device-pixel-ratio: 2) {
-  .wux-calendar__hd:before {
-    -webkit-transform: scaleY(0.5);
-            transform: scaleY(0.5);
-  }
-}
-@media only screen and (-webkit-min-device-pixel-ratio: 3) {
-  .wux-calendar__hd:before {
-    -webkit-transform: scaleY(0.33);
-            transform: scaleY(0.33);
-  }
-}
-.wux-calendar--inline {
-  display: block;
-  position: relative;
-  z-index: inherit;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-}
-.wux-calendar--inline .wux-calendar__hd:before {
-  display: none;
-}
-.wux-calendar--inline .wux-calendar__hd:after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  right: auto;
-  top: auto;
-  height: 2rpx;
-  width: 100%;
-  background-color: #999999;
-  display: block;
-  z-index: 15;
-  -webkit-transform-origin: 50% 100%;
-          transform-origin: 50% 100%;
-}
-@media only screen and (-webkit-min-device-pixel-ratio: 2) {
-  .wux-calendar--inline .wux-calendar__hd:after {
-    -webkit-transform: scaleY(0.5);
-            transform: scaleY(0.5);
-  }
-}
-@media only screen and (-webkit-min-device-pixel-ratio: 3) {
-  .wux-calendar--inline .wux-calendar__hd:after {
-    -webkit-transform: scaleY(0.33);
-            transform: scaleY(0.33);
-  }
-}
-@media (orientation: landscape) and (max-height: 830rpx) {
-  .wux-calendar:not(.wux-calendar--inline) {
-    height: 440rpx;
-  }
 }
 .wux-calendar__toolbar {
   height: 2.2rem;
@@ -169,34 +109,21 @@
   position: relative;
 }
 .wux-calendar__weekdays:after {
-  content: '';
+  content: " ";
   position: absolute;
   left: 0;
   bottom: 0;
-  right: auto;
-  top: auto;
+  right: 0;
   height: 2rpx;
-  width: 100%;
-  background-color: #c4c4c4;
-  display: block;
-  z-index: 15;
-  -webkit-transform-origin: 50% 100%;
-          transform-origin: 50% 100%;
+  border-bottom: 2rpx solid #D9D9D9;
+  color: #D9D9D9;
+  -webkit-transform-origin: 0 100%;
+          transform-origin: 0 100%;
+  -webkit-transform: scaleY(0.5);
+          transform: scaleY(0.5);
 }
 .wux-calendar__weekdays + .wux-calendar__months {
   height: calc(82%);
-}
-@media only screen and (-webkit-min-device-pixel-ratio: 2) {
-  .wux-calendar__weekdays:after {
-    -webkit-transform: scaleY(0.5);
-            transform: scaleY(0.5);
-  }
-}
-@media only screen and (-webkit-min-device-pixel-ratio: 3) {
-  .wux-calendar__weekdays:after {
-    -webkit-transform: scaleY(0.33);
-            transform: scaleY(0.33);
-  }
 }
 .wux-calendar__weekday {
   -webkit-flex-shrink: 1;
@@ -249,34 +176,21 @@
   position: relative;
 }
 .wux-calendar__days:after {
-  content: '';
+  content: " ";
   position: absolute;
   left: 0;
   bottom: 0;
-  right: auto;
-  top: auto;
+  right: 0;
   height: 2rpx;
-  width: 100%;
-  background-color: #cccccc;
-  display: block;
-  z-index: 15;
-  -webkit-transform-origin: 50% 100%;
-          transform-origin: 50% 100%;
+  border-bottom: 2rpx solid #D9D9D9;
+  color: #D9D9D9;
+  -webkit-transform-origin: 0 100%;
+          transform-origin: 0 100%;
+  -webkit-transform: scaleY(0.5);
+          transform: scaleY(0.5);
 }
 .wux-calendar__days:last-child:after {
   display: none;
-}
-@media only screen and (-webkit-min-device-pixel-ratio: 2) {
-  .wux-calendar__days:after {
-    -webkit-transform: scaleY(0.5);
-            transform: scaleY(0.5);
-  }
-}
-@media only screen and (-webkit-min-device-pixel-ratio: 3) {
-  .wux-calendar__days:after {
-    -webkit-transform: scaleY(0.33);
-            transform: scaleY(0.33);
-  }
 }
 .wux-calendar__day {
   -webkit-flex-shrink: 1;

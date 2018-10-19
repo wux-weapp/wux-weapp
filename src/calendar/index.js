@@ -1,6 +1,5 @@
 import baseBehavior from '../helpers/baseBehavior'
 import mergeOptionsToData from '../helpers/mergeOptionsToData'
-import { $wuxBackdrop } from '../index'
 
 const defaults = {
     monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
@@ -63,24 +62,8 @@ Component({
             this.monthsTranslate = 0
             this.isH = options.direction === 'horizontal'
 
-            this.$$setData({ in: true, ...options })
-                .then(() => {
-                    const weeks = this.setWeekHeader()
-                    const months = this.setMonthsHTML()
-                    const monthsTranslate = this.setMonthsTranslate()
-
-                    if (typeof this.fns.onMonthAdd === 'function') {
-                        months.forEach((month) => {
-                            this.fns.onMonthAdd.call(this, month)
-                        })
-                    }
-
-                    return this.$$setData({ weeks, months, monthsTranslate, wrapperTranslate: '' })
-                })
-                .then(() => this.$$setData({...this.updateCurrentMonthYear() }))
-
+            this.$$setData({ in: true, ...options }).then(() => this.init())
             this.setValue(options.value)
-            this.$wuxBackdrop.retain()
 
             if (typeof this.fns.onOpen === 'function') {
                 this.fns.onOpen.call(this)
@@ -91,11 +74,24 @@ Component({
          */
         close() {
             this.$$setData({ in: false })
-            this.$wuxBackdrop.release()
 
             if (typeof this.fns.onClose === 'function') {
                 this.fns.onClose.call(this)
             }
+        },
+        /**
+         * 初始化
+         */
+        init() {
+            const weeks = this.setWeekHeader()
+            const months = this.setMonthsHTML()
+            const monthsTranslate = this.setMonthsTranslate()
+
+            if (typeof this.fns.onMonthAdd === 'function') {
+                months.forEach((month) => this.fns.onMonthAdd.call(this, month))
+            }
+
+            return this.$$setData({ weeks, months, monthsTranslate, wrapperTranslate: '' }).then(() => this.$$setData({...this.updateCurrentMonthYear() }))
         },
         /**
          * 设置月份的位置信息
@@ -173,7 +169,10 @@ Component({
 
             const query = wx.createSelectorQuery().in(this)
             query.select('.wux-calendar__months-content').boundingClientRect((rect) => {
-                if (!rect) {
+
+                // 由于 boundingClientRect 为异步方法，某些情况下其回调函数在 onTouchEnd 之后触发，导致 wrapperTranslate 计算错误
+                // 所以判断 this.isMoved = false 时阻止回调函数的执行
+                if (!rect || !this.isMoved) {
                     return false
                 }
 
@@ -710,8 +709,5 @@ Component({
                 this.fns.onChange.call(this, this.data.value, this.data.value.map((n) => this.formatDate(n)))
             }
         },
-    },
-    created() {
-        this.$wuxBackdrop = $wuxBackdrop('#wux-backdrop', this)
     },
 })
