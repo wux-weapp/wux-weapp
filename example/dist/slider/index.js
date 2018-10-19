@@ -120,39 +120,39 @@ Component({
             this.isMoved = true
             this.moveX = getTouchPoints(e).x
 
-            this.getRect('.wux-slider__rail').then((res) => {
-                if (res) {
-                    const diffX = (this.moveX - this.startX) / res.width * (this.data.max - this.data.min)
-                    const nextOffsets = [...this.data.offsets]
-                    const offset = this.checkValue(this.startPos + diffX, 0, 100)
-                    const { sliderValue } = this.data
-                    const currentValue = this.calcValue(offset)
-                    const prevValue = sliderValue[index - 1]
-                    const nextValue = sliderValue[index + 1]
+            this.getRect('.wux-slider__rail').then((rect) => {
+                if (!rect || !this.isMoved) return
 
-                    // 通过合法的当前值反算偏移量
-                    nextOffsets[index] = this.calcOffset(currentValue)
+                const diffX = (this.moveX - this.startX) / rect.width * (this.data.max - this.data.min)
+                const nextOffsets = [...this.data.offsets]
+                const offset = this.checkValue(this.startPos + diffX, 0, 100)
+                const { sliderValue } = this.data
+                const currentValue = this.calcValue(offset)
+                const prevValue = sliderValue[index - 1]
+                const nextValue = sliderValue[index + 1]
 
-                    // 判断当前值是否小于前一值，是则重新计算偏移量
-                    if (prevValue && prevValue > currentValue) {
-                        nextOffsets[index] = this.calcOffset(prevValue)
+                // 通过合法的当前值反算偏移量
+                nextOffsets[index] = this.calcOffset(currentValue)
+
+                // 判断当前值是否小于前一值，是则重新计算偏移量
+                if (prevValue && prevValue > currentValue) {
+                    nextOffsets[index] = this.calcOffset(prevValue)
+                }
+
+                // 判断当前值是否大于后一值，是则重新计算偏移量
+                if (nextValue && nextValue < currentValue) {
+                    nextOffsets[index] = this.calcOffset(nextValue)
+                }
+
+                // 判断当前值是否发生变化，是则触发 change 事件
+                if (sliderValue[index] !== currentValue) {
+                    const value = this.getValue(nextOffsets)
+                    
+                    if (!this.data.controlled) {
+                        this.setData({ offsets: nextOffsets, sliderValue: value })
                     }
 
-                    // 判断当前值是否大于后一值，是则重新计算偏移量
-                    if (nextValue && nextValue < currentValue) {
-                        nextOffsets[index] = this.calcOffset(nextValue)
-                    }
-
-                    // 判断当前值是否发生变化，是则触发 change 事件
-                    if (sliderValue[index] !== currentValue) {
-                        const value = this.getValue(nextOffsets)
-                        
-                        if (!this.data.controlled) {
-                            this.setData({ offsets: nextOffsets, sliderValue: value })
-                        }
-
-                        this.triggerEvent('change', { offsets: nextOffsets, value })
-                    }
+                    this.triggerEvent('change', { offsets: nextOffsets, value })
                 }
             })
         },
