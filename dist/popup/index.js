@@ -46,6 +46,10 @@ Component({
             value: false,
             observer: 'setPopupVisible',
         },
+        zIndex: {
+            type: Number,
+            value: 1000,
+        },
     },
     data: {
         transitionName: '',

@@ -2,7 +2,7 @@
 
 .wux-popup {
 	position: fixed;
-	z-index: 5000;
+	z-index: 1000;
 	width: 80%;
 	max-width: 300px;
 	
