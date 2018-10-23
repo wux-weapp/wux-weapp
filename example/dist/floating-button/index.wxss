@@ -105,6 +105,14 @@
   pointer-events: none;
 }
 .wux-speed-dial__button {
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  color: inherit;
+  background: transparent;
+  font-size: inherit;
+  line-height: inherit;
+  text-align: inherit;
   width: 80rpx;
   height: 80rpx;
   opacity: 0;
@@ -113,7 +121,7 @@
   position: relative;
   z-index: 1;
   overflow: visible;
-  background-color: #33cd5f;
+  background-color: #33cd5f !important;
   -webkit-transition-duration: .3s;
           transition-duration: .3s;
   display: -webkit-box;
@@ -130,6 +138,19 @@
   -webkit-transform-origin: center bottom;
           transform-origin: center bottom;
   box-shadow: 0 0 8rpx rgba(0, 0, 0, 0.14), 0 8rpx 16rpx rgba(0, 0, 0, 0.28);
+}
+.wux-speed-dial__button:after {
+  position: static;
+  top: auto;
+  left: auto;
+  width: auto;
+  height: auto;
+  border: none;
+  border-radius: 0;
+  -webkit-transform: none;
+          transform: none;
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
 }
 .wux-speed-dial__button + .wux-speed-dial__button {
   margin-bottom: 32rpx;
@@ -152,10 +173,13 @@
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
-.wux-speed-dial__button__button--hover {
+.wux-speed-dial__button--hover {
   -webkit-transition-duration: 0s;
           transition-duration: 0s;
   opacity: .8 !important;
+}
+.wux-speed-dial__button--disabled {
+  opacity: .3 !important;
 }
 .wux-speed-dial--opened .wux-speed-dial__buttons {
   visibility: visible;
@@ -170,38 +194,47 @@
   opacity: 1;
 }
 .wux-speed-dial--light .wux-speed-dial__action,
-.wux-speed-dial--light .wux-speed-dial__button {
-  background-color: #ddd;
+.wux-speed-dial--light .wux-speed-dial__button,
+.wux-speed-dial--light .wux-speed-dial__button--disabled {
+  background-color: #ddd !important;
 }
 .wux-speed-dial--stable .wux-speed-dial__action,
-.wux-speed-dial--stable .wux-speed-dial__button {
-  background-color: #b2b2b2;
+.wux-speed-dial--stable .wux-speed-dial__button,
+.wux-speed-dial--stable .wux-speed-dial__button--disabled {
+  background-color: #b2b2b2 !important;
 }
 .wux-speed-dial--positive .wux-speed-dial__action,
-.wux-speed-dial--positive .wux-speed-dial__button {
-  background-color: #387ef5;
+.wux-speed-dial--positive .wux-speed-dial__button,
+.wux-speed-dial--positive .wux-speed-dial__button--disabled {
+  background-color: #387ef5 !important;
 }
 .wux-speed-dial--calm .wux-speed-dial__action,
-.wux-speed-dial--calm .wux-speed-dial__button {
-  background-color: #11c1f3;
+.wux-speed-dial--calm .wux-speed-dial__button,
+.wux-speed-dial--calm .wux-speed-dial__button--disabled {
+  background-color: #11c1f3 !important;
 }
 .wux-speed-dial--assertive .wux-speed-dial__action,
-.wux-speed-dial--assertive .wux-speed-dial__button {
-  background-color: #ef473a;
+.wux-speed-dial--assertive .wux-speed-dial__button,
+.wux-speed-dial--assertive .wux-speed-dial__button--disabled {
+  background-color: #ef473a !important;
 }
 .wux-speed-dial--balanced .wux-speed-dial__action,
-.wux-speed-dial--balanced .wux-speed-dial__button {
-  background-color: #33cd5f;
+.wux-speed-dial--balanced .wux-speed-dial__button,
+.wux-speed-dial--balanced .wux-speed-dial__button--disabled {
+  background-color: #33cd5f !important;
 }
 .wux-speed-dial--energized .wux-speed-dial__action,
-.wux-speed-dial--energized .wux-speed-dial__button {
-  background-color: #ffc900;
+.wux-speed-dial--energized .wux-speed-dial__button,
+.wux-speed-dial--energized .wux-speed-dial__button--disabled {
+  background-color: #ffc900 !important;
 }
 .wux-speed-dial--royal .wux-speed-dial__action,
-.wux-speed-dial--royal .wux-speed-dial__button {
-  background-color: #886aea;
+.wux-speed-dial--royal .wux-speed-dial__button,
+.wux-speed-dial--royal .wux-speed-dial__button--disabled {
+  background-color: #886aea !important;
 }
 .wux-speed-dial--dark .wux-speed-dial__action,
-.wux-speed-dial--dark .wux-speed-dial__button {
-  background-color: #444;
+.wux-speed-dial--dark .wux-speed-dial__button,
+.wux-speed-dial--dark .wux-speed-dial__button--disabled {
+  background-color: #444 !important;
 }

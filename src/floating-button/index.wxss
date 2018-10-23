@@ -2,8 +2,9 @@
 
 .speed-dial-style(@theme, @color) {
     &--@{theme} &__action,
-    &--@{theme} &__button {
-        background-color: @color;
+    &--@{theme} &__button, 
+    &--@{theme} &__button--disabled {
+        background-color: @color !important;
     }
 }
 
@@ -110,6 +111,7 @@
     }
 
     &__button {
+        .button-reset();
         width: 40px;
         height: 40px;
         opacity: 0;
@@ -118,7 +120,7 @@
         position: relative;
         z-index: 1;
         overflow: visible;
-        background-color: @balanced;
+        background-color: @balanced !important;
         transition-duration: .3s;
         display: flex;
         align-items: center;
@@ -148,9 +150,13 @@
             transition: all 0.3s;
         }
 
-        &__button--hover {
+        &--hover {
             transition-duration: 0s;
             opacity: .8 !important;
+        }
+
+        &--disabled {
+            opacity: .3 !important;
         }
     }
 
@@ -161,7 +167,7 @@
 
     &--opened &__button {
         opacity: 1;
-        transform: translate3d(0,0,0) scaleY(1);
+        transform: translate3d(0, 0, 0) scaleY(1);
         
         &:after {
             opacity: 1;

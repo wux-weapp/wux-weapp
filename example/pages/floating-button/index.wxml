@@ -1,4 +1,4 @@
-<wux-floating-button position="{{ position }}" theme="{{ theme }}" buttons="{{ buttons }}" bind:change="bindchange" bind:click="buttonClicked" />
+<wux-floating-button position="{{ position }}" theme="{{ theme }}" buttons="{{ buttons }}" bind:change="onChange" bind:click="onClick" bind:contact="onContact" bind:getuserinfo="onGotUserInfo" />
 
 <view class="page">
     <view class="page__hd">
