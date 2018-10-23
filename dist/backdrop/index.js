@@ -8,6 +8,10 @@ Component({
             type: Boolean,
             value: false,
         },
+        zIndex: {
+            type: Number,
+            value: 1000,
+        },
     },
     methods: {
         /**
