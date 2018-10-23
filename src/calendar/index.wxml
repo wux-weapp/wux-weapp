@@ -1,4 +1,4 @@
-<wux-popup position="bottom" visible="{{ in }}" bind:close="close">
+<wux-popup position="bottom" visible="{{ in }}" zIndex="1010" bind:close="close">
     <view class="wux-class wux-calendar {{ direction ? 'wux-calendar--' + direction : '' }}">
         <view class="wux-calendar__content">
             <view class="wux-calendar__hd" wx:if="{{ toolbar }}">
