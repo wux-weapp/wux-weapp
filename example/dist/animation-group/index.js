@@ -78,6 +78,11 @@ Component({
             type: Boolean,
             value: true,
         },
+        // 自定义样式
+        wrapStyle: {
+            type: String,
+            value: '',
+        },
     },
     methods: {
         /**
