@@ -19,3 +19,26 @@
     background-color: @bg-color;
     color: @border-color;
 }
+
+.button-reset(@color: inherit, @bg-color: transparent) {
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    color: @color;
+    background: @bg-color;
+    font-size: inherit;
+    line-height: inherit;
+    text-align: inherit;
+
+    &:after {
+        position: static;
+        top: auto;
+        left: auto;
+        width: auto;
+        height: auto;
+        border: none;
+        border-radius: 0;
+        transform: none;
+        transform-origin: 0 0;
+    }
+}

@@ -12,9 +12,57 @@ Component({
         isLast: false,
     },
     properties: {
+        disabled: {
+            type: Boolean,
+            value: false,
+        },
+        // openType: {
+        //     type: String,
+        //     value: '',
+        // },
         hoverClass: {
             type: String,
             value: 'wux-cell--hover',
+        },
+        hoverStopPropagation: {
+            type: Boolean,
+            value: false,
+        },
+        hoverStartTime: {
+            type: Number,
+            value: 20,
+        },
+        hoverStayTime: {
+            type: Number,
+            value: 70,
+        },
+        lang: {
+            type: String,
+            value: 'en',
+        },
+        sessionFrom: {
+            type: String,
+            value: '',
+        },
+        sendMessageTitle: {
+            type: String,
+            value: '',
+        },
+        sendMessagePath: {
+            type: String,
+            value: '',
+        },
+        sendMessageImg: {
+            type: String,
+            value: '',
+        },
+        showMessageCard: {
+            type: Boolean,
+            value: false,
+        },
+        appParameter: {
+            type: String,
+            value: '',
         },
         thumb: {
             type: String,
@@ -51,6 +99,27 @@ Component({
     },
     methods: {
         onTap() {
+            if (!this.data.disabled) {
+                this.triggerEvent('click')
+                this.linkTo()
+            }
+        },
+        bindgetuserinfo(e) {
+            this.triggerEvent('getuserinfo', e.detail)
+        },
+        bindcontact(e) {
+            this.triggerEvent('contact', e.detail)
+        },
+        bindgetphonenumber(e) {
+            this.triggerEvent('getphonenumber', e.detail)
+        },
+        bindopensetting(e) {
+            this.triggerEvent('opensetting', e.detail)
+        },
+        onError(e) {
+            this.triggerEvent('error', e.detail)
+        },
+        linkTo() {
             const { url, isLink, openType, delta } = this.data
             const navigate = [
                 'navigateTo',
@@ -60,12 +129,9 @@ Component({
                 'reLaunch',
             ]
 
-            this.triggerEvent('click')
-
-            if (!isLink || !url) {
+            // openType 属性可选值为 navigateTo、redirectTo、switchTab、navigateBack、reLaunch
+            if (!isLink || !url || !navigate.includes(openType)) {
                 return false
-            } else if (!navigate.includes(openType)) {
-                return console.warn('openType 属性可选值为 navigateTo、redirectTo、switchTab、navigateBack、reLaunch', openType)
             } else if (openType === 'navigateBack') {
                 return wx[openType].call(wx, { delta })
             } else {

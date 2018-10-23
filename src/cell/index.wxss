@@ -1,6 +1,7 @@
 @import "../styles/base/fn.wxss";
 
 .wux-cell {
+    .button-reset();
     padding: 10px 15px;
     position: relative;
     display: flex;
@@ -18,6 +19,10 @@
 
     &--hover {
         background-color: #ECECEC;
+    }
+
+    &--disabled {
+        opacity: .3;
     }
 
     &__thumb {

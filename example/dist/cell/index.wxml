@@ -1,4 +1,25 @@
-<view bindtap="onTap" class="wux-class wux-cell {{ isLast ? 'wux-cell--last' : '' }} {{ isLink ? 'wux-cell--access' : '' }}" hover-class="{{ hoverClass }}">
+<button
+    class="wux-class wux-cell {{ isLast ? 'wux-cell--last' : '' }} {{ isLink ? 'wux-cell--access' : '' }} {{ disabled ? 'wux-cell--disabled' : '' }}"
+    disabled="{{ disabled }}"
+    open-type="{{ openType }}"
+    hover-class="{{ !disabled ? hoverClass : 'none' }}"
+    hover-stop-propagation="{{ hoverStopPropagation }}"
+    hover-start-time="{{ hoverStartTime }}"
+    hover-stay-time="{{ hoverStayTime }}"
+    lang="{{ lang }}"
+    bindgetuserinfo="bindgetuserinfo"
+    session-from="{{ sessionFrom }}"
+    send-message-title="{{ sendMessageTitle }}"
+    send-message-path="{{ sendMessagePath }}"
+    send-message-img="{{ sendMessageImg }}"
+    show-message-card="{{ showMessageCard }}"
+    bindcontact="bindcontact"
+    bindgetphonenumber="bindgetphonenumber"
+    app-parameter="{{ appParameter }}"
+    binderror="onError"
+    bindopensetting="bindopensetting"
+    bindtap="onTap"
+>
     <view class="wux-cell__hd">
         <block wx:if="{{ thumb }}">
             <image class="wux-cell__thumb" src="{{ thumb }}" />
@@ -18,4 +39,4 @@
             <slot name="footer"></slot>
         </block>
     </view>
-</view>
+</button>

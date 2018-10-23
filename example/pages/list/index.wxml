@@ -6,7 +6,7 @@
     <view class="page__bd">
         <wux-cell-group title="带说明的列表项">
             <wux-cell title="标题文字"></wux-cell>
-            <wux-cell title="标题文字"></wux-cell>
+            <wux-cell title="禁用状态" disabled></wux-cell>
         </wux-cell-group>
         <wux-cell-group title="带图标、说明的列表项">
             <wux-cell thumb="http://pbqg2m54r.bkt.clouddn.com/logo.png" title="标题文字" extra="说明文字"></wux-cell>
@@ -17,6 +17,12 @@
             <wux-cell title="标题文字" is-link label="附加描述" extra="说明文字"></wux-cell>
             <wux-cell title="只显示箭头" is-link></wux-cell>
             <wux-cell title="跳转到首页" is-link url="/pages/index/index" open-type="switchTab"></wux-cell>
+        </wux-cell-group>
+        <wux-cell-group title="微信开放能力">
+            <wux-cell title="打开客服会话" is-link open-type="contact" bind:contact="onContact"></wux-cell>
+            <wux-cell title="触发用户转发" is-link open-type="share"></wux-cell>
+            <wux-cell title="获取用户信息" is-link open-type="getUserInfo" bind:getuserinfo="onGotUserInfo"></wux-cell>
+            <wux-cell title="获取用户手机号" is-link open-type="getPhoneNumber" bind:getphonenumber="onGotPhoneNumber"></wux-cell>
         </wux-cell-group>
     </view>
 </view>
