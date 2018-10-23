@@ -1,0 +1,10 @@
+<view class="wux-class wux-timeline-item {{ className }} {{ isLast ? 'wux-timeline-item--last' : '' }} {{ pending ? 'wux-timeline-item--pending' : '' }}">
+    <view class="wux-timeline-item__tail {{ isPending ? 'wux-timeline-item__tail--pending' : '' }}"></view>
+    <view class="wux-timeline-item__dot {{ custom ? 'wux-timeline-item__dot--custom' : '' }}" style="{{ dotStyle }}">
+    	<slot wx:if="{{ custom }}" name="dot"></slot>
+    </view>
+    <view class="wux-timeline-item__content">
+    	<text>{{ content }}</text>
+        <slot></slot>
+    </view>
+</view>

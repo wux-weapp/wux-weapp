@@ -220,6 +220,11 @@ Page({
                         url: '/pages/tag/index',
                     },
                     {
+                        title: 'Timeline',
+                        remark: '时间轴',
+                        url: '/pages/timeline/index',
+                    },
+                    {
                         title: 'Vcode',
                         remark: '验证码',
                         url: '/pages/vcode/index',

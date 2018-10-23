@@ -1,0 +1,52 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Timeline</view>
+        <view class="page__desc">时间轴</view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+        <view class="sub-title">Default</view>
+        <wux-timeline>
+            <wux-timeline-item content="2018-10-24 v1.0.0" />
+            <wux-timeline-item content="2018-10-24 v1.0.0" />
+            <wux-timeline-item content="2018-10-24 v1.0.0" />
+            <wux-timeline-item content="2018-10-24 v1.0.0" />
+        </wux-timeline>
+        <view class="sub-title">Position = alternate</view>
+        <wux-timeline position="alternate">
+            <wux-timeline-item content="2018-10-24 v1.0.0" />
+            <wux-timeline-item content="2018-10-24 v1.0.0" />
+            <wux-timeline-item content="2018-10-24 v1.0.0" />
+            <wux-timeline-item content="2018-10-24 v1.0.0" />
+        </wux-timeline>
+        <view class="sub-title">Position = right</view>
+        <wux-timeline position="right">
+            <wux-timeline-item content="2018-10-24 v1.0.0" />
+            <wux-timeline-item content="2018-10-24 v1.0.0" />
+            <wux-timeline-item content="2018-10-24 v1.0.0" />
+            <wux-timeline-item content="2018-10-24 v1.0.0" />
+        </wux-timeline>
+        <view class="sub-title">Pending</view>
+        <wux-timeline pending>
+            <wux-timeline-item content="2018-10-24 v1.0.0" />
+            <wux-timeline-item content="2018-10-24 v1.0.0" />
+            <wux-timeline-item content="2018-10-24 v1.0.0" />
+            <wux-timeline-item content="2018-10-24 v1.0.0" />
+        </wux-timeline>
+        <view class="sub-title">Slot</view>
+        <wux-timeline>
+            <wux-timeline-item>
+                <view>2018-10-24 v1.0.0</view>
+            </wux-timeline-item>
+            <wux-timeline-item custom>
+                <wux-icon slot="dot" type="ios-time" size="23" />
+                <view>2018-10-24 v1.0.0</view>
+            </wux-timeline-item>
+            <wux-timeline-item dotStyle="border-color: #33cd5f; color: #33cd5f">
+                <view>2018-10-24 v1.0.0</view>
+            </wux-timeline-item>
+            <wux-timeline-item dotStyle="border-color: #ef473a; color: #ef473a">
+                <view>2018-10-24 v1.0.0</view>
+            </wux-timeline-item>
+        </wux-timeline>
+    </view>
+</view>
