@@ -26,7 +26,7 @@
 			bindfocus="onFocus"
 			bindblur="onBlur"
 			bindconfirm="onConfirm"
-			style="height: {{ inputHeight === 'auto' ? 'auto' : inputHeight + 'px' }}"
+			style="{{ inputRows > 1 && !!inputHeight ? 'height: ' + inputHeight + 'px' : '' }}"
 		/>
 	</view>
 	<view class="wux-textarea__clear" bindtap="onClear" wx:if="{{ clear && !disabled && inputValue && inputValue.length > 0 }}">

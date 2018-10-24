@@ -107,25 +107,32 @@ Component({
     data: {
         inputValue: '',
         inputFocus: false,
-        inputHeight: 'auto',
+        inputRows: 1,
+        inputHeight: '',
     },
     methods: {
-        updateHeight(value = this.data.rows) {
-            wx
-                .createSelectorQuery()
-                .in(this).select('.wux-textarea__item')
-                .boundingClientRect((rect) => {
-                    if (rect) {
-                        // rows 取值为大于或等于 1 的正整数
-                        const rows = Math.max(1, parseInt(value))
-                        const inputHeight = rect.height * rows
+        updateHeight(val = this.data.rows) {
+            // rows 取值为大于或等于 1 的正整数
+            const rows = Math.max(1, parseInt(val))
+            const { inputRows } = this.data
 
-                        this.setData({
-                            inputHeight,
-                        })
-                    }
-                })
-                .exec()
+            if (inputRows !== rows) {
+                wx
+                    .createSelectorQuery()
+                    .in(this).select('.wux-textarea__item')
+                    .boundingClientRect((rect) => {
+                        if (rect) {
+                            const lineHeight = inputRows > 1 ? rect.height / inputRows : rect.height
+                            const inputHeight = lineHeight * rows
+
+                            this.setData({
+                                inputRows: rows,
+                                inputHeight,
+                            })
+                        }
+                    })
+                    .exec()
+            }
         },
         updated(inputValue) {
             if (this.data.inputValue !== inputValue) {

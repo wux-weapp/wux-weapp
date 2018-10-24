@@ -25,7 +25,7 @@
         </wux-cell-group>
         <wux-cell-group title="Count">
             <wux-cell hover-class="none">
-                <wux-textarea hasCount rows="3" placeholder="Count..." />
+                <wux-textarea hasCount rows="3" cursorSpacing="80" placeholder="Count..." />
             </wux-cell>
         </wux-cell-group>
         <wux-cell-group title="Custom title">
