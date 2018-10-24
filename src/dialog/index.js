@@ -10,6 +10,7 @@ const defaults = {
     closable: false,
     mask: true,
     maskClosable: true,
+    zIndex: 1000,
 }
 
 const defaultOptions = {
