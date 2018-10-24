@@ -101,6 +101,11 @@ Page({
                         url: '/pages/switch/index',
                     },
                     {
+                        title: 'Textarea',
+                        remark: '多行输入框',
+                        url: '/pages/textarea/index',
+                    },
+                    {
                         title: 'Upload',
                         remark: '上传',
                         url: '/pages/upload/index',

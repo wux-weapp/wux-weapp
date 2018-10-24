@@ -1,0 +1,65 @@
+.wux-textarea {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  align-item: center;
+}
+.wux-textarea__label {
+  margin-left: 0;
+  margin-right: 10rpx;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 210rpx;
+}
+.wux-textarea__control {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+}
+.wux-textarea__item {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  background-color: transparent;
+  font-size: inherit;
+  color: inherit;
+  height: 1.47058824em;
+  min-height: 1.47058824em;
+  line-height: 1.47058824;
+}
+.wux-textarea__extra {
+  color: #888;
+  margin-left: 10rpx;
+}
+.wux-textarea__error {
+  margin-left: 10rpx;
+}
+.wux-textarea__clear {
+  display: none;
+}
+.wux-textarea--focus .wux-textarea__clear {
+  display: block;
+}
+.wux-textarea--disabled {
+  opacity: .3;
+}
+.wux-textarea--error .wux-textarea__control {
+  color: #ef473a;
+}
+.wux-textarea__count {
+  position: absolute;
+  bottom: -12rpx;
+  right: 0;
+  color: #888;
+  font-size: 28rpx;
+  line-height: 1.47058824;
+}
+.wux-textarea__current {
+  color: #333;
+}
+.wux-textarea--has-count .wux-textarea__control {
+  padding-bottom: 20rpx;
+}
