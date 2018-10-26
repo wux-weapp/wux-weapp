@@ -8,29 +8,17 @@ const defaults = {
     color: '#fff',
     text: '',
     icon: '',
+    mask: true,
     success() {},
 }
-const TOAST_TYPES = [{
-        type: 'success',
-        icon: 'ios-checkmark-circle-outline',
-        className: 'wux-toast__bd--success',
-    },
-    {
-        type: 'cancel',
-        icon: 'ios-close-circle-outline',
-        className: 'wux-toast__bd--cancel',
-    },
-    {
-        type: 'forbidden',
-        icon: 'ios-alert',
-        className: 'wux-toast__bd--forbidden',
-    },
-    {
-        type: 'text',
-        icon: '',
-        className: 'wux-toast__bd--text',
-    },
-]
+
+const iconTypes = {
+    success: 'ios-checkmark-circle-outline',
+    cancel: 'ios-close-circle-outline',
+    forbidden: 'ios-alert',
+    text: '',
+    'default': '',
+}
 
 let _toast = null
 
@@ -44,7 +32,7 @@ Component({
          */
         hide() {
             this.$$setData({ in: false })
-            this.$wuxBackdrop.release()
+            this.$wuxBackdrop && this.$wuxBackdrop.release()
             if (typeof this.fns.success === 'function') {
                 this.fns.success()
             }
@@ -52,37 +40,25 @@ Component({
         /**
          * 显示
          */
-        show(opts = {}) {
+        show(opts) {
+            if (typeof opts === 'string') {
+                opts = Object.assign({}, {
+                    text: arguments[0],
+                }, arguments[1])
+            }
+
             const closePromise = new Promise((resolve) => {
                 const options = this.$$mergeOptionsAndBindMethods(Object.assign({}, defaults, opts))
+                const iconType = iconTypes[options.type] || options.icon
                 const callback = () => {
                     this.hide()
                     return resolve(true)
                 }
 
-                let isToastType = false
-
-                // 判断提示类型，显示对应的图标
-                TOAST_TYPES.forEach((value) => {
-                    if (value.type === options.type) {
-                        Object.assign(options, {
-                            icon: options.icon || value.icon,
-                            className: value.className,
-                        })
-
-                        isToastType = true
-                    }
-                })
-
-                if (!isToastType) {
-                    Object.assign(options, {
-                        icon: options.icon,
-                        className: '',
-                    })
-                }
+                options.icon = iconType
 
                 this.$$setData({ in: true, ...options })
-                this.$wuxBackdrop.retain()
+                this.$wuxBackdrop && this.$wuxBackdrop.retain()
 
                 if (_toast) {
                     clearTimeout(_toast.timeout)
@@ -93,7 +69,7 @@ Component({
                     hide: this.hide,
                 }
 
-                _toast.timeout = setTimeout(callback, options.duration)
+                _toast.timeout = setTimeout(callback, Math.max(0, options.duration))
             })
 
             const result = () => {
@@ -107,8 +83,66 @@ Component({
 
             return result
         },
+        /**
+         * 成功提示
+         */
+        success(opts) {
+            if (typeof opts === 'string') {
+                opts = Object.assign({}, {
+                    text: arguments[0],
+                }, arguments[1])
+            }
+
+            return this.show(Object.assign({
+                type: 'success',
+            }, opts))
+        },
+        /**
+         * 警告提示
+         */
+        warning(opts) {
+            if (typeof opts === 'string') {
+                opts = Object.assign({}, {
+                    text: arguments[0],
+                }, arguments[1])
+            }
+
+            return this.show(Object.assign({
+                type: 'forbidden',
+            }, opts))
+        },
+        /**
+         * 错误提示
+         */
+        error(opts) {
+            if (typeof opts === 'string') {
+                opts = Object.assign({}, {
+                    text: arguments[0],
+                }, arguments[1])
+            }
+
+            return this.show(Object.assign({
+                type: 'cancel',
+            }, opts))
+        },
+        /**
+         * 文本提示
+         */
+        info(opts) {
+            if (typeof opts === 'string') {
+                opts = Object.assign({}, {
+                    text: arguments[0],
+                }, arguments[1])
+            }
+
+            return this.show(Object.assign({
+                type: 'text',
+            }, opts))
+        },
     },
     created() {
-        this.$wuxBackdrop = $wuxBackdrop('#wux-backdrop', this)
+        if (this.data.mask) {
+            this.$wuxBackdrop = $wuxBackdrop('#wux-backdrop', this)
+        }
     },
 })

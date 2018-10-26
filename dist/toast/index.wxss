@@ -1,33 +1,27 @@
 .wux-toast {
   position: fixed;
   z-index: 5000;
-  top: 360rpx;
+  top: 50%;
   left: 50%;
   background: rgba(40, 40, 40, 0.75);
+  font-size: 28rpx;
+  line-height: 1.5;
   text-align: center;
-  border-radius: 10rpx;
-  color: #FFFFFF;
-  -webkit-transform: translate3d(-50%, 0, 0);
-          transform: translate3d(-50%, 0, 0);
+  border-radius: 6rpx;
+  color: #fff;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
 }
-.wux-toast__bd {
-  width: 7.6em;
-  min-height: 7.6em;
-  padding: 44rpx 0;
+.wux-toast__content {
+  min-width: 236rpx;
+  padding: 18rpx 30rpx;
   box-sizing: border-box;
 }
-.wux-toast__bd--text {
-  margin: 0;
-  width: 12em;
-  min-height: 0;
-  padding: 40rpx;
-  text-overflow: ellipsis;
+.wux-toast__content--has-icon {
+  padding: 30rpx;
 }
-.wux-toast__bd--text .wux-toast__text {
-  margin: 0;
-}
-.wux-toast__bd--text .wux-toast__icon {
-  display: none;
+.wux-toast__content--has-icon .wux-toast__text {
+  margin-top: 12rpx;
 }
 .wux-toast__icon {
   margin: 0;
