@@ -1,5 +1,5 @@
-<view class="wux-class wux-accordion {{ current ? 'wux-accordion--current' : '' }}" bindtap="onTap">
-    <view class="wux-accordion__hd">
+<view class="wux-class wux-accordion {{ current ? 'wux-accordion--current' : '' }}">
+    <view class="wux-accordion__hd"  bindtap="onTap">
         <block wx:if="{{ thumb }}">
             <image class="wux-accordion__thumb" src="{{ thumb }}" />
         </block>
