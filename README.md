@@ -70,6 +70,7 @@ demo/
 - [Wux Weapp 源码地址](https://github.com/wux-weapp/wux-weapp/)
 - [Wux Weapp 文档地址](https://wux-weapp.github.io/wux-weapp-docs/)
 - [Wux Weapp 更新日志](https://wux-weapp.github.io/wux-weapp-docs/#/changelog)
+- [Wux Weapp 案例征集](https://github.com/wux-weapp/wux-weapp/issues/123)
 
 ## 讨论组
 
