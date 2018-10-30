@@ -1,6 +1,11 @@
 import arrayTreeFilter from '../helpers/arrayTreeFilter'
 
 const WUX_CASCADER = 'wux-cascader'
+const defaultFieldNames = {
+    label: 'label',
+    value: 'value',
+    children: 'children',
+}
 
 Component({
     externalClasses: ['wux-class', 'wux-scroll-view-class'],
@@ -38,6 +43,10 @@ Component({
             type: Boolean,
             value: false,
         },
+        defaultFieldNames: {
+            type: Object,
+            value: defaultFieldNames,
+        },
     },
     data: {
         activeOptions: [],
@@ -45,16 +54,20 @@ Component({
         bodyStyle: '',
         activeValue: [],
         showOptions: [],
+        fieldNames: {},
     },
     methods: {
         getActiveOptions(activeValue) {
             const { options } = this.data
+            const value = this.getFieldName('value')
+            const childrenKeyName = this.getFieldName('children')
 
-            return arrayTreeFilter(options, (option, level) => option.value === activeValue[level])
+            return arrayTreeFilter(options, (option, level) => option[value] === activeValue[level], { childrenKeyName })
         },
         getShowOptions(activeValue) {
             const { options } = this.data
-            const result = this.getActiveOptions(activeValue).map((activeOption) => activeOption.children).filter((activeOption) => !!activeOption)
+            const children = this.getFieldName('children')
+            const result = this.getActiveOptions(activeValue).map((activeOption) => activeOption[children]).filter((activeOption) => !!activeOption)
 
             return [options, ...result]
         },
@@ -63,7 +76,10 @@ Component({
             const activeOptions = this.getActiveOptions(activeValue)
 
             if (hasChildren && activeOptions.length < options.length) {
-                activeOptions.push({ value: WUX_CASCADER, label: chooseTitle })
+                const value = this.getFieldName('value')
+                const label = this.getFieldName('label')
+
+                activeOptions.push({ [value]: WUX_CASCADER, [label]: chooseTitle })
             }
 
             return activeOptions
@@ -77,8 +93,10 @@ Component({
             return activeValue
         },
         updated(currentOptions, optionIndex, condition, callback) {
-            const hasChildren = currentOptions.children && currentOptions.children.length > 0
-            const activeValue = this.getNextActiveValue(currentOptions.value, optionIndex)
+            const value = this.getFieldName('value')
+            const children = this.getFieldName('children')
+            const hasChildren = currentOptions[children] && currentOptions[children].length > 0
+            const activeValue = this.getNextActiveValue(currentOptions[value], optionIndex)
             const activeOptions = this.getMenus(activeValue, hasChildren)
             const activeIndex = activeOptions.length - 1
             const showOptions = this.getShowOptions(activeValue)
@@ -86,7 +104,7 @@ Component({
                 activeValue,
                 activeOptions,
                 activeIndex,
-                showOptions: this.getShowOptions(activeValue),
+                showOptions,
             }
 
             // 判断 hasChildren 计算需要更新的数据
@@ -113,7 +131,10 @@ Component({
             if (currentOptions) {
                 this.updated(currentOptions, optionIndex, true)
             } else {
-                activeOptions.push({ value: WUX_CASCADER, label: this.data.chooseTitle })
+                const value = this.getFieldName('value')
+                const label = this.getFieldName('label')
+
+                activeOptions.push({ [value]: WUX_CASCADER, [label]: this.data.chooseTitle })
 
                 const showOptions = this.getShowOptions(activeValue)
                 const activeIndex = activeOptions.length - 1
@@ -147,9 +168,7 @@ Component({
             const { item, optionIndex } = e.currentTarget.dataset
 
             // 判断是否禁用
-            if (!item || item.disabled) {
-                return false
-            }
+            if (!item || item.disabled) return
 
             // updated
             this.updated(item, optionIndex, !this.data.controlled, this.onChange)
@@ -164,18 +183,18 @@ Component({
          * 选择完成时的回调函数
          */
         onChange(currentOptions = {}, activeOptions = [], done = false) {
-            const options = activeOptions.filter((n) => n.value !== WUX_CASCADER)
-            const value = options.map((n) => n.value)
+            const options = activeOptions.filter((n) => n[this.getFieldName('value')] !== WUX_CASCADER)
+            const value = options.map((n) => n[this.getFieldName('value')])
 
             // 判断是否异步加载
             if (currentOptions.isLeaf === false && !currentOptions.children) {
                 this.emitEvent({ value, options, done: false })
                 this.triggerEvent('load', { value, options })
-                return true
+                return
             }
 
             // 正常加载
-            return this.emitEvent({ value, options, done })
+            this.emitEvent({ value, options, done })
         },
         emitEvent(params = {}) {
             this.triggerEvent('change', params)
@@ -185,11 +204,15 @@ Component({
                 this.onPopupClose()
             }
         },
+        getFieldName(name) {
+            return this.data.fieldNames[name]
+        },
     },
     attached() {
         const { defaultValue, value, controlled } = this.data
         const activeValue = controlled ? value : defaultValue
+        const fieldNames = Object.assign({}, defaultFieldNames, this.data.defaultFieldNames)
 
-        this.setData({ activeValue }, () => this.getCurrentOptions(activeValue))
+        this.setData({ activeValue, fieldNames }, () => this.getCurrentOptions(activeValue))
     },
 })

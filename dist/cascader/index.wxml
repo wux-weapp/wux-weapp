@@ -4,7 +4,7 @@
 	    	<view class="wux-cascader__title" wx:if="{{ title }}">{{ title }}</view>
 	    	<view class="wux-cascader__menus" wx:if="{{ activeOptions.length }}">
 	    		<block wx:for="{{ activeOptions }}" wx:key="">
-	    			<view class="wux-cascader__menu {{ activeIndex === index ? 'wux-cascader__menu--active' : '' }}" data-menu-index="{{ index }}" bindtap="onMenuClick">{{ item.label }}</view>
+	    			<view class="wux-cascader__menu {{ activeIndex === index ? 'wux-cascader__menu--active' : '' }}" data-menu-index="{{ index }}" bindtap="onMenuClick">{{ item[fieldNames['label']] }}</view>
 	    		</block>
 	    	</view>
 	    </view>
@@ -15,13 +15,13 @@
 			    		<view class="wux-cascader__option">
 			    			<block wx:for="{{ option }}" wx:key="">
 					    		<view
-						    		class="wux-cascader__item {{ activeValue[optionIndex] === item.value ? 'wux-cascader__item--active' : '' }} {{ item.disabled ? 'wux-cascader__item--disabled' : '' }}"
+						    		class="wux-cascader__item {{ activeValue[optionIndex] === item[fieldNames['value']] ? 'wux-cascader__item--active' : '' }} {{ item.disabled ? 'wux-cascader__item--disabled' : '' }}"
 						    		data-option-index="{{ optionIndex }}"
 						    		data-item="{{ item }}"
 						    		bindtap="onItemSelect"
 					    		>
-					    			<text>{{ item.label }}</text>
-					    			<icon class="wux-cascader__icon" type="success_no_circle" size="16" color="#ef473a" wx:if="{{ activeValue[optionIndex] === item.value }}" />
+					    			<text>{{ item[fieldNames['label']] }}</text>
+					    			<icon class="wux-cascader__icon" type="success_no_circle" size="16" color="#ef473a" wx:if="{{ activeValue[optionIndex] === item[fieldNames['value']] }}" />
 					    		</view>
 					    	</block>
 			    		</view>
