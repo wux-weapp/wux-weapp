@@ -5,6 +5,7 @@ const defaults = {
     value: '',
     options: [],
     multiple: false,
+    max: -1,
     toolbar: {
         title: '请选择',
         cancelText: '取消',
@@ -34,7 +35,9 @@ Component({
          * 打开
          */
         open(opts = {}) {
-            const options = this.$$mergeOptionsAndBindMethods(Object.assign({}, defaults, opts))
+            const options = this.$$mergeOptionsAndBindMethods(Object.assign({}, defaults, opts, {
+                max: parseInt(opts.max),
+            }))
             const index = getSelectIndex(options)
 
             this.$$setData({ visible: true, ...options, index })
@@ -84,7 +87,12 @@ Component({
         /**
          * 选择完成后的回调函数
          */
-        onChange(value, index, options = this.data.options) {
+        onChange(value, index) {
+            const { options, max, multiple } = this.data
+
+            // 限制最多选择几项
+            if (multiple && max >= 1 && max < value.length) return
+
             this.$$setData({ value, index })
 
             if (typeof this.fns.onChange === 'function') {
