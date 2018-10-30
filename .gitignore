@@ -84,7 +84,7 @@ lib-cov
 *.out
 *.pid
 npm-debug.log
-
+yarn.lock
 
 
 
