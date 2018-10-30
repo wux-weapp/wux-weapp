@@ -39,8 +39,8 @@ Component({
                 })
             }
         },
-        emitEvent(value) {
-            this.triggerEvent('change', value)
+        emitEvent(item) {
+            this.triggerEvent('change', { ...item, name: this.data.name })
         },
     },
 })
