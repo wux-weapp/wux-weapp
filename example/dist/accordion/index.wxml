@@ -9,7 +9,7 @@
         <block wx:else>
             <slot name="header"></slot>
         </block>
-        <view class="wux-accordion__arrow"></view>
+        <view class="wux-accordion__arrow" wx:if="{{ showArrow }}"></view>
     </view>
     <view class="wux-accordion__bd">
         <view class="wux-accordion__content" wx:if="{{ content }}">{{ content }}</view>

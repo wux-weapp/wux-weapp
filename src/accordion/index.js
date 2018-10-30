@@ -26,6 +26,10 @@ Component({
             type: Boolean,
             value: false,
         },
+        showArrow: {
+            type: Boolean,
+            value: true,
+        },
     },
     data: {
         current: false,
