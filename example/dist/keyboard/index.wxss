@@ -1,26 +1,7 @@
 .wux-keyboard {
-  background-color: rgba(0, 0, 0, 0.4);
-  right: 0;
-  top: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
-}
-.wux-keyboard,
-.wux-keyboard__content {
-  position: fixed;
-  z-index: 1502;
-  bottom: 0;
-  left: 0;
-}
-.wux-keyboard__content {
+  display: block;
   width: 100%;
+  color: #333;
   background-color: #f7f7f7;
 }
 .wux-keyboard__hd {
@@ -60,6 +41,14 @@
   position: relative;
   background-color: #fff;
 }
+.wux-keyboard__input {
+  width: 100%;
+  padding: 8rpx;
+  height: 80rpx;
+  min-height: 80rpx;
+  text-align: center;
+  box-sizing: border-box;
+}
 .wux-keyboard__label {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -88,11 +77,15 @@
           transform: scaleX(0.5);
 }
 .wux-keyboard__password {
+  width: auto;
+  height: auto;
+  display: none;
+}
+.wux-keyboard__password--dot {
   width: 12rpx;
   height: 12rpx;
   border-radius: 50%;
   background-color: #000;
-  display: none;
 }
 .wux-keyboard__password--active {
   display: block;

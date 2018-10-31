@@ -1,6 +1,5 @@
 import baseBehavior from '../helpers/baseBehavior'
 import mergeOptionsToData from '../helpers/mergeOptionsToData'
-import { $wuxBackdrop } from '../index'
 
 const defaults = {
     className: '',
@@ -9,7 +8,11 @@ const defaults = {
     inputText: '输入数字密码',
     showCancel: true,
     disorder: false,
+    password: true,
+    maxlength: 6,
+    onChange(value) {},
     callback(value) {},
+    // onClose(value) {},
 }
 
 /**
@@ -55,7 +58,6 @@ Component({
          */
         hide() {
             this.$$setData({ in: false })
-            this.$wuxBackdrop.release()
         },
         /**
          * 上拉键盘组件
@@ -66,17 +68,19 @@ Component({
          * @param {String} opts.inputText 提示文本
          * @param {Boolean} opts.showCancel 是否显示取消按钮
          * @param {Boolean} opts.disorder 是否打乱键盘
+         * @param {Boolean} opts.password 是否密码类型
+         * @param {Number} opts.maxlength 最大输入长度，设置为 -1 的时候不限制最大长度
+         * @param {Function} opts.onChange change 事件触发的回调函数
          * @param {Function} opts.callback 输入完成后的回调函数
+         * @param {Function} opts.onClose 输入完成后的回调函数，优先级高于 callback
          */
         show(opts = {}) {
-            const options = this.$$mergeOptionsAndBindMethods(Object.assign({
-                nums: upsetNums(opts.disorder),
-                keys: [1, 2, 3, 4, 5, 6],
-                value: '',
-            }, defaults, opts))
+            const nums = upsetNums(opts.disorder)
+            const maxlength = opts.maxlength <= 0 ? -1 : opts.maxlength
+            const keys = maxlength !== -1 ? [...new Array(maxlength || defaults.maxlength)].map(() => 1) : []
+            const options = this.$$mergeOptionsAndBindMethods(Object.assign({ nums, keys, value: '' }, defaults, opts))
 
             this.$$setData({ in: true, ...options })
-            this.$wuxBackdrop.retain()
 
             return this.hide.bind(this)
         },
@@ -85,65 +89,54 @@ Component({
          */
         increase(e) {
             const dataset = e.currentTarget.dataset
-            const value = String(dataset.value)
-            const keyboard = this.data
-            const length = keyboard.value.length
-            const callback = () => {
-                if (length === 5) {
-                    const preCloseCallback = this.fns.callback
-                    const performCloseDialog = () => {
-                        this.updateValue()
-                        this.hide()
-                    }
+            const nextValue = String(dataset.value)
+            const { value, maxlength } = this.data
 
-                    if (preCloseCallback && typeof preCloseCallback === `function`) {
-                        const preCloseCallbackResult = preCloseCallback.call(this, keyboard.value)
-                        if (typeof preCloseCallbackResult === 'object') {
-                            if (preCloseCallbackResult.closePromise) {
-                                preCloseCallbackResult.closePromise.then(performCloseDialog, this.updateValue)
-                            } else {
-                                preCloseCallbackResult.then(performCloseDialog, this.updateValue)
-                            }
-                        } else if (preCloseCallbackResult !== false) {
-                            performCloseDialog()
-                        } else {
-                            this.updateValue()
-                        }
-                    } else {
-                        performCloseDialog()
-                    }
-                }
-            }
+            if (value.length >= maxlength && maxlength !== -1) return
 
-            if (length >= 6) {
-                return false
-            }
-
-            this.updateValue(keyboard.value + value, callback)
+            this.updateValue(value + nextValue)
         },
         /**
          * 减少
          */
         decrease(e) {
-            const dataset = e.currentTarget.dataset
-            const value = String(dataset.value)
-            const keyboard = this.data
-            const length = keyboard.value.length
+            const { value } = this.data
 
-            if (length === 0) {
-                return false
-            }
+            if (value.length === 0) return
 
-            this.updateValue(keyboard.value.substr(0, length - 1))
+            this.updateValue(value.substr(0, value.length - 1))
         },
         /**
          * 更新
          */
-        updateValue(value = '', callback = () => {}) {
-            this.$$setData({ value }).then(() => this.$$requestAnimationFrame(callback))
+        updateValue(value = '') {
+            this.$$setData({ value })
+
+            // onChange
+            if (typeof this.fns.onChange === 'function') {
+                this.fns.onChange.call(this, value)
+            }
+
+            // onClose
+            if (value.length === this.data.maxlength) {
+                const preCloseCallback = this.fns.onClose || this.fns.callback
+                const performCloseDialog = () => this.hide()
+
+                if (preCloseCallback && typeof preCloseCallback === 'function') {
+                    const preCloseCallbackResult = preCloseCallback.call(this, value)
+                    if (typeof preCloseCallbackResult === 'object') {
+                        if (preCloseCallbackResult.closePromise) {
+                            preCloseCallbackResult.closePromise.then(performCloseDialog, performCloseDialog)
+                        } else {
+                            preCloseCallbackResult.then(performCloseDialog, performCloseDialog)
+                        }
+                    } else if (preCloseCallbackResult !== false) {
+                        performCloseDialog()
+                    }
+                } else {
+                    performCloseDialog()
+                }
+            }
         },
-    },
-    created() {
-        this.$wuxBackdrop = $wuxBackdrop('#wux-backdrop', this)
     },
 })

@@ -80,6 +80,7 @@ Page({
             inputText: '输入数字密码',
             showCancel: true,
             disorder: false,
+            maxlength: 4,
             callback(value) {
                 console.log(`输入的密码是：${value}`)
 
@@ -94,13 +95,19 @@ Page({
         })
     },
     openTimed() {
+        clearTimeout(this.timeout)
+
         const hide = $wuxKeyBoard().show({
-            callback(value) {
+            password: false,
+            maxlength: -1,
+            onChange(value) {
                 console.log(`输入的密码是：${value}`)
-                return true
+            },
+            onClose(value) {
+                return false
             },
         })
 
-        setTimeout(hide, 3000)
+        this.timeout = setTimeout(hide, 3000)
     },
 })

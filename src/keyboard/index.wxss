@@ -1,33 +1,18 @@
 @import "../styles/base/fn.wxss";
 
 .wux-keyboard {
-    background-color: rgba(0, 0, 0, .4);
-    right: 0;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &, 
-    &__content {
-        position: fixed;
-        z-index: 1502;
-        bottom: 0;
-        left: 0;
-    }
-
-    &__content {
-        width: 100%;
-        background-color: #f7f7f7;
-    }
+    display: block;
+    width: 100%;
+    color: #333;
+    background-color: #f7f7f7;
 
     &__hd {
-        height: 80rpx;
+        height: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
         color: #1f2324;
-        font-size: 30rpx;
+        font-size: 15px;
         position: relative;
         
         &:after {
@@ -36,10 +21,19 @@
     }
 
     &__bd {
-        margin: 30rpx 80rpx;
+        margin: 15px 40px;
         display: flex;
         position: relative;
         background-color: #fff;
+    }
+    
+    &__input {
+        width: 100%;
+        padding: 4px;
+        height: 40px;
+        min-height: 40px;
+        text-align: center;
+        box-sizing: border-box;
     }
 
     &__label {
@@ -48,11 +42,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100rpx;
+        height: 50px;
         
         &:not(:last-child):after {
             content: "";
-            width: 2rpx;
+            width: 1px;
             height: 50%;
             position: absolute;
             right: 0;
@@ -63,11 +57,16 @@
     }
     
     &__password {
-        width: 12rpx;
-        height: 12rpx;
-        border-radius: 50%;
-        background-color: #000;
+        width: auto;
+        height: auto;
         display: none;
+
+        &--dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #000;
+        }
     
         &--active {
             display: block;
@@ -85,23 +84,23 @@
     
     &__title {
         overflow: hidden;
-        padding: 20rpx 0 12rpx;
+        padding: 10px 0 6px;
         color: #222;
         margin-bottom: 1px;
-        font-size: 24rpx;
+        font-size: 12px;
         text-align: center;
         background-color: #fff;
         
         &:before {
-            font-size: 26rpx;
+            font-size: 13px;
             color: #ff2424;
             line-height: 1;
-            margin-right: 6rpx;
+            margin-right: 3px;
         }
     }
     
     &__numbers {
-        font-size: 48rpx;
+        font-size: 24px;
         background-color: #fff;
     }
     
@@ -115,7 +114,7 @@
         width: 1%;
         flex: 1;
         color: #222;
-        height: 100rpx;
+        height: 50px;
         position: relative;
         justify-content: center;
         align-items: center;
@@ -139,7 +138,7 @@
     &__number:last-child &__text:last-child,
     &__number:last-child &__text:nth-last-child(3) {
         background-color: #f7f7f7;
-        font-size: 30rpx;
+        font-size: 15px;
         color: #686868;
     }
 }
