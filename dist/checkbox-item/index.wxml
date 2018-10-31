@@ -1,0 +1,5 @@
+<label class="wux-class wux-checkbox {{ inputChecked ? 'wux-checkbox--checked' : '' }}" bindtap="checkboxChange">
+    <checkbox value="{{ value }}" checked="{{ inputChecked }}" color="{{ inputColor }}" disabled="{{ disabled }}" class="wux-checkbox__input" />
+    <icon class="wux-checkbox__icon" type="{{ inputChecked ? 'success' : 'circle' }}" size="23" color="{{ !disabled ? inputColor : '#666' }}" />
+    <slot></slot>
+</label>

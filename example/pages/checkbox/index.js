@@ -4,6 +4,7 @@ Page({
         value2: ['1'],
         value3: ['1'],
         value4: ['1'],
+        checked: false,
     },
     onChange(field, e) {
         const { value } = e.detail
@@ -31,5 +32,11 @@ Page({
     },
     formSubmit(e) {
         console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    },
+    onCheckboxChange(e) {
+        console.log(e)
+        this.setData({
+            checked: e.detail.checked,
+        })
     },
 })
