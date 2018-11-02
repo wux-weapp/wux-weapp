@@ -1,7 +1,7 @@
 {
-    "navigationBarTitleText": "CheckboxItem",
+    "navigationBarTitleText": "Selectable",
     "usingComponents": {
-        "wux-checkbox-item": "../../dist/checkbox-item/index",
+        "wux-selectable": "../../dist/selectable/index",
         "wux-cell-group": "../../dist/cell-group/index",
         "wux-cell": "../../dist/cell/index"
     }

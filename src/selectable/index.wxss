@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-checkbox {
+.wux-selectable {
     position: relative;
     display: inline-block;
     

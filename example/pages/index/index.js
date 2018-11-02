@@ -61,11 +61,6 @@ Page({
                         url: '/pages/checkbox/index',
                     },
                     {
-                        title: 'CheckboxItem',
-                        remark: '选择框',
-                        url: '/pages/checkbox-item/index',
-                    },
-                    {
                         title: 'Input',
                         remark: '文本输入框',
                         url: '/pages/input/index',
@@ -94,6 +89,11 @@ Page({
                         title: 'Select',
                         remark: '下拉框',
                         url: '/pages/select/index',
+                    },
+                    {
+                        title: 'Selectable',
+                        remark: '选框组',
+                        url: '/pages/selectable/index',
                     },
                     {
                         title: 'Slider',

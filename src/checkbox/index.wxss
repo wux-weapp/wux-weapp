@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-checkbox {
+.wux-selectable {
     &--cell {
         position: static !important;
     }
