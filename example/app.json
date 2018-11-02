@@ -15,6 +15,7 @@
         "pages/card/index",
         "pages/cascader/index",
         "pages/checkbox/index",
+        "pages/checkbox-item/index",
         "pages/circle/index",
         "pages/countdown/index",
         "pages/countup/index",

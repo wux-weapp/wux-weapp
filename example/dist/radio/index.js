@@ -1,5 +1,3 @@
-import { isPresetColor } from '../helpers/colors'
-
 Component({
     externalClasses: ['wux-class'],
     relations: {
@@ -27,6 +25,11 @@ Component({
         checked: {
             type: Boolean,
             value: false,
+            observer(newVal) {
+                this.setData({
+                    inputChecked: newVal,
+                })
+            },
         },
         disabled: {
             type: Boolean,
@@ -35,42 +38,31 @@ Component({
         color: {
             type: String,
             value: 'balanced',
-            observer(newVal) {
-                this.setData({
-                    radioColor: isPresetColor(newVal),
-                })
-            },
         },
     },
     data: {
         index: 0,
+        inputChecked: false,
     },
     methods: {
-        radioChange() {
-            const { value, checked, index, disabled } = this.data
+        radioChange(e) {
+            const { value, index, disabled } = this.data
             const parent = this.getRelationNodes('../radio-group/index')[0]
             const item = {
-                checked: !checked,
+                checked: e.detail.checked,
                 value,
                 index,
             }
 
-            if (disabled) {
-                return false
-            }
+            if (disabled) return
 
             parent ? parent.emitEvent(item) : this.triggerEvent('change', item)
         },
-        changeValue(checked = false, index = 0) {
+        changeValue(inputChecked = false, index = 0) {
             this.setData({
-                checked,
+                inputChecked,
                 index,
             })
         },
-    },
-    attached() {
-        this.setData({
-            radioColor: isPresetColor(this.data.color),
-        })
     },
 })

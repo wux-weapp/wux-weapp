@@ -1,8 +1,15 @@
 import { isPresetColor } from '../helpers/colors'
 
 Component({
-    externalClasses: ['wux-class'],
+    externalClasses: ['wux-class', 'wux-input-class'],
+    options: {
+        multipleSlots: true,
+    },
     properties: {
+        type: {
+            type: String,
+            value: 'checkbox',
+        },
         value: {
             type: String,
             value: '',
@@ -37,6 +44,10 @@ Component({
             type: Boolean,
             value: false,
         },
+        wrapStyle: {
+            type: String,
+            value: '',
+        },
     },
     data: {
         inputChecked: false,
@@ -50,7 +61,7 @@ Component({
                 })
             }
         },
-        checkboxChange() {
+        onChange() {
             const { value, inputChecked, disabled, controlled } = this.data
             const item = {
                 checked: !inputChecked,

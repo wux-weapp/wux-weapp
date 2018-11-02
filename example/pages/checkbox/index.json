@@ -2,9 +2,6 @@
     "navigationBarTitleText": "Checkbox",
     "usingComponents": {
         "wux-checkbox-group": "../../dist/checkbox-group/index",
-        "wux-checkbox": "../../dist/checkbox/index",
-        "wux-checkbox-item": "../../dist/checkbox-item/index",
-        "wux-cell-group": "../../dist/cell-group/index",
-        "wux-cell": "../../dist/cell/index"
+        "wux-checkbox": "../../dist/checkbox/index"
     }
 }

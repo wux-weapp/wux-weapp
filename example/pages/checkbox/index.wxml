@@ -36,29 +36,5 @@
                 <button formType="submit">Submit</button>
             </view>
         </form>
-
-        <view class="sub-title">CheckboxItem</view>
-        <wux-checkbox-item color="light" value="1" defaultChecked />
-        <wux-checkbox-item color="stable" value="2" defaultChecked />
-        <wux-checkbox-item color="positive" value="3" defaultChecked />
-        <wux-checkbox-item color="calm" value="4" />
-        <wux-checkbox-item color="balanced" value="5" />
-        <wux-checkbox-item color="energized" value="6" />
-        <wux-checkbox-item color="assertive" value="7" disabled />
-        <wux-checkbox-item color="royal" value="8" disabled />
-        <wux-checkbox-item color="dark" value="9" disabled />
-        <view class="sub-title">Controlled</view>
-        <wux-checkbox-item color="light" value="1" checked="{{ checked }}" bind:change="onCheckboxChange" />
-        <view class="sub-title">With cellGroup</view>
-        <wux-cell-group>
-            <wux-cell title="Light">
-                <wux-checkbox-item slot="header" wux-class="checkbox" color="light" value="1" />
-            </wux-cell>
-            <wux-cell title="Stable" label="disabled">
-                <wux-checkbox-item slot="header" wux-class="checkbox" color="stable" value="2" disabled />
-            </wux-cell>
-        </wux-cell-group>
-        <view class="sub-title">Other</view>
-        <wux-checkbox-item color="light" value="1">Agree agreement</wux-checkbox-item>
     </view>
 </view>

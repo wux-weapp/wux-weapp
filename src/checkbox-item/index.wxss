@@ -18,6 +18,11 @@
 
     &__icon {
         display: inline-block;
+        font-size: 0;
+        vertical-align: middle;
+        position: relative;
+        top: 0;
+        left: 0;
         margin-left: 5px;
         margin-right: 5px;
     }
