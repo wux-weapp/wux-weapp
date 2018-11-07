@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-prompt {
+.@{wuxClassNamePrefix}-prompt {
     display: flex;
     height: 100%;
     align-items: center;

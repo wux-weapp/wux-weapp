@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-tabbar {
+.@{wuxClassNamePrefix}-tabbar {
 	position: relative;
 	z-index: 500;
 	width: 100%;

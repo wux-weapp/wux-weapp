@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-gallery {
+.@{wuxClassNamePrefix}-gallery {
 	display: block;
 	position: fixed;
 	top: 0;

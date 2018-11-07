@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-select {
+.@{wuxClassNamePrefix}-select {
     position: fixed;
     bottom: 0;
     left: 0;

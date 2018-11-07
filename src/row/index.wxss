@@ -1,5 +1,5 @@
 @import "../styles/base/fn.wxss";
 
-.wux-row {
+.@{wuxClassNamePrefix}-row {
     .clearfix()
 }

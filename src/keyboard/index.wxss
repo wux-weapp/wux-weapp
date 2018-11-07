@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-keyboard {
+.@{wuxClassNamePrefix}-keyboard {
     display: block;
     width: 100%;
     color: #333;

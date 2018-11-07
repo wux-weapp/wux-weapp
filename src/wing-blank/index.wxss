@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-wingblank {
+.@{wuxClassNamePrefix}-wingblank {
     &--small {
         margin-left: 5px;
         margin-right: 5px;

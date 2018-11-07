@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-grids {
+.@{wuxClassNamePrefix}-grids {
 	position: relative;
 	box-sizing: border-box;
 	overflow: hidden;

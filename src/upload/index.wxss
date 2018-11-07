@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-upload {
+.@{wuxClassNamePrefix}-upload {
     position: relative;
     display: block;
     .clearfix();
@@ -10,7 +10,7 @@
     }
 
     &--picture-card {
-        .wux-upload__select {
+        .@{wuxClassNamePrefix}-upload__select {
             border: 1px dashed #d9d9d9;
             width: 78px;
             height: 78px;
@@ -21,7 +21,7 @@
             box-sizing: border-box;
         }
 
-        .wux-upload__button {
+        .@{wuxClassNamePrefix}-upload__button {
             width: 100%;
             height: 100%;
             display: flex;
@@ -40,14 +40,14 @@
             }
         }
 
-        .wux-upload__files {
+        .@{wuxClassNamePrefix}-upload__files {
             position: relative;
             display: block;
             float: left;
             .clearfix();
         }
 
-        .wux-upload__file {
+        .@{wuxClassNamePrefix}-upload__file {
             float: left;
             width: 78px;
             height: 78px;
@@ -67,14 +67,14 @@
             }
         }
 
-        .wux-upload__thumb {
+        .@{wuxClassNamePrefix}-upload__thumb {
             width: 100%;
             height: 100%;
             display: inline-block;
             overflow: hidden;
         }
 
-        .wux-upload__remove {
+        .@{wuxClassNamePrefix}-upload__remove {
             width: 15px;
             height: 15px;
             position: absolute;

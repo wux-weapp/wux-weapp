@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-calendar {
+.@{wuxClassNamePrefix}-calendar {
 	position: relative;
 	background: #fff;
 	height: 300px;

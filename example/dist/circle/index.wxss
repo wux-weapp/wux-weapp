@@ -1,6 +1,6 @@
 .wux-circle {
   display: inline-block;
-  position: relative;
+  position: relative
 }
 .wux-circle__inner {
   width: 100%;
@@ -8,7 +8,6 @@
   position: absolute;
   left: 0;
   top: 50%;
-  -webkit-transform: translate3d(0, -50%, 0);
-          transform: translate3d(0, -50%, 0);
-  line-height: 1;
+  transform: translate3d(0,-50%,0);
+  line-height: 1
 }

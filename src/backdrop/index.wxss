@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-backdrop {
+.@{wuxClassNamePrefix}-backdrop {
     background: rgba(0, 0, 0, .4);
     
     &, 

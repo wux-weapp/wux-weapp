@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-toptips {
+.@{wuxClassNamePrefix}-toptips {
 	position: fixed;
 	top: 0;
 	left: 0;

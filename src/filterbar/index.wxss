@@ -1,7 +1,7 @@
 @import "../styles/base/fn.wxss";
 @import '../backdrop/index.wxss';
 
-.wux-filterbar {
+.@{wuxClassNamePrefix}-filterbar {
     position: relative;
     z-index: 1000;
 
@@ -168,12 +168,12 @@
     }
 }
 
-.wux-filterbar__btns {
+.@{wuxClassNamePrefix}-filterbar__btns {
     height: 44px;
     display: -webkit-box;
     overflow: hidden;
 
-    .wux-filterbar__btn {
+    .@{wuxClassNamePrefix}-filterbar__btn {
         background-color: #fff;
         color: #252525;
         font-size: 16px;
@@ -192,7 +192,7 @@
         }
     }
     
-    .wux-filterbar__btn--danger {
+    .@{wuxClassNamePrefix}-filterbar__btn--danger {
         background-color: #f23030;
         color: #fff;
     

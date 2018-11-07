@@ -7,7 +7,7 @@
     }
 }
 
-.wux-alert {
+.@{wuxClassNamePrefix}-alert {
     padding: 10px 15px;
     position: relative;
     display: flex;

@@ -1,0 +1,21 @@
+@import '../../dist/styles/index.wxss';
+.color {
+    width: 200rpx;
+    color: #fff;
+    padding: 6px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+}
+
+.color__title {
+    font-size: 14px;
+    padding-bottom: 3px;
+}
+
+.color__label {
+    font-size: 12px;
+    opacity: .65;
+}

@@ -13,11 +13,13 @@
     "babel-register": "^6.26.0",
     "cross-env": "1.0.8",
     "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.10.0",
     "gulp-cssnano": "^2.1.2",
     "gulp-less": "^3.3.2",
     "gulp-postcss": "^7.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-util": "^3.0.8",
+    "postcss-font-base64": "^1.0.5",
     "through2": "^2.0.3"
   },
   "scripts": {

@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-slider {
+.@{wuxClassNamePrefix}-slider {
 	position: relative;
 	z-index: 1;
 	display: flex;

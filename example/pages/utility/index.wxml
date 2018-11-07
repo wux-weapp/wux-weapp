@@ -1,0 +1,107 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Utility</view>
+        <view class="page__desc">工具类</view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+        <view class="sub-title">Colors</view>
+        <wux-row>
+            <wux-col span="4">
+                <view class="color wux-balanced wux-light--bg wux-margin-top--5 wux-mb--5">
+                    <view class="color__title">Light</view>
+                    <view class="color__label">#fff</view>
+                </view>
+            </wux-col>
+            <wux-col span="4">
+                <view class="color wux-balanced wux-stable--bg wux-margin-top--5 wux-mb--5">
+                    <view class="color__title">Stable</view>
+                    <view class="color__label">#f8f8f8</view>
+                </view>
+            </wux-col>
+            <wux-col span="4">
+                <view class="color wux-positive--bg wux-margin-top--5 wux-mb--5">
+                    <view class="color__title">Positive</view>
+                    <view class="color__label">#387ef5</view>
+                </view>
+            </wux-col>
+            <wux-col span="4">
+                <view class="color wux-calm--bg wux-margin-top--5 wux-mb--5">
+                    <view class="color__title">Calm</view>
+                    <view class="color__label">#11c1f3</view>
+                </view>
+            </wux-col>
+            <wux-col span="4">
+                <view class="color wux-balanced--bg wux-margin-top--5 wux-mb--5">
+                    <view class="color__title">Balanced</view>
+                    <view class="color__label">#33cd5f</view>
+                </view>
+            </wux-col>
+            <wux-col span="4">
+                <view class="color wux-energized--bg wux-margin-top--5 wux-mb--5">
+                    <view class="color__title">Energized</view>
+                    <view class="color__label">#ffc900</view>
+                </view>
+            </wux-col>
+            <wux-col span="4">
+                <view class="color wux-assertive--bg wux-margin-top--5 wux-mb--5">
+                    <view class="color__title">Assertive</view>
+                    <view class="color__label">#ef473a</view>
+                </view>
+            </wux-col>
+            <wux-col span="4">
+                <view class="color wux-royal--bg wux-margin-top--5 wux-mb--5">
+                    <view class="color__title">Royal</view>
+                    <view class="color__label">#886aea</view>
+                </view>
+            </wux-col>
+            <wux-col span="4">
+                <view class="color wux-dark--bg wux-margin-top--5 wux-mb--5">
+                    <view class="color__title">Dark</view>
+                    <view class="color__label">#444</view>
+                </view>
+            </wux-col>
+        </wux-row>
+        <view class="sub-title">Alignment</view>
+        <wux-row>
+            <wux-col span="12">
+                <view class="wux-text--left">Left</view>
+            </wux-col>
+            <wux-col span="12">
+                <view class="wux-text--right">Right</view>
+            </wux-col>
+            <wux-col span="12">
+                <view class="wux-text--center">Center</view>
+            </wux-col>
+            <wux-col span="12">
+                <view class="wux-text--justify">Justify</view>
+            </wux-col>
+            <wux-col span="12">
+                <view class="wux-text--nowrap">Nowrap</view>
+            </wux-col>
+        </wux-row>
+        <view class="sub-title">Transformation</view>
+        <wux-row>
+            <wux-col span="4">
+                <view class="wux-text--lowercase">Lowercase</view>
+            </wux-col>
+            <wux-col span="4">
+                <view class="wux-text--uppercase">Uppercase</view>
+            </wux-col>
+            <wux-col span="4">
+                <view class="wux-text--capitalize">Capitalize</view>
+            </wux-col>
+        </wux-row>
+        <view class="sub-title">Ellipsis</view>
+        <wux-row>
+            <wux-col span="6">
+                <view class="wux-ellipsis">One line: https://github.com/wux-weapp/wux-weapp</view>
+            </wux-col>
+            <wux-col span="3">
+                <view class="wux-ellipsis--l2">Two lines: https://github.com/wux-weapp/wux-weapp</view>
+            </wux-col>
+            <wux-col span="3">
+                <view class="wux-ellipsis--l3">Three lines: https://github.com/wux-weapp/wux-weapp</view>
+            </wux-col>
+        </wux-row>
+    </view>
+</view>

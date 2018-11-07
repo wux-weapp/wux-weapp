@@ -2,12 +2,11 @@
   position: relative;
   display: inline-block;
   line-height: 1;
-  vertical-align: middle;
+  vertical-align: middle
 }
 .wux-badge__count {
   position: absolute;
-  -webkit-transform: translateX(50%);
-          transform: translateX(50%);
+  transform: translateX(50%);
   top: -12rpx;
   right: 0;
   height: 36rpx;
@@ -21,19 +20,16 @@
   padding: 0 10rpx;
   font-size: 24rpx;
   white-space: nowrap;
-  -webkit-transform-origin: -10% center;
-          transform-origin: -10% center;
+  transform-origin: -10% center;
   z-index: 10;
   box-shadow: 0 0 0 2rpx #fff;
   box-sizing: border-box;
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility
 }
 .wux-badge__dot {
   position: absolute;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  -webkit-transform-origin: 0 center;
-          transform-origin: 0 center;
+  transform: translateX(-50%);
+  transform-origin: 0 center;
   top: -8rpx;
   right: -16rpx;
   height: 16rpx;
@@ -41,11 +37,11 @@
   border-radius: 100%;
   background: #ed3f14;
   z-index: 10;
-  box-shadow: 0 0 0 2rpx #fff;
+  box-shadow: 0 0 0 2rpx #fff
 }
 .wux-badge__status {
   line-height: inherit;
-  vertical-align: baseline;
+  vertical-align: baseline
 }
 .wux-badge__status-dot {
   width: 12rpx;
@@ -54,14 +50,14 @@
   border-radius: 50%;
   vertical-align: middle;
   position: relative;
-  top: -2rpx;
+  top: -2rpx
 }
 .wux-badge__status-dot--success {
-  background-color: #52c41a;
+  background-color: #52c41a
 }
 .wux-badge__status-dot--processing {
   background-color: #1890ff;
-  position: relative;
+  position: relative
 }
 .wux-badge__status-dot--processing:after {
   position: absolute;
@@ -72,45 +68,30 @@
   border-radius: 50%;
   border: 2rpx solid #1890ff;
   content: "";
-  -webkit-animation: statusProcessing 1.2s infinite ease-in-out;
-          animation: statusProcessing 1.2s infinite ease-in-out;
+  animation: statusProcessing 1.2s infinite ease-in-out
 }
 .wux-badge__status-dot--default {
-  background-color: #d9d9d9;
+  background-color: #d9d9d9
 }
 .wux-badge__status-dot--error {
-  background-color: #f5222d;
+  background-color: #f5222d
 }
 .wux-badge__status-dot--warning {
-  background-color: #faad14;
+  background-color: #faad14
 }
 .wux-badge__status-text {
   display: inline-block;
-  color: rgba(0, 0, 0, 0.65);
+  color: rgba(0,0,0,.65);
   font-size: 28rpx;
-  margin-left: 16rpx;
-}
-@-webkit-keyframes statusProcessing {
-  0% {
-    -webkit-transform: scale(0.8);
-            transform: scale(0.8);
-    opacity: 0.5;
-  }
-  to {
-    -webkit-transform: scale(2.4);
-            transform: scale(2.4);
-    opacity: 0;
-  }
+  margin-left: 16rpx
 }
 @keyframes statusProcessing {
   0% {
-    -webkit-transform: scale(0.8);
-            transform: scale(0.8);
-    opacity: 0.5;
+    transform: scale(.8);
+    opacity: .5
   }
   to {
-    -webkit-transform: scale(2.4);
-            transform: scale(2.4);
-    opacity: 0;
+    transform: scale(2.4);
+    opacity: 0
   }
 }

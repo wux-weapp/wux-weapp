@@ -1,6 +1,6 @@
 .wux-selectable {
   position: relative;
-  display: inline-block;
+  display: inline-block
 }
 .wux-selectable__input {
   position: absolute;
@@ -12,7 +12,8 @@
   z-index: 2;
   border: 0 none;
   -webkit-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none
 }
 .wux-selectable__icon {
   display: inline-block;
@@ -22,5 +23,5 @@
   top: 0;
   left: 0;
   margin-left: 10rpx;
-  margin-right: 10rpx;
+  margin-right: 10rpx
 }

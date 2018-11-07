@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-rater {
+.@{wuxClassNamePrefix}-rater {
 	display: inline-block;
     margin: 0;
     padding: 0;

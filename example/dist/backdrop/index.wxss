@@ -1,5 +1,5 @@
 .wux-backdrop {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0,0,0,.4)
 }
 .wux-backdrop,
 .wux-backdrop--transparent {
@@ -8,8 +8,8 @@
   top: 0;
   right: 0;
   left: 0;
-  bottom: 0;
+  bottom: 0
 }
 .wux-backdrop--transparent {
-  background: transparent;
+  background: 0 0
 }

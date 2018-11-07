@@ -62,6 +62,7 @@
         "pages/toast/index",
         "pages/toptips/index",
         "pages/upload/index",
+        "pages/utility/index",
         "pages/vcode/index",
         "pages/white-space/index",
         "pages/wing-blank/index"

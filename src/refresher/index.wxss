@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-refresher {
+.@{wuxClassNamePrefix}-refresher {
     position: absolute;
     top: -60px;
     right: 0;
@@ -88,26 +88,26 @@
     }
 
     &--active {
-        &.wux-refresher--refreshing {
+        &.@{wuxClassNamePrefix}-refresher--refreshing {
             transition: transform .2s;
             transform: scale(1);
 
-            .wux-refresher__icon-pulling, 
-            .wux-refresher__text-pulling {
+            .@{wuxClassNamePrefix}-refresher__icon-pulling, 
+            .@{wuxClassNamePrefix}-refresher__text-pulling {
                 display: none;
             }
 
-            .wux-refresher__icon-refreshing, 
-            .wux-refresher__text-refreshing {
+            .@{wuxClassNamePrefix}-refresher__icon-refreshing, 
+            .@{wuxClassNamePrefix}-refresher__text-refreshing {
                 display: block;
             }
 
-            .wux-refresher--refreshing-tail {
+            .@{wuxClassNamePrefix}-refresher--refreshing-tail {
                 transform: scale(0);
             }
         }
 
-        .wux-refresher__icon-pulling:not(.wux-refresher__icon-pulling--disabled) {
+        .@{wuxClassNamePrefix}-refresher__icon-pulling:not(.@{wuxClassNamePrefix}-refresher__icon-pulling--disabled) {
             animation-name: refresh-spin;
             transform: translateZ(0) rotate(-180deg);
         }

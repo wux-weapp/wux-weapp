@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-step {
+.@{wuxClassNamePrefix}-step {
     font-size: 0;
     position: relative;
     display: inline-block;
@@ -11,11 +11,11 @@
     &--vertical {
         padding-bottom: 30px;
 
-        .wux-step__hd {
+        .@{wuxClassNamePrefix}-step__hd {
             float: left;
         }
 
-        .wux-step__bd {
+        .@{wuxClassNamePrefix}-step__bd {
             overflow: hidden;
             display: block;
             margin-left: 40px;
@@ -24,7 +24,7 @@
             clear: inherit;
         }
 
-        .wux-step__ft {
+        .@{wuxClassNamePrefix}-step__ft {
             position: absolute;
             left: 19px;
             top: 0;
@@ -83,46 +83,46 @@
     }
 
     &--process {
-        .wux-step__icon {
+        .@{wuxClassNamePrefix}-step__icon {
             border: @positive solid 1px;
             color:#fff;
             background: @positive;
         }
 
-        .wux-step__ft:after {
+        .@{wuxClassNamePrefix}-step__ft:after {
            // background: @positive;
         }
     }
 
     &--wait {
-        .wux-step__icon {
+        .@{wuxClassNamePrefix}-step__icon {
             border: #e9eaec solid 1px;
             color:#e9eaec;
         }
 
-        .wux-step__ft:after {
+        .@{wuxClassNamePrefix}-step__ft:after {
             background: @positive;
         }
     }
 
     &--finish {
-        .wux-step__icon {
+        .@{wuxClassNamePrefix}-step__icon {
             border: @positive solid 1px;
             color:@positive;
         }
 
-        .wux-step__ft:after {
+        .@{wuxClassNamePrefix}-step__ft:after {
             background: @positive;
         }
     }
 
     &--error {
-        .wux-step__icon {
+        .@{wuxClassNamePrefix}-step__icon {
             border: @assertive solid 1px;
             color: @assertive;
         }
 
-        .wux-step__ft:after {
+        .@{wuxClassNamePrefix}-step__ft:after {
             background: @assertive;
         }
     }

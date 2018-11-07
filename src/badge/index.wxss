@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-badge {
+.@{wuxClassNamePrefix}-badge {
     position: relative;
     display: inline-block;
     line-height: 1;

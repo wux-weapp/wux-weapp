@@ -1,4 +1,1 @@
-.wux-accordion-group {
-  position: relative;
-  border: none;
-}
+.wux-accordion-group{position:relative;border:none}

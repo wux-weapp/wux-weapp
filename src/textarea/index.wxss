@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-textarea {
+.@{wuxClassNamePrefix}-textarea {
 	position: relative;
 	display: flex;
 	align-item: center;

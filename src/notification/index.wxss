@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-notification {
+.@{wuxClassNamePrefix}-notification {
     position: absolute;
     top: -2rem;
     right: 0;

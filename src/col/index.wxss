@@ -23,7 +23,7 @@
     .loop((@count - 1));
 }
 
-.wux-col {
+.@{wuxClassNamePrefix}-col {
     position: relative;
     min-height: 1px;
     box-sizing: border-box;

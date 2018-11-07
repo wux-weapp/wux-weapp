@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-toast {
+.@{wuxClassNamePrefix}-toast {
 	position: fixed;
 	z-index: 5000;
 	top: 50%;
@@ -21,7 +21,7 @@
 		&--has-icon {
 			padding: 15px;
 
-			.wux-toast__text {
+			.@{wuxClassNamePrefix}-toast__text {
 				margin-top: 6px;
 			}
 		}

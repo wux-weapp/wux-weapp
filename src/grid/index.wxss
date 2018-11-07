@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-grid {
+.@{wuxClassNamePrefix}-grid {
     position: relative;
     float: left;
     box-sizing: border-box;

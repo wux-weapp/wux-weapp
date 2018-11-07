@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-whitespace {
+.@{wuxClassNamePrefix}-whitespace {
     &--small {
         height: 5px;
     }

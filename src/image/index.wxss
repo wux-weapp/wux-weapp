@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-image {
+.@{wuxClassNamePrefix}-image {
 	position: relative;
 	overflow: hidden;
 	display: flex;
@@ -19,7 +19,7 @@
 	    border-radius: 4px;
 
 	    &:after {
-            .setBorder(#D9D9D9);
+            .hairline(#D9D9D9);
             border-width: 1px;
             border-radius: 8px;
         }

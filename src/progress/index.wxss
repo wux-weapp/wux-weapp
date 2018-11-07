@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-progress {
+.@{wuxClassNamePrefix}-progress {
 	display: flex;
     align-items: center;
 

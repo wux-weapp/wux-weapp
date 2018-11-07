@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-media {
+.@{wuxClassNamePrefix}-media {
     position: relative;
     display: flex;
     padding: 15px;

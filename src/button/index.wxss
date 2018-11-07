@@ -22,7 +22,7 @@
     }
 }
 
-.wux-button {
+.@{wuxClassNamePrefix}-button {
     position: relative;
     display: inline-block;
     // margin-left: auto;

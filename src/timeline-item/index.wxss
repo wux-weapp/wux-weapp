@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-timeline-item {
+.@{wuxClassNamePrefix}-timeline-item {
 	position: relative;
 	padding: 0 0 12px;
 	margin: 0;

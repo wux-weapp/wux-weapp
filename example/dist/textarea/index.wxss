@@ -1,9 +1,8 @@
 .wux-textarea {
   position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  align-item: center;
+  align-item: center
 }
 .wux-textarea__label {
   margin-left: 0;
@@ -11,12 +10,11 @@
   text-align: left;
   white-space: nowrap;
   overflow: hidden;
-  width: 210rpx;
+  width: 210rpx
 }
 .wux-textarea__control {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-          flex: 1;
+  -ms-flex: 1;
+  flex: 1
 }
 .wux-textarea__item {
   width: 100%;
@@ -28,26 +26,26 @@
   color: inherit;
   height: 1.47058824em;
   min-height: 1.47058824em;
-  line-height: 1.47058824;
+  line-height: 1.47058824
 }
 .wux-textarea__extra {
   color: #888;
-  margin-left: 10rpx;
+  margin-left: 10rpx
 }
 .wux-textarea__error {
-  margin-left: 10rpx;
+  margin-left: 10rpx
 }
 .wux-textarea__clear {
-  display: none;
+  display: none
 }
 .wux-textarea--focus .wux-textarea__clear {
-  display: block;
+  display: block
 }
 .wux-textarea--disabled {
-  opacity: .3;
+  opacity: .3
 }
 .wux-textarea--error .wux-textarea__control {
-  color: #ef473a;
+  color: #ef473a
 }
 .wux-textarea__count {
   position: absolute;
@@ -55,11 +53,11 @@
   right: 0;
   color: #888;
   font-size: 28rpx;
-  line-height: 1.47058824;
+  line-height: 1.47058824
 }
 .wux-textarea__current {
-  color: #333;
+  color: #333
 }
 .wux-textarea--has-count .wux-textarea__control {
-  padding-bottom: 20rpx;
+  padding-bottom: 20rpx
 }

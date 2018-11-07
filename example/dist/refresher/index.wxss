@@ -5,13 +5,13 @@
   left: 0;
   overflow: hidden;
   margin: auto;
-  height: 100rpx;
+  height: 100rpx
 }
 .wux-refresher--hidden {
-  visibility: hidden;
+  visibility: hidden
 }
 .wux-refresher--visible {
-  visibility: visible;
+  visibility: visible
 }
 .wux-refresher__content {
   position: absolute;
@@ -20,48 +20,40 @@
   width: 100%;
   color: #666;
   text-align: center;
-  font-size: 60rpx;
+  font-size: 60rpx
 }
 .wux-refresher__content--text {
-  bottom: 0;
+  bottom: 0
 }
 .wux-refresher__text-pulling {
   font-size: 32rpx;
-  line-height: 32rpx;
+  line-height: 32rpx
 }
 .wux-refresher__text-refreshing {
   font-size: 32rpx;
   line-height: 32rpx;
-  display: none;
+  display: none
 }
 .wux-refresher__icon-pulling {
   width: 100%;
   -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
   padding: 14rpx 0;
-  -webkit-animation-name: refresh-spin-back;
-          animation-name: refresh-spin-back;
-  -webkit-animation-duration: .2s;
-          animation-duration: .2s;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
-  -webkit-animation-fill-mode: none;
-          animation-fill-mode: none;
-  -webkit-transform: translateZ(0) rotate(0deg);
-          transform: translateZ(0) rotate(0deg);
+  animation-name: refresh-spin-back;
+  animation-duration: .2s;
+  animation-timing-function: linear;
+  animation-fill-mode: none;
+  transform: translateZ(0) rotate(0)
 }
 .wux-refresher__icon-refreshing {
   width: 100%;
   -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
   padding: 14rpx 0;
   display: none;
-  -webkit-animation-duration: 1.5s;
-          animation-duration: 1.5s;
+  animation-duration: 1.5s
 }
 .wux-refresher__icon--arrow-down {
   display: block;
@@ -71,7 +63,7 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 40rpx 40rpx;
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAQAAAAAYLlVAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAHdElNRQfhAhQABBG6qxTZAAABVklEQVRo3u3YvUoDQRiF4ePPTZgbEGsh23sBgqWCKQe8AVvB0tJySgPah9T2CaSxkNhY6i3YaRN1J7uz+31nAmnOVJNkM++zCcyyC2hobHnslHw5HOIZA3zgJL6xa+wX8ZcAgAGW/InsFgE2MAQQQAABBBBAAAEEEEAAAQQQYOuAjtvzcIprfOImvpYEwhFucYC7OGn/PHtfH87xuJpWcZ455vt3FjPrhCFmq+lFfGo7Iv8X3P/NZmFInv1/vr6eEfBVm1OEJJ+uZwJcJa/chLX8+nr9gDjFiCc08qM49f4CiGOW0JIf547t3Ac4giffuxH5Cb68YSf0Ebx501ZsJ/jzxmuBjcDkzRejfgKXdz2sDpd4SN6oasmKyzufljcIuWHOA3sewOLl+B1nm8w7ASaCK+8G9BKceQLQSXDnKUCWQORJQCuBytOABoHMFwASAp3X0AB+AFVjfoii8X5lAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE3LTAyLTIwVDAwOjA0OjE3KzA4OjAwenpBPAAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNy0wMi0yMFQwMDowNDoxNyswODowMAsn+YAAAAAASUVORK5CYII=");
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAQAAAAAYLlVAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAHdElNRQfhAhQABBG6qxTZAAABVklEQVRo3u3YvUoDQRiF4ePPTZgbEGsh23sBgqWCKQe8AVvB0tJySgPah9T2CaSxkNhY6i3YaRN1J7uz+31nAmnOVJNkM++zCcyyC2hobHnslHw5HOIZA3zgJL6xa+wX8ZcAgAGW/InsFgE2MAQQQAABBBBAAAEEEEAAAQQQYOuAjtvzcIprfOImvpYEwhFucYC7OGn/PHtfH87xuJpWcZ455vt3FjPrhCFmq+lFfGo7Iv8X3P/NZmFInv1/vr6eEfBVm1OEJJ+uZwJcJa/chLX8+nr9gDjFiCc08qM49f4CiGOW0JIf547t3Ac4giffuxH5Cb68YSf0Ebx501ZsJ/jzxmuBjcDkzRejfgKXdz2sDpd4SN6oasmKyzufljcIuWHOA3sewOLl+B1nm8w7ASaCK+8G9BKceQLQSXDnKUCWQORJQCuBytOABoHMFwASAp3X0AB+AFVjfoii8X5lAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE3LTAyLTIwVDAwOjA0OjE3KzA4OjAwenpBPAAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNy0wMi0yMFQwMDowNDoxNyswODowMAsn+YAAAAAASUVORK5CYII=)
 }
 .wux-refresher__icon--refresher {
   display: block;
@@ -82,86 +74,46 @@
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: 100%;
-  -webkit-transform-origin: 50%;
-          transform-origin: 50%;
-  -webkit-animation: refresh-spin-rotate 1s steps(12, end) infinite;
-          animation: refresh-spin-rotate 1s steps(12, end) infinite;
+  transform-origin: 50%;
+  animation: refresh-spin-rotate 1s steps(12,end) infinite
 }
 .wux-refresher--active.wux-refresher--refreshing {
-  -webkit-transition: -webkit-transform .2s;
-  transition: -webkit-transform .2s;
   transition: transform .2s;
-  transition: transform .2s, -webkit-transform .2s;
-  -webkit-transform: scale(1);
-          transform: scale(1);
+  transform: scale(1)
 }
 .wux-refresher--active.wux-refresher--refreshing .wux-refresher__icon-pulling,
 .wux-refresher--active.wux-refresher--refreshing .wux-refresher__text-pulling {
-  display: none;
+  display: none
 }
 .wux-refresher--active.wux-refresher--refreshing .wux-refresher__icon-refreshing,
 .wux-refresher--active.wux-refresher--refreshing .wux-refresher__text-refreshing {
-  display: block;
+  display: block
 }
 .wux-refresher--active.wux-refresher--refreshing .wux-refresher--refreshing-tail {
-  -webkit-transform: scale(0);
-          transform: scale(0);
+  transform: scale(0)
 }
 .wux-refresher--active .wux-refresher__icon-pulling:not(.wux-refresher__icon-pulling--disabled) {
-  -webkit-animation-name: refresh-spin;
-          animation-name: refresh-spin;
-  -webkit-transform: translateZ(0) rotate(-180deg);
-          transform: translateZ(0) rotate(-180deg);
-}
-@-webkit-keyframes refresh-spin {
-  0% {
-    -webkit-transform: translateZ(0) rotate(0);
-            transform: translateZ(0) rotate(0);
-  }
-  to {
-    -webkit-transform: translateZ(0) rotate(180deg);
-            transform: translateZ(0) rotate(180deg);
-  }
+  animation-name: refresh-spin;
+  transform: translateZ(0) rotate(-180deg)
 }
 @keyframes refresh-spin {
   0% {
-    -webkit-transform: translateZ(0) rotate(0);
-            transform: translateZ(0) rotate(0);
+    transform: translateZ(0) rotate(0)
   }
   to {
-    -webkit-transform: translateZ(0) rotate(180deg);
-            transform: translateZ(0) rotate(180deg);
-  }
-}
-@-webkit-keyframes refresh-spin-back {
-  0% {
-    -webkit-transform: translateZ(0) rotate(180deg);
-            transform: translateZ(0) rotate(180deg);
-  }
-  to {
-    -webkit-transform: translateZ(0) rotate(0);
-            transform: translateZ(0) rotate(0);
+    transform: translateZ(0) rotate(180deg)
   }
 }
 @keyframes refresh-spin-back {
   0% {
-    -webkit-transform: translateZ(0) rotate(180deg);
-            transform: translateZ(0) rotate(180deg);
+    transform: translateZ(0) rotate(180deg)
   }
   to {
-    -webkit-transform: translateZ(0) rotate(0);
-            transform: translateZ(0) rotate(0);
-  }
-}
-@-webkit-keyframes refresh-spin-rotate {
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: translateZ(0) rotate(0)
   }
 }
 @keyframes refresh-spin-rotate {
   100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg)
   }
 }

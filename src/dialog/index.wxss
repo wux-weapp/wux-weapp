@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-popup {
+.@{wuxClassNamePrefix}-popup {
 	&__button {
 		display: block;
 		flex: 1;
@@ -30,7 +30,7 @@
 			margin-top: 10px;
 
 			&:after {
-				.setBorder(#D5D5D6);
+				.hairline(#D5D5D6);
 				border-top-width: 1px;
 				border-right-width: 1px;
 				border-bottom-width: 1px;
@@ -52,7 +52,7 @@
 		flex: 1;
 
 		&--horizontal {
-			.wux-popup__button {
+			.@{wuxClassNamePrefix}-popup__button {
 				&:after {
 					.setLeftLine(#D5D5D6);
 				}
@@ -67,7 +67,7 @@
 			display: block;
 			height: auto;
 			
-			.wux-popup__button {
+			.@{wuxClassNamePrefix}-popup__button {
 				&:after {
 					.setTopLine(#D5D5D6);
 				}

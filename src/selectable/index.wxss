@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-selectable {
+.@{wuxClassNamePrefix}-selectable {
     position: relative;
     display: inline-block;
     

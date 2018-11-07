@@ -1,4 +1,4 @@
-.setBorder(@c: #C7C7C7) {
+.hairline(@c: #C7C7C7) {
     content: " ";
     position: absolute;
     top: 0;

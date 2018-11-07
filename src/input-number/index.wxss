@@ -1,16 +1,16 @@
 @import "../styles/base/fn.wxss";
 
 .input-number(@theme, @color) {
-    .wux-input-number__selector--@{theme} {
+    .@{wuxClassNamePrefix}-input-number__selector--@{theme} {
         color: @color;
     }
 
-    &--circle .wux-input-number__selector--@{theme} {
+    &--circle .@{wuxClassNamePrefix}-input-number__selector--@{theme} {
         border-color: @color;
     }
 }
 
-.wux-input-number {
+.@{wuxClassNamePrefix}-input-number {
     position: relative;
     display: flex;
 
@@ -64,11 +64,11 @@
     }
 
     &--circle {
-        .wux-input-number__input {
+        .@{wuxClassNamePrefix}-input-number__input {
             border-color: transparent;
         }
 
-        .wux-input-number__selector {
+        .@{wuxClassNamePrefix}-input-number__selector {
             width: 26px;
             border-radius: 50%;
             border: 1px solid @balanced;

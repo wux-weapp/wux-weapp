@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-search-bar {
+.@{wuxClassNamePrefix}-search-bar {
 	position: relative;
     padding: 8px 10px;
     display: flex;

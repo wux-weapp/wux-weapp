@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-cascader {
+.@{wuxClassNamePrefix}-cascader {
 	&__hd {
         position: relative;
 		width: 100%;

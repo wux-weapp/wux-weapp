@@ -10,7 +10,7 @@
     }
 }
 
-.wux-tabs {
+.@{wuxClassNamePrefix}-tabs {
     &__tab {
         flex: 1;
         display: flex;

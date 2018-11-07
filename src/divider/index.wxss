@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-divider {
+.@{wuxClassNamePrefix}-divider {
 	display: block;
     height: 1px;
     width: 100%;

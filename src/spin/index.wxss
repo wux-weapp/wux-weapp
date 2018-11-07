@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-spin {
+.@{wuxClassNamePrefix}-spin {
 	position: relative;
     display: inline-block;
 

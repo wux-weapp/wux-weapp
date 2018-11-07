@@ -17,6 +17,11 @@ Page({
                         remark: '图标',
                         url: '/pages/icon/index',
                     },
+                    {
+                        title: 'Utility',
+                        remark: '工具类',
+                        url: '/pages/utility/index',
+                    },
                 ],
             },
             {

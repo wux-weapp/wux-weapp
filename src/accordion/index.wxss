@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-accordion {
+.@{wuxClassNamePrefix}-accordion {
     &__hd {
         position: relative;
         padding: 10px 15px;

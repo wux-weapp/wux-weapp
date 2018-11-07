@@ -1,6 +1,7 @@
 import path from 'path'
 import gulp from 'gulp'
 import less from 'gulp-less'
+import cleanCSS from 'gulp-clean-css'
 import rename from 'gulp-rename'
 import postcss from 'gulp-postcss'
 import cssnano from 'gulp-cssnano'
@@ -13,6 +14,7 @@ const ENV = process.env.NODE_ENV
 const isDev = ENV === 'development' || ENV === 'dev'
 const isProd = ENV === 'production' || ENV === 'prod'
 const buildPath = path.join(__dirname, isProd ? 'dist' : 'example/dist')
+const format = isProd ? false : 'beautify'
 
 /**
  * 自定义插件 - px to rpx
@@ -56,17 +58,11 @@ const px2Rpx = () => {
 
 gulp.task('build:styles', () => {
     gulp
-        .src(
-            [
-                'src/**/*.wxss',
-                '!src/icon/*.wxss',
-            ], { base: 'src' }
-        )
+        .src(['src/**/*.wxss'], { base: 'src' })
         .pipe(less())
         .pipe(px2Rpx())
-        .pipe(postcss([
-            autoprefixer(['iOS >= 8', 'Android >= 4.1']),
-        ]))
+        .pipe(postcss())
+        .pipe(cleanCSS({ format }))
         // .pipe(
         //     cssnano({
         //         zindex: false,
@@ -86,6 +82,7 @@ gulp.task('build:example', () => {
             [
                 'src/**',
                 '!src/**/*.wxss',
+                '!src/icon/fonts/**',
             ], { base: 'src' },
         )
         .pipe(gulp.dest(buildPath))

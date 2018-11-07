@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-cell {
+.@{wuxClassNamePrefix}-cell {
     .button-reset();
     padding: 10px 15px;
     position: relative;

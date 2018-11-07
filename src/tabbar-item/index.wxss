@@ -6,7 +6,7 @@
     }
 }
 
-.wux-tabbar-item {
+.@{wuxClassNamePrefix}-tabbar-item {
     flex: 1;
     display: flex;
     justify-content: center;

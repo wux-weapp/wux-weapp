@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-cell-group {
+.@{wuxClassNamePrefix}-cell-group {
     &__hd {
         padding: 15px 15px 9px;
         font-size: 14px;
@@ -14,7 +14,7 @@
         background-color: #fff;
 
         &:after {
-            .setBorder(#D9D9D9);
+            .hairline(#D9D9D9);
             border-top-width: 1px;
             border-bottom-width: 1px;
         }

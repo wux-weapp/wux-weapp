@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-input {
+.@{wuxClassNamePrefix}-input {
 	position: relative;
 	display: flex;
 	align-item: center;

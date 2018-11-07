@@ -1,12 +1,10 @@
 .wux-slider {
   position: relative;
   z-index: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center
 }
 .wux-slider__rail {
   width: 100%;
@@ -15,14 +13,14 @@
   background-color: #e9e9e9;
   border-radius: 8rpx;
   vertical-align: middle;
-  position: relative;
+  position: relative
 }
 .wux-slider__track {
   position: absolute;
   left: 0;
   height: 8rpx;
   border-radius: 8rpx;
-  background-color: #33cd5f;
+  background-color: #33cd5f
 }
 .wux-slider__handle {
   background-color: #fff;
@@ -32,12 +30,11 @@
   top: 50%;
   position: absolute;
   width: 56rpx;
-  box-shadow: 0 0 8rpx rgba(0, 0, 0, 0.2);
-  -webkit-transform: translate3d(-50%, -50%, 0);
-          transform: translate3d(-50%, -50%, 0);
+  box-shadow: 0 0 8rpx rgba(0,0,0,.2);
+  transform: translate3d(-50%,-50%,0)
 }
 .wux-slider__handle--last {
-  z-index: 2;
+  z-index: 2
 }
 .wux-slider__mark {
   position: absolute;
@@ -45,20 +42,19 @@
   height: 8rpx;
   border-radius: 50%;
   background-color: #ccc;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%)
 }
-.wux-slider__min,
-.wux-slider__max {
+.wux-slider__max,
+.wux-slider__min {
   font-size: 28rpx;
-  color: #888;
+  color: #888
 }
 .wux-slider__min {
-  margin-right: 24rpx;
+  margin-right: 24rpx
 }
 .wux-slider__max {
-  margin-left: 24rpx;
+  margin-left: 24rpx
 }
 .wux-slider--disabled {
-  opacity: .3;
+  opacity: .3
 }

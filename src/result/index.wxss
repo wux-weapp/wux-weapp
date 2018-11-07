@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-result {
+.@{wuxClassNamePrefix}-result {
     padding-top: 0;
     text-align: center;
 

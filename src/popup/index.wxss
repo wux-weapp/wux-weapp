@@ -1,33 +1,33 @@
 @import "../styles/base/fn.wxss";
 
-.wux-popup {
+.@{wuxClassNamePrefix}-popup {
 	position: fixed;
 	z-index: 1000;
 	width: 80%;
 	max-width: 300px;
 	
 	&-position&-position--center {
-		.wux-popup {
+		.@{wuxClassNamePrefix}-popup {
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
 		}
 
-		.wux-popup__content {
+		.@{wuxClassNamePrefix}-popup__content {
 			border-radius: 3px;
 		}
 
-		.wux-popup__hd {
+		.@{wuxClassNamePrefix}-popup__hd {
 			padding: 1.3em 1.6em 0.5em;
 		}
 
-		.wux-popup__bd {
+		.@{wuxClassNamePrefix}-popup__bd {
 			padding: 0 1.6em 0.8em;
 		}
 	}
 
 	&-position&-position--top {
-		.wux-popup {
+		.@{wuxClassNamePrefix}-popup {
 			position: fixed;
 			left: 0;
 			top: 0;
@@ -37,7 +37,7 @@
 	}
 
 	&-position&-position--right {
-		.wux-popup {
+		.@{wuxClassNamePrefix}-popup {
 			position: fixed;
 			top: 0;
 			right: 0;
@@ -49,7 +49,7 @@
 	}
 
 	&-position&-position--bottom {
-		.wux-popup {
+		.@{wuxClassNamePrefix}-popup {
 			position: fixed;
 			left: 0;
 			bottom: 0;
@@ -59,7 +59,7 @@
 	}
 
 	&-position&-position--left {
-		.wux-popup {
+		.@{wuxClassNamePrefix}-popup {
 			position: fixed;
 			left: 0;
 			top: 0;

@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-animate {
+.@{wuxClassNamePrefix}-animate {
     &--fadeIn {
         &-enter {
             transition: opacity .3s;

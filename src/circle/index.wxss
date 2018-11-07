@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-circle {
+.@{wuxClassNamePrefix}-circle {
 	display: inline-block;
     position: relative;
 

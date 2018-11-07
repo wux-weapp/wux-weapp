@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.wux-notice-bar {
+.@{wuxClassNamePrefix}-notice-bar {
     background-color: #fefcec;
     height: 36px;
     overflow: hidden;
