@@ -1,9 +1,15 @@
 Component({
     externalClasses: ['wux-class'],
     properties: {
+        max: {
+            type: Number,
+            value: -1,
+            observer: 'updated',
+        },
         count: {
             type: Number,
             value: 9,
+            observer: 'updated',
         },
         sizeType: {
             type: Array,
@@ -45,9 +51,24 @@ Component({
             type: String,
             value: 'text',
         },
+        defaultFileList: {
+            type: Array,
+            value: [],
+        },
         fileList: {
             type: Array,
             value: [],
+            observer(newVal) {
+                if (this.data.controlled) {
+                    this.setData({
+                        uploadFileList: newVal,
+                    })
+                }
+            },
+        },
+        controlled: {
+            type: Boolean,
+            value: false,
         },
         showUploadList: {
             type: Boolean,
@@ -58,15 +79,62 @@ Component({
             value: true,
         },
     },
+    data: {
+        uploadMax: -1,
+        uploadCount: 9,
+        uploadFileList: [],
+    },
     methods: {
+        /** 
+         * 计算最多可以选择的图片张数
+         */
+        updated() {
+            const { count, max } = this.data
+            const { uploadMax, uploadCount } = this.calcValue(count, max)
+
+            // 判断是否需要更新
+            if (this.data.uploadMax !== uploadMax || this.data.uploadCount !== uploadCount) {
+                this.setData({
+                    uploadMax,
+                    uploadCount,
+                })
+            }
+        },
+        /**
+         * 计算最多可以选择的图片张数
+         */
+        calcValue(count, max) {
+            const realCount = parseInt(count)
+            const uploadMax = parseInt(max) > -1 ? parseInt(max) : -1
+            let uploadCount = realCount
+
+            // 限制总数时
+            if (uploadMax !== -1 && uploadMax <= 9 && realCount > uploadMax) {
+                uploadCount = uploadMax
+            }
+
+            return {
+                uploadMax,
+                uploadCount,
+            }
+        },
         /**
          * 从本地相册选择图片或使用相机拍照
          */
         onSelect() {
-            const { count, sizeType, sourceType, uploaded, disabled } = this.data
+            const {
+                uploadCount,
+                uploadMax,
+                sizeType,
+                sourceType,
+                uploaded,
+                disabled,
+                uploadFileList: fileList,
+            } = this.data
+            const { uploadCount: count } = this.calcValue(uploadCount, uploadMax - fileList.length)
             const success = (res) => {
                 this.tempFilePaths = res.tempFilePaths.map((item) => ({ url: item, uid: this.getUid() }))
-                this.triggerEvent('before', res)
+                this.triggerEvent('before', {...res, fileList })
 
                 // 判断是否取消默认的上传行为
                 if (uploaded) {
@@ -74,9 +142,8 @@ Component({
                 }
             }
 
-            if (disabled) {
-                return false
-            }
+            // disabled
+            if (disabled) return
 
             wx.chooseImage({
                 count,
@@ -90,9 +157,11 @@ Component({
          * @param {Object} info 文件信息
          */
         onChange(info = {}) {
-            this.setData({
-                fileList: info.fileList,
-            })
+            if (!this.data.controlled) {
+                this.setData({
+                    uploadFileList: info.fileList,
+                })
+            }
 
             this.triggerEvent('change', info)
         },
@@ -108,7 +177,7 @@ Component({
 
             this.onChange({
                 file: targetItem,
-                fileList: [...this.data.fileList, targetItem],
+                fileList: [...this.data.uploadFileList, targetItem],
             })
         },
         /**
@@ -117,7 +186,7 @@ Component({
          * @param {Object} res 请求响应对象
          */
         onSuccess(file, res) {
-            const fileList = [...this.data.fileList]
+            const fileList = [...this.data.uploadFileList]
             const index = fileList.map((item) => item.uid).indexOf(file.uid)
 
             if (index !== -1) {
@@ -131,6 +200,7 @@ Component({
                     fileList,
                 }
 
+                // replace
                 fileList.splice(index, 1, targetItem)
 
                 this.triggerEvent('success', info)
@@ -144,7 +214,7 @@ Component({
          * @param {Object} res 请求响应对象
          */
         onFail(file, res) {
-            const fileList = [...this.data.fileList]
+            const fileList = [...this.data.uploadFileList]
             const index = fileList.map((item) => item.uid).indexOf(file.uid)
 
             if (index !== -1) {
@@ -158,6 +228,7 @@ Component({
                     fileList,
                 }
 
+                // replace
                 fileList.splice(index, 1, targetItem)
 
                 this.triggerEvent('fail', info)
@@ -171,7 +242,7 @@ Component({
          * @param {Object} res 请求响应对象
          */
         onProgress(file, res) {
-            const fileList = [...this.data.fileList]
+            const fileList = [...this.data.uploadFileList]
             const index = fileList.map((item) => item.uid).indexOf(file.uid)
 
             if (index !== -1) {
@@ -185,6 +256,7 @@ Component({
                     fileList,
                 }
 
+                // replace
                 fileList.splice(index, 1, targetItem)
 
                 this.triggerEvent('progress', info)
@@ -196,17 +268,13 @@ Component({
          * 上传文件，支持多图递归上传
          */
         uploadFile() {
-            if (!this.tempFilePaths.length) {
-                return false
-            }
+            if (!this.tempFilePaths.length) return
 
             const { url, name, header, formData, disabled, progress } = this.data
             const file = this.tempFilePaths.shift()
             const { uid, url: filePath } = file
 
-            if (!url || !filePath || disabled) {
-                return false
-            }
+            if (!url || !filePath || disabled) return
 
             this.onStart(file)
 
@@ -235,7 +303,7 @@ Component({
          * @param {Object} e 参数对象
          */
         onPreview(e) {
-            this.triggerEvent('preview', {...e.currentTarget.dataset, fileList: this.data.fileList })
+            this.triggerEvent('preview', {...e.currentTarget.dataset, fileList: this.data.uploadFileList })
         },
         /**
          * 点击删除图标时的回调函数
@@ -243,7 +311,7 @@ Component({
          */
         onRemove(e) {
             const { file } = e.currentTarget.dataset
-            const fileList = [...this.data.fileList]
+            const fileList = [...this.data.uploadFileList]
             const index = fileList.map((item) => item.uid).indexOf(file.uid)
 
             if (index !== -1) {
@@ -256,9 +324,10 @@ Component({
                     fileList,
                 }
 
+                // delete
                 fileList.splice(index, 1)
 
-                this.triggerEvent('remove', {...info, index: e.currentTarget.dataset.index })
+                this.triggerEvent('remove', {...e.currentTarget.dataset, ...info })
 
                 this.onChange(info)
             }
@@ -294,6 +363,15 @@ Component({
         this.getUid = () => `wux-upload--${this.createdAt}-${++this.index}`
         this.uploadTask = {}
         this.tempFilePaths = []
+    },
+    /**
+     * 组件生命周期函数，在组件实例进入页面节点树时执
+     */
+    attached() {
+        const { defaultFileList, fileList, controlled } = this.data
+        const uploadFileList = controlled ? fileList : defaultFileList
+
+        this.setData({ uploadFileList })
     },
     /**
      * 组件生命周期函数，在组件实例被从页面节点树移除时执行

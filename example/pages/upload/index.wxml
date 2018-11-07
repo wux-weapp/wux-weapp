@@ -12,23 +12,23 @@
         <wux-upload disabled url="https://www.skyvow.cn/api/common/file" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete">
             <button disabled type="default">Click to Upload</button>
         </wux-upload>
-        <view class="sub-title">Picture card</view>
-        <wux-upload list-type="picture-card" file-list="{{ fileList }}" url="https://www.skyvow.cn/api/common/file" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete" bind:preview="onPreview">
+        <view class="sub-title">Picture card & max = 4</view>
+        <wux-upload listType="picture-card" defaultFileList="{{ fileList }}" max="4" url="https://www.skyvow.cn/api/common/file" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete" bind:preview="onPreview">
             <text>Upload</text>
         </wux-upload>
         <view class="sub-title">ShowUploadList = false</view>
-        <wux-upload list-type="picture-card" show-upload-list="{{ false }}" url="https://www.skyvow.cn/api/common/file" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete" bind:preview="onPreview">
+        <wux-upload listType="picture-card" showUploadList="{{ false }}" url="https://www.skyvow.cn/api/common/file" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete" bind:preview="onPreview">
             <image src="{{ imageUrl }}" wx:if="{{ imageUrl }}" />
             <text wx:else>Upload</text>
         </wux-upload>
         <view class="sub-title">Progress = true</view>
         <progress percent="{{ progress }}" show-info />
-        <wux-upload progress list-type="picture-card" show-upload-list="{{ false }}" url="https://www.skyvow.cn/api/common/file" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete" bind:progress="onProgress" bind:preview="onPreview">
+        <wux-upload progress listType="picture-card" showUploadList="{{ false }}" url="https://www.skyvow.cn/api/common/file" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete" bind:progress="onProgress" bind:preview="onPreview">
             <image src="{{ imageUrl }}" wx:if="{{ imageUrl }}" />
             <text wx:else>Upload</text>
         </wux-upload>
         <view class="sub-title">Remove</view>
-        <wux-upload list-type="picture-card" file-list="{{ fileList }}" url="https://www.skyvow.cn/api/common/file" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete" bind:preview="onRemove">
+        <wux-upload listType="picture-card" fileList="{{ fileList }}" controlled url="https://www.skyvow.cn/api/common/file" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete" bind:preview="onPreview" bind:remove="onRemove">
             <text>Upload</text>
         </wux-upload>
     </view>
