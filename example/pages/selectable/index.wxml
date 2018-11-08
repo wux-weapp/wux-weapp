@@ -4,7 +4,7 @@
         <view class="page__desc">选框组</view>
     </view>
     <view class="page__bd">
-        <view class="sub-title">CheckboxItem</view>
+        <view class="sub-title">Checkbox & Radio</view>
         <wux-selectable color="light" value="1" defaultChecked />
         <wux-selectable color="stable" value="2" defaultChecked />
         <wux-selectable color="positive" value="3" defaultChecked />
