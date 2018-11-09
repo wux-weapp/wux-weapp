@@ -1,6 +1,0 @@
-{
-    "navigationBarTitleText": "FloatingButton",
-    "usingComponents": {
-        "wux-floating-button": "../../dist/floating-button/index"
-    }
-}

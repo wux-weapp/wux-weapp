@@ -1,9 +1,0 @@
-{
-    "navigationBarTitleText": "Icon",
-    "usingComponents": {
-    	"wux-segmented-control": "../../dist/segmented-control/index",
-        "wux-row": "../../dist/row/index",
-        "wux-col": "../../dist/col/index",
-        "wux-icon": "../../dist/icon/index"
-    }
-}

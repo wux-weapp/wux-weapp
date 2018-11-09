@@ -1,8 +1,0 @@
-{
-    "navigationBarTitleText": "Selectable",
-    "usingComponents": {
-        "wux-selectable": "../../dist/selectable/index",
-        "wux-cell-group": "../../dist/cell-group/index",
-        "wux-cell": "../../dist/cell/index"
-    }
-}

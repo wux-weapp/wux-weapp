@@ -1,6 +1,0 @@
-{
-    "navigationBarTitleText": "AnimationGroup",
-    "usingComponents": {
-        "wux-animation-group": "../../dist/animation-group/index"
-    }
-}

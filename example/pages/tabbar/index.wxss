@@ -1,5 +1,0 @@
-/* pages/tabbar/index.wxss */
-
-.icon {
-	vertical-align: middle;
-}

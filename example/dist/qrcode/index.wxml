@@ -1,1 +1,0 @@
-<canvas class="wux-class" canvas-id="{{ canvasId }}" style="width: {{ width + 'px' }}; height: {{ height + 'px' }};" bindtap="onTap"></canvas>

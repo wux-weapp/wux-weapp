@@ -1,3 +1,0 @@
-<view class="wux-class wux-tabbar {{ position ? 'wux-tabbar--' + position : '' }}">
-    <slot></slot>
-</view>

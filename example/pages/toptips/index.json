@@ -1,7 +1,0 @@
-{
-    "navigationBarTitleText": "Toptips",
-    "usingComponents": {
-        "wux-button": "../../dist/button/index",
-        "wux-toptips": "../../dist/toptips/index"
-    }
-}

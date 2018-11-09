@@ -1,5 +1,0 @@
-/* pages/avatar/index.wxss */
-.wux-avatar--custom {
-    color: #fff !important;
-    background-color: #387ef5 !important;
-}

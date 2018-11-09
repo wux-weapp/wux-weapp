@@ -1,8 +1,0 @@
-{
-	"navigationBarTitleText": "InputNumber",
-	"usingComponents": {
-        "wux-cell-group": "../../dist/cell-group/index",
-        "wux-cell": "../../dist/cell/index",
-        "wux-input-number": "../../dist/input-number/index"
-    }
-}

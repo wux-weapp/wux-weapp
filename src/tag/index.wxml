@@ -1,3 +1,0 @@
-<view class="wux-class wux-tag {{ className }}" hover-class="wux-tag--hover" style="{{ style }}" bindtap="onTap">
-    <slot></slot>
-</view>

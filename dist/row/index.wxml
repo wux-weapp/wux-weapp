@@ -1,3 +1,0 @@
-<view class="wux-class wux-row" style="{{ rowStyle }}">
-    <slot></slot>
-</view>

@@ -1,5 +1,0 @@
-/* pages/spin/index.wxss */
-
-.spin {
-	margin: 0 10px;
-}

@@ -1,7 +1,0 @@
-{
-    "navigationBarTitleText": "ActionSheet",
-    "usingComponents": {
-        "wux-button": "../../dist/button/index",
-        "wux-actionsheet": "../../dist/actionsheet/index"
-    }
-}

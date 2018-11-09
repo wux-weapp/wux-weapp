@@ -1,3 +1,0 @@
-<view class="wux-class wux-switch">
-    <view class="wux-switch__input {{ value ? 'wux-switch__input--checked' : '' }} {{ disabled ? 'wux-switch__input--disabled' : '' }}" style="{{ value ? style : '' }}" bindtap="onTap"></view>
-</view>

@@ -1,3 +1,0 @@
-<view class="wux-class wux-col {{ span ? 'wux-col--span-' + span : '' }} {{ offset ? 'wux-col--offset-' + offset : '' }} {{ pull ? 'wux-col--pull-' + pull : '' }} {{ push ? 'wux-col--push-' + push : '' }}" style="{{ colStyle }}">
-    <slot></slot>
-</view>

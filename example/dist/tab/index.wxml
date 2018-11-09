@@ -1,7 +1,0 @@
-<view class="wux-class wux-tabs__tab {{ scroll ? 'wux-tabs__tab--scroll' : '' }} {{ theme ? 'wux-tabs__tab--' + theme : '' }} {{ current ? 'wux-tabs__tab--current' : '' }} {{ disabled ? 'wux-tabs__tab--disabled' : '' }}" bindtap="onTap">
-    <text wx:if="{{ title }}">{{ title }}</text>
-    <block wx:else>
-        <slot></slot>
-    </block>
-    <view class="wux-tabs__tab-bar" wx:if="{{ current }}"></view>
-</view>

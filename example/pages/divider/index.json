@@ -1,6 +1,0 @@
-{
-    "navigationBarTitleText": "Divider",
-    "usingComponents": {
-        "wux-divider": "../../dist/divider/index"
-    }
-}

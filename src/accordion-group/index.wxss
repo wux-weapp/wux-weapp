@@ -1,6 +1,0 @@
-@import "../styles/base/fn.wxss";
-
-.@{wuxClassNamePrefix}-accordion-group {
-    position: relative;
-    border: none;
-}

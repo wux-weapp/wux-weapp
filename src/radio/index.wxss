@@ -1,7 +1,0 @@
-@import "../styles/base/fn.wxss";
-
-.@{wuxClassNamePrefix}-selectable {
-    &--cell {
-        position: static !important;
-    }
-}

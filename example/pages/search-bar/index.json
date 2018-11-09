@@ -1,6 +1,0 @@
-{
-    "navigationBarTitleText": "SearchBar",
-    "usingComponents": {
-        "wux-search-bar": "../../dist/search-bar/index"
-    }
-}

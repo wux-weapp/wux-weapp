@@ -1,6 +1,0 @@
-{
-    "navigationBarTitleText": "Media",
-    "usingComponents": {
-        "wux-media": "../../dist/media/index"
-    }
-}

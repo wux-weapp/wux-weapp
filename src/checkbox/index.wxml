@@ -1,3 +1,0 @@
-<wux-cell title="{{ title }}" label="{{ label }}" extra="{{ extra }}">
-    <wux-selectable slot="header" wux-class="wux-selectable--cell" value="{{ value }}" checked="{{ inputChecked }}" color="{{ color }}" disabled="{{ disabled }}" controlled bind:change="checkboxChange" />
-</wux-cell>

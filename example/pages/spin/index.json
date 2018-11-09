@@ -1,7 +1,0 @@
-{
-    "navigationBarTitleText": "Spin",
-    "usingComponents": {
-    	"wux-button": "../../dist/button/index",
-        "wux-spin": "../../dist/spin/index"
-    }
-}

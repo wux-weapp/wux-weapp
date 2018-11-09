@@ -1,7 +1,0 @@
-{
-    "navigationBarTitleText": "Utility",
-    "usingComponents": {
-        "wux-row": "../../dist/row/index",
-        "wux-col": "../../dist/col/index"
-    }
-}

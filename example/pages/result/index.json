@@ -1,6 +1,0 @@
-{
-    "navigationBarTitleText": "Result",
-    "usingComponents": {
-        "wux-button": "../../dist/button/index"
-    }
-}

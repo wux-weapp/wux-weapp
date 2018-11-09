@@ -1,8 +1,0 @@
-{
-    "navigationBarTitleText": "Alert",
-    "usingComponents": {
-    	"wux-white-space": "../../dist/white-space/index",
-    	"wux-icon": "../../dist/icon/index",
-        "wux-alert": "../../dist/alert/index"
-    }
-}

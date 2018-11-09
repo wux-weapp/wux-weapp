@@ -1,8 +1,0 @@
-{
-    "navigationBarTitleText": "Timeline",
-    "usingComponents": {
-    	"wux-icon": "../../dist/icon/index",
-        "wux-timeline": "../../dist/timeline/index",
-        "wux-timeline-item": "../../dist/timeline-item/index"
-    }
-}

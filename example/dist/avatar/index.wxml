@@ -1,6 +1,0 @@
-<view class="wux-class wux-avatar {{ shape ? 'wux-avatar--' + shape : '' }} {{ size ? 'wux-avatar--' + size : '' }} {{ src ? 'wux-avatar--thumb' : '' }}" style="{{ bodyStyle }}">
-    <image src="{{ src }}" wx:if="{{ src }}" />
-    <text class="wux-avatar__string" style="{{ childrenStyle }}" wx:else>
-        <slot></slot>
-    </text>
-</view>
