@@ -13,5 +13,9 @@ Component({
             type: String,
             value: '',
         },
+        hidden: {
+            type: Boolean,
+            value: false
+        }
     },
 })
