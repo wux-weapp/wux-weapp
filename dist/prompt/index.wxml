@@ -6,7 +6,7 @@
         <view class="wux-prompt__buttons" wx:if="{{ buttons && !!buttons.length }}">
             <block wx:for="{{ buttons }}" wx:key="">
                 <button type="{{ item.type || 'default' }}" size="{{ item.size || 'default' }}" loading="{{ item.loading }}" plain="{{ item.plain }}" disabled="{{ item.disabled }}" class="wux-prompt__button {{ item.className }}" hover-class="{{ item.haveClass || 'wux-prompt__button--hover' }}"
-                    bindtap="buttonClicked" data-index="{{ index }}">
+                    bindtap="buttonClicked" data-index="{{ index }}" open-type="{{item.openType}}" bindgetuserinfo="onGotUserInfo">
 	        		{{ item.text }}
 	        	</button>
             </block>
