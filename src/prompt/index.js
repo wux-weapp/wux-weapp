@@ -31,5 +31,15 @@ Component({
 
             this.triggerEvent('click', { index, value })
         },
+
+        /**
+         * 点击按钮返回用户信息
+         */
+        onGotUserInfo(e) {
+            const { index } = e.currentTarget.dataset
+            const value = this.data.buttons[index]
+
+            this.triggerEvent('getuserinfo', { index, value, ...e.detail })
+        }
     },
 })
