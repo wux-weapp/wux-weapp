@@ -14,14 +14,17 @@ Page({
         })
     },
     previewImage() {
+        // 在自定义组件下，当前组件实例的 this，以操作组件内 <canvas> 组件
+        const that = this.selectComponent('#qrcode')
+        
         wx.canvasToTempFilePath({
             canvasId: 'wux-qrcode',
-            success: res => {
+            success: (res) => {
                 wx.previewImage({
                     urls: [res.tempFilePath]
                 })
             }
-        })
+        }, that)
     },
     randomColor() {
         const colorStr = Math.floor(Math.random() * 0xFFFFFF).toString(16).toUpperCase()

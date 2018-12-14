@@ -131,7 +131,7 @@ Component({
          * 手指触摸后马上离开
          */
         onTap() {
-            this.triggerEvent('tap')
+            this.triggerEvent('click')
         },
     },
     attached() {
