@@ -1,5 +1,5 @@
 Component({
-	externalClasses: ['wux-class'],
+    externalClasses: ['wux-class'],
     options: {
         multipleSlots: true,
     },
@@ -60,11 +60,6 @@ Component({
         focus: {
             type: Boolean,
             value: false,
-            observer(newVal) {
-                this.setData({
-                    inputFocus: newVal,
-                })
-            },
         },
         cursor: {
             type: Number,
@@ -146,15 +141,11 @@ Component({
                 this.updated(e.detail.value)
             }
 
-            if (!this.data.inputFocus) {
-                this.setData({
-                    inputFocus: true,
-                })
-            }
-
             this.triggerEvent('change', e.detail)
         },
         onFocus(e) {
+            this.clearTimer()
+
             this.setData({
                 inputFocus: true,
             })
@@ -162,9 +153,7 @@ Component({
             this.triggerEvent('focus', e.detail)
         },
         onBlur(e) {
-            this.setData({
-                inputFocus: false,
-            })
+            this.setTimer()
 
             this.triggerEvent('blur', e.detail)
         },
@@ -176,7 +165,6 @@ Component({
 
             this.setData({
                 inputValue: controlled ? inputValue : '',
-                inputFocus: true,
             })
 
             this.triggerEvent('clear', { value: '' })
@@ -186,6 +174,21 @@ Component({
         },
         onLineChange(e) {
             this.triggerEvent('linechange', e.detail)
+        },
+        setTimer() {
+            this.clearTimer()
+
+            this.timeout = setTimeout(() => {
+                this.setData({
+                    inputFocus: false,
+                })
+            }, 200)
+        },
+        clearTimer() {
+            if (this.timeout) {
+                clearTimeout(this.timeout)
+                this.timeout = null
+            }
         },
     },
     attached() {

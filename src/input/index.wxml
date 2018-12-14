@@ -15,7 +15,7 @@
 			disabled="{{ disabled }}"
 			maxlength="{{ maxlength }}"
 			cursor-spacing="{{ cursorSpacing }}"
-			focus="{{ inputFocus }}"
+			focus="{{ focus }}"
 			confirm-type="{{ confirmType }}"
 			confirm-hold="{{ confirmHold }}"
 			cursor="{{ cursor }}"

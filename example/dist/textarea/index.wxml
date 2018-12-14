@@ -15,7 +15,7 @@
 			auto-height="{{ autoHeight }}"
 			fixed="{{ fixed }}"
 			cursor-spacing="{{ cursorSpacing }}"
-			focus="{{ inputFocus }}"
+			focus="{{ focus }}"
 			cursor="{{ cursor }}"
 			show-confirm-bar="{{ showConfirmBar }}"
 			selection-start="{{ selectionStart }}"
