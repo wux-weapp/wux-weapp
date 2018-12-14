@@ -34,6 +34,7 @@ Component({
         options: {
             type: Array,
             value: [],
+            observer: 'getCurrentOptions',
         },
         chooseTitle: {
             type: String,
@@ -79,7 +80,10 @@ Component({
                 const value = this.getFieldName('value')
                 const label = this.getFieldName('label')
 
-                activeOptions.push({ [value]: WUX_CASCADER, [label]: chooseTitle })
+                activeOptions.push({
+                    [value]: WUX_CASCADER,
+                    [label]: chooseTitle
+                })
             }
 
             return activeOptions
@@ -123,7 +127,11 @@ Component({
                 callback.call(this, currentOptions, activeOptions, !hasChildren)
             }
         },
-        getCurrentOptions(activeValue) {
+        /**
+         * 更新级联数据
+         * @param {Array} activeValue 当前选中值
+         */
+        getCurrentOptions(activeValue = this.data.activeValue) {
             const optionIndex = Math.max(0, activeValue.length - 1)
             const activeOptions = this.getActiveOptions(activeValue)
             const currentOptions = activeOptions[optionIndex]
@@ -134,7 +142,10 @@ Component({
                 const value = this.getFieldName('value')
                 const label = this.getFieldName('label')
 
-                activeOptions.push({ [value]: WUX_CASCADER, [label]: this.data.chooseTitle })
+                activeOptions.push({
+                    [value]: WUX_CASCADER,
+                    [label]: this.data.chooseTitle
+                })
 
                 const showOptions = this.getShowOptions(activeValue)
                 const activeIndex = activeOptions.length - 1
