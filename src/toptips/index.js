@@ -20,6 +20,12 @@ Component({
          * 隐藏
          */
         hide() {
+            if (this.removed) return false
+            this.removed = true
+            if (_toptips) {
+                clearTimeout(_toptips.timeout)
+                _toptips = null
+            }
             this.$$setData({ in: false })
             if (typeof this.fns.success === 'function') {
                 this.fns.success()
@@ -35,6 +41,7 @@ Component({
                     this.hide()
                     return resolve(true)
                 }
+                this.removed = false
                 this.$$setData({ in: true, ...options })
 
                 if (_toptips) {
