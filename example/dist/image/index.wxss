@@ -37,6 +37,9 @@
   bottom: 8rpx;
   left: 8rpx
 }
+.wux-image--widthFix .wux-image__inner {
+  position: relative
+}
 .wux-image image,
 .wux-image__thumb {
   display: inline-block;
@@ -52,6 +55,8 @@
   bottom: 0;
   left: 0;
   z-index: 10;
+  width: 100%;
+  height: 100%;
   opacity: 0
 }
 .wux-image--loaded .wux-image__inner {

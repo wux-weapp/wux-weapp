@@ -1,4 +1,4 @@
-<view class="wux-class wux-image {{ shape ? 'wux-image--' + shape : '' }} {{ status ? 'wux-image--' + status : '' }}" style="{{ style }}" bindtap="onTap" wx:if="{{ status !== 'unmounted' }}">
+<view class="wux-class wux-image {{ shape ? 'wux-image--' + shape : '' }} {{ mode ? 'wux-image--' + mode : '' }} {{ status ? 'wux-image--' + status : '' }}" style="{{ style }}" bindtap="onTap" wx:if="{{ status !== 'unmounted' }}">
 	<view class="wux-image__inner">
     	<image class="wux-image__thumb" lazy-load="{{ lazyLoad }}" mode="{{ mode }}" src="{{ src }}" bindload="onLoad" binderror="onError" wx:if="{{ src }}" />
     	<slot></slot>
