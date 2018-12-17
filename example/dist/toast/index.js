@@ -31,6 +31,12 @@ Component({
          * 隐藏
          */
         hide() {
+            if (this.removed) return false
+            this.removed = true
+            if (_toast) {
+                clearTimeout(_toast.timeout)
+                _toast = null
+            }
             this.$$setData({ in: false })
             this.$wuxBackdrop && this.$wuxBackdrop.release()
             if (typeof this.fns.success === 'function') {
@@ -57,6 +63,7 @@ Component({
 
                 options.icon = iconType
 
+                this.removed = false
                 this.$$setData({ in: true, ...options })
                 this.$wuxBackdrop && this.$wuxBackdrop.retain()
 
