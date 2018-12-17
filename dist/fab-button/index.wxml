@@ -1,0 +1,38 @@
+<view class="wux-backdrop--transparent" wx:if="{{ backdrop && buttonVisible }}"></view>
+<view class="wux-class wux-fab-button {{ position ? 'wux-fab-button--' + position : '' }} {{ theme ? 'wux-fab-button--' + theme : '' }} {{ direction ? 'wux-fab-button--' + direction : '' }} {{ reverse ? 'wux-fab-button--reverse' : '' }} {{ buttonVisible ? 'wux-fab-button--opened' : '' }}" catchtap="onToggle">
+	<view class="wux-fab-button__action {{ hideShadow ? 'wux-fab-button__action--hide-shadow' : '' }}" hover-class="wux-fab-button__action--hover">
+		<image class="wux-fab-button__text {{ buttonVisible && actionRotate ? 'wux-fab-button__text--rotate' : '' }}" src="{{ action }}" wx:if="{{ action }}" />
+		<slot name="action" wx:else></slot>
+	</view>
+	<block wx:for="{{ buttons }}" wx:for-item="button" wx:key="index">
+		<button
+			class="wux-fab-button__button {{ hideShadow ? 'wux-fab-button__button--hide-shadow' : '' }} {{ button.disabled ? 'wux-fab-button__button--disabled' : '' }} {{ button.className }}"
+			data-index="{{ index }}"
+			data-value="{{ button }}"
+			data-label="{{ button.label }}"
+			disabled="{{ button.disabled }}"
+		    open-type="{{ button.openType }}"
+		    hover-class="{{ !button.disabled ? (button.hoverClass || 'wux-fab-button__button--hover') : 'none' }}"
+		    hover-stop-propagation="{{ button.hoverStopPropagation }}"
+		    hover-start-time="{{ button.hoverStartTime }}"
+		    hover-stay-time="{{ button.hoverStayTime }}"
+		    lang="{{ button.lang }}"
+		    bindgetuserinfo="bindgetuserinfo"
+		    session-from="{{ button.sessionFrom }}"
+		    send-message-title="{{ button.sendMessageTitle }}"
+		    send-message-path="{{ button.sendMessagePath }}"
+		    send-message-img="{{ button.sendMessageImg }}"
+		    show-message-card="{{ button.showMessageCard }}"
+		    bindcontact="bindcontact"
+		    bindgetphonenumber="bindgetphonenumber"
+		    app-parameter="{{ button.appParameter }}"
+		    binderror="onError"
+		    bindopensetting="bindopensetting"
+		    catchtap="onTap"
+			style="{{ buttonStyle[index] }}"
+		>
+			<image class="wux-fab-button__icon" src="{{ button.icon }}" />
+			<view class="wux-fab-button__label" wx:if="{{ button.label }}">{{ button.label }}</view>
+		</button>
+	</block>
+</view>

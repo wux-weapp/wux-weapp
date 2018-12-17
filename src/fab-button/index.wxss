@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.speed-dial-style(@theme, @color) {
+.fab-button-style(@theme, @color) {
     &--@{theme} &__action,
     &--@{theme} &__button, 
     &--@{theme} &__button--disabled {
@@ -8,9 +8,15 @@
     }
 }
 
-.@{wuxClassNamePrefix}-speed-dial {
+.@{wuxClassNamePrefix}-fab-button {
     position: fixed;
     z-index: 1500;
+
+    &--center {
+        left: 50%;
+        top: 50%;
+        transform: translate3d(-50%, -50%, 0);
+    }
     
     &--topLeft {
         left: 15px;
@@ -31,36 +37,27 @@
         right: 15px;
         bottom: 15px;
     }
-
-    &--topLeft &__button:after, 
-    &--bottomLeft &__button:after {
+    
+    &--vertical&--topLeft &__label, 
+    &--vertical&--bottomLeft &__label {
         left: 60px;
     }
-
-    &--topRight &__button:after, 
-    &--bottomRight &__button:after {
+    
+    &--vertical&--center &__label, 
+    &--vertical&--topRight &__label, 
+    &--vertical&--bottomRight &__label {
         right: 60px;
     }
 
-    &--topLeft &__buttons, 
-    &--topRight &__buttons {
-        bottom: inherit;
-        top: 100%;
-        margin-bottom: 0;
-        margin-top: 16px;
-    }
-
     &__action {
-        position: absolute;
-        right: 15px;
-        bottom: 15px;
+        position: relative;
         width: 50px;
         height: 50px;
         border-radius: 50%;
         z-index: 1500;
         background-color: @balanced;
         color: #fff;
-        overflow: hidden;
+        overflow: visible;
         transition-duration: .3s;
         display: flex;
         align-items: center;
@@ -73,6 +70,10 @@
         &--hover {
             transition-duration: 0s;
             opacity: .8 !important;
+        }
+
+        &--hide-shadow {
+            box-shadow: none !important;
         }
     }
 
@@ -97,19 +98,6 @@
         }
     }
 
-    &__buttons {
-        position: absolute;
-        width: 40px;
-        left: 50%;
-        margin-left: -20px;
-        bottom: 100%;
-        margin-bottom: 16px;
-        display: flex;
-        flex-direction: column-reverse;
-        visibility: hidden;
-        pointer-events: none;
-    }
-
     &__button {
         .button-reset();
         width: 40px;
@@ -125,30 +113,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        transform: translate3d(0,8px,0) scale(.3);
-        transform-origin: center bottom;
         box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
-
-        + .@{wuxClassNamePrefix}-speed-dial__button {
-            margin-bottom: 16px;
-        }
-
-        &--label&:after {
-            content: attr(data-label);
-            position: absolute;
-            top: 50%;
-            padding: 4px 10px;
-            font-size: 12px;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 3px;
-            color: rgba(255, 255, 255, 0.8);
-            pointer-events: none;
-            white-space: nowrap;
-            opacity: 0;
-            box-sizing: border-box;
-            transform: translate3d(0, -50%, 0);
-            transition: all 0.3s;
-        }
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
 
         &--hover {
             transition-duration: 0s;
@@ -158,29 +130,39 @@
         &--disabled {
             opacity: .3 !important;
         }
-    }
 
-    &--opened &__buttons {
-        visibility: visible;
-        pointer-events: auto;
-    }
-
-    &--opened &__button {
-        opacity: 1;
-        transform: translate3d(0, 0, 0) scaleY(1);
-        
-        &:after {
-            opacity: 1;
+        &--hide-shadow {
+            box-shadow: none !important;
         }
     }
 
-    .speed-dial-style(light, #ddd);
-    .speed-dial-style(stable, #b2b2b2);
-    .speed-dial-style(positive, @positive);
-    .speed-dial-style(calm, @calm);
-    .speed-dial-style(assertive, @assertive);
-    .speed-dial-style(balanced, @balanced);
-    .speed-dial-style(energized, @energized);
-    .speed-dial-style(royal, @royal);
-    .speed-dial-style(dark, @dark);
+    &__label {
+        position: absolute;
+        top: 50%;
+        padding: 4px 10px;
+        font-size: 12px;
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 3px;
+        color: rgba(255, 255, 255, 0.8);
+        pointer-events: none;
+        white-space: nowrap;
+        opacity: 0;
+        box-sizing: border-box;
+        transform: translate3d(0, -50%, 0);
+        transition: all 0.3s;
+    }
+
+    &--vertical&--opened &__label {
+        opacity: 1;
+    }
+
+    .fab-button-style(light, #ddd);
+    .fab-button-style(stable, #b2b2b2);
+    .fab-button-style(positive, @positive);
+    .fab-button-style(calm, @calm);
+    .fab-button-style(assertive, @assertive);
+    .fab-button-style(balanced, @balanced);
+    .fab-button-style(energized, @energized);
+    .fab-button-style(royal, @royal);
+    .fab-button-style(dark, @dark);
 }

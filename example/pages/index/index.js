@@ -170,9 +170,9 @@ Page({
                         url: '/pages/divider/index',
                     },
                     {
-                        title: 'FloatingButton',
+                        title: 'FabButton',
                         remark: '浮动按钮',
-                        url: '/pages/floating-button/index',
+                        url: '/pages/fab-button/index',
                     },
                     {
                         title: 'Image',

@@ -1,0 +1,54 @@
+<wux-fab-button position="{{ types[typeIndex] }}" theme="{{ colors[colorIndex] }}" direction="{{ dirs[dirIndex] }}" reverse="{{ reverse }}" spaceBetween="{{ spaceBetween }}" sAngle="{{ sAngle }}" eAngle="{{ eAngle }}" buttons="{{ buttons }}" bind:change="onChange" bind:click="onClick" bind:contact="onContact" bind:getuserinfo="onGotUserInfo" />
+
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">FabButton</view>
+        <view class="page__desc">浮动按钮</view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_select">
+                <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                    <view class="weui-label">Position</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <picker bindchange="pickerChange" data-model="typeIndex" value="{{ typeIndex }}" range="{{ types }}">
+                        <view class="weui-select weui-select_in-select-after">{{ types[typeIndex] }}</view>
+                    </picker>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_select">
+                <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                    <view class="weui-label">Theme</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <picker bindchange="pickerChange" data-model="colorIndex" value="{{ colorIndex }}" range="{{ colors }}">
+                        <view class="weui-select weui-select_in-select-after">{{ colors[colorIndex] }}</view>
+                    </picker>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_select">
+                <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                    <view class="weui-label">Direction</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <picker bindchange="pickerChange" data-model="dirIndex" value="{{ dirIndex }}" range="{{ dirs }}">
+                        <view class="weui-select weui-select_in-select-after">{{ dirs[dirIndex] }}</view>
+                    </picker>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_switch">
+                <view class="weui-cell__bd">Reverse</view>
+                <view class="weui-cell__ft">
+                    <switch bindchange="onSwitch" checked="{{ reverse }}" />
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_switch">
+                <view class="weui-cell__bd">Custom Angle</view>
+                <view class="weui-cell__ft">
+                    <switch bindchange="onAngle" checked="{{ isAngle }}" />
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
