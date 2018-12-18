@@ -29,10 +29,15 @@
     }
 
     &__hd {
+        position: relative;
         display: flex;
         font-size: 17px;
         padding: 9px 15px;
         align-items: center;
+
+        &:before {
+            .setBottomLine(#D9D9D9);
+        }
     }
 
     &__content {
@@ -65,10 +70,6 @@
         font-size: 15px;
         color: #333;
         min-height: 40px;
-
-        &:before {
-            .setTopLine(#D9D9D9);
-        }
     }
 
     &__ft {
