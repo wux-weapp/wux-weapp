@@ -92,7 +92,9 @@
   position: absolute;
   top: 100rpx;
   left: 0;
-  width: 100%
+  width: 100%;
+  background-color: #fff;
+  box-sizing: border-box
 }
 .wux-filterbar__pop {
   height: 100%;
@@ -106,6 +108,10 @@
   box-sizing: border-box
 }
 .wux-filterbar__scroll-view {
+  max-height: 540rpx
+}
+.wux-filterbar__pop .wux-filterbar__scroll-view {
+  max-height: none;
   height: 85%;
   height: calc(100% - 88rpx)
 }

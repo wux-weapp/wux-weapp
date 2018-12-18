@@ -4,7 +4,7 @@
         <block wx:for="{{ items }}" wx:key="">
             <view class="wux-filterbar__item {{ item.checked ? 'wux-filterbar__item--checked' : '' }}" bindtap="onClick" data-index="{{ index }}">
                 <text class="wux-filterbar__text">{{ item.label }}</text>
-                <text class="wux-filterbar__icon {{ 'wux-filterbar__icon--' + item.type }} {{ item.sort === 1 ? 'wux-filterbar__icon--sort-asc' : item.sort === -1 ? 'wux-filterbar__icon--sort-desc' : '' }}" wx:if="{{ item.type === 'radio' || item.type === 'checkbox' || item.type === 'sort' || item.type === 'filter' }}"></text>
+                <view class="wux-filterbar__icon {{ 'wux-filterbar__icon--' + item.type }} {{ item.sort === 1 ? 'wux-filterbar__icon--sort-asc' : item.sort === -1 ? 'wux-filterbar__icon--sort-desc' : '' }}" wx:if="{{ item.type === 'radio' || item.type === 'checkbox' || item.type === 'sort' || item.type === 'filter' }}"></view>
             </view>
         </block>
     </view>
@@ -48,18 +48,22 @@
             </div>
         </wux-animation-group>
         <wux-animation-group wux-class="wux-filterbar__select" in="{{ item.visible }}" class-names="wux-animate--fadeIn" bind:enter="onEnter" bind:exit="onExit" wx:if="{{ item.type === 'radio' }}">
-            <wux-radio-group value="{{ common.getRadioValue(item.children) }}" bind:change="radioChange" data-index="{{ index }}"  data-item="{{ item }}">
-                <block wx:for="{{ item.children }}" wx:for-item="p" wx:key="{{ item.value }}">
-                    <wux-radio title="{{ p.label }}" value="{{ p.value }}" />
-                </block>
-            </wux-radio-group>
+            <scroll-view class="wux-filterbar__scroll-view" scroll-y>
+                <wux-radio-group value="{{ common.getRadioValue(item.children) }}" bind:change="radioChange" data-index="{{ index }}"  data-item="{{ item }}">
+                    <block wx:for="{{ item.children }}" wx:for-item="p" wx:key="{{ item.value }}">
+                        <wux-radio title="{{ p.label }}" value="{{ p.value }}" />
+                    </block>
+                </wux-radio-group>
+            </scroll-view>
         </wux-animation-group>
         <wux-animation-group wux-class="wux-filterbar__select" in="{{ item.visible }}" class-names="wux-animate--fadeIn" bind:enter="onEnter" bind:exit="onExit" wx:if="{{ item.type === 'checkbox' }}">
-            <wux-checkbox-group name="a" value="{{ common.getCheckboxValue(item.children) }}" bind:change="checkboxChange" data-index="{{ index }}"  data-item="{{ item }}">
-                <block wx:for="{{ item.children }}" wx:for-item="p" wx:key="{{ item.value }}">
-                    <wux-checkbox title="{{ p.label }}" value="{{ p.value }}" />
-                </block>
-            </wux-checkbox-group>
+            <scroll-view class="wux-filterbar__scroll-view" scroll-y>
+                <wux-checkbox-group name="a" value="{{ common.getCheckboxValue(item.children) }}" bind:change="checkboxChange" data-index="{{ index }}"  data-item="{{ item }}">
+                    <block wx:for="{{ item.children }}" wx:for-item="p" wx:key="{{ item.value }}">
+                        <wux-checkbox title="{{ p.label }}" value="{{ p.value }}" />
+                    </block>
+                </wux-checkbox-group>
+            </scroll-view>
         </wux-animation-group>
     </block>
 </view>

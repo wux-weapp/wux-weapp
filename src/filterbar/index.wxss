@@ -72,6 +72,8 @@
         top: 50px;
         left: 0;
         width: 100%;
+        background-color: #fff;
+        box-sizing: border-box;
     }
 
     &__pop {
@@ -85,8 +87,13 @@
         background-color: #fff;
         box-sizing: border-box;
     }
-    
+
     &__scroll-view {
+        max-height: 270px;
+    }
+    
+    &__pop &__scroll-view {
+        max-height: none;
         height: 85%;
         height: calc(~"100% - 44px");
     }
