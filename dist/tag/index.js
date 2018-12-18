@@ -11,29 +11,78 @@ const isPresetColor = (color) => {
 
 Component({
     externalClasses: ['wux-class', 'wux-hover-class'],
-    data: {
-        className: '',
-        style: '',
-    },
     properties: {
         color: {
             type: String,
             value: '',
+            observer: 'updateStyle',
+        },
+        closable: {
+            type: Boolean,
+            value: false,
+        },
+        defaultVisible: {
+            type: Boolean,
+            value: true,
+        },
+        visible: {
+            type: Boolean,
+            value: true,
             observer(newVal) {
-                const isPreset = isPresetColor(newVal)
-                const className = isPreset ? `wux-tag--${newVal}` : ''
-                const style = !isPreset ? `background-color: ${newVal}; color: #fff` : ''
-
-                this.setData({
-                    className,
-                    style,
-                })
+                if (this.data.controlled) {
+                    this.updated(newVal)
+                }
             },
         },
+        controlled: {
+            type: Boolean,
+            value: false,
+        },
+    },
+    data: {
+        className: '',
+        tagStyle: '',
+        tagVisible: true,
     },
     methods: {
-        onTap() {
+        updated(tagVisible) {
+            if (this.data.tagVisible !== tagVisible) {
+                this.setData({
+                    tagVisible,
+                })
+            }
+        },
+        updateStyle(color) {
+            const isPreset = isPresetColor(color)
+            const className = isPreset ? `wux-tag--${color}` : ''
+            const tagStyle = !isPreset ? `background-color: ${color}; color: #fff` : ''
+
+            this.setData({
+                className,
+                tagStyle,
+            })
+        },
+        onChange(tagVisible) {
+            if (!this.data.controlled) {
+                this.updated(tagVisible)
+            }
+
+            this.triggerEvent('change', { value: tagVisible })
+        },
+        onClick() {
             this.triggerEvent('click')
         },
+        onClose() {
+            if (this.data.closable) {
+                this.triggerEvent('close')
+                this.onChange(false)
+            }
+        },
+    },
+    attached() {
+        const { defaultVisible, visible, controlled } = this.data
+        const tagVisible = controlled ? visible : defaultVisible
+
+        this.updated(tagVisible)
     },
 })

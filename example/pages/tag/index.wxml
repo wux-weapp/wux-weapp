@@ -3,7 +3,9 @@
         <view class="page__title">Tag</view>
         <view class="page__desc">标签</view>
     </view>
-    <view class="page__bd">
+    <view class="page__bd page__bd_spacing">
+        <view class="sub-title">Default</view>
+        <wux-tag>magenta</wux-tag>
         <wux-tag color="magenta">magenta</wux-tag>
         <wux-tag color="red">red</wux-tag>
         <wux-tag color="volcano">volcano</wux-tag>
@@ -15,9 +17,14 @@
         <wux-tag color="blue">blue</wux-tag>
         <wux-tag color="geekblue">geekblue</wux-tag>
         <wux-tag color="purple">purple</wux-tag>
+        <view class="sub-title">Custom color</view>
         <wux-tag color="#f50">#f50</wux-tag>
         <wux-tag color="#2db7f5">#2db7f5</wux-tag>
         <wux-tag color="#87d068">#87d068</wux-tag>
         <wux-tag color="#108ee9">#108ee9</wux-tag>
+        <view class="sub-title">Closable</view>
+        <wux-tag closable bind:close="onClose">Tag 1</wux-tag>
+        <wux-tag closable visible="{{ visible }}" controlled bind:close="onClose" bind:change="onChange">Tag 3</wux-tag>
+        <wux-tag bind:click="onToggle">Toggle</wux-tag>
     </view>
 </view>
