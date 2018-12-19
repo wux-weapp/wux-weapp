@@ -30,14 +30,8 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
-			"list": [
-				{
-					"id": -1,
-					"name": "tabs",
-					"pathName": "pages/tabs/index"
-				}
-			]
+			"current": -1,
+			"list": []
 		}
 	}
 }

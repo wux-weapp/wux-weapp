@@ -25,6 +25,6 @@
             <text slot="footer" style="color: #a1a1a1; margin-left: 10px;">去看看</text>
         </wux-notice-bar>
         <view class="sub-title">Custom Style</view>
-        <wux-notice-bar wux-class="notice-bar" icon="http://pbqg2m54r.bkt.clouddn.com/logo.png" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp" />
+        <wux-notice-bar wux-class="notice-bar" icon="https://wux.cdn.cloverstd.com/logo.png" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp" />
     </view>
 </view>

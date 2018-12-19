@@ -3,17 +3,17 @@ Page({
         fileList: [{
                 uid: 0,
                 status: 'uploading',
-                url: 'http://pbqg2m54r.bkt.clouddn.com/qrcode.jpg',
+                url: 'https://wux.cdn.cloverstd.com/qrcode.jpg',
             },
             {
                 uid: 1,
                 status: 'done',
-                url: 'http://pbqg2m54r.bkt.clouddn.com/qrcode.jpg',
+                url: 'https://wux.cdn.cloverstd.com/qrcode.jpg',
             },
             {
                 uid: 2,
                 status: 'error',
-                url: 'http://pbqg2m54r.bkt.clouddn.com/qrcode.jpg',
+                url: 'https://wux.cdn.cloverstd.com/qrcode.jpg',
             }
         ],
     },

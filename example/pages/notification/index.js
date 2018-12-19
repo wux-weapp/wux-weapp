@@ -5,7 +5,7 @@ Page({
     onLoad() {},
     showNotification() {
         this.closeNotification = $wuxNotification().show({
-            image: 'http://pbqg2m54r.bkt.clouddn.com/logo.png',
+            image: 'https://wux.cdn.cloverstd.com/logo.png',
             title: '宝宝',
             text: '嘤嘤嘤，人家拿小拳拳捶你胸口!!!',
             data: {
@@ -24,7 +24,7 @@ Page({
         if (this.timeout) clearTimeout(this.timeout)
 
         const hide = $wuxNotification().show({
-            image: 'http://pbqg2m54r.bkt.clouddn.com/logo.png',
+            image: 'https://wux.cdn.cloverstd.com/logo.png',
             title: '宝宝',
             text: '嘤嘤嘤，人家拿小拳拳捶你胸口!!!',
             data: {
@@ -37,7 +37,7 @@ Page({
     },
     showNotificationPromise() {
         const hide = $wuxNotification().show({
-            image: 'http://pbqg2m54r.bkt.clouddn.com/logo.png',
+            image: 'https://wux.cdn.cloverstd.com/logo.png',
             title: '宝宝',
             text: '嘤嘤嘤，人家拿小拳拳捶你胸口!!!',
             data: {
