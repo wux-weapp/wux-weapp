@@ -33,14 +33,26 @@
             left: 0;
             background: @balanced;
         }
+
+        &--vertical {
+            padding: 0 15px;
+        }
+
+        &--vertical &-bar {
+            width: 2px;
+            height: 100%;
+            right: 0;
+            left: auto;
+        }
     
         &--current {
             color: @balanced;
         }
     
-        &--scroll {
-            display: inline-block;
-            width: 60px;
+        &--horizontal&--scroll {
+            display: inline-flex;
+            padding: 0 15px;
+            width: auto;
         }
     
         &--disabled {

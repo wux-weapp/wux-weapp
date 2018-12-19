@@ -53,6 +53,10 @@ Component({
             type: String,
             value: 'balanced',
         },
+        direction: {
+            type: String,
+            value: 'horizontal',
+        },
     },
     data: {
         activeKey: '',
@@ -62,6 +66,7 @@ Component({
         updated(value, condition) {
             const elements = this.getRelationNodes('../tab/index')
             const activeKey = getActiveKey(elements, value)
+            const { scroll, theme, direction } = this.data
 
             if (elements.length > 0) {
                 if (condition) {
@@ -70,7 +75,12 @@ Component({
                     })
 
                     elements.forEach((element) => {
-                        element.changeCurrent(element.data.key === activeKey, this.data.scroll, this.data.theme)
+                        element.changeCurrent({
+                            current: element.data.key === activeKey,
+                            scroll,
+                            theme,
+                            direction,
+                        })
                     })
                 }
             }

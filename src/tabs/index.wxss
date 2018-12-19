@@ -13,7 +13,15 @@
 
     &--scroll {
         display: block;
-        overflow-x: auto;
+        overflow: auto;
         white-space: nowrap;
+    }
+
+    &--vertical {
+        display: inline-flex;
+        width: auto;
+        height: auto;
+        max-height: 270px;
+        flex-direction: column;
     }
 }

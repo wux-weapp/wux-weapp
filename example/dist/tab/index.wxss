@@ -24,12 +24,23 @@
   left: 0;
   background: #33cd5f
 }
+.wux-tabs__tab--vertical {
+  padding: 0 30rpx
+}
+.wux-tabs__tab--vertical .wux-tabs__tab-bar {
+  width: 4rpx;
+  height: 100%;
+  right: 0;
+  left: auto
+}
 .wux-tabs__tab--current {
   color: #33cd5f
 }
-.wux-tabs__tab--scroll {
-  display: inline-block;
-  width: 120rpx
+.wux-tabs__tab--horizontal.wux-tabs__tab--scroll {
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  padding: 0 30rpx;
+  width: auto
 }
 .wux-tabs__tab--disabled {
   opacity: .3

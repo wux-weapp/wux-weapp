@@ -24,20 +24,19 @@ Component({
         scroll: false,
     },
     methods: {
-        changeCurrent(current, scroll, theme) {
+        changeCurrent({ current, scroll, theme, direction }) {
             this.setData({
                 current,
                 scroll,
                 theme,
+                direction,
             })
         },
         onTap() {
             const { key, disabled } = this.data
             const parent = this.getRelationNodes('../tabs/index')[0]
 
-            if (disabled || !parent) {
-                return false
-            }
+            if (disabled || !parent) return
 
             this.triggerEvent('click', { key })
 
