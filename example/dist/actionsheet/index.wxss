@@ -42,7 +42,13 @@
   background-color: transparent;
   color: #007aff;
   font-size: 42rpx;
-  line-height: 96rpx
+  line-height: 96rpx;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center
 }
 .wux-actionsheet__button--hover {
   box-shadow: none;
@@ -55,6 +61,15 @@
 }
 .wux-actionsheet__button--cancel {
   font-weight: 500
+}
+.wux-actionsheet__button--disabled {
+  opacity: .3!important
+}
+.wux-actionsheet__icon {
+  display: inline-block;
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 20rpx
 }
 .wux-actionsheet__group {
   margin-bottom: 16rpx;

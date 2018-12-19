@@ -3,9 +3,32 @@
     <view class="wux-actionsheet__content {{ theme === 'wx' ? 'wux-actionsheet__content--theme-wx' : '' }}">
         <view class="wux-actionsheet__group wux-actionsheet__group--options">
             <view class="wux-actionsheet__title" wx:if="{{ titleText }}">{{ titleText }}</view>
-            <block wx:for="{{ buttons }}" wx:key="">
-                <button class="wux-actionsheet__button wux-actionsheet__button--option {{ item.classNmae }}" hover-class="wux-actionsheet__button--hover" data-index="{{ index }}" catchtap="buttonClicked">
-                    {{ item.text }}
+            <block wx:for="{{ buttons }}" wx:for-item="button" wx:key="index">
+                <button
+                    class="wux-actionsheet__button wux-actionsheet__button--option {{ button.disabled ? 'wux-actionsheet__button--disabled' : '' }} {{ button.classNmae }}"
+                    data-index="{{ index }}"
+                    disabled="{{ button.disabled }}"
+                    open-type="{{ button.openType }}"
+                    hover-class="{{ !button.disabled ? (button.hoverClass || 'wux-actionsheet__button--hover') : 'none' }}"
+                    hover-stop-propagation="{{ button.hoverStopPropagation }}"
+                    hover-start-time="{{ button.hoverStartTime }}"
+                    hover-stay-time="{{ button.hoverStayTime }}"
+                    lang="{{ button.lang }}"
+                    bindgetuserinfo="bindgetuserinfo"
+                    session-from="{{ button.sessionFrom }}"
+                    send-message-title="{{ button.sendMessageTitle }}"
+                    send-message-path="{{ button.sendMessagePath }}"
+                    send-message-img="{{ button.sendMessageImg }}"
+                    show-message-card="{{ button.showMessageCard }}"
+                    bindcontact="bindcontact"
+                    bindgetphonenumber="bindgetphonenumber"
+                    app-parameter="{{ button.appParameter }}"
+                    binderror="onError"
+                    bindopensetting="bindopensetting"
+                    catchtap="buttonClicked"
+                >
+                    <image class="wux-actionsheet__icon" src="{{ button.icon }}" wx:if="{{ button.icon }}" />
+                    <text class="wux-actionsheet__text">{{ button.text }}</text>
                 </button>
             </block>
             <button class="wux-actionsheet__button wux-actionsheet__button--destructive" wx:if="{{ destructiveText }}" catchtap="destructiveButtonClicked">{{ destructiveText }}</button>

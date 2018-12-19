@@ -49,6 +49,9 @@
         color: #007aff;
         font-size: 21px;
         line-height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     
         &--hover {
             box-shadow: none;
@@ -64,6 +67,17 @@
         &--cancel {
             font-weight: 500;
         }
+
+        &--disabled {
+            opacity: .3 !important;
+        }
+    }
+
+    &__icon {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
     }
 }
 

@@ -64,6 +64,21 @@ Component({
         cancel() {
             this.removeSheet(this.fns.cancel)
         },
+        bindgetuserinfo(e) {
+            this.triggerEvent('getuserinfo', {...e.detail, ...e.currentTarget.dataset })
+        },
+        bindcontact(e) {
+            this.triggerEvent('contact', {...e.detail, ...e.currentTarget.dataset })
+        },
+        bindgetphonenumber(e) {
+            this.triggerEvent('getphonenumber', {...e.detail, ...e.currentTarget.dataset })
+        },
+        bindopensetting(e) {
+            this.triggerEvent('opensetting', {...e.detail, ...e.currentTarget.dataset })
+        },
+        onError(e) {
+            this.triggerEvent('error', {...e.detail, ...e.currentTarget.dataset })
+        },
     },
     created() {
         this.$wuxBackdrop = $wuxBackdrop('#wux-backdrop', this)
