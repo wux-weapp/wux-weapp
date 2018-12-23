@@ -6,7 +6,7 @@ const baseComponent = (options = {}) => {
     const { created, detached } = options
 
     // add default externalClasses
-    options.externalClasses = ['wux-class', ...(options.externalClasses = options.externalClasses || [])]
+    options.externalClasses = ['wux-class', 'wux-hover-class', ...(options.externalClasses = options.externalClasses || [])]
 
     // add default behaviors
     options.behaviors = [relationsBehavior, computedBehavior, ...(options.behaviors = options.behaviors || [])]
