@@ -1,11 +1,16 @@
-Component({
-    externalClasses: ['wux-class'],
+import baseComponent from '../helpers/baseComponent'
+
+baseComponent({
     relations: {
         '../row/index': {
             type: 'parent',
         },
     },
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-col',
+        },
         span: {
             value: 0,
             type: Number,
@@ -25,6 +30,21 @@ Component({
     },
     data: {
         colStyle: '',
+    },
+    computed: {
+        classes() {
+            const { prefixCls, span, offset, pull, push } = this.data
+            const wrap = this.classNames(prefixCls, {
+                [`${prefixCls}--span-${span}`]: span,
+                [`${prefixCls}--offset-${offset}`]: offset,
+                [`${prefixCls}--pull-${pull}`]: pull,
+                [`${prefixCls}--push-${push}`]: push,
+            })
+
+            return {
+                wrap,
+            }
+        },
     },
     methods: {
         updateStyle(colStyle) {
