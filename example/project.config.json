@@ -8,7 +8,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.94",
+	"libVersion": "2.2.3",
 	"appid": "wx816264ac1982a645",
 	"projectname": "wux-weapp",
 	"isGameTourist": false,
@@ -30,8 +30,15 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 0,
+			"list": [
+				{
+					"id": 0,
+					"name": "media",
+					"pathName": "pages/media/index",
+					"query": ""
+				}
+			]
 		}
 	}
 }
