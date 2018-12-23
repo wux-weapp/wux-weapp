@@ -30,15 +30,8 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
-			"list": [
-				{
-					"id": 0,
-					"name": "media",
-					"pathName": "pages/media/index",
-					"query": ""
-				}
-			]
+			"current": -1,
+			"list": []
 		}
 	}
 }
