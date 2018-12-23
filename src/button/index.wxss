@@ -47,7 +47,7 @@
     padding: 0 12px;
     min-width: 52px;
     min-height: 44px;
-    border: 1px solid transparent;
+    border: none;
     border-radius: 4px;
     vertical-align: middle;
     text-align: center;
@@ -70,6 +70,10 @@
         transform-origin: 0 0;
         box-sizing: border-box;
         border-radius: 0;
+    }
+
+    &--bordered {
+        border: 1px solid transparent;
     }
 
     &--disabled {

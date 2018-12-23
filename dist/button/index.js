@@ -26,6 +26,10 @@ baseComponent({
             type: Boolean,
             value: false,
         },
+        bordered: {
+            type: Boolean,
+            value: true,
+        },
         size: {
             type: String,
             value: 'default',
@@ -93,7 +97,7 @@ baseComponent({
     },
     computed: {
         classes() {
-            const { prefixCls, hoverClass, type, size, block, full, clear, outline, disabled } = this.data
+            const { prefixCls, hoverClass, type, size, block, full, clear, outline, bordered, disabled } = this.data
             const wrap = this.classNames(prefixCls, {
                 [`${prefixCls}--${type}`]: type,
                 [`${prefixCls}--${size}`]: size,
@@ -101,6 +105,7 @@ baseComponent({
                 [`${prefixCls}--full`]: full,
                 [`${prefixCls}--clear`]: clear,
                 [`${prefixCls}--outline`]: outline,
+                [`${prefixCls}--bordered`]: bordered,
                 [`${prefixCls}--disabled`]: disabled,
             })
             const hover = hoverClass === 'default' ? `${prefixCls}--hover` : hoverClass

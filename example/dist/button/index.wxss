@@ -6,7 +6,7 @@
   padding: 0 24rpx;
   min-width: 104rpx;
   min-height: 88rpx;
-  border: 2rpx solid transparent;
+  border: none;
   border-radius: 8rpx;
   vertical-align: middle;
   text-align: center;
@@ -29,6 +29,9 @@
   transform-origin: 0 0;
   box-sizing: border-box;
   border-radius: 0
+}
+.wux-button--bordered {
+  border: 2rpx solid transparent
 }
 .wux-button--disabled {
   opacity: .4!important
