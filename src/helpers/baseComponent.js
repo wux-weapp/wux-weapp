@@ -1,4 +1,5 @@
 import computedBehavior from './computedBehavior'
+import relationsBehavior from './relationsBehavior'
 import classNames from './classNames'
 
 const baseComponent = (options = {}) => {
@@ -8,7 +9,7 @@ const baseComponent = (options = {}) => {
     options.externalClasses = ['wux-class', ...(options.externalClasses = options.externalClasses || [])]
 
     // add default behaviors
-    options.behaviors = [computedBehavior, ...(options.behaviors = options.behaviors || [])]
+    options.behaviors = [relationsBehavior, computedBehavior, ...(options.behaviors = options.behaviors || [])]
 
     // check hasField
     if (options.hasField) {
