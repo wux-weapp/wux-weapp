@@ -1,6 +1,11 @@
-Component({
-    externalClasses: ['wux-class', 'wux-hover-class'],
+import baseComponent from '../helpers/baseComponent'
+
+baseComponent({
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-button',
+        },
         type: {
             type: String,
             value: 'stable',
@@ -40,6 +45,10 @@ Component({
         openType: {
             type: String,
             value: '',
+        },
+        hoverClass: {
+            type: String,
+            value: 'default',
         },
         hoverStopPropagation: {
             type: Boolean,
@@ -82,7 +91,26 @@ Component({
             value: '',
         },
     },
+    computed: {
+        classes() {
+            const { prefixCls, hoverClass, type, size, block, full, clear, outline, disabled } = this.data
+            const wrap = this.classNames(prefixCls, {
+                [`${prefixCls}--${type}`]: type,
+                [`${prefixCls}--${size}`]: size,
+                [`${prefixCls}--block`]: block,
+                [`${prefixCls}--full`]: full,
+                [`${prefixCls}--clear`]: clear,
+                [`${prefixCls}--outline`]: outline,
+                [`${prefixCls}--disabled`]: disabled,
+            })
+            const hover = hoverClass === 'default' ? `${prefixCls}--hover` : hoverClass
 
+            return {
+                wrap,
+                hover,
+            }
+        },
+    },
     methods: {
         onTap() {
             if (!this.data.disabled && !this.data.loading) {

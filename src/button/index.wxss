@@ -1,15 +1,18 @@
 @import "../styles/base/fn.wxss";
 
 .button(@theme, @color) {
-    &--@{theme} {
+    &--@{theme},
+    &--@{theme}--disabled {
         .button-style(@color);
     }
-    
-    &--@{theme}&--outline {
+
+    &--@{theme}&--outline,
+    &--@{theme}&--outline&--disabled {
         .button-outline(@color);
     }
 
-    &--@{theme}&--clear {
+    &--@{theme}&--clear,
+    &--@{theme}&--clear&--disabled {
         .button-clear(@color);
     }
 
@@ -68,9 +71,9 @@
         box-sizing: border-box;
         border-radius: 0;
     }
-    
+
     &--disabled {
-        opacity: .4;
+        opacity: .4 !important;
     }
 
     &--small {
