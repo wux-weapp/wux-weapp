@@ -1,1 +1,1 @@
-.wux-selectable--cell{position:static!important}
+.wux-radio__selectable{position:static!important}
