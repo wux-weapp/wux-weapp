@@ -1,3 +1,4 @@
+import baseComponent from '../helpers/baseComponent'
 import { getTouchPoints, getPointsNumber } from '../helpers/gestures'
 
 const defaultAction = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAQAAAAAYLlVAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAHdElNRQfhBAQLCR5MtjrbAAAAjUlEQVRo3u3ZMRKAIAxEUbDirp4nXnctFFDHBtDQ/O1Nnk6aHUMgZCBKMkmmNAtgOmL9M+IQQGVM95zljy8DAAAAAAAAAAAAAACALsDZcppSx7Q+WdtUvA5xffUtrjeA8/qQ21S9gc15/3Nfzw0M5O0G2kM5BQAAAAAAAAAAAAAAQGk33q0qZ/p/Q/JFdmei9usomnwIAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE3LTA0LTA0VDExOjA5OjMwKzA4OjAw1U4c3wAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNy0wNC0wNFQxMTowOTozMCswODowMKQTpGMAAAAASUVORK5CYII='
@@ -10,9 +11,16 @@ const setTransform = (translate = 0, scale = 1, delay = 300, isH = true) => {
     return `opacity: 1; ${duration}; ${transform}`
 }
 
-Component({
-    externalClasses: ['wux-class'],
+baseComponent({
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-fab-button',
+        },
+        hoverClass: {
+            type: String,
+            value: 'default',
+        },
         theme: {
             type: String,
             value: 'balanced',
@@ -97,6 +105,63 @@ Component({
     data: {
         buttonStyle: [],
         buttonVisible: false,
+    },
+    computed: {
+        classes() {
+            const {
+                prefixCls,
+                position,
+                theme,
+                direction,
+                reverse,
+                buttonVisible,
+                hideShadow,
+                actionRotate,
+                buttons,
+                hoverClass,
+            } = this.data
+            const wrap = this.classNames(prefixCls, {
+                [`${prefixCls}--${position}`]: position,
+                [`${prefixCls}--${theme}`]: theme,
+                [`${prefixCls}--${direction}`]: direction,
+                [`${prefixCls}--reverse`]: reverse,
+                [`${prefixCls}--opened`]: buttonVisible,
+            })
+            const action = this.classNames(`${prefixCls}__action`, {
+                [`${prefixCls}__action--hide-shadow`]: hideShadow,
+            })
+            const text = this.classNames(`${prefixCls}__text`, {
+                [`${prefixCls}__text--rotate`]: buttonVisible && actionRotate,
+            })
+            const button = buttons.map((button) => {
+                const wrap = this.classNames(`${prefixCls}__button`, {
+                    [`${prefixCls}__button--hide-shadow`]: button.hideShadow,
+                    [`${prefixCls}__button--disabled`]: button.disabled,
+                    [`${button.className}`]: button.className,
+                })
+                const hover = button.hoverClass && button.hoverClass !== 'default' ? button.hoverClass : `${prefixCls}__button--hover`
+
+                return {
+                    wrap,
+                    hover,
+                }
+            })
+            const icon = `${prefixCls}__icon`
+            const label = `${prefixCls}__label`
+            const backdrop = `${prefixCls}__backdrop`
+            const hover = hoverClass && hoverClass !== 'default' ? hoverClass : `${prefixCls}--hover`
+
+            return {
+                wrap,
+                action,
+                text,
+                button,
+                icon,
+                label,
+                backdrop,
+                hover,
+            }
+        },
     },
     methods: {
         updated(buttonVisible) {
