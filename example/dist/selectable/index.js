@@ -1,11 +1,13 @@
+import baseComponent from '../helpers/baseComponent'
 import { isPresetColor } from '../helpers/colors'
 
-Component({
-    externalClasses: ['wux-class', 'wux-input-class'],
-    options: {
-        multipleSlots: true,
-    },
+baseComponent({
+    externalClasses: ['wux-input-class'],
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-selectable',
+        },
         type: {
             type: String,
             value: 'checkbox',
@@ -52,6 +54,23 @@ Component({
     data: {
         inputChecked: false,
         inputColor: '',
+    },
+    computed: {
+        classes() {
+            const { prefixCls, inputChecked, disabled } = this.data
+            const wrap = this.classNames(prefixCls, {
+                [`${prefixCls}--checked`]: inputChecked,
+                [`${prefixCls}--disabled`]: disabled,
+            })
+            const input = `${prefixCls}__input`
+            const icon = `${prefixCls}__icon`
+
+            return {
+                wrap,
+                input,
+                icon,
+            }
+        },
     },
     methods: {
         updated(inputChecked) {
