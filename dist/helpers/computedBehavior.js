@@ -66,8 +66,12 @@ module.exports = Behavior({
                             data[key] = value.value
                         }
 
-                        if (hasOwnProperty.call(value, 'observer') && typeof value.observer === 'function') {
-                            oldObserver = value.observer
+                        if (hasOwnProperty.call(value, 'observer')) {
+                            if (typeof value.observer === 'function') {
+                                oldObserver = value.observer
+                            } else if (typeof value.observer === 'string') {
+                                oldObserver = defFields.methods[value.observer]
+                            }
                         }
                     }
 

@@ -1,28 +1,23 @@
-Component({
-    externalClasses: ['wux-class'],
-    options: {
-        multipleSlots: true,
-    },
+import baseComponent from '../helpers/baseComponent'
+
+baseComponent({
     relations: {
         '../cell-group/index': {
             type: 'parent',
         },
     },
-    data: {
-        isLast: false,
-    },
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-cell',
+        },
         disabled: {
             type: Boolean,
             value: false,
         },
-        // openType: {
-        //     type: String,
-        //     value: '',
-        // },
         hoverClass: {
             type: String,
-            value: 'wux-cell--hover',
+            value: 'default',
         },
         hoverStopPropagation: {
             type: Boolean,
@@ -95,6 +90,37 @@ Component({
         delta: {
             type: Number,
             value: 1,
+        },
+    },
+    data: {
+        isLast: false,
+    },
+    computed: {
+        classes() {
+            const { prefixCls, hoverClass, isLast, isLink, disabled } = this.data
+            const wrap = this.classNames(prefixCls, {
+                [`${prefixCls}--last`]: isLast,
+                [`${prefixCls}--access`]: isLink,
+                [`${prefixCls}--disabled`]: disabled,
+            })
+            const hd = `${prefixCls}__hd`
+            const thumb = `${prefixCls}__thumb`
+            const bd = `${prefixCls}__bd`
+            const text = `${prefixCls}__text`
+            const desc = `${prefixCls}__desc`
+            const ft = `${prefixCls}__ft`
+            const hover = hoverClass === 'default' ? `${prefixCls}--hover` : hoverClass
+
+            return {
+                wrap,
+                hd,
+                thumb,
+                bd,
+                text,
+                desc,
+                ft,
+                hover,
+            }
         },
     },
     methods: {

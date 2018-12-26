@@ -1,8 +1,8 @@
 <button
-    class="wux-class wux-cell {{ isLast ? 'wux-cell--last' : '' }} {{ isLink ? 'wux-cell--access' : '' }} {{ disabled ? 'wux-cell--disabled' : '' }}"
+    class="wux-class {{ classes.wrap }}"
     disabled="{{ disabled }}"
     open-type="{{ openType }}"
-    hover-class="{{ !disabled ? hoverClass : 'none' }}"
+    hover-class="{{ !disabled ? classes.hover : 'none' }}"
     hover-stop-propagation="{{ hoverStopPropagation }}"
     hover-start-time="{{ hoverStartTime }}"
     hover-stay-time="{{ hoverStayTime }}"
@@ -20,20 +20,20 @@
     bindopensetting="bindopensetting"
     bindtap="onTap"
 >
-    <view class="wux-cell__hd">
+    <view class="{{ classes.hd }}">
         <block wx:if="{{ thumb }}">
-            <image class="wux-cell__thumb" src="{{ thumb }}" />
+            <image class="{{ classes.thumb }}" src="{{ thumb }}" />
         </block>
         <block wx:else>
             <slot name="header"></slot>
         </block>
     </view>
-    <view class="wux-cell__bd">
-        <view wx:if="{{ title }}" class="wux-cell__text">{{ title }}</view>
-        <view wx:if="{{ label }}" class="wux-cell__desc">{{ label }}</view>
+    <view class="{{ classes.bd }}">
+        <view wx:if="{{ title }}" class="{{ classes.text }}">{{ title }}</view>
+        <view wx:if="{{ label }}" class="{{ classes.desc }}">{{ label }}</view>
         <slot></slot>
     </view>
-    <view class="wux-cell__ft">
+    <view class="{{ classes.ft }}">
         <block wx:if="{{ extra }}">{{ extra }}</block>
         <block wx:else>
             <slot name="footer"></slot>
