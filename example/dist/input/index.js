@@ -1,9 +1,11 @@
-Component({
-    externalClasses: ['wux-class'],
-    options: {
-        multipleSlots: true,
-    },
+import baseComponent from '../helpers/baseComponent'
+
+baseComponent({
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-input',
+        },
         label: {
             type: String,
             value: '',
@@ -101,6 +103,32 @@ Component({
     data: {
         inputValue: '',
         inputFocus: false,
+    },
+    computed: {
+        classes() {
+            const { prefixCls, disabled, inputFocus, error: hasError } = this.data
+            const wrap = this.classNames(prefixCls, {
+                [`${prefixCls}--focus`]: inputFocus,
+                [`${prefixCls}--disabled`]: disabled,
+                [`${prefixCls}--error`]: hasError,
+            })
+            const label = `${prefixCls}__label`
+            const control = `${prefixCls}__control`
+            const item = `${prefixCls}__item`
+            const clear = `${prefixCls}__clear`
+            const error = `${prefixCls}__error`
+            const extra = `${prefixCls}__extra`
+
+            return {
+                wrap,
+                label,
+                control,
+                item,
+                clear,
+                error,
+                extra,
+            }
+        },
     },
     methods: {
         updated(inputValue) {
