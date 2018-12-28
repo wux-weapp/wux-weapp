@@ -223,7 +223,6 @@ baseComponent({
          * 更新按钮组样式
          */
         updateButtonStyle(isReset) {
-            console.log('updateButtonStyle')
             const { buttons, duration, direction, spaceBetween, scale } = this.data
             const buttonStyle = []
             const sign = this.data.reverse ? 1 : -1
