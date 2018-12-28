@@ -1,3 +1,4 @@
+import baseComponent from '../helpers/baseComponent'
 import { getTouchPoints, getPointsNumber } from '../helpers/gestures'
 
 /**
@@ -17,9 +18,12 @@ const checkValuePrecision = (val, step, min) => {
     return parseFloat(closestStep.toFixed(precision))
 }
 
-Component({
-	externalClasses: ['wux-class'],
+baseComponent({
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-slider',
+        },
         min: {
             type: Number,
             value: 0,
@@ -88,6 +92,30 @@ Component({
     data: {
         offsets: [],
         sliderValue: [],
+    },
+    computed: {
+        classes() {
+            const { prefixCls, disabled } = this.data
+            const wrap = this.classNames(prefixCls, {
+                [`${prefixCls}--disabled`]: disabled,
+            })
+            const min = `${prefixCls}__min`
+            const rail = `${prefixCls}__rail`
+            const mark = `${prefixCls}__mark`
+            const track = `${prefixCls}__track`
+            const handle = `${prefixCls}__handle`
+            const max = `${prefixCls}__max`
+
+            return {
+                wrap,
+                min,
+                rail,
+                mark,
+                track,
+                handle,
+                max,
+            }
+        },
     },
     methods: {
         /**
