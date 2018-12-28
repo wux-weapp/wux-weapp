@@ -49,6 +49,9 @@
     }
 
     &__label {
+		display: flex;
+		justify-content: center;
+		align-items: center;
     	position: absolute;
 		top: 1px;
 		right: 1px;

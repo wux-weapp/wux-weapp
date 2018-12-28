@@ -1,10 +1,10 @@
-<view class="wux-class wux-search-bar {{ inputFocus ? 'wux-search-bar--focus' : '' }} {{ disabled ? 'wux-search-bar--disabled' : '' }}">
-    <view class="wux-search-bar__form">
-        <view class="wux-search-bar__box">
-            <icon class="wux-search-bar__search" type="search" color="#B2B2B2" size="14" />
+<view class="wux-class {{ classes.wrap }}">
+    <view class="{{ classes.form }}">
+        <view class="{{ classes.box }}">
+            <icon class="{{ classes.search }}" type="search" color="#B2B2B2" size="14" />
             <input
             	type="text"
-            	class="wux-search-bar__input"
+            	class="{{ classes.input }}"
             	value="{{ inputValue }}"
             	placeholder="{{ placeholder }}"
                 placeholder-style="{{ placeholderStyle }}"
@@ -24,12 +24,12 @@
             	bindblur="onBlur"
             	bindconfirm="onConfirm"
             />
-            <icon class="wux-search-bar__clear" type="clear" color="#B2B2B2" size="14" wx:if="{{ clear && !disabled && inputValue && inputValue.length > 0 }}" bindtap="onClear" />
+            <icon class="{{ classes.clear }}" type="clear" color="#B2B2B2" size="14" wx:if="{{ clear && !disabled && inputValue && inputValue.length > 0 }}" bindtap="onClear" />
         </view>
-        <label class="wux-search-bar__label" wx:if="{{ !inputFocus && !inputValue }}" bindtap="onClick">
-            <icon class="wux-search-bar__icon" type="search" color="#B2B2B2" size="14" />
-            <text class="wux-search-bar__text">{{ placeholder }}</text>
+        <label class="{{ classes.label }}" wx:if="{{ !inputFocus && !inputValue }}" bindtap="onClick">
+            <icon class="{{ classes.icon }}" type="search" color="#B2B2B2" size="14" />
+            <text class="{{ classes.text }}">{{ placeholder }}</text>
         </label>
     </view>
-    <view class="wux-search-bar__cancel" wx:if="{{ showCancel || inputFocus || (inputValue && inputValue.length > 0) }}" bindtap="onCancel">{{ cancelText }}</view>
+    <view class="{{ classes.cancel }}" wx:if="{{ showCancel || inputFocus || (inputValue && inputValue.length > 0) }}" bindtap="onCancel">{{ cancelText }}</view>
 </view>
