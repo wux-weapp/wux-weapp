@@ -1,3 +1,5 @@
+import baseComponent from '../helpers/baseComponent'
+
 const defaultIcon = {
     type: 'success',
     size: 93,
@@ -15,9 +17,12 @@ const getIcon = (icon) => {
     return defaultIcon
 }
 
-Component({
-    externalClasses: ['wux-class'],
+baseComponent({
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-result',
+        },
         icon: {
             type: null,
             value: defaultIcon,
@@ -48,28 +53,54 @@ Component({
             value: false,
         },
     },
+    data: {
+        resultIcon: null,
+    },
+    computed: {
+        classes() {
+            const { prefixCls, fixed } = this.data
+            const wrap = this.classNames(prefixCls, {
+                [`${prefixCls}--fixed`]: fixed,
+            })
+            const hd = `${prefixCls}__hd`
+            const icon = `${prefixCls}__icon`
+            const bd = `${prefixCls}__bd`
+            const title = `${prefixCls}__title`
+            const desc = `${prefixCls}__desc`
+            const buttons = `${prefixCls}__buttons`
+            const ft = `${prefixCls}__ft`
+
+            return {
+                wrap,
+                hd,
+                icon,
+                bd,
+                title,
+                desc,
+                buttons,
+                ft,
+            }
+        },
+    },
     methods: {
         onClick(e) {
             this.triggerEvent('click', e.currentTarget.dataset)
         },
         bindgetuserinfo(e) {
-            this.triggerEvent('getuserinfo', { ...e.detail, ...e.currentTarget.dataset })
+            this.triggerEvent('getuserinfo', {...e.detail, ...e.currentTarget.dataset })
         },
         bindcontact(e) {
-            this.triggerEvent('contact', { ...e.detail, ...e.currentTarget.dataset })
+            this.triggerEvent('contact', {...e.detail, ...e.currentTarget.dataset })
         },
         bindgetphonenumber(e) {
-            this.triggerEvent('getphonenumber', { ...e.detail, ...e.currentTarget.dataset })
+            this.triggerEvent('getphonenumber', {...e.detail, ...e.currentTarget.dataset })
         },
         bindopensetting(e) {
-            this.triggerEvent('opensetting', { ...e.detail, ...e.currentTarget.dataset })
+            this.triggerEvent('opensetting', {...e.detail, ...e.currentTarget.dataset })
         },
         onError(e) {
-            this.triggerEvent('error', { ...e.detail, ...e.currentTarget.dataset })
+            this.triggerEvent('error', {...e.detail, ...e.currentTarget.dataset })
         },
-    },
-    data: {
-        resultIcon: null,
     },
     attached() {
         this.setData({
