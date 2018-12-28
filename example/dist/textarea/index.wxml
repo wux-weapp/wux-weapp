@@ -1,11 +1,11 @@
-<view class="wux-class wux-textarea {{ hasCount ? 'wux-textarea--has-count' : '' }} {{ inputFocus ? 'wux-textarea--focus' : '' }} {{ disabled ? 'wux-textarea--disabled' : '' }} {{ error ? 'wux-textarea--error' : '' }}">
-	<view class="wux-textarea__label" wx:if="{{ label }}">{{ label }}</view>
+<view class="wux-class {{ classes.wrap }}">
+	<view class="{{ classes.label }}" wx:if="{{ label }}">{{ label }}</view>
 	<block wx:else>
 		<slot></slot>
 	</block>
-	<view class="wux-textarea__control">
+	<view class="{{ classes.control }}">
 		<textarea
-			class="wux-textarea__item"
+			class="{{ classes.item }}"
 			value="{{ inputValue }}"
 			placeholder="{{ placeholder }}"
 			placeholder-style="{{ placeholderStyle }}"
@@ -29,17 +29,17 @@
 			style="{{ inputRows > 1 && !!inputHeight ? 'height: ' + inputHeight + 'px' : '' }}"
 		/>
 	</view>
-	<view class="wux-textarea__clear" bindtap="onClear" wx:if="{{ clear && !disabled && inputValue && inputValue.length > 0 }}">
+	<view class="{{ classes.clear }}" bindtap="onClear" wx:if="{{ clear && !disabled && inputValue && inputValue.length > 0 }}">
 		<icon type="clear" color="#B2B2B2" size="14" />
 	</view>
-	<view class="wux-textarea__error" bindtap="onError" wx:if="{{ error }}">
+	<view class="{{ classes.error }}" bindtap="onError" wx:if="{{ error }}">
 		<icon type="warn" color="#ef473a" size="14" />
 	</view>
-	<view class="wux-textarea__extra" wx:if="{{ extra }}">{{ extra }}</view>
+	<view class="{{ classes.extra }}" wx:if="{{ extra }}">{{ extra }}</view>
 	<block wx:else>
 		<slot name="footer"></slot>
 	</block>
-	<view class="wux-textarea__count" wx:if="{{ hasCount }}">
-		<text class="wux-textarea__current">{{ inputValue.length }}</text>/{{ maxlength === -1 ? '∞' : maxlength }}
+	<view class="{{ classes.count }}" wx:if="{{ hasCount }}">
+		<text class="{{ classes.current }}">{{ inputValue.length }}</text>/{{ maxlength === -1 ? '∞' : maxlength }}
 	</view>
 </view>

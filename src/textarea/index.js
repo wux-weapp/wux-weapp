@@ -1,9 +1,11 @@
-Component({
-    externalClasses: ['wux-class'],
-    options: {
-        multipleSlots: true,
-    },
+import baseComponent from '../helpers/baseComponent'
+
+baseComponent({
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-textarea',
+        },
         label: {
             type: String,
             value: '',
@@ -104,6 +106,37 @@ Component({
         inputFocus: false,
         inputRows: 1,
         inputHeight: '',
+    },
+    computed: {
+        classes() {
+            const { prefixCls, disabled, inputFocus, error: hasError, hasCount } = this.data
+            const wrap = this.classNames(prefixCls, {
+                [`${prefixCls}--focus`]: inputFocus,
+                [`${prefixCls}--disabled`]: disabled,
+                [`${prefixCls}--error`]: hasError,
+                [`${prefixCls}--has-count`]: hasCount,
+            })
+            const label = `${prefixCls}__label`
+            const control = `${prefixCls}__control`
+            const item = `${prefixCls}__item`
+            const clear = `${prefixCls}__clear`
+            const error = `${prefixCls}__error`
+            const extra = `${prefixCls}__extra`
+            const count = `${prefixCls}__count`
+            const current = `${prefixCls}__current`
+
+            return {
+                wrap,
+                label,
+                control,
+                item,
+                clear,
+                error,
+                extra,
+                count,
+                current,
+            }
+        },
     },
     methods: {
         updateHeight(val = this.data.rows) {
