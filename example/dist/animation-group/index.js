@@ -1,3 +1,5 @@
+import baseComponent from '../helpers/baseComponent'
+
 const ENTER = 'enter'
 const ENTERING = 'entering'
 const ENTERED = 'entered'
@@ -20,8 +22,7 @@ const defaultClassNames = {
     exitDone: '', // 离开过渡的完成状态
 }
 
-Component({
-    externalClasses: ['wux-class'],
+baseComponent({
     data: {
         animateCss: '', // 动画样式
         animateStatus: EXITED, // 动画状态，可选值 entering、entered、exiting、exited
@@ -77,6 +78,11 @@ Component({
         unmountOnExit: {
             type: Boolean,
             value: true,
+        },
+        // 自定义类名
+        wrapCls: {
+            type: String,
+            value: '',
         },
         // 自定义样式
         wrapStyle: {
@@ -184,7 +190,7 @@ Component({
                 animateCss: doneClassName,
             }
 
-            // 第三阶段：设置进入过渡的完成状态，并触发 ENTERED 事件            
+            // 第三阶段：设置进入过渡的完成状态，并触发 ENTERED 事件
             this.safeSetData(enteredParams, () => {
                 this.triggerEvent('change', { animateStatus: ENTERED })
                 this.triggerEvent(ENTERED, { isAppearing: this.isAppearing })
