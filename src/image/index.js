@@ -1,3 +1,5 @@
+import baseComponent from '../helpers/baseComponent'
+
 const EMPTY = 'empty'
 const LOADING = 'loading'
 const LOADED = 'loaded'
@@ -6,18 +8,16 @@ const UNMOUNTED = 'unmounted'
 
 const calcStyle = (value) => typeof value === 'number' ? `${value}px` : value
 
-Component({
-	externalClasses: ['wux-class'],
-	options: {
-        multipleSlots: true,
-    },
+baseComponent({
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-image',
+        },
         src: {
             type: String,
             value: '',
-            observer(newVal) {
-                this.updateStatus(!!newVal ? LOADING : this.data.unmountOnEmpty ? UNMOUNTED : EMPTY)
-            },
+            observer: 'updated',
         },
         mode: {
             type: String,
@@ -65,7 +65,37 @@ Component({
     data: {
         status: '',
     },
+    computed: {
+        classes() {
+            const { prefixCls, shape, mode, status, empty, loading, error } = this.data
+            const wrap = this.classNames(prefixCls, {
+                [`${prefixCls}--${shape}`]: shape,
+                [`${prefixCls}--${mode}`]: mode,
+                [`${prefixCls}--${status}`]: status,
+            })
+            const inner = `${prefixCls}__inner`
+            const thumb = `${prefixCls}__thumb`
+            const mask = this.classNames(`${prefixCls}__mask`, {
+                [`${prefixCls}__mask--text`]: empty || loading || error,
+            })
+            const text = `${prefixCls}__text`
+
+            return {
+                wrap,
+                inner,
+                thumb,
+                mask,
+                text,
+            }
+        },
+    },
     methods: {
+        /** 
+         * 更新资源地址
+         */
+        updated(src = this.data.src) {
+            this.updateStatus(!!src ? LOADING : this.data.unmountOnEmpty ? UNMOUNTED : EMPTY)
+        },
         /**
          * 更新组件样式
          */
@@ -113,6 +143,6 @@ Component({
     },
     attached() {
         this.updateStyle()
-        this.updateStatus(!!this.data.src ? LOADING : this.data.unmountOnEmpty ? UNMOUNTED : EMPTY)
+        this.updated()
     },
 })
