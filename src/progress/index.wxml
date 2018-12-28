@@ -1,8 +1,8 @@
-<view class="wux-class wux-progress {{ shape ? 'wux-progress--' + shape : '' }} {{ status ? 'wux-progress--' + status : '' }}">
-    <view class="wux-progress__outer">
-    	<view class="wux-progress__inner" style="background-color: {{ backgroundColor }}">
-    		<view class="wux-progress__bar" style="{{ style }} {{ barStyle }}"></view>
+<view class="wux-class {{ classes.wrap }}">
+    <view class="{{ classes.outer }}">
+    	<view class="{{ classes.inner }}" style="background-color: {{ backgroundColor }}">
+    		<view class="{{ classes.bar }}" style="{{ style }} {{ barStyle }}"></view>
     	</view>
     </view>
-    <view class="wux-progress__text" wx:if="{{ showInfo }}">{{ width + '%' }}</view>
+    <view class="{{ classes.text }}" wx:if="{{ showInfo }}">{{ width + '%' }}</view>
 </view>
