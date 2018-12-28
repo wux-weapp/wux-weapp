@@ -1,6 +1,11 @@
-Component({
-    externalClasses: ['wux-class'],
+import baseComponent from '../helpers/baseComponent'
+
+baseComponent({
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-rater',
+        },
         max: {
             type: Number,
             value: 5,
@@ -64,6 +69,28 @@ Component({
     },
     data: {
         raterValue: 0,
+    },
+    computed: {
+        classes() {
+            const { prefixCls, disabled } = this.data
+            const wrap = this.classNames(prefixCls, {
+                [`${prefixCls}--disabled`]: disabled,
+            })
+            const star = `${prefixCls}__star`
+            const box = `${prefixCls}__box`
+            const inner = `${prefixCls}__inner`
+            const outer = `${prefixCls}__outer`
+            const icon = `${prefixCls}__icon`
+
+            return {
+                wrap,
+                star,
+                box,
+                inner,
+                outer,
+                icon,
+            }
+        },
     },
     methods: {
         updateValue(value = this.data.raterValue) {
