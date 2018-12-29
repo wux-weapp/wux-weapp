@@ -19,8 +19,13 @@ Page({
             }],
         },
         msg3: {
-            icon: '../../assets/images/iconfont-empty.png',
-            title: '暂无待评价订单',
+            icon: 'https://wux.cdn.cloverstd.com/logo.png',
+            title: '授权失败',
+            text: '获取用户信息失败，请重新授权',
+            buttons: [{
+                text: '重新授权',
+                openType: 'getUserInfo',
+            }],
         },
     },
     onLoad() {
@@ -46,6 +51,9 @@ Page({
         })
     },
     buttonClicked(e) {
-        console.log(e)
+        console.log('buttonClicked', e)
+    },
+    onGotUserInfo(e) {
+        console.log('onGotUserInfo', e)
     },
 })
