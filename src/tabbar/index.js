@@ -1,20 +1,19 @@
-Component({
-    externalClasses: ['wux-class'],
+import baseComponent from '../helpers/baseComponent'
+
+baseComponent({
     relations: {
         '../tabbar-item/index': {
             type: 'child',
-            linked() {
-                this.changeCurrent()
-            },
-            linkChanged() {
-                this.changeCurrent()
-            },
-            unlinked() {
+            observer() {
                 this.changeCurrent()
             },
         },
     },
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-tabbar',
+        },
         defaultCurrent: {
             type: String,
             value: '',
@@ -40,6 +39,18 @@ Component({
     data: {
         activeKey: '',
         keys: [],
+    },
+    computed: {
+        classes() {
+            const { prefixCls, position } = this.data
+            const wrap = this.classNames(prefixCls, {
+                [`${prefixCls}--${position}`]: position,
+            })
+
+            return {
+                wrap,
+            }
+        },
     },
     methods: {
         updated(activeKey, condition) {
