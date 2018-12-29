@@ -1,6 +1,7 @@
 import baseComponent from '../helpers/baseComponent'
 
 const defaults = {
+    prefixCls: 'wux-keyboard',
     className: '',
     titleText: '安全键盘',
     cancelText: '取消',
@@ -50,6 +51,38 @@ const upsetNums = (isRandom = false, arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) => {
 baseComponent({
     useFunc: true,
     data: defaults,
+    computed: {
+        classes() {
+            const { prefixCls } = this.data
+            const wrap = `${prefixCls}__wrap`
+            const hd = `${prefixCls}__hd`
+            const bd = `${prefixCls}__bd`
+            const label = `${prefixCls}__label`
+            const password = `${prefixCls}__password`
+            const input = `${prefixCls}__input`
+            const ft = `${prefixCls}__ft`
+            const title = `${prefixCls}__title`
+            const numbers = `${prefixCls}__numbers`
+            const number = `${prefixCls}__number`
+            const text = `${prefixCls}__text`
+            const hover = `${prefixCls}__text--hover`
+
+            return {
+                wrap,
+                hd,
+                bd,
+                label,
+                password,
+                input,
+                ft,
+                title,
+                numbers,
+                number,
+                text,
+                hover,
+            }
+        },
+    },
     methods: {
         /**
          * 隐藏
