@@ -1,5 +1,5 @@
 <wux-backdrop id="wux-backdrop" bind:click="cancel" />
-<wux-animation-group wux-class="wux-actionsheet" in="{{ in }}" classNames="{{ classNames }}">
+<wux-animation-group wux-class="{{ prefixCls }}" in="{{ in }}" classNames="{{ classNames }}">
     <view class="{{ classes.content }}">
         <view class="{{ classes.options }}">
             <view class="{{ classes.title }}" wx:if="{{ titleText }}">{{ titleText }}</view>
