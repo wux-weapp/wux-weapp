@@ -2,6 +2,8 @@ import baseComponent from '../helpers/baseComponent'
 import { $wuxBackdrop } from '../index'
 
 const defaults = {
+    prefixCls: 'wux-actionsheet',
+    classNames: 'wux-animate--slideInUp',
     theme: 'ios',
     className: '',
     titleText: '',
@@ -16,6 +18,56 @@ const defaults = {
 baseComponent({
     useFunc: true,
     data: defaults,
+    computed: {
+        classes() {
+            const { prefixCls, theme, buttons } = this.data
+            const content = this.classNames(`${prefixCls}__content`, {
+                [`${prefixCls}__content--theme-${theme}`]: theme,
+            })
+            const options = this.classNames(`${prefixCls}__group`, {
+                [`${prefixCls}__group--options`]: true,
+            })
+            const title = `${prefixCls}__title`
+            const destructive = this.classNames(`${prefixCls}__button`, {
+                [`${prefixCls}__button--destructive`]: true,
+            })
+            const button = buttons.map((button) => {
+                const wrap = this.classNames(`${prefixCls}__button`, {
+                    [`${prefixCls}__button--option`]: true,
+                    [`${prefixCls}__button--disabled`]: button.disabled,
+                    [`${button.className}`]: button.className,
+                })
+                const hover = button.hoverClass && button.hoverClass !== 'default' ? button.hoverClass : `${prefixCls}__button--hover`
+
+                return {
+                    wrap,
+                    hover,
+                }
+            })
+            const icon = `${prefixCls}__icon`
+            const text = `${prefixCls}__text`
+            const group = this.classNames(`${prefixCls}__group`, {
+                [`${prefixCls}__group--cancel`]: true,
+            })
+            const cancel = this.classNames(`${prefixCls}__button`, {
+                [`${prefixCls}__button--cancel`]: true,
+            })
+            const hover = `${prefixCls}__button--hover`
+
+            return {
+                content,
+                options,
+                title,
+                button,
+                icon,
+                text,
+                destructive,
+                group,
+                cancel,
+                hover,
+            }
+        },
+    },
     methods: {
         /**
          * 显示
