@@ -1,4 +1,3 @@
-import baseBehavior from '../helpers/baseBehavior'
 import qrjs from './qr.js/index'
 
 /**
@@ -28,8 +27,6 @@ const utf16to8 = (str) => {
 }
 
 Component({
-    behaviors: [baseBehavior],
-    externalClasses: ['wux-class'],
     properties: {
         typeNumber: {
             type: Number,

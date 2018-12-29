@@ -1,5 +1,3 @@
-import baseBehavior from '../helpers/baseBehavior'
-
 /**
  * 获取范围内的随机数
  * @param {Number} min 最小值
@@ -90,8 +88,6 @@ const render = (ctx, opts = {}) => {
 }
 
 Component({
-    behaviors: [baseBehavior],
-    externalClasses: ['wux-class'],
     properties: {
         str: {
             type: String,

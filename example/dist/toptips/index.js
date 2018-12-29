@@ -1,5 +1,4 @@
-import baseBehavior from '../helpers/baseBehavior'
-import mergeOptionsToData from '../helpers/mergeOptionsToData'
+import baseComponent from '../helpers/baseComponent'
 
 const defaults = {
     icon: 'cancel',
@@ -11,10 +10,9 @@ const defaults = {
 
 let _toptips = null
 
-Component({
-    behaviors: [baseBehavior],
-    externalClasses: ['wux-class'],
-    data: mergeOptionsToData(defaults),
+baseComponent({
+    useFunc: true,
+    data: defaults,
     methods: {
         /**
          * 隐藏

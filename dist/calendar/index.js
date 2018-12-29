@@ -1,5 +1,4 @@
-import baseBehavior from '../helpers/baseBehavior'
-import mergeOptionsToData from '../helpers/mergeOptionsToData'
+import baseComponent from '../helpers/baseComponent'
 
 const defaults = {
     monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
@@ -47,10 +46,9 @@ const isSameDate = (a, b) => {
     return prev.getFullYear() === next.getFullYear() && prev.getMonth() === next.getMonth() && prev.getDate() === next.getDate()
 }
 
-Component({
-    behaviors: [baseBehavior],
-    externalClasses: ['wux-class'],
-    data: mergeOptionsToData(defaults),
+baseComponent({
+    useFunc: true,
+    data: defaults,
     methods: {
         /**
          * 打开日历
@@ -95,7 +93,7 @@ Component({
         },
         /**
          * 设置月份的位置信息
-         * @param {Number} translate 
+         * @param {Number} translate
          */
         setMonthsTranslate(translate = this.monthsTranslate) {
             const prevMonthTranslate = -(translate + 1) * 100
@@ -637,7 +635,7 @@ Component({
                 .replace(/DD/g, this.data.dayNames[weekDay])
                 .replace(/D/g, this.data.dayNamesShort[weekDay])
         },
-        /** 
+        /**
          * 添加选中值
          */
         addValue(value) {

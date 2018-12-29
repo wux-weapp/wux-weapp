@@ -1,9 +1,8 @@
-import baseBehavior from '../helpers/baseBehavior'
+import baseComponent from '../helpers/baseComponent'
 import { $wuxBackdrop } from '../index'
 
-Component({
-    behaviors: [baseBehavior],
-    externalClasses: ['wux-class'],
+baseComponent({
+    useFunc: true,
     properties: {
         items: {
             type: Array,
@@ -207,7 +206,7 @@ Component({
                 }
             })
         },
-        /** 
+        /**
          * 关闭下拉框
          */
         onCloseSelect() {

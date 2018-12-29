@@ -1,4 +1,3 @@
-import baseBehavior from '../helpers/baseBehavior'
 import barcode from './barcode'
 
 const defalutOptions = {
@@ -13,8 +12,6 @@ const defalutOptions = {
 }
 
 Component({
-    behaviors: [baseBehavior],
-    externalClasses: ['wux-class'],
     properties: {
         width: {
             type: Number,

@@ -1,5 +1,4 @@
-import baseBehavior from '../helpers/baseBehavior'
-import mergeOptionsToData from '../helpers/mergeOptionsToData'
+import baseComponent from '../helpers/baseComponent'
 import { $wuxBackdrop } from '../index'
 
 const defaults = {
@@ -10,14 +9,13 @@ const defaults = {
     buttonClicked() {},
     cancelText: '取消',
     cancel() {},
-    // destructiveText: '删除', 
-    // destructiveButtonClicked() {}, 
+    // destructiveText: '删除',
+    // destructiveButtonClicked() {},
 }
 
-Component({
-    behaviors: [baseBehavior],
-    externalClasses: ['wux-class'],
-    data: mergeOptionsToData(defaults),
+baseComponent({
+    useFunc: true,
+    data: defaults,
     methods: {
         /**
          * 显示

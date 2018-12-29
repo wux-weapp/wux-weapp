@@ -1,5 +1,4 @@
-import baseBehavior from '../helpers/baseBehavior'
-import mergeOptionsToData from '../helpers/mergeOptionsToData'
+import baseComponent from '../helpers/baseComponent'
 
 const defaults = {
     title: '',
@@ -22,10 +21,9 @@ const defaultOptions = {
     confirmType: 'primary',
 }
 
-Component({
-    behaviors: [baseBehavior],
-    externalClasses: ['wux-class'],
-    data: mergeOptionsToData(defaults),
+baseComponent({
+    useFunc: true,
+    data: defaults,
     methods: {
         /**
          * 组件关闭时重置其内部数据
@@ -33,7 +31,7 @@ Component({
         onClosed() {
             if (this.data.resetOnClose) {
                 const params = {
-                    ...mergeOptionsToData(defaults),
+                    ...this.$$mergeOptionsToData(defaults),
                     prompt: null,
                 }
 

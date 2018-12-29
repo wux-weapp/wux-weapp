@@ -1,6 +1,7 @@
 import computedBehavior from './computedBehavior'
 import relationsBehavior from './relationsBehavior'
 import safeSetDataBehavior from './safeSetDataBehavior'
+import funcBehavior from './funcBehavior'
 import classNames from './classNames'
 
 const baseComponent = (options = {}) => {
@@ -19,14 +20,20 @@ const baseComponent = (options = {}) => {
         ...(options.behaviors = options.behaviors || []),
     ]
 
-    // check hasField
-    if (options.hasField) {
-        options.behaviors = [...options.behaviors, 'wx://form-field']
-        delete options.hasField
+    // use func
+    if (options.useFunc) {
+        options.behaviors = [...options.behaviors, funcBehavior]
+        delete options.useFunc
     }
 
-    // check hasExport
-    if (options.hasExport) {
+    // use field
+    if (options.useField) {
+        options.behaviors = [...options.behaviors, 'wx://form-field']
+        delete options.useField
+    }
+
+    // use export
+    if (options.useExport) {
         options.behaviors = [...options.behaviors, 'wx://component-export']
         options.methods = {
             export () {
@@ -34,7 +41,7 @@ const baseComponent = (options = {}) => {
             },
             ...options.methods,
         }
-        delete options.hasExport
+        delete options.useExport
     }
 
     // add default options

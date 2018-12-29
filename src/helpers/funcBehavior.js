@@ -1,4 +1,20 @@
 /**
+ * 过滤对象的函数属性
+ * @param {Object} opts
+ */
+const mergeOptionsToData = (opts = {}) => {
+    const options = Object.assign({}, opts)
+
+    for (const key in options) {
+        if (options.hasOwnProperty(key) && typeof options[key] === 'function') {
+            delete options[key]
+        }
+    }
+
+    return options
+}
+
+/**
  * Simple bind, faster than native
  *
  * @param {Function} fn
@@ -17,13 +33,17 @@ const bind = (fn, ctx) => {
 const assign = (...args) => Object.assign({}, ...args)
 
 export default Behavior({
-    properties: {
-        visible: {
-            type: Boolean,
-            value: false,
-        },
+    definitionFilter(defFields) {
+        defFields.data = mergeOptionsToData(defFields.data)
+        defFields.data.in = false
+        defFields.data.visible = false
     },
     methods: {
+        /**
+         * 过滤对象的函数属性
+         * @param {Object} opts
+         */
+        $$mergeOptionsToData: mergeOptionsToData,
         /**
          * 合并参数并绑定方法
          *

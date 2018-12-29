@@ -1,4 +1,4 @@
-<wux-popup position="bottom" visible="{{ visible }}" bind:close="onCancel">
+<wux-popup position="bottom" visible="{{ in }}" bind:close="onCancel">
     <view class="wux-select__toolbar" wx:if="{{ toolbar }}">
         <view class="wux-select__toolbar-inner">
             <view class="wux-select__toolbar-button wux-select__toolbar-button--cancel" hover-class="wux-select__toolbar-button--hover" bindtap="onCancel" wx:if="{{ toolbar.cancelText }}">{{ toolbar.cancelText }}</view>

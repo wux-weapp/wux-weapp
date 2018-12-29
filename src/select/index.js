@@ -1,5 +1,4 @@
-import baseBehavior from '../helpers/baseBehavior'
-import mergeOptionsToData from '../helpers/mergeOptionsToData'
+import baseComponent from '../helpers/baseComponent'
 
 const defaults = {
     value: '',
@@ -26,10 +25,9 @@ const getSelectIndex = ({ value = '', options = [], multiple = false }) => {
     return (value || []).map((n) => origins.indexOf(n))
 }
 
-Component({
-    behaviors: [baseBehavior],
-    externalClasses: ['wux-class'],
-    data: mergeOptionsToData(defaults),
+baseComponent({
+    useFunc: true,
+    data: defaults,
     methods: {
         /**
          * 打开
@@ -40,13 +38,13 @@ Component({
             }))
             const index = getSelectIndex(options)
 
-            this.$$setData({ visible: true, ...options, index })
+            this.$$setData({ in: true, ...options, index })
         },
         /**
          * 关闭
          */
         close(callback) {
-            this.$$setData({ visible: false })
+            this.$$setData({ in: false })
 
             if (typeof callback === 'function') {
                 const { value, index, options } = this.data
@@ -81,7 +79,7 @@ Component({
          */
         onRadioChange(e) {
             const { value, index } = e.detail
-            
+
             this.onChange(value, index)
         },
         /**

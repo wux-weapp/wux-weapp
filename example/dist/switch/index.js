@@ -2,7 +2,7 @@ import baseComponent from '../helpers/baseComponent'
 import { isPresetColor } from '../helpers/colors'
 
 baseComponent({
-    hasField: true,
+    useField: true,
     properties: {
         prefixCls: {
             type: String,

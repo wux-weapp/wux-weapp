@@ -1,7 +1,7 @@
 import baseComponent from '../helpers/baseComponent'
 
 baseComponent({
-    hasField: true,
+    useField: true,
     relations: {
         '../checkbox/index': {
             type: 'child',

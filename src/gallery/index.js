@@ -1,5 +1,4 @@
-import baseBehavior from '../helpers/baseBehavior'
-import mergeOptionsToData from '../helpers/mergeOptionsToData'
+import baseComponent from '../helpers/baseComponent'
 import { getTouchPoints, getPointsNumber, getPointsDistance } from '../helpers/gestures'
 
 const defaults = {
@@ -43,10 +42,9 @@ const getImages = (urls = []) => {
     })
 }
 
-Component({
-    behaviors: [baseBehavior],
-    externalClasses: ['wux-class'],
-    data: mergeOptionsToData(defaults),
+baseComponent({
+    useFunc: true,
+    data: defaults,
     methods: {
         /**
          * 隐藏
@@ -147,7 +145,7 @@ Component({
             }
 
             const { touch, index } = e.currentTarget.dataset
-            
+
             let scale = touch.scale
 
             if (scale <= 1) {
