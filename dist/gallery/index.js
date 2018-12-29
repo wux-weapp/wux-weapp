@@ -2,6 +2,8 @@ import baseComponent from '../helpers/baseComponent'
 import { getTouchPoints, getPointsNumber, getPointsDistance } from '../helpers/gestures'
 
 const defaults = {
+    prefixCls: 'wux-gallery',
+    classNames: 'wux-animate--slideInRight',
     indicatorDots: false,
     indicatorColor: 'rgba(0, 0, 0, .3)',
     indicatorActiveColor: '#000000',
@@ -45,6 +47,28 @@ const getImages = (urls = []) => {
 baseComponent({
     useFunc: true,
     data: defaults,
+    computed: {
+        classes() {
+            const { prefixCls } = this.data
+            const swiper = `${prefixCls}__swiper`
+            const item = `${prefixCls}__item`
+            const img = `${prefixCls}__img`
+            const remark = `${prefixCls}__remark`
+            const opr = `${prefixCls}__opr`
+            const del = `${prefixCls}__del`
+            const icon = `${prefixCls}__icon`
+
+            return {
+                swiper,
+                item,
+                img,
+                remark,
+                opr,
+                del,
+                icon,
+            }
+        },
+    },
     methods: {
         /**
          * 隐藏
