@@ -1,6 +1,19 @@
-Component({
-    externalClasses: ['wux-class'],
+import baseComponent from '../helpers/baseComponent'
+
+baseComponent({
+    relations: {
+        '../step/index': {
+            type: 'child',
+            observer() {
+                this.updateCurrent()
+            },
+        },
+    },
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-steps',
+        },
         current: {
             type: Number,
             value: 0,
@@ -13,20 +26,6 @@ Component({
         direction: {
             type: String,
             value: 'horizontal',
-        }
-    },
-    relations: {
-        '../step/index': {
-            type: 'child',
-            linked() {
-                this.updateCurrent()
-            },
-            linkChanged() {
-                this.updateCurrent()
-            },
-            unlinked() {
-                this.updateCurrent()
-            },
         },
     },
     methods: {
