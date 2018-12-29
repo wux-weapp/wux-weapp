@@ -1,24 +1,24 @@
 <wux-backdrop id="wux-backdrop" wx:if="{{ mask }}" bind:click="onMaskClick" zIndex="{{ zIndex }}" />
-<view class="{{ classes.wrap }}" style="{{ wrapStyle }}">
+<view class="wux-class {{ classes.wrap }}" style="{{ wrapStyle }}">
     <wux-animation-group wux-class="{{ prefixCls }}" in="{{ popupVisible }}" classNames="{{ transitionName }}" bind:exited="onExited" wrapStyle="z-index: {{ zIndex }}">
-        <view class="{{ classes.content }}">
-            <view class="{{ classes.hd }}">
+        <view class="wux-content-class {{ classes.content }}">
+            <view class="wux-header-class {{ classes.hd }}">
                 <view class="{{ classes.title }}" wx:if="{{ title }}">{{ title }}</view>
                 <block wx:else>
                     <slot name="header"></slot>
                 </block>
             </view>
-            <view class="{{ classes.bd }}">
+            <view class="wux-body-class {{ classes.bd }}">
                 <view wx:if="{{ content }}">{{ content }}</view>
                 <slot></slot>
             </view>
-            <view class="{{ classes.ft }}">
+            <view class="wux-footer-class {{ classes.ft }}">
                 <view class="{{ classes.extra }}" wx:if="{{ extra }}">{{ extra }}</view>
                 <block wx:else>
                     <slot name="footer"></slot>
                 </block>
             </view>
-            <view class="{{ classes.close }}" wx:if="{{ closable }}" bindtap="close">
+            <view class="wux-close-class {{ classes.close }}" wx:if="{{ closable }}" bindtap="close">
                 <text class="{{ classes.x }}"></text>
             </view>
         </view>
