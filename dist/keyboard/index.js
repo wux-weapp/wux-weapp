@@ -54,7 +54,7 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls } = this.data
-            const wrap = `${prefixCls}__wrap`
+            const wrap = this.classNames(prefixCls)
             const hd = `${prefixCls}__hd`
             const bd = `${prefixCls}__bd`
             const label = `${prefixCls}__label`
