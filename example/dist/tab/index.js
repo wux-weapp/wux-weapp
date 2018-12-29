@@ -1,11 +1,16 @@
-Component({
-    externalClasses: ['wux-class'],
+import baseComponent from '../helpers/baseComponent'
+
+baseComponent({
     relations: {
         '../tabs/index': {
             type: 'parent',
         },
     },
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-tabs__tab',
+        },
         key: {
             type: String,
             value: '',
@@ -22,6 +27,26 @@ Component({
     data: {
         current: false,
         scroll: false,
+    },
+    computed: {
+        classes() {
+            const { prefixCls, direction, scroll, theme, current, disabled } = this.data
+            const wrap = this.classNames(prefixCls, {
+                [`${prefixCls}--${direction}`]: direction,
+                [`${prefixCls}--${theme}`]: theme,
+                [`${prefixCls}--scroll`]: scroll,
+                [`${prefixCls}--current`]: current,
+                [`${prefixCls}--disabled`]: disabled,
+            })
+            const title = `${prefixCls}-title`
+            const bar = `${prefixCls}-bar`
+
+            return {
+                wrap,
+                title,
+                bar,
+            }
+        },
     },
     methods: {
         changeCurrent({ current, scroll, theme, direction }) {
