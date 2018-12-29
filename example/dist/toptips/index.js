@@ -1,6 +1,8 @@
 import baseComponent from '../helpers/baseComponent'
 
 const defaults = {
+    prefixCls: 'wux-toptips',
+    classNames: 'wux-animate--slideInDown',
     icon: 'cancel',
     hidden: false,
     text: '',
@@ -13,6 +15,23 @@ let _toptips = null
 baseComponent({
     useFunc: true,
     data: defaults,
+    computed: {
+        classes() {
+            const { prefixCls } = this.data
+            const ico = this.data.icon ? this.data.icon : 'cancel'
+            const wrap = this.classNames(prefixCls)
+            const content = this.classNames(`${prefixCls}__content`, {
+                [`${prefixCls}__content--${ico}`]: ico,
+            })
+            const icon = `${prefixCls}__icon`
+
+            return {
+                wrap,
+                content,
+                icon,
+            }
+        },
+    },
     methods: {
         /**
          * 隐藏
