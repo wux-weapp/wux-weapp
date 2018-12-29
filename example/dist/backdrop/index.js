@@ -8,7 +8,7 @@ baseComponent({
         },
         transparent: {
             type: Boolean,
-            value: true,
+            value: false,
         },
         zIndex: {
             type: Number,
