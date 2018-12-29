@@ -1,13 +1,14 @@
+import baseComponent from '../helpers/baseComponent'
 import { $wuxBackdrop } from '../index'
 
 const prefixCls = 'wux-animate'
 
-Component({
-    externalClasses: ['wux-class'],
-    options: {
-        multipleSlots: true,
-    },
+baseComponent({
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-popup',
+        },
         title: {
             type: String,
             value: '',
@@ -54,6 +55,34 @@ Component({
     data: {
         transitionName: '',
         popupVisible: false,
+    },
+    computed: {
+        classes() {
+            const { prefixCls, position } = this.data
+            const wrap = this.classNames(`${prefixCls}-position`, {
+                [`${prefixCls}-position--${position}`]: position,
+            })
+            const content = `${prefixCls}__content`
+            const hd = `${prefixCls}__hd`
+            const title = `${prefixCls}__title`
+            const bd = `${prefixCls}__bd`
+            const ft = `${prefixCls}__ft`
+            const extra = `${prefixCls}__extra`
+            const close = `${prefixCls}__close`
+            const x = `${prefixCls}__close-x`
+
+            return {
+                wrap,
+                content,
+                hd,
+                title,
+                bd,
+                ft,
+                extra,
+                close,
+                x,
+            }
+        },
     },
     methods: {
         /**
