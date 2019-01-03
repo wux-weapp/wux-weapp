@@ -58,6 +58,7 @@
         "pages/tabs/index",
         "pages/tag/index",
         "pages/textarea/index",
+        "pages/timeago/index",
         "pages/timeline/index",
         "pages/toast/index",
         "pages/toptips/index",

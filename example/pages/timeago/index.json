@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "Timeago",
+    "usingComponents": {
+    	"wux-segmented-control": "../../dist/segmented-control/index",
+        "wux-timeago": "../../dist/timeago/index"
+    }
+}

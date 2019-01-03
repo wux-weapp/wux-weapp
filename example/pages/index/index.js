@@ -235,6 +235,11 @@ Page({
                         url: '/pages/tag/index',
                     },
                     {
+                        title: 'Timeago',
+                        remark: '多久之前',
+                        url: '/pages/timeago/index',
+                    },
+                    {
                         title: 'Timeline',
                         remark: '时间轴',
                         url: '/pages/timeline/index',

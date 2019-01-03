@@ -1,0 +1,19 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Timeago</view>
+        <view class="page__desc">多久之前</view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+        <wux-segmented-control values="{{ ['zh_CN', 'zh_TW', 'en'] }}" bind:change="onChange" />
+        <view class="sub-title">Default</view>
+        <wux-timeago to="{{ to }}" lang="{{ lang }}" />
+        <view class="sub-title">Refreshable</view>
+        <wux-timeago to="{{ to }}" lang="{{ lang }}" refreshable />
+        <view class="sub-title">From</view>
+        <wux-timeago to="2018-12-12" from="2019-01-01" lang="{{ lang }}" />
+        <view class="sub-title">Lang = en</view>
+        <wux-timeago to="1544666010224" lang="{{ lang }}" />
+        <view class="sub-title">Timein</view>
+        <wux-timeago to="2020-10-24" lang="{{ lang }}" />
+    </view>
+</view>
