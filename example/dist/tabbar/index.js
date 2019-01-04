@@ -1,3 +1,5 @@
+import { safeAreaInset, checkIPhoneX } from '../helpers/checkIPhoneX'
+
 Component({
     externalClasses: ['wux-class'],
     relations: {
@@ -36,8 +38,13 @@ Component({
             type: String,
             value: '',
         },
+        safeArea: {
+            type: Boolean,
+            value: false,
+        },
     },
     data: {
+        tabbarStyle: '',
         activeKey: '',
         keys: [],
     },
@@ -82,11 +89,19 @@ Component({
 
             this.emitEvent(activeKey)
         },
+        applyIPhoneXShim(position = this.data.position) {
+            if (checkIPhoneX()) {
+                if (position === 'bottom' || position === 'top') {
+                    this.setData({ tabbarStyle: `${position}: ${safeAreaInset[position]}px` })
+                }
+            }
+        },
     },
     ready() {
         const { defaultCurrent, current, controlled } = this.data
         const activeKey = controlled ? current : defaultCurrent
 
         this.updated(activeKey, true)
+        this.applyIPhoneXShim()
     },
 })
