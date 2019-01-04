@@ -149,6 +149,15 @@
 .wux-fab-button--vertical.wux-fab-button--opened .wux-fab-button__label {
   opacity: 1
 }
+.wux-fab-button__backdrop {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: 0 0
+}
 .wux-fab-button--light .wux-fab-button__action,
 .wux-fab-button--light .wux-fab-button__button,
 .wux-fab-button--light .wux-fab-button__button--disabled {

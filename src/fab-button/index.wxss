@@ -156,6 +156,16 @@
         opacity: 1;
     }
 
+    &__backdrop {
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: 0 0;
+    }
+
     .fab-button-style(light, #ddd);
     .fab-button-style(stable, #b2b2b2);
     .fab-button-style(positive, @positive);
