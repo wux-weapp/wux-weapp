@@ -155,11 +155,11 @@
 }
 .wux-animate--slideInRight-enter-active,
 .wux-animate--slideInRight-enter-done {
-  transform: translateZ(0)
+  transform: none
 }
 .wux-animate--slideInRight-exit {
   transition: transform .3s;
-  transform: translateZ(0)
+  transform: none
 }
 .wux-animate--slideInRight-exit-active,
 .wux-animate--slideInRight-exit-done {

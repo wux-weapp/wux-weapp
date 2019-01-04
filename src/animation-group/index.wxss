@@ -208,12 +208,12 @@
         
         &-enter-active,
         &-enter-done {
-            transform: translateZ(0);
+            transform: none;
         }
         
         &-exit {
             transition: transform .3s;
-            transform: translateZ(0);
+            transform: none;
         }
         
         &-exit-active,
