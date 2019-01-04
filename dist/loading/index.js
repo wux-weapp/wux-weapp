@@ -2,13 +2,36 @@ import baseComponent from '../helpers/baseComponent'
 import { $wuxBackdrop } from '../index'
 
 const defaults = {
+    prefixCls: 'wux-loading',
+    classNames: 'wux-animate--fadeIn',
     text: '数据加载中',
     mask: true,
+    transparent: true,
 }
 
 baseComponent({
     useFunc: true,
     data: defaults,
+    computed: {
+        classes() {
+            const { prefixCls } = this.data
+            const wrap = this.classNames(prefixCls)
+            const content = this.classNames(`${prefixCls}__content`, {
+                [`${prefixCls}__content--has-icon`]: true,
+            })
+            const icon = this.classNames(`${prefixCls}__icon`, {
+                [`${prefixCls}__icon--loading`]: true,
+            })
+            const text = `${prefixCls}__text`
+
+            return {
+                wrap,
+                content,
+                icon,
+                text,
+            }
+        },
+    },
     methods: {
         /**
          * 隐藏
