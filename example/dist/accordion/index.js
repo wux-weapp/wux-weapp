@@ -1,5 +1,8 @@
 Component({
     externalClasses: ['wux-class'],
+    options: {
+        multipleSlots: true,
+    },
     relations: {
         '../accordion-group/index': {
             type: 'parent',
