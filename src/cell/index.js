@@ -109,7 +109,7 @@ baseComponent({
             const text = `${prefixCls}__text`
             const desc = `${prefixCls}__desc`
             const ft = `${prefixCls}__ft`
-            const hover = hoverClass === 'default' ? `${prefixCls}--hover` : hoverClass
+            const hover = hoverClass && hoverClass !== 'default' ? hoverClass : `${prefixCls}--hover`
 
             return {
                 wrap,

@@ -43,7 +43,7 @@ baseComponent({
             const thumb = `${prefixCls}__thumb`
             const bd = `${prefixCls}__bd`
             const label = `${prefixCls}__label`
-            const hover = hoverClass === 'default' ? `${prefixCls}--hover` : hoverClass
+            const hover = hoverClass && hoverClass !== 'default' ? hoverClass : `${prefixCls}--hover`
 
             return {
                 wrap,

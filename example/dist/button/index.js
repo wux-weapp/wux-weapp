@@ -108,7 +108,7 @@ baseComponent({
                 [`${prefixCls}--bordered`]: bordered,
                 [`${prefixCls}--disabled`]: disabled,
             })
-            const hover = hoverClass === 'default' ? `${prefixCls}--hover` : hoverClass
+            const hover = hoverClass && hoverClass !== 'default' ? hoverClass : `${prefixCls}--hover`
 
             return {
                 wrap,
