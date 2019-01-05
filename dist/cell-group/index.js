@@ -1,20 +1,19 @@
-Component({
-    externalClasses: ['wux-class'],
+import baseComponent from '../helpers/baseComponent'
+
+baseComponent({
     relations: {
         '../cell/index': {
             type: 'child',
-            linked() {
-                this.updateIsLastElement('../cell/index')
-            },
-            linkChanged() {
-                this.updateIsLastElement('../cell/index')
-            },
-            unlinked() {
-                this.updateIsLastElement('../cell/index')
+            observer() {
+                this.updateIsLastElement()
             },
         },
     },
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-cell-group',
+        },
         title: {
             type: String,
             value: '',
@@ -22,6 +21,22 @@ Component({
         label: {
             type: String,
             value: '',
+        },
+    },
+    computed: {
+        classes() {
+            const { prefixCls } = this.data
+            const wrap = this.classNames(prefixCls)
+            const hd = `${prefixCls}__hd`
+            const bd = `${prefixCls}__bd`
+            const ft = `${prefixCls}__ft`
+
+            return {
+                wrap,
+                hd,
+                bd,
+                ft,
+            }
         },
     },
     methods: {

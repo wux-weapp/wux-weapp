@@ -17,7 +17,7 @@
                     <wux-prompt visible="{{ activeIndex === 1 }}" icon="{{ msg2.icon }}" title="{{ msg2.title }}" text="{{ msg2.text }}" buttons="{{ msg2.buttons }}" bind:click="buttonClicked" />
                 </view>
                 <view class="weui-tab__content" hidden="{{ activeIndex !== 2 }}">
-                    <wux-prompt visible="{{ activeIndex === 2 }}" icon="{{ msg3.icon }}" title="{{ msg3.title }}" />
+                    <wux-prompt visible="{{ activeIndex === 2 }}" icon="{{ msg3.icon }}" title="{{ msg3.title }}" text="{{ msg3.text }}" buttons="{{ msg3.buttons }}" bind:getuserinfo="onGotUserInfo" />
                 </view>
             </view>
         </view>

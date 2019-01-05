@@ -1,9 +1,10 @@
 <button
-    class="wux-class wux-button {{ type ? 'wux-button--' + type : '' }} {{ size ? 'wux-button--' + size : '' }} {{ block ? 'wux-button--block' : '' }} {{ full ? 'wux-button--full' : '' }} {{ clear ? 'wux-button--clear' : '' }} {{ outline ? 'wux-button--outline' : '' }} {{ disabled ? 'wux-button--disabled' : '' }}"
+    class="wux-class {{ classes.wrap }}"
+    disabled="{{ disabled }}"
     loading="{{ loading }}"
     form-type="{{ formType }}"
     open-type="{{ openType }}"
-    hover-class="wux-hover-class {{ !disabled ? 'wux-button--hover' : 'none' }}"
+    hover-class="wux-hover-class {{ !disabled ? classes.hover : 'none' }}"
     hover-stop-propagation="{{ hoverStopPropagation }}"
     hover-start-time="{{ hoverStartTime }}"
     hover-stay-time="{{ hoverStayTime }}"

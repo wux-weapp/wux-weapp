@@ -1,20 +1,23 @@
-Component({
-    externalClasses: ['wux-class'],
+import baseComponent from '../helpers/baseComponent'
+
+baseComponent({
     relations: {
         '../accordion/index': {
             type: 'child',
-            linked() {
-                this.changeCurrent()
-            },
-            linkChanged() {
-                this.changeCurrent()
-            },
-            unlinked() {
+            observer() {
                 this.changeCurrent()
             },
         },
     },
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-accordion-group',
+        },
+        cellGroupPrefixCls: {
+            type: String,
+            value: 'wux-cell-group',
+        },
         defaultCurrent: {
             type: Array,
             value: [],

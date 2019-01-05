@@ -1,15 +1,15 @@
-<view class="wux-class wux-card {{ bordered ? 'wux-card--bordered' : '' }} {{ full ? 'wux-card--full' : '' }}">
-    <view class="wux-card__hd" wx:if="{{ thumb || title || extra }}">
-        <view class="wux-card__content" wx:if="{{ thumb || title }}">
-            <image class="wux-card__thumb" src="{{ thumb }}" mode="aspectFit" style="{{ thumbStyle }}" wx:if="{{ thumb }}" />
+<view class="wux-class {{ classes.wrap }}">
+    <view class="{{ classes.hd }}" wx:if="{{ thumb || title || extra }}">
+        <view class="{{ classes.content }}" wx:if="{{ thumb || title }}">
+            <image class="{{ classes.thumb }}" src="{{ thumb }}" mode="aspectFit" style="{{ thumbStyle }}" wx:if="{{ thumb }}" />
             <text>{{ title }}</text>
         </view>
-        <view class="wux-card__extra" wx:if="{{ extra }}">{{ extra }}</view>
+        <view class="{{ classes.extra }}" wx:if="{{ extra }}">{{ extra }}</view>
     </view>
-    <view class="wux-card__bd">
+    <view class="{{ classes.bd }}">
         <slot name="body"></slot>
     </view>
-    <view class="wux-card__ft">
+    <view class="{{ classes.ft }}">
         <slot name="footer"></slot>
     </view>
 </view>

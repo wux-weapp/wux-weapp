@@ -1,20 +1,19 @@
-Component({
-	externalClasses: ['wux-class'],
+import baseComponent from '../helpers/baseComponent'
+
+baseComponent({
     relations: {
         '../grid/index': {
             type: 'child',
-            linked() {
-                this.changeCurrent()
-            },
-            linkChanged() {
-                this.changeCurrent()
-            },
-            unlinked() {
+            observer() {
                 this.changeCurrent()
             },
         },
     },
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-grids',
+        },
         col: {
             type: Number,
             value: 3,
@@ -31,18 +30,30 @@ Component({
             observer: 'changeCurrent',
         },
     },
+    computed: {
+        classes() {
+            const { prefixCls, bordered } = this.data
+            const wrap = this.classNames(prefixCls, {
+                [`${prefixCls}--bordered`]: bordered,
+            })
+
+            return {
+                wrap,
+            }
+        },
+    },
     methods: {
-    	changeCurrent() {
-    		const elements = this.getRelationNodes('../grid/index')
+        changeCurrent() {
+            const elements = this.getRelationNodes('../grid/index')
             const { col, bordered, square } = this.data
-    		const colNum = parseInt(col) > 0 ? parseInt(col) : 1
-    		const width = `${100 / colNum}%`
+            const colNum = parseInt(col) > 0 ? parseInt(col) : 1
+            const width = `${100 / colNum}%`
 
             if (elements.length > 0) {
-				elements.forEach((element, index) => {
-				    element.changeCurrent(width, bordered, square, index)
-				})
+                elements.forEach((element, index) => {
+                    element.changeCurrent(width, bordered, square, index)
+                })
             }
-    	},
+        },
     },
 })

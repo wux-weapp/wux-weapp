@@ -1,6 +1,11 @@
-Component({
-	externalClasses: ['wux-class'],
+import baseComponent from '../helpers/baseComponent'
+
+baseComponent({
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-search-bar',
+        },
         defaultValue: {
             type: String,
             value: '',
@@ -91,6 +96,37 @@ Component({
     data: {
         inputValue: '',
         inputFocus: false,
+    },
+    computed: {
+        classes() {
+            const { prefixCls, disabled, inputFocus } = this.data
+            const wrap = this.classNames(prefixCls, {
+                [`${prefixCls}--focus`]: inputFocus,
+                [`${prefixCls}--disabled`]: disabled,
+            })
+            const form = `${prefixCls}__form`
+            const box = `${prefixCls}__box`
+            const search = `${prefixCls}__search`
+            const input = `${prefixCls}__input`
+            const clear = `${prefixCls}__clear`
+            const label = `${prefixCls}__label`
+            const icon = `${prefixCls}__icon`
+            const text = `${prefixCls}__text`
+            const cancel = `${prefixCls}__cancel`
+
+            return {
+                wrap,
+                form,
+                box,
+                search,
+                input,
+                clear,
+                label,
+                icon,
+                text,
+                cancel,
+            }
+        },
     },
     methods: {
         updated(inputValue) {

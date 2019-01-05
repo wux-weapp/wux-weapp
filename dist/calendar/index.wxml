@@ -1,45 +1,58 @@
 <wux-popup position="bottom" visible="{{ in }}" zIndex="1010" bind:close="close">
-    <view class="wux-class wux-calendar {{ direction ? 'wux-calendar--' + direction : '' }}">
-        <view class="wux-calendar__content">
-            <view class="wux-calendar__hd" wx:if="{{ toolbar }}">
-                <view class="wux-calendar__toolbar">
-                    <view class="wux-calendar__picker">
-                        <view class="wux-calendar__link" bindtap="prevMonth">
-                            <view class="wux-calendar__icon wux-calendar__icon--prev"></view>
+    <view class="wux-class {{ classes.wrap }}">
+        <view class="{{ classes.content }}">
+            <view class="{{ classes.hd }}" wx:if="{{ toolbar }}">
+                <view class="{{ classes.toolbar }}">
+                    <view class="{{ classes.picker }}">
+                        <view class="{{ classes.link }}" bindtap="prevMonth">
+                            <view class="{{ classes.prev }}"></view>
                         </view>
-                        <view class="wux-calendar__value">{{ currentMonthName }}</view>
-                        <view class="wux-calendar__link" bindtap="nextMonth">
-                            <view class="wux-calendar__icon wux-calendar__icon--next"></view>
+                        <view class="{{ classes.value }}">{{ currentMonthName }}</view>
+                        <view class="{{ classes.link }}" bindtap="nextMonth">
+                            <view class="{{ classes.next }}"></view>
                         </view>
                     </view>
-                    <view class="wux-calendar__picker">
-                        <view class="wux-calendar__link" bindtap="prevYear">
-                            <view class="wux-calendar__icon wux-calendar__icon--prev"></view>
+                    <view class="{{ classes.picker }}">
+                        <view class="{{ classes.link }}" bindtap="prevYear">
+                            <view class="{{ classes.prev }}"></view>
                         </view>
-                        <text class="wux-calendar__value">{{ currentYear }}</text>
-                        <view class="wux-calendar__link" bindtap="nextYear">
-                            <view class="wux-calendar__icon wux-calendar__icon--next"></view>
+                        <text class="{{ classes.value }}">{{ currentYear }}</text>
+                        <view class="{{ classes.link }}" bindtap="nextYear">
+                            <view class="{{ classes.next }}"></view>
                         </view>
                     </view>
                 </view>
             </view>
-            <view class="wux-calendar__bd">
-                <view class="wux-calendar__weekdays" wx:if="{{ weekHeader }}">
+            <view class="{{ classes.bd }}">
+                <view class="{{ classes.weekdays }}" wx:if="{{ weekHeader }}">
                     <block wx:for="{{ weeks }}" wx:key="">
-                        <view class="wux-calendar__weekday {{ item.weekend ? 'wux-calendar__weekday--weekend' : '' }}">
+                        <view class="{{ classes.weekday }} {{ item.weekend ? prefixCls + '__weekday--weekend' : '' }}">
                             {{ item.dayName }}
                         </view>
                     </block>
                 </view>
-                <view class="wux-calendar__months">
-                    <view class="wux-calendar__months-content" bindtouchstart="onTouchStart" bindtouchmove="onTouchMove" bindtouchend="onTouchEnd" style="{{ wrapperTranslate }}">
+                <view class="{{ classes.months }}">
+                    <view class="{{ classes.monthsContent }}" bindtouchstart="onTouchStart" bindtouchmove="onTouchMove" bindtouchend="onTouchEnd" style="{{ wrapperTranslate }}">
                         <block wx:for="{{ months }}" wx:for-item="month" wx:key="">
-                            <view data-year="{{ month.year }}" data-month="{{ month.month }}" class="wux-calendar__month {{ index === 0 ? 'wux-calendar__month--prev' : index === 1 ? 'wux-calendar__month--current' : 'wux-calendar__month--next' }}" style="{{ monthsTranslate[index] }}">
+                            <view
+                                data-year="{{ month.year }}"
+                                data-month="{{ month.month }}"
+                                class="{{ classes.month }} {{ index === 0 ? (prefixCls + '__month--prev') : index === 1 ? (prefixCls + '__month--current') : (prefixCls + '__month--next') }}"
+                                style="{{ monthsTranslate[index] }}"
+                            >
                                 <block wx:for="{{ month.items }}" wx:for-item="row" wx:key="">
-                                    <view class="wux-calendar__days">
+                                    <view class="{{ classes.days }}">
                                         <block wx:for="{{ row }}" wx:for-item="col" wx:key="">
-                                            <view data-year="{{ col.year }}" data-month="{{ col.month }}" data-day="{{ col.day }}" data-date="{{ col.date }}" data-type="{{ col.type }}" class="wux-calendar__day {{ col.type.prev ? 'wux-calendar__day--prev' : '' }} {{ col.type.next ? 'wux-calendar__day--next' : '' }} {{ col.type.today ? 'wux-calendar__day--today' : '' }} {{ col.type.selected ? 'wux-calendar__day--selected' : '' }} {{ col.type.weekend ? 'wux-calendar__day--weekend' : '' }} {{ col.type.disabled ? 'wux-calendar__day--disabled' : '' }}" bindtap="onDayClick">
-                                                <text class="wux-calendar__text">{{ col.day }}</text>
+                                            <view
+                                            data-year="{{ col.year }}"
+                                            data-month="{{ col.month }}"
+                                            data-day="{{ col.day }}"
+                                            data-date="{{ col.date }}"
+                                            data-type="{{ col.type }}"
+                                            class="{{ classes.day }} {{ col.type.prev ? prefixCls + '__day--prev' : '' }} {{ col.type.next ? prefixCls + '__day--next' : '' }} {{ col.type.today ? prefixCls + '__day--today' : '' }} {{ col.type.selected ? prefixCls + '__day--selected' : '' }} {{ col.type.weekend ? prefixCls + '__day--weekend' : '' }} {{ col.type.disabled ? prefixCls + '__day--disabled' : '' }}"
+                                            bindtap="onDayClick"
+                                            >
+                                                <text class="{{ classes.text }}">{{ col.day }}</text>
                                             </view>
                                         </block>
                                     </view>

@@ -1,7 +1,7 @@
 @import "../styles/base/fn.wxss";
 
 .segment(@theme, @color) {
-    &--@{theme} &-item {
+    &--@{theme} &__item {
     	color: @color;
     	border-color: @color;
 
@@ -24,7 +24,7 @@
     	opacity: .5;
     }
 
-    &-item {
+    &__item {
 	    display: flex;
 	    flex: 1;
 	    justify-content: center;

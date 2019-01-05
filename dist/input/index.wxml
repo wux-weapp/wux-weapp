@@ -1,11 +1,11 @@
-<view class="wux-class wux-input {{ inputFocus ? 'wux-input--focus' : '' }} {{ disabled ? 'wux-input--disabled' : '' }} {{ error ? 'wux-input--error' : '' }}">
-	<view class="wux-input__label" wx:if="{{ label }}">{{ label }}</view>
+<view class="wux-class {{ classes.wrap }}">
+	<view class="{{ classes.label }}" wx:if="{{ label }}">{{ label }}</view>
 	<block wx:else>
 		<slot></slot>
 	</block>
-	<view class="wux-input__control">
+	<view class="{{ classes.control }}">
 		<input
-			class="wux-input__item"
+			class="{{ classes.item }}"
 			value="{{ inputValue }}"
 			type="{{ type }}"
 			password="{{ password }}"
@@ -28,13 +28,13 @@
 			bindconfirm="onConfirm"
 		/>
 	</view>
-	<view class="wux-input__clear" bindtap="onClear" wx:if="{{ clear && !disabled && inputValue && inputValue.length > 0 }}">
+	<view class="{{ classes.clear }}" bindtap="onClear" wx:if="{{ clear && !disabled && inputValue && inputValue.length > 0 }}">
 		<icon type="clear" color="#B2B2B2" size="14" />
 	</view>
-	<view class="wux-input__error" bindtap="onError" wx:if="{{ error }}">
+	<view class="{{ classes.error }}" bindtap="onError" wx:if="{{ error }}">
 		<icon type="warn" color="#ef473a" size="14" />
 	</view>
-	<view class="wux-input__extra" wx:if="{{ extra }}">{{ extra }}</view>
+	<view class="{{ classes.extra }}" wx:if="{{ extra }}">{{ extra }}</view>
 	<block wx:else>
 		<slot name="footer"></slot>
 	</block>

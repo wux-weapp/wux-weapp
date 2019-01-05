@@ -1,17 +1,16 @@
-Component({
-    externalClasses: ['wux-class', 'wux-class-badge'],
+import baseComponent from '../helpers/baseComponent'
+
+baseComponent({
+    externalClasses: ['wux-class-badge'],
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-badge',
+        },
         count: {
             type: Number,
             value: 0,
-            observer(newVal) {
-                const { overflowCount } = this.data
-                const finalCount = newVal >= overflowCount ? `${overflowCount}+` : newVal
-
-                this.setData({
-                    finalCount,
-                })
-            },
+            observer: 'updated',
         },
         overflowCount: {
             type: Number,
@@ -36,5 +35,37 @@ Component({
     },
     data: {
         finalCount: 0,
+    },
+    computed: {
+        classes() {
+            const { prefixCls, status: st } = this.data
+            const wrap = this.classNames(prefixCls)
+            const status = `${prefixCls}__status`
+            const statusDot = this.classNames(`${prefixCls}__status-dot`, {
+                [`${prefixCls}__status-dot--${st}`]: st,
+            })
+            const statusText = `${prefixCls}__status-text`
+            const dot = `${prefixCls}__dot`
+            const count = `${prefixCls}__count`
+
+            return {
+                wrap,
+                status,
+                statusDot,
+                statusText,
+                dot,
+                count,
+            }
+        },
+    },
+    methods: {
+        updated(count = this.data.count) {
+            const { overflowCount } = this.data
+            const finalCount = count >= overflowCount ? `${overflowCount}+` : count
+
+            this.setData({
+                finalCount,
+            })
+        },
     },
 })

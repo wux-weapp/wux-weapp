@@ -2,7 +2,7 @@
 
 .fab-button-style(@theme, @color) {
     &--@{theme} &__action,
-    &--@{theme} &__button, 
+    &--@{theme} &__button,
     &--@{theme} &__button--disabled {
         background-color: @color !important;
     }
@@ -17,7 +17,7 @@
         top: 50%;
         transform: translate3d(-50%, -50%, 0);
     }
-    
+
     &--topLeft {
         left: 15px;
         top: 15px;
@@ -37,14 +37,14 @@
         right: 15px;
         bottom: 15px;
     }
-    
-    &--vertical&--topLeft &__label, 
+
+    &--vertical&--topLeft &__label,
     &--vertical&--bottomLeft &__label {
         left: 60px;
     }
-    
-    &--vertical&--center &__label, 
-    &--vertical&--topRight &__label, 
+
+    &--vertical&--center &__label,
+    &--vertical&--topRight &__label,
     &--vertical&--bottomRight &__label {
         right: 60px;
     }

@@ -1,15 +1,20 @@
+import baseComponent from '../helpers/baseComponent'
+
 const toAngle = (a) => a / 180 * Math.PI
 const percent = (a) => toAngle(a / 100 * 360)
-const easeInOutCubic = (a, b ,c, d) => {
+const easeInOutCubic = (a, b, c, d) => {
     a /= d / 2
     if (a < 1) return c / 2 * a * a * a + b
     a -= 2
     return c / 2 * (a * a * a + 2) + b
 }
 
-Component({
-    externalClasses: ['wux-class'],
+baseComponent({
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-circle',
+        },
         percent: {
             type: Number,
             value: 0,
@@ -68,6 +73,18 @@ Component({
         endAngle: 0,
         currentAngle: 0,
     },
+    computed: {
+        classes() {
+            const { prefixCls } = this.data
+            const wrap = this.classNames(prefixCls)
+            const inner = `${prefixCls}__inner`
+
+            return {
+                wrap,
+                inner,
+            }
+        },
+    },
     methods: {
         /**
          * 更新样式
@@ -87,11 +104,11 @@ Component({
             const now = Date.now()
             const decrease = this.data.currentAngle > endAngle
             const startAngle = !decrease ? this.data.currentAngle : this.data.endAngle
-            
+
             this.cancelNextCallback()
             this.clearTimer()
 
-            this.safeSetData({ startAngle, endAngle}, () => {
+            this.safeSetData({ startAngle, endAngle }, () => {
                 this.animate(now, now, decrease)
             })
         },

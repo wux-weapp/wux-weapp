@@ -1,3 +1,5 @@
+import baseComponent from '../helpers/baseComponent'
+
 const MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER || Math.pow(2, 53) - 1
 
 const toNumberWhenUserInput = (num) => {
@@ -30,9 +32,13 @@ const getValidValue = (value, min, max) => {
     return val
 }
 
-Component({
-    externalClasses: ['wux-class', 'wux-sub-class', 'wux-input-class', 'wux-add-class'],
+baseComponent({
+    externalClasses: ['wux-sub-class', 'wux-input-class', 'wux-add-class'],
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-input-number',
+        },
         shape: {
             type: String,
             value: 'square',
@@ -56,7 +62,7 @@ Component({
         value: {
             type: Number,
             value: 0,
-            observer(newVal, oldVal) {
+            observer(newVal) {
                 if (this.data.controlled) {
                     this.updated(newVal)
                 }
@@ -83,6 +89,34 @@ Component({
         inputValue: 0,
         disabledMin: false,
         disabledMax: false,
+    },
+    computed: {
+        classes() {
+            const { prefixCls, shape, color, disabledMin, disabledMax } = this.data
+            const wrap = this.classNames(prefixCls, {
+                [`${prefixCls}--${shape}`]: shape,
+            })
+            const sub = this.classNames(`${prefixCls}__selector`, {
+                [`${prefixCls}__selector--sub`]: true,
+                [`${prefixCls}__selector--${color}`]: color,
+                [`${prefixCls}__selector--disabled`]: disabledMin,
+            })
+            const add = this.classNames(`${prefixCls}__selector`, {
+                [`${prefixCls}__selector--add`]: true,
+                [`${prefixCls}__selector--${color}`]: color,
+                [`${prefixCls}__selector--disabled`]: disabledMax,
+            })
+            const icon = `${prefixCls}__icon`
+            const input = `${prefixCls}__input`
+
+            return {
+                wrap,
+                sub,
+                add,
+                icon,
+                input,
+            }
+        },
     },
     methods: {
         /**
@@ -134,7 +168,7 @@ Component({
         /**
          * 当键盘输入时，触发 input 事件
          */
-        bindinput(e) {
+        onInput(e) {
             this.clearInputTimer()
             this.inputTime = setTimeout(() => {
                 const value = toNumberWhenUserInput(e.detail.value)
@@ -145,13 +179,13 @@ Component({
         /**
          * 输入框聚焦时触发
          */
-        bindfocus(e) {
+        onFocus(e) {
             this.triggerEvent('focus', e.detail)
         },
         /**
          * 输入框失去焦点时触发
          */
-        bindblur(e) {
+        onBlur(e) {
             // always set input value same as value
             this.setData({
                 inputValue: this.data.inputValue,
@@ -162,7 +196,7 @@ Component({
         /**
          * 手指触摸后，超过350ms再离开
          */
-        bindlongpress(e) {
+        onLongpress(e) {
             const { type } = e.currentTarget.dataset
             const { longpress } = this.data
             if (longpress) {
@@ -172,7 +206,7 @@ Component({
         /**
          * 手指触摸后马上离开
          */
-        bindtap(e) {
+        onTap(e) {
             const { type } = e.currentTarget.dataset
             const { longpress } = this.data
             if (!longpress || longpress && !this.timeout) {
@@ -182,13 +216,13 @@ Component({
         /**
          * 	手指触摸动作结束
          */
-        bindtouchend(e) {
+        onTouchEnd() {
             this.clearTimer()
         },
         /**
          * 手指触摸动作被打断，如来电提醒，弹窗
          */
-        touchcancel(e) {
+        onTouchCancel() {
             this.clearTimer()
         },
         /**

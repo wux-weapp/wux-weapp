@@ -1,8 +1,9 @@
-import baseBehavior from '../helpers/baseBehavior'
-import mergeOptionsToData from '../helpers/mergeOptionsToData'
+import baseComponent from '../helpers/baseComponent'
 import { getTouchPoints, getPointsNumber, getPointsDistance } from '../helpers/gestures'
 
 const defaults = {
+    prefixCls: 'wux-gallery',
+    classNames: 'wux-animate--slideInRight',
     indicatorDots: false,
     indicatorColor: 'rgba(0, 0, 0, .3)',
     indicatorActiveColor: '#000000',
@@ -43,10 +44,31 @@ const getImages = (urls = []) => {
     })
 }
 
-Component({
-    behaviors: [baseBehavior],
-    externalClasses: ['wux-class'],
-    data: mergeOptionsToData(defaults),
+baseComponent({
+    useFunc: true,
+    data: defaults,
+    computed: {
+        classes() {
+            const { prefixCls } = this.data
+            const swiper = `${prefixCls}__swiper`
+            const item = `${prefixCls}__item`
+            const img = `${prefixCls}__img`
+            const remark = `${prefixCls}__remark`
+            const opr = `${prefixCls}__opr`
+            const del = `${prefixCls}__del`
+            const icon = `${prefixCls}__icon`
+
+            return {
+                swiper,
+                item,
+                img,
+                remark,
+                opr,
+                del,
+                icon,
+            }
+        },
+    },
     methods: {
         /**
          * 隐藏
@@ -147,7 +169,7 @@ Component({
             }
 
             const { touch, index } = e.currentTarget.dataset
-            
+
             let scale = touch.scale
 
             if (scale <= 1) {

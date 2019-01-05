@@ -1,16 +1,16 @@
 @import "../styles/base/fn.wxss";
 
-.@{wuxClassNamePrefix}-popup {
+.@{wuxClassNamePrefix}-dialog {
 	&__button {
 		display: block;
 		flex: 1;
 		color: @balanced;
 		position: relative;
-	
+
 		&--default {
 			color: #353535;
 		}
-	
+
 		&--primary {
 			color: @balanced;
 		}
@@ -23,22 +23,22 @@
 			background-color: #ECECEC;
 		}
 	}
-	
+
+    &__prompt {
+        position: relative;
+        margin-top: 10px;
+
+        &:after {
+            .hairline(#D5D5D6);
+            border-top-width: 1px;
+            border-right-width: 1px;
+            border-bottom-width: 1px;
+            border-left-width: 1px;
+            border-radius: 6px;
+        }
+    }
+
 	&__input {
-		&-container {
-			position: relative;
-			margin-top: 10px;
-
-			&:after {
-				.hairline(#D5D5D6);
-				border-top-width: 1px;
-				border-right-width: 1px;
-				border-bottom-width: 1px;
-				border-left-width: 1px;
-				border-radius: 6px;
-			}
-		}
-
 		padding: 4px 6px;
 		height: 36px;
     	line-height: 1;
@@ -52,11 +52,11 @@
 		flex: 1;
 
 		&--horizontal {
-			.@{wuxClassNamePrefix}-popup__button {
+			.@{wuxClassNamePrefix}-dialog__button {
 				&:after {
 					.setLeftLine(#D5D5D6);
 				}
-			
+
 				&:first-child:after {
 					display: none;
 				}
@@ -66,8 +66,8 @@
 		&--vertical {
 			display: block;
 			height: auto;
-			
-			.@{wuxClassNamePrefix}-popup__button {
+
+			.@{wuxClassNamePrefix}-dialog__button {
 				&:after {
 					.setTopLine(#D5D5D6);
 				}

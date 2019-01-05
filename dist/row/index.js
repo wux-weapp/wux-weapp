@@ -1,20 +1,19 @@
-Component({
-	externalClasses: ['wux-class'],
+import baseComponent from '../helpers/baseComponent'
+
+baseComponent({
     relations: {
         '../col/index': {
             type: 'child',
-            linked() {
-                this.updateStyle()
-            },
-            linkChanged() {
-                this.updateStyle()
-            },
-            unlinked() {
+            observer() {
                 this.updateStyle()
             },
         },
     },
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-row',
+        },
         gutter: {
             value: 0,
             type: Number,
@@ -23,6 +22,16 @@ Component({
     },
     data: {
         rowStyle: '',
+    },
+    computed: {
+        classes() {
+            const { prefixCls } = this.data
+            const wrap = this.classNames(prefixCls)
+
+            return {
+                wrap,
+            }
+        },
     },
     methods: {
     	updateStyle(gutter = this.data.gutter) {

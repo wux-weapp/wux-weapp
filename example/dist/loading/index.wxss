@@ -1,4 +1,4 @@
-.wux-toast {
+.wux-loading {
   position: fixed;
   z-index: 5000;
   top: 50%;
@@ -11,22 +11,22 @@
   color: #fff;
   transform: translate3d(-50%,-50%,0)
 }
-.wux-toast__content {
+.wux-loading__content {
   min-width: 236rpx;
   padding: 18rpx 30rpx;
   box-sizing: border-box
 }
-.wux-toast__content--has-icon {
+.wux-loading__content--has-icon {
   padding: 30rpx
 }
-.wux-toast__content--has-icon .wux-toast__text {
+.wux-loading__content--has-icon .wux-loading__text {
   margin-top: 12rpx
 }
-.wux-toast__icon {
+.wux-loading__icon {
   margin: 0;
   display: block
 }
-.wux-toast__icon--loading {
+.wux-loading__icon--loading {
   display: inline-block!important;
   vertical-align: middle;
   animation: loading 1s steps(12,end) infinite;

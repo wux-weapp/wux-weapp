@@ -1,1 +1,1 @@
-.wux-selectable--cell{position:static!important}
+.wux-checkbox__selectable{position:static!important}

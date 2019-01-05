@@ -1,3 +1,5 @@
+import baseComponent from '../helpers/baseComponent'
+
 /**
  * 判断是否预设的颜色值
  * @param {String} color 颜色值
@@ -9,9 +11,16 @@ const isPresetColor = (color) => {
     return (/^(pink|red|yellow|orange|cyan|green|blue|purple|geekblue|magenta|volcano|gold|lime)(-inverse)?$/.test(color))
 }
 
-Component({
-    externalClasses: ['wux-class', 'wux-hover-class'],
+baseComponent({
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-tag',
+        },
+        hoverClass: {
+            type: String,
+            value: 'default',
+        },
         color: {
             type: String,
             value: '',
@@ -44,7 +53,24 @@ Component({
         tagStyle: '',
         tagVisible: true,
     },
+    computed: {
+        classes() {
+            const { prefixCls, hoverClass } = this.data
+            const wrap = this.classNames(prefixCls)
+            const icon = `${prefixCls}__icon`
+            const hover = hoverClass && hoverClass !== 'default' ? hoverClass : `${prefixCls}--hover`
+
+            return {
+                wrap,
+                icon,
+                hover,
+            }
+        },
+    },
     methods: {
+        /**
+         * 控制组件显示或隐藏
+         */
         updated(tagVisible) {
             if (this.data.tagVisible !== tagVisible) {
                 this.setData({
@@ -52,9 +78,13 @@ Component({
                 })
             }
         },
+        /**
+         * 更新组件样式
+         */
         updateStyle(color) {
+            const { prefixCls } = this.data
             const isPreset = isPresetColor(color)
-            const className = isPreset ? `wux-tag--${color}` : ''
+            const className = isPreset ? `${prefixCls}--${color}` : ''
             const tagStyle = !isPreset ? `background-color: ${color}; color: #fff` : ''
 
             this.setData({
@@ -62,6 +92,9 @@ Component({
                 tagStyle,
             })
         },
+        /**
+         * 显示隐藏的回调
+         */
         onChange(tagVisible) {
             if (!this.data.controlled) {
                 this.updated(tagVisible)
@@ -69,9 +102,15 @@ Component({
 
             this.triggerEvent('change', { value: tagVisible })
         },
+        /**
+         * 点击事件
+         */
         onClick() {
             this.triggerEvent('click')
         },
+        /**
+         * 关闭时触发的回调函数
+         */
         onClose() {
             if (this.data.closable) {
                 this.triggerEvent('close')

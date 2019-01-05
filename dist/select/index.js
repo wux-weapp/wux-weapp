@@ -1,7 +1,7 @@
-import baseBehavior from '../helpers/baseBehavior'
-import mergeOptionsToData from '../helpers/mergeOptionsToData'
+import baseComponent from '../helpers/baseComponent'
 
 const defaults = {
+    prefixCls: 'wux-select',
     value: '',
     options: [],
     multiple: false,
@@ -26,10 +26,37 @@ const getSelectIndex = ({ value = '', options = [], multiple = false }) => {
     return (value || []).map((n) => origins.indexOf(n))
 }
 
-Component({
-    behaviors: [baseBehavior],
-    externalClasses: ['wux-class'],
-    data: mergeOptionsToData(defaults),
+baseComponent({
+    useFunc: true,
+    data: defaults,
+    computed: {
+        classes() {
+            const { prefixCls } = this.data
+            const wrap = this.classNames(prefixCls)
+            const toolbar = `${prefixCls}__toolbar`
+            const inner = `${prefixCls}__inner`
+            const cancel = this.classNames(`${prefixCls}__button`, {
+                [`${prefixCls}__button--cancel`]: true
+            })
+            const confirm = this.classNames(`${prefixCls}__button`, {
+                [`${prefixCls}__button--confirm`]: true
+            })
+            const hover = `${prefixCls}__button--hover`
+            const title = `${prefixCls}__title`
+            const scrollView = `${prefixCls}__scroll-view`
+
+            return {
+                wrap,
+                toolbar,
+                inner,
+                cancel,
+                confirm,
+                hover,
+                title,
+                scrollView,
+            }
+        },
+    },
     methods: {
         /**
          * 打开
@@ -40,13 +67,13 @@ Component({
             }))
             const index = getSelectIndex(options)
 
-            this.$$setData({ visible: true, ...options, index })
+            this.$$setData({ in: true, ...options, index })
         },
         /**
          * 关闭
          */
         close(callback) {
-            this.$$setData({ visible: false })
+            this.$$setData({ in: false })
 
             if (typeof callback === 'function') {
                 const { value, index, options } = this.data
@@ -81,7 +108,7 @@ Component({
          */
         onRadioChange(e) {
             const { value, index } = e.detail
-            
+
             this.onChange(value, index)
         },
         /**

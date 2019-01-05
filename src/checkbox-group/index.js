@@ -1,21 +1,24 @@
-Component({
-    externalClasses: ['wux-class'],
-    behaviors: ['wx://form-field'],
+import baseComponent from '../helpers/baseComponent'
+
+baseComponent({
+    useField: true,
     relations: {
         '../checkbox/index': {
             type: 'child',
-            linked() {
-                this.changeValue()
-            },
-            linkChanged() {
-                this.changeValue()
-            },
-            unlinked() {
+            observer() {
                 this.changeValue()
             },
         },
     },
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-checkbox-group',
+        },
+        cellGroupPrefixCls: {
+            type: String,
+            value: 'wux-cell-group',
+        },
         value: {
             type: Array,
             value: [],

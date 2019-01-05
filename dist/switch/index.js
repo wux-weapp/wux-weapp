@@ -1,15 +1,13 @@
+import baseComponent from '../helpers/baseComponent'
 import { isPresetColor } from '../helpers/colors'
 
-Component({
-    externalClasses: ['wux-class'],
-    behaviors: ['wx://form-field'],
-    options: {
-        multipleSlots: true,
-    },
-    data: {
-        style: '',
-    },
+baseComponent({
+    useField: true,
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-switch',
+        },
         value: {
             type: Boolean,
             value: false,
@@ -21,30 +19,45 @@ Component({
         color: {
             type: String,
             value: 'balanced',
-            observer(newVal) {
-                this.updateStyle(isPresetColor(newVal))
-            },
+            observer: 'updateStyle',
+        },
+    },
+    data: {
+        style: '',
+    },
+    computed: {
+        classes() {
+            const { prefixCls, value, disabled } = this.data
+            const wrap = this.classNames(prefixCls)
+            const input = this.classNames(`${prefixCls}__input`, {
+                [`${prefixCls}__input--checked`]: value,
+                [`${prefixCls}__input--disabled`]: disabled,
+            })
+
+            return {
+                wrap,
+                input,
+            }
         },
     },
     methods: {
         onTap(e) {
             const { value, disabled } = this.data
 
-            if (disabled) {
-                return false
-            }
+            if (disabled) return
 
             this.triggerEvent('change', {
                 value: !value,
             })
         },
-        updateStyle(color) {
+        updateStyle(color = this.data.color) {
+            const newColor = isPresetColor(color)
             this.setData({
-                style: `border-color: ${color}; background-color: ${color};`,
+                style: `border-color: ${newColor}; background-color: ${newColor};`,
             })
         },
     },
     attached() {
-        this.updateStyle(isPresetColor(this.data.color))
+        this.updateStyle()
     },
 })

@@ -1,5 +1,5 @@
-<view class="wux-class wux-divider {{ dashed ? 'wux-divider--dashed' : '' }} {{ showText ? 'wux-divider--text' : '' }} {{ showText && position ? 'wux-divider--text-' + position : '' }}">
-	<view class="wux-divider__text" wx:if="{{ showText }}">
+<view class="wux-class {{ classes.wrap }}">
+	<view class="{{ classes.text }}" wx:if="{{ showText }}">
 		{{ text }}
 		<slot></slot>
 	</view>

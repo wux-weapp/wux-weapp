@@ -1,7 +1,7 @@
-import baseBehavior from '../helpers/baseBehavior'
-import mergeOptionsToData from '../helpers/mergeOptionsToData'
+import baseComponent from '../helpers/baseComponent'
 
 const defaults = {
+    prefixCls: 'wux-dialog',
     title: '',
     content: '',
     buttons: [],
@@ -22,10 +22,39 @@ const defaultOptions = {
     confirmType: 'primary',
 }
 
-Component({
-    behaviors: [baseBehavior],
-    externalClasses: ['wux-class'],
-    data: mergeOptionsToData(defaults),
+baseComponent({
+    useFunc: true,
+    data: defaults,
+    computed: {
+        classes() {
+            const { prefixCls, buttons: btns, verticalButtons } = this.data
+            const prompt = `${prefixCls}__prompt`
+            const input = `${prefixCls}__input`
+            const buttons = this.classNames(`${prefixCls}__buttons`, {
+                [`${prefixCls}__buttons--${verticalButtons ? 'vertical' : 'horizontal'}`]: true,
+            })
+            const button = btns.map((button) => {
+                const wrap = this.classNames(`${prefixCls}__button`, {
+                    [`${prefixCls}__button--${button.type || 'default'}`]: button.type || 'default',
+                    [`${prefixCls}__button--bold`]: button.bold,
+                    [`${button.className}`]: button.className,
+                })
+                const hover = button.hoverClass && button.hoverClass !== 'default' ? button.hoverClass : `${prefixCls}__button--hover`
+
+                return {
+                    wrap,
+                    hover,
+                }
+            })
+
+            return {
+                prompt,
+                input,
+                buttons,
+                button,
+            }
+        },
+    },
     methods: {
         /**
          * 组件关闭时重置其内部数据
@@ -33,7 +62,7 @@ Component({
         onClosed() {
             if (this.data.resetOnClose) {
                 const params = {
-                    ...mergeOptionsToData(defaults),
+                    ...this.$$mergeOptionsToData(defaults),
                     prompt: null,
                 }
 

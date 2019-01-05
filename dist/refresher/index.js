@@ -1,15 +1,16 @@
+import baseComponent from '../helpers/baseComponent'
+
 const defaultStyle = 'transition: transform .4s; transform: translate3d(0px, 0px, 0px) scale(1);'
 
-Component({
-    externalClasses: ['wux-class'],
-    data: {
-        className: 'wux-refresher--hidden',
-        style: defaultStyle,
-    },
+baseComponent({
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-refresher',
+        },
         pullingIcon: {
             type: String,
-            value: 'wux-refresher__icon--arrow-down',
+            value: '',
         },
         pullingText: {
             type: String,
@@ -17,7 +18,7 @@ Component({
         },
         refreshingIcon: {
             type: String,
-            value: 'wux-refresher__icon--refresher',
+            value: '',
         },
         refreshingText: {
             type: String,
@@ -32,6 +33,58 @@ Component({
             value: 30,
         },
     },
+    data: {
+        style: defaultStyle,
+        visible: false,
+        active: false,
+        refreshing: false,
+        tail: false,
+    },
+    computed: {
+        classes() {
+            const {
+                prefixCls,
+                pullingText,
+                pullingIcon,
+                disablePullingRotation,
+                refreshingText,
+                refreshingIcon,
+                visible,
+                active,
+                refreshing,
+                tail,
+            } = this.data
+            const wrap = this.classNames(prefixCls, {
+                [`${prefixCls}--hidden`]: !visible,
+                [`${prefixCls}--visible`]: visible,
+                [`${prefixCls}--active`]: active,
+                [`${prefixCls}--refreshing`]: refreshing,
+                [`${prefixCls}--refreshing-tail`]: tail,
+            })
+            const content = this.classNames(`${prefixCls}__content`, {
+                [`${prefixCls}__content--text`]: pullingText || refreshingText,
+            })
+            const iconPulling = this.classNames(`${prefixCls}__icon-pulling`, {
+                [`${prefixCls}__icon-pulling--disabled`]: disablePullingRotation,
+            })
+            const textPulling = `${prefixCls}__text-pulling`
+            const iconRefreshing = `${prefixCls}__icon-refreshing`
+            const textRefreshing = `${prefixCls}__text-refreshing`
+            const pIcon = pullingIcon || `${prefixCls}__icon--arrow-down`
+            const rIcon = refreshingIcon || `${prefixCls}__icon--refresher`
+
+            return {
+                wrap,
+                content,
+                iconPulling,
+                textPulling,
+                iconRefreshing,
+                textRefreshing,
+                pIcon,
+                rIcon,
+            }
+        },
+    },
     methods: {
         /**
          * 显示
@@ -39,7 +92,7 @@ Component({
         activate() {
             this.setData({
                 style: defaultStyle,
-                className: 'wux-refresher--visible',
+                visible: true,
             })
         },
         /**
@@ -50,7 +103,10 @@ Component({
 
             this.setData({
                 style: defaultStyle,
-                className: 'wux-refresher--hidden',
+                visible: false,
+                active: false,
+                refreshing: false,
+                tail: false,
             })
         },
         /**
@@ -59,7 +115,9 @@ Component({
         refreshing() {
             this.setData({
                 style: 'transition: transform .4s; transform: translate3d(0, 50px, 0) scale(1);',
-                className: 'wux-refresher--active wux-refresher--refreshing',
+                visible: true,
+                active: true,
+                refreshing: true,
             })
         },
         /**
@@ -67,7 +125,10 @@ Component({
          */
         tail() {
             this.setData({
-                className: 'wux-refresher--active wux-refresher--refreshing wux-refresher--refreshing-tail',
+                visible: true,
+                active: true,
+                refreshing: true,
+                tail: true,
             })
         },
         /**
@@ -76,18 +137,18 @@ Component({
          */
         move(diffY) {
             const style = `transition-duration: 0s; transform: translate3d(0, ${diffY}px, 0) scale(1);`
-            const className = diffY < this.data.distance ? 'wux-refresher--visible' : 'wux-refresher--active'
+            const className = diffY < this.data.distance ? 'visible' : 'active'
 
             this.setData({
                 style,
-                className,
+                [className]: true,
             })
         },
         /**
          * 判断是否正在刷新
          */
         isRefreshing() {
-            return this.data.className.indexOf('wux-refresher--refreshing') !== -1
+            return this.data.refreshing
         },
         /**
          * 获取触摸点坐标

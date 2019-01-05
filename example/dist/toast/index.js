@@ -1,14 +1,16 @@
-import baseBehavior from '../helpers/baseBehavior'
-import mergeOptionsToData from '../helpers/mergeOptionsToData'
+import baseComponent from '../helpers/baseComponent'
 import { $wuxBackdrop } from '../index'
 
 const defaults = {
+    prefixCls: 'wux-toast',
+    classNames: 'wux-animate--fadeIn',
     type: 'default',
     duration: 1500,
     color: '#fff',
     text: '',
     icon: '',
     mask: true,
+    transparent: true,
     success() {},
 }
 
@@ -22,10 +24,27 @@ const iconTypes = {
 
 let _toast = null
 
-Component({
-    behaviors: [baseBehavior],
-    externalClasses: ['wux-class'],
-    data: mergeOptionsToData(defaults),
+baseComponent({
+    useFunc: true,
+    data: defaults,
+    computed: {
+        classes() {
+            const { prefixCls, icon: hasIcon } = this.data
+            const wrap = this.classNames(prefixCls)
+            const content = this.classNames(`${prefixCls}__content`, {
+                [`${prefixCls}__content--has-icon`]: hasIcon,
+            })
+            const icon = `${prefixCls}__icon`
+            const text = `${prefixCls}__text`
+
+            return {
+                wrap,
+                content,
+                icon,
+                text,
+            }
+        },
+    },
     methods: {
         /**
          * 隐藏

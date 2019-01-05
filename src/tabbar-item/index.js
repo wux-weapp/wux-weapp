@@ -1,14 +1,16 @@
-Component({
-    externalClasses: ['wux-class'],
-    options: {
-        multipleSlots: true,
-    },
+import baseComponent from '../helpers/baseComponent'
+
+baseComponent({
     relations: {
         '../tabbar/index': {
             type: 'parent',
         },
     },
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-tabbar-item',
+        },
         key: {
             type: String,
             value: '',
@@ -26,6 +28,24 @@ Component({
         width: '100%',
         current: false,
         index: '0',
+    },
+    computed: {
+        classes() {
+            const { prefixCls, theme, current, disabled } = this.data
+            const wrap = this.classNames(prefixCls, {
+                [`${prefixCls}--${theme}`]: theme,
+                [`${prefixCls}--current`]: current,
+                [`${prefixCls}--disabled`]: disabled,
+            })
+            const icon = `${prefixCls}__icon`
+            const title = `${prefixCls}__title`
+
+            return {
+                wrap,
+                icon,
+                title,
+            }
+        },
     },
     methods: {
         changeCurrent(current, index, theme, length) {

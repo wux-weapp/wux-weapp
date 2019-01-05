@@ -67,7 +67,7 @@
         </view>
         <view class="sub-title">Default Visible</view>
         <view class="button-sp-area text-left">
-            <wux-popover default-visible="{{ true }}" placement="rightBottom" title="Title" content="Content">
+            <wux-popover defaultVisible placement="rightBottom" title="Title" content="Content">
                 <button size="mini">rightBottom</button>
             </wux-popover>
         </view>
@@ -87,14 +87,14 @@
         <view class="button-sp-area">
             <wux-popover placement="top">
                 <button size="mini">top</button>
-                <view slot="title" style="color: red;">Title</view>
-                <view slot="content">Content</view>
+                <view slot="title" style="padding: 20rpx; color: red;">Title</view>
+                <view slot="content" style="padding: 20rpx">Content</view>
             </wux-popover>
         </view>
         <view class="sub-title">Controlled</view>
         <view class="button-sp-area">
             <wux-popover visible="{{ visible }}" controlled placement="top" title="Title" bind:change="onChange">
-                <view slot="content" bindtap="hide">Close</view>
+                <view slot="content" style="padding: 20rpx" bindtap="hide">Close</view>
                 <button size="mini">top</button>
             </wux-popover>
         </view>

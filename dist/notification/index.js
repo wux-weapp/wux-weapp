@@ -1,7 +1,8 @@
-import baseBehavior from '../helpers/baseBehavior'
-import mergeOptionsToData from '../helpers/mergeOptionsToData'
+import baseComponent from '../helpers/baseComponent'
 
 const defaults = {
+    prefixCls: 'wux-notification',
+    classNames: 'wux-animate--slideInDown',
     image: '',
     title: '',
     text: '',
@@ -13,10 +14,33 @@ const defaults = {
 
 let _notification = null
 
-Component({
-    behaviors: [baseBehavior],
-    externalClasses: ['wux-class'],
-    data: mergeOptionsToData(defaults),
+baseComponent({
+    useFunc: true,
+    data: defaults,
+    computed: {
+        classes() {
+            const { prefixCls } = this.data
+            const wrap = this.classNames(prefixCls)
+            const content = `${prefixCls}__content`
+            const hd = `${prefixCls}__hd`
+            const image = `${prefixCls}__image`
+            const bd = `${prefixCls}__bd`
+            const title = `${prefixCls}__title`
+            const text = `${prefixCls}__text`
+            const ft = `${prefixCls}__ft`
+
+            return {
+                wrap,
+                content,
+                hd,
+                image,
+                bd,
+                title,
+                text,
+                ft,
+            }
+        },
+    },
     methods: {
         /**
          * 隐藏

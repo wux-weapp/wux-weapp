@@ -1,16 +1,37 @@
-import baseBehavior from '../helpers/baseBehavior'
-import mergeOptionsToData from '../helpers/mergeOptionsToData'
+import baseComponent from '../helpers/baseComponent'
 import { $wuxBackdrop } from '../index'
 
 const defaults = {
+    prefixCls: 'wux-loading',
+    classNames: 'wux-animate--fadeIn',
     text: '数据加载中',
     mask: true,
+    transparent: true,
 }
 
-Component({
-    behaviors: [baseBehavior],
-    externalClasses: ['wux-class'],
-    data: mergeOptionsToData(defaults),
+baseComponent({
+    useFunc: true,
+    data: defaults,
+    computed: {
+        classes() {
+            const { prefixCls } = this.data
+            const wrap = this.classNames(prefixCls)
+            const content = this.classNames(`${prefixCls}__content`, {
+                [`${prefixCls}__content--has-icon`]: true,
+            })
+            const icon = this.classNames(`${prefixCls}__icon`, {
+                [`${prefixCls}__icon--loading`]: true,
+            })
+            const text = `${prefixCls}__text`
+
+            return {
+                wrap,
+                content,
+                icon,
+                text,
+            }
+        },
+    },
     methods: {
         /**
          * 隐藏

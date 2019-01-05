@@ -1,13 +1,4 @@
-.wux-select {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 1010;
-  width: 100%;
-  margin: auto;
-  background-color: #fff
-}
-.wux-select__content {
+.wux-select__scroll-view {
   max-height: 540rpx
 }
 .wux-select__toolbar {
@@ -30,13 +21,13 @@
   transform-origin: 0 0;
   transform: scaleY(.5)
 }
-.wux-select__toolbar-inner {
+.wux-select__inner {
   height: 88rpx;
   display: -ms-flexbox;
   display: flex;
   text-align: center
 }
-.wux-select__toolbar-title {
+.wux-select__title {
   position: absolute;
   display: block;
   width: 100%;
@@ -48,7 +39,7 @@
   text-align: center;
   white-space: nowrap
 }
-.wux-select__toolbar-button {
+.wux-select__button {
   position: absolute;
   box-sizing: border-box;
   height: 88rpx;
@@ -56,14 +47,14 @@
   padding: 0 30rpx;
   z-index: 10
 }
-.wux-select__toolbar-button--cancel {
+.wux-select__button--cancel {
   left: 0;
   color: #b2b2b2
 }
-.wux-select__toolbar-button--confirm {
+.wux-select__button--confirm {
   right: 0;
   color: #33cd5f
 }
-.wux-select__toolbar-button--hover {
+.wux-select__button--hover {
   background-color: #ececec
 }

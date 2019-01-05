@@ -1,3 +1,5 @@
+import baseComponent from '../helpers/baseComponent'
+
 const getPlacements = ([a, s, b] = rects, placement = 'top') => {
     switch (placement) {
         case 'topLeft':
@@ -68,12 +70,16 @@ const getPlacements = ([a, s, b] = rects, placement = 'top') => {
     }
 }
 
-Component({
-    externalClasses: ['wux-class'],
-    options: {
-        multipleSlots: true,
-    },
+baseComponent({
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-popover',
+        },
+        classNames: {
+            type: null,
+            value: 'wux-animate--fadeIn',
+        },
         theme: {
             type: String,
             value: 'light',
@@ -130,6 +136,31 @@ Component({
         popoverStyle: '',
         popoverBodyStyle: '',
         popoverVisible: false,
+    },
+    computed: {
+        classes() {
+            const { prefixCls, theme, placement } = this.data
+            const wrap = this.classNames(prefixCls, {
+                [`${prefixCls}--theme-${theme}`]: theme,
+                [`${prefixCls}--placement-${placement}`]: placement,
+            })
+            const content = `${prefixCls}__content`
+            const arrow = `${prefixCls}__arrow`
+            const inner = `${prefixCls}__inner`
+            const title = `${prefixCls}__title`
+            const innerContent = `${prefixCls}__inner-content`
+            const element = `${prefixCls}__element`
+
+            return {
+                wrap,
+                content,
+                arrow,
+                inner,
+                title,
+                innerContent,
+                element,
+            }
+        },
     },
     methods: {
         getPopoverStyle() {

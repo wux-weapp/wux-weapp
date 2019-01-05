@@ -1,6 +1,6 @@
 @import "../styles/base/fn.wxss";
 
-.@{wuxClassNamePrefix}-toast {
+.@{wuxClassNamePrefix}-loading {
 	position: fixed;
 	z-index: 5000;
 	top: 50%;
@@ -21,7 +21,7 @@
 		&--has-icon {
 			padding: 15px;
 
-			.@{wuxClassNamePrefix}-toast__text {
+			.@{wuxClassNamePrefix}-loading__text {
 				margin-top: 6px;
 			}
 		}

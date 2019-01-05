@@ -62,6 +62,12 @@
   background: 0 0
 }
 .wux-search-bar__label {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: absolute;
   top: 2rpx;
   right: 2rpx;

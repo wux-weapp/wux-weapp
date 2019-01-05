@@ -1,33 +1,33 @@
 <wux-popup position="bottom" visible="{{ in }}" bind:close="hide">
-    <view class="wux-class wux-keyboard">
-        <view class="wux-keyboard__hd" wx:if="{{ inputText }}">{{ inputText }}</view>
-        <view class="wux-keyboard__bd">
+    <view class="wux-class {{ classes.wrap }}">
+        <view class="{{ classes.hd }}" wx:if="{{ inputText }}">{{ inputText }}</view>
+        <view class="{{ classes.bd }}">
             <block wx:for="{{ keys }}" wx:key="index" wx:if="{{ maxlength !== -1 }}">
-                <view class="wux-keyboard__label">
-                    <view class="wux-keyboard__password {{ password ? 'wux-keyboard__password--dot' : '' }} {{ value.length >= (index + 1) ? 'wux-keyboard__password--active' : '' }}">
+                <view class="{{ classes.label }}">
+                    <view class="{{ classes.password }} {{ password ? prefixCls + '__password--dot' : '' }} {{ value.length >= (index + 1) ? prefixCls + '__password--active' : '' }}">
                         {{ !password ? value[index] : '' }}
                     </view>
                 </view>
             </block>
             <block wx:if="{{ maxlength === -1 }}">
-                <input class="wux-keyboard__input" type="text" value="{{ value }}" password="{{ password }}" disabled></input>
+                <input class="{{ classes.input }}" type="text" value="{{ value }}" password="{{ password }}" disabled></input>
             </block>
         </view>
-        <view class="wux-keyboard__ft">
-            <view class="wux-keyboard__title" wx:if="{{ titleText }}">{{ titleText }}</view>
-            <view class="wux-keyboard__numbers">
+        <view class="{{ classes.ft }}">
+            <view class="{{ classes.title }}" wx:if="{{ titleText }}">{{ titleText }}</view>
+            <view class="{{ classes.numbers }}">
                 <block wx:for="{{ nums }}" wx:for-item="n" wx:key="index">
-                    <view class="wux-keyboard__number" wx:if="{{ index === 3 }}">
-                        <view class="wux-keyboard__text" hover-class="wux-keyboard__text--hover" hover-start-time="20" hover-stay-time="170" wx:if="{{ showCancel }}" bindtap="hide">{{ cancelText }}</view>
-                        <view class="wux-keyboard__text" hover-class="wux-keyboard__text--hover" hover-start-time="20" hover-stay-time="170" wx:else></view>
+                    <view class="{{ classes.number }}" wx:if="{{ index === 3 }}">
+                        <view class="{{ classes.text }}" hover-class="{{ classes.hover }}" hover-start-time="20" hover-stay-time="170" wx:if="{{ showCancel }}" bindtap="hide">{{ cancelText }}</view>
+                        <view class="{{ classes.text }}" hover-class="{{ classes.hover }}" hover-start-time="20" hover-stay-time="170" wx:else></view>
                         <block wx:for="{{ n }}" wx:for-item="m" wx:key="index">
-                            <view class="wux-keyboard__text" hover-class="wux-keyboard__text--hover" hover-start-time="20" hover-stay-time="170" data-value="{{ m }}" bindtap="increase">{{ m }}</view>
+                            <view class="{{ classes.text }}" hover-class="{{ classes.hover }}" hover-start-time="20" hover-stay-time="170" data-value="{{ m }}" bindtap="increase">{{ m }}</view>
                         </block>
-                        <view class="wux-keyboard__text" bindtap="decrease">×</view>
+                        <view class="{{ classes.text }}" bindtap="decrease">×</view>
                     </view>
-                    <view class="wux-keyboard__number" wx:else>
+                    <view class="{{ classes.number }}" wx:else>
                         <block wx:for="{{ n }}" wx:for-item="m" wx:key="index">
-                            <view class="wux-keyboard__text" hover-class="wux-keyboard__text--hover" hover-start-time="20" hover-stay-time="170" data-value="{{ m }}" bindtap="increase">{{ m }}</view>
+                            <view class="{{ classes.text }}" hover-class="{{ classes.hover }}" hover-start-time="20" hover-stay-time="170" data-value="{{ m }}" bindtap="increase">{{ m }}</view>
                         </block>
                     </view>
                 </block>

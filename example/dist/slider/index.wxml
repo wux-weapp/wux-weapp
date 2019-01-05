@@ -1,17 +1,17 @@
-<view class="wux-class wux-slider {{ disabled ? 'wux-slider--disabled' : '' }}" style="{{ wrapStyle }}">
-	<view class="wux-slider__min" wx:if="{{ common.getValue(showValue, 'min') }}">{{ min }}</view>
-    <view class="wux-slider__rail" style="{{ railStyle }}">
+<view class="wux-class {{ classes.wrap }}" style="{{ wrapStyle }}">
+	<view class="{{ classes.min }}" wx:if="{{ common.getValue(showValue, 'min') }}">{{ min }}</view>
+    <view class="{{ classes.rail }}" style="{{ railStyle }}">
     	<block wx:for="{{ marks }}" wx:key="" wx:if="{{ showMark && marks.length > 0 }}">
-    		<view class="wux-slider__mark" style="left: {{ item + '%' }}; {{ common.getStyle(markStyle, index) }}" />
+    		<view class="{{ classes.mark }}" style="left: {{ item + '%' }}; {{ common.getStyle(markStyle, index) }}" />
     	</block>
 	    <block wx:for="{{ sliderValue }}" wx:key="">
 	    	<view
-	    		class="wux-slider__track"
+	    		class="{{ classes.track }}"
 	    		style="{{ common.getTrackStyle(offsets, index, sliderValue.length > 1) }}; {{ common.getStyle(trackStyle, index) }}"
 	    		wx:if="{{ sliderValue.length === 1 || index !== sliderValue.length - 1 }}"
 	    	/>
 	    	<view
-	    		class="wux-slider__handle {{ last === index ? 'wux-slider__handle--last' : '' }}"
+	    		class="{{ classes.handle }} {{ last === index ? prefixCls + '__handle--last' : '' }}"
 	    		data-index="{{ index }}"
 	    		bindtouchstart="onTouchStart"
 	    		bindtouchmove="onTouchMove"
@@ -20,7 +20,7 @@
 	    	/>
 	    </block>
     </view>
-    <view class="wux-slider__max" wx:if="{{ common.getValue(showValue, 'max') }}">{{ max }}</view>
+    <view class="{{ classes.max }}" wx:if="{{ common.getValue(showValue, 'max') }}">{{ max }}</view>
 </view>
 
 <wxs module="common">

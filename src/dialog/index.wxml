@@ -2,17 +2,25 @@
     <view slot="header">{{ title }}</view>
     <view>
         <text>{{ content }}</text>
-        <view class="wux-popup__input-container" wx:if="{{ prompt }}">
+        <view class="{{ classes.prompt }}" wx:if="{{ prompt }}">
             <label>
-                <input type="{{ prompt.fieldtype }}" class="wux-popup__input" value="{{ prompt.response }}" password="{{ prompt.password }}" placeholder="{{ prompt.placeholder }}" maxlength="{{ maxlength }}" bindinput="bindinput" />
+                <input
+                    type="{{ prompt.fieldtype }}"
+                    class="{{ classes.input }}"
+                    value="{{ prompt.response }}"
+                    password="{{ prompt.password }}"
+                    placeholder="{{ prompt.placeholder }}"
+                    maxlength="{{ maxlength }}"
+                    bindinput="bindinput"
+                />
             </label>
         </view>
     </view>
-    <view slot="footer" class="wux-popup__buttons {{ verticalButtons ? 'wux-popup__buttons--vertical' : 'wux-popup__buttons--horizontal' }}">
+    <view slot="footer" class="{{ classes.buttons }}">
         <block wx:for="{{ buttons }}" wx:for-item="button" wx:key="">
             <view
-                class="wux-popup__button {{ 'wux-popup__button--' + (button.type || 'default') }} {{ button.bold ? 'wux-popup__button--bold' : '' }}"
-                hover-class="wux-popup__button--hover"
+                class="{{ classes.button[index].wrap }}"
+                hover-class="{{ classes.button[index].hover }}"
                 data-index="{{ index }}"
                 bindtap="buttonTapped"
             >

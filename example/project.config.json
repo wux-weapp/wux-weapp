@@ -8,7 +8,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.94",
+	"libVersion": "2.2.3",
 	"appid": "wx816264ac1982a645",
 	"projectname": "wux-weapp",
 	"isGameTourist": false,

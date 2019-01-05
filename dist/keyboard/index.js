@@ -1,7 +1,7 @@
-import baseBehavior from '../helpers/baseBehavior'
-import mergeOptionsToData from '../helpers/mergeOptionsToData'
+import baseComponent from '../helpers/baseComponent'
 
 const defaults = {
+    prefixCls: 'wux-keyboard',
     className: '',
     titleText: '安全键盘',
     cancelText: '取消',
@@ -17,10 +17,10 @@ const defaults = {
 
 /**
  * 给指一位数组随机生成二维数组
- * 
+ *
  * @param {boolean} [isRandom=false] 是否随机
  * @param {array} [arr=[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]] 默认数组
- * @returns 
+ * @returns
  */
 const upsetNums = (isRandom = false, arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) => {
     if (isRandom) {
@@ -48,10 +48,41 @@ const upsetNums = (isRandom = false, arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) => {
     return nums
 }
 
-Component({
-    behaviors: [baseBehavior],
-    externalClasses: ['wux-class'],
-    data: mergeOptionsToData(defaults),
+baseComponent({
+    useFunc: true,
+    data: defaults,
+    computed: {
+        classes() {
+            const { prefixCls } = this.data
+            const wrap = this.classNames(prefixCls)
+            const hd = `${prefixCls}__hd`
+            const bd = `${prefixCls}__bd`
+            const label = `${prefixCls}__label`
+            const password = `${prefixCls}__password`
+            const input = `${prefixCls}__input`
+            const ft = `${prefixCls}__ft`
+            const title = `${prefixCls}__title`
+            const numbers = `${prefixCls}__numbers`
+            const number = `${prefixCls}__number`
+            const text = `${prefixCls}__text`
+            const hover = `${prefixCls}__text--hover`
+
+            return {
+                wrap,
+                hd,
+                bd,
+                label,
+                password,
+                input,
+                ft,
+                title,
+                numbers,
+                number,
+                text,
+                hover,
+            }
+        },
+    },
     methods: {
         /**
          * 隐藏
