@@ -1,14 +1,14 @@
 <view style="{{ style }}" bindtouchstart="bindtouchstart" bindtouchmove="bindtouchmove" bindtouchend="bindtouchend">
-    <view class="wux-refresher {{ className || 'hidden' }}">
-        <view class="wux-refresher__content {{ pullingText || refreshingText ? 'wux-refresher__content--text' : '' }}">
-            <view class="wux-refresher__icon-pulling {{ disablePullingRotation ? 'wux-refresher__icon-pulling--disabled' : '' }}">
-                <text class="{{ pullingIcon || 'wux-refresher__icon--arrow-down' }}"></text>
+    <view class="{{ classes.wrap }}">
+        <view class="{{ classes.content }}">
+            <view class="{{ classes.iconPulling }}">
+                <text class="{{ classes.pIcon }}"></text>
             </view>
-            <view class="wux-refresher__text-pulling">{{ pullingText }}</view>
-            <view class="wux-refresher__icon-refreshing">
-                <text class="{{ refreshingIcon || 'wux-refresher__icon--refresher' }}"></text>
+            <view class="{{ classes.textPulling }}">{{ pullingText }}</view>
+            <view class="{{ classes.iconRefreshing }}">
+                <text class="{{ classes.rIcon }}"></text>
             </view>
-            <view class="wux-refresher__text-refreshing">{{ refreshingText }}</view>
+            <view class="{{ classes.textRefreshing }}">{{ refreshingText }}</view>
         </view>
     </view>
     <slot></slot>
