@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 import { getTouchPoints, getPointsNumber, getPointsDistance } from '../helpers/gestures'
 
 const defaults = {

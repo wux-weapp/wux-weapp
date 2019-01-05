@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 
 const defaults = {
     prefixCls: 'wux-calendar',
@@ -53,7 +54,7 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls, direction } = this.data
-            const wrap = this.classNames(prefixCls, {
+            const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${direction}`]: direction,
             })
             const content = `${prefixCls}__content`
@@ -61,10 +62,10 @@ baseComponent({
             const toolbar = `${prefixCls}__toolbar`
             const picker = `${prefixCls}__picker`
             const link = `${prefixCls}__link`
-            const prev = this.classNames(`${prefixCls}__icon`, {
+            const prev = classNames(`${prefixCls}__icon`, {
                 [`${prefixCls}__icon--prev`]: true,
             })
-            const next = this.classNames(`${prefixCls}__icon`, {
+            const next = classNames(`${prefixCls}__icon`, {
                 [`${prefixCls}__icon--next`]: true,
             })
             const value = `${prefixCls}__value`

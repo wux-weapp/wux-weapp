@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 
 const defaults = {
     prefixCls: 'wux-toptips',
@@ -19,8 +20,8 @@ baseComponent({
         classes() {
             const { prefixCls } = this.data
             const ico = this.data.icon ? this.data.icon : 'cancel'
-            const wrap = this.classNames(prefixCls)
-            const content = this.classNames(`${prefixCls}__content`, {
+            const wrap = classNames(prefixCls)
+            const content = classNames(`${prefixCls}__content`, {
                 [`${prefixCls}__content--${ico}`]: ico,
             })
             const icon = `${prefixCls}__icon`

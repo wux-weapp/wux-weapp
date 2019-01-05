@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 
 baseComponent({
     properties: {
@@ -33,7 +34,7 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls, shape, size, src } = this.data
-            const wrap = this.classNames(prefixCls, {
+            const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${shape}`]: shape,
                 [`${prefixCls}--${size}`]: size,
                 [`${prefixCls}--thumb`]: src,

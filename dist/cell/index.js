@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 
 baseComponent({
     relations: {
@@ -98,7 +99,7 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls, hoverClass, isLast, isLink, disabled } = this.data
-            const wrap = this.classNames(prefixCls, {
+            const wrap = classNames(prefixCls, {
                 [`${prefixCls}--last`]: isLast,
                 [`${prefixCls}--access`]: isLink,
                 [`${prefixCls}--disabled`]: disabled,

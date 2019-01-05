@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 
 const defaultStyle = 'transition: transform .4s; transform: translate3d(0px, 0px, 0px) scale(1);'
 
@@ -54,17 +55,17 @@ baseComponent({
                 refreshing,
                 tail,
             } = this.data
-            const wrap = this.classNames(prefixCls, {
+            const wrap = classNames(prefixCls, {
                 [`${prefixCls}--hidden`]: !visible,
                 [`${prefixCls}--visible`]: visible,
                 [`${prefixCls}--active`]: active,
                 [`${prefixCls}--refreshing`]: refreshing,
                 [`${prefixCls}--refreshing-tail`]: tail,
             })
-            const content = this.classNames(`${prefixCls}__content`, {
+            const content = classNames(`${prefixCls}__content`, {
                 [`${prefixCls}__content--text`]: pullingText || refreshingText,
             })
-            const iconPulling = this.classNames(`${prefixCls}__icon-pulling`, {
+            const iconPulling = classNames(`${prefixCls}__icon-pulling`, {
                 [`${prefixCls}__icon-pulling--disabled`]: disablePullingRotation,
             })
             const textPulling = `${prefixCls}__text-pulling`

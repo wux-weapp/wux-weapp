@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 
 baseComponent({
 	properties: {
@@ -26,7 +27,7 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls, dashed, showText, position } = this.data
-            const wrap = this.classNames(prefixCls, {
+            const wrap = classNames(prefixCls, {
                 [`${prefixCls}--dashed`]: dashed,
                 [`${prefixCls}--text`]: showText,
                 [`${prefixCls}--text-${position}`]: showText && position,

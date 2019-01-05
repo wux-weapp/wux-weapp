@@ -2,7 +2,6 @@ import computedBehavior from './computedBehavior'
 import relationsBehavior from './relationsBehavior'
 import safeSetDataBehavior from './safeSetDataBehavior'
 import funcBehavior from './funcBehavior'
-import classNames from './classNames'
 
 const baseComponent = (options = {}) => {
     // add default externalClasses
@@ -49,15 +48,6 @@ const baseComponent = (options = {}) => {
         multipleSlots: true,
         addGlobalClass: true,
         ...options.options,
-    }
-
-    // fix first computed
-    options.classNames = classNames
-
-    // add default methods
-    options.methods = {
-        classNames,
-        ...options.methods,
     }
 
     return Component(options)

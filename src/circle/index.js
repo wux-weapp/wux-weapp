@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 
 const toAngle = (a) => a / 180 * Math.PI
 const percent = (a) => toAngle(a / 100 * 360)
@@ -76,7 +77,7 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls } = this.data
-            const wrap = this.classNames(prefixCls)
+            const wrap = classNames(prefixCls)
             const inner = `${prefixCls}__inner`
 
             return {

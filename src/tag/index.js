@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 
 /**
  * 判断是否预设的颜色值
@@ -56,7 +57,7 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls, hoverClass } = this.data
-            const wrap = this.classNames(prefixCls)
+            const wrap = classNames(prefixCls)
             const icon = `${prefixCls}__icon`
             const hover = hoverClass && hoverClass !== 'default' ? hoverClass : `${prefixCls}--hover`
 

@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 
 const defaultStatus = ['wait', 'process', 'finish', 'error']
 const defaultIcon = 'ios-checkmark'
@@ -41,7 +42,7 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls, direction } = this.data
-            const wrap = this.classNames(prefixCls, {
+            const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${direction}`]: direction,
             })
             const hd = `${prefixCls}__hd`

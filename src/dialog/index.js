@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 
 const defaults = {
     prefixCls: 'wux-dialog',
@@ -30,11 +31,11 @@ baseComponent({
             const { prefixCls, buttons: btns, verticalButtons } = this.data
             const prompt = `${prefixCls}__prompt`
             const input = `${prefixCls}__input`
-            const buttons = this.classNames(`${prefixCls}__buttons`, {
+            const buttons = classNames(`${prefixCls}__buttons`, {
                 [`${prefixCls}__buttons--${verticalButtons ? 'vertical' : 'horizontal'}`]: true,
             })
             const button = btns.map((button) => {
-                const wrap = this.classNames(`${prefixCls}__button`, {
+                const wrap = classNames(`${prefixCls}__button`, {
                     [`${prefixCls}__button--${button.type || 'default'}`]: button.type || 'default',
                     [`${prefixCls}__button--bold`]: button.bold,
                     [`${button.className}`]: button.className,

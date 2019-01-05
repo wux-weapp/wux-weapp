@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 
 baseComponent({
     relations: {
@@ -33,14 +34,14 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls, isLast, pending, isPending, custom } = this.data
-            const wrap = this.classNames(prefixCls, {
+            const wrap = classNames(prefixCls, {
                 [`${prefixCls}--last`]: isLast,
                 [`${prefixCls}--pending`]: pending,
             })
-            const tail = this.classNames(`${prefixCls}__tail`, {
+            const tail = classNames(`${prefixCls}__tail`, {
                 [`${prefixCls}__tail--pending`]: isPending,
             })
-            const dot = this.classNames(`${prefixCls}__dot`, {
+            const dot = classNames(`${prefixCls}__dot`, {
                 [`${prefixCls}__dot--custom`]: custom,
             })
             const content = `${prefixCls}__content`

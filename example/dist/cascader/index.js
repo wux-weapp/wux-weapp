@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 import arrayTreeFilter from '../helpers/arrayTreeFilter'
 
 const WUX_CASCADER = 'wux-cascader'
@@ -65,7 +66,7 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls } = this.data
-            const wrap = this.classNames(prefixCls)
+            const wrap = classNames(prefixCls)
             const hd = `${prefixCls}__hd`
             const title = `${prefixCls}__title`
             const menus = `${prefixCls}__menus`

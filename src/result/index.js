@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 
 const defaultIcon = {
     type: 'success',
@@ -59,7 +60,7 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls, fixed } = this.data
-            const wrap = this.classNames(prefixCls, {
+            const wrap = classNames(prefixCls, {
                 [`${prefixCls}--fixed`]: fixed,
             })
             const hd = `${prefixCls}__hd`

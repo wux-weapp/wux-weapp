@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 import { colors } from '../helpers/colors'
 
 const defaultColors = {
@@ -58,7 +59,7 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls, shape, status } = this.data
-            const wrap = this.classNames(prefixCls, {
+            const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${shape}`]: shape,
                 [`${prefixCls}--${status}`]: status,
             })

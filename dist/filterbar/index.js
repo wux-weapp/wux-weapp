@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 import { $wuxBackdrop } from '../index'
 
 baseComponent({
@@ -15,7 +16,7 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls } = this.data
-            const wrap = this.classNames(prefixCls)
+            const wrap = classNames(prefixCls)
             const bd = `${prefixCls}__bd`
             const item = `${prefixCls}__item`
             const text = `${prefixCls}__text`

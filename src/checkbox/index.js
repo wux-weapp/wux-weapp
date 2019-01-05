@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 
 baseComponent({
     relations: {
@@ -60,7 +61,7 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls } = this.data
-            const cell = this.classNames(prefixCls)
+            const cell = classNames(prefixCls)
             const selectable = `${prefixCls}__selectable`
 
             return {

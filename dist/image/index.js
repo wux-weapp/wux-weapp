@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 
 const EMPTY = 'empty'
 const LOADING = 'loading'
@@ -68,14 +69,14 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls, shape, mode, status, empty, loading, error } = this.data
-            const wrap = this.classNames(prefixCls, {
+            const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${shape}`]: shape,
                 [`${prefixCls}--${mode}`]: mode,
                 [`${prefixCls}--${status}`]: status,
             })
             const inner = `${prefixCls}__inner`
             const thumb = `${prefixCls}__thumb`
-            const mask = this.classNames(`${prefixCls}__mask`, {
+            const mask = classNames(`${prefixCls}__mask`, {
                 [`${prefixCls}__mask--text`]: empty || loading || error,
             })
             const text = `${prefixCls}__text`

@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 
 baseComponent({
     relations: {
@@ -31,7 +32,7 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls, direction, scroll, theme, current, disabled } = this.data
-            const wrap = this.classNames(prefixCls, {
+            const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${direction}`]: direction,
                 [`${prefixCls}--${theme}`]: theme,
                 [`${prefixCls}--scroll`]: scroll,

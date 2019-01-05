@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 
 const defaults = {
     prefixCls: 'wux-select',
@@ -32,13 +33,13 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls } = this.data
-            const wrap = this.classNames(prefixCls)
+            const wrap = classNames(prefixCls)
             const toolbar = `${prefixCls}__toolbar`
             const inner = `${prefixCls}__inner`
-            const cancel = this.classNames(`${prefixCls}__button`, {
+            const cancel = classNames(`${prefixCls}__button`, {
                 [`${prefixCls}__button--cancel`]: true
             })
-            const confirm = this.classNames(`${prefixCls}__button`, {
+            const confirm = classNames(`${prefixCls}__button`, {
                 [`${prefixCls}__button--confirm`]: true
             })
             const hover = `${prefixCls}__button--hover`

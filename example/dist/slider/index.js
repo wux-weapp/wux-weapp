@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 import { getTouchPoints, getPointsNumber } from '../helpers/gestures'
 
 /**
@@ -96,7 +97,7 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls, disabled } = this.data
-            const wrap = this.classNames(prefixCls, {
+            const wrap = classNames(prefixCls, {
                 [`${prefixCls}--disabled`]: disabled,
             })
             const min = `${prefixCls}__min`

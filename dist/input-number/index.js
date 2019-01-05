@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 
 const MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER || Math.pow(2, 53) - 1
 
@@ -93,15 +94,15 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls, shape, color, disabledMin, disabledMax } = this.data
-            const wrap = this.classNames(prefixCls, {
+            const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${shape}`]: shape,
             })
-            const sub = this.classNames(`${prefixCls}__selector`, {
+            const sub = classNames(`${prefixCls}__selector`, {
                 [`${prefixCls}__selector--sub`]: true,
                 [`${prefixCls}__selector--${color}`]: color,
                 [`${prefixCls}__selector--disabled`]: disabledMin,
             })
-            const add = this.classNames(`${prefixCls}__selector`, {
+            const add = classNames(`${prefixCls}__selector`, {
                 [`${prefixCls}__selector--add`]: true,
                 [`${prefixCls}__selector--${color}`]: color,
                 [`${prefixCls}__selector--disabled`]: disabledMax,

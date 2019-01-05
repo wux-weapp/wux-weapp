@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 
 const getDefaultActiveKey = (elements) => {
     const target = elements.filter((element) => !element.data.disabled)[0]
@@ -64,7 +65,7 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls, direction, scroll } = this.data
-            const wrap = this.classNames(prefixCls, {
+            const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${direction}`]: direction,
                 [`${prefixCls}--scroll`]: scroll,
             })

@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 
 baseComponent({
     properties: {
@@ -34,7 +35,7 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls, size, nested, tip: showText, spinVisible } = this.data
-            const wrap = this.classNames(prefixCls, {
+            const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${size}`]: size,
                 [`${prefixCls}--nested`]: nested,
                 [`${prefixCls}--show-text`]: showText,
@@ -43,7 +44,7 @@ baseComponent({
             const dots = `${prefixCls}__dots`
             const dot = `${prefixCls}__dot`
             const tip = `${prefixCls}__tip`
-            const container = this.classNames(`${prefixCls}__container`, {
+            const container = classNames(`${prefixCls}__container`, {
                 [`${prefixCls}__container--blur`]: spinVisible,
             })
 

@@ -1,4 +1,6 @@
+
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 
 baseComponent({
     properties: {
@@ -34,9 +36,9 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls, buttons: btns } = this.data
-            const wrap = this.classNames(prefixCls)
+            const wrap = classNames(prefixCls)
             const button = btns.map((button) => {
-                const wrap = this.classNames(`${prefixCls}__button`, {
+                const wrap = classNames(`${prefixCls}__button`, {
                     [`${prefixCls}__button--disabled`]: button.disabled,
                     [`${button.className}`]: button.className,
                 })

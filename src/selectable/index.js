@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 import { isPresetColor } from '../helpers/colors'
 
 baseComponent({
@@ -58,7 +59,7 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls, inputChecked, disabled } = this.data
-            const wrap = this.classNames(prefixCls, {
+            const wrap = classNames(prefixCls, {
                 [`${prefixCls}--checked`]: inputChecked,
                 [`${prefixCls}--disabled`]: disabled,
             })

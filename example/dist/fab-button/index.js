@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 import { getTouchPoints, getPointsNumber } from '../helpers/gestures'
 
 const defaultAction = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAQAAAAAYLlVAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAHdElNRQfhBAQLCR5MtjrbAAAAjUlEQVRo3u3ZMRKAIAxEUbDirp4nXnctFFDHBtDQ/O1Nnk6aHUMgZCBKMkmmNAtgOmL9M+IQQGVM95zljy8DAAAAAAAAAAAAAACALsDZcppSx7Q+WdtUvA5xffUtrjeA8/qQ21S9gc15/3Nfzw0M5O0G2kM5BQAAAAAAAAAAAAAAQGk33q0qZ/p/Q/JFdmei9usomnwIAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE3LTA0LTA0VDExOjA5OjMwKzA4OjAw1U4c3wAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNy0wNC0wNFQxMTowOTozMCswODowMKQTpGMAAAAASUVORK5CYII='
@@ -120,21 +121,21 @@ baseComponent({
                 buttons,
                 hoverClass,
             } = this.data
-            const wrap = this.classNames(prefixCls, {
+            const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${position}`]: position,
                 [`${prefixCls}--${theme}`]: theme,
                 [`${prefixCls}--${direction}`]: direction,
                 [`${prefixCls}--reverse`]: reverse,
                 [`${prefixCls}--opened`]: buttonVisible,
             })
-            const action = this.classNames(`${prefixCls}__action`, {
+            const action = classNames(`${prefixCls}__action`, {
                 [`${prefixCls}__action--hide-shadow`]: hideShadow,
             })
-            const text = this.classNames(`${prefixCls}__text`, {
+            const text = classNames(`${prefixCls}__text`, {
                 [`${prefixCls}__text--rotate`]: buttonVisible && actionRotate,
             })
             const button = buttons.map((button) => {
-                const wrap = this.classNames(`${prefixCls}__button`, {
+                const wrap = classNames(`${prefixCls}__button`, {
                     [`${prefixCls}__button--hide-shadow`]: button.hideShadow,
                     [`${prefixCls}__button--disabled`]: button.disabled,
                     [`${button.className}`]: button.className,

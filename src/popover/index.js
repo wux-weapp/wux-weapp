@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 
 const getPlacements = ([a, s, b] = rects, placement = 'top') => {
     switch (placement) {
@@ -140,7 +141,7 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls, theme, placement } = this.data
-            const wrap = this.classNames(prefixCls, {
+            const wrap = classNames(prefixCls, {
                 [`${prefixCls}--theme-${theme}`]: theme,
                 [`${prefixCls}--placement-${placement}`]: placement,
             })

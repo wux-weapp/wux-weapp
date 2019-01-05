@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 
 const defaults = {
     prefixCls: 'wux-notification',
@@ -20,7 +21,7 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls } = this.data
-            const wrap = this.classNames(prefixCls)
+            const wrap = classNames(prefixCls)
             const content = `${prefixCls}__content`
             const hd = `${prefixCls}__hd`
             const image = `${prefixCls}__image`

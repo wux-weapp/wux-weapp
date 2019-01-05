@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 import { safeAreaInset, checkIPhoneX } from '../helpers/checkIPhoneX'
 
 baseComponent({
@@ -49,7 +50,7 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls, position } = this.data
-            const wrap = this.classNames(prefixCls, {
+            const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${position}`]: position,
             })
 

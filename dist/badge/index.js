@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
 
 baseComponent({
     externalClasses: ['wux-class-badge'],
@@ -39,9 +40,9 @@ baseComponent({
     computed: {
         classes() {
             const { prefixCls, status: st } = this.data
-            const wrap = this.classNames(prefixCls)
+            const wrap = classNames(prefixCls)
             const status = `${prefixCls}__status`
-            const statusDot = this.classNames(`${prefixCls}__status-dot`, {
+            const statusDot = classNames(`${prefixCls}__status-dot`, {
                 [`${prefixCls}__status-dot--${st}`]: st,
             })
             const statusText = `${prefixCls}__status-text`
