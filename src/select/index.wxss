@@ -1,15 +1,7 @@
 @import "../styles/base/fn.wxss";
 
 .@{wuxClassNamePrefix}-select {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 1010;
-    width: 100%;
-    margin: auto;
-    background-color: #fff;
-
-    &__content {
+    &__scroll-view {
         max-height: 270px;
     }
 
@@ -24,47 +16,47 @@
         &:before {
             .setTopLine(#D9D9D9);
         }
-    
-        &-inner {
-            height: 44px;
-            display: flex;
-            text-align: center;
+    }
+
+    &__inner {
+        height: 44px;
+        display: flex;
+        text-align: center;
+    }
+
+    &__title {
+        position: absolute;
+        display: block;
+        width: 100%;
+        padding: 0;
+        font-size: 17px;
+        font-weight: normal;
+        line-height: 44px;
+        color: @dark;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    &__button {
+        position: absolute;
+        box-sizing: border-box;
+        height: 44px;
+        line-height: 44px;
+        padding: 0 15px;
+        z-index: 10;
+
+        &--cancel {
+            left: 0;
+            color: @stable-inverse;
         }
 
-        &-title {
-            position: absolute;
-            display: block;
-            width: 100%;
-            padding: 0;
-            font-size: 17px;
-            font-weight: normal;
-            line-height: 44px;
-            color: @dark;
-            text-align: center;
-            white-space: nowrap;
+        &--confirm {
+            right: 0;
+            color: @balanced;
         }
 
-        &-button {
-            position: absolute;
-            box-sizing: border-box;
-            height: 44px;
-            line-height: 44px;
-            padding: 0 15px;
-            z-index: 10;
-
-            &--cancel {
-                left: 0;
-                color: @stable-inverse;
-            }
-
-            &--confirm {
-                right: 0;
-                color: @balanced;
-            }
-
-            &--hover {
-                background-color: #ECECEC;
-            }
+        &--hover {
+            background-color: #ECECEC;
         }
     }
 }

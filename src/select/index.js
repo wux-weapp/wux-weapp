@@ -1,6 +1,7 @@
 import baseComponent from '../helpers/baseComponent'
 
 const defaults = {
+    prefixCls: 'wux-select',
     value: '',
     options: [],
     multiple: false,
@@ -28,6 +29,34 @@ const getSelectIndex = ({ value = '', options = [], multiple = false }) => {
 baseComponent({
     useFunc: true,
     data: defaults,
+    computed: {
+        classes() {
+            const { prefixCls } = this.data
+            const wrap = this.classNames(prefixCls)
+            const toolbar = `${prefixCls}__toolbar`
+            const inner = `${prefixCls}__inner`
+            const cancel = this.classNames(`${prefixCls}__button`, {
+                [`${prefixCls}__button--cancel`]: true
+            })
+            const confirm = this.classNames(`${prefixCls}__button`, {
+                [`${prefixCls}__button--confirm`]: true
+            })
+            const hover = `${prefixCls}__button--hover`
+            const title = `${prefixCls}__title`
+            const scrollView = `${prefixCls}__scroll-view`
+
+            return {
+                wrap,
+                toolbar,
+                inner,
+                cancel,
+                confirm,
+                hover,
+                title,
+                scrollView,
+            }
+        },
+    },
     methods: {
         /**
          * 打开
