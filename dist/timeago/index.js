@@ -1,8 +1,13 @@
+import baseComponent from '../helpers/baseComponent'
 import { parse, diff, format } from './core/index'
 import locales from './locales/index'
 
-Component({
+baseComponent({
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-timeago',
+        },
         to: {
             type: null,
             value: null,

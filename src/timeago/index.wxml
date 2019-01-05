@@ -1,1 +1,1 @@
-<text>{{ timeago }}</text>
+<text class="wux-class {{ prefixCls }}">{{ timeago }}</text>

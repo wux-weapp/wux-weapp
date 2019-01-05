@@ -5,14 +5,14 @@ Page({
 	},
     onLoad() {
         this.setData({
-            to: new Date(),
+            to: new Date().getTime(),
         })
     },
     onChange(e) {
         console.log(e)
         const { key, values } = e.detail
         const lang = values[key]
-        
+
         this.setData({
         	lang,
         })
