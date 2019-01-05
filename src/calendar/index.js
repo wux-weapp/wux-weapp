@@ -1,6 +1,7 @@
 import baseComponent from '../helpers/baseComponent'
 
 const defaults = {
+    prefixCls: 'wux-calendar',
     monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
     monthNamesShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
     dayNames: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
@@ -49,6 +50,56 @@ const isSameDate = (a, b) => {
 baseComponent({
     useFunc: true,
     data: defaults,
+    computed: {
+        classes() {
+            const { prefixCls, direction } = this.data
+            const wrap = this.classNames(prefixCls, {
+                [`${prefixCls}--${direction}`]: direction,
+            })
+            const content = `${prefixCls}__content`
+            const hd = `${prefixCls}__hd`
+            const toolbar = `${prefixCls}__toolbar`
+            const picker = `${prefixCls}__picker`
+            const link = `${prefixCls}__link`
+            const prev = this.classNames(`${prefixCls}__icon`, {
+                [`${prefixCls}__icon--prev`]: true,
+            })
+            const next = this.classNames(`${prefixCls}__icon`, {
+                [`${prefixCls}__icon--next`]: true,
+            })
+            const value = `${prefixCls}__value`
+            const bd = `${prefixCls}__bd`
+            const weekdays = `${prefixCls}__weekdays`
+            const weekday = `${prefixCls}__weekday`
+            const months = `${prefixCls}__months`
+            const monthsContent = `${prefixCls}__months-content`
+            const month = `${prefixCls}__month`
+            const days = `${prefixCls}__days`
+            const day = `${prefixCls}__day`
+            const text = `${prefixCls}__text`
+
+            return {
+                wrap,
+                content,
+                hd,
+                toolbar,
+                picker,
+                link,
+                prev,
+                next,
+                value,
+                bd,
+                weekdays,
+                weekday,
+                months,
+                monthsContent,
+                month,
+                days,
+                day,
+                text,
+            }
+        },
+    },
     methods: {
         /**
          * 打开日历
