@@ -186,52 +186,6 @@ baseComponent({
                 this.timer = null
             }
         },
-        /**
-         * safeSetData
-         * @param {Object} nextData 数据对象
-         * @param {Function} callback 回调函数
-         */
-        safeSetData(nextData, callback) {
-            callback = this.setNextCallback(callback)
-
-            this.setData(nextData, () => {
-                callback()
-            })
-        },
-        /**
-         * 设置下一回调函数
-         * @param {Function} callback 回调函数
-         */
-        setNextCallback(callback) {
-            let active = true
-
-            this.nextCallback = (event) => {
-                if (active) {
-                    active = false
-                    this.nextCallback = null
-
-                    callback.call(this, event)
-                }
-            }
-
-            this.nextCallback.cancel = () => {
-                active = false
-            }
-
-            return this.nextCallback
-        },
-        /**
-         * 取消下一回调函数
-         */
-        cancelNextCallback() {
-            if (this.nextCallback !== null) {
-                this.nextCallback.cancel()
-                this.nextCallback = null
-            }
-        },
-    },
-    created() {
-        this.nextCallback = null
     },
     attached() {
         this.updateStyle()
@@ -241,7 +195,6 @@ baseComponent({
     },
     detached() {
         this.ctx = null
-        this.cancelNextCallback()
         this.clearTimer()
     },
 })
