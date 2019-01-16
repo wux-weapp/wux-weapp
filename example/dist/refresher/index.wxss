@@ -96,6 +96,47 @@
   animation-name: refresh-spin;
   transform: translateZ(0) rotate(-180deg)
 }
+.wux-loader {
+  overflow: hidden;
+  margin: auto;
+  height: 100rpx;
+  font-size: 30rpx;
+  position: relative;
+  text-align: center;
+  display: none
+}
+.wux-loader .wux-refresher__icon--refresher {
+  display: inline-block;
+  margin: 0
+}
+.wux-loader__text-loading {
+  margin-left: 10rpx
+}
+.wux-loader--hidden {
+  visibility: hidden;
+  display: none
+}
+.wux-loader--visible {
+  visibility: visible;
+  display: block
+}
+.wux-loader--end {
+  visibility: visible;
+  display: block
+}
+.wux-loader__content {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center
+}
 @keyframes refresh-spin {
   0% {
     transform: translateZ(0) rotate(0)

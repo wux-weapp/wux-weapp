@@ -33,6 +33,84 @@ baseComponent({
             type: Number,
             value: 30,
         },
+        prefixLCls: {
+            type: String,
+            value: 'wux-loader'
+        },
+        isShowLoadingText: {
+            type: Boolean,
+            value: false
+        },
+        loadingText: {
+            type: String,
+            value: '正在加载'
+        },
+        loadNoDataText: {
+            type: String,
+            value: '没有更多数据'
+        },
+        scrollTop: {
+            type: Number,
+            value: 0,
+            observer: function (n) {
+                let that = this
+
+                // 获取节点高度
+                const query = wx.createSelectorQuery();
+                query.select(`#${this.id}`).boundingClientRect(function (res) {
+                    that.setData({
+                        newContentHeight: res.height
+                    })
+                }).exec()
+
+                const {
+                    newContentHeight,
+                    oldContentHeight,
+                    windowHeight,
+                    distance,
+                    loading,
+                    noData
+                } = this.data
+                
+                if (windowHeight && !this.isRefreshing()) {
+
+                    // 到临界点时触发上拉加载 
+                    // 防止节点高度一致时引发重复加载
+                    if (
+                        n > newContentHeight - windowHeight - (distance * 1.5) &&
+                        loading === false &&
+                        noData === false && newContentHeight !== oldContentHeight
+                    ) {
+
+                        this.setData({
+                            loading: true,
+                            refreshing: false,
+                            oldContentHeight: newContentHeight
+                        })
+
+                        this.triggerEvent('loadmore')
+
+                    } else if (
+                        loading === false &&
+                        noData === false
+                    ) {
+
+                        // 隐藏上拉加载动画
+                        this.hide()
+
+                    } else if(loading === true) {
+
+                        // 如果在加载中，保持内容的高度一致，以此来防止临界点重复加载
+                        this.setData({
+                            oldContentHeight: newContentHeight
+                        })
+                        
+                    }
+
+                    this.deactivate()
+                }
+            }
+        },
     },
     data: {
         style: defaultStyle,
@@ -40,6 +118,12 @@ baseComponent({
         active: false,
         refreshing: false,
         tail: false,
+        lVisible: false,
+        noData: false, // 是否没有更多数据
+        windowHeight: 0,  // 窗口高度
+        newContentHeight: 0,  // 新节点内容高度
+        oldContentHeight: 0,   // 旧节点内容高度
+        loading: false,   // 判断是否正在加载
     },
     computed: {
         classes() {
@@ -54,6 +138,9 @@ baseComponent({
                 active,
                 refreshing,
                 tail,
+                prefixLCls,
+                loading,
+                noData,
             } = this.data
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--hidden`]: !visible,
@@ -74,6 +161,13 @@ baseComponent({
             const pIcon = pullingIcon || `${prefixCls}__icon--arrow-down`
             const rIcon = refreshingIcon || `${prefixCls}__icon--refresher`
 
+            const lWrap = classNames(prefixLCls, {
+                [`${prefixLCls}--hidden`]: !loading,
+                [`${prefixLCls}--visible`]: loading,
+                [`${prefixLCls}--end`]: noData,
+            })
+            const lContent = `${prefixLCls}__content`
+
             return {
                 wrap,
                 content,
@@ -83,6 +177,8 @@ baseComponent({
                 textRefreshing,
                 pIcon,
                 rIcon,
+                lWrap,
+                lContent,
             }
         },
     },
@@ -119,6 +215,13 @@ baseComponent({
                 visible: true,
                 active: true,
                 refreshing: true,
+
+                // 刷新时重新初始化加载状态
+                loading: false,
+                noData: false,
+                newContentHeight: 0,
+                oldContentHeight: 0,
+                lVisible: false,
             })
         },
         /**
@@ -130,6 +233,14 @@ baseComponent({
                 active: true,
                 refreshing: true,
                 tail: true,
+            })
+        },
+        /**
+         * 加载后隐藏动画
+         */
+        hide() {
+            this.setData({
+                lVisible: false,
             })
         },
         /**
@@ -150,6 +261,12 @@ baseComponent({
          */
         isRefreshing() {
             return this.data.refreshing
+        },
+        /**
+         * 判断是否正在加载
+         */
+        isLoading() {
+            return this.data.loading
         },
         /**
          * 获取触摸点坐标
@@ -188,10 +305,31 @@ baseComponent({
             }, 200)
         },
         /**
+         * 上拉加载完成后的函数
+         */
+        finishLoadmore(bool) {
+            if (bool === true) {
+                setTimeout(() => {
+                    this.setData({
+                        noData: true,
+                        loading: false,
+                    })
+                }, 200)
+            } else {
+                setTimeout(() => {
+                    this.setData({
+                        loading: false
+                    })
+                    this.requestAnimationFrame(this.hide)
+                    setTimeout(() => this.deactivate(), 200)
+                }, 200)
+            }
+        },
+        /**
          * 手指触摸动作开始
          */
         bindtouchstart(e) {
-            if (this.isRefreshing()) return false
+            if (this.isRefreshing() || this.isLoading()) return false
 
             const p = this.getTouchPosition(e)
 
@@ -204,7 +342,7 @@ baseComponent({
          * 手指触摸后移动
          */
         bindtouchmove(e) {
-            if (!this.start || this.isRefreshing()) return false
+            if (!this.start || this.isRefreshing() || this.isLoading()) return false
 
             const p = this.getTouchPosition(e)
 
@@ -230,7 +368,7 @@ baseComponent({
         bindtouchend(e) {
             this.start = false
 
-            if (this.diffY <= 0 || this.isRefreshing()) return false
+            if (this.diffY <= 0 || this.isRefreshing() || this.isLoading()) return false
 
             this.deactivate()
 
@@ -244,4 +382,14 @@ baseComponent({
         this.lastTime = 0
         this.activated = false
     },
+    attached() {
+        let that = this
+        wx.getSystemInfo({
+            success: function (res) {
+                that.setData({
+                    windowHeight: res.windowHeight
+                })
+            }
+        });
+    }
 })

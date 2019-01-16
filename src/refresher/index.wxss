@@ -114,6 +114,51 @@
     }
 }
 
+.@{wuxClassNamePrefix}-loader {
+    overflow: hidden;
+    margin: auto;
+    height: 100rpx;
+    font-size: 30rpx;
+    position: relative;
+    text-align: center;
+    display: none;
+
+    .@{wuxClassNamePrefix}-refresher__icon--refresher{
+        display: inline-block;
+        margin: 0;
+    }
+
+    &__text-loading{
+        margin-left: 10rpx;
+    }
+
+    &--hidden {
+        visibility: hidden;
+        display: none;
+    }
+
+    &--visible {
+        visibility: visible;
+        display: block;
+    }
+
+    &--end{
+        visibility: visible;
+        display: block;
+    }
+
+    &__content {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
 @keyframes refresh-spin {
     0% {
         transform: translateZ(0) rotate(0)
