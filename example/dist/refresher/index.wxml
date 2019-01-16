@@ -12,4 +12,13 @@
         </view>
     </view>
     <slot></slot>
+    <view class="{{ classes.lWrap }}">
+        <view class="{{ classes.lContent }}">
+            <text wx:if="{{noData === false}}" class="{{ classes.rIcon }}"></text>
+            <text class="wux-loader__text-loading" wx:if="{{noData === false && isShowLoadingText === true}}">{{loadingText}}</text>
+            <view wx:if="{{noData === true}}">
+                {{loadNoDataText}}
+            </view>
+        </view>
+    </view>
 </view>

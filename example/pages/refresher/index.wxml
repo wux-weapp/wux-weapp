@@ -1,4 +1,4 @@
-<wux-refresher id="wux-refresher" bind:pulling="onPulling" bind:refresh="onRefresh">
+<wux-refresher id="wux-refresher" bind:pulling="onPulling" bind:refresh="onRefresh" bind:loadmore="onLoadmore" scrollTop="{{scrollTop}}">
     <view class="weui-panel weui-panel_access">
         <view class="weui-panel__hd">文字组合列表</view>
         <view class="weui-panel__bd">
