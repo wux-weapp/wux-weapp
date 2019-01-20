@@ -146,10 +146,12 @@ baseComponent({
         onTouchMove(e) {
             if (this.data.disabled || getPointsNumber(e) > 1) return
             const { index } = e.currentTarget.dataset
+            const { prefixCls } = this.data
+
             this.isMoved = true
             this.moveX = getTouchPoints(e).x
 
-            this.getRect('.wux-slider__rail').then((rect) => {
+            this.getRect(`.${prefixCls}__rail`).then((rect) => {
                 if (!rect || !this.isMoved) return
 
                 const diffX = (this.moveX - this.startX) / rect.width * (this.data.max - this.data.min)
@@ -176,7 +178,7 @@ baseComponent({
                 // 判断当前值是否发生变化，是则触发 change 事件
                 if (sliderValue[index] !== currentValue) {
                     const value = this.getValue(nextOffsets)
-                    
+
                     if (!this.data.controlled) {
                         this.setData({ offsets: nextOffsets, sliderValue: value })
                     }
@@ -277,7 +279,7 @@ baseComponent({
     attached() {
         const { defaultValue, value, controlled } = this.data
         const sliderValue = controlled ? value : defaultValue
-        
+
         this.updated(sliderValue)
         this.getMarks()
     },
