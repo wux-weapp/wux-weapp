@@ -1,9 +1,10 @@
 <view class="container">
-	<view class="userinfo">
+	<view class="userinfo" data-clipboard="{{ userInfo.url }}" bindtap="clipboard">
 		<image class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"></image>
-		<text class="userinfo-nickname">{{ userInfo.nickName }}</text>
+		<text class="userinfo-nickname">{{ userInfo.nickname }}</text>
+        <view class="userinfo-desc">{{ userInfo.desc }}</view>
 	</view>
-	<view class="usermotto">
+	<view class="usermotto" data-clipboard="{{ github }}" bindtap="clipboard">
 		<view class="user-motto">{{ motto }}</view>
 		<text class="user-github">{{ github }}</text>
 	</view>
