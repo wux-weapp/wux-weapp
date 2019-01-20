@@ -224,7 +224,7 @@ baseComponent({
          * 更新按钮组样式
          */
         updateButtonStyle(isReset) {
-            const { buttons, duration, direction, spaceBetween, scale } = this.data
+            const { prefixCls, buttons, duration, direction, spaceBetween, scale } = this.data
             const buttonStyle = []
             const sign = this.data.reverse ? 1 : -1
             const isH = direction === 'horizontal'
@@ -243,7 +243,7 @@ baseComponent({
             }
 
             // 更新样式
-            this.getRect('.wux-fab-button__action').then((rect) => {
+            this.getRect(`.${prefixCls}__action`).then((rect) => {
                 switch (direction) {
                     case 'horizontal':
                     case 'vertical':
