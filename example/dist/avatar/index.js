@@ -49,13 +49,12 @@ baseComponent({
     },
     methods: {
         setScale() {
+            const { prefixCls } = this.data
             const query = wx.createSelectorQuery().in(this)
-            query.select('.wux-avatar').boundingClientRect()
-            query.select('.wux-avatar__string').boundingClientRect()
+            query.select(`.${prefixCls}`).boundingClientRect()
+            query.select(`.${prefixCls}__string`).boundingClientRect()
             query.exec((rects) => {
-                if (rects.filter((n) => !n).length) {
-                    return false
-                }
+                if (rects.filter((n) => !n).length) return
 
                 const [parent, child] = rects
                 const offset = parent.width - 8 < child.width
