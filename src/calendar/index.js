@@ -217,8 +217,9 @@ baseComponent({
                 this.isMoved = true
             }
 
+            const { prefixCls } = this.data
             const query = wx.createSelectorQuery().in(this)
-            query.select('.wux-calendar__months-content').boundingClientRect((rect) => {
+            query.select(`.${prefixCls}__months-content`).boundingClientRect((rect) => {
 
                 // 由于 boundingClientRect 为异步方法，某些情况下其回调函数在 onTouchEnd 之后触发，导致 wrapperTranslate 计算错误
                 // 所以判断 this.isMoved = false 时阻止回调函数的执行
