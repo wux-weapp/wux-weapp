@@ -220,6 +220,11 @@ Page({
                         url: '/pages/steps/index',
                     },
                     {
+                        title: 'Sticky',
+                        remark: '吸顶容器',
+                        url: '/pages/sticky/index',
+                    },
+                    {
                         title: 'TabBar',
                         remark: '标签栏',
                         url: '/pages/tabbar/index',

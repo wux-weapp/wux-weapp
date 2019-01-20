@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "Sticky",
+    "usingComponents": {
+        "wux-sticky": "../../dist/sticky/index",
+        "wux-sticky-item": "../../dist/sticky-item/index"
+    }
+}

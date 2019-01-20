@@ -53,6 +53,7 @@
         "pages/slider/index",
         "pages/spin/index",
         "pages/steps/index",
+        "pages/sticky/index",
         "pages/switch/index",
         "pages/tabbar/index",
         "pages/tabs/index",

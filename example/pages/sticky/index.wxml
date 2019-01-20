@@ -1,0 +1,198 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Sticky</view>
+        <view class="page__desc">吸顶容器</view>
+    </view>
+    <view class="page__bd">
+        <wux-sticky scrollTop="{{ scrollTop }}">
+            <wux-sticky-item>
+                <view slot="title">小鸡 🐤</view>
+                <view slot="content">
+                    <view class="demo-item">你看哪里有个小鸡呦</view>
+                    <view class="demo-item">你看那里他有小鸡哟</view>
+                    <view class="demo-item">小鸡哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                </view>
+            </wux-sticky-item>
+            <wux-sticky-item>
+                <view slot="title">母鸡 🐔</view>
+                <view slot="content">
+                    <view class="demo-item">你看那里又有母鸡哟</view>
+                    <view class="demo-item">你看那里又有母鸡哟</view>
+                    <view class="demo-item">母鸡咯咯咯咯咯咯-go-</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                </view>
+            </wux-sticky-item>
+            <wux-sticky-item>
+                <view slot="title">公鸡 🐓</view>
+                <view slot="content">
+                    <view class="demo-item">你看那里又有公鸡哟</view>
+                    <view class="demo-item">你看那里又有公鸡哟</view>
+                    <view class="demo-item">公鸡喔喔喔喔喔-wo-</view>
+                    <view class="demo-item">母鸡咯咯咯咯咯咯-go-</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔-bi-哟</view>
+                </view>
+            </wux-sticky-item>
+            <wux-sticky-item>
+                <view slot="title">火鸡 🦃</view>
+                <view slot="content">
+                    <view class="demo-item">你看那里又有火鸡哟</view>
+                    <view class="demo-item">你看那里又有火鸡哟</view>
+                    <view class="demo-item">火鸡嘟嘟嘟嘟嘟-du-</view>
+                    <view class="demo-item">公鸡喔喔喔喔喔-wo-</view>
+                    <view class="demo-item">母鸡咯咯咯咯咯咯-go-</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                </view>
+            </wux-sticky-item>
+            <wux-sticky-item>
+                <view slot="title">鸽子 🕊</view>
+                <view slot="content">
+                    <view class="demo-item">你看那里又有鸽子哟</view>
+                    <view class="demo-item">你看那里又有鸽子哟</view>
+                    <view class="demo-item">鸽子图噜噜噜噜-lu-</view>
+                    <view class="demo-item">火鸡嘟嘟嘟嘟嘟-du-</view>
+                    <view class="demo-item">公鸡喔喔喔喔喔-wo-</view>
+                    <view class="demo-item">母鸡咯咯咯咯咯咯-go-</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔-bi-哟</view>
+                </view>
+            </wux-sticky-item>
+            <wux-sticky-item>
+                <view slot="title">猫咪 🐱</view>
+                <view slot="content">
+                    <view class="demo-item">你看那里又有猫咪哟</view>
+                    <view class="demo-item">你看那里又有猫咪哟</view>
+                    <view class="demo-item">猫咪喵喵喵喵喵-miao-</view>
+                    <view class="demo-item">鸽子图噜噜噜噜-lu-</view>
+                    <view class="demo-item">火鸡嘟嘟嘟嘟嘟-du-</view>
+                    <view class="demo-item">公鸡喔喔喔喔喔-wo-</view>
+                    <view class="demo-item">母鸡咯咯咯咯咯咯-go-</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                </view>
+            </wux-sticky-item>
+            <wux-sticky-item>
+                <view slot="title">小狗 🐶</view>
+                <view slot="content">
+                    <view class="demo-item">你看那里又有小狗哟</view>
+                    <view class="demo-item">你看那里又有小狗哟</view>
+                    <view class="demo-item">小狗旺旺旺旺旺-wang-</view>
+                    <view class="demo-item">猫咪喵喵喵喵喵-miao-</view>
+                    <view class="demo-item">鸽子图噜噜噜噜-lu-</view>
+                    <view class="demo-item">火鸡嘟嘟嘟嘟嘟-du-</view>
+                    <view class="demo-item">公鸡喔喔喔喔喔-wo-</view>
+                    <view class="demo-item">母鸡咯咯咯咯咯咯-go-</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔-bi-哟</view>
+                </view>
+            </wux-sticky-item>
+            <wux-sticky-item>
+                <view slot="title">山羊 🐐</view>
+                <view slot="content">
+                    <view class="demo-item">你看那里又有山羊哟</view>
+                    <view class="demo-item">你看那里又有山羊哟</view>
+                    <view class="demo-item">山羊咩-mie-</view>
+                    <view class="demo-item">小狗旺旺旺旺旺-wang-</view>
+                    <view class="demo-item">猫咪喵喵喵喵喵-miao-</view>
+                    <view class="demo-item">鸽子图噜噜噜噜-lu-</view>
+                    <view class="demo-item">火鸡嘟嘟嘟嘟嘟-du-</view>
+                    <view class="demo-item">公鸡喔喔喔喔喔-wo-</view>
+                    <view class="demo-item">母鸡咯咯咯咯咯咯-go-</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                </view>
+            </wux-sticky-item>
+            <wux-sticky-item>
+                <view slot="title">绵羊 🐑</view>
+                <view slot="content">
+                    <view class="demo-item">你看那里又有绵羊哟</view>
+                    <view class="demo-item">你看那里又有绵羊哟</view>
+                    <view class="demo-item">绵羊咇-bie</view>
+                    <view class="demo-item">山羊咩-mie</view>
+                    <view class="demo-item">小狗旺旺旺旺旺-wang-</view>
+                    <view class="demo-item">猫咪喵喵喵喵喵-miao-</view>
+                    <view class="demo-item">鸽子图噜噜噜噜-lu-</view>
+                    <view class="demo-item">火鸡嘟嘟嘟嘟嘟-du-</view>
+                    <view class="demo-item">公鸡喔喔喔喔喔-wo-</view>
+                    <view class="demo-item">母鸡咯咯咯咯咯咯-go-</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔-bi-哟</view>
+                </view>
+            </wux-sticky-item>
+            <wux-sticky-item>
+                <view slot="title">母牛 🐮</view>
+                <view slot="content">
+                    <view class="demo-item">你看那里又有母牛哟</view>
+                    <view class="demo-item">你看那里又有母牛哟</view>
+                    <view class="demo-item">母牛萌-meng-</view>
+                    <view class="demo-item">绵羊咇-bie</view>
+                    <view class="demo-item">山羊咩-mie</view>
+                    <view class="demo-item">小狗旺旺旺旺旺-wang-</view>
+                    <view class="demo-item">猫咪喵喵喵喵喵-miao-</view>
+                    <view class="demo-item">鸽子图噜噜噜噜-lu-</view>
+                    <view class="demo-item">火鸡嘟嘟嘟嘟嘟-du-</view>
+                    <view class="demo-item">公鸡喔喔喔喔喔-wo-</view>
+                    <view class="demo-item">母鸡咯咯咯咯咯咯-go-</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                </view>
+            </wux-sticky-item>
+            <wux-sticky-item>
+                <view slot="title">公牛 🐂</view>
+                <view slot="content">
+                    <view class="demo-item">你看那里又有公牛哟</view>
+                    <view class="demo-item">你看那里又有公牛哟</view>
+                    <view class="demo-item">公牛呣-mu-</view>
+                    <view class="demo-item">母牛萌-meng-</view>
+                    <view class="demo-item">绵羊咇-bie</view>
+                    <view class="demo-item">山羊咩-mie</view>
+                    <view class="demo-item">小狗旺旺旺旺旺-wang-</view>
+                    <view class="demo-item">猫咪喵喵喵喵喵-miao-</view>
+                    <view class="demo-item">鸽子图噜噜噜噜-lu-</view>
+                    <view class="demo-item">火鸡嘟嘟嘟嘟嘟-du-</view>
+                    <view class="demo-item">公鸡喔喔喔喔喔-wo-</view>
+                    <view class="demo-item">母鸡咯咯咯咯咯咯-go-</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                    <view class="demo-item">小鸡哔哔哔哔-bi-哟</view>
+                </view>
+            </wux-sticky-item>
+            <wux-sticky-item>
+                <view slot="title">拖拉机 🚜</view>
+                <view slot="content">
+                    <view class="demo-item">你看那里又有拖拉机哟</view>
+                    <view class="demo-item">你看那里又有拖拉机哟</view>
+                    <view class="demo-item">拖拉机嗡-weng-</view>
+                    <view class="demo-item">拖拉机嗡-weng-</view>
+                    <view class="demo-item">拖拉机嗡-weng-</view>
+                    <view class="demo-item">小鸡被撞 喔 啊喔</view>
+                </view>
+            </wux-sticky-item>
+        </wux-sticky>
+    </view>
+</view>

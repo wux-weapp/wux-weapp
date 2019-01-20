@@ -1,0 +1,4 @@
+.wux-sticky {
+  position: relative;
+  z-index: 1
+}
