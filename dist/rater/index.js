@@ -111,11 +111,10 @@ baseComponent({
             })
         },
         updateHalfStarValue(index, x, cb) {
+            const { prefixCls } = this.data
             const query = wx.createSelectorQuery().in(this)
-            query.selectAll('.wux-rater__star').boundingClientRect((rects) => {
-                if (rects.filter((n) => !n).length) {
-                    return false
-                }
+            query.selectAll(`.${prefixCls}__star`).boundingClientRect((rects) => {
+                if (rects.filter((n) => !n).length) return
                 const { left, width } = rects[index]
                 const has = (x - left) < width / 2
                 const value = has ? index + .5 : index + 1
