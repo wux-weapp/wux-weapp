@@ -165,14 +165,13 @@ baseComponent({
     },
     methods: {
         getPopoverStyle() {
+            const { prefixCls } = this.data
             const query = wx.createSelectorQuery().in(this)
-            query.select('.wux-popover__element').boundingClientRect()
+            query.select(`.${prefixCls}__element`).boundingClientRect()
             query.selectViewport().scrollOffset()
-            query.select('.wux-popover').boundingClientRect()
+            query.select(`.${prefixCls}`).boundingClientRect()
             query.exec((rects) => {
-                if (rects.filter((n) => !n).length) {
-                    return false
-                }
+                if (rects.filter((n) => !n).length) return
 
                 const popoverStyle = this.data.popoverBodyStyle ? this.data.popoverBodyStyle.split(';') : []
                 const placements = getPlacements(rects, this.data.placement)
