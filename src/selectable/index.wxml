@@ -1,4 +1,4 @@
-<label class="wux-class {{ classes.wrap }}" bindtap="onChange" style="{{ wrapStyle }}">
+<label class="wux-class {{ classes.wrap }}" bindtap="onChange" style="{{ extStyle }}">
     <block wx:if="{{ type === 'checkbox' }}">
     	<checkbox value="{{ value }}" checked="{{ inputChecked }}" color="{{ inputColor }}" disabled="{{ disabled }}" class="wux-input-class {{ classes.input }}" />
     	<icon class="{{ classes.icon }}" type="{{ inputChecked ? 'success' : 'circle' }}" size="23" color="{{ !disabled ? inputColor : '#666' }}" />

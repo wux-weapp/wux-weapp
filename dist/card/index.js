@@ -24,13 +24,21 @@ baseComponent({
             value: '',
         },
         thumbStyle: {
-            type: String,
+            type: [String, Object],
             value: '',
+            observer(newVal) {
+                this.setData({
+                    extStyle: styleToCssString(newVal),
+                })
+            },
         },
         extra: {
             type: String,
             value: '',
         },
+    },
+    data: {
+        extStyle: '',
     },
     computed: {
         classes() {

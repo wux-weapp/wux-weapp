@@ -1,6 +1,6 @@
 <view class="wux-class {{ classes.wrap }} {{ className }}">
     <view class="{{ classes.tail }}"></view>
-    <view class="{{ classes.dot }}" style="{{ dotStyle }}">
+    <view class="{{ classes.dot }}" style="{{ extStyle }}">
     	<slot wx:if="{{ custom }}" name="dot"></slot>
     </view>
     <view class="{{ classes.content }}">

@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import styleToCssString from '../helpers/styleToCssString'
 
 baseComponent({
     properties: {
@@ -12,9 +13,17 @@ baseComponent({
             value: 'default',
         },
         bodyStyle: {
-            type: String,
+            type: [String, Object],
             value: '',
+            observer(newVal) {
+                this.setData({
+                    extStyle: styleToCssString(newVal),
+                })
+            },
         },
+    },
+    data: {
+        extStyle: '',
     },
     computed: {
         classes() {

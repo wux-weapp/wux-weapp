@@ -8,7 +8,7 @@
 			class="{{ classes.item }}"
 			value="{{ inputValue }}"
 			placeholder="{{ placeholder }}"
-			placeholder-style="{{ placeholderStyle }}"
+			placeholder-style="{{ extStyle }}"
 			placeholder-class="{{ placeholderClass }}"
 			disabled="{{ disabled }}"
 			maxlength="{{ maxlength }}"

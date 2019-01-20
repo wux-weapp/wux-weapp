@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import styleToCssString from '../helpers/styleToCssString'
 import { $wuxBackdrop } from '../index'
 
 baseComponent({
@@ -31,8 +32,13 @@ baseComponent({
             observer: 'getTransitionName',
         },
         wrapStyle: {
-            type: String,
+            type: [String, Object],
             value: '',
+            observer(newVal) {
+                this.setData({
+                    extStyle: styleToCssString(newVal),
+                })
+            },
         },
         closable: {
             type: Boolean,
@@ -59,6 +65,7 @@ baseComponent({
     data: {
         transitionName: '',
         popupVisible: false,
+        extStyle: '',
     },
     computed: {
         classes() {

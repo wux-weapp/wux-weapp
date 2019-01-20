@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import styleToCssString from '../helpers/styleToCssString'
 
 const getPlacements = ([a, s, b] = rects, placement = 'top') => {
     switch (placement) {
@@ -102,14 +103,11 @@ baseComponent({
             value: 'click',
         },
         bodyStyle: {
-            type: String,
+            type: [String, Object],
             value: '',
             observer(newVal) {
-                const bodyStyle = newVal.trim()
-                const popoverBodyStyle = bodyStyle ? bodyStyle.split(';').filter((n) => !!n) : []
-
                 this.setData({
-                    popoverBodyStyle: popoverBodyStyle.join(';'),
+                    extStyle: styleToCssString(newVal),
                 })
             },
         },
@@ -134,8 +132,8 @@ baseComponent({
         },
     },
     data: {
+        extStyle: '',
         popoverStyle: '',
-        popoverBodyStyle: '',
         popoverVisible: false,
     },
     computed: {
@@ -173,15 +171,10 @@ baseComponent({
             query.exec((rects) => {
                 if (rects.filter((n) => !n).length) return
 
-                const popoverStyle = this.data.popoverBodyStyle ? this.data.popoverBodyStyle.split(';') : []
                 const placements = getPlacements(rects, this.data.placement)
 
-                for (const key in placements) {
-                    popoverStyle.push(`${key}: ${placements[key]}px`)
-                }
-
                 this.setData({
-                    popoverStyle: popoverStyle.join(';'),
+                    popoverStyle: styleToCssString(placements),
                 })
             })
         },
@@ -210,12 +203,11 @@ baseComponent({
         },
     },
     attached() {
-        const { popoverBodyStyle, defaultVisible, visible, controlled } = this.data
+        const { defaultVisible, visible, controlled } = this.data
         const popoverVisible = controlled ? visible : defaultVisible
 
         this.setData({
             popoverVisible,
-            popoverStyle: popoverBodyStyle,
         })
     },
 })

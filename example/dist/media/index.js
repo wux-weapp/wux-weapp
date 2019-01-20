@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import styleToCssString from '../helpers/styleToCssString'
 
 baseComponent({
     properties: {
@@ -12,8 +13,13 @@ baseComponent({
             value: '',
         },
         thumbStyle: {
-            type: String,
+            type: [String, Object],
             value: '',
+            observer(newVal) {
+                this.setData({
+                    extStyle: styleToCssString(newVal),
+                })
+            },
         },
         title: {
             type: String,
@@ -27,6 +33,9 @@ baseComponent({
             type: String,
             value: 'center',
         },
+    },
+    data: {
+        extStyle: '',
     },
     computed: {
         classes() {

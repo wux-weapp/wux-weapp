@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import styleToCssString from '../helpers/styleToCssString'
 
 baseComponent({
     properties: {
@@ -20,8 +21,13 @@ baseComponent({
             value: '',
         },
         bodyStyle: {
-            type: String,
+            type: [String, Object],
             value: '',
+            observer(newVal) {
+                this.setData({
+                    extStyle: styleToCssString(newVal),
+                })
+            },
         },
         scale: {
             type: Boolean,
@@ -29,6 +35,7 @@ baseComponent({
         },
     },
     data: {
+        extStyle: '',
         childrenStyle: '',
     },
     computed: {

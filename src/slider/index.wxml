@@ -1,13 +1,13 @@
-<view class="wux-class {{ classes.wrap }}" style="{{ wrapStyle }}">
+<view class="wux-class {{ classes.wrap }}" style="{{ extWrapStyle }}">
 	<view class="{{ classes.min }}" wx:if="{{ common.getValue(showValue, 'min') }}">{{ min }}</view>
-    <view class="{{ classes.rail }}" style="{{ railStyle }}">
+    <view class="{{ classes.rail }}" style="{{ extRailStyle }}">
     	<block wx:for="{{ marks }}" wx:key="" wx:if="{{ showMark && marks.length > 0 }}">
-    		<view class="{{ classes.mark }}" style="left: {{ item + '%' }}; {{ common.getStyle(markStyle, index) }}" />
+    		<view class="{{ classes.mark }}" style="left: {{ item + '%' }}; {{ common.getStyle(extMarkStyle, index) }}" />
     	</block>
 	    <block wx:for="{{ sliderValue }}" wx:key="">
 	    	<view
 	    		class="{{ classes.track }}"
-	    		style="{{ common.getTrackStyle(offsets, index, sliderValue.length > 1) }}; {{ common.getStyle(trackStyle, index) }}"
+	    		style="{{ common.getTrackStyle(offsets, index, sliderValue.length > 1) }}; {{ common.getStyle(extTrackStyle, index) }}"
 	    		wx:if="{{ sliderValue.length === 1 || index !== sliderValue.length - 1 }}"
 	    	/>
 	    	<view
@@ -16,7 +16,7 @@
 	    		bindtouchstart="onTouchStart"
 	    		bindtouchmove="onTouchMove"
 	    		bindtouchend="onTouchEnd"
-	    		style="left: {{ offsets[index] + '%' }}; {{ common.getStyle(handleStyle, index) }}"
+	    		style="left: {{ offsets[index] + '%' }}; {{ common.getStyle(extHandleStyle, index) }}"
 	    	/>
 	    </block>
     </view>

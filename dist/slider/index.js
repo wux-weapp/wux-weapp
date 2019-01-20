@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import styleToCssString from '../helpers/styleToCssString'
 import { getTouchPoints, getPointsNumber } from '../helpers/gestures'
 
 /**
@@ -70,29 +71,59 @@ baseComponent({
             value: false,
         },
         markStyle: {
-            type: [String, Array],
+            type: [String, Object, Array],
             value: '',
+            observer(newVal) {
+                this.setData({
+                    extMarkStyle: Array.isArray(newVal) ? newVal.map((n) => styleToCssString(n)) : styleToCssString(newVal),
+                })
+            },
         },
         handleStyle: {
-            type: [String, Array],
+            type: [String, Object, Array],
             value: '',
+            observer(newVal) {
+                this.setData({
+                    extHandleStyle: Array.isArray(newVal) ? newVal.map((n) => styleToCssString(n)) : styleToCssString(newVal),
+                })
+            },
         },
         trackStyle: {
-            type: [String, Array],
+            type: [String, Object, Array],
             value: '',
+            observer(newVal) {
+                this.setData({
+                    extTrackStyle: Array.isArray(newVal) ? newVal.map((n) => styleToCssString(n)) : styleToCssString(newVal),
+                })
+            },
         },
         railStyle: {
-            type: String,
+            type: [String, Object],
             value: '',
+            observer(newVal) {
+                this.setData({
+                    extRailStyle: styleToCssString(newVal),
+                })
+            },
         },
         wrapStyle: {
-            type: String,
+            type: [String, Object],
             value: '',
+            observer(newVal) {
+                this.setData({
+                    extWrapStyle: styleToCssString(newVal),
+                })
+            },
         },
     },
     data: {
         offsets: [],
         sliderValue: [],
+        extMarkStyle: '',
+        extHandleStyle: '',
+        extTrackStyle: '',
+        extRailStyle: '',
+        extWrapStyle: '',
     },
     computed: {
         classes() {

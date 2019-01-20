@@ -1,4 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
+import styleToCssString from '../helpers/styleToCssString'
 
 const ENTER = 'enter'
 const ENTERING = 'entering'
@@ -23,11 +24,6 @@ const defaultClassNames = {
 }
 
 baseComponent({
-    data: {
-        animateCss: '', // 动画样式
-        animateStatus: EXITED, // 动画状态，可选值 entering、entered、exiting、exited
-        isMounting: false, // 是否首次挂载
-    },
     properties: {
         // 触发组件进入或离开过渡的状态
         in: {
@@ -86,9 +82,20 @@ baseComponent({
         },
         // 自定义样式
         wrapStyle: {
-            type: String,
+            type: [String, Object],
             value: '',
+            observer(newVal) {
+                this.setData({
+                    extStyle: styleToCssString(newVal),
+                })
+            },
         },
+    },
+    data: {
+        animateCss: '', // 动画样式
+        animateStatus: EXITED, // 动画状态，可选值 entering、entered、exiting、exited
+        isMounting: false, // 是否首次挂载
+        extStyle: '', // 组件样式
     },
     methods: {
         /**

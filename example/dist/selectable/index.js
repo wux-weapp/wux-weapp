@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import styleToCssString from '../helpers/styleToCssString'
 import { isPresetColor } from '../helpers/colors'
 
 baseComponent({
@@ -48,13 +49,19 @@ baseComponent({
             value: false,
         },
         wrapStyle: {
-            type: String,
+            type: [String, Object],
             value: '',
+            observer(newVal) {
+                this.setData({
+                    extStyle: styleToCssString(newVal),
+                })
+            },
         },
     },
     data: {
         inputChecked: false,
         inputColor: '',
+        extStyle: '',
     },
     computed: {
         classes() {

@@ -1,5 +1,5 @@
 <wux-animation-group in="{{ popoverVisible }}" classNames="{{ classNames }}" bind:enter="onEnter">
-    <view class="wux-class {{ classes.wrap }}" style="{{ popoverStyle }}">
+    <view class="wux-class {{ classes.wrap }}" style="{{ extStyle + popoverStyle }}">
         <view class="{{ classes.content }}">
             <view class="{{ classes.arrow }}"></view>
             <view class="{{ classes.inner }}">

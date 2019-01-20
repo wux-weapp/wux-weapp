@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import styleToCssString from '../helpers/styleToCssString'
 
 baseComponent({
     relations: {
@@ -17,8 +18,13 @@ baseComponent({
             value: '',
         },
         dotStyle: {
-            type: String,
+            type: [String, Object],
             value: '',
+            observer(newVal) {
+                this.setData({
+                    extStyle: styleToCssString(newVal),
+                })
+            },
         },
         custom: {
             type: Boolean,
@@ -30,6 +36,7 @@ baseComponent({
         isPending: false,
         pending: false,
         className: '',
+        extStyle: '',
     },
     computed: {
         classes() {

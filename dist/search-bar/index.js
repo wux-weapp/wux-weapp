@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import styleToCssString from '../helpers/styleToCssString'
 
 baseComponent({
     properties: {
@@ -25,8 +26,13 @@ baseComponent({
             value: '搜索',
         },
         placeholderStyle: {
-            type: String,
+            type: [String, Object],
             value: '',
+            observer(newVal) {
+                this.setData({
+                    extStyle: styleToCssString(newVal),
+                })
+            },
         },
         placeholderClass: {
             type: String,
@@ -97,6 +103,7 @@ baseComponent({
     data: {
         inputValue: '',
         inputFocus: false,
+        extStyle: '',
     },
     computed: {
         classes() {

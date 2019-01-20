@@ -1,4 +1,4 @@
-<view class="wux-class {{ classes.wrap }}" style="{{ bodyStyle }}">
+<view class="wux-class {{ classes.wrap }}" style="{{ extStyle }}">
     <image src="{{ src }}" wx:if="{{ src }}" />
     <text class="{{ classes.string }}" style="{{ childrenStyle }}" wx:else>
         <slot></slot>

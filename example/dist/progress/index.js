@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import styleToCssString from '../helpers/styleToCssString'
 import { colors } from '../helpers/colors'
 
 const defaultColors = {
@@ -44,8 +45,13 @@ baseComponent({
             value: 'round',
         },
         barStyle: {
-            type: String,
+            type: [String, Object],
             value: '',
+            observer(newVal) {
+                this.setData({
+                    extStyle: styleToCssString(newVal),
+                })
+            },
         },
         showInfo: {
             type: Boolean,
@@ -55,6 +61,7 @@ baseComponent({
     data: {
         width: 0,
         style: '',
+        extStyle: '',
     },
     computed: {
         classes() {
