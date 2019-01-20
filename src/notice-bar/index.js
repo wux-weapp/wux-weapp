@@ -119,13 +119,12 @@ baseComponent({
             }
         },
         initAnimation() {
+            const { prefixCls } = this.data
             const query = wx.createSelectorQuery().in(this)
-            query.select('.wux-notice-bar__marquee-container').boundingClientRect()
-            query.select('.wux-notice-bar__marquee').boundingClientRect()
+            query.select(`.${prefixCls}__marquee-container`).boundingClientRect()
+            query.select(`.${prefixCls}__marquee`).boundingClientRect()
             query.exec((rects) => {
-                if (rects.filter((n) => !n).length) {
-                    return false
-                }
+                if (rects.filter((n) => !n).length) return
 
                 const [container, text] = rects
                 const overflowWidth = text.width - container.width
