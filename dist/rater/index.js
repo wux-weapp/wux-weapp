@@ -153,11 +153,10 @@ baseComponent({
             const { disabled, allowHalf, allowTouchMove } = this.data
             if (!disabled && allowTouchMove) {
                 const x = e.changedTouches[0].pageX
+                const { prefixCls } = this.data
                 const query = wx.createSelectorQuery().in(this)
-                query.selectAll('.wux-rater__star').boundingClientRect((rects) => {
-                    if (rects.filter((n) => !n).length) {
-                        return false
-                    }
+                query.selectAll(`.${prefixCls}__star`).boundingClientRect((rects) => {
+                    if (rects.filter((n) => !n).length) return
                     const { left, width } = rects[0]
                     const maxWidth = rects.map((n) => n.width).reduce((a, b) => a + b)
                     const diff = x - left
