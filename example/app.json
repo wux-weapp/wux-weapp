@@ -93,5 +93,6 @@
             "text": "About"
         }]
     },
+    "requiredBackgroundModes": ["audio"],
     "debug": true
 }

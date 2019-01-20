@@ -8,4 +8,7 @@ Page({
             scrollTop: e.scrollTop,
         })
     },
+    onLoad() {
+        getApp().checkAudio()
+    },
 })
