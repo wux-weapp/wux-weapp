@@ -106,7 +106,7 @@
 	.spacing((@count - 5));
 }
 
-.spacing(20);
+.spacing(30);
 
 // Floats
 .@{wuxClassNamePrefix}-clearfix {
@@ -128,8 +128,54 @@
 	&--l2 {
 		.ellipsisLn(2);
 	}
-	
+
 	&--l3 {
 		.ellipsisLn(3);
 	}
+}
+
+// Hairline
+.@{wuxClassNamePrefix}-hairline {
+    &,
+    &--top,
+    &--right,
+    &--buttom,
+    &--left,
+    &--horizontal,
+    &--vertical,
+    &--surrounded {
+        position: relative;
+
+        &:after {
+            .hairline();
+        }
+    }
+
+    &--top:after {
+        border-top-width: 1px;
+    }
+
+    &--right:after {
+        border-right-width: 1px;
+    }
+
+    &--bottom:after {
+        border-bottom-width: 1px;
+    }
+
+    &--left:after {
+        border-left-width: 1px;
+    }
+
+    &--horizontal:after {
+        border-width: 1px 0;
+    }
+
+    &--vertical:after {
+        border-width: 0 1px;
+    }
+
+    &--surrounded:after {
+        border-width: 1px;
+    }
 }
