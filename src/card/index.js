@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import styleToCssString from '../helpers/styleToCssString'
 
 baseComponent({
     properties: {
