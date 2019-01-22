@@ -8,11 +8,15 @@
 .wux-toptips__content {
   padding: 10rpx;
   font-size: 28rpx;
-  text-align: center;
   color: #fff;
   word-wrap: break-word;
   word-break: break-all;
   transition: background-color .3s
+}
+.wux-toptips__content text {
+  display: block;
+  text-align: center;
+  padding: 0 52rpx
 }
 .wux-toptips__content--success {
   background-color: #33cd5f
@@ -27,5 +31,7 @@
   background-color: #ef473a
 }
 .wux-toptips__icon {
-  float: left
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%)
 }
