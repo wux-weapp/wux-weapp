@@ -86,7 +86,7 @@ baseComponent({
         /**
          * 设置当前激活的元素
          */
-        setActive(current, currentName, runCallbacks = true) {
+        setActive(current, currentName) {
             if (current !== this.data.current || currentName !== this.data.currentName) {
                 const target = this.data.sections.filter((section) => section.index === current && section.name === currentName)[0]
                 if (target) {
@@ -98,7 +98,7 @@ baseComponent({
                 }
             }
 
-            runCallbacks && this.triggerEvent('change', { index: current, name: currentName })
+            this.triggerEvent('change', { index: current, name: currentName })
         },
         /**
          * 手指触摸动作开始
@@ -135,7 +135,12 @@ baseComponent({
             const { scrollTop } = e.detail
             this.data.sections.forEach((section, index) => {
                 if (scrollTop < section.top + section.height && scrollTop >= section.top) {
-                    this.setActive(index, section.name, false)
+                    if (index !== this.data.current || section.name !== this.data.currentName) {
+                        this.setData({
+                            current: index,
+                            currentName: section.name,
+                        })
+                    }
                 }
             })
         },
