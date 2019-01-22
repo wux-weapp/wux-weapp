@@ -180,6 +180,11 @@ Page({
                         url: '/pages/image/index',
                     },
                     {
+                        title: 'Index',
+                        remark: '索引选择器',
+                        url: '/pages/index-list/index',
+                    },
+                    {
                         title: 'List',
                         remark: '列表',
                         url: '/pages/list/index',

@@ -1,0 +1,5 @@
+<wux-index height="100%" bind:change="onChange">
+    <wux-index-item wx:for="{{ alphabet }}" wx:key="" name="{{ item.initial }}">
+        <view class="demo-item" wx:for="{{ item.cells }}" wx:for-item="cell" wx:key="">{{ cell }}</view>
+    </wux-index-item>
+</wux-index>

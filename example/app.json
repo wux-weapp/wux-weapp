@@ -26,6 +26,7 @@
         "pages/grid/index",
         "pages/icon/index",
         "pages/image/index",
+        "pages/index-list/index",
         "pages/input/index",
         "pages/input-number/index",
         "pages/keyboard/index",
