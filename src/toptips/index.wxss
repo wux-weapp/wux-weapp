@@ -1,39 +1,46 @@
 @import "../styles/base/fn.wxss";
 
 .@{wuxClassNamePrefix}-toptips {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 5000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5000;
 
-	&__content {
-		padding: 5px;
-		font-size: 14px;
-		text-align: center;
-		color: #FFFFFF;
-		word-wrap: break-word;
-		word-break: break-all;
-		transition: background-color .3s;
+    &__content {
+        padding: 5px;
+        font-size: 14px;
+        color: #FFFFFF;
+        word-wrap: break-word;
+        word-break: break-all;
+        transition: background-color .3s;
 
-		&--success {
-			background-color: @balanced;
-		}
+        text {
+            display: block;
+            text-align: center;
+            padding: 0 26px;
+        }
 
-		&--info {
-			background-color: @positive;
-		}
+        &--success {
+            background-color: @balanced;
+        }
 
-		&--warn {
-			background-color: @energized;
-		}
+        &--info {
+            background-color: @positive;
+        }
 
-		&--cancel {
-			background-color: @assertive;
-		}
-	}
+        &--warn {
+            background-color: @energized;
+        }
 
-	&__icon {
-		float: left;
-	}
+        &--cancel {
+            background-color: @assertive;
+        }
+    }
+
+    &__icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
 }
