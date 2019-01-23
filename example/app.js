@@ -23,6 +23,6 @@ App({
         backgroundAudioManager.epname = '洛天依小鸡哔哔'
         backgroundAudioManager.singer = '洛天依'
         backgroundAudioManager.coverImgUrl = 'http://y.gtimg.cn/music/photo_new/T002R300x300M000000PKgrQ10ZW56.jpg?max_age=2592000'
-        backgroundAudioManager.src = 'http://dl.stream.qqmusic.qq.com/C4000047tXMP3Jdx55.m4a?guid=7365198280&vkey=F9A225C3C442B62DBBFB28FA572299DC3D66758C1E727606B3E9BB2BBE6B92E9FA74183DC3C1F8DD3553FEF153B5BE8AB02E681AF0B223A0&uin=0&fromtag=66'
+        backgroundAudioManager.src = 'https://wux.cdn.cloverstd.com/%E6%B4%9B%E5%A4%A9%E4%BE%9D%20-%20%E5%B0%8F%E9%B8%A1%E5%93%94%E5%93%94.mp3'
     },
 })
