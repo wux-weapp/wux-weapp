@@ -7,7 +7,7 @@ baseComponent({
         '../index-item/index': {
             type: 'child',
             observer() {
-                this.updated()
+                this.debounce(this.updated)
             },
         },
     },

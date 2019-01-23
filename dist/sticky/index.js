@@ -6,7 +6,7 @@ baseComponent({
         '../sticky-item/index': {
             type: 'child',
             observer() {
-                this.updated()
+                this.debounce(this.updated)
             },
         },
     },

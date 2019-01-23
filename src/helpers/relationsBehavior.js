@@ -22,29 +22,32 @@ function bindFunc(obj, method, observer) {
 const methods = ['linked', 'linkChanged', 'unlinked']
 
 // extra props
-const extProps = ['observer', 'debounce', 'wait', 'immediate']
-
-// defaults
-const defaults = {
-    wait: 0,
-    immediate: false,
-    debounce: true,
-}
+const extProps = ['observer']
 
 module.exports = Behavior({
+    lifetimes: {
+        created() {
+            this._debounce = null
+        },
+    },
     definitionFilter(defFields) {
         const { relations } = defFields
+
         if (!isEmpty(relations)) {
             for (const key in relations) {
-                const relation = relations[key] = Object.assign({}, defaults, relations[key])
-                const observer = relation.debounce && typeof relation.observer === 'function' ? debounce(relation.observer, relation.wait, relation.immediate) : relation.observer
+                const relation = relations[key]
 
                 // bind func
-                methods.forEach((method) => bindFunc(relation, method, observer))
+                methods.forEach((method) => bindFunc(relation, method, relation.observer))
 
                 // delete extProps
                 extProps.forEach((prop) => delete relation[prop])
             }
+        }
+
+        defFields.methods = defFields.methods || {}
+        defFields.methods.debounce = function(func, wait = 0, immediate = false) {
+            return (this._debounce = this._debounce || debounce(func.bind(this), wait, immediate)).call(this)
         }
     },
 })

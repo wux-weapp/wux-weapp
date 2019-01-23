@@ -23,7 +23,7 @@ baseComponent({
         '../tab/index': {
             type: 'child',
             observer() {
-                this.changeCurrent()
+                this.debounce(this.changeCurrent)
             },
         },
     },

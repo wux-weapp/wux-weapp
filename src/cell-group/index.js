@@ -6,7 +6,7 @@ baseComponent({
         '../cell/index': {
             type: 'child',
             observer() {
-                this.updateIsLastElement()
+                this.debounce(this.updateIsLastElement)
             },
         },
     },

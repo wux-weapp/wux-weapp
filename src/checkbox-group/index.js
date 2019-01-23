@@ -6,7 +6,7 @@ baseComponent({
         '../checkbox/index': {
             type: 'child',
             observer() {
-                this.changeValue()
+                this.debounce(this.changeValue)
             },
         },
     },
