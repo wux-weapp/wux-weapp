@@ -68,7 +68,14 @@ baseComponent({
             }))
             const index = getSelectIndex(options)
 
-            this.$$setData({ in: true, ...options, index })
+            // scroll into view
+            let activeIndex = Array.isArray(index) ? index[index.length - 1] : index
+            if (activeIndex === -1 || activeIndex === undefined) {
+                activeIndex = 0
+            }
+            activeIndex = `select-${activeIndex}`
+
+            this.$$setData({ in: true, ...options, index, activeIndex })
         },
         /**
          * 关闭

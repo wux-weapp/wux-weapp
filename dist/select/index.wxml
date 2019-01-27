@@ -7,15 +7,15 @@
                 <view class="{{ classes.confirm }}" hover-class="{{ classes.hover }}" bindtap="onConfirm" wx:if="{{ toolbar.confirmText }}">{{ toolbar.confirmText }}</view>
             </view>
         </view>
-        <scroll-view scroll-y class="{{ classes.scrollView }}">
+        <scroll-view scroll-y scroll-into-view="{{ activeIndex }}" class="{{ classes.scrollView }}">
             <wux-radio-group value="{{ value }}" bind:change="onRadioChange" wx:if="{{ !multiple }}">
                 <block wx:for="{{ common.getItems(options) }}" wx:key="index">
-                    <wux-radio color="{{ item.color }}" thumb="{{ item.thumb }}" title="{{ item.title }}" label="{{ item.label }}" disabled="{{ item.disabled }}" value="{{ item.value }}" />
+                    <wux-radio id="{{ 'select-' + index }}" color="{{ item.color }}" thumb="{{ item.thumb }}" title="{{ item.title }}" label="{{ item.label }}" disabled="{{ item.disabled }}" value="{{ item.value }}" />
                 </block>
             </wux-radio-group>
             <wux-checkbox-group value="{{ value }}" bind:change="onCheckboxChange" wx:else>
                 <block wx:for="{{ common.getItems(options) }}" wx:key="index">
-                    <wux-checkbox color="{{ item.color }}" extra="{{ item.extra }}" title="{{ item.title }}" label="{{ item.label }}" disabled="{{ item.disabled }}" value="{{ item.value }}" />
+                    <wux-checkbox id="{{ 'select-' + index }}" color="{{ item.color }}" extra="{{ item.extra }}" title="{{ item.title }}" label="{{ item.label }}" disabled="{{ item.disabled }}" value="{{ item.value }}" />
                 </block>
             </wux-checkbox-group>
         </scroll-view>
