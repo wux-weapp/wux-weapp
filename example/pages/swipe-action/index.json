@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "SwipeAction",
+    "usingComponents": {
+        "wux-swipe-action-group": "../../dist/swipe-action-group/index",
+        "wux-swipe-action": "../../dist/swipe-action/index",
+        "wux-cell-group": "../../dist/cell-group/index",
+        "wux-cell": "../../dist/cell/index",
+        "wux-icon": "../../dist/icon/index"
+    }
+}

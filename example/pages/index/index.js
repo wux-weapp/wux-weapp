@@ -347,6 +347,11 @@ Page({
                         remark: '结果页',
                         url: '/pages/result/index',
                     },
+                    {
+                        title: 'SwipeAction',
+                        remark: '滑动操作',
+                        url: '/pages/swipe-action/index',
+                    },
                 ],
             },
         ],

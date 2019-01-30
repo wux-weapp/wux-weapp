@@ -1,0 +1,36 @@
+/* pages/swipe-action/index.wxss */
+
+.demo-item {
+    position: relative;
+    padding: 20rpx;
+    background-color: #fff;
+}
+
+.demo-item:after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 2rpx;
+    border-bottom: 2rpx solid #d9d9d9;
+    color: #d9d9d9;
+    transform-origin: 0 100%;
+    transform: scaleY(.5);
+}
+
+/*.demo-item:last-child:after {
+    display: none;
+}*/
+
+.demo-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 100%;
+    min-width: 96rpx;
+    padding: 0 16rpx;
+    background: #33cd5f;
+    color: #fff;
+}

@@ -1,0 +1,41 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">SwipeAction</view>
+        <view class="page__desc">滑动操作</view>
+    </view>
+    <view class="page__bd">
+        <view class="sub-title">With swipeActionGroup</view>
+        <wux-swipe-action-group>
+            <wux-swipe-action autoClose left="{{ left }}" right="{{ right }}" bind:click="onClick">
+                <view class="demo-item">Have left and right buttons</view>
+            </wux-swipe-action>
+            <wux-swipe-action autoClose left="{{ left }}">
+                <view class="demo-item">Only left buttons</view>
+            </wux-swipe-action>
+            <wux-swipe-action autoClose right="{{ right }}">
+                <view class="demo-item">Only right buttons</view>
+            </wux-swipe-action>
+            <wux-swipe-action autoClose useSlots>
+                <view slot="left">
+                    <view class="demo-button"><wux-icon type="ios-heart" /></view>
+                </view>
+                <view slot="right">
+                    <view class="demo-button" bindtap="onShare"><wux-icon type="ios-share-alt" /></view>
+                </view>
+                <view class="demo-item">UseSlots</view>
+            </wux-swipe-action>
+        </wux-swipe-action-group>
+        <view class="sub-title">With cellGroup</view>
+        <wux-cell-group>
+            <wux-swipe-action autoClose left="{{ left }}" right="{{ right }}" bind:click="onClick">
+                <wux-cell title="Have left and right buttons"></wux-cell>
+            </wux-swipe-action>
+            <wux-swipe-action autoClose left="{{ left }}">
+                <wux-cell title="Only left buttons"></wux-cell>
+            </wux-swipe-action>
+            <wux-swipe-action autoClose right="{{ right }}">
+                <wux-cell title="Only right buttons"></wux-cell>
+            </wux-swipe-action>
+        </wux-cell-group>
+    </view>
+</view>
