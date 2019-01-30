@@ -1,6 +1,6 @@
 App({
     onLaunch() {
-        this.checkAudio()
+        // this.checkAudio()
     },
     checkAudio() {
         wx.getSystemInfo({

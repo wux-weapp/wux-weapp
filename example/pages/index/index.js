@@ -1,7 +1,7 @@
 Page({
     data: {
         components: [{
-                title: '核心组件',
+                title: 'Basic 核心组件',
                 children: [{
                         title: 'AnimationGroup',
                         remark: '动画组',
@@ -25,7 +25,7 @@ Page({
                 ],
             },
             {
-                title: '布局组件',
+                title: 'Layout 布局组件',
                 children: [{
                         title: 'Grid',
                         remark: '宫格',
@@ -49,7 +49,7 @@ Page({
                 ],
             },
             {
-                title: '数据录入',
+                title: 'Data Entry 数据录入',
                 children: [{
                         title: 'Calendar',
                         remark: '日历',
@@ -123,7 +123,7 @@ Page({
                 ],
             },
             {
-                title: '数据展示',
+                title: 'Data Display 数据展示',
                 children: [{
                         title: 'Accordion',
                         remark: '手风琴',
@@ -267,7 +267,7 @@ Page({
                 ],
             },
             {
-                title: '操作反馈',
+                title: 'Feedback 操作反馈',
                 children: [{
                         title: 'ActionSheet',
                         remark: '上拉菜单',
@@ -331,7 +331,7 @@ Page({
                 ],
             },
             {
-                title: '拓展组件',
+                title: 'Expanding 拓展组件',
                 children: [{
                         title: 'FilterBar',
                         remark: '筛选栏',

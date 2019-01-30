@@ -5,7 +5,8 @@ page{
 	color: #333;
     background-color: #f8f8f8;
     font-size: 16px;
-    font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+    /*font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;*/
+    font-family: PingFang SC,Helvetica Neue,Hiragino Sans GB,Helvetica,Microsoft YaHei,Arial;
     -ms-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
 	-webkit-tap-highlight-color: transparent;
