@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "Pagination",
+    "usingComponents": {
+        "wux-pagination": "../../dist/pagination/index"
+    }
+}

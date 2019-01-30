@@ -1,0 +1,33 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Pagination</view>
+        <view class="page__desc">分页器</view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+        <view class="sub-title">Button with text</view>
+        <wux-pagination defaultCurrent="1" total="5">
+            <view slot="prev">Prev</view>
+            <view slot="next">Next</view>
+        </wux-pagination>
+        <view class="sub-title">Controlled</view>
+        <wux-pagination current="{{ current }}" total="5" mode="button" controlled bind:change="onChange">
+            <view slot="prev">Prev</view>
+            <view slot="next">Next</view>
+        </wux-pagination>
+        <view class="sub-title">Hide number</view>
+        <wux-pagination defaultCurrent="1" total="5" simple>
+            <view slot="prev">Prev</view>
+            <view slot="next">Next</view>
+        </wux-pagination>
+        <view class="sub-title">Show number only</view>
+        <wux-pagination defaultCurrent="1" total="5" mode="number">
+            <view slot="prev">Prev</view>
+            <view slot="next">Next</view>
+        </wux-pagination>
+        <view class="sub-title">Point style</view>
+        <wux-pagination defaultCurrent="1" total="5" mode="pointer">
+            <view slot="prev">Prev</view>
+            <view slot="next">Next</view>
+        </wux-pagination>
+    </view>
+</view>

@@ -200,6 +200,11 @@ Page({
                         url: '/pages/notice-bar/index',
                     },
                     {
+                        title: 'Pagination',
+                        remark: '分页器',
+                        url: '/pages/pagination/index',
+                    },
+                    {
                         title: 'Popover',
                         remark: '气泡框',
                         url: '/pages/popover/index',
