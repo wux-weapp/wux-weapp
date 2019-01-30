@@ -1,0 +1,49 @@
+.wux-swipe {
+  overflow: hidden;
+  position: relative
+}
+.wux-swipe__cover {
+  position: absolute;
+  z-index: 2;
+  background: 0 0;
+  height: 100%;
+  width: 100%;
+  top: 0
+}
+.wux-swipe__actions {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: all .25s
+}
+.wux-swipe__actions--left {
+  left: 0
+}
+.wux-swipe__actions--right {
+  right: 0
+}
+.wux-swipe__action {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden
+}
+.wux-swipe__text {
+  padding: 0 16rpx
+}
+.wux-swipe__content {
+  position: relative;
+  background-color: #fff;
+  transition: all .25s
+}
+.wux-swipe--swiping .wux-swipe__actions,
+.wux-swipe--swiping .wux-swipe__content {
+  transition: none
+}

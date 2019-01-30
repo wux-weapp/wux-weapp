@@ -55,6 +55,7 @@
         "pages/spin/index",
         "pages/steps/index",
         "pages/sticky/index",
+        "pages/swipe-action/index",
         "pages/switch/index",
         "pages/tabbar/index",
         "pages/tabs/index",

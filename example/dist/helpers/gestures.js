@@ -36,3 +36,10 @@ export const getPointsDistance = (p1, p2) => {
     const yMove = Math.abs(p1.y - p2.y)
     return Math.sqrt(xMove * xMove + yMove * yMove)
 }
+
+/**
+ * 获取触摸移动方向
+ */
+export const getSwipeDirection = (x1, x2, y1, y2) => {
+    return Math.abs(x1 - x2) >= Math.abs(y1 - y2) ? (x1 - x2 > 0 ? 'Left' : 'Right') : (y1 - y2 > 0 ? 'Up' : 'Down')
+}
