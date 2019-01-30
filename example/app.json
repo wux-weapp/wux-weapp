@@ -36,6 +36,7 @@
         "pages/media/index",
         "pages/notice-bar/index",
         "pages/notification/index",
+        "pages/pagination/index",
         "pages/popover/index",
         "pages/popup/index",
         "pages/progress/index",
