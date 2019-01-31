@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "NavBar",
+    "usingComponents": {
+        "wux-navbar": "../../dist/navbar/index",
+        "wux-icon": "../../dist/icon/index"
+    }
+}

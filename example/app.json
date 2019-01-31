@@ -34,6 +34,7 @@
         "pages/list/index",
         "pages/loading/index",
         "pages/media/index",
+        "pages/navbar/index",
         "pages/notice-bar/index",
         "pages/notification/index",
         "pages/pagination/index",

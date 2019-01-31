@@ -1,0 +1,16 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">NavBar</view>
+        <view class="page__desc">导航栏</view>
+    </view>
+    <view class="page__bd">
+        <view class="sub-title">Default</view>
+        <wux-navbar leftText="Back" title="NavBar" rightText="Click me!" bind:click="onClick" />
+        <view class="sub-title">Default</view>
+        <wux-navbar theme="dark">
+            <wux-icon slot="left" type="ios-arrow-back" size="23" />
+            <view>导航栏</view>
+            <wux-icon slot="right" type="ios-more" size="23" />
+        </wux-navbar>
+    </view>
+</view>

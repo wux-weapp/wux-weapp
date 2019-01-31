@@ -195,6 +195,11 @@ Page({
                         url: '/pages/media/index',
                     },
                     {
+                        title: 'NavBar',
+                        remark: '导航栏',
+                        url: '/pages/navbar/index',
+                    },
+                    {
                         title: 'NoticeBar',
                         remark: '通告栏',
                         url: '/pages/notice-bar/index',

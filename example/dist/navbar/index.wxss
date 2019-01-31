@@ -1,0 +1,76 @@
+.wux-navbar {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 90rpx;
+  background-color: #fff;
+  color: #444
+}
+.wux-navbar__left,
+.wux-navbar__right,
+.wux-navbar__title {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex: 1;
+  flex: 1;
+  height: 100%
+}
+.wux-navbar__left {
+  padding-left: 20rpx;
+  font-size: 28rpx
+}
+.wux-navbar__title {
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-size: 32rpx;
+  white-space: nowrap
+}
+.wux-navbar__right {
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  font-size: 28rpx;
+  margin-right: 20rpx
+}
+.wux-navbar--light,
+.wux-navbar--stable {
+  color: #444!important
+}
+.wux-navbar--light {
+  background-color: #fff;
+  color: #fff
+}
+.wux-navbar--stable {
+  background-color: #f8f8f8;
+  color: #fff
+}
+.wux-navbar--positive {
+  background-color: #387ef5;
+  color: #fff
+}
+.wux-navbar--calm {
+  background-color: #11c1f3;
+  color: #fff
+}
+.wux-navbar--assertive {
+  background-color: #ef473a;
+  color: #fff
+}
+.wux-navbar--balanced {
+  background-color: #33cd5f;
+  color: #fff
+}
+.wux-navbar--energized {
+  background-color: #ffc900;
+  color: #fff
+}
+.wux-navbar--royal {
+  background-color: #886aea;
+  color: #fff
+}
+.wux-navbar--dark {
+  background-color: #444;
+  color: #fff
+}

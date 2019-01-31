@@ -1,0 +1,57 @@
+@import "../styles/base/fn.wxss";
+
+.navbar-style(@theme, @color) {
+    &--@{theme} {
+        background-color: @color;
+        color: #fff;
+    }
+}
+
+.@{wuxClassNamePrefix}-navbar {
+    display: flex;
+    align-items: center;
+    height: 45px;
+    background-color: @light;
+    color: #444;
+
+    &__left,
+    &__title,
+    &__right {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        height: 100%;
+    }
+
+    &__left {
+        padding-left: 10px;
+        font-size: 14px;
+    }
+
+    &__title {
+        justify-content: center;
+        font-size: 16px;
+        white-space: nowrap;
+    }
+
+    &__right {
+        justify-content: flex-end;
+        font-size: 14px;
+        margin-right: 10px;
+    }
+
+    &--light,
+    &--stable {
+        color: #444 !important;
+    }
+
+    .navbar-style(light, @light);
+    .navbar-style(stable, @stable);
+    .navbar-style(positive, @positive);
+    .navbar-style(calm, @calm);
+    .navbar-style(assertive, @assertive);
+    .navbar-style(balanced, @balanced);
+    .navbar-style(energized, @energized);
+    .navbar-style(royal, @royal);
+    .navbar-style(dark, @dark);
+}
