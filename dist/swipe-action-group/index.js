@@ -4,7 +4,7 @@ import classNames from '../helpers/classNames'
 baseComponent({
     relations: {
         '../swipe-action/index': {
-            type: 'child',
+            type: 'descendant',
             observer() {
                 this.debounce(this.updated)
             },

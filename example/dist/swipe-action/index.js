@@ -5,7 +5,7 @@ import { getTouchPoints, getPointsNumber, getSwipeDirection } from '../helpers/g
 baseComponent({
     relations: {
         '../swipe-action-group/index': {
-            type: 'parent',
+            type: 'ancestor',
         },
     },
     properties: {
