@@ -52,6 +52,7 @@
         "pages/segmented-control/index",
         "pages/select/index",
         "pages/selectable/index",
+        "pages/skeleton/index",
         "pages/slider/index",
         "pages/spin/index",
         "pages/steps/index",

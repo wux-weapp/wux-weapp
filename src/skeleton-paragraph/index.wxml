@@ -1,0 +1,5 @@
+<view class="wux-class {{ classes.wrap }}">
+    <block wx:for="{{ rowList }}" wx:key="">
+        <view class="{{ classes.row }}"></view>
+    </block>
+</view>

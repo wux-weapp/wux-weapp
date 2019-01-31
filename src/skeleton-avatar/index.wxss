@@ -1,0 +1,50 @@
+@import "../styles/base/fn.wxss";
+
+.@{wuxClassNamePrefix}-skeleton-avatar {
+    display: inline-block;
+    vertical-align: top;
+    background: #f2f2f2;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+
+    &--small {
+        width: 32px;
+        height: 32px;
+        line-height: 32px
+    }
+
+    &--large {
+        width: 48px;
+        height: 48px;
+        line-height: 48px
+    }
+
+    &--circle {
+        border-radius: 50%;
+    }
+
+    &--rounded {
+        border-radius: 4px;
+    }
+
+    &--square {
+        border-radius: 0;
+    }
+
+    &--active {
+        background: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%);
+        animation: loading 1.4s ease infinite;
+        background-size: 400% 100%;
+    }
+}
+
+@keyframes loading {
+    0% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+}

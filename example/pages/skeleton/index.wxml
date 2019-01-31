@@ -1,0 +1,31 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Skeleton</view>
+        <view class="page__desc">骨架屏</view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+        <view class="sub-title">Default</view>
+        <wux-skeleton>
+            <wux-skeleton-paragraph />
+        </wux-skeleton>
+        <view class="sub-title">Rounded</view>
+        <wux-skeleton active>
+            <wux-skeleton-paragraph rounded />
+        </wux-skeleton>
+        <view class="sub-title">Rows = 4</view>
+        <wux-skeleton active>
+            <wux-skeleton-paragraph rows="4" />
+        </wux-skeleton>
+        <view class="sub-title">With avatar</view>
+        <wux-skeleton active>
+            <wux-row>
+                <wux-col span="2">
+                    <wux-skeleton-avatar />
+                </wux-col>
+                <wux-col span="10">
+                    <wux-skeleton-paragraph />
+                </wux-col>
+            </wux-row>
+        </wux-skeleton>
+    </view>
+</view>

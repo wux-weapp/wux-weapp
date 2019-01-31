@@ -314,6 +314,11 @@ Page({
                         url: '/pages/progress/index',
                     },
                     {
+                        title: 'Skeleton',
+                        remark: '骨架屏',
+                        url: '/pages/skeleton/index',
+                    },
+                    {
                         title: 'Spin',
                         remark: '加载中',
                         url: '/pages/spin/index',

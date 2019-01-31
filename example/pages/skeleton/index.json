@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "Skeleton",
+    "usingComponents": {
+        "wux-skeleton": "../../dist/skeleton/index",
+        "wux-skeleton-avatar": "../../dist/skeleton-avatar/index",
+        "wux-skeleton-paragraph": "../../dist/skeleton-paragraph/index",
+        "wux-row": "../../dist/row/index",
+        "wux-col": "../../dist/col/index"
+    }
+}

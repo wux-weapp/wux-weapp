@@ -1,0 +1,40 @@
+.wux-skeleton-avatar {
+  display: inline-block;
+  vertical-align: top;
+  background: #f2f2f2;
+  width: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx
+}
+.wux-skeleton-avatar--small {
+  width: 64rpx;
+  height: 64rpx;
+  line-height: 64rpx
+}
+.wux-skeleton-avatar--large {
+  width: 96rpx;
+  height: 96rpx;
+  line-height: 96rpx
+}
+.wux-skeleton-avatar--circle {
+  border-radius: 50%
+}
+.wux-skeleton-avatar--rounded {
+  border-radius: 8rpx
+}
+.wux-skeleton-avatar--square {
+  border-radius: 0
+}
+.wux-skeleton-avatar--active {
+  background: linear-gradient(90deg,#f2f2f2 25%,#e6e6e6 37%,#f2f2f2 63%);
+  animation: loading 1.4s ease infinite;
+  background-size: 400% 100%
+}
+@keyframes loading {
+  0% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0 50%
+  }
+}
