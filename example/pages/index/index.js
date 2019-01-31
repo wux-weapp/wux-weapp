@@ -1,7 +1,7 @@
 Page({
     data: {
         components: [{
-                title: 'Basic 核心组件',
+                title: 'Basic 基础组件',
                 children: [{
                         title: 'AnimationGroup',
                         remark: '动画组',
@@ -45,6 +45,40 @@ Page({
                         title: 'WingBlank',
                         remark: '两翼留白',
                         url: '/pages/wing-blank/index',
+                    },
+                ],
+            },
+            {
+                title: 'Navigation 导航组件',
+                children: [{
+                        title: 'NavBar',
+                        remark: '导航栏',
+                        url: '/pages/navbar/index',
+                    },
+                    {
+                        title: 'Pagination',
+                        remark: '分页器',
+                        url: '/pages/pagination/index',
+                    },
+                    {
+                        title: 'Popover',
+                        remark: '气泡框',
+                        url: '/pages/popover/index',
+                    },
+                    {
+                        title: 'SegmentedControl',
+                        remark: '分段器',
+                        url: '/pages/segmented-control/index',
+                    },
+                    {
+                        title: 'TabBar',
+                        remark: '标签栏',
+                        url: '/pages/tabbar/index',
+                    },
+                    {
+                        title: 'Tabs',
+                        remark: '标签页',
+                        url: '/pages/tabs/index',
                     },
                 ],
             },
@@ -195,24 +229,9 @@ Page({
                         url: '/pages/media/index',
                     },
                     {
-                        title: 'NavBar',
-                        remark: '导航栏',
-                        url: '/pages/navbar/index',
-                    },
-                    {
                         title: 'NoticeBar',
                         remark: '通告栏',
                         url: '/pages/notice-bar/index',
-                    },
-                    {
-                        title: 'Pagination',
-                        remark: '分页器',
-                        url: '/pages/pagination/index',
-                    },
-                    {
-                        title: 'Popover',
-                        remark: '气泡框',
-                        url: '/pages/popover/index',
                     },
                     {
                         title: 'Prompt',
@@ -225,11 +244,6 @@ Page({
                         url: '/pages/qrcode/index',
                     },
                     {
-                        title: 'SegmentedControl',
-                        remark: '分段器',
-                        url: '/pages/segmented-control/index',
-                    },
-                    {
                         title: 'Steps',
                         remark: '步骤条',
                         url: '/pages/steps/index',
@@ -238,16 +252,6 @@ Page({
                         title: 'Sticky',
                         remark: '吸顶容器',
                         url: '/pages/sticky/index',
-                    },
-                    {
-                        title: 'TabBar',
-                        remark: '标签栏',
-                        url: '/pages/tabbar/index',
-                    },
-                    {
-                        title: 'Tabs',
-                        remark: '标签页',
-                        url: '/pages/tabs/index',
                     },
                     {
                         title: 'Tag',
