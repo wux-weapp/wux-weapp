@@ -6,7 +6,7 @@
 
 # Wux Weapp
 
-微信小程序自定义 UI 组件
+一套组件化、可复用、易扩展的微信小程序 UI 组件库
 
 [![npm version](https://img.shields.io/npm/v/wux-weapp.svg)](https://www.npmjs.org/package/wux-weapp)
 
@@ -76,7 +76,7 @@ demo/
 
 您可以扫码添加下方的小助手微信并备注 Wux Weapp 进交流群。
 
-<img src="https://wux.cdn.cloverstd.com/wechat.png" style="display:inline;">
+<img src="https://wux.cdn.cloverstd.com/wechat.png" width="256" style="display:inline;">
 
 ## 赞助
 
