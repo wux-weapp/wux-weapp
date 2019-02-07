@@ -7,7 +7,7 @@
 </template>
 
 <view class="wux-class {{ classes.wrap }}">
-    <view class="{{ classes.cover }}" hidden="{{ !showCover }}" catchtouchstart="onClose" style="{{ offsetStyle }}"></view>
+    <view class="{{ classes.cover }}" hidden="{{ !showCover }}" bindtouchstart="onClose" style="{{ offsetStyle }}"></view>
     <view class="{{ classes.left }}" wx:if="{{ useSlots || left.length > 0 }}" catchtap="onAcitons">
         <template is="actions" data="{{ classes, actions: left, type: 'left' }}" wx:if="{{ !useSlots }}" />
         <slot name="left" wx:else></slot>
@@ -16,7 +16,7 @@
         <template is="actions" data="{{ classes, actions: right, type: 'right' }}" wx:if="{{ !useSlots }}" />
         <slot name="right" wx:else></slot>
     </view>
-    <view class="{{ classes.content }}" catchtouchstart="onTouchStart" catchtouchmove="onTouchMove" catchtouchend="onTouchEnd" style="{{ offsetStyle }}">
+    <view class="{{ classes.content }}" bindtouchstart="onTouchStart" bindtouchmove="onTouchMove" bindtouchend="onTouchEnd" style="{{ offsetStyle }}">
         <slot></slot>
     </view>
 </view>
