@@ -8,6 +8,10 @@ baseComponent({
         },
     },
     properties: {
+        mpclick: {
+            type: String,
+            value: ''
+        },
         prefixCls: {
             type: String,
             value: 'wux-grid',
@@ -68,7 +72,7 @@ baseComponent({
             })
         },
         onTap() {
-            this.triggerEvent('click', this.data)
+            this.triggerEvent(this.data.mpclick + 'click', this.data)
         },
     },
 })

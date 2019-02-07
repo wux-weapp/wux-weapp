@@ -14,6 +14,10 @@ const setTransform = (translate = 0, scale = 1, delay = 300, isH = true) => {
 
 baseComponent({
     properties: {
+        mpclick: {
+            type: String,
+            value: ''
+        },
         prefixCls: {
             type: String,
             value: 'wux-fab-button',
@@ -193,7 +197,7 @@ baseComponent({
             }
 
             if (!value.disabled) {
-                this.triggerEvent('click', params)
+                this.triggerEvent(this.data.mpclick + 'click', params)
                 this.onChange(false)
             }
         },

@@ -3,6 +3,10 @@ import classNames from '../helpers/classNames'
 
 baseComponent({
     properties: {
+        mpclick: {
+            type: String,
+            value: ''
+        },
         prefixCls: {
             type: String,
             value: 'wux-button',
@@ -120,7 +124,7 @@ baseComponent({
     methods: {
         onTap() {
             if (!this.data.disabled && !this.data.loading) {
-                this.triggerEvent('click')
+                this.triggerEvent(this.data.mpclick + 'click')
             }
         },
         bindgetuserinfo(e) {
