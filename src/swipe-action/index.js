@@ -9,6 +9,10 @@ baseComponent({
         },
     },
     properties: {
+        mpclick: {
+            type: String,
+            value: ''
+        },
         prefixCls: {
             type: String,
             value: 'wux-swipe',
@@ -130,7 +134,7 @@ baseComponent({
                 this.onClose()
             }
 
-            this.triggerEvent('click', params)
+            this.triggerEvent(this.data.mpclick + 'click', params)
         },
         onAcitons() {
             if (this.data.autoClose) {
