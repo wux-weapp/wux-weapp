@@ -8,6 +8,10 @@ baseComponent({
         },
     },
     properties: {
+        mpclick: {
+            type: String,
+            value: '',
+        },
         prefixCls: {
             type: String,
             value: 'wux-cell',
@@ -127,7 +131,7 @@ baseComponent({
     methods: {
         onTap() {
             if (!this.data.disabled) {
-                this.triggerEvent('click')
+                this.triggerEvent(this.data.mpclick + 'click')
                 this.linkTo()
             }
         },
