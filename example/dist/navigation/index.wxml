@@ -1,0 +1,19 @@
+<view class="navbar {{os}} {{iphonex}}">
+    <view class="status-bar" />
+    <view class="navigation-bar" data-page-title="{{title}}">
+        <button wx:if="{{canBack}}" bindtap="onTapBack" plain="{{true}}">
+            <wux-icon type="ios-arrow-back" size="16" style="vertical-align: middle;" />
+        </button>
+        <view wx:if="{{canBack}}" class="split-line">
+            <view class="bar" />
+        </view>
+        <button wx:if="{{canHome}}" bindtap="onTapHome" plain="{{true}}">
+            <wux-icon type="md-home" size="16" style="vertical-align: middle;" />
+        </button>
+        <view wx:if="{{!canHome&&!canBack}}" class="holder" />
+    </view>
+</view>
+<view class="navbar-margin {{os}} {{iphonex}}">
+    <view class="status-bar" />
+    <view class="navigation-bar" />
+</view>

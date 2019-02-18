@@ -1,0 +1,10 @@
+<wux-navigation title="顶部小房子" />
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">NavBar</view>
+        <view class="page__desc">顶部小房子</view>
+    </view>
+    <view class="page__bd">
+        <view class="sub-title">请见页面顶部</view>
+    </view>
+</view>

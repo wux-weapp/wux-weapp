@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "Navigation",
+    "usingComponents": {
+        "wux-navigation": "../../dist/navigation/index"
+    }
+}
