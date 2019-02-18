@@ -1,0 +1,96 @@
+.navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+}
+
+.navbar.android .status-bar, .navbar-margin.android .status-bar {
+    height: 48rpx;
+}
+
+.navbar.ios .status-bar, .navbar-margin.ios .status-bar {
+    height: 40rpx;
+}
+
+.navbar.android .navigation-bar {
+    background: transparent;
+}
+
+.navbar .navigation-bar .split-line {
+    vertical-align: middle;
+    display: inline-block;
+    margin-top: 6px;
+    border-top: 1rpx solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1rpx solid rgba(0, 0, 0, 0.1);
+}
+
+.navbar .navigation-bar .split-line .bar {
+    display: inline-block;
+    width: 1rpx;
+    height: 18px;
+    background: rgba(0, 0, 0, 0.1);
+    margin-top: 12rpx;
+    margin-bottom: 1px;
+}
+
+.navbar .navigation-bar .holder {
+    width: 1px;
+    height: 39px;
+}
+
+.navbar.ios.iphonex .status-bar, .navbar-margin.ios.iphonex .status-bar {
+    height: 88rpx;
+}
+
+.navbar.android .navigation-bar, .navbar-margin.android .navigation-bar {
+    height: 96rpx;
+}
+
+.navbar.ios .navigation-bar, .navbar-margin.ios .navigation-bar {
+    height: 88rpx;
+}
+
+.navigation-bar button {
+    border-radius: 0;
+    z-index: 10;
+}
+
+.navigation-bar button:first-child {
+    vertical-align: middle;
+    border: 1rpx solid rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    margin-top: 6px;
+    margin-left: 7px;
+    border-right-width: 0;
+    border-left-width: 1rpx !important;
+    border-top-left-radius: 40rpx;
+    border-bottom-left-radius: 40rpx;
+}
+
+.navigation-bar button:last-child {
+    margin-top: 6px;
+    vertical-align: middle;
+    border: 1rpx solid rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    border-left-width: 0;
+    border-right-width: 1rpx !important;
+    border-top-right-radius: 40rpx;
+    border-bottom-right-radius: 40rpx;
+}
+
+.navbar .navigation-bar::after {
+    content: attr(data-page-title);
+    width: 100vw;
+    display: block;
+    text-align: center;
+    position: relative;
+    margin: 0 auto;
+    font-size: 40rpx;
+    font-weight: 600;
+    margin-top: -66rpx;
+    z-index: 0;
+}
