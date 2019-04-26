@@ -92,11 +92,12 @@ baseComponent({
 
                     } else if (
                         loading === false &&
-                        noData === false
+                        noData === false&&this.lVisible===true
                     ) {
 
                         // 隐藏上拉加载动画
                         this.hide()
+
 
                     } else if(loading === true) {
 
