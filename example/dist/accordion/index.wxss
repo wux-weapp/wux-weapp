@@ -47,7 +47,7 @@
   transform: rotate(90deg);
   transition: transform .2s ease
 }
-.wux-accordion--current .wux-accordion__arrow {
+.wux-accordion--current > .wux-accordion__hd > .wux-accordion__arrow {
   transform: rotate(270deg)
 }
 .wux-accordion__bd {
@@ -71,6 +71,6 @@
   transform: scaleY(.5);
   left: 0
 }
-.wux-accordion--current .wux-accordion__bd {
+.wux-accordion--current > .wux-accordion__bd {
   display: block
 }

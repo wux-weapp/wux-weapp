@@ -44,7 +44,7 @@
         transition: transform .2s ease;
     }
 
-    &--current &__arrow {
+    &--current > &__hd > &__arrow {
         transform: rotate(270deg);
     }
 
@@ -63,7 +63,7 @@
         }
     }
 
-    &--current &__bd {
+    &--current > &__bd {
         display: block;
     }
 }
