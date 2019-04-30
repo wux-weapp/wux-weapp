@@ -1,6 +1,6 @@
-module.exports = Behavior({
+export default Behavior({
     lifetimes: {
-        created () {
+        created() {
             this.nextCallback = null
         },
         detached() {

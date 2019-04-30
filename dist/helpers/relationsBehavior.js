@@ -24,7 +24,7 @@ const methods = ['linked', 'linkChanged', 'unlinked']
 // extra props
 const extProps = ['observer']
 
-module.exports = Behavior({
+export default Behavior({
     lifetimes: {
         created() {
             this._debounce = null

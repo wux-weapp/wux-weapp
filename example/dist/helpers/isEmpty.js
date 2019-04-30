@@ -1,7 +1,7 @@
 /**
  * Checks if a value is empty.
  */
-function isEmpty (value) {
+function isEmpty(value) {
     if (Array.isArray(value)) {
         return value.length === 0
     } else if (typeof value === 'object') {
@@ -16,4 +16,4 @@ function isEmpty (value) {
     }
 }
 
-module.exports = isEmpty
+export default isEmpty

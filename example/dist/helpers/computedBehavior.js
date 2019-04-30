@@ -6,16 +6,16 @@
 import isEmpty from './isEmpty'
 import shallowEqual from './shallowEqual'
 
-module.exports = Behavior({
+export default Behavior({
     lifetimes: {
-        created () {
+        created() {
             this._computedCache = {}
             this._originalSetData = this.setData
             this.setData = this._setData
             this._doingSetData = false
         },
     },
-    definitionFilter (defFields) {
+    definitionFilter(defFields) {
         const computed = defFields.computed || {}
         const computedKeys = Object.keys(computed)
 
@@ -76,7 +76,7 @@ module.exports = Behavior({
                     }
 
                     // 追加 observer，用于监听变动
-                    properties[key].observer = function (...args) {
+                    properties[key].observer = function(...args) {
                         const originalSetData = this._originalSetData
 
                         if (this._doingSetData) {
@@ -109,7 +109,7 @@ module.exports = Behavior({
         initComputed()
 
         defFields.methods = defFields.methods || {}
-        defFields.methods._setData = function (data, callback) {
+        defFields.methods._setData = function(data, callback) {
             const originalSetData = this._originalSetData
 
             if (this._doingSetData) {

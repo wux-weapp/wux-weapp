@@ -135,4 +135,4 @@ function styleToCssString(rules) {
     return result;
 }
 
-module.exports = styleToCssString;
+export default styleToCssString

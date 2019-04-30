@@ -62,4 +62,4 @@ function shallowEqual(objA, objB) {
     return true;
 }
 
-module.exports = shallowEqual;
+export default shallowEqual
