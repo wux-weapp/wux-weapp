@@ -185,7 +185,7 @@ baseComponent({
             this.getRect(`.${prefixCls}__rail`).then((rect) => {
                 if (!rect || !this.isMoved) return
 
-                const diffX = (this.moveX - this.startX) / rect.width * (this.data.max - this.data.min)
+                const diffX = (this.moveX - this.startX) / rect.width * 100
                 const nextOffsets = [...this.data.offsets]
                 const offset = this.checkValue(this.startPos + diffX, 0, 100)
                 const { sliderValue } = this.data
