@@ -1,90 +1,101 @@
 <view class="page">
-    <view class="page__hd">
-        <view class="page__title">Tabs</view>
-        <view class="page__desc">标签页</view>
-    </view>
-    <view class="page__bd">
-        <view class="sub-title">Default</view>
-        <wux-tabs defaultCurrent="tab1">
-            <wux-tab key="tab1" title="Tab 1"></wux-tab>
-            <wux-tab key="tab2" title="Tab 2"></wux-tab>
-            <wux-tab key="tab3" title="Tab 3"></wux-tab>
-        </wux-tabs>
-        <view class="sub-title">Theme = positive</view>
-        <wux-tabs defaultCurrent="tab1" theme="positive">
-            <wux-tab key="tab1" title="Tab 1"></wux-tab>
-            <wux-tab key="tab2" title="Tab 2"></wux-tab>
-            <wux-tab key="tab3" title="Tab 3"></wux-tab>
-        </wux-tabs>
-        <view class="sub-title">Direction = vertical</view>
-        <wux-tabs defaultCurrent="tab1" direction="vertical">
-            <wux-tab key="tab1" title="Tab 1"></wux-tab>
-            <wux-tab key="tab2" title="Tab 2"></wux-tab>
-            <wux-tab key="tab3" title="Tab 3"></wux-tab>
-        </wux-tabs>
-        <view class="sub-title">Disabled</view>
-        <wux-tabs defaultCurrent="tab1">
-            <wux-tab key="tab1" title="Tab 1"></wux-tab>
-            <wux-tab disabled key="tab2" title="Tab 2"></wux-tab>
-            <wux-tab key="tab3" title="Tab 3"></wux-tab>
-        </wux-tabs>
-        <view class="sub-title">Controlled</view>
-        <wux-tabs controlled current="{{ current }}" bindchange="onChange">
-            <wux-tab key="tab1" title="Tab 1"></wux-tab>
-            <wux-tab key="tab2" title="Tab 2"></wux-tab>
-            <wux-tab key="tab3" title="Tab 3"></wux-tab>
-        </wux-tabs>
-        <view class="sub-title">Slot</view>
-        <wux-tabs controlled current="{{ current }}" bindchange="onChange">
-            <wux-tab disabled key="tab1">
-                <image src="https://wux.cdn.cloverstd.com/logo.png" style="width: 20px; height: 20px; margin-right: 5px;" />
-                <text>Tab 1</text>
-            </wux-tab>
-            <wux-tab key="tab2">
-                <image src="https://wux.cdn.cloverstd.com/logo.png" style="width: 20px; height: 20px; margin-right: 5px;" />
-                <text>Tab 2</text>
-            </wux-tab>
-            <wux-tab key="tab3">
-                <image src="https://wux.cdn.cloverstd.com/logo.png" style="width: 20px; height: 20px; margin-right: 5px;" />
-                <text>Tab 3</text>
-            </wux-tab>
-        </wux-tabs>
-        <view class="sub-title">Scroll</view>
-        <wux-tabs controlled scroll current="{{ current }}" bindchange="onChange">
-            <wux-tab key="tab1" title="Tab 1"></wux-tab>
-            <wux-tab key="tab2" title="Tab 2"></wux-tab>
-            <wux-tab key="tab3" title="Tab 3"></wux-tab>
-            <wux-tab key="tab4" title="Tab 4"></wux-tab>
-            <wux-tab key="tab5" title="Tab 5"></wux-tab>
-            <wux-tab key="tab6" title="Tab 6"></wux-tab>
-            <wux-tab key="tab7" title="Tab 7"></wux-tab>
-            <wux-tab key="tab8" title="Tab 8"></wux-tab>
-            <wux-tab key="tab9" title="Tab 9"></wux-tab>
-        </wux-tabs>
-        <view class="sub-title">Badge</view>
-        <wux-tabs controlled current="{{ current }}" bindchange="onChange">
-            <wux-tab key="tab1">
-                <wux-badge count="3">Tab 1</wux-badge>
-            </wux-tab>
-            <wux-tab key="tab2">
-                <wux-badge count="1024">Tab 2</wux-badge>
-            </wux-tab>
-            <wux-tab key="tab3">
-                <wux-badge dot>Tab 3</wux-badge>
-            </wux-tab>
-        </wux-tabs>
-        <view class="sub-title">With Swiper</view>
-        <wux-tabs wux-class="bordered" controlled current="{{ key }}" bindchange="onTabsChange">
-            <block wx:for="{{ tabs }}" wx:key="key">
-                <wux-tab key="{{ item.key }}" title="{{ item.title }}"></wux-tab>
-            </block>
-        </wux-tabs>
-        <swiper current="{{ index }}" bindchange="onSwiperChange">
-            <block wx:for="{{ tabs }}" wx:key="key">
-                <swiper-item>
-                    <view class="content">{{ item.content }}</view>
-                </swiper-item>
-            </block>
-        </swiper>
-    </view>
+	<view class="page__hd">
+		<view class="page__title">Tabs</view>
+		<view class="page__desc">标签页</view>
+	</view>
+	<view class="page__bd">
+		<view class="sub-title">Default</view>
+		<wux-tabs defaultCurrent="tab1">
+			<wux-tab key="tab1" title="Tab 1" />
+			<wux-tab key="tab2" title="Tab 2" />
+			<wux-tab key="tab3" title="Tab 3" />
+		</wux-tabs>
+		<view class="sub-title">Theme = positive</view>
+		<wux-tabs defaultCurrent="tab1" theme="positive">
+			<wux-tab key="tab1" title="Tab 1" />
+			<wux-tab key="tab2" title="Tab 2" />
+			<wux-tab key="tab3" title="Tab 3" />
+		</wux-tabs>
+		<view class="sub-title">Direction = vertical</view>
+		<wux-tabs defaultCurrent="tab1" direction="vertical">
+			<wux-tab key="tab1" title="Tab 1" />
+			<wux-tab key="tab2" title="Tab 2" />
+			<wux-tab key="tab3" title="Tab 3" />
+		</wux-tabs>
+		<view class="sub-title">Disabled</view>
+		<wux-tabs defaultCurrent="tab1">
+			<wux-tab key="tab1" title="Tab 1" />
+			<wux-tab disabled key="tab2" title="Tab 2" />
+			<wux-tab key="tab3" title="Tab 3" />
+		</wux-tabs>
+		<view class="sub-title">Controlled</view>
+		<wux-tabs controlled current="{{ current }}" bindchange="onChange">
+			<wux-tab key="tab1" title="Tab 1" />
+			<wux-tab key="tab2" title="Tab 2" />
+			<wux-tab key="tab3" title="Tab 3" />
+		</wux-tabs>
+		<view class="sub-title">Slot</view>
+		<wux-tabs controlled current="{{ current }}" bindchange="onChange">
+			<wux-tab disabled key="tab1">
+				<image src="https://wux.cdn.cloverstd.com/logo.png" style="width: 20px; height: 20px; margin-right: 5px;" />
+				<text>Tab 1</text>
+			</wux-tab>
+			<wux-tab key="tab2">
+				<image src="https://wux.cdn.cloverstd.com/logo.png" style="width: 20px; height: 20px; margin-right: 5px;" />
+				<text>Tab 2</text>
+			</wux-tab>
+			<wux-tab key="tab3">
+				<image src="https://wux.cdn.cloverstd.com/logo.png" style="width: 20px; height: 20px; margin-right: 5px;" />
+				<text>Tab 3</text>
+			</wux-tab>
+		</wux-tabs>
+		<view class="sub-title">Scroll</view>
+		<wux-tabs
+		 controlled
+		 scroll
+		 current="{{ current }}"
+		 bindchange="onChange"
+		>
+			<wux-tab key="tab1" title="Tab 1" />
+			<wux-tab key="tab2" title="Tab 2" />
+			<wux-tab key="tab3" title="Tab 3" />
+			<wux-tab key="tab4" title="Tab 4" />
+			<wux-tab key="tab5" title="Tab 5" />
+			<wux-tab key="tab6" title="Tab 6" />
+			<wux-tab key="tab7" title="Tab 7" />
+			<wux-tab key="tab8" title="Tab 8" />
+			<wux-tab key="tab9" title="Tab 9" />
+		</wux-tabs>
+		<view class="sub-title">Badge</view>
+		<wux-tabs controlled current="{{ current }}" bindchange="onChange">
+			<wux-tab key="tab1">
+				<wux-badge count="3">Tab 1</wux-badge>
+			</wux-tab>
+			<wux-tab key="tab2">
+				<wux-badge count="1024">Tab 2</wux-badge>
+			</wux-tab>
+			<wux-tab key="tab3">
+				<wux-badge dot>Tab 3</wux-badge>
+			</wux-tab>
+		</wux-tabs>
+		<view class="sub-title">With Swiper</view>
+		<wux-tabs
+		 wux-class="bordered"
+		 controlled
+		 current="{{ current }}"
+		 bindchange="onTabsChange"
+		>
+			<block wx:for="{{ tabs }}" wx:key="key">
+				<wux-tab key="{{ item.key }}" title="{{ item.title }}" />
+			</block>
+		</wux-tabs>
+		<swiper current="{{ current }}" bindchange="onSwiperChange">
+			<block wx:for="{{ tabs }}" wx:key="key" data-key="key">
+				<swiper-item>
+					<view class="content">{{ item.content }}</view>
+				</swiper-item>
+			</block>
+		</swiper>
+	</view>
 </view>
+
