@@ -67,6 +67,18 @@ page{
     text-align: center;
 }
 
+.btn-area {
+    margin: 1.17647059em 15px 0.3em;
+}
+
+.btn-area button {
+    margin-bottom: 10px;
+}
+
+.btn-area button:last-child {
+    margin-bottom: 0;
+}
+
 .text-left {
     text-align: left;
 }

@@ -1,0 +1,19 @@
+{
+    "navigationBarTitleText": "Form",
+    "usingComponents": {
+        "wux-cell-group": "../../dist/cell-group/index",
+        "wux-cell": "../../dist/cell/index",
+        "wux-form": "../../dist/form/index",
+        "wux-field": "../../dist/field/index",
+        "wux-slider": "../../dist/slider/index",
+        "wux-rater": "../../dist/rater/index",
+        "wux-input-number": "../../dist/input-number/index",
+        "wux-textarea": "../../dist/textarea/index",
+        "wux-input": "../../dist/input/index",
+        "wux-checkbox-group": "../../dist/checkbox-group/index",
+        "wux-checkbox": "../../dist/checkbox/index",
+        "wux-radio-group": "../../dist/radio-group/index",
+        "wux-radio": "../../dist/radio/index",
+        "wux-switch": "../../dist/switch/index"
+    }
+}

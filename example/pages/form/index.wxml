@@ -1,0 +1,123 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Form</view>
+        <view class="page__desc">表单</view>
+    </view>
+    <view class="page__bd">
+        <view class="sub-title">Default Form</view>
+        <form bindsubmit="formSubmit">
+            <wux-checkbox-group name="checkbox" value="{{ checkbox }}" title="Checkbox" bind:change="onCheckboxChange">
+                <wux-checkbox title="Java" value="1" />
+                <wux-checkbox title="PHP" value="2" />
+            </wux-checkbox-group>
+            <wux-radio-group name="radio" value="{{ radio }}" title="Radio" bind:change="onRadioChange">
+                <wux-radio title="Java" value="1" />
+                <wux-radio title="PHP" value="2" />
+            </wux-radio-group>
+            <wux-cell-group title="Switch">
+                <wux-cell>
+                    <wux-switch name="switch" slot="footer" value="{{ switch }}" bind:change="onSwitchChange" />
+                </wux-cell>
+            </wux-cell-group>
+            <wux-cell-group title="Input">
+                <wux-cell hover-class="none">
+                    <wux-field name="input" initialValue="123">
+                        <wux-input label="Input" />
+                    </wux-field>
+                </wux-cell>
+            </wux-cell-group>
+            <wux-cell-group title="Rater">
+                <wux-cell hover-class="none">
+                    <wux-field name="rater" initialValue="{{ 2 }}" slot="footer">
+                        <wux-rater />
+                    </wux-field>
+                </wux-cell>
+            </wux-cell-group>
+            <wux-cell-group title="InputNumber">
+                <wux-cell hover-class="none">
+                    <wux-field name="inputNumber" initialValue="{{ 20 }}">
+                        <wux-input-number />
+                    </wux-field>
+                </wux-cell>
+            </wux-cell-group>
+            <wux-cell-group title="Textarea">
+                <wux-cell hover-class="none">
+                    <wux-field name="textarea" initialValue="456">
+                        <wux-textarea rows="3" />
+                    </wux-field>
+                </wux-cell>
+            </wux-cell-group>
+            <wux-cell-group title="Slider">
+                <wux-cell hover-class="none">
+                    <wux-field name="slider" initialValue="{{ [10, 80] }}">
+                        <wux-slider />
+                    </wux-field>
+                </wux-cell>
+            </wux-cell-group>
+            <view class="btn-area">
+                <button formType="submit">Default Form Submit</button>
+            </view>
+        </form>
+        <view class="sub-title">Wux Form</view>
+        <wux-form id="wux-form" bind:change="onChange">
+            <wux-field name="checkbox" initialValue="{{ checkbox }}">
+                <wux-checkbox-group>
+                    <wux-checkbox title="Java" value="1" />
+                    <wux-checkbox title="PHP" value="2" />
+                </wux-checkbox-group>
+            </wux-field>
+            <wux-field name="radio" initialValue="{{ radio }}">
+                <wux-radio-group title="Radio">
+                    <wux-radio title="Java" value="1" />
+                    <wux-radio title="PHP" value="2" />
+                </wux-radio-group>
+            </wux-field>
+            <wux-cell-group title="Switch">
+                <wux-cell>
+                    <wux-field name="switch" initialValue="{{ switch }}" valuePropName="inputChecked" slot="footer">
+                        <wux-switch />
+                    </wux-field>
+                </wux-cell>
+            </wux-cell-group>
+            <wux-cell-group title="Input">
+                <wux-cell hover-class="none">
+                    <wux-field name="input" initialValue="123">
+                        <wux-input label="Input" />
+                    </wux-field>
+                </wux-cell>
+            </wux-cell-group>
+            <wux-cell-group title="Rater">
+                <wux-cell hover-class="none">
+                    <wux-field name="rater" initialValue="{{ 2 }}" slot="footer">
+                        <wux-rater />
+                    </wux-field>
+                </wux-cell>
+            </wux-cell-group>
+            <wux-cell-group title="InputNumber">
+                <wux-cell hover-class="none">
+                    <wux-field name="inputNumber" initialValue="{{ 20 }}">
+                        <wux-input-number />
+                    </wux-field>
+                </wux-cell>
+            </wux-cell-group>
+            <wux-cell-group title="Textarea">
+                <wux-cell hover-class="none">
+                    <wux-field name="textarea" initialValue="456">
+                        <wux-textarea rows="3" />
+                    </wux-field>
+                </wux-cell>
+            </wux-cell-group>
+            <wux-cell-group title="Slider">
+                <wux-cell hover-class="none">
+                    <wux-field name="slider" initialValue="{{ [10, 80] }}">
+                        <wux-slider />
+                    </wux-field>
+                </wux-cell>
+            </wux-cell-group>
+            <view class="btn-area">
+                <button bindtap="onSubmit">Wux Form Submit</button>
+                <button bindtap="onReset">Wux Form Reset</button>
+            </view>
+        </wux-form>
+    </view>
+</view>

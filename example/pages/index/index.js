@@ -100,6 +100,11 @@ Page({
                         url: '/pages/checkbox/index',
                     },
                     {
+                        title: 'Form',
+                        remark: '表单',
+                        url: '/pages/form/index',
+                    },
+                    {
                         title: 'Input',
                         remark: '文本输入框',
                         url: '/pages/input/index',
