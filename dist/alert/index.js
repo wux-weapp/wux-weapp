@@ -36,8 +36,7 @@ baseComponent({
         visible: true,
     },
     computed: {
-        classes() {
-            const { prefixCls, theme } = this.data
+        classes: ['prefixCls, theme', function(prefixCls, theme) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${theme}`]: theme,
             })
@@ -59,7 +58,7 @@ baseComponent({
                 ft,
                 closable,
             }
-        },
+        }],
     },
     methods: {
         /**

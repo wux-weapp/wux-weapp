@@ -33,8 +33,7 @@ baseComponent({
         colStyle: '',
     },
     computed: {
-        classes() {
-            const { prefixCls, span, offset, pull, push } = this.data
+        classes: ['prefixCls, span, offset, pull, push', function(prefixCls, span, offset, pull, push) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--span-${span}`]: span,
                 [`${prefixCls}--offset-${offset}`]: offset,
@@ -45,7 +44,7 @@ baseComponent({
             return {
                 wrap,
             }
-        },
+        }],
     },
     methods: {
         updateStyle(colStyle) {

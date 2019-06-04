@@ -42,8 +42,7 @@ baseComponent({
         extStyle: '',
     },
     computed: {
-        classes() {
-            const { prefixCls, bordered, full } = this.data
+        classes: ['prefixCls, bordered, full', function(prefixCls, bordered, full) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--bordered`]: bordered,
                 [`${prefixCls}--full`]: full,
@@ -64,6 +63,6 @@ baseComponent({
                 bd,
                 ft,
             }
-        },
+        }],
     },
 })

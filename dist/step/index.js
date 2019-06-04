@@ -40,8 +40,7 @@ baseComponent({
         direction: 'horizontal',
     },
     computed: {
-        classes() {
-            const { prefixCls, direction } = this.data
+        classes: ['prefixCls, direction', function(prefixCls, direction) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${direction}`]: direction,
             })
@@ -63,7 +62,7 @@ baseComponent({
                 content,
                 ft,
             }
-        },
+        }],
     },
     methods: {
         updateCurrent(opts = {}) {

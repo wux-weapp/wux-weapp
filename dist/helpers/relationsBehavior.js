@@ -45,9 +45,18 @@ export default Behavior({
             }
         }
 
-        defFields.methods = defFields.methods || {}
-        defFields.methods.debounce = function(func, wait = 0, immediate = false) {
-            return (this._debounce = this._debounce || debounce(func.bind(this), wait, immediate)).call(this)
-        }
+        Object.assign(defFields.methods = (defFields.methods || {}), {
+            getRelationsName: function(types = ['parent', 'child', 'ancestor', 'descendant']) {
+                return Object.keys(relations || {}).map((key) => {
+                    if (relations[key] && types.includes(relations[key].type)) {
+                        return key
+                    }
+                    return null
+                }).filter((v) => !!v)
+            },
+            debounce: function(func, wait = 0, immediate = false) {
+                return (this._debounce = this._debounce || debounce(func.bind(this), wait, immediate)).call(this)
+            },
+        })
     },
 })

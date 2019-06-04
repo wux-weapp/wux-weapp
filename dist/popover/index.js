@@ -137,8 +137,7 @@ baseComponent({
         popoverVisible: false,
     },
     computed: {
-        classes() {
-            const { prefixCls, theme, placement } = this.data
+        classes: ['prefixCls, theme, placement', function(prefixCls, theme, placement) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--theme-${theme}`]: theme,
                 [`${prefixCls}--placement-${placement}`]: placement,
@@ -159,7 +158,7 @@ baseComponent({
                 innerContent,
                 element,
             }
-        },
+        }],
     },
     methods: {
         getPopoverStyle() {

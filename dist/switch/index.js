@@ -4,6 +4,12 @@ import { isPresetColor } from '../helpers/colors'
 
 baseComponent({
     useField: true,
+    useEvents: true,
+    relations: {
+        '../field/index': {
+            type: 'ancestor',
+        },
+    },
     properties: {
         prefixCls: {
             type: String,
@@ -12,6 +18,10 @@ baseComponent({
         value: {
             type: Boolean,
             value: false,
+            observer(newVal) {
+                if (this.hasFieldDecorator) return
+                this.updated(newVal)
+            },
         },
         disabled: {
             type: Boolean,
@@ -24,14 +34,14 @@ baseComponent({
         },
     },
     data: {
-        style: '',
+        inputStyle: '',
+        inputChecked: false,
     },
     computed: {
-        classes() {
-            const { prefixCls, value, disabled } = this.data
+        classes: ['prefixCls, inputChecked, disabled', function(prefixCls, inputChecked, disabled) {
             const wrap = classNames(prefixCls)
             const input = classNames(`${prefixCls}__input`, {
-                [`${prefixCls}__input--checked`]: value,
+                [`${prefixCls}__input--checked`]: inputChecked,
                 [`${prefixCls}__input--disabled`]: disabled,
             })
 
@@ -39,26 +49,30 @@ baseComponent({
                 wrap,
                 input,
             }
-        },
+        }],
     },
     methods: {
+        updated(inputChecked) {
+            if (this.data.inputChecked !== inputChecked) {
+                this.setData({ inputChecked })
+            }
+        },
         onTap(e) {
-            const { value, disabled } = this.data
+            const { inputChecked, disabled } = this.data
+            const newInputChecked = !inputChecked
 
             if (disabled) return
 
-            this.triggerEvent('change', {
-                value: !value,
-            })
+            this.emitEvent('change', { value: newInputChecked })
         },
-        updateStyle(color = this.data.color) {
+        updateStyle(color) {
             const newColor = isPresetColor(color)
-            this.setData({
-                style: `border-color: ${newColor}; background-color: ${newColor};`,
-            })
+            const inputStyle = `border-color: ${newColor}; background-color: ${newColor};`
+
+            this.setData({ inputStyle })
         },
     },
     attached() {
-        this.updateStyle()
+        this.updateStyle(this.data.color)
     },
 })

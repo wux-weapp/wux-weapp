@@ -2,7 +2,24 @@ import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
 import styleToCssString from '../helpers/styleToCssString'
 
+const defaultEvents = {
+    onChange() {},
+    onFocus() {},
+    onBlur() {},
+    onConfirm() {},
+    onClear() {},
+    onError() {},
+    onLineChange() {},
+}
+
 baseComponent({
+    useEvents: true,
+    defaultEvents,
+    relations: {
+        '../field/index': {
+            type: 'ancestor',
+        },
+    },
     properties: {
         prefixCls: {
             type: String,
@@ -116,8 +133,7 @@ baseComponent({
         extStyle: '',
     },
     computed: {
-        classes() {
-            const { prefixCls, disabled, inputFocus, error: hasError, hasCount } = this.data
+        classes: ['prefixCls, disabled, inputFocus, error, hasCount', function(prefixCls, disabled, inputFocus, hasError, hasCount) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--focus`]: inputFocus,
                 [`${prefixCls}--disabled`]: disabled,
@@ -144,7 +160,7 @@ baseComponent({
                 count,
                 current,
             }
-        },
+        }],
     },
     methods: {
         updateHeight(val = this.data.rows) {
@@ -171,18 +187,19 @@ baseComponent({
             }
         },
         updated(inputValue) {
+            if (this.hasFieldDecorator) return
             if (this.data.inputValue !== inputValue) {
-                this.setData({
-                    inputValue,
-                })
+                this.setData({ inputValue })
             }
         },
         onChange(e) {
+            const { value } = e.detail
+
             if (!this.data.controlled) {
-                this.updated(e.detail.value)
+                this.updated(value)
             }
 
-            this.triggerEvent('change', e.detail)
+            this.emitEvent('change', e.detail)
         },
         onFocus(e) {
             this.clearTimer()
@@ -191,30 +208,31 @@ baseComponent({
                 inputFocus: true,
             })
 
-            this.triggerEvent('focus', e.detail)
+            this.emitEvent('focus', e.detail)
         },
         onBlur(e) {
             this.setTimer()
-
-            this.triggerEvent('blur', e.detail)
+            this.emitEvent('blur', e.detail)
         },
         onConfirm(e) {
-            this.triggerEvent('confirm', e.detail)
+            this.emitEvent('confirm', e.detail)
         },
-        onClear() {
-            const { controlled, inputValue } = this.data
+        onClear(e) {
+            const { controlled, inputValue: value } = this.data
+            const inputValue = controlled ? value : ''
+            const params = { value: '' }
 
-            this.setData({
-                inputValue: controlled ? inputValue : '',
-            })
+            this.updated({ inputValue })
 
-            this.triggerEvent('clear', { value: '' })
+            this.emitEvent('change', params)
+            this.emitEvent('clear', params)
         },
         onError() {
-            this.triggerEvent('error', { value: this.data.inputValue })
+            const { inputValue: value } = this.data
+            this.emitEvent('error', { value })
         },
         onLineChange(e) {
-            this.triggerEvent('linechange', e.detail)
+            this.emitEvent('linechange', e.detail)
         },
         setTimer() {
             this.clearTimer()

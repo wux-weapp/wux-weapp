@@ -23,8 +23,7 @@ baseComponent({
         height: 0,
     },
     computed: {
-        classes() {
-            const { prefixCls } = this.data
+        classes: ['prefixCls', function(prefixCls) {
             const wrap = classNames(prefixCls)
             const hd = `${prefixCls}__hd`
             const bd = `${prefixCls}__bd`
@@ -34,7 +33,7 @@ baseComponent({
                 hd,
                 bd,
             }
-        },
+        }],
     },
     methods: {
     	updated(index) {

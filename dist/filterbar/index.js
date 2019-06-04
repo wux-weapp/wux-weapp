@@ -14,8 +14,7 @@ baseComponent({
         },
     },
     computed: {
-        classes() {
-            const { prefixCls } = this.data
+        classes: ['prefixCls', function(prefixCls) {
             const wrap = classNames(prefixCls)
             const bd = `${prefixCls}__bd`
             const item = `${prefixCls}__item`
@@ -57,7 +56,7 @@ baseComponent({
                 btns,
                 select,
             }
-        },
+        }],
     },
     methods: {
         /**

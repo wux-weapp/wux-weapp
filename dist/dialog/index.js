@@ -27,8 +27,7 @@ baseComponent({
     useFunc: true,
     data: defaults,
     computed: {
-        classes() {
-            const { prefixCls, buttons: btns, verticalButtons } = this.data
+        classes: ['prefixCls, buttons, verticalButtons', function(prefixCls, btns, verticalButtons) {
             const prompt = `${prefixCls}__prompt`
             const input = `${prefixCls}__input`
             const buttons = classNames(`${prefixCls}__buttons`, {
@@ -54,7 +53,7 @@ baseComponent({
                 buttons,
                 button,
             }
-        },
+        }],
     },
     methods: {
         /**

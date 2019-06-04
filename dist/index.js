@@ -21,6 +21,7 @@ const $wuxBackdrop = (selector = '#wux-backdrop', ctx) => getCtx(selector, ctx)
 const $wuxToast = (selector = '#wux-toast', ctx) => getCtx(selector, ctx)
 const $wuxLoading = (selector = '#wux-loading', ctx) => getCtx(selector, ctx)
 const $wuxDialog = (selector = '#wux-dialog', ctx) => getCtx(selector, ctx)
+const $wuxForm = (selector = '#wux-form', ctx) => getCtx(selector, ctx)
 const $wuxToptips = (selector = '#wux-toptips', ctx) => getCtx(selector, ctx)
 const $wuxGallery = (selector = '#wux-gallery', ctx) => getCtx(selector, ctx)
 const $wuxNotification = (selector = '#wux-notification', ctx) => getCtx(selector, ctx)
@@ -36,6 +37,7 @@ export {
     $wuxToast,
     $wuxLoading,
     $wuxDialog,
+    $wuxForm,
     $wuxToptips,
     $wuxGallery,
     $wuxNotification,

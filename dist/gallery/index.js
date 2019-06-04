@@ -49,8 +49,7 @@ baseComponent({
     useFunc: true,
     data: defaults,
     computed: {
-        classes() {
-            const { prefixCls } = this.data
+        classes: ['prefixCls', function(prefixCls) {
             const swiper = `${prefixCls}__swiper`
             const item = `${prefixCls}__item`
             const img = `${prefixCls}__img`
@@ -68,7 +67,7 @@ baseComponent({
                 del,
                 icon,
             }
-        },
+        }],
     },
     methods: {
         /**

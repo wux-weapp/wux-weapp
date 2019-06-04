@@ -32,8 +32,7 @@ baseComponent({
         },
     },
     computed: {
-        classes() {
-            const { prefixCls, bordered } = this.data
+        classes: ['prefixCls, bordered', function(prefixCls, bordered) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--bordered`]: bordered,
             })
@@ -41,7 +40,7 @@ baseComponent({
             return {
                 wrap,
             }
-        },
+        }],
     },
     methods: {
         changeCurrent() {

@@ -20,14 +20,13 @@ baseComponent({
         },
     },
     computed: {
-        classes() {
-            const { prefixCls, transparent } = this.data
+        classes: ['prefixCls, transparent', function(prefixCls, transparent) {
             const wrap = transparent ? `${prefixCls}--transparent` : prefixCls
 
             return {
                 wrap,
             }
-        },
+        }],
     },
     methods: {
         /**

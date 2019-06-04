@@ -108,19 +108,7 @@ baseComponent({
         buttonVisible: false,
     },
     computed: {
-        classes() {
-            const {
-                prefixCls,
-                position,
-                theme,
-                direction,
-                reverse,
-                buttonVisible,
-                hideShadow,
-                actionRotate,
-                buttons,
-                hoverClass,
-            } = this.data
+        classes: ['prefixCls, position, theme, direction, reverse, buttonVisible, hideShadow, actionRotate, buttons, hoverClass', function(prefixCls, position, theme, direction, reverse, buttonVisible, hideShadow, actionRotate, buttons, hoverClass) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${position}`]: position,
                 [`${prefixCls}--${theme}`]: theme,
@@ -162,7 +150,7 @@ baseComponent({
                 backdrop,
                 hover,
             }
-        },
+        }],
     },
     methods: {
         updated(buttonVisible) {
