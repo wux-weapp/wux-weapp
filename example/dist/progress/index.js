@@ -64,8 +64,7 @@ baseComponent({
         extStyle: '',
     },
     computed: {
-        classes() {
-            const { prefixCls, shape, status } = this.data
+        classes: ['prefixCls, shape, status', function(prefixCls, shape, status) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${shape}`]: shape,
                 [`${prefixCls}--${status}`]: status,
@@ -82,7 +81,7 @@ baseComponent({
                 bar,
                 text,
             }
-        },
+        }],
     },
     methods: {
         updateStyle(opts = {}) {

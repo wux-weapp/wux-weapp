@@ -64,8 +64,7 @@ baseComponent({
         extStyle: '',
     },
     computed: {
-        classes() {
-            const { prefixCls, inputChecked, disabled } = this.data
+        classes: ['prefixCls, inputChecked, disabled', function(prefixCls, inputChecked, disabled) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--checked`]: inputChecked,
                 [`${prefixCls}--disabled`]: disabled,
@@ -78,7 +77,7 @@ baseComponent({
                 input,
                 icon,
             }
-        },
+        }],
     },
     methods: {
         updated(inputChecked) {

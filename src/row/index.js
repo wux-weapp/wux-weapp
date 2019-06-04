@@ -25,14 +25,13 @@ baseComponent({
         rowStyle: '',
     },
     computed: {
-        classes() {
-            const { prefixCls } = this.data
+        classes: ['prefixCls', function(prefixCls) {
             const wrap = classNames(prefixCls)
 
             return {
                 wrap,
             }
-        },
+        }],
     },
     methods: {
     	updateStyle(gutter = this.data.gutter) {

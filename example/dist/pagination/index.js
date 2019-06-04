@@ -41,8 +41,7 @@ baseComponent({
         activeIndex: 1,
     },
     computed: {
-        classes() {
-            const { prefixCls } = this.data
+        classes: ['prefixCls', function(prefixCls) {
             const wrap = classNames(prefixCls)
             const prev = `${prefixCls}__prev`
             const button = `${prefixCls}__button`
@@ -62,7 +61,7 @@ baseComponent({
                 dot,
                 next,
             }
-        },
+        }],
     },
     methods: {
         updated(activeIndex) {

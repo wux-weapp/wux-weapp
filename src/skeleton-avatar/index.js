@@ -25,8 +25,7 @@ baseComponent({
         active: false,
     },
     computed: {
-        classes() {
-            const { prefixCls, active, size, shape } = this.data
+        classes: ['prefixCls, active, size, shape', function(prefixCls, active, size, shape) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--active`]: active,
                 [`${prefixCls}--${size}`]: size,
@@ -36,7 +35,7 @@ baseComponent({
             return {
                 wrap,
             }
-        },
+        }],
     },
     methods: {
     	updated(active) {

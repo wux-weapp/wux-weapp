@@ -30,8 +30,7 @@ baseComponent({
         scroll: false,
     },
     computed: {
-        classes() {
-            const { prefixCls, direction, scroll, theme, current, disabled } = this.data
+        classes: ['prefixCls, direction, scroll, theme, current, disabled', function(prefixCls, direction, scroll, theme, current, disabled) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${direction}`]: direction,
                 [`${prefixCls}--${theme}`]: theme,
@@ -47,7 +46,7 @@ baseComponent({
                 title,
                 bar,
             }
-        },
+        }],
     },
     methods: {
         changeCurrent({ current, scroll, theme, direction }) {

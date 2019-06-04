@@ -58,8 +58,7 @@ baseComponent({
         resultIcon: null,
     },
     computed: {
-        classes() {
-            const { prefixCls, fixed } = this.data
+        classes: ['prefixCls, fixed', function(prefixCls, fixed) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--fixed`]: fixed,
             })
@@ -81,7 +80,7 @@ baseComponent({
                 buttons,
                 ft,
             }
-        },
+        }],
     },
     methods: {
         onClick(e) {

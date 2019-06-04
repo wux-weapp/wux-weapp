@@ -28,8 +28,7 @@ baseComponent({
         height: 0,
     },
     computed: {
-        classes() {
-            const { prefixCls, isFixed } = this.data
+        classes: ['prefixCls, isFixed', function(prefixCls, isFixed) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--fixed`]: isFixed,
             })
@@ -45,7 +44,7 @@ baseComponent({
                 bd,
                 content,
             }
-        },
+        }],
     },
     methods: {
         onScroll(scrollTop) {

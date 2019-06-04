@@ -108,8 +108,7 @@ baseComponent({
         isVideo: false,
     },
     computed: {
-        classes() {
-            const { prefixCls, disabled, listType } = this.data
+        classes: ['prefixCls, disabled, listType', function(prefixCls, disabled, listType) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${listType}`]: listType,
                 [`${prefixCls}--disabled`]: disabled,
@@ -130,7 +129,7 @@ baseComponent({
                 select,
                 button,
             }
-        },
+        }],
     },
     methods: {
         /**

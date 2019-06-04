@@ -34,8 +34,7 @@ baseComponent({
         },
     },
     computed: {
-        classes() {
-            const { prefixCls, buttons: btns } = this.data
+        classes: ['prefixCls, buttons', function(prefixCls, btns) {
             const wrap = classNames(prefixCls)
             const button = btns.map((button) => {
                 const wrap = classNames(`${prefixCls}__button`, {
@@ -62,7 +61,7 @@ baseComponent({
                 title,
                 buttons,
             }
-        },
+        }],
     },
     methods: {
         /**

@@ -22,14 +22,13 @@ baseComponent({
         },
     },
     computed: {
-        classes() {
-            const { prefixCls } = this.data
+        classes: ['prefixCls', function(prefixCls) {
             const wrap = classNames(prefixCls)
 
             return {
                 wrap,
             }
-        },
+        }],
     },
     methods: {
         onScroll(scrollTop = this.data.scrollTop) {

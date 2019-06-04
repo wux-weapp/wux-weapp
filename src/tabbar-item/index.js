@@ -31,8 +31,7 @@ baseComponent({
         index: '0',
     },
     computed: {
-        classes() {
-            const { prefixCls, theme, current, disabled } = this.data
+        classes: ['prefixCls, theme, current, disabled', function(prefixCls, theme, current, disabled) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${theme}`]: theme,
                 [`${prefixCls}--current`]: current,
@@ -46,7 +45,7 @@ baseComponent({
                 icon,
                 title,
             }
-        },
+        }],
     },
     methods: {
         changeCurrent(current, index, theme, length) {

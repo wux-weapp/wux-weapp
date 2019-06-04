@@ -75,8 +75,7 @@ baseComponent({
         currentAngle: 0,
     },
     computed: {
-        classes() {
-            const { prefixCls } = this.data
+        classes: ['prefixCls', function(prefixCls) {
             const wrap = classNames(prefixCls)
             const inner = `${prefixCls}__inner`
 
@@ -84,7 +83,7 @@ baseComponent({
                 wrap,
                 inner,
             }
-        },
+        }],
     },
     methods: {
         /**

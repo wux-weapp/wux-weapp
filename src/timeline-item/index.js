@@ -39,8 +39,7 @@ baseComponent({
         extStyle: '',
     },
     computed: {
-        classes() {
-            const { prefixCls, isLast, pending, isPending, custom } = this.data
+        classes: ['prefixCls, isLast, pending, isPending, custom', function(prefixCls, isLast, pending, isPending, custom) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--last`]: isLast,
                 [`${prefixCls}--pending`]: pending,
@@ -59,7 +58,7 @@ baseComponent({
                 dot,
                 content,
             }
-        },
+        }],
     },
     methods: {
     	updateIsLastElement({ index, isLast, isPending, pending, position }) {

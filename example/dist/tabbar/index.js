@@ -48,8 +48,7 @@ baseComponent({
         keys: [],
     },
     computed: {
-        classes() {
-            const { prefixCls, position } = this.data
+        classes: ['prefixCls, position', function(prefixCls, position) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${position}`]: position,
             })
@@ -57,7 +56,7 @@ baseComponent({
             return {
                 wrap,
             }
-        },
+        }],
     },
     methods: {
         updated(activeKey, condition) {

@@ -33,8 +33,7 @@ baseComponent({
         spinVisible: true,
     },
     computed: {
-        classes() {
-            const { prefixCls, size, nested, tip: showText, spinVisible } = this.data
+        classes: ['prefixCls, size, nested, tip, spinVisible', function(prefixCls, size, nested, showText, spinVisible) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${size}`]: size,
                 [`${prefixCls}--nested`]: nested,
@@ -56,7 +55,7 @@ baseComponent({
                 tip,
                 container,
             }
-        },
+        }],
     },
     methods: {
         updated(spinVisible) {

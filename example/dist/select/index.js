@@ -31,8 +31,7 @@ baseComponent({
     useFunc: true,
     data: defaults,
     computed: {
-        classes() {
-            const { prefixCls } = this.data
+        classes: ['prefixCls', function(prefixCls) {
             const wrap = classNames(prefixCls)
             const toolbar = `${prefixCls}__toolbar`
             const inner = `${prefixCls}__inner`
@@ -56,7 +55,7 @@ baseComponent({
                 title,
                 scrollView,
             }
-        },
+        }],
     },
     methods: {
         /**

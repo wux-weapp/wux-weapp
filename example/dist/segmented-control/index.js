@@ -43,8 +43,7 @@ baseComponent({
         activeKey: 0,
     },
     computed: {
-        classes() {
-            const { prefixCls, theme, disabled } = this.data
+        classes: ['prefixCls, theme, disabled', function(prefixCls, theme, disabled) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${theme}`]: theme,
                 [`${prefixCls}--disabled`]: disabled,
@@ -55,7 +54,7 @@ baseComponent({
                 wrap,
                 item,
             }
-        },
+        }],
     },
     methods: {
     	onTap(e) {

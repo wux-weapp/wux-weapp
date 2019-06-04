@@ -67,8 +67,7 @@ baseComponent({
         status: '',
     },
     computed: {
-        classes() {
-            const { prefixCls, shape, mode, status, empty, loading, error } = this.data
+        classes: ['prefixCls, shape, mode, status, empty, loading, error', function(prefixCls, shape, mode, status, empty, loading, error) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${shape}`]: shape,
                 [`${prefixCls}--${mode}`]: mode,
@@ -88,10 +87,10 @@ baseComponent({
                 mask,
                 text,
             }
-        },
+        }],
     },
     methods: {
-        /** 
+        /**
          * 更新资源地址
          */
         updated(src = this.data.src) {
@@ -103,7 +102,7 @@ baseComponent({
         updateStyle(opts = {}) {
             const { width, height } = Object.assign({}, this.data, opts)
             const style = `width: ${calcStyle(width)}; height: ${calcStyle(height)}`
-            
+
             this.setData({
                 style,
             })

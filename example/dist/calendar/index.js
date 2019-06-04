@@ -52,8 +52,7 @@ baseComponent({
     useFunc: true,
     data: defaults,
     computed: {
-        classes() {
-            const { prefixCls, direction } = this.data
+        classes: ['prefixCls, direction', function(prefixCls, direction) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${direction}`]: direction,
             })
@@ -99,7 +98,7 @@ baseComponent({
                 day,
                 text,
             }
-        },
+        }],
     },
     methods: {
         /**

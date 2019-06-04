@@ -28,8 +28,7 @@ baseComponent({
         },
     },
     computed: {
-        classes() {
-            const { prefixCls, active } = this.data
+        classes: ['prefixCls, active', function(prefixCls, active) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--active`]: active,
             })
@@ -37,7 +36,7 @@ baseComponent({
             return {
                 wrap,
             }
-        },
+        }],
     },
     methods: {
         updated(active = this.data.active) {

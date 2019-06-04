@@ -26,8 +26,7 @@ baseComponent({
         extStyle: '',
     },
     computed: {
-        classes() {
-            const { prefixCls, size } = this.data
+        classes: ['prefixCls, size', function(prefixCls, size) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${size}`]: size,
             })
@@ -35,7 +34,7 @@ baseComponent({
             return {
                 wrap,
             }
-        },
+        }],
     },
     methods: {
         onTap() {

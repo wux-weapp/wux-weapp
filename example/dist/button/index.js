@@ -97,8 +97,7 @@ baseComponent({
         },
     },
     computed: {
-        classes() {
-            const { prefixCls, hoverClass, type, size, block, full, clear, outline, bordered, disabled } = this.data
+        classes: ['prefixCls, hoverClass, type, size, block, full, clear, outline, bordered, disabled', function(prefixCls, hoverClass, type, size, block, full, clear, outline, bordered, disabled) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${type}`]: type,
                 [`${prefixCls}--${size}`]: size,
@@ -115,7 +114,7 @@ baseComponent({
                 wrap,
                 hover,
             }
-        },
+        }],
     },
     methods: {
         onTap() {

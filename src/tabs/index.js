@@ -63,8 +63,7 @@ baseComponent({
         keys: [],
     },
     computed: {
-        classes() {
-            const { prefixCls, direction, scroll } = this.data
+        classes: ['prefixCls, direction, scroll', function(prefixCls, direction, scroll) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${direction}`]: direction,
                 [`${prefixCls}--scroll`]: scroll,
@@ -73,7 +72,7 @@ baseComponent({
             return {
                 wrap,
             }
-        },
+        }],
     },
     methods: {
         updated(value, condition) {

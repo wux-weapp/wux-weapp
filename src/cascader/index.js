@@ -64,8 +64,7 @@ baseComponent({
         fieldNames: {},
     },
     computed: {
-        classes() {
-            const { prefixCls } = this.data
+        classes: ['prefixCls', function(prefixCls) {
             const wrap = classNames(prefixCls)
             const hd = `${prefixCls}__hd`
             const title = `${prefixCls}__title`
@@ -93,7 +92,7 @@ baseComponent({
                 icon,
                 ft,
             }
-        },
+        }],
     },
     methods: {
         getActiveOptions(activeValue) {

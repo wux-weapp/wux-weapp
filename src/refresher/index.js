@@ -71,10 +71,10 @@ baseComponent({
                     loading,
                     noData
                 } = this.data
-                
+
                 if (windowHeight && !this.isRefreshing()) {
 
-                    // 到临界点时触发上拉加载 
+                    // 到临界点时触发上拉加载
                     // 防止节点高度一致时引发重复加载
                     if (
                         n > newContentHeight - windowHeight - (distance * 1.5) &&
@@ -104,7 +104,7 @@ baseComponent({
                         this.setData({
                             oldContentHeight: newContentHeight
                         })
-                        
+
                     }
 
                     this.deactivate()
@@ -126,22 +126,7 @@ baseComponent({
         loading: false,   // 判断是否正在加载
     },
     computed: {
-        classes() {
-            const {
-                prefixCls,
-                pullingText,
-                pullingIcon,
-                disablePullingRotation,
-                refreshingText,
-                refreshingIcon,
-                visible,
-                active,
-                refreshing,
-                tail,
-                prefixLCls,
-                loading,
-                noData,
-            } = this.data
+        classes: ['prefixCls, pullingText, pullingIcon, disablePullingRotation, refreshingText, refreshingIcon, visible, active, refreshing, tail, prefixLCls, loading, noData', function(prefixCls, pullingText, pullingIcon, disablePullingRotation, refreshingText, refreshingIcon, visible, active, refreshing, tail, prefixLCls, loading, noData) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--hidden`]: !visible,
                 [`${prefixCls}--visible`]: visible,
@@ -180,7 +165,7 @@ baseComponent({
                 lWrap,
                 lContent,
             }
-        },
+        }],
     },
     methods: {
         /**

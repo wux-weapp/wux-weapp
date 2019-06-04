@@ -49,8 +49,7 @@ baseComponent({
         visible: true,
     },
     computed: {
-        classes() {
-            const { prefixCls } = this.data
+        classes: ['prefixCls', function(prefixCls) {
             const wrap = classNames(prefixCls)
             const hd = `${prefixCls}__hd`
             const icon = `${prefixCls}__icon`
@@ -70,7 +69,7 @@ baseComponent({
                 ft,
                 action,
             }
-        },
+        }],
     },
     methods: {
         clearMarqueeTimer() {

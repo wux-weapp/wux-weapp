@@ -68,8 +68,7 @@ baseComponent({
         extStyle: '',
     },
     computed: {
-        classes() {
-            const { prefixCls, position } = this.data
+        classes: ['prefixCls, position', function(prefixCls, position) {
             const wrap = classNames(`${prefixCls}-position`, {
                 [`${prefixCls}-position--${position}`]: position,
             })
@@ -93,7 +92,7 @@ baseComponent({
                 close,
                 x,
             }
-        },
+        }],
     },
     methods: {
         /**

@@ -32,8 +32,7 @@ baseComponent({
         index: 0,
     },
     computed: {
-        classes() {
-            const { prefixCls, hoverClass, bordered, square } = this.data
+        classes: ['prefixCls, hoverClass, bordered, square', function(prefixCls, hoverClass, bordered, square) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--bordered`]: bordered,
                 [`${prefixCls}--square`]: square,
@@ -56,7 +55,7 @@ baseComponent({
                 label,
                 hover,
             }
-        },
+        }],
     },
     methods: {
         changeCurrent(width, bordered, square, index) {

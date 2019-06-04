@@ -19,8 +19,7 @@ baseComponent({
     useFunc: true,
     data: defaults,
     computed: {
-        classes() {
-            const { prefixCls } = this.data
+        classes: ['prefixCls', function(prefixCls) {
             const wrap = classNames(prefixCls)
             const content = `${prefixCls}__content`
             const hd = `${prefixCls}__hd`
@@ -40,7 +39,7 @@ baseComponent({
                 text,
                 ft,
             }
-        },
+        }],
     },
     methods: {
         /**

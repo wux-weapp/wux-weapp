@@ -38,8 +38,7 @@ baseComponent({
         finalCount: 0,
     },
     computed: {
-        classes() {
-            const { prefixCls, status: st } = this.data
+        classes: ['prefixCls, status', function(prefixCls, st) {
             const wrap = classNames(prefixCls)
             const status = `${prefixCls}__status`
             const statusDot = classNames(`${prefixCls}__status-dot`, {
@@ -57,7 +56,7 @@ baseComponent({
                 dot,
                 count,
             }
-        },
+        }],
     },
     methods: {
         updated(count = this.data.count) {

@@ -35,8 +35,7 @@ baseComponent({
         extStyle: '',
     },
     computed: {
-        classes() {
-            const { prefixCls } = this.data
+        classes: ['prefixCls', function(prefixCls) {
             const wrap = classNames(prefixCls)
             const nav = `${prefixCls}__nav`
             const navItem = `${prefixCls}__nav-item`
@@ -48,7 +47,7 @@ baseComponent({
                 navItem,
                 indicator,
             }
-        },
+        }],
     },
     methods: {
         /**

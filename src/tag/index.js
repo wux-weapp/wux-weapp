@@ -55,8 +55,7 @@ baseComponent({
         tagVisible: true,
     },
     computed: {
-        classes() {
-            const { prefixCls, hoverClass } = this.data
+        classes: ['prefixCls, hoverClass', function(prefixCls, hoverClass) {
             const wrap = classNames(prefixCls)
             const icon = `${prefixCls}__icon`
             const hover = hoverClass && hoverClass !== 'default' ? hoverClass : `${prefixCls}--hover`
@@ -66,7 +65,7 @@ baseComponent({
                 icon,
                 hover,
             }
-        },
+        }],
     },
     methods: {
         /**

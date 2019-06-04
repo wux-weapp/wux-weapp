@@ -26,8 +26,7 @@ baseComponent({
         rowList: [],
     },
     computed: {
-        classes() {
-            const { prefixCls, active, rounded } = this.data
+        classes: ['prefixCls, active, rounded', function(prefixCls, active, rounded) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--active`]: active,
                 [`${prefixCls}--rounded`]: rounded,
@@ -38,7 +37,7 @@ baseComponent({
                 wrap,
                 row,
             }
-        },
+        }],
     },
     methods: {
     	updated(active) {

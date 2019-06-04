@@ -17,9 +17,8 @@ baseComponent({
     useFunc: true,
     data: defaults,
     computed: {
-        classes() {
-            const { prefixCls } = this.data
-            const ico = this.data.icon ? this.data.icon : 'cancel'
+        classes: ['prefixCls, icon', function(prefixCls, iconType) {
+            const ico = iconType ? iconType : 'cancel'
             const wrap = classNames(prefixCls)
             const content = classNames(`${prefixCls}__content`, {
                 [`${prefixCls}__content--${ico}`]: ico,
@@ -31,7 +30,7 @@ baseComponent({
                 content,
                 icon,
             }
-        },
+        }],
     },
     methods: {
         /**

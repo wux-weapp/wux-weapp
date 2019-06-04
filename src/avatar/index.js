@@ -39,8 +39,7 @@ baseComponent({
         childrenStyle: '',
     },
     computed: {
-        classes() {
-            const { prefixCls, shape, size, src } = this.data
+        classes: ['prefixCls, shape, size, src', function(prefixCls, shape, size, src) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${shape}`]: shape,
                 [`${prefixCls}--${size}`]: size,
@@ -52,7 +51,7 @@ baseComponent({
                 wrap,
                 string,
             }
-        },
+        }],
     },
     methods: {
         setScale() {

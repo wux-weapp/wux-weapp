@@ -97,8 +97,7 @@ baseComponent({
         isLast: false,
     },
     computed: {
-        classes() {
-            const { prefixCls, hoverClass, isLast, isLink, disabled } = this.data
+        classes: ['prefixCls, hoverClass, isLast, isLink, disabled', function(prefixCls, hoverClass, isLast, isLink, disabled) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--last`]: isLast,
                 [`${prefixCls}--access`]: isLink,
@@ -122,7 +121,7 @@ baseComponent({
                 ft,
                 hover,
             }
-        },
+        }],
     },
     methods: {
         onTap() {

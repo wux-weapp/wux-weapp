@@ -106,8 +106,7 @@ baseComponent({
         extStyle: '',
     },
     computed: {
-        classes() {
-            const { prefixCls, disabled, inputFocus } = this.data
+        classes: ['prefixCls, disabled, inputFocus', function(prefixCls, disabled, inputFocus) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--focus`]: inputFocus,
                 [`${prefixCls}--disabled`]: disabled,
@@ -134,7 +133,7 @@ baseComponent({
                 text,
                 cancel,
             }
-        },
+        }],
     },
     methods: {
         updated(inputValue) {

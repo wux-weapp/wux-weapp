@@ -25,8 +25,7 @@ baseComponent({
         },
     },
     computed: {
-        classes() {
-            const { prefixCls, dashed, showText, position } = this.data
+        classes: ['prefixCls, dashed, showText, position', function(prefixCls, dashed, showText, position) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--dashed`]: dashed,
                 [`${prefixCls}--text`]: showText,
@@ -38,6 +37,6 @@ baseComponent({
                 wrap,
                 text,
             }
-        },
+        }],
     },
 })

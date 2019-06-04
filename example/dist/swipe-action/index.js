@@ -43,8 +43,7 @@ baseComponent({
         offsetStyle: '',
     },
     computed: {
-        classes() {
-            const { prefixCls, swiping } = this.data
+        classes: ['prefixCls, swiping', function(prefixCls, swiping) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--swiping`]: swiping,
             })
@@ -68,7 +67,7 @@ baseComponent({
                 text,
                 content,
             }
-        },
+        }],
     },
     methods: {
         updated(index) {
