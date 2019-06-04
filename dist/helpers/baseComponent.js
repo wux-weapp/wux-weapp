@@ -3,6 +3,20 @@ import relationsBehavior from './relationsBehavior'
 import safeSetDataBehavior from './safeSetDataBehavior'
 import eventsBehavior from './eventsBehavior'
 import funcBehavior from './funcBehavior'
+import compareVersion from './compareVersion'
+
+const { platform, SDKVersion } = wx.getSystemInfoSync()
+const libVersion = '2.6.2'
+
+// check SDKVersion
+if (platform === 'devtools' && compareVersion(SDKVersion, libVersion) < 0) {
+    if (wx && wx.showModal) {
+        wx.showModal({
+            title: '提示',
+            content: `当前基础库版本（${SDKVersion}）过低，无法使用 Wux Weapp 组件库，请更新基础库版本 >=${libVersion} 后重试。`,
+        })
+    }
+}
 
 const baseComponent = (options = {}) => {
     // add default externalClasses
