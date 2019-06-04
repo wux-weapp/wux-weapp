@@ -4,11 +4,11 @@
     	<block wx:for="{{ marks }}" wx:key="" wx:if="{{ showMark && marks.length > 0 }}">
     		<view class="{{ classes.mark }}" style="left: {{ item + '%' }}; {{ common.getStyle(extMarkStyle, index) }}" />
     	</block>
-	    <block wx:for="{{ sliderValue }}" wx:key="">
+	    <block wx:for="{{ inputValue }}" wx:key="">
 	    	<view
 	    		class="{{ classes.track }}"
-	    		style="{{ common.getTrackStyle(offsets, index, sliderValue.length > 1) }}; {{ common.getStyle(extTrackStyle, index) }}"
-	    		wx:if="{{ sliderValue.length === 1 || index !== sliderValue.length - 1 }}"
+	    		style="{{ common.getTrackStyle(offsets, index, inputValue.length > 1) }}; {{ common.getStyle(extTrackStyle, index) }}"
+	    		wx:if="{{ inputValue.length === 1 || index !== inputValue.length - 1 }}"
 	    	/>
 	    	<view
 	    		class="{{ classes.handle }} {{ last === index ? prefixCls + '__handle--last' : '' }}"

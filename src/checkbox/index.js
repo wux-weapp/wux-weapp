@@ -59,8 +59,7 @@ baseComponent({
         inputChecked: false,
     },
     computed: {
-        classes() {
-            const { prefixCls } = this.data
+        classes: ['prefixCls', function(prefixCls) {
             const cell = classNames(prefixCls)
             const selectable = `${prefixCls}__selectable`
 
@@ -68,7 +67,7 @@ baseComponent({
                 cell,
                 selectable,
             }
-        },
+        }],
     },
     methods: {
         checkboxChange(e) {
@@ -82,7 +81,7 @@ baseComponent({
 
             if (disabled) return
 
-            parent ? parent.emitEvent(item) : this.triggerEvent('change', item)
+            parent ? parent.onChange(item) : this.triggerEvent('change', item)
         },
         changeValue(inputChecked = false, index = 0) {
             this.setData({

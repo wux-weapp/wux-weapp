@@ -2,6 +2,12 @@ import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
 
 baseComponent({
+    useEvents: true,
+    relations: {
+        '../field/index': {
+            type: 'ancestor',
+        },
+    },
     properties: {
         prefixCls: {
             type: String,
@@ -11,7 +17,7 @@ baseComponent({
             type: Number,
             value: 5,
             observer() {
-                this.updateValue()
+                this.setValue(this.data.inputValue)
             },
         },
         icon: {
@@ -31,7 +37,7 @@ baseComponent({
             value: 0,
             observer(newVal) {
                 if (this.data.controlled) {
-                    this.updateValue(newVal)
+                    this.setValue(newVal)
                 }
             },
         },
@@ -69,11 +75,10 @@ baseComponent({
         },
     },
     data: {
-        raterValue: 0,
+        inputValue: 0,
     },
     computed: {
-        classes() {
-            const { prefixCls, disabled } = this.data
+        classes: ['prefixCls, disabled', function(prefixCls, disabled) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--disabled`]: disabled,
             })
@@ -91,24 +96,35 @@ baseComponent({
                 outer,
                 icon,
             }
-        },
+        }],
     },
-    methods: {
-        updateValue(value = this.data.raterValue) {
-            const { max, activeColor } = this.data
+    observers: {
+        ['inputValue, max, activeColor'](inputValue, max, activeColor) {
             const stars = [...new Array(max)].map((_, i) => i)
-            const raterValue = value <= 0 ? 0 : value > max ? max : value
-            const colors = stars.reduce((a, _, i) => ([...a, i <= value - 1 ? activeColor : '#ccc']), [])
-            const _val = raterValue.toString().split('.')
+            const colors = stars.reduce((a, _, i) => ([...a, i <= inputValue - 1 ? activeColor : '#ccc']), [])
+            const _val = inputValue.toString().split('.')
             const sliceValue = _val.length === 1 ? [_val[0], 0] : _val
 
             this.setData({
                 stars,
                 colors,
-                raterValue,
                 cutIndex: sliceValue[0] * 1,
                 cutPercent: sliceValue[1] * 10,
             })
+        },
+    },
+    methods: {
+        updated(inputValue) {
+            if (this.hasFieldDecorator) return
+            if (this.data.inputValue !== inputValue) {
+                this.setData({ inputValue })
+            }
+        },
+        setValue(value) {
+            const { max } = this.data
+            const inputValue = value <= 0 ? 0 : value > max ? max : value
+
+            this.updated(inputValue)
         },
         updateHalfStarValue(index, x, cb) {
             const { prefixCls } = this.data
@@ -123,31 +139,31 @@ baseComponent({
         },
         onTap(e) {
             const { index } = e.currentTarget.dataset
-            const { raterValue, disabled, allowHalf, allowClear } = this.data
+            const { inputValue, disabled, allowHalf, allowClear } = this.data
 
             // 判断是否禁用
             if (!disabled) {
                 // 判断是否支持选中半星
                 if (!allowHalf) {
                     const value = index + 1
-                    const isReset = allowClear && value === raterValue
+                    const isReset = allowClear && value === inputValue
 
-                    this.fireEvents(isReset ? 0 : value, index)
+                    this.onChange(isReset ? 0 : value, index)
                 } else {
                     this.updateHalfStarValue(index, e.detail.x, (value, index) => {
-                        const isReset = allowClear && value === raterValue
+                        const isReset = allowClear && value === inputValue
 
-                        this.fireEvents(isReset ? 0 : value, index)
+                        this.onChange(isReset ? 0 : value, index)
                     })
                 }
             }
         },
-        fireEvents(value, index) {
+        onChange(value, index) {
             if (!this.data.controlled) {
-                this.updateValue(value)
+                this.setValue(value)
             }
 
-            this.triggerEvent('change', { value, index })
+            this.emitEvent('change', { value, index })
         },
         onTouchMove(e) {
             const { disabled, allowHalf, allowTouchMove } = this.data
@@ -170,7 +186,7 @@ baseComponent({
                             const has = (x - star.left) < star.width / 2
                             value = has ? value - .5 : value
                         }
-                        this.fireEvents(value, index)
+                        this.onChange(value, index)
                     }
                 }).exec()
             }
@@ -178,8 +194,8 @@ baseComponent({
     },
     attached() {
         const { defaultValue, value, controlled } = this.data
-        const raterValue = controlled ? value : defaultValue
+        const inputValue = controlled ? value : defaultValue
 
-        this.updateValue(raterValue)
+        this.setValue(inputValue)
     },
 })

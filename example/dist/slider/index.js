@@ -20,7 +20,26 @@ const checkValuePrecision = (val, step, min) => {
     return parseFloat(closestStep.toFixed(precision))
 }
 
+/**
+ * 获取样式
+ */
+const getStyles = (value) => {
+    return Array.isArray(value) ? value.map((n) => styleToCssString(n)) : styleToCssString(value)
+}
+
+const defaultEvents = {
+    onChange() {},
+    onAfterChange() {},
+}
+
 baseComponent({
+    useEvents: true,
+    defaultEvents,
+    relations: {
+        '../field/index': {
+            type: 'ancestor',
+        },
+    },
     properties: {
         prefixCls: {
             type: String,
@@ -75,7 +94,7 @@ baseComponent({
             value: '',
             observer(newVal) {
                 this.setData({
-                    extMarkStyle: Array.isArray(newVal) ? newVal.map((n) => styleToCssString(n)) : styleToCssString(newVal),
+                    extMarkStyle: getStyles(newVal),
                 })
             },
         },
@@ -84,7 +103,7 @@ baseComponent({
             value: '',
             observer(newVal) {
                 this.setData({
-                    extHandleStyle: Array.isArray(newVal) ? newVal.map((n) => styleToCssString(n)) : styleToCssString(newVal),
+                    extHandleStyle: getStyles(newVal),
                 })
             },
         },
@@ -93,7 +112,7 @@ baseComponent({
             value: '',
             observer(newVal) {
                 this.setData({
-                    extTrackStyle: Array.isArray(newVal) ? newVal.map((n) => styleToCssString(n)) : styleToCssString(newVal),
+                    extTrackStyle: getStyles(newVal),
                 })
             },
         },
@@ -118,7 +137,7 @@ baseComponent({
     },
     data: {
         offsets: [],
-        sliderValue: [],
+        inputValue: [],
         extMarkStyle: '',
         extHandleStyle: '',
         extTrackStyle: '',
@@ -126,8 +145,7 @@ baseComponent({
         extWrapStyle: '',
     },
     computed: {
-        classes() {
-            const { prefixCls, disabled } = this.data
+        classes: ['prefixCls, disabled', function(prefixCls, disabled) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--disabled`]: disabled,
             })
@@ -147,15 +165,23 @@ baseComponent({
                 handle,
                 max,
             }
+        }],
+    },
+    observers: {
+        inputValue(newVal) {
+            const offsets = newVal.map((value) => this.calcOffset(this.checkValue(value)))
+            this.setData({ offsets })
         },
     },
     methods: {
         /**
          * 更新选中值及偏移量
          */
-        updated(sliderValue) {
-            const offsets = sliderValue.map((value) => this.calcOffset(this.checkValue(value)))
-            this.setData({ offsets, sliderValue })
+        updated(inputValue) {
+            if (this.hasFieldDecorator) return
+            if (this.data.inputValue !== inputValue) {
+                this.setData({ inputValue })
+            }
         },
         /**
          * 手指触摸动作开始
@@ -188,10 +214,10 @@ baseComponent({
                 const diffX = (this.moveX - this.startX) / rect.width * 100
                 const nextOffsets = [...this.data.offsets]
                 const offset = this.checkValue(this.startPos + diffX, 0, 100)
-                const { sliderValue } = this.data
+                const { inputValue } = this.data
                 const currentValue = this.calcValue(offset)
-                const prevValue = sliderValue[index - 1]
-                const nextValue = sliderValue[index + 1]
+                const prevValue = inputValue[index - 1]
+                const nextValue = inputValue[index + 1]
 
                 // 通过合法的当前值反算偏移量
                 nextOffsets[index] = this.calcOffset(currentValue)
@@ -207,14 +233,14 @@ baseComponent({
                 }
 
                 // 判断当前值是否发生变化，是则触发 change 事件
-                if (sliderValue[index] !== currentValue) {
+                if (inputValue[index] !== currentValue) {
                     const value = this.getValue(nextOffsets)
 
                     if (!this.data.controlled) {
-                        this.setData({ offsets: nextOffsets, sliderValue: value })
+                        this.updated(value)
                     }
 
-                    this.triggerEvent('change', { offsets: nextOffsets, value })
+                    this.emitEvent('change', { offsets: nextOffsets, value })
                 }
             })
         },
@@ -226,7 +252,7 @@ baseComponent({
             this.isMoved = false
             const { offsets } = this.data
             const value = this.getValue(offsets)
-            this.triggerEvent('afterChange', { offsets, value })
+            this.emitEvent('afterChange', { offsets, value })
         },
         /**
          * 获取界面上的节点信息
@@ -309,9 +335,9 @@ baseComponent({
     },
     attached() {
         const { defaultValue, value, controlled } = this.data
-        const sliderValue = controlled ? value : defaultValue
+        const inputValue = controlled ? value : defaultValue
 
-        this.updated(sliderValue)
         this.getMarks()
+        this.updated(inputValue)
     },
 })

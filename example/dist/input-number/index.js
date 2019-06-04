@@ -33,8 +33,21 @@ const getValidValue = (value, min, max) => {
     return val
 }
 
+const defaultEvents = {
+    onChange() {},
+    onFocus() {},
+    onBlur() {},
+}
+
 baseComponent({
+    useEvents: true,
+    defaultEvents,
     externalClasses: ['wux-sub-class', 'wux-input-class', 'wux-add-class'],
+    relations: {
+        '../field/index': {
+            type: 'ancestor',
+        },
+    },
     properties: {
         prefixCls: {
             type: String,
@@ -65,7 +78,7 @@ baseComponent({
             value: 0,
             observer(newVal) {
                 if (this.data.controlled) {
-                    this.updated(newVal)
+                    this.setValue(newVal, false)
                 }
             },
         },
@@ -92,8 +105,7 @@ baseComponent({
         disabledMax: false,
     },
     computed: {
-        classes() {
-            const { prefixCls, shape, color, disabledMin, disabledMax } = this.data
+        classes: ['prefixCls, shape, color, disabledMin, disabledMax', function(prefixCls, shape, color, disabledMin, disabledMax) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${shape}`]: shape,
             })
@@ -117,53 +129,71 @@ baseComponent({
                 icon,
                 input,
             }
+        }],
+    },
+    observers: {
+        inputValue(newVal) {
+            const { min, max } = this.data
+            const disabledMin = newVal <= min
+            const disabledMax = newVal >= max
+
+            this.setData({
+                disabledMin,
+                disabledMax,
+            })
         },
     },
     methods: {
         /**
          * 更新值
          */
-        updated(value, condition = true, trigger = false) {
+        updated(inputValue) {
+            if (this.hasFieldDecorator) return
+            if (this.data.inputValue !== inputValue) {
+                this.setData({ inputValue })
+            }
+        },
+        /**
+         * 设置值
+         */
+        setValue(value, runCallbacks = true) {
             const { min, max } = this.data
             const inputValue = getValidValue(value, min, max)
-            const disabledMin = inputValue <= min
-            const disabledMax = inputValue >= max
 
-            // 更新数值，判断最小或最大值禁用 sub 或 add 按钮
-            if (condition) {
-                this.setData({
-                    inputValue,
-                    disabledMin,
-                    disabledMax,
-                })
-            }
+            this.updated(inputValue)
 
-            // 触发事件
-            if (trigger) {
-                this.triggerEvent('change', { value: inputValue })
+            if (runCallbacks) {
+                this.emitEvent('change', { value: inputValue })
             }
         },
         /**
          * 数字计算函数
          */
-        calculation(type, meta) {
-            const { disabledMax, disabledMin, inputValue, step, longpress, controlled } = this.data
+        calculation(type, isLoop) {
+            const {
+                disabledMax,
+                disabledMin,
+                inputValue,
+                step,
+                longpress,
+                controlled,
+            } = this.data
 
             // add
             if (type === 'add') {
-                if (disabledMax) return false
-                this.updated(inputValue + step, !controlled, true)
+                if (disabledMax) return
+                this.setValue(inputValue + step)
             }
 
             // sub
             if (type === 'sub') {
-                if (disabledMin) return false
-                this.updated(inputValue - step, !controlled, true)
+                if (disabledMin) return
+                this.setValue(inputValue - step)
             }
 
             // longpress
-            if (longpress && meta) {
-                this.timeout = setTimeout(() => this.calculation(type, meta), 100)
+            if (longpress && isLoop) {
+                this.timeout = setTimeout(() => this.calculation(type, isLoop), 100)
             }
         },
         /**
@@ -173,15 +203,14 @@ baseComponent({
             this.clearInputTimer()
             this.inputTime = setTimeout(() => {
                 const value = toNumberWhenUserInput(e.detail.value)
-                this.updated(value, !this.data.controlled)
-                this.triggerEvent('change', { value })
+                this.setValue(value)
             }, 300)
         },
         /**
          * 输入框聚焦时触发
          */
         onFocus(e) {
-            this.triggerEvent('focus', e.detail)
+            this.emitEvent('focus', e.detail)
         },
         /**
          * 输入框失去焦点时触发
@@ -192,7 +221,7 @@ baseComponent({
                 inputValue: this.data.inputValue,
             })
 
-            this.triggerEvent('blur', e.detail)
+            this.emitEvent('blur', e.detail)
         },
         /**
          * 手指触摸后，超过350ms再离开
@@ -215,7 +244,7 @@ baseComponent({
             }
         },
         /**
-         * 	手指触摸动作结束
+         *  手指触摸动作结束
          */
         onTouchEnd() {
             this.clearTimer()
@@ -249,7 +278,7 @@ baseComponent({
         const { defaultValue, value, controlled } = this.data
         const inputValue = controlled ? value : defaultValue
 
-        this.updated(inputValue)
+        this.setValue(inputValue, false)
     },
     detached() {
         this.clearTimer()

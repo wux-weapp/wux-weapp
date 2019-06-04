@@ -3,11 +3,18 @@ import classNames from '../helpers/classNames'
 
 baseComponent({
     useField: true,
+    useEvents: true,
     relations: {
+        '../field/index': {
+            type: 'ancestor',
+        },
         '../radio/index': {
             type: 'child',
             observer() {
-                this.debounce(this.changeValue)
+                this.debounce(() => {
+                    const { inputValue, value } = this.data
+                    this.changeValue(this.hasFieldDecorator ? inputValue : value)
+                })
             },
         },
     },
@@ -23,7 +30,10 @@ baseComponent({
         value: {
             type: String,
             value: '',
-            observer: 'changeValue',
+            observer(newVal) {
+                if (this.hasFieldDecorator) return
+                this.changeValue(newVal)
+            },
         },
         title: {
             type: String,
@@ -32,6 +42,16 @@ baseComponent({
         label: {
             type: String,
             value: '',
+        },
+    },
+    data: {
+        inputValue: '',
+    },
+    observers: {
+        inputValue(newVal) {
+            if (this.hasFieldDecorator) {
+                this.changeValue(newVal)
+            }
         },
     },
     methods: {
@@ -43,8 +63,8 @@ baseComponent({
                 })
             }
         },
-        emitEvent(item) {
-            this.triggerEvent('change', { ...item, name: this.data.name })
+        onChange(item) {
+            this.emitEvent('change', { ...item, name: this.data.name })
         },
     },
 })
