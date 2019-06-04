@@ -14,11 +14,55 @@
   width: auto;
   overflow: hidden
 }
+.wux-actionsheet__content--is-iphonex {
+  margin-bottom: 68rpx
+}
+.wux-actionsheet__content--theme-wx {
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  background-color: #efeff4
+}
+.wux-actionsheet__content--theme-wx .wux-actionsheet__group {
+  border-radius: 0;
+  margin-bottom: 12rpx
+}
+.wux-actionsheet__content--theme-wx .wux-actionsheet__group--options {
+  background-color: #fff
+}
+.wux-actionsheet__content--theme-wx .wux-actionsheet__group--cancel {
+  margin-bottom: 0
+}
+.wux-actionsheet__content--theme-wx .wux-actionsheet__button {
+  font-size: 36rpx;
+  color: #000
+}
+.wux-actionsheet__content--theme-wx .wux-actionsheet__button--cancel {
+  font-weight: 400
+}
+.wux-actionsheet__content--theme-wx.wux-actionsheet__content--is-iphonex {
+  background-color: #fff
+}
+.wux-actionsheet__content--theme-wx.wux-actionsheet__content--is-iphonex .wux-actionsheet__group--options {
+  margin-bottom: 68rpx
+}
+.wux-actionsheet__content--theme-wx.wux-actionsheet__content--is-iphonex.wux-actionsheet__content--has-cancel {
+  background-color: #efeff4
+}
+.wux-actionsheet__content--theme-wx.wux-actionsheet__content--is-iphonex.wux-actionsheet__content--has-cancel .wux-actionsheet__group--options {
+  margin-bottom: 12rpx
+}
+.wux-actionsheet__content--theme-wx.wux-actionsheet__content--is-iphonex.wux-actionsheet__content--has-cancel .wux-actionsheet__group--cancel {
+  padding-bottom: 68rpx
+}
 .wux-actionsheet__group {
   margin-bottom: 16rpx;
   border-radius: 8rpx;
   background-color: #fff;
   overflow: hidden
+}
+.wux-actionsheet__group--options {
+  background-color: #f1f2f3
 }
 .wux-actionsheet__title {
   padding: 32rpx;
@@ -65,21 +109,6 @@
 .wux-actionsheet__button--disabled {
   opacity: .3!important
 }
-.wux-actionsheet__icon {
-  display: inline-block;
-  width: 48rpx;
-  height: 48rpx;
-  margin-right: 20rpx
-}
-.wux-actionsheet__group {
-  margin-bottom: 16rpx;
-  border-radius: 8rpx;
-  background-color: #fff;
-  overflow: hidden
-}
-.wux-actionsheet__group--options {
-  background: #f1f2f3
-}
 .wux-actionsheet__group .wux-actionsheet__button {
   border-top: none
 }
@@ -102,25 +131,9 @@
 .wux-actionsheet__group .wux-actionsheet__button:first-child:last-child:after {
   border-width: 0
 }
-.wux-actionsheet__content--theme-wx.wux-actionsheet__content {
-  margin-left: 0;
-  margin-right: 0;
-  background-color: #efeff4
-}
-.wux-actionsheet__content--theme-wx .wux-actionsheet__group {
-  border-radius: 0;
-  margin-bottom: 12rpx
-}
-.wux-actionsheet__content--theme-wx .wux-actionsheet__group--options {
-  background-color: #fff
-}
-.wux-actionsheet__content--theme-wx .wux-actionsheet__group--cancel {
-  margin-bottom: 0
-}
-.wux-actionsheet__content--theme-wx .wux-actionsheet__button {
-  font-size: 36rpx;
-  color: #000
-}
-.wux-actionsheet__content--theme-wx .wux-actionsheet__button--cancel {
-  font-weight: 400
+.wux-actionsheet__icon {
+  display: inline-block;
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 20rpx
 }

@@ -15,6 +15,59 @@
         margin-right: 8px;
         width: auto;
         overflow: hidden;
+
+        &--is-iphonex {
+            margin-bottom: @safeAreaInsetBottom;
+        }
+
+        &--theme-wx {
+            margin-left: 0;
+            margin-right: 0;
+            margin-bottom: 0;
+            background-color: #efeff4;
+
+            .@{wuxClassNamePrefix}-actionsheet__group {
+                border-radius: 0;
+                margin-bottom: 6px;
+
+                &--options {
+                    background-color: #fff;
+                }
+
+                &--cancel {
+                    margin-bottom: 0;
+                }
+            }
+
+            .@{wuxClassNamePrefix}-actionsheet__button {
+                font-size: 18px;
+                color: #000;
+
+                &--cancel {
+                    font-weight: normal;
+                }
+            }
+        }
+
+        &--theme-wx&--is-iphonex {
+            background-color: #fff;
+
+            .@{wuxClassNamePrefix}-actionsheet__group--options {
+                margin-bottom: @safeAreaInsetBottom;
+            }
+        }
+
+        &--theme-wx&--is-iphonex&--has-cancel {
+            background-color: #efeff4;
+
+            .@{wuxClassNamePrefix}-actionsheet__group--options {
+                margin-bottom: 6px;
+            }
+
+            .@{wuxClassNamePrefix}-actionsheet__group--cancel {
+                padding-bottom: @safeAreaInsetBottom;
+            }
+        }
     }
 
     &__group {
@@ -22,6 +75,10 @@
         border-radius: 4px;
         background-color: #fff;
         overflow: hidden;
+
+        &--options {
+            background-color: #f1f2f3;
+        }
     }
 
     &__title {
@@ -52,18 +109,18 @@
         display: flex;
         align-items: center;
         justify-content: center;
-    
+
         &--hover {
             box-shadow: none;
             border-color: #d1d3d6;
             color: #007aff;
             background: #e4e5e7;
         }
-    
+
         &--destructive {
             color: #ff3b30 !important;
         }
-    
+
         &--cancel {
             font-weight: 500;
         }
@@ -73,25 +130,7 @@
         }
     }
 
-    &__icon {
-        display: inline-block;
-        width: 24px;
-        height: 24px;
-        margin-right: 10px;
-    }
-}
-
-.@{wuxClassNamePrefix}-actionsheet__group {
-    margin-bottom: 8px;
-    border-radius: 4px;
-    background-color: #fff;
-    overflow: hidden;
-    
-    &--options {
-        background: #f1f2f3;
-    }
-
-    .@{wuxClassNamePrefix}-actionsheet__button {
+    &__group &__button {
         border-top: none;
 
         &:after {
@@ -106,34 +145,11 @@
             border-width: 0;
         }
     }
-}
 
-.@{wuxClassNamePrefix}-actionsheet__content--theme-wx {
-    &.@{wuxClassNamePrefix}-actionsheet__content {
-        margin-left: 0;
-        margin-right: 0;
-        background-color: #efeff4;
-    }
-    
-    .@{wuxClassNamePrefix}-actionsheet__group {
-        border-radius: 0;
-        margin-bottom: 6px;
-        
-        &--options {
-            background-color: #fff;
-        }
-
-        &--cancel {
-            margin-bottom: 0;
-        }
-    }
-
-    .@{wuxClassNamePrefix}-actionsheet__button {
-        font-size: 18px;
-        color: #000;
-
-        &--cancel {
-            font-weight: normal;
-        }
+    &__icon {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
     }
 }

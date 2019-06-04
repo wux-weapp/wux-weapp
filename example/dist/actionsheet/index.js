@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import { checkIPhoneX } from '../helpers/checkIPhoneX'
 import { $wuxBackdrop } from '../index'
 
 const defaults = {
@@ -20,10 +21,11 @@ baseComponent({
     useFunc: true,
     data: defaults,
     computed: {
-        classes() {
-            const { prefixCls, theme, buttons } = this.data
+        classes: ['prefixCls, theme, buttons, cancelText, isIPhoneX', function(prefixCls, theme, buttons, cancelText, isIPhoneX) {
             const content = classNames(`${prefixCls}__content`, {
                 [`${prefixCls}__content--theme-${theme}`]: theme,
+                [`${prefixCls}__content--has-cancel`]: cancelText,
+                [`${prefixCls}__content--is-iphonex`]: isIPhoneX,
             })
             const options = classNames(`${prefixCls}__group`, {
                 [`${prefixCls}__group--options`]: true,
@@ -67,7 +69,7 @@ baseComponent({
                 cancel,
                 hover,
             }
-        },
+        }],
     },
     methods: {
         /**
@@ -133,5 +135,10 @@ baseComponent({
     },
     created() {
         this.$wuxBackdrop = $wuxBackdrop('#wux-backdrop', this)
+    },
+    ready() {
+        this.setData({
+            isIPhoneX: checkIPhoneX(),
+        })
     },
 })

@@ -10,3 +10,4 @@
 // variable
 @import "variable/color.wxss";
 @import "variable/global.wxss";
+@import "variable/safeArea.wxss";

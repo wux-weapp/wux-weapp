@@ -1,0 +1,4 @@
+@safeAreaInsetTop: 44px;
+@safeAreaInsetRight: 0;
+@safeAreaInsetBottom: 34px;
+@safeAreaInsetLeft: 0;
