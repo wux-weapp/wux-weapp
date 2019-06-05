@@ -73,7 +73,8 @@ baseComponent({
                     element.updated(index)
                 })
 
-                this.getNavPoints()
+                // HACK: https://github.com/wux-weapp/wux-weapp/issues/224
+                setTimeout(this.getNavPoints.bind(this))
             }
 
             if (this.data.sections.length !== elements.length) {
