@@ -11,4 +11,10 @@ Page({
     onLoad() {
         getApp().checkAudio()
     },
+    onStick(e) {
+        console.log('onStick', e.detail)
+    },
+    onUnStick(e) {
+        console.log('onUnStick', e.detail)
+    },
 })

@@ -48,13 +48,18 @@ baseComponent({
     },
     methods: {
         onScroll(scrollTop) {
-            const { top, height } = this.data
+            const parent = this.getRelationNodes('../sticky/index')[0]
+            const { top, height, index } = this.data
             const isFixed = scrollTop >= top && scrollTop < top + height
 
-            if (isFixed !== this.data.isFixed) {
+            if (this.data.isFixed !== isFixed) {
                 this.setData({
                     isFixed,
                 })
+
+                if (parent) {
+                    parent.triggerEvent(isFixed ? 'stick' : 'unstick', { index })
+                }
             }
         },
     	updated(index) {

@@ -4,7 +4,7 @@
         <view class="page__desc">吸顶容器</view>
     </view>
     <view class="page__bd">
-        <wux-sticky scrollTop="{{ scrollTop }}">
+        <wux-sticky scrollTop="{{ scrollTop }}" bind:stick="onStick" bind:unstick="onUnStick">
             <wux-sticky-item>
                 <view slot="title">小鸡 🐤</view>
                 <view slot="content">
