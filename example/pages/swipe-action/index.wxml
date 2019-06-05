@@ -28,13 +28,13 @@
         <view class="sub-title">With cellGroup</view>
         <wux-cell-group>
             <wux-swipe-action autoClose left="{{ left }}" right="{{ right }}" bind:click="onClick">
-                <wux-cell title="Have left and right buttons"></wux-cell>
+                <wux-cell title="Have left and right buttons" bind:click="onCellClick"></wux-cell>
             </wux-swipe-action>
             <wux-swipe-action autoClose left="{{ left }}">
-                <wux-cell title="Only left buttons"></wux-cell>
+                <wux-cell title="Only left buttons" bind:click="onCellClick"></wux-cell>
             </wux-swipe-action>
             <wux-swipe-action autoClose right="{{ right }}">
-                <wux-cell title="Only right buttons"></wux-cell>
+                <wux-cell title="Only right buttons" bind:click="onCellClick"></wux-cell>
             </wux-swipe-action>
         </wux-cell-group>
     </view>

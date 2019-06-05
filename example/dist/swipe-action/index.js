@@ -211,6 +211,7 @@ baseComponent({
             this.needShowLeft = false
             this.needShowRight = false
         },
+        noop() {},
     },
     created() {
         this.btnsLeftWidth = 0

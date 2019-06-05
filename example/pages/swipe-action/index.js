@@ -23,4 +23,7 @@ Page({
     onShare() {
         console.log('onShare')
     },
+    onCellClick() {
+        console.log('onCellClick')
+    },
 })
