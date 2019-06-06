@@ -76,9 +76,7 @@ baseComponent({
             const { index, disabled } = this.data
             const parent = this.getRelationNodes('../accordion-group/index')[0]
 
-            if (disabled || !parent) {
-                return false
-            }
+            if (disabled || !parent) return
 
             parent.onClickItem(index)
         },

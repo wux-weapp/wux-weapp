@@ -5,7 +5,7 @@ baseComponent({
         '../accordion/index': {
             type: 'child',
             observer() {
-                this.debounce(this.changeCurrent)
+                this.debounce(this.updated)
             },
         },
     },
@@ -25,7 +25,11 @@ baseComponent({
         current: {
             type: Array,
             value: [],
-            observer: 'changeCurrent',
+            observer(newVal) {
+                if (this.data.controlled) {
+                    this.updated(newVal)
+                }
+            },
         },
         controlled: {
             type: Boolean,
@@ -49,22 +53,23 @@ baseComponent({
         keys: [],
     },
     methods: {
-        updated(activeKey, condition) {
+        updated(activeKey = this.data.activeKey) {
+            if (this.data.activeKey !== activeKey) {
+                this.setData({ activeKey })
+            }
+
+            this.changeCurrent(activeKey)
+        },
+        changeCurrent(activeKey) {
             const elements = this.getRelationNodes('../accordion/index')
 
             if (elements.length > 0) {
-                if (condition) {
-                    this.setData({
-                        activeKey,
-                    })
+                elements.forEach((element, index) => {
+                    const key = element.data.key || String(index)
+                    const current = this.data.accordion ? activeKey[0] === key : activeKey.indexOf(key) !== -1
 
-                    elements.forEach((element, index) => {
-                        const key = element.data.key || String(index)
-                        const current = this.data.accordion ? activeKey[0] === key : activeKey.indexOf(key) !== -1
-
-                        element.changeCurrent(current, key)
-                    })
-                }
+                    element.changeCurrent(current, key)
+                })
             }
 
             if (this.data.keys.length !== elements.length) {
@@ -73,9 +78,6 @@ baseComponent({
                 })
             }
         },
-        changeCurrent(activeKey = this.data.current) {
-            this.updated(activeKey, this.data.controlled)
-        },
         emitEvent(key) {
             this.triggerEvent('change', {
                 key,
@@ -83,8 +85,8 @@ baseComponent({
             })
         },
         setActiveKey(activeKey) {
-            if (this.data.activeKey !== activeKey) {
-                this.updated(activeKey, !this.data.controlled)
+            if (!this.data.controlled) {
+                this.updated(activeKey)
             }
 
             this.emitEvent(this.data.accordion ? activeKey[0] : activeKey)
@@ -105,6 +107,6 @@ baseComponent({
         const { defaultCurrent, current, controlled } = this.data
         const activeKey = controlled ? current : defaultCurrent
 
-        this.updated(activeKey, true)
+        this.updated(activeKey)
     },
 })
