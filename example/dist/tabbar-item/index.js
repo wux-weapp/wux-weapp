@@ -62,9 +62,7 @@ baseComponent({
             const { index, disabled } = this.data
             const parent = this.getRelationNodes('../tabbar/index')[0]
 
-            if (disabled || !parent) {
-                return false
-            }
+            if (disabled || !parent) return
 
             this.triggerEvent('click', { index })
 

@@ -7,7 +7,7 @@ baseComponent({
         '../tabbar-item/index': {
             type: 'child',
             observer() {
-                this.debounce(this.changeCurrent)
+                this.debounce(this.updated)
             },
         },
     },
@@ -23,7 +23,11 @@ baseComponent({
         current: {
             type: String,
             value: '',
-            observer: 'changeCurrent',
+            observer(newVal) {
+                if (this.data.controlled) {
+                    this.updated(newVal)
+                }
+            },
         },
         controlled: {
             type: Boolean,
@@ -59,22 +63,23 @@ baseComponent({
         }],
     },
     methods: {
-        updated(activeKey, condition) {
+        updated(activeKey = this.data.activeKey) {
+            if (this.data.activeKey !== activeKey) {
+                this.setData({ activeKey })
+            }
+
+            this.changeCurrent(activeKey)
+        },
+        changeCurrent(activeKey) {
             const elements = this.getRelationNodes('../tabbar-item/index')
 
             if (elements.length > 0) {
-                if (condition) {
-                    this.setData({
-                        activeKey,
-                    })
+                elements.forEach((element, index) => {
+                    const key = element.data.key || String(index)
+                    const current = key === activeKey
 
-                    elements.forEach((element, index) => {
-                        const key = element.data.key || String(index)
-                        const current = key === activeKey
-
-                        element.changeCurrent(current, key, this.data.theme, elements.length)
-                    })
-                }
+                    element.changeCurrent(current, key, this.data.theme, elements.length)
+                })
             }
 
             if (this.data.keys.length !== elements.length) {
@@ -83,9 +88,6 @@ baseComponent({
                 })
             }
         },
-        changeCurrent(value = this.data.current) {
-            this.updated(value, this.data.controlled)
-        },
         emitEvent(key) {
             this.triggerEvent('change', {
                 key,
@@ -93,15 +95,15 @@ baseComponent({
             })
         },
         setActiveKey(activeKey) {
-            if (this.data.activeKey !== activeKey) {
-                this.updated(activeKey, !this.data.controlled)
+            if (!this.data.controlled) {
+                this.updated(activeKey)
             }
 
             this.emitEvent(activeKey)
         },
         applyIPhoneXShim(position = this.data.position) {
             if (checkIPhoneX()) {
-                if (position === 'bottom' || position === 'top') {
+                if (['bottom', 'top'].includes(position)) {
                     this.setData({ tabbarStyle: `${position}: ${safeAreaInset[position]}px` })
                 }
             }
@@ -111,7 +113,7 @@ baseComponent({
         const { defaultCurrent, current, controlled } = this.data
         const activeKey = controlled ? current : defaultCurrent
 
-        this.updated(activeKey, true)
+        this.updated(activeKey)
         this.applyIPhoneXShim()
     },
 })
