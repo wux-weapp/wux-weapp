@@ -113,7 +113,7 @@ baseComponent({
             const { options, chooseTitle } = this.data
             const activeOptions = this.getActiveOptions(activeValue)
 
-            if (hasChildren && activeOptions.length < options.length) {
+            if (hasChildren) {
                 const value = this.getFieldName('value')
                 const label = this.getFieldName('label')
 
