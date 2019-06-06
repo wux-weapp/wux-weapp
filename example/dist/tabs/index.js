@@ -23,7 +23,7 @@ baseComponent({
         '../tab/index': {
             type: 'child',
             observer() {
-                this.debounce(this.changeCurrent)
+                this.debounce(this.updated)
             },
         },
     },
@@ -39,7 +39,11 @@ baseComponent({
         current: {
             type: String,
             value: '',
-            observer: 'changeCurrent',
+            observer(newVal) {
+                if (this.data.controlled) {
+                    this.updated(newVal)
+                }
+            },
         },
         scroll: {
             type: Boolean,
@@ -75,26 +79,28 @@ baseComponent({
         }],
     },
     methods: {
-        updated(value, condition) {
+        updated(value = this.data.activeKey) {
             const elements = this.getRelationNodes('../tab/index')
             const activeKey = getActiveKey(elements, value)
+
+            if (this.data.activeKey !== activeKey) {
+                this.setData({ activeKey })
+            }
+
+            this.changeCurrent(activeKey, elements)
+        },
+        changeCurrent(activeKey, elements) {
             const { scroll, theme, direction } = this.data
 
             if (elements.length > 0) {
-                if (condition) {
-                    this.setData({
-                        activeKey,
+                elements.forEach((element) => {
+                    element.changeCurrent({
+                        current: element.data.key === activeKey,
+                        scroll,
+                        theme,
+                        direction,
                     })
-
-                    elements.forEach((element) => {
-                        element.changeCurrent({
-                            current: element.data.key === activeKey,
-                            scroll,
-                            theme,
-                            direction,
-                        })
-                    })
-                }
+                })
             }
 
             if (this.data.keys.length !== elements.length) {
@@ -103,9 +109,6 @@ baseComponent({
                 })
             }
         },
-        changeCurrent(value = this.data.current) {
-            this.updated(value, this.data.controlled)
-        },
         emitEvent(key) {
             this.triggerEvent('change', {
                 key,
@@ -113,8 +116,8 @@ baseComponent({
             })
         },
         setActiveKey(activeKey) {
-            if (this.data.activeKey !== activeKey) {
-                this.updated(activeKey, !this.data.controlled)
+            if (!this.data.controlled) {
+                this.updated(activeKey)
             }
 
             this.emitEvent(activeKey)
@@ -124,6 +127,6 @@ baseComponent({
         const { defaultCurrent, current, controlled } = this.data
         const activeKey = controlled ? current : defaultCurrent
 
-        this.updated(activeKey, true)
+        this.updated(activeKey)
     },
 })
