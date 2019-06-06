@@ -90,6 +90,10 @@ baseComponent({
                 })
             },
         },
+        disableScroll: {
+            type: Boolean,
+            value: false,
+        },
     },
     data: {
         animateCss: '', // 动画样式
@@ -344,6 +348,10 @@ baseComponent({
         onTap() {
             this.triggerEvent('click')
         },
+        /**
+         * 阻止移动触摸
+         */
+        noop() {},
     },
     attached() {
         let animateStatus = null
