@@ -52,64 +52,7 @@ baseComponent({
         scrollTop: {
             type: Number,
             value: 0,
-            observer: function (n) {
-                let that = this
-
-                // 获取节点高度
-                const query = wx.createSelectorQuery();
-                query.select(`#${this.id}`).boundingClientRect(function (res) {
-                    that.setData({
-                        newContentHeight: res.height
-                    })
-                }).exec()
-
-                const {
-                    newContentHeight,
-                    oldContentHeight,
-                    windowHeight,
-                    distance,
-                    loading,
-                    noData
-                } = this.data
-
-                if (windowHeight && !this.isRefreshing()) {
-
-                    // 到临界点时触发上拉加载
-                    // 防止节点高度一致时引发重复加载
-                    if (
-                        n > newContentHeight - windowHeight - (distance * 1.5) &&
-                        loading === false &&
-                        noData === false && newContentHeight !== oldContentHeight
-                    ) {
-
-                        this.setData({
-                            loading: true,
-                            refreshing: false,
-                            oldContentHeight: newContentHeight
-                        })
-
-                        this.triggerEvent('loadmore')
-
-                    } else if (
-                        loading === false &&
-                        noData === false
-                    ) {
-
-                        // 隐藏上拉加载动画
-                        this.hide()
-
-                    } else if(loading === true) {
-
-                        // 如果在加载中，保持内容的高度一致，以此来防止临界点重复加载
-                        this.setData({
-                            oldContentHeight: newContentHeight
-                        })
-
-                    }
-
-                    this.deactivate()
-                }
-            }
+            observer: 'onScroll',
         },
     },
     data: {
@@ -134,6 +77,7 @@ baseComponent({
                 [`${prefixCls}--refreshing`]: refreshing,
                 [`${prefixCls}--refreshing-tail`]: tail,
             })
+            const cover = `${prefixCls}__cover`
             const content = classNames(`${prefixCls}__content`, {
                 [`${prefixCls}__content--text`]: pullingText || refreshingText,
             })
@@ -152,9 +96,11 @@ baseComponent({
                 [`${prefixLCls}--end`]: noData,
             })
             const lContent = `${prefixLCls}__content`
+            const loadingText = `${prefixLCls}__text-loading`
 
             return {
                 wrap,
+                cover,
                 content,
                 iconPulling,
                 textPulling,
@@ -164,6 +110,7 @@ baseComponent({
                 rIcon,
                 lWrap,
                 lContent,
+                loadingText,
             }
         }],
     },
@@ -232,7 +179,7 @@ baseComponent({
          * 正在下拉
          * @param {Number} diffY 距离
          */
-        move(diffY) {
+        translate(diffY) {
             const style = `transition-duration: 0s; transform: translate3d(0, ${diffY}px, 0) scale(1);`
             const className = diffY < this.data.distance ? 'visible' : 'active'
 
@@ -256,11 +203,18 @@ baseComponent({
         /**
          * 获取触摸点坐标
          */
-        getTouchPosition(e) {
+        getTouchPoints(e, index = 0) {
+            const { pageX: x, pageY: y } = e.touches[index] || e.changedTouches[index]
             return {
-                x: e.changedTouches[0].pageX,
-                y: e.changedTouches[0].pageY,
+                x,
+                y,
             }
+        },
+        /**
+         * 获取触摸移动方向
+         */
+        getSwipeDirection(x1, x2, y1, y2) {
+            return Math.abs(x1 - x2) >= Math.abs(y1 - y2) ? (x1 - x2 > 0 ? 'Left' : 'Right') : (y1 - y2 > 0 ? 'Up' : 'Down')
         },
         /**
          * 创建定时器
@@ -313,28 +267,34 @@ baseComponent({
         /**
          * 手指触摸动作开始
          */
-        bindtouchstart(e) {
-            if (this.isRefreshing() || this.isLoading()) return false
+        onTouchStart(e) {
+            if (this.isRefreshing() || this.isLoading()) return
 
-            const p = this.getTouchPosition(e)
-
-            this.start = p
+            this.start = this.getTouchPoints(e)
             this.diffX = this.diffY = 0
+            this.isMoved = false
+            this.direction = false
 
             this.activate()
         },
         /**
          * 手指触摸后移动
          */
-        bindtouchmove(e) {
-            if (!this.start || this.isRefreshing() || this.isLoading()) return false
+        onTouchMove(e) {
+            if (!this.start || this.isRefreshing() || this.isLoading()) return
 
-            const p = this.getTouchPosition(e)
+            if (!this.isMoved) {
+                this.isMoved = true
+            }
 
-            this.diffX = p.x - this.start.x
-            this.diffY = p.y - this.start.y
+            this.move = this.getTouchPoints(e)
 
-            if (this.diffY < 0) return false
+            this.diffX = this.move.x - this.start.x
+            this.diffY = this.move.y - this.start.y
+
+            this.direction = this.getSwipeDirection(this.start.x, this.move.x, this.start.y, this.move.y)
+
+            if (this.diffY < 0 || this.direction !== 'Down') return
 
             this.diffY = Math.pow(this.diffY, 0.8)
 
@@ -345,15 +305,18 @@ baseComponent({
                 this.activated = false
             }
 
-            this.move(this.diffY)
+            this.translate(this.diffY)
         },
         /**
          * 	手指触摸动作结束
          */
-        bindtouchend(e) {
-            this.start = false
+        onTouchEnd(e) {
+            if (!this.isMoved) return
 
-            if (this.diffY <= 0 || this.isRefreshing() || this.isLoading()) return false
+            this.start = false
+            this.isMoved = false
+
+            if (this.diffY <= 0 || this.direction !== 'Down' || this.isRefreshing() || this.isLoading()) return
 
             this.deactivate()
 
@@ -362,19 +325,72 @@ baseComponent({
                 this.triggerEvent('refresh')
             }
         },
+        onScroll(n) {
+            // disabled scroll func
+            if (this.isMoved) return
+
+            // 获取节点高度
+            const query = wx.createSelectorQuery()
+            query.select(`#${this.id}`).boundingClientRect((res) => {
+                const newContentHeight = res.height
+
+                if (this.data.newContentHeight !== newContentHeight) {
+                    this.setData({ newContentHeight })
+                }
+
+                const {
+                    oldContentHeight,
+                    windowHeight,
+                    distance,
+                    loading,
+                    noData,
+                } = this.data
+
+                if (windowHeight && !this.isRefreshing()) {
+                    // 到临界点时触发上拉加载
+                    // 防止节点高度一致时引发重复加载
+                    if (
+                        n > newContentHeight - windowHeight - (distance * 1.5) &&
+                        loading === false &&
+                        noData === false && newContentHeight !== oldContentHeight
+                    ) {
+                        this.setData({
+                            loading: true,
+                            refreshing: false,
+                            oldContentHeight: newContentHeight,
+                        })
+                        this.triggerEvent('loadmore')
+                    } else if (
+                        loading === false &&
+                        noData === false
+                    ) {
+                        // 隐藏上拉加载动画
+                        this.hide()
+
+                    } else if (loading === true) {
+                        // 如果在加载中，保持内容的高度一致，以此来防止临界点重复加载
+                        this.setData({
+                            oldContentHeight: newContentHeight,
+                        })
+                    }
+
+                    this.deactivate()
+                }
+            }).exec()
+        },
+        noop() {},
     },
     created() {
         this.lastTime = 0
         this.activated = false
     },
     attached() {
-        let that = this
         wx.getSystemInfo({
-            success: function (res) {
-                that.setData({
-                    windowHeight: res.windowHeight
+            success: (res) => {
+                this.setData({
+                    windowHeight: res.windowHeight,
                 })
-            }
-        });
-    }
+            },
+        })
+    },
 })

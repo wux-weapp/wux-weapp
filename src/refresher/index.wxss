@@ -26,22 +26,22 @@
         text-align: center;
         font-size: 30px;
     }
-    
+
     &__content--text {
         bottom: 0;
     }
-    
+
     &__text-pulling {
         font-size: 16px;
         line-height: 16px;
     }
-    
+
     &__text-refreshing {
         font-size: 16px;
         line-height: 16px;
         display: none;
     }
-    
+
     &__icon-pulling {
         width: 100%;
         backface-visibility: hidden;
@@ -53,7 +53,7 @@
         animation-fill-mode: none;
         transform: translateZ(0) rotate(0deg);
     }
-    
+
     &__icon-refreshing {
         width: 100%;
         backface-visibility: hidden;
@@ -62,7 +62,7 @@
         display: none;
         animation-duration: 1.5s;
     }
-    
+
     &__icon--arrow-down {
         display: block;
         margin: 0 auto;
@@ -73,7 +73,7 @@
         background-size: 20px 20px;
         background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAQAAAAAYLlVAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAHdElNRQfhAhQABBG6qxTZAAABVklEQVRo3u3YvUoDQRiF4ePPTZgbEGsh23sBgqWCKQe8AVvB0tJySgPah9T2CaSxkNhY6i3YaRN1J7uz+31nAmnOVJNkM++zCcyyC2hobHnslHw5HOIZA3zgJL6xa+wX8ZcAgAGW/InsFgE2MAQQQAABBBBAAAEEEEAAAQQQYOuAjtvzcIprfOImvpYEwhFucYC7OGn/PHtfH87xuJpWcZ455vt3FjPrhCFmq+lFfGo7Iv8X3P/NZmFInv1/vr6eEfBVm1OEJJ+uZwJcJa/chLX8+nr9gDjFiCc08qM49f4CiGOW0JIf547t3Ac4giffuxH5Cb68YSf0Ebx501ZsJ/jzxmuBjcDkzRejfgKXdz2sDpd4SN6oasmKyzufljcIuWHOA3sewOLl+B1nm8w7ASaCK+8G9BKceQLQSXDnKUCWQORJQCuBytOABoHMFwASAp3X0AB+AFVjfoii8X5lAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE3LTAyLTIwVDAwOjA0OjE3KzA4OjAwenpBPAAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNy0wMi0yMFQwMDowNDoxNyswODowMAsn+YAAAAAASUVORK5CYII=");
     }
-    
+
     &__icon--refresher {
         display: block;
         margin: 0 auto;
@@ -92,12 +92,12 @@
             transition: transform .2s;
             transform: scale(1);
 
-            .@{wuxClassNamePrefix}-refresher__icon-pulling, 
+            .@{wuxClassNamePrefix}-refresher__icon-pulling,
             .@{wuxClassNamePrefix}-refresher__text-pulling {
                 display: none;
             }
 
-            .@{wuxClassNamePrefix}-refresher__icon-refreshing, 
+            .@{wuxClassNamePrefix}-refresher__icon-refreshing,
             .@{wuxClassNamePrefix}-refresher__text-refreshing {
                 display: block;
             }
@@ -117,8 +117,8 @@
 .@{wuxClassNamePrefix}-loader {
     overflow: hidden;
     margin: auto;
-    height: 100rpx;
-    font-size: 30rpx;
+    height: 50px;
+    font-size: 15px;
     position: relative;
     text-align: center;
     display: none;
@@ -128,8 +128,8 @@
         margin: 0;
     }
 
-    &__text-loading{
-        margin-left: 10rpx;
+    &__text-loading {
+        margin-left: 5px;
     }
 
     &--hidden {
@@ -142,7 +142,7 @@
         display: block;
     }
 
-    &--end{
+    &--end {
         visibility: visible;
         display: block;
     }
