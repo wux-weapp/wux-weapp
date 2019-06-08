@@ -1,4 +1,4 @@
-<wux-popup position="bottom" visible="{{ visible }}" bind:close="onPopupClose">
+<wux-popup position="bottom" visible="{{ visible }}" safeArea="bottom" bind:close="onPopupClose">
 	<view class="wux-class {{ classes.wrap }}">
 	    <view class="{{ classes.hd }}">
 	    	<view class="{{ classes.title }}" wx:if="{{ title }}">{{ title }}</view>
