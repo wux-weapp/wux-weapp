@@ -18,6 +18,18 @@
 .wux-popup-position.wux-popup-position--center .wux-popup__bd {
   padding: 0 1.6em .8em
 }
+.wux-popup-position.wux-popup-position--center .wux-popup__ft:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 2rpx;
+  border-top: 2rpx solid #d5d5d6;
+  color: #d5d5d6;
+  transform-origin: 0 0;
+  transform: scaleY(.5)
+}
 .wux-popup-position.wux-popup-position--top .wux-popup {
   position: fixed;
   left: 0;
@@ -80,18 +92,6 @@
   font-size: 36rpx;
   display: -ms-flexbox;
   display: flex
-}
-.wux-popup__ft:after {
-  content: " ";
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  height: 2rpx;
-  border-top: 2rpx solid #d5d5d6;
-  color: #d5d5d6;
-  transform-origin: 0 0;
-  transform: scaleY(.5)
 }
 .wux-popup__close {
   border: 0;

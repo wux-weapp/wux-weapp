@@ -24,6 +24,10 @@
 		.@{wuxClassNamePrefix}-popup__bd {
 			padding: 0 1.6em 0.8em;
 		}
+
+        .@{wuxClassNamePrefix}-popup__ft:after {
+            .setTopLine(#D5D5D6);
+        }
 	}
 
 	&-position&-position--top {
@@ -103,10 +107,6 @@
 		line-height: 48px;
 		font-size: 18px;
 		display: flex;
-
-		&:after {
-			.setTopLine(#D5D5D6);
-		}
 	}
 
 	&__close {
