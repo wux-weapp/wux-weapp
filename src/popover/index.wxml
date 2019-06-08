@@ -1,5 +1,6 @@
-<wux-animation-group in="{{ popoverVisible }}" classNames="{{ classNames }}" bind:enter="onEnter">
-    <view class="wux-class {{ classes.wrap }}" style="{{ extStyle + popoverStyle }}">
+<wux-backdrop id="wux-backdrop" wx:if="{{ mask }}" bind:click="onMaskClick" />
+<view class="wux-class {{ classes.wrap }}" style="{{ extStyle + popoverStyle }}">
+    <wux-animation-group in="{{ popoverVisible }}" classNames="{{ classNames }}" bind:enter="onEnter">
         <view class="{{ classes.content }}">
             <view class="{{ classes.arrow }}"></view>
             <view class="{{ classes.inner }}">
@@ -9,8 +10,8 @@
                 <slot name="content" wx:else></slot>
             </view>
         </view>
-    </view>
-</wux-animation-group>
+    </wux-animation-group>
+</view>
 <view class="{{ classes.element }}" bindtap="onClick">
     <slot></slot>
 </view>

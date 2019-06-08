@@ -1,6 +1,7 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
 import styleToCssString from '../helpers/styleToCssString'
+import { $wuxBackdrop } from '../index'
 
 const getPlacements = ([a, s, b] = rects, placement = 'top') => {
     switch (placement) {
@@ -120,15 +121,21 @@ baseComponent({
             value: false,
             observer(newVal) {
                 if (this.data.controlled) {
-                    this.setData({
-                        popoverVisible: newVal,
-                    })
+                    this.updated(newVal)
                 }
             },
         },
         controlled: {
             type: Boolean,
             value: false,
+        },
+        mask: {
+            type: Boolean,
+            value: false,
+        },
+        maskClosable: {
+            type: Boolean,
+            value: true,
         },
     },
     data: {
@@ -161,8 +168,14 @@ baseComponent({
         }],
     },
     methods: {
+        updated(popoverVisible) {
+            if (this.data.popoverVisible !== popoverVisible) {
+                this.setData({ popoverVisible })
+                this.setBackdropVisible(popoverVisible)
+            }
+        },
         getPopoverStyle() {
-            const { prefixCls } = this.data
+            const { prefixCls, placement } = this.data
             const query = wx.createSelectorQuery().in(this)
             query.select(`.${prefixCls}__element`).boundingClientRect()
             query.selectViewport().scrollOffset()
@@ -170,10 +183,11 @@ baseComponent({
             query.exec((rects) => {
                 if (rects.filter((n) => !n).length) return
 
-                const placements = getPlacements(rects, this.data.placement)
+                const placements = getPlacements(rects, placement)
+                const popoverStyle = styleToCssString(placements)
 
                 this.setData({
-                    popoverStyle: styleToCssString(placements),
+                    popoverStyle,
                 })
             })
         },
@@ -183,30 +197,40 @@ baseComponent({
         onEnter() {
             this.getPopoverStyle()
         },
-        fireEvents() {
+        onChange() {
             const { popoverVisible, controlled } = this.data
             const nextVisible = !popoverVisible
 
             if (!controlled) {
-                this.setData({
-                    popoverVisible: nextVisible,
-                })
+                this.updated(nextVisible)
             }
 
             this.triggerEvent('change', { visible: nextVisible })
         },
         onClick() {
             if (this.data.trigger === 'click') {
-                this.fireEvents()
+                this.onChange()
+            }
+        },
+        setBackdropVisible(visible) {
+            if (this.data.mask && this.$wuxBackdrop) {
+                this.$wuxBackdrop[visible ? 'retain' : 'release']()
+            }
+        },
+        onMaskClick() {
+            if (this.data.maskClosable) {
+                this.onChange()
             }
         },
     },
-    attached() {
+    ready() {
         const { defaultVisible, visible, controlled } = this.data
         const popoverVisible = controlled ? visible : defaultVisible
 
-        this.setData({
-            popoverVisible,
-        })
+        if (this.data.mask) {
+            this.$wuxBackdrop = $wuxBackdrop('#wux-backdrop', this)
+        }
+
+        this.updated(popoverVisible)
     },
 })
