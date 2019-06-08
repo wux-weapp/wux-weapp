@@ -1,1 +1,13 @@
-/* pages/tag/index.wxss */
+/* pages/slider/index.wxss */
+
+.min {
+    color: #888;
+    vertical-align: middle;
+    margin-right: 15px;
+}
+
+.max {
+    color: #888;
+    vertical-align: middle;
+    margin-left: 15px;
+}

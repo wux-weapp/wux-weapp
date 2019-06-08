@@ -6,10 +6,19 @@
     <view class="page__bd page__bd_spacing">
     	<view class="sub-title">Default</view>
     	<wux-slider defaultValue="{{ [10] }}" />
+        <view class="sub-title">Custom tip</view>
+        <wux-slider defaultValue="{{ [10] }}" tipFormatter="{d} %" />
+        <view class="sub-title">No tip</view>
+        <wux-slider defaultValue="{{ [10] }}" tipFormatter="" />
     	<view class="sub-title">Disabled</view>
     	<wux-slider defaultValue="{{ [10] }}" disabled />
     	<view class="sub-title">Show value</view>
     	<wux-slider defaultValue="{{ [10] }}" showValue />
+        <view class="sub-title">Use icons</view>
+        <wux-slider defaultValue="{{ [10] }}">
+            <wux-icon wux-class="min" type="ios-volume-mute" slot="min" />
+            <wux-icon wux-class="max" type="ios-volume-high" slot="max" />
+        </wux-slider>
     	<view class="sub-title">Step = 10</view>
     	<wux-slider defaultValue="{{ [10] }}" showValue step="10" />
     	<view class="sub-title">Show mark</view>

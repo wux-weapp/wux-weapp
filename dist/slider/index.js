@@ -89,6 +89,10 @@ baseComponent({
             type: [Boolean, Object],
             value: false,
         },
+        tipFormatter: {
+            type: String,
+            value: '{d}',
+        },
         markStyle: {
             type: [String, Object, Array],
             value: '',
@@ -143,11 +147,14 @@ baseComponent({
         extTrackStyle: '',
         extRailStyle: '',
         extWrapStyle: '',
+        isTouched: false,
+        swiping: false,
     },
     computed: {
-        classes: ['prefixCls, disabled', function(prefixCls, disabled) {
+        classes: ['prefixCls, disabled, tipFormatter', function(prefixCls, disabled, tipFormatter) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--disabled`]: disabled,
+                [`${prefixCls}--has-tip`]: !!tipFormatter,
             })
             const min = `${prefixCls}__min`
             const rail = `${prefixCls}__rail`
@@ -195,7 +202,7 @@ baseComponent({
             // 记录选中值发生改变时的初始偏移量
             this.startPos = this.data.offsets[index] || 0
             // 记录最后一次选中项
-            this.setData({ last: index })
+            this.setData({ last: index, isTouched: true, isMoved: false })
         },
         /**
          * 手指触摸后移动
@@ -206,6 +213,7 @@ baseComponent({
             const { prefixCls } = this.data
 
             this.isMoved = true
+            this.setData({ isMoved: true })
             this.moveX = getTouchPoints(e).x
 
             this.getRect(`.${prefixCls}__rail`).then((rect) => {
@@ -248,8 +256,9 @@ baseComponent({
          * 手指触摸动作结束
          */
         onTouchEnd(e) {
-            if (this.data.disabled || getPointsNumber(e) > 1) return
+            if (this.data.disabled || getPointsNumber(e) > 1 || !this.isMoved) return
             this.isMoved = false
+            this.setData({ isTouched: false, isMoved: false })
             const { offsets } = this.data
             const value = this.getValue(offsets)
             this.emitEvent('afterChange', { offsets, value })
@@ -332,6 +341,7 @@ baseComponent({
 
             this.setData({ marks })
         },
+        noop() {},
     },
     attached() {
         const { defaultValue, value, controlled } = this.data

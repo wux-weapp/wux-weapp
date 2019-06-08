@@ -1,6 +1,7 @@
 {
     "navigationBarTitleText": "Slider",
     "usingComponents": {
+        "wux-icon": "../../dist/icon/index",
         "wux-slider": "../../dist/slider/index"
     }
 }

@@ -31,10 +31,40 @@
   position: absolute;
   width: 56rpx;
   box-shadow: 0 0 8rpx rgba(0,0,0,.2);
-  transform: translate3d(-50%,-50%,0)
+  transform: translate3d(-50%,-50%,0);
+  transition: transform .2s
+}
+.wux-slider__handle:after {
+  content: attr(data-meta);
+  color: #fff;
+  position: absolute;
+  pointer-events: none;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 15;
+  font-size: 28rpx;
+  line-height: 1.25;
+  padding: 8rpx 16rpx;
+  border-radius: 8rpx;
+  background-color: rgba(0,0,0,.7);
+  white-space: nowrap;
+  text-align: center;
+  left: 50%;
+  bottom: 100%;
+  margin-bottom: 20rpx;
+  transform: translateX(-50%)
 }
 .wux-slider__handle--last {
   z-index: 2
+}
+.wux-slider__handle--is-touched {
+  transform: translate3d(-50%,-50%,0) scale(1.3)
+}
+.wux-slider--has-tip .wux-slider__handle--is-touched:after {
+  display: block;
+  opacity: 1;
+  visibility: visible
 }
 .wux-slider__mark {
   position: absolute;
