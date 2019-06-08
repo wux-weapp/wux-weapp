@@ -1,4 +1,4 @@
-<wux-popup position="bottom" visible="{{ in }}" bind:close="onCancel">
+<wux-popup position="bottom" visible="{{ in }}" safeArea="bottom" bind:close="onCancel">
     <view class="{{ classes.wrap }}">
         <view class="{{ classes.toolbar }}" wx:if="{{ toolbar }}">
             <view class="{{ classes.inner }}">
