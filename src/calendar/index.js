@@ -191,9 +191,7 @@ baseComponent({
          * @param {Object} e 事件对象
          */
         onTouchStart(e) {
-            if (!this.data.touchMove || this.isMoved || this.isRendered) {
-                return false
-            }
+            if (!this.data.touchMove || this.isMoved || this.isRendered) return
 
             this.start = getTouchPosition(e)
             this.move = {}
@@ -206,9 +204,7 @@ baseComponent({
          * @param {Object} e 事件对象
          */
         onTouchMove(e) {
-            if (!this.data.touchMove || this.isRendered) {
-                return false
-            }
+            if (!this.data.touchMove || this.isRendered) return
 
             this.allowItemClick = false
 
@@ -216,15 +212,15 @@ baseComponent({
                 this.isMoved = true
             }
 
+            this.$$setData({ swiping: true })
+
             const { prefixCls } = this.data
             const query = wx.createSelectorQuery().in(this)
             query.select(`.${prefixCls}__months-content`).boundingClientRect((rect) => {
 
                 // 由于 boundingClientRect 为异步方法，某些情况下其回调函数在 onTouchEnd 之后触发，导致 wrapperTranslate 计算错误
                 // 所以判断 this.isMoved = false 时阻止回调函数的执行
-                if (!rect || !this.isMoved) {
-                    return false
-                }
+                if (!rect || !this.isMoved) return
 
                 this.move = getTouchPosition(e)
                 this.touchesDiff = this.isH ? this.move.x - this.start.x : this.move.y - this.start.y
@@ -244,11 +240,10 @@ baseComponent({
          * 手指触摸动作结束
          */
         onTouchEnd() {
-            if (!this.data.touchMove || !this.isMoved || this.isRendered) {
-                return false
-            }
+            if (!this.data.touchMove || !this.isMoved || this.isRendered) return
 
             this.isMoved = false
+            this.$$setData({ swiping: false })
 
             if (Math.abs(this.touchesDiff) < 30) {
                 this.resetMonth()
@@ -273,8 +268,8 @@ baseComponent({
                 const dateDay = dataset.day
                 const dateType = dataset.type
 
-                if (dateType.selected && !this.data.multiple) return false
-                if (dateType.disabled) return false
+                if (dateType.selected && !this.data.multiple) return
+                if (dateType.disabled) return
                 if (dateType.next) this.nextMonth()
                 if (dateType.prev) this.prevMonth()
 
@@ -310,14 +305,10 @@ baseComponent({
             const targetDate = year < currentYear ? new Date(year, month + 1, -1).getTime() : new Date(year, month).getTime()
 
             // 判断是否存在最大日期
-            if (maxDate && targetDate > new Date(maxDate).getTime()) {
-                return false
-            }
+            if (maxDate && targetDate > new Date(maxDate).getTime()) return
 
             // 判断是否存在最小日期
-            if (minDate && targetDate < new Date(minDate).getTime()) {
-                return false
-            }
+            if (minDate && targetDate < new Date(minDate).getTime()) return
 
             const currentDate = new Date(currentYear, currentMonth).getTime()
             const dir = targetDate > currentDate ? 'next' : 'prev'
@@ -759,5 +750,6 @@ baseComponent({
                 this.fns.onChange.call(this, this.data.value, this.data.value.map((n) => this.formatDate(n)))
             }
         },
+        noop() {},
     },
 })

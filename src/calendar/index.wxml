@@ -1,4 +1,4 @@
-<wux-popup position="bottom" visible="{{ in }}" zIndex="1010" bind:close="close">
+<wux-popup position="bottom" visible="{{ in }}" zIndex="1010" safeArea="bottom" bind:close="close">
     <view class="wux-class {{ classes.wrap }}">
         <view class="{{ classes.content }}">
             <view class="{{ classes.hd }}" wx:if="{{ toolbar }}">
@@ -32,7 +32,7 @@
                     </block>
                 </view>
                 <view class="{{ classes.months }}">
-                    <view class="{{ classes.monthsContent }}" bindtouchstart="onTouchStart" bindtouchmove="onTouchMove" bindtouchend="onTouchEnd" style="{{ wrapperTranslate }}">
+                    <view class="{{ classes.monthsContent }}" bindtouchstart="onTouchStart" catchtouchmove="{{ swiping ? 'noop' : '' }}" capture-bind:touchmove="onTouchMove" bindtouchend="onTouchEnd" style="{{ wrapperTranslate }}">
                         <block wx:for="{{ months }}" wx:for-item="month" wx:key="">
                             <view
                                 data-year="{{ month.year }}"
