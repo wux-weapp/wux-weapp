@@ -32,6 +32,7 @@
     "pages/input-number/index",
     "pages/keyboard/index",
     "pages/layout/index",
+    "pages/landscape/index",
     "pages/list/index",
     "pages/loading/index",
     "pages/media/index",

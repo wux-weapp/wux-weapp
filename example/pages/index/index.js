@@ -308,6 +308,11 @@ Page({
                         url: '/pages/gallery/index',
                     },
                     {
+                        title: 'Landscape',
+                        remark: '压屏窗',
+                        url: '/pages/landscape/index',
+                    },
+                    {
                         title: 'Loading',
                         remark: '指示器',
                         url: '/pages/loading/index',

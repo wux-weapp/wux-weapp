@@ -1,0 +1,17 @@
+<wux-landscape visible="{{ visible1 }}" bind:close="onClose1">
+    <image src="https://wux.cdn.cloverstd.com/redpacket.png" style="height: 350px" />
+</wux-landscape>
+<wux-landscape visible="{{ visible2 }}" bind:close="onClose2" mask="{{ false }}">
+    <image src="https://wux.cdn.cloverstd.com/redpacket.png" style="height: 350px" />
+</wux-landscape>
+
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Landscape</view>
+        <view class="page__desc">压屏窗</view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+        <wux-button block type="light" bind:click="onOpen1">Default</wux-button>
+        <wux-button block type="light" bind:click="onOpen2">No mask</wux-button>
+    </view>
+</view>
