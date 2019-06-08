@@ -10,6 +10,8 @@ Page({
             'slideInDown',
             'slideInLeft',
             'slideInRight',
+            'zoom',
+            'punch',
         ],
         index: 0,
         example: {
@@ -52,7 +54,7 @@ Page({
     },
     onChange(e) {
         const { animateStatus } = e.detail
-        
+
         switch (animateStatus) {
             case 'entering':
                 this.setData({ status: 'Entering…' })

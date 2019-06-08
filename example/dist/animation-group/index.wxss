@@ -166,3 +166,41 @@
   transform: translate3d(100%,0,0);
   visibility: visible
 }
+.wux-animate--zoom-enter {
+  transition: all .3s cubic-bezier(.215,.61,.355,1);
+  opacity: .01;
+  transform: scale(.75)
+}
+.wux-animate--zoom-enter-active,
+.wux-animate--zoom-enter-done {
+  opacity: 1;
+  transform: none
+}
+.wux-animate--zoom-exit {
+  transition: all .25s linear;
+  transform: none
+}
+.wux-animate--zoom-exit-active,
+.wux-animate--zoom-exit-done {
+  opacity: .01;
+  transform: scale(.75)
+}
+.wux-animate--punch-enter {
+  transition: all .3s cubic-bezier(.215,.61,.355,1);
+  opacity: .01;
+  transform: scale(1.35)
+}
+.wux-animate--punch-enter-active,
+.wux-animate--punch-enter-done {
+  opacity: 1;
+  transform: none
+}
+.wux-animate--punch-exit {
+  transition: all .25s linear;
+  transform: none
+}
+.wux-animate--punch-exit-active,
+.wux-animate--punch-exit-done {
+  opacity: .01;
+  transform: scale(1.35)
+}
