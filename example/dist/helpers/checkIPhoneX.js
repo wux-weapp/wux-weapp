@@ -4,7 +4,7 @@
 
 let systemInfo = null
 
-const getSystemInfo = (isForce) => {
+export const getSystemInfo = (isForce) => {
 	if (!systemInfo || isForce) {
 		try {
 			systemInfo = wx.getSystemInfoSync()

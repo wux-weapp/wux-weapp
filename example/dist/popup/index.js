@@ -4,6 +4,7 @@ import styleToCssString from '../helpers/styleToCssString'
 import { $wuxBackdrop } from '../index'
 
 baseComponent({
+    useSafeArea: true,
     externalClasses: ['wux-content-class', 'wux-header-class', 'wux-body-class', 'wux-footer-class', 'wux-close-class'],
     properties: {
         prefixCls: {
@@ -61,6 +62,14 @@ baseComponent({
             type: Number,
             value: 1000,
         },
+        hasHeader: {
+            type: Boolean,
+            value: true,
+        },
+        hasFooter: {
+            type: Boolean,
+            value: true,
+        },
     },
     data: {
         transitionName: '',
@@ -68,9 +77,10 @@ baseComponent({
         extStyle: '',
     },
     computed: {
-        classes: ['prefixCls, position', function(prefixCls, position) {
+        classes: ['prefixCls, position, safeAreaConfig, isIPhoneX', function(prefixCls, position, safeAreaConfig, isIPhoneX) {
             const wrap = classNames(`${prefixCls}-position`, {
                 [`${prefixCls}-position--${position}`]: position,
+                [`${prefixCls}-position--is-iphonex`]: safeAreaConfig.bottom && isIPhoneX,
             })
             const content = `${prefixCls}__content`
             const hd = `${prefixCls}__hd`

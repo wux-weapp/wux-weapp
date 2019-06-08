@@ -5,7 +5,7 @@
 	z-index: 1000;
 	width: 80%;
 	max-width: 300px;
-	
+
 	&-position&-position--center {
 		.@{wuxClassNamePrefix}-popup {
 			top: 50%;
@@ -70,6 +70,10 @@
 		}
 	}
 
+    &-position&-position--is-iphonex &__content {
+        padding-bottom: @safeAreaInsetBottom;
+    }
+
 	&__content {
 		position: relative;
 		background-color: #fff;
@@ -99,7 +103,7 @@
 		line-height: 48px;
 		font-size: 18px;
 		display: flex;
-		
+
 		&:after {
 			.setTopLine(#D5D5D6);
 		}
@@ -116,7 +120,7 @@
 		height: 21px;
 		width: 21px;
 	}
-	
+
 	&__close-x {
 		display: inline-block;
 		width: 15px;
