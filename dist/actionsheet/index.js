@@ -1,11 +1,8 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
-import { checkIPhoneX } from '../helpers/checkIPhoneX'
-import { $wuxBackdrop } from '../index'
 
 const defaults = {
     prefixCls: 'wux-actionsheet',
-    classNames: 'wux-animate--slideInUp',
     theme: 'ios',
     className: '',
     titleText: '',
@@ -21,11 +18,12 @@ baseComponent({
     useFunc: true,
     data: defaults,
     computed: {
-        classes: ['prefixCls, theme, buttons, cancelText, isIPhoneX', function(prefixCls, theme, buttons, cancelText, isIPhoneX) {
+        classes: ['prefixCls, theme, buttons, cancelText', function(prefixCls, theme, buttons, cancelText) {
+            const wrap = classNames(prefixCls)
+            const popup = `${prefixCls}__popup`
             const content = classNames(`${prefixCls}__content`, {
                 [`${prefixCls}__content--theme-${theme}`]: theme,
                 [`${prefixCls}__content--has-cancel`]: cancelText,
-                [`${prefixCls}__content--is-iphonex`]: isIPhoneX,
             })
             const options = classNames(`${prefixCls}__group`, {
                 [`${prefixCls}__group--options`]: true,
@@ -58,6 +56,8 @@ baseComponent({
             const hover = `${prefixCls}__button--hover`
 
             return {
+                wrap,
+                popup,
                 content,
                 options,
                 title,
@@ -79,7 +79,6 @@ baseComponent({
             const options = this.$$mergeOptionsAndBindMethods(Object.assign({}, defaults, opts))
             this.removed = false
             this.$$setData({ in: true, ...options })
-            this.$wuxBackdrop.retain()
             return this.cancel.bind(this)
         },
         /**
@@ -89,7 +88,6 @@ baseComponent({
             if (this.removed) return false
             this.removed = true
             this.$$setData({ in: false })
-            this.$wuxBackdrop.release()
             if (typeof callback === 'function') {
                 callback(this.data.buttons)
             }
@@ -132,13 +130,5 @@ baseComponent({
         onError(e) {
             this.triggerEvent('error', {...e.detail, ...e.currentTarget.dataset })
         },
-    },
-    created() {
-        this.$wuxBackdrop = $wuxBackdrop('#wux-backdrop', this)
-    },
-    ready() {
-        this.setData({
-            isIPhoneX: checkIPhoneX(),
-        })
     },
 })

@@ -1,12 +1,5 @@
-.wux-actionsheet {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1010;
-  width: 100%;
-  max-width: 1000rpx;
-  margin: auto
+.wux-actionsheet__popup {
+  background-color: transparent
 }
 .wux-actionsheet__content {
   margin-left: 16rpx;
@@ -14,14 +7,10 @@
   width: auto;
   overflow: hidden
 }
-.wux-actionsheet__content--is-iphonex {
-  margin-bottom: 68rpx
-}
 .wux-actionsheet__content--theme-wx {
   margin-left: 0;
   margin-right: 0;
-  margin-bottom: 0;
-  background-color: #efeff4
+  margin-bottom: 0
 }
 .wux-actionsheet__content--theme-wx .wux-actionsheet__group {
   border-radius: 0;
@@ -40,20 +29,8 @@
 .wux-actionsheet__content--theme-wx .wux-actionsheet__button--cancel {
   font-weight: 400
 }
-.wux-actionsheet__content--theme-wx.wux-actionsheet__content--is-iphonex {
-  background-color: #fff
-}
-.wux-actionsheet__content--theme-wx.wux-actionsheet__content--is-iphonex .wux-actionsheet__group--options {
-  margin-bottom: 68rpx
-}
-.wux-actionsheet__content--theme-wx.wux-actionsheet__content--is-iphonex.wux-actionsheet__content--has-cancel {
+.wux-actionsheet__content--theme-wx.wux-actionsheet__content--has-cancel {
   background-color: #efeff4
-}
-.wux-actionsheet__content--theme-wx.wux-actionsheet__content--is-iphonex.wux-actionsheet__content--has-cancel .wux-actionsheet__group--options {
-  margin-bottom: 12rpx
-}
-.wux-actionsheet__content--theme-wx.wux-actionsheet__content--is-iphonex.wux-actionsheet__content--has-cancel .wux-actionsheet__group--cancel {
-  padding-bottom: 68rpx
 }
 .wux-actionsheet__group {
   margin-bottom: 16rpx;
