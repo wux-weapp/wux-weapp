@@ -7,6 +7,8 @@
   font-size: inherit;
   line-height: inherit;
   text-align: inherit;
+  text-decoration: inherit;
+  overflow: inherit;
   padding: 20rpx 30rpx;
   position: relative;
   display: -ms-flexbox;

@@ -86,6 +86,8 @@
   font-size: inherit;
   line-height: inherit;
   text-align: inherit;
+  text-decoration: inherit;
+  overflow: inherit;
   width: 80rpx;
   height: 80rpx;
   color: #fff;

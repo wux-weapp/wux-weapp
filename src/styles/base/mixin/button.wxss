@@ -29,6 +29,8 @@
     font-size: inherit;
     line-height: inherit;
     text-align: inherit;
+    text-decoration: inherit;
+    overflow: inherit;
 
     &:after {
         position: static;
