@@ -78,6 +78,16 @@
 		margin-left: @margin !important;
 	}
 
+    .@{wuxClassNamePrefix}-mv--@{count},
+    .@{wuxClassNamePrefix}-margin-vertical--@{count} {
+        margin: @margin 0 !important;
+    }
+
+    .@{wuxClassNamePrefix}-mh--@{count},
+    .@{wuxClassNamePrefix}-margin-horizontal--@{count} {
+        margin: 0 @margin !important;
+    }
+
 	.@{wuxClassNamePrefix}-p--@{count},
 	.@{wuxClassNamePrefix}-padding--@{count} {
 		padding: @margin !important;
@@ -102,6 +112,16 @@
 	.@{wuxClassNamePrefix}-padding-left--@{count} {
 		padding-left: @margin !important;
 	}
+
+    .@{wuxClassNamePrefix}-pv--@{count},
+    .@{wuxClassNamePrefix}-padding-vertical--@{count} {
+        padding: @margin 0 !important;
+    }
+
+    .@{wuxClassNamePrefix}-ph--@{count},
+    .@{wuxClassNamePrefix}-padding-horizontal--@{count} {
+        padding: 0 @margin !important;
+    }
 
 	.spacing((@count - 5));
 }
