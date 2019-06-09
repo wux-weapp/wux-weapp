@@ -80,7 +80,7 @@
     "navigationBarBackgroundColor": "#f7f7f8",
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "Wux",
-    "backgroundColor": "#efeff4",
+    "backgroundColor": "#f8f8f8",
     "backgroundTextStyle": "dark"
   },
   "tabBar": {
