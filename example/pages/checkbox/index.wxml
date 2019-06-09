@@ -32,6 +32,7 @@
                 <wux-checkbox title="AV" value="1" disabled />
                 <wux-checkbox title="PHP" value="2" disabled />
             </wux-checkbox-group>
+            <wux-checkbox-group name="f" value="{{ value5 }}" options="{{ options }}" title="Options" bind:change="onChange5" />
             <view class="btn-area">
                 <button formType="submit">Submit</button>
             </view>
