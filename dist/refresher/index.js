@@ -246,8 +246,8 @@ baseComponent({
         /**
          * 上拉加载完成后的函数
          */
-        finishLoadmore(bool) {
-            if (bool === true) {
+        finishLoadmore(isEnd) {
+            if (isEnd === true) {
                 setTimeout(() => {
                     this.setData({
                         noData: true,
@@ -257,7 +257,8 @@ baseComponent({
             } else {
                 setTimeout(() => {
                     this.setData({
-                        loading: false
+                        noData: false,
+                        loading: false,
                     })
                     this.requestAnimationFrame(this.hide)
                     setTimeout(() => this.deactivate(), 200)
