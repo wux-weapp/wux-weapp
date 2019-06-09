@@ -32,6 +32,7 @@
                 <wux-radio title="AV" value="1" disabled />
                 <wux-radio title="PHP" value="2" disabled />
             </wux-radio-group>
+            <wux-radio-group name="f" value="{{ value5 }}" options="{{ options }}" title="Options" bind:change="onChange5" />
             <view class="btn-area">
                 <button formType="submit">Submit</button>
             </view>
