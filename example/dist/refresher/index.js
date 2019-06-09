@@ -298,14 +298,7 @@ baseComponent({
 
             this.diffY = Math.pow(this.diffY, 0.8)
 
-            if (!this.activated && this.diffY > this.data.distance) {
-                this.activated = true
-                this.triggerEvent('pulling')
-            } else if (this.activated && this.diffY < this.data.distance) {
-                this.activated = false
-            }
-
-            this.translate(this.diffY)
+            this.triggerPull(this.diffY)
         },
         /**
          * 	手指触摸动作结束
@@ -318,13 +311,39 @@ baseComponent({
 
             if (this.diffY <= 0 || this.direction !== 'Down' || this.isRefreshing() || this.isLoading()) return
 
+            this.triggerRefresh(this.diffY)
+        },
+        /**
+         * Pulling
+         */
+        triggerPull(diffY) {
+            const { distance } = this.data
+
+            if (!this.activated && diffY > distance) {
+                this.activated = true
+                this.triggerEvent('pulling')
+            } else if (this.activated && diffY < distance) {
+                this.activated = false
+            }
+
+            this.translate(diffY)
+        },
+        /**
+         * Refresh
+         */
+        triggerRefresh(diffY = this.data.distance) {
+            this.triggerPull(diffY)
+
             this.deactivate()
 
-            if (Math.abs(this.diffY) >= this.data.distance) {
+            if (Math.abs(diffY) >= this.data.distance) {
                 this.refreshing()
                 this.triggerEvent('refresh')
             }
         },
+        /**
+         * Scrool
+         */
         onScroll(n) {
             // disabled scroll func
             if (this.isMoved) return
