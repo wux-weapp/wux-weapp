@@ -155,7 +155,7 @@ baseComponent({
     },
     methods: {
         updated(inputValue) {
-            if (!this.hasFieldDecorator) return
+            if (this.hasFieldDecorator) return
             if (this.data.inputValue !== inputValue) {
                 this.setData({ inputValue })
             }
