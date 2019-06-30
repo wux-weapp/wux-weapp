@@ -22,9 +22,8 @@ export const safeAreaInset = {
 	bottom: 34, // Home Indicator
 }
 
-const IPHONEX_DEVICE_HEIGHT = 812
 const isIPhoneX = ({ model, platform, screenHeight }) => {
-	return /iPhone X/.test(model) && platform === 'ios' && screenHeight === IPHONEX_DEVICE_HEIGHT
+	return /iPhone X/.test(model) && platform === 'ios'
 }
 
 export const checkIPhoneX = (isForce) => isIPhoneX(getSystemInfo(isForce))
