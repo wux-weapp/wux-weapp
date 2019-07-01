@@ -2,7 +2,6 @@ import computedBehavior from './computedBehavior'
 import relationsBehavior from './relationsBehavior'
 import safeAreaBehavior from './safeAreaBehavior'
 import safeSetDataBehavior from './safeSetDataBehavior'
-import eventsBehavior from './eventsBehavior'
 import funcBehavior from './funcBehavior'
 import compareVersion from './compareVersion'
 
@@ -30,21 +29,15 @@ const baseComponent = (options = {}) => {
     // add default behaviors
     options.behaviors = [
         relationsBehavior,
-        computedBehavior,
         safeSetDataBehavior,
         ...(options.behaviors = options.behaviors || []),
+        computedBehavior, // make sure it's triggered
     ]
 
     // use safeArea
     if (options.useSafeArea) {
         options.behaviors = [...options.behaviors, safeAreaBehavior]
         delete options.useSafeArea
-    }
-
-    // use events
-    if (options.useEvents) {
-        options.behaviors = [...options.behaviors, eventsBehavior]
-        delete options.useEvents
     }
 
     // use func

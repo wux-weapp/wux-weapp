@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "CascaderPickerView",
+    "usingComponents": {
+        "wux-cascader-picker-view": "../../dist/cascader-picker-view/index"
+    }
+}

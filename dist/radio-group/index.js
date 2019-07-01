@@ -1,9 +1,10 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import eventsMixin from '../helpers/eventsMixin'
 
 baseComponent({
     useField: true,
-    useEvents: true,
+    behaviors: [eventsMixin()],
     relations: {
         '../field/index': {
             type: 'ancestor',
@@ -74,7 +75,7 @@ baseComponent({
             }
         },
         onChange(item) {
-            this.emitEvent('change', { ...item, name: this.data.name })
+            this.triggerEvent('change', { ...item, name: this.data.name })
         },
         onRadioChange(e) {
             // Set real index

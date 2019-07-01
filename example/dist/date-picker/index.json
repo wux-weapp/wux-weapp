@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "usingComponents": {
+        "wux-popup": "../popup/index",
+        "wux-date-picker-view": "../date-picker-view/index"
+    }
+}

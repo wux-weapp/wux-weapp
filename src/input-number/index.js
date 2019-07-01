@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import eventsMixin from '../helpers/eventsMixin'
 
 const MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER || Math.pow(2, 53) - 1
 
@@ -40,8 +41,7 @@ const defaultEvents = {
 }
 
 baseComponent({
-    useEvents: true,
-    defaultEvents,
+    behaviors: [eventsMixin({ defaultEvents })],
     externalClasses: ['wux-sub-class', 'wux-input-class', 'wux-add-class'],
     relations: {
         '../field/index': {
@@ -163,7 +163,7 @@ baseComponent({
             this.updated(inputValue)
 
             if (runCallbacks) {
-                this.emitEvent('change', { value: inputValue })
+                this.triggerEvent('change', { value: inputValue })
             }
         },
         /**
@@ -210,7 +210,7 @@ baseComponent({
          * 输入框聚焦时触发
          */
         onFocus(e) {
-            this.emitEvent('focus', e.detail)
+            this.triggerEvent('focus', e.detail)
         },
         /**
          * 输入框失去焦点时触发
@@ -221,7 +221,7 @@ baseComponent({
                 inputValue: this.data.inputValue,
             })
 
-            this.emitEvent('blur', e.detail)
+            this.triggerEvent('blur', e.detail)
         },
         /**
          * 手指触摸后，超过350ms再离开

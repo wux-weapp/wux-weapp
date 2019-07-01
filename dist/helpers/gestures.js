@@ -1,11 +1,16 @@
 /**
  * 获取触摸点位置信息
  */
-export const getTouchPoints = (e, index = 0) => {
-    const { pageX: x, pageY: y } = e.touches[index] || e.changedTouches[index]
+export const getTouchPoints = (nativeEvent, index = 0) => {
+    const touches = nativeEvent.touches
+    const changedTouches = nativeEvent.changedTouches
+    const hasTouches = touches && touches.length > 0
+    const hasChangedTouches = changedTouches && changedTouches.length > 0
+    const points = !hasTouches && hasChangedTouches ? changedTouches[index] : hasTouches ? touches[index] : nativeEvent
+
     return {
-        x,
-        y,
+        x: points.pageX,
+        y: points.pageY,
     }
 }
 

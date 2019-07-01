@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "DatePicker",
+    "usingComponents": {
+        "wux-segmented-control": "../../dist/segmented-control/index",
+        "wux-date-picker": "../../dist/date-picker/index",
+        "wux-cell-group": "../../dist/cell-group/index",
+        "wux-cell": "../../dist/cell/index",
+        "wux-button": "../../dist/button/index"
+    }
+}

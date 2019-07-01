@@ -1,0 +1,23 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">DatePickerView</view>
+        <view class="page__desc">日期选择器</view>
+    </view>
+    <view class="page__bd">
+        <wux-segmented-control values="{{ ['zh_CN', 'zh_TW', 'en'] }}" bind:change="onChange" />
+        <view class="sub-title">Default {{ displayValue1 }}</view>
+        <wux-date-picker-view lang="{{ lang }}" value="{{ value1 }}" bind:change="onChange1" />
+        <view class="sub-title">Mode = date {{ displayValue2 }}</view>
+        <wux-date-picker-view mode="date" lang="{{ lang }}" value="{{ value2 }}" bind:change="onChange2" />
+        <view class="sub-title">Mode = year {{ displayValue3 }}</view>
+        <wux-date-picker-view mode="year" lang="{{ lang }}" value="{{ value3 }}" bind:change="onChange3" />
+        <view class="sub-title">Mode = month {{ displayValue4 }}</view>
+        <wux-date-picker-view mode="month" lang="{{ lang }}" value="{{ value4 }}" bind:change="onChange4" />
+        <view class="sub-title">Mode = time {{ displayValue5 }}</view>
+        <wux-date-picker-view mode="time" lang="{{ lang }}" value="{{ value5 }}" bind:change="onChange5" />
+        <view class="sub-title">Use12Hours & datetime {{ displayValue6 }}</view>
+        <wux-date-picker-view use12Hours mode="datetime" lang="{{ lang }}" value="{{ value6 }}" bind:change="onChange6" />
+        <view class="sub-title">Use12Hours & time {{ displayValue7 }}</view>
+        <wux-date-picker-view use12Hours mode="time" lang="{{ lang }}" value="{{ value7 }}" bind:change="onChange7" />
+    </view>
+</view>

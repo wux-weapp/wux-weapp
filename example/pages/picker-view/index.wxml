@@ -1,0 +1,16 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">PickerView</view>
+        <view class="page__desc">选择器</view>
+    </view>
+    <view class="page__bd">
+        <view class="sub-title" bindtap="onClick">Default</view>
+        <wux-picker-view options="{{ options }}" />
+        <view class="sub-title" bindtap="onClick">Loading</view>
+        <wux-picker-view options="{{ options }}" loading />
+        <view class="sub-title">UseValueProp</view>
+        <wux-picker-view useValueProp defaultValue="{{ ['粑粑'] }}" options="{{ options[1] }}" />
+        <view class="sub-title">Controlled</view>
+        <wux-picker-view value="{{ value }}" controlled options="{{ options }}" bind:change="onChange" />
+    </view>
+</view>

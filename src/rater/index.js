@@ -1,8 +1,9 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import eventsMixin from '../helpers/eventsMixin'
 
 baseComponent({
-    useEvents: true,
+    behaviors: [eventsMixin()],
     relations: {
         '../field/index': {
             type: 'ancestor',
@@ -163,7 +164,7 @@ baseComponent({
                 this.setValue(value)
             }
 
-            this.emitEvent('change', { value, index })
+            this.triggerEvent('change', { value, index })
         },
         onTouchMove(e) {
             const { disabled, allowHalf, allowTouchMove } = this.data

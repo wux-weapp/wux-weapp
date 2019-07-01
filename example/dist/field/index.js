@@ -22,6 +22,18 @@ baseComponent({
         '../form/index': {
             type: 'ancestor',
         },
+        '../picker/index': {
+            type: 'descendant',
+            observer() {
+                this.debounce(this.changeValue)
+            },
+        },
+        '../date-picker/index': {
+            type: 'descendant',
+            observer() {
+                this.debounce(this.changeValue)
+            },
+        },
         '../radio-group/index': {
             type: 'descendant',
             observer() {

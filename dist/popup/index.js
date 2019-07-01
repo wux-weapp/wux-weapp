@@ -70,6 +70,14 @@ baseComponent({
             type: Boolean,
             value: true,
         },
+        mountOnEnter: {
+            type: Boolean,
+            value: true,
+        },
+        unmountOnExit: {
+            type: Boolean,
+            value: true,
+        },
     },
     data: {
         transitionName: '',

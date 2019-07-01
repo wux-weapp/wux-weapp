@@ -1,0 +1,40 @@
+@import "../styles/base/fn.wxss";
+
+.@{wuxClassNamePrefix}-picker {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+
+    &--left {
+        text-align: left;
+    }
+
+    &--center {
+        text-align: center;
+    }
+
+    &--right {
+        text-align: right;
+    }
+
+    &__cols {
+        width: 100%;
+        height: 100%;
+    }
+
+    &__item {
+        font-size: 16px;
+        color: #000;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+        &--disabled {
+            opacity: .4;
+        }
+
+        &--selected {
+            font-size: 17px;
+        }
+    }
+}

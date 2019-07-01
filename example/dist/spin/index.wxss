@@ -36,6 +36,7 @@
   text-shadow: 0 2rpx 4rpx #fff
 }
 .wux-spin__dots {
+  overflow: hidden;
   display: inline-block;
   width: 40rpx;
   height: 40rpx;

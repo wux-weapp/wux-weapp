@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "DatePickerView",
+    "usingComponents": {
+        "wux-segmented-control": "../../dist/segmented-control/index",
+        "wux-date-picker-view": "../../dist/date-picker-view/index"
+    }
+}

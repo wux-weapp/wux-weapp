@@ -28,7 +28,7 @@
             z-index: 4;
         }
     }
-        
+
     &--nested {
         display: block;
     }
@@ -42,6 +42,7 @@
     }
 
     &__dots {
+        overflow: hidden;
         display: inline-block;
         width: 20px;
         height: 20px;
@@ -107,7 +108,7 @@
             opacity: .5;
             filter: blur(.5px);
             transform: translateZ(0);
-            
+
             /*&:after {
                 content: "";
                 position: absolute;

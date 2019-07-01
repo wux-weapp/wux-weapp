@@ -13,20 +13,21 @@ export default Behavior({
     },
     definitionFilter(defFields) {
         const { computed = {} } = defFields
-        const observers = {}
-
-        Object.keys(computed).forEach((key) => {
-            const [field, getter] = Array.isArray(computed[key]) ? computed[key] : [ALL_DATA_KEY, computed[key]]
-            observers[field] = function(...args) {
-                if (typeof getter === 'function') {
-                    const newValue = getter.apply(this, args)
-                    const oldValue = this.data[key]
-                    if (!isEmpty(newValue) && !shallowEqual(newValue, oldValue)) {
-                        this.setData({ [key]: newValue })
+        const observers = Object.keys(computed).reduce((acc, name) => {
+            const [field, getter] = Array.isArray(computed[name]) ? computed[name] : [ALL_DATA_KEY, computed[name]]
+            return {
+                ...acc,
+                [field]: function(...args) {
+                    if (typeof getter === 'function') {
+                        const newValue = getter.apply(this, args)
+                        const oldValue = this.data[name]
+                        if (!isEmpty(newValue) && !shallowEqual(newValue, oldValue)) {
+                            this.setData({ [name]: newValue })
+                        }
                     }
-                }
+                },
             }
-        })
+        }, {})
 
         Object.assign(defFields.observers = (defFields.observers || {}), observers)
         Object.assign(defFields.methods = (defFields.methods || {}), {

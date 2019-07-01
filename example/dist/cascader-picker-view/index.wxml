@@ -1,0 +1,18 @@
+<wux-picker-view
+    id="wux-picker"
+    prefixCls="{{ pickerPrefixCls }}"
+    value="{{ inputValue }}"
+    itemHeight="{{ itemHeight }}"
+    itemStyle="{{ itemStyle }}"
+    indicatorStyle="{{ indicatorStyle }}"
+    indicatorClass="{{ indicatorClass }}"
+    maskStyle="{{ maskStyle }}"
+    maskClass="{{ maskClass }}"
+    labelAlign="{{ labelAlign }}"
+    defaultFieldNames="{{ fieldNames }}"
+    useValueProp
+    options="{{ showOptions }}"
+    loading="{{ loading }}"
+    controlled
+    bind:change="onChange"
+/>

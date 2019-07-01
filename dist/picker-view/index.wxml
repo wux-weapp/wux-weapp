@@ -1,0 +1,28 @@
+<wux-spin nested spinning="{{ loading }}">
+    <view class="wux-class {{ classes.wrap }}">
+        <picker-view
+            class="{{ classes.cols }}"
+            indicator-style="height: {{ itemHeight + 'px' }}; {{ extIndicatorStyle }}"
+            indicator-class="{{ indicatorClass }}"
+            mask-style="{{ extMarkStyle }}"
+            mask-class="{{ maskClass }}"
+            value="{{ selectedIndex }}"
+            bindchange="onChange"
+            bindpickstart="onBeforeChange"
+            bindpickend="onAfterChange"
+        >
+            <picker-view-column class="{{ classes.col }}" wx:for="{{ cols }}" wx:for-item="col" wx:for-index="pIndex" wx:key="" data-index="{{ pIndex }}">
+                <block wx:for="{{ col }}" wx:for-item="v" wx:for-index="cIndex" wx:key="">
+                    <view
+                        style="line-height: {{ itemHeight + 'px' }}; {{ extItemStyle }}"
+                        class="{{ classes.item }} {{ v.disabled ? prefixCls + '__item--disabled' : '' }} {{ selectedIndex[pIndex] === cIndex ? prefixCls + '__item--selected' : '' }}"
+                        data-value="{{ v[fieldNames.value] }}"
+                        data-index="{{ cIndex }}"
+                    >
+                        {{ v[fieldNames.label] }}
+                    </view>
+                </block>
+            </picker-view-column>
+        </picker-view>
+    </view>
+</wux-spin>

@@ -1,10 +1,11 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import eventsMixin from '../helpers/eventsMixin'
 import { isPresetColor } from '../helpers/colors'
 
 baseComponent({
     useField: true,
-    useEvents: true,
+    behaviors: [eventsMixin()],
     relations: {
         '../field/index': {
             type: 'ancestor',
@@ -63,7 +64,7 @@ baseComponent({
 
             if (disabled) return
 
-            this.emitEvent('change', { value: newInputChecked })
+            this.triggerEvent('change', { value: newInputChecked })
         },
         updateStyle(color) {
             const newColor = isPresetColor(color)

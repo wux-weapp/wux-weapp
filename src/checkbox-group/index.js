@@ -1,8 +1,9 @@
 import baseComponent from '../helpers/baseComponent'
+import eventsMixin from '../helpers/eventsMixin'
 
 baseComponent({
     useField: true,
-    useEvents: true,
+    behaviors: [eventsMixin()],
     relations: {
         '../field/index': {
             type: 'ancestor',
@@ -79,7 +80,7 @@ baseComponent({
                 item.value = checkedValues
             }
 
-            this.emitEvent('change', { ...item, name: this.data.name })
+            this.triggerEvent('change', { ...item, name: this.data.name })
         },
         onCheckboxChange(e) {
             // Set real index

@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import eventsMixin from '../helpers/eventsMixin'
 import styleToCssString from '../helpers/styleToCssString'
 import { getTouchPoints, getPointsNumber } from '../helpers/gestures'
 
@@ -33,8 +34,7 @@ const defaultEvents = {
 }
 
 baseComponent({
-    useEvents: true,
-    defaultEvents,
+    behaviors: [eventsMixin({ defaultEvents })],
     relations: {
         '../field/index': {
             type: 'ancestor',
@@ -248,7 +248,7 @@ baseComponent({
                         this.updated(value)
                     }
 
-                    this.emitEvent('change', { offsets: nextOffsets, value })
+                    this.triggerEvent('change', { offsets: nextOffsets, value })
                 }
             })
         },
@@ -261,7 +261,7 @@ baseComponent({
             this.setData({ isTouched: false, isMoved: false })
             const { offsets } = this.data
             const value = this.getValue(offsets)
-            this.emitEvent('afterChange', { offsets, value })
+            this.triggerEvent('afterChange', { offsets, value })
         },
         /**
          * 获取界面上的节点信息

@@ -95,9 +95,24 @@ Page({
                         url: '/pages/cascader/index',
                     },
                     {
+                        title: 'CascaderPickerView',
+                        remark: '级联选择器',
+                        url: '/pages/cascader-picker-view/index',
+                    },
+                    {
                         title: 'Checkbox',
                         remark: '复选框',
                         url: '/pages/checkbox/index',
+                    },
+                    {
+                        title: 'DatePicker',
+                        remark: '日期选择器',
+                        url: '/pages/date-picker/index',
+                    },
+                    {
+                        title: 'DatePickerView',
+                        remark: '日期选择器',
+                        url: '/pages/date-picker-view/index',
                     },
                     {
                         title: 'Form',
@@ -113,6 +128,16 @@ Page({
                         title: 'InputNumber',
                         remark: '数字输入框',
                         url: '/pages/input-number/index',
+                    },
+                    {
+                        title: 'Picker',
+                        remark: '选择器',
+                        url: '/pages/picker/index',
+                    },
+                    {
+                        title: 'PickerView',
+                        remark: '选择器',
+                        url: '/pages/picker-view/index',
                     },
                     {
                         title: 'Radio',

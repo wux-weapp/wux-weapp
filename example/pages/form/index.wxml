@@ -54,6 +54,20 @@
                     </wux-field>
                 </wux-cell>
             </wux-cell-group>
+            <wux-cell-group title="Picker">
+                <wux-field name="picker" initialValue="{{ picker }}" valuePropName="value">
+                    <wux-picker options="{{ options }}" cascade bind:change="onPickerChange">
+                        <wux-cell title="Please choose" is-link extra="{{ picker }}"></wux-cell>
+                    </wux-picker>
+                </wux-field>
+            </wux-cell-group>
+            <wux-cell-group title="DatePicker">
+                <wux-field name="datePicker" initialValue="{{ datePicker }}" valuePropName="value">
+                    <wux-date-picker bind:change="onDatePickerChange">
+                        <wux-cell title="Please choose" is-link extra="{{ datePicker }}"></wux-cell>
+                    </wux-date-picker>
+                </wux-field>
+            </wux-cell-group>
             <view class="btn-area">
                 <button formType="submit">Default Form Submit</button>
             </view>
@@ -113,6 +127,20 @@
                         <wux-slider />
                     </wux-field>
                 </wux-cell>
+            </wux-cell-group>
+            <wux-cell-group title="Picker">
+                <wux-field name="picker" initialValue="{{ picker }}" valuePropName="value">
+                    <wux-picker options="{{ options }}" cascade bind:change="onPickerChange">
+                        <wux-cell title="Please choose" is-link extra="{{ picker }}"></wux-cell>
+                    </wux-picker>
+                </wux-field>
+            </wux-cell-group>
+            <wux-cell-group title="DatePicker">
+                <wux-field name="datePicker" initialValue="{{ datePicker }}" valuePropName="value">
+                    <wux-date-picker bind:change="onDatePickerChange">
+                        <wux-cell title="Please choose" is-link extra="{{ datePicker }}"></wux-cell>
+                    </wux-date-picker>
+                </wux-field>
             </wux-cell-group>
             <view class="btn-area">
                 <button bindtap="onSubmit">Wux Form Submit</button>
