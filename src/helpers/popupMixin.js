@@ -161,6 +161,10 @@ export default function popupMixin(selector = '#wux-picker', platformProps = { p
                 this.fireVisibleChange(!this.data.popupVisible)
             },
             /**
+             * 阻止移动触摸
+             */
+            noop() {},
+            /**
              * 更新值
              */
             updated(inputValue) {
