@@ -86,18 +86,32 @@ baseComponent({
             }
         },
         onChange(item) {
-            this.triggerEvent('change', { ...item, name: this.data.name })
+            this.triggerEvent('change', {
+                ...item,
+                ...this.getValue(item.value),
+                name: this.data.name,
+                value: item.value, // 兼容 3.6.1 之前版本，不改变 value
+            })
         },
         onRadioChange(e) {
             // Set real index
             const { index } = e.currentTarget.dataset
             this.onChange({ ...e.detail, index })
         },
-        getValue() {
-            const { value, keys: options } = this.data
-            const checkedValues = options.filter((option) => value === option.value)
-            const displayValue = checkedValues.map((option) => option.title)[0] || ''
-            return { value, displayValue, options }
+        getValue(value = this.data.value, cols = this.data.keys) {
+            const newValue = value ? [value] : []
+            const checkedValues = cols.filter((option) => newValue.includes(option.value))
+            const displayValue = checkedValues.map((option) => option.title) || []
+            const allValues = cols.map((option) => option.value)
+            const selectedIndex = newValue.map((n) => allValues.indexOf(n))
+
+            return {
+                value,
+                displayValue: displayValue[0] || '',
+                selectedIndex: selectedIndex[0] || '',
+                selectedValue: value,
+                cols,
+            }
         },
         getBoundingClientRect(callback) {
             this.cellGroup = this.cellGroup || this.selectComponent('#wux-cell-group')

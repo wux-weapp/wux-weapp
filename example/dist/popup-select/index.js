@@ -68,9 +68,7 @@ baseComponent({
         onValueChange(e) {
             if (!this.data.mounted) return
             const { options, max, multiple } = this.data
-            const oldValue = this.data.inputValue
-            const { value: newValue } = e.detail
-            const value = !multiple ? newValue : oldValue.indexOf(newValue) !== -1 ? oldValue.filter((n) => n !== newValue) : [...oldValue, newValue]
+            const { selectedValue: value } = e.detail
             if (multiple && max >= 1 && max < value.length) return
 
             this.setScrollValue(value)
