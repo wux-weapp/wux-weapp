@@ -1,16 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import popupMixin from '../helpers/popupMixin'
-
-function convertValue(value) {
-    return Array.isArray(value) ? [...value] : typeof value === 'string' ? [value] : []
-}
-
-function getSelectIndex({ value = '', options = [], multiple = false }) {
-    const newValue = convertValue(value)
-    const values = options.map((n) => n.value || n).filter((n) => !!n)
-    if (!multiple) return values.indexOf(newValue[0])
-    return newValue.map((n) => values.indexOf(n))
-}
+import { getSelectIndex, getRealValue } from './utils'
 
 baseComponent({
     behaviors: [popupMixin('#wux-select')],
@@ -20,8 +10,8 @@ baseComponent({
             value: 'wux-select',
         },
         value: {
-            type: null,
-            value: null,
+            type: [String, Array],
+            value: '',
         },
         options: {
             type: Array,
@@ -40,25 +30,23 @@ baseComponent({
         scrollTop: 0,
     },
     observers: {
-        ['options, multiple'](options) {
+        ['options, multiple'](options, multiple) {
             this.setData({
-                inputValue: this.getRealValue(options),
+                inputValue: this.getRealValue(options, this.data.inputValue, multiple),
             })
         },
     },
     methods: {
-        getRealValue(options = this.data.options, value = this.data.inputValue) {
-            const newValue = convertValue(value)
-            const values = options.map((n) => n.value || n).filter((n) => !!n)
-
-            if (!this.data.multiple) {
-                if (values.includes(newValue[0])) {
-                    return newValue[0]
+        getRealValue(options = this.data.options, value = this.data.inputValue, multiple = this.data.multiple) {
+            return getRealValue(options, value, multiple)
+        },
+        updated(value, isForce) {
+            if (!this.hasFieldDecorator || isForce) {
+                const inputValue = this.getRealValue(this.data.options, value)
+                if (this.data.inputValue !== inputValue) {
+                    this.setData({ inputValue })
                 }
-                return ''
             }
-
-            return newValue.filter((n) => values.includes(n))
         },
         setVisibleState(popupVisible, callback = () => {}) {
             if (this.data.popupVisible !== popupVisible) {
@@ -77,21 +65,22 @@ baseComponent({
                 })
             }
         },
-        onPickerChange(e) {
+        onValueChange(e) {
             if (!this.data.mounted) return
             const { options, max, multiple } = this.data
-            if (multiple && max >= 1 && max < value.length) return
             const oldValue = this.data.inputValue
             const { value: newValue } = e.detail
             const value = !multiple ? newValue : oldValue.indexOf(newValue) !== -1 ? oldValue.filter((n) => n !== newValue) : [...oldValue, newValue]
+            if (multiple && max >= 1 && max < value.length) return
 
             this.setScrollValue(value)
-            this.updated(value)
-            this.triggerEvent('pickerChange', e.detail)
+            this.updated(value, true)
+            this.triggerEvent('valueChange', { ...e.detail, value })
         },
         scrollIntoView(value, height) {
-            const index = getSelectIndex(this.data)
-            const nums = this.data.options.length
+            const { options, multiple } = this.data
+            const index = getSelectIndex(options, value, multiple)
+            const nums = options.length
 
             // scroll into view
             let activeIndex = Array.isArray(index) ? index[index.length - 1] : index

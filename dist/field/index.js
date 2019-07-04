@@ -34,6 +34,12 @@ baseComponent({
                 this.debounce(this.changeValue)
             },
         },
+        '../popup-select/index': {
+            type: 'descendant',
+            observer() {
+                this.debounce(this.changeValue)
+            },
+        },
         '../radio-group/index': {
             type: 'descendant',
             observer() {
