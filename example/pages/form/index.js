@@ -8,7 +8,9 @@ Page({
         switch: true,
         picker: [],
         datePicker: [],
-        options: data,
+        popupSelect: '',
+        options1: data,
+        options2: ['法官', '医生', '猎人', '学生', '记者', '其他'],
     },
     onCheckboxChange(e) {
         const { value } = e.detail
@@ -29,6 +31,9 @@ Page({
     },
     onDatePickerChange(e) {
         this.setData({ datePicker: e.detail.value })
+    },
+    onPopupSelectChange(e) {
+        this.setData({ popupSelect: e.detail.value })
     },
     formSubmit(e) {
         console.log('Default Form Submit \n', e.detail.value)

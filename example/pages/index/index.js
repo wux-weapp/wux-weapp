@@ -140,6 +140,11 @@ Page({
                         url: '/pages/picker-view/index',
                     },
                     {
+                        title: 'PopupSelect',
+                        remark: '下拉框',
+                        url: '/pages/popup-select/index',
+                    },
+                    {
                         title: 'Radio',
                         remark: '单选框',
                         url: '/pages/radio/index',

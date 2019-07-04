@@ -2,6 +2,22 @@ import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
 import eventsMixin from '../helpers/eventsMixin'
 
+function getOptions(options = []) {
+    return options.map((option, index) => {
+        if (typeof option === 'string') {
+            return {
+                title: option,
+                value: option,
+                index,
+            }
+        }
+        return {
+            ...option,
+            index,
+        }
+    })
+}
+
 baseComponent({
     useField: true,
     behaviors: [eventsMixin()],
@@ -28,11 +44,6 @@ baseComponent({
         value: {
             type: String,
             value: '',
-            observer(newVal) {
-                if (this.hasFieldDecorator) return
-                this.updated(newVal)
-                this.changeValue(newVal)
-            },
         },
         title: {
             type: String,
@@ -48,29 +59,29 @@ baseComponent({
         },
     },
     data: {
-        inputValue: '',
+        keys: [],
     },
     observers: {
-        inputValue(newVal) {
-            if (this.hasFieldDecorator) {
-                this.changeValue(newVal)
-            }
+        ['value, options'](value, options) {
+            this.changeValue(value, options)
         },
     },
     methods: {
-        updated(inputValue) {
-            if (this.data.inputValue !== inputValue) {
-                this.setData({ inputValue })
-            }
-        },
-        changeValue(value = this.data.inputValue) {
-            const { options } = this.data
+        changeValue(value = this.data.value, options = this.data.options) {
+            const showOptions = getOptions(options)
             const elements = this.getRelationNodes('../radio/index')
+            const keys = showOptions.length > 0 ? showOptions : elements ? elements.map((element) => element.data) : []
 
-            if (options.length > 0) return
-            if (elements.length > 0) {
+            // Elements should be updated when not using the options
+            if (!showOptions.length && elements && elements.length > 0) {
                 elements.forEach((element, index) => {
                     element.changeValue(value === element.data.value, index)
+                })
+            }
+
+            if (this.data.keys !== keys) {
+                this.setData({
+                    keys,
                 })
             }
         },
@@ -81,6 +92,16 @@ baseComponent({
             // Set real index
             const { index } = e.currentTarget.dataset
             this.onChange({ ...e.detail, index })
+        },
+        getValue() {
+            const { value, keys: options } = this.data
+            const checkedValues = options.filter((option) => value === option.value)
+            const displayValue = checkedValues.map((option) => option.title)[0] || ''
+            return { value, displayValue, options }
+        },
+        getBoundingClientRect(callback) {
+            this.cellGroup = this.cellGroup || this.selectComponent('#wux-cell-group')
+            return this.cellGroup && this.cellGroup.getBoundingClientRect(callback)
         },
     },
 })

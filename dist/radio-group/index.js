@@ -82,5 +82,12 @@ baseComponent({
             const { index } = e.currentTarget.dataset
             this.onChange({ ...e.detail, index })
         },
+        getValue() {
+            return { value: this.data.inputValue }
+        },
+        getBoundingClientRect(callback) {
+            this.cellGroup = this.cellGroup || this.selectComponent('#wux-cell-group')
+            return this.cellGroup && this.cellGroup.getBoundingClientRect(callback)
+        },
     },
 })

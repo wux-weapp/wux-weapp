@@ -19,6 +19,9 @@ baseComponent({
         '../date-picker/index': {
             type: 'parent',
         },
+        '../popup-select/index': {
+            type: 'parent',
+        },
     },
     properties: {
         prefixCls: {

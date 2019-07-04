@@ -11,6 +11,8 @@ const defaultToolbar = {
     confirmText: '确定',
 }
 
+const defaultExtra = '请选择'
+
 const defaultEvents = {
     onChange() {},
     onConfirm() {},
@@ -19,7 +21,14 @@ const defaultEvents = {
     onPickerChange() {},
 }
 
-export default function popupMixin(selector = '#wux-picker', platformProps = { pickerValueProp: 'value' }) {
+const defaultPlatformProps = {
+    pickerValueProp: 'value',
+    format(values, props) {
+        return Array.isArray(values.displayValue) ? values.displayValue.join(',') : values.displayValue
+    },
+}
+
+export default function popupMixin(selector = '#wux-picker', platformProps = defaultPlatformProps) {
     return Behavior({
         behaviors: [eventsMixin({ defaultEvents })],
         properties: {
@@ -42,6 +51,14 @@ export default function popupMixin(selector = '#wux-picker', platformProps = { p
             controlled: {
                 type: Boolean,
                 value: false,
+            },
+            disabled: {
+                type: Boolean,
+                value: false,
+            },
+            extra: {
+                type: [String, Boolean],
+                value: defaultExtra,
             },
         },
         data: {
@@ -102,6 +119,7 @@ export default function popupMixin(selector = '#wux-picker', platformProps = { p
              */
             onConfirm() {
                 this.close((params) => {
+                    this.setChildExtraProp()
                     this.triggerEvent('change', params) // collect field component
                     this.triggerEvent('confirm', params)
                 })
@@ -135,9 +153,10 @@ export default function popupMixin(selector = '#wux-picker', platformProps = { p
                 return this.picker && this.picker.getValue(value)
             },
             /**
-             * 更新子元素 props
+             * 设置子元素 props
              */
-            updatedChildProps() {
+            setChildProps() {
+                if (this.data.disabled) return
                 const elements = this.getRelationNodes(CELL_NAME)
                 const { trigger = DEFAULT_TRIGGER } = this.data
                 if (elements.length > 0) {
@@ -151,6 +170,23 @@ export default function popupMixin(selector = '#wux-picker', platformProps = { p
                             this.onTriggerClick()
                         }
                         inputElem.setData({ oriInputEvents, inputEvents })
+                    })
+                }
+            },
+            /**
+             * 设置子元素 extra 属性
+             */
+            setChildExtraProp(extra = this.data.extra, value) {
+                if (extra === false) return
+                const elements = this.getRelationNodes(CELL_NAME)
+                const values = this.getPickerValue(value || this.scrollValue || this.data.inputValue)
+                const displayValue = values && platformProps.format(values, this.data) || extra || defaultExtra
+
+                if (elements.length > 0) {
+                    elements.forEach((inputElem) => {
+                        if (inputElem.data.extra !== displayValue) {
+                            inputElem.setData({ extra: displayValue })
+                        }
                     })
                 }
             },
@@ -192,7 +228,7 @@ export default function popupMixin(selector = '#wux-picker', platformProps = { p
                 this.setScrollValue(value)
             },
             /**
-             * 同步子元素的值
+             * 设置子元素的值
              */
             // setPickerProps(inputValue) {
             //     if (this.picker) {
@@ -204,13 +240,14 @@ export default function popupMixin(selector = '#wux-picker', platformProps = { p
         },
         lifetimes: {
             ready() {
-                const { defaultVisible, visible, controlled } = this.data
+                const { defaultVisible, visible, controlled, extra, value } = this.data
                 const popupVisible = controlled ? visible : defaultVisible
 
                 this.mounted = true
                 this.scrollValue = undefined
                 this.setVisibleState(popupVisible)
-                this.updatedChildProps()
+                this.setChildProps()
+                this.setChildExtraProp(extra, value)
             },
             detached() {
                 this.mounted = false
@@ -222,7 +259,8 @@ export default function popupMixin(selector = '#wux-picker', platformProps = { p
                 [CELL_NAME]: {
                     type: 'child',
                     observer() {
-                        this.updatedChildProps()
+                        this.setChildProps()
+                        this.setChildExtraProp()
                     },
                 },
                 [FIELD_NAME]: {
@@ -264,8 +302,9 @@ export default function popupMixin(selector = '#wux-picker', platformProps = { p
                         this.setVisibleState(popupVisible)
                     }
                 },
-                value(inputValue) {
-                    this.updated(inputValue)
+                ['value, extra'](value, extra) {
+                    this.updated(value)
+                    this.setChildExtraProp(extra, value)
                 },
                 // inputValue(inputValue) {
                 //     this.setPickerProps(inputValue)

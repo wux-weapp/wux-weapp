@@ -5,7 +5,7 @@
 @import "mixin/setArrow.wxss";
 @import "mixin/setOnepx.wxss";
 @import "mixin/text.wxss";
-
+@import "mixin/toolbar.wxss";
 
 // variable
 @import "variable/color.wxss";

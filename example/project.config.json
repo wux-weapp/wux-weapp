@@ -32,13 +32,40 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 4,
 			"list": [
 				{
 					"id": 0,
 					"name": "picker",
 					"pathName": "pages/picker/index",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "popup-select",
+					"pathName": "pages/popup-select/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "form",
+					"pathName": "pages/form/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "date-picker",
+					"pathName": "pages/date-picker/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "select",
+					"pathName": "pages/select/index",
 					"scene": null
 				}
 			]

@@ -49,5 +49,17 @@ baseComponent({
                 })
             }
         },
+        getBoundingClientRect(callback) {
+            const className = `.${this.data.prefixCls}`
+            wx
+                .createSelectorQuery()
+                .in(this)
+                .select(className)
+                .boundingClientRect((rect) => {
+                    if (!rect) return
+                    callback.call(this, rect.height)
+                })
+                .exec()
+        },
     },
 })

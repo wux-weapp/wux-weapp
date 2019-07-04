@@ -1,6 +1,22 @@
 import baseComponent from '../helpers/baseComponent'
 import eventsMixin from '../helpers/eventsMixin'
 
+function getOptions(options = []) {
+    return options.map((option, index) => {
+        if (typeof option === 'string') {
+            return {
+                title: option,
+                value: option,
+                index,
+            }
+        }
+        return {
+            ...option,
+            index,
+        }
+    })
+}
+
 baseComponent({
     useField: true,
     behaviors: [eventsMixin()],
@@ -27,11 +43,6 @@ baseComponent({
         value: {
             type: Array,
             value: [],
-            observer(newVal) {
-                if (this.hasFieldDecorator) return
-                this.updated(newVal)
-                this.changeValue(newVal)
-            },
         },
         title: {
             type: String,
@@ -47,35 +58,35 @@ baseComponent({
         },
     },
     data: {
-        inputValue: [],
+        keys: [],
     },
     observers: {
-        inputValue(newVal) {
-            if (this.hasFieldDecorator) {
-                this.changeValue(newVal)
-            }
+        ['value, options'](value, options) {
+            this.changeValue(value, options)
         },
     },
     methods: {
-        updated(inputValue) {
-            if (this.data.inputValue !== inputValue) {
-                this.setData({ inputValue })
-            }
-        },
-        changeValue(value = this.data.inputValue) {
-            const { options } = this.data
+        changeValue(value = this.data.value, options = this.data.options) {
+            const showOptions = getOptions(options)
             const elements = this.getRelationNodes('../checkbox/index')
+            const keys = showOptions.length > 0 ? showOptions : elements ? elements.map((element) => element.data) : []
 
-            if (options.length > 0) return
-            if (elements.length > 0) {
+            // Elements should be updated when not using the options
+            if (!showOptions.length && elements && elements.length > 0) {
                 elements.forEach((element, index) => {
                     element.changeValue(Array.isArray(value) && value.includes(element.data.value), index)
+                })
+            }
+
+            if (this.data.keys !== keys) {
+                this.setData({
+                    keys,
                 })
             }
         },
         onChange(item) {
             if (this.hasFieldDecorator) {
-                let checkedValues = [...this.data.inputValue]
+                let checkedValues = [...this.data.value]
                 checkedValues = checkedValues.indexOf(item.value) !== -1 ? checkedValues.filter((n) => n !== item.value) : [...checkedValues, item.value]
                 item.value = checkedValues
             }
@@ -86,6 +97,16 @@ baseComponent({
             // Set real index
             const { index } = e.currentTarget.dataset
             this.onChange({ ...e.detail, index })
+        },
+        getValue() {
+            const { value, keys: options } = this.data
+            const checkedValues = options.filter((option) => value.includes(option.value))
+            const displayValue = checkedValues.map((option) => option.title) || []
+            return { value, displayValue, options }
+        },
+        getBoundingClientRect(callback) {
+            this.cellGroup = this.cellGroup || this.selectComponent('#wux-cell-group')
+            return this.cellGroup && this.cellGroup.getBoundingClientRect(callback)
         },
     },
 })
