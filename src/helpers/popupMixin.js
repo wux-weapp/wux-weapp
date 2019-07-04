@@ -18,7 +18,7 @@ const defaultEvents = {
     onConfirm() {},
     onCancel() {},
     onVisibleChange() {},
-    onPickerChange() {},
+    onValueChange() {},
 }
 
 const defaultPlatformProps = {
@@ -133,7 +133,7 @@ export default function popupMixin(selector = '#wux-picker', platformProps = def
             /**
              * 每列数据选择变化后的回调函数
              */
-            onPickerChange(e) {
+            onValueChange(e) {
                 if (!this.data.mounted) return
                 const { value } = e.detail
                 if (this.data.cascade) {
@@ -143,7 +143,7 @@ export default function popupMixin(selector = '#wux-picker', platformProps = def
                 }
 
                 this.updated(value)
-                this.triggerEvent('pickerChange', e.detail)
+                this.triggerEvent('valueChange', e.detail)
             },
             /**
              * 获取当前 picker 的值

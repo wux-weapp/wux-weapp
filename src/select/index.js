@@ -62,7 +62,7 @@ baseComponent({
         /**
          * 每列数据选择变化后的回调函数
          */
-        onPickerChange(e) {
+        onValueChange(e) {
             return runCallbacks('onChange', e.detail, this)
         },
         /**

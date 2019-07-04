@@ -21,14 +21,14 @@
                 id="wux-select"
                 value="{{ inputValue }}"
                 options="{{ options }}"
-                bind:change="onPickerChange"
+                bind:change="onValueChange"
                 wx:if="{{ !multiple }}"
             />
             <wux-checkbox-group
                 id="wux-select"
                 value="{{ inputValue }}"
                 options="{{ options }}"
-                bind:change="onPickerChange"
+                bind:change="onValueChange"
                 wx:else
             />
         </scroll-view>

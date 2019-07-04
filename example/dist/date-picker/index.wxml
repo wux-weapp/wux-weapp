@@ -37,7 +37,7 @@
             minMinute="{{ minMinute }}"
             maxMinute="{{ maxMinute }}"
             lang="{{ lang }}"
-            bind:change="onPickerChange"
+            bind:change="onValueChange"
         />
     </view>
 </wux-popup>

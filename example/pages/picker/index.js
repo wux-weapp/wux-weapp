@@ -52,9 +52,9 @@ Page({
         this.setValue(e.detail, index)
         console.log(`onConfirm${index}`, e.detail)
     },
-    onPickerChange(e) {
+    onValueChange(e) {
         const { index } = e.currentTarget.dataset
-        console.log(`onPickerChange${index}`, e.detail)
+        console.log(`onValueChange${index}`, e.detail)
         if (index === '4') {
             this.setValue(e.detail, index)
             this.setData({ loading: true })

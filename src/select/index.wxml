@@ -12,5 +12,5 @@
     bind:cancel="onCancel"
     bind:confirm="onConfirm"
     bind:visibleChange="onVisibleChange"
-    bind:pickerChange="onPickerChange"
+    bind:valueChange="onValueChange"
 />

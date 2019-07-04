@@ -31,7 +31,7 @@
             options="{{ options }}"
             loading="{{ loading }}"
             cols="{{ cols }}"
-            bind:change="onPickerChange"
+            bind:change="onValueChange"
             wx:if="{{ cascade }}"
         />
         <wux-picker-view
@@ -50,7 +50,7 @@
             options="{{ options }}"
             loading="{{ loading }}"
             controlled
-            bind:change="onPickerChange"
+            bind:change="onValueChange"
             wx:else
         />
     </view>

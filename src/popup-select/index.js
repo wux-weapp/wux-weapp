@@ -65,7 +65,7 @@ baseComponent({
                 })
             }
         },
-        onPickerChange(e) {
+        onValueChange(e) {
             if (!this.data.mounted) return
             const { options, max, multiple } = this.data
             const oldValue = this.data.inputValue
@@ -75,7 +75,7 @@ baseComponent({
 
             this.setScrollValue(value)
             this.updated(value, true)
-            this.triggerEvent('pickerChange', { ...e.detail, value })
+            this.triggerEvent('valueChange', { ...e.detail, value })
         },
         scrollIntoView(value, height) {
             const { options, multiple } = this.data

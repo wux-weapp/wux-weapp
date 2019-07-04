@@ -26,7 +26,7 @@ Page({
     onSwitchChange(e) {
         this.setData({ switch: e.detail.value })
     },
-    onPickerChange(e) {
+    onValueChange(e) {
         this.setData({ picker: e.detail.value })
     },
     onDatePickerChange(e) {
