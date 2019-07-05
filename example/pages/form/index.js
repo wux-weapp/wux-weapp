@@ -8,9 +8,12 @@ Page({
         switch: true,
         picker: [],
         datePicker: [],
-        popupSelect: '',
-        options1: data,
+        popupSelect: '猎人',
+        options1: [],
         options2: ['法官', '医生', '猎人', '学生', '记者', '其他'],
+    },
+    onLoad() {
+        this.setData({ options1: data })
     },
     onCheckboxChange(e) {
         const { value } = e.detail

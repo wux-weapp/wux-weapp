@@ -117,11 +117,6 @@ baseComponent({
         }],
     },
     observers: {
-        value(newVal) {
-            if (this.data.controlled) {
-                this.setValue(newVal)
-            }
-        },
         itemStyle(newVal) {
             this.setData({
                 extItemStyle: getStyles(newVal),
@@ -137,11 +132,11 @@ baseComponent({
                 extMarkStyle: getStyles(newVal),
             })
         },
-        options(newVal) {
-            this.setData({
-                cols: getRealCols(newVal, this.data.fieldNames),
-            }, () => {
-                this.setValue(this.data.inputValue, true)
+        ['value, options'](value, options) {
+            const { fieldNames, controlled, inputValue } = this.data
+            const cols = getRealCols(options, fieldNames)
+            this.setData({ cols }, () => {
+                this.setValue(controlled ? value : inputValue, true)
             })
         },
         inputValue(newVal) {

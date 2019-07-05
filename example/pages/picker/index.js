@@ -38,9 +38,12 @@ Page({
         displayValue2: '请选择',
         displayValue3: '请选择',
         displayValue4: '请选择',
-        options: data,
+        options: [],
         seasons,
 	},
+    onLoad() {
+        this.setData({ options: data })
+    },
     setValue(values, key) {
         this.setData({
             [`value${key}`]: values.value,

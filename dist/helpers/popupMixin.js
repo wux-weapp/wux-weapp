@@ -118,17 +118,17 @@ export default function popupMixin(selector = '#wux-picker', platformProps = def
              * 点击确定按钮时的回调函数
              */
             onConfirm() {
-                this.close((params) => {
+                this.close((values) => {
                     this.setChildExtraProp()
-                    this.triggerEvent('change', params) // collect field component
-                    this.triggerEvent('confirm', params)
+                    this.triggerEvent('change', values) // collect field component
+                    this.triggerEvent('confirm', values)
                 })
             },
             /**
              * 点击取消按钮时的回调函数
              */
-            onCancel(e) {
-                this.close((params) => this.triggerEvent('cancel', params))
+            onCancel() {
+                this.close((values) => this.triggerEvent('cancel', values))
             },
             /**
              * 每列数据选择变化后的回调函数
