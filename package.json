@@ -10,6 +10,7 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.26.0",
     "cross-env": "1.0.8",
     "gulp": "^3.9.1",
