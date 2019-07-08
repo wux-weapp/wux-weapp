@@ -19,11 +19,5 @@ const platformProps = {
 
 baseComponent({
     behaviors: [popupMixin('#wux-picker', platformProps)],
-    properties: {
-        ...props,
-        prefixCls: {
-            type: String,
-            value: 'wux-date-picker',
-        },
-    },
+    properties: props,
 })

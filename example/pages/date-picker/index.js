@@ -1,5 +1,3 @@
-import { $wuxDatePicker } from '../../dist/index'
-
 Page({
 	data: {
         value1: [],
@@ -30,16 +28,6 @@ Page({
         this.setData({
             lang,
         })
-    },
-    formatDate(st, mode) {
-        const o = {
-            'datetime': 'yyyy-MM-dd hh:mm',
-            'date': 'yyyy-MM-dd',
-            'year': 'yyyy',
-            'month': 'MM-dd',
-            'time': 'hh:mm',
-        }
-        return formatDate(new Date(st), o[mode])
     },
     setValue(values, key, mode) {
         this.setData({

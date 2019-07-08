@@ -27,8 +27,6 @@ const $wuxGallery = (selector = '#wux-gallery', ctx) => getCtx(selector, ctx)
 const $wuxNotification = (selector = '#wux-notification', ctx) => getCtx(selector, ctx)
 const $wuxKeyBoard = (selector = '#wux-keyboard', ctx) => getCtx(selector, ctx)
 const $wuxSelect = (selector = '#wux-select', ctx) => getCtx(selector, ctx)
-const $wuxDatePicker = (selector = '#wux-date-picker', ctx) => getCtx(selector, ctx)
-const $wuxPopupPicker = (selector = '#wux-popup-picker', ctx) => getCtx(selector, ctx)
 const $wuxCalendar = (selector = '#wux-calendar', ctx) => getCtx(selector, ctx)
 const $startWuxRefresher = (selector = '#wux-refresher', ctx) => getCtx(selector, ctx).triggerRefresh()
 const $stopWuxRefresher = (selector = '#wux-refresher', ctx) => getCtx(selector, ctx).finishPullToRefresh()
@@ -46,8 +44,6 @@ export {
     $wuxNotification,
     $wuxKeyBoard,
     $wuxSelect,
-    $wuxDatePicker,
-    $wuxPopupPicker,
     $wuxCalendar,
     $startWuxRefresher,
     $stopWuxRefresher,
