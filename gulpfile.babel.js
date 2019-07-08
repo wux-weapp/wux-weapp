@@ -1,5 +1,7 @@
 import path from 'path'
 import gulp from 'gulp'
+import babel from 'gulp-babel'
+import uglify from 'gulp-uglify'
 import less from 'gulp-less'
 import cleanCSS from 'gulp-clean-css'
 import rename from 'gulp-rename'
@@ -8,13 +10,29 @@ import cssnano from 'gulp-cssnano'
 import util from 'gulp-util'
 import through2 from 'through2'
 import autoprefixer from 'autoprefixer'
+import del from 'del'
 
 // 配置环境
 const ENV = process.env.NODE_ENV
 const isDev = ENV === 'development' || ENV === 'dev'
 const isProd = ENV === 'production' || ENV === 'prod'
-const buildPath = path.join(__dirname, isProd ? 'dist' : 'example/dist')
+const buildPath = path.join(__dirname, isProd ? 'dist/' : 'example/dist/')
 const format = isProd ? false : 'beautify'
+
+const paths = {
+    styles: {
+        src: ['src/**/*.wxss'],
+        dest: buildPath,
+    },
+    scripts: {
+        src: 'src/**/*.js',
+        dest: buildPath,
+    },
+    copy: {
+        src: ['src/**', '!src/**/*.wxss', '!src/icon/fonts/**'],
+        dest: buildPath,
+    },
+}
 
 /**
  * 自定义插件 - px to rpx
@@ -56,9 +74,11 @@ const px2Rpx = () => {
     })
 }
 
-gulp.task('build:styles', () => {
+export const clean = () => del([buildPath])
+
+export const styles = () => (
     gulp
-        .src(['src/**/*.wxss'], { base: 'src' })
+        .src(paths.styles.src, { base: 'src' })
         .pipe(less())
         .pipe(px2Rpx())
         .pipe(postcss())
@@ -73,35 +93,29 @@ gulp.task('build:styles', () => {
         .pipe(
             rename((path) => (path.extname = '.wxss'))
         )
-        .pipe(gulp.dest(buildPath))
-})
+        .pipe(gulp.dest(paths.styles.dest))
+)
 
-gulp.task('build:example', () => {
+export const scripts = () => (
+    gulp.src(paths.scripts.src, { base: 'src' })
+        .pipe(babel())
+        .pipe(uglify())
+        .pipe(gulp.dest(paths.scripts.dest))
+)
+
+export const copy = () => (
     gulp
-        .src(
-            [
-                'src/**',
-                '!src/**/*.wxss',
-                '!src/icon/fonts/**',
-            ], { base: 'src' },
-        )
-        .pipe(gulp.dest(buildPath))
-})
+        .src(paths.copy.src, { base: 'src' })
+        .pipe(gulp.dest(paths.copy.dest))
+)
 
-gulp.task('watch', () => {
-    gulp.watch('src/**', [
-        'build:styles',
-        'build:example',
-    ])
-})
+const watchFiles = () => {
+    gulp.watch(paths.styles.src, styles)
+    gulp.watch(paths.copy.src, copy)
+}
 
-gulp.task('default', [
-    'watch',
-    'build:styles',
-    'build:example',
-])
+export { watchFiles as watch }
 
-gulp.task('build', [
-    'build:styles',
-    'build:example',
-])
+export default gulp.series(clean, gulp.parallel(styles, copy), watchFiles)
+
+export const build = gulp.series(clean, gulp.parallel(styles, copy), scripts)
