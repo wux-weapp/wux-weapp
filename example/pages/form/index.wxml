@@ -55,23 +55,23 @@
                 </wux-cell>
             </wux-cell-group>
             <wux-cell-group title="Picker">
-                <wux-field name="picker" initialValue="{{ picker }}" valuePropName="value">
+                <wux-field name="picker" initialValue="{{ picker }}">
                     <wux-picker options="{{ options1 }}" cascade bind:change="onValueChange">
-                        <wux-cell title="Picker" is-link></wux-cell>
+                        <wux-cell title="Picker" is-link extra="{{ picker }}"></wux-cell>
                     </wux-picker>
                 </wux-field>
             </wux-cell-group>
             <wux-cell-group title="DatePicker">
-                <wux-field name="datePicker" initialValue="{{ datePicker }}" valuePropName="value">
+                <wux-field name="datePicker" initialValue="{{ datePicker }}">
                     <wux-date-picker bind:change="onDatePickerChange">
-                        <wux-cell title="DatePicker" is-link></wux-cell>
+                        <wux-cell title="DatePicker" is-link extra="{{ datePicker }}"></wux-cell>
                     </wux-date-picker>
                 </wux-field>
             </wux-cell-group>
             <wux-cell-group title="PopupSelect">
-                <wux-field name="popupSelect" initialValue="{{ popupSelect }}" valuePropName="value">
+                <wux-field name="popupSelect" initialValue="{{ popupSelect }}">
                     <wux-popup-select options="{{ options2 }}" bind:change="onPopupSelectChange">
-                        <wux-cell title="PopupSelect" is-link></wux-cell>
+                        <wux-cell title="PopupSelect" is-link extra="{{ popupSelect }}"></wux-cell>
                     </wux-popup-select>
                 </wux-field>
             </wux-cell-group>
@@ -81,13 +81,13 @@
         </form>
         <view class="sub-title">Wux Form</view>
         <wux-form id="wux-form" bind:change="onChange">
-            <wux-field name="checkbox" initialValue="{{ checkbox }}" valuePropName="value">
+            <wux-field name="checkbox" initialValue="{{ checkbox }}">
                 <wux-checkbox-group>
                     <wux-checkbox title="Java" value="1" />
                     <wux-checkbox title="PHP" value="2" />
                 </wux-checkbox-group>
             </wux-field>
-            <wux-field name="radio" initialValue="{{ radio }}" valuePropName="value">
+            <wux-field name="radio" initialValue="{{ radio }}">
                 <wux-radio-group title="Radio">
                     <wux-radio title="Java" value="1" />
                     <wux-radio title="PHP" value="2" />
@@ -136,23 +136,23 @@
                 </wux-cell>
             </wux-cell-group>
             <wux-cell-group title="Picker">
-                <wux-field name="picker" initialValue="{{ picker }}" valuePropName="value">
+                <wux-field name="picker" initialValue="{{ picker }}">
                     <wux-picker options="{{ options1 }}" cascade bind:change="onValueChange">
-                        <wux-cell title="Picker" is-link></wux-cell>
+                        <wux-cell title="Picker" is-link extra="{{ picker }}"></wux-cell>
                     </wux-picker>
                 </wux-field>
             </wux-cell-group>
             <wux-cell-group title="DatePicker">
-                <wux-field name="datePicker" initialValue="{{ datePicker }}" valuePropName="value">
+                <wux-field name="datePicker" initialValue="{{ datePicker }}">
                     <wux-date-picker bind:change="onDatePickerChange">
-                        <wux-cell title="DatePicker" is-link></wux-cell>
+                        <wux-cell title="DatePicker" is-link extra="{{ datePicker }}"></wux-cell>
                     </wux-date-picker>
                 </wux-field>
             </wux-cell-group>
             <wux-cell-group title="PopupSelect">
-                <wux-field name="popupSelect" initialValue="{{ popupSelect }}" valuePropName="value">
+                <wux-field name="popupSelect" initialValue="{{ popupSelect }}">
                     <wux-popup-select options="{{ options2 }}" bind:change="onPopupSelectChange">
-                        <wux-cell title="PopupSelect" is-link></wux-cell>
+                        <wux-cell title="PopupSelect" is-link extra="{{ popupSelect }}"></wux-cell>
                     </wux-popup-select>
                 </wux-field>
             </wux-cell-group>

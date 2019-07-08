@@ -1,7 +1,7 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
 import locales from './locales/index'
-import props from './props'
+import { props } from './props'
 
 const DATETIME = 'datetime'
 const DATE = 'date'
@@ -409,11 +409,11 @@ baseComponent({
                 cols,
             }
         },
-        onChange(e) {
-            const { value, changedIndex } = e.detail
-            const newValue = this.getNewDate(value, changedIndex)
+        onValueChange(e) {
+            const { value, index } = e.detail
+            const newValue = this.getNewDate(value, index)
 
-            this.triggerEvent('change', { ...e.detail, date: +newValue })
+            this.triggerEvent('valueChange', { ...e.detail, date: +newValue })
         },
         updatedCols() {
             const { cols } = this.getValueCols()

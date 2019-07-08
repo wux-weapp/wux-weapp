@@ -7,15 +7,15 @@ export const defaultFieldNames = {
 export const props = {
     prefixCls: {
         type: String,
-        value: 'wux-picker',
+        value: 'wux-picker-col',
     },
     defaultValue: {
-        type: Array,
-        value: [],
+        type: String,
+        value: '',
     },
     value: {
-        type: Array,
-        value: [],
+        type: String,
+        value: '',
     },
     controlled: {
         type: Boolean,
@@ -52,10 +52,6 @@ export const props = {
     defaultFieldNames: {
         type: Object,
         value: defaultFieldNames,
-    },
-    useValueProp: {
-        type: Boolean,
-        value: false,
     },
     loading: {
         type: Boolean,

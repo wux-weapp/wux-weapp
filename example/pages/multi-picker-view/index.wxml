@@ -1,0 +1,14 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">MultiPickerView</view>
+        <view class="page__desc">多列选择器</view>
+    </view>
+    <view class="page__bd">
+        <view class="sub-title">Multiple</view>
+        <wux-multi-picker-view value="{{ value }}" options="{{ options }}" bind:valueChange="onValueChange" />
+        <view class="sub-title">Single</view>
+        <wux-multi-picker-view value="{{ value }}" options="{{ options[0] }}" bind:valueChange="onValueChange" />
+        <view class="sub-title">Loading</view>
+        <wux-multi-picker-view options="{{ options }}" loading />
+    </view>
+</view>

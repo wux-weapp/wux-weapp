@@ -3,34 +3,13 @@ const seasons = [
     ['撕葱', '粑粑', '🏀'],
 ]
 
-const provinceLite = [{
-    value: 'bj',
-    label: '北京市',
-}, {
-    value: 'zj',
-    label: '浙江省',
-}, {
-    value: 'gd',
-    label: '广东省',
-    disabled: true,
-}, {
-    value: 'hn',
-    label: '海南省',
-}, {
-    value: 'cq',
-    label: '重庆市',
-}, {
-    value: 'sc',
-    label: '四川省',
-}]
-
 Page({
-	data: {
-        value: [2, 2],
+    data: {
+        value: ['蔡', '🏀'],
         options: seasons,
-	},
-    onChange(e) {
+    },
+    onValueChange(e) {
         this.setData({ value: e.detail.value })
-        console.log('onChange', e.detail)
+        console.log('onValueChange', e.detail)
     },
 })

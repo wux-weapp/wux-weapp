@@ -1,7 +1,15 @@
-export default {
-    pickerPrefixCls: {
+export const props = {
+    prefixCls: {
+        type: String,
+        value: 'wux-date-picker',
+    },
+    multiPickerPrefixCls: {
         type: String,
         value: 'wux-picker',
+    },
+    pickerPrefixCls: {
+        type: String,
+        value: 'wux-picker-col',
     },
     value: {
         type: null,

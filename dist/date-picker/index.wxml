@@ -18,6 +18,7 @@
         </view>
         <wux-date-picker-view
             id="wux-picker"
+            multiPickerPrefixCls="{{ multiPickerPrefixCls }}"
             pickerPrefixCls="{{ pickerPrefixCls }}"
             value="{{ inputValue }}"
             itemHeight="{{ itemHeight }}"
@@ -37,7 +38,7 @@
             minMinute="{{ minMinute }}"
             maxMinute="{{ maxMinute }}"
             lang="{{ lang }}"
-            bind:change="onValueChange"
+            bind:valueChange="onValueChange"
         />
     </view>
 </wux-popup>

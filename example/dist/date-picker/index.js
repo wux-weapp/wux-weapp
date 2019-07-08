@@ -1,10 +1,10 @@
 import baseComponent from '../helpers/baseComponent'
 import popupMixin from '../helpers/popupMixin'
-import props from '../date-picker-view/props'
+import { props } from '../date-picker-view/props'
 import { formatDate } from './utils'
 
 const platformProps = {
-    pickerValueProp: 'value',
+    labelPropName: 'label',
     format(values, props) {
         const o = {
             datetime: 'yyyy-MM-dd hh:mm',

@@ -9,9 +9,9 @@
     </view>
     <view class="page__bd">
         <wux-cell-group>
-            <wux-cell title="Single" extra="{{ title1 }}" bind:click="onClick1"></wux-cell>
-            <wux-cell title="Multiple" extra="{{ title2 }}" bind:click="onClick2"></wux-cell>
-            <wux-cell title="Multiple & max = 3" extra="{{ title3 }}" bind:click="onClick3"></wux-cell>
+            <wux-cell title="Single" is-link extra="{{ displayValue1 }}" bind:click="onClick1"></wux-cell>
+            <wux-cell title="Multiple" is-link extra="{{ displayValue2 }}" bind:click="onClick2"></wux-cell>
+            <wux-cell title="Multiple & max = 3" is-link extra="{{ displayValue3 }}" bind:click="onClick3"></wux-cell>
         </wux-cell-group>
     </view>
 </view>

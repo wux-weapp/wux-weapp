@@ -1,6 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import popupMixin from '../helpers/popupMixin'
-import { props } from '../picker-view/props'
+import { props } from '../multi-picker-view/props'
 
 baseComponent({
     behaviors: [popupMixin()],
@@ -10,7 +10,7 @@ baseComponent({
             type: String,
             value: 'wux-popup-picker',
         },
-        pickerPrefixCls: {
+        multiPickerPrefixCls: {
             type: String,
             value: 'wux-picker',
         },

@@ -39,6 +39,7 @@
     "pages/list/index",
     "pages/loading/index",
     "pages/media/index",
+    "pages/multi-picker-view/index",
     "pages/navbar/index",
     "pages/notice-bar/index",
     "pages/notification/index",

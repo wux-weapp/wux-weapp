@@ -5,9 +5,9 @@ Page({
         value1: '',
         value2: '',
         value3: '',
-        title1: '请选择',
-        title2: '请选择',
-        title3: '请选择',
+        displayValue1: '请选择',
+        displayValue2: '请选择',
+        displayValue3: '请选择',
         options1: ['法官', '医生', '猎人', '学生', '记者', '其他'],
         options2: [{
             title: 'iPhone 3GS',
@@ -66,7 +66,7 @@ Page({
                 if (index !== -1) {
                     this.setData({
                         value1: value,
-                        title1: options[index],
+                        displayValue1: options[index],
                     })
                 }
             },
@@ -82,7 +82,7 @@ Page({
                 if (index !== -1) {
                     this.setData({
                         value2: value,
-                        title2: index.map((n) => options[n].title),
+                        displayValue2: index.map((n) => options[n].title),
                     })
                 }
             },
@@ -102,14 +102,14 @@ Page({
                 console.log('onChange', value, index, options)
                 this.setData({
                     value3: value,
-                    title3: index.map((n) => options[n].title),
+                    displayValue3: index.map((n) => options[n].title),
                 })
             },
             onConfirm: (value, index, options) => {
                 console.log('onConfirm', value, index, options)
                 this.setData({
                     value3: value,
-                    title3: index.map((n) => options[n].title),
+                    displayValue3: index.map((n) => options[n].title),
                 })
             },
         })

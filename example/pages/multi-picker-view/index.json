@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "MultiPickerView",
+    "usingComponents": {
+    	"wux-multi-picker-view": "../../dist/multi-picker-view/index"
+    }
+}

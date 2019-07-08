@@ -130,13 +130,18 @@ Page({
                         url: '/pages/input-number/index',
                     },
                     {
+                        title: 'MultiPickerView',
+                        remark: '多列选择器',
+                        url: '/pages/multi-picker-view/index',
+                    },
+                    {
                         title: 'Picker',
                         remark: '选择器',
                         url: '/pages/picker/index',
                     },
                     {
                         title: 'PickerView',
-                        remark: '选择器',
+                        remark: '单列选择器',
                         url: '/pages/picker-view/index',
                     },
                     {

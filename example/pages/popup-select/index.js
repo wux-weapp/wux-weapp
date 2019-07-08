@@ -58,7 +58,7 @@ Page({
     setValue(values, key) {
         this.setData({
             [`value${key}`]: values.value,
-            [`displayValue${key}`]: Array.isArray(values.displayValue) ? values.displayValue.join(' ') : values.displayValue,
+            [`displayValue${key}`]: values.label,
         })
     },
     onConfirm(e) {

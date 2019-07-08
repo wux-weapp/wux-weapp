@@ -8,13 +8,13 @@
     <view class="page__bd">
         <wux-cell-group>
             <wux-popup-select value="{{ value1 }}" options="{{ options1 }}" data-index="1" bind:confirm="onConfirm" bind:valueChange="onValueChange">
-                <wux-cell title="Single"></wux-cell>
+                <wux-cell title="Single" is-link extra="{{ displayValue1 }}"></wux-cell>
             </wux-popup-select>
-            <wux-popup-select value="{{ value2 }}" options="{{ options2 }}" multiple extra="Please Choose" data-index="2" bind:confirm="onConfirm" bind:valueChange="onValueChange">
-                <wux-cell title="Multiple"></wux-cell>
+            <wux-popup-select value="{{ value2 }}" options="{{ options2 }}" multiple data-index="2" bind:confirm="onConfirm" bind:valueChange="onValueChange">
+                <wux-cell title="Multiple" is-link extra="{{ displayValue2 }}"></wux-cell>
             </wux-popup-select>
-            <wux-popup-select value="{{ value3 }}" options="{{ options3 }}" multiple max="3" extra="{{ false }}" data-index="3" bind:confirm="onConfirm" bind:valueChange="onValueChange">
-                <wux-cell title="Multiple & max = 3" extra="{{ displayValue3 }}"></wux-cell>
+            <wux-popup-select value="{{ value3 }}" options="{{ options3 }}" multiple max="3" data-index="3" bind:confirm="onConfirm" bind:valueChange="onValueChange">
+                <wux-cell title="Multiple & max = 3" is-link extra="{{ displayValue3 }}"></wux-cell>
             </wux-popup-select>
         </wux-cell-group>
         <view class="button-sp-area">

@@ -8,7 +8,7 @@
             label="{{ option.label }}"
             extra="{{ option.extra }}"
             value="{{ option.value }}"
-            checked="{{ common.getChecked(value, option) }}"
+            checked="{{ common.getChecked(inputValue, option) }}"
             disabled="{{ option.disabled }}"
             color="{{ option.color || 'balanced' }}"
             data-index="{{ index }}"

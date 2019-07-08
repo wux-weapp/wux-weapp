@@ -1,6 +1,7 @@
-<wux-picker-view
+<wux-multi-picker-view
     id="wux-picker"
-    prefixCls="{{ pickerPrefixCls }}"
+    prefixCls="{{ multiPickerPrefixCls }}"
+    pickerPrefixCls="{{ pickerPrefixCls }}"
     value="{{ inputValue }}"
     itemHeight="{{ itemHeight }}"
     itemStyle="{{ itemStyle }}"
@@ -9,8 +10,6 @@
     maskStyle="{{ maskStyle }}"
     maskClass="{{ maskClass }}"
     labelAlign="{{ labelAlign }}"
-    useValueProp
     options="{{ cols }}"
-    controlled
-    bind:change="onChange"
+    bind:valueChange="onValueChange"
 />

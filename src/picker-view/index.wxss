@@ -1,10 +1,13 @@
 @import "../styles/base/fn.wxss";
 
-.@{wuxClassNamePrefix}-picker {
-    width: 100%;
-    height: 240px;
+.@{wuxClassNamePrefix}-picker-col {
+    display: block;
+    position: relative;
+    height: 238px;
     overflow: hidden;
-
+    width: 100%;
+    flex: 1;
+    
     &--left {
         text-align: left;
     }
@@ -16,14 +19,53 @@
     &--right {
         text-align: right;
     }
-
-    &__cols {
+    
+    &__mask, 
+    &__indicator {
+        position: absolute;
+        left: 0;
         width: 100%;
+        z-index: 3;
+    }
+
+    &__mask {
+        top: 0;
         height: 100%;
+        margin: 0 auto;
+        background-image: linear-gradient(180deg, hsla(0, 0%, 100%, .95), hsla(0, 0%, 100%, .6)), linear-gradient(0deg, hsla(0, 0%, 100%, .95), hsla(0, 0%, 100%, .6));
+        background-position: top,bottom;
+        background-size: 100% 102px;
+        background-repeat: no-repeat;
+    }
+
+    &__indicator {
+        box-sizing: border-box;
+        height: 34px;
+        top: 102px;
+        
+        &:before {
+            .setTopLine(#D9D9D9);
+        }
+
+        &:after {
+            .setBottomLine(#D9D9D9);
+        }
+    }
+
+    &__content {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+        padding: 102px 0;
     }
 
     &__item {
         font-size: 16px;
+        height: 34px;
+        line-height: 34px;
+        color: #707274;
         color: #000;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -35,6 +77,7 @@
 
         &--selected {
             font-size: 17px;
+            color: #000;
         }
     }
 }

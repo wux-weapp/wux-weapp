@@ -64,15 +64,31 @@ baseComponent({
         },
     },
     data: {
+        inputValue: [],
         keys: [],
     },
     observers: {
-        ['value, options'](value, options) {
-            this.changeValue(value, options)
+        value(newVal) {
+            if (this.hasFieldDecorator) return
+            this.updated(newVal)
+            this.changeValue(newVal)
+        },
+        inputValue(newVal) {
+            if (this.hasFieldDecorator) {
+                this.changeValue(newVal)
+            }
+        },
+        options(newVal) {
+            this.changeValue(this.data.inputValue, newVal)
         },
     },
     methods: {
-        changeValue(value = this.data.value, options = this.data.options) {
+        updated(inputValue) {
+            if (this.data.inputValue !== inputValue) {
+                this.setData({ inputValue })
+            }
+        },
+        changeValue(value = this.data.inputValue, options = this.data.options) {
             const showOptions = getOptions(options)
             const elements = this.getRelationNodes('../checkbox/index')
             const keys = showOptions.length > 0 ? showOptions : elements ? elements.map((element) => element.data) : []
@@ -91,7 +107,7 @@ baseComponent({
             }
         },
         onChange(item) {
-            const checkedValues = getCheckedValues(item.value, this.data.value)
+            const checkedValues = getCheckedValues(item.value, this.data.inputValue)
 
             // 如果使用 <Field /> 组件包裹时，value 返回值为数组
             if (this.hasFieldDecorator) {
@@ -110,7 +126,7 @@ baseComponent({
             const { index } = e.currentTarget.dataset
             this.onChange({ ...e.detail, index })
         },
-        getValue(value = this.data.value, cols = this.data.keys) {
+        getValue(value = this.data.inputValue, cols = this.data.keys) {
             const checkedValues = cols.filter((option) => value.includes(option.value))
             const displayValue = checkedValues.map((option) => option.title) || []
             const allValues = cols.map((option) => option.value)

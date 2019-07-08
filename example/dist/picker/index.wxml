@@ -18,6 +18,7 @@
         </view>
         <wux-cascader-picker-view
             id="wux-picker"
+            prefixCls="{{ multiPickerPrefixCls }}"
             pickerPrefixCls="{{ pickerPrefixCls }}"
             value="{{ inputValue }}"
             itemHeight="{{ itemHeight }}"
@@ -31,12 +32,13 @@
             options="{{ options }}"
             loading="{{ loading }}"
             cols="{{ cols }}"
-            bind:change="onValueChange"
+            bind:valueChange="onValueChange"
             wx:if="{{ cascade }}"
         />
-        <wux-picker-view
+        <wux-multi-picker-view
             id="wux-picker"
-            prefixCls="{{ pickerPrefixCls }}"
+            prefixCls="{{ multiPickerPrefixCls }}"
+            pickerPrefixCls="{{ pickerPrefixCls }}"
             value="{{ inputValue }}"
             itemHeight="{{ itemHeight }}"
             itemStyle="{{ itemStyle }}"
@@ -46,11 +48,9 @@
             maskClass="{{ maskClass }}"
             labelAlign="{{ labelAlign }}"
             defaultFieldNames="{{ defaultFieldNames }}"
-            useValueProp
             options="{{ options }}"
             loading="{{ loading }}"
-            controlled
-            bind:change="onValueChange"
+            bind:valueChange="onValueChange"
             wx:else
         />
     </view>

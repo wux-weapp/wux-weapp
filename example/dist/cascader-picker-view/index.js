@@ -1,15 +1,11 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
 import arrayTreeFilter from '../helpers/arrayTreeFilter'
-import { defaultFieldNames, props } from '../picker-view/props'
+import { defaultFieldNames, props } from '../multi-picker-view/props'
 
 baseComponent({
     properties: {
         ...props,
-        pickerPrefixCls: {
-            type: String,
-            value: 'wux-picker',
-        },
         cols: {
             type: Number,
             value: 3,
@@ -22,13 +18,16 @@ baseComponent({
     },
     observers: {
         inputValue(newVal) {
-            const showOptions = this.getShowOptions(newVal)
-            this.setData({
-                showOptions,
-            })
+            // HACK: 去掉不必要的属性，防止数据溢出
+            const value = this.getFieldName('value')
+            const label = this.getFieldName('label')
+            const showOptions = this.getShowOptions(newVal).reduce((acc, option) => (
+                [...acc, option.map((v) => ({ [value]: v[value], [label]: v[label], disabled: !!v.disabled }))]
+            ), [])
+            this.setData({ showOptions })
         },
         ['value, options, cols'](value, options, cols) {
-            this.setValue(value)
+            this.setValue(value, options, cols)
         },
     },
     methods: {
@@ -39,24 +38,25 @@ baseComponent({
                 })
             }
         },
-        setValue(value = this.data.inputValue) {
-            const inputValue = this.getRealValue(this.data.options, value)
+        setValue(value = this.data.inputValue, options = this.data.options, cols = this.data.cols) {
+            const inputValue = this.getRealValue(options, value, cols)
             this.updated(inputValue)
         },
-        onChange(e) {
-            const { value, changedIndex } = e.detail
-            const newValue = this.getNextValue(value, changedIndex)
+        onValueChange(e) {
+            const { value, index } = e.detail
+            const newValue = this.getNextValue(value, index)
             const inputValue = this.getRealValue(this.data.options, newValue)
-            const showOptions = this.getShowOptions(inputValue)
-            const values = this.getValue(inputValue, showOptions)
-
+            const values = this.getValue(inputValue)
+            
             // forceUpdate picker
             this.updated(inputValue)
-            this.triggerEvent('change', { ...values, changedIndex })
+            this.triggerEvent('valueChange', { ...values, index })
         },
-        getValue(value = this.data.inputValue, showOptions = this.data.showOptions) {
+        getValue(value = this.data.inputValue) {
+            const newValue = this.getRealValue(this.data.options, value)
+            const newShowOptions = this.getShowOptions(newValue)
             this.picker = this.picker || this.selectComponent('#wux-picker')
-            return this.picker.getValue(value, showOptions)
+            return this.picker.getValue(newValue, newShowOptions)
         },
         getNextValue(activeValue, index) {
             const { options } = this.data
@@ -79,8 +79,8 @@ baseComponent({
 
             return activeValue
         },
-        getRealValue(options = this.data.options, activeValue) {
-            if (!activeValue || !activeValue.length || activeValue.indexOf(undefined) > -1 || activeValue.length !== this.data.cols) {
+        getRealValue(options, activeValue, cols = this.data.cols) {
+            if (!activeValue || !activeValue.length || activeValue.indexOf(undefined) > -1 || activeValue.length !== cols) {
                 const value = this.getFieldName('value')
                 const childrenKeyName = this.getFieldName('children')
 
@@ -88,10 +88,21 @@ baseComponent({
                 let data = [...options]
                 let i = 0
 
-                while (i < this.data.cols) {
+                while (i < cols) {
                     if (data && data.length) {
                         newValue[i] = activeValue[i] || data[0][value]
-                        data = data[0][childrenKeyName]
+
+                        let index = 0
+
+                        if (newValue[i]) {
+                            index = data.map((v) => v[value]).indexOf(newValue[i])
+                            if (index === -1) {
+                                index = 0
+                                newValue[i] = data[0][value]
+                            }
+                        }
+
+                        data = data[index][childrenKeyName]
                     }
                     i++
                 }

@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 11,
 			"list": [
 				{
 					"id": 0,
@@ -73,6 +73,48 @@
 					"id": -1,
 					"name": "picker-view",
 					"pathName": "pages/picker-view/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "calendar",
+					"pathName": "pages/calendar/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "date-picker-view",
+					"pathName": "pages/date-picker-view/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "cascader-picker-view",
+					"pathName": "pages/cascader-picker-view/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "cascader",
+					"pathName": "pages/cascader/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "multi-picker-view",
+					"pathName": "pages/multi-picker-view/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "date-picker-view",
+					"pathName": "pages/date-picker-view/index",
 					"scene": null
 				}
 			]

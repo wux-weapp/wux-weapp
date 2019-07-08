@@ -1,5 +1,4 @@
 import { $wuxDatePicker } from '../../dist/index'
-import { formatDate } from '../../dist/date-picker/utils'
 
 Page({
 	data: {
@@ -45,7 +44,7 @@ Page({
     setValue(values, key, mode) {
         this.setData({
             [`value${key}`]: values.value,
-            [`displayValue${key}`]: this.formatDate(values.date, mode),
+            [`displayValue${key}`]: values.label,
             // [`displayValue${key}`]: values.displayValue.join(' '),
         })
     },

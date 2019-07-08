@@ -1,122 +1,58 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
 import styleToCssString from '../helpers/styleToCssString'
+import { getTouchPoints, getPointsNumber } from '../helpers/gestures'
+import { getSystemInfo } from '../helpers/checkIPhoneX'
 import { defaultFieldNames, props } from './props'
+import {
+    getRealCol,
+    getRealValue,
+    getIndexFromValue,
+    getLabelFromIndex,
+} from './utils'
 
 function getStyles(value) {
     return Array.isArray(value) ? value.map((n) => styleToCssString(n)) : styleToCssString(value)
 }
 
-function getChangedIndexes(oldValue = [], newValue = [], length = 1) {
-    if (length === 1) return [0]
-    const result = []
-    let i = 0
-    while (i < length) {
-        if (oldValue[i] !== newValue[i]) {
-            result.push(i)
-        }
-        i++
-    }
-    return result
-}
-
-function getRealIndex(value = 0, min = 0, max) {
-    if (value <= min) {
-        return min
-    }
-    if (value >= max) {
-        return max
-    }
-    return value
-}
-
-function getRealIndexes(indexes = [], cols = []) {
-    return cols.reduce((acc, col, idx) => {
-        return [...acc, getRealIndex(indexes[idx], 0, col.length - 1)]
-    }, [])
-}
-
-function getRealValues(values = [], cols = [], fieldNames = defaultFieldNames) {
-    return cols.reduce((acc, col, idx) => {
-        const colValues = col.map((v) => v[fieldNames.value])
-        const value = values[idx] !== undefined && colValues.includes(values[idx]) ? values[idx] : colValues[0]
-        return value !== undefined ? [...acc, value] : acc
-    }, [])
-}
-
-function set(acc = [], name, index, values, func) {
-    return [...acc, func(values[index], name)]
-}
-
-function getIndexFromValue(value, col = [], fieldNames = defaultFieldNames) {
-    return getRealIndex(col.map((v) => v[fieldNames.value]).indexOf(value), 0, col.length - 1)
-}
-
-function getIndexesFromValues(values = [], cols = [], fieldNames = defaultFieldNames) {
-    return cols.reduce((acc, col, idx) => {
-        return set(acc, col, idx, values, (...args) => getIndexFromValue(...args, fieldNames))
-    }, [])
-}
-
-function getValueFromIndex(index, col = [], fieldNames = defaultFieldNames) {
-    const item = col[getRealIndex(index, 0, col.length - 1)]
-    return item ? item[fieldNames.value] : null
-}
-
-function getValuesFromIndexes(indexes = [], cols = [], fieldNames = defaultFieldNames) {
-    return cols.reduce((acc, col, idx) => {
-        return set(acc, col, idx, indexes, (...args) => getValueFromIndex(...args, fieldNames))
-    }, [])
-}
-
-function isMultiPicker(data = []) {
-    if (!data) { return false }
-    return Array.isArray(data[0])
-}
-
-function getRealCols(data = [], fieldNames = defaultFieldNames) {
-    const cols = isMultiPicker(data) ? data : [data]
-    return cols.reduce((acc, col) => {
-        const value = col.map((v) => {
-            if (typeof v !== 'object') {
-                return { [fieldNames.value]: v, [fieldNames.label]: v }
-            }
-            return v
-        })
-        return [...acc, value]
-    }, [])
-}
-
 baseComponent({
     properties: props,
     data: {
-        inputValue: [],
-        selectedIndex: [],
-        selectedValue: [],
+        inputValue: null,
+        selectedIndex: null,
+        selectedValue: null,
         cols: [],
         extIndicatorStyle: '',
         extItemStyle: '',
-        extMarkStyle: '',
+        extMaskStyle: '',
+        contentStyle: '',
         fieldNames: defaultFieldNames,
+        itemCount: 7, // 默认显示的子元素个数
+        styles: {},
     },
     computed: {
         classes: ['prefixCls, labelAlign', function(prefixCls, labelAlign) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${labelAlign}`]: labelAlign,
             })
-            const cols = `${prefixCls}__cols`
-            const col = `${prefixCls}__col`
+            const mask = `${prefixCls}__mask`
+            const indicator = `${prefixCls}__indicator`
+            const content = `${prefixCls}__content`
             const item = `${prefixCls}__item`
 
             return {
                 wrap,
-                cols,
-                col,
+                mask,
+                indicator,
+                content,
                 item,
             }
         }],
     },
     observers: {
+        itemHeight(newVal) {
+            this.updatedStyles(newVal)
+        },
         itemStyle(newVal) {
             this.setData({
                 extItemStyle: getStyles(newVal),
@@ -129,16 +65,33 @@ baseComponent({
         },
         maskStyle(newVal) {
             this.setData({
-                extMarkStyle: getStyles(newVal),
+                extMaskStyle: getStyles(newVal),
             })
         },
-        ['value, options'](value, options) {
-            const { fieldNames, controlled, inputValue } = this.data
-            const cols = getRealCols(options, fieldNames)
-            this.setData({ cols }, () => {
-                this.setValue(controlled ? value : inputValue, true)
-            })
+        value(value) {
+            const { controlled, options } = this.data
+            const cols = getRealCol(options, fieldNames)
+            const fieldNames = Object.assign({}, defaultFieldNames, this.data.defaultFieldNames)
+
+            if (controlled) {
+                this.setData({ cols }, () => this.setValue(value, true))
+            }
         },
+        options(options) {
+            const fieldNames = Object.assign({}, defaultFieldNames, this.data.defaultFieldNames)
+            const cols = getRealCol(options, fieldNames)
+
+            this.setData({ cols })
+        },
+        // ['value, options'](value, options) {
+        //     const { controlled, inputValue, defaultValue } = this.data
+        //     const fieldNames = Object.assign({}, defaultFieldNames, this.data.defaultFieldNames)
+        //     const cols = getRealCol(options, fieldNames)
+            
+        //     this.setData({ cols }, () => {
+        //         this.setValue(controlled ? value : (inputValue || defaultValue), true)
+        //     })
+        // },
         inputValue(newVal) {
             const {
                 selectedIndex,
@@ -152,73 +105,51 @@ baseComponent({
         },
     },
     methods: {
+        updatedStyles(itemHeight) {
+            let num = this.data.itemCount
+            if (num % 2 === 0) {
+                num--
+            }
+            num--
+            num /= 2
+
+            const wrap = `height: ${itemHeight * this.data.itemCount}px;`
+            const item = `line-height: ${itemHeight}px; height: ${itemHeight}px;`
+            const content = `padding: ${itemHeight * num}px 0;`
+            const indicator = `top: ${itemHeight * num}px; height: ${itemHeight}px;`
+            const mask = `background-size: 100% ${itemHeight * num}px;`
+            const styles = {
+                wrap,
+                item,
+                content,
+                indicator,
+                mask,
+            }
+
+            this.setData({ styles })
+        },
         updated(inputValue, isForce) {
-            if (this.data.inputValue !== inputValue || isForce) {
+            if (this.data.inputValue !== inputValue) {
                 this.setData({
                     inputValue,
                 })
+                
+                // 当接受外部参数时，需要设置选择器位置
+                if (isForce) {
+                    this.select(inputValue, this.data.itemHeight, (y) => this.scrollTo(y, 0, false))
+                }
             }
         },
         setValue(value, isForce) {
             const { value: inputValue } = this.getValue(value)
             this.updated(inputValue, isForce)
         },
-        fixAndScroll(values) {
-            const { inputValue: oldValue, cols } = this.data
-            const { value: newValue, selectedIndex } = values
-            const changedIndexes = this.getChangedIndexes(oldValue, newValue)
-            const hasChanged = changedIndexes.length > 0
-
-            if (hasChanged) {
-                changedIndexes.forEach((v) => {
-                    const index = selectedIndex[v]
-                    const col = cols[v]
-                    const item = col && col[index]
-
-                    if (item && item.disabled) {
-                        newValue[v] = oldValue[v]
-                    }
-                })
-
-                return this.getValue(newValue)
-            }
-
-            return values
-        },
-        onChange(e) {
-            const { controlled, cols, fieldNames, useValueProp, inputValue: oldValue } = this.data
-            const { value } = e.detail
-            const newValue = !useValueProp ? value : getValuesFromIndexes(value, cols, fieldNames)
-            const values = this.fixAndScroll(this.getValue(newValue))
-            const changedIndex = this.getChangedIndexes(oldValue, newValue)[0]
-            const changedItem = cols[changedIndex] && cols[changedIndex][value[changedIndex]]
-            const isUpdated = changedItem && changedItem.disabled
-
-            // 判断当前变化的元素是否为禁用状态，是则重置到原来的位置
-            if (!controlled || isUpdated) {
-                this.updated(values.value, isUpdated)
-            }
-
-            // 判断是否触发 change 事件
-            if (!isUpdated) {
-                this.triggerEvent('change', { ...values, changedIndex })
-            }
-        },
-        onBeforeChange(e) {
-            this.triggerEvent('beforeChange', this.getValue())
-        },
-        onAfterChange(e) {
-            this.triggerEvent('afterChange', this.getValue())
-        },
-        getChangedIndexes(oldValue = this.data.inputValue, newValue) {
-            return getChangedIndexes(oldValue, newValue, this.data.cols.length)
-        },
         getValue(value = this.data.inputValue, cols = this.data.cols) {
-            const { fieldNames, useValueProp } = this.data
-            const inputValue = !useValueProp ? getRealIndexes(value, cols) : getRealValues(value, cols, fieldNames)
-            const selectedValue = !useValueProp ? getValuesFromIndexes(inputValue, cols, fieldNames) : [...inputValue]
-            const selectedIndex = !useValueProp ? [...inputValue] : getIndexesFromValues(inputValue, cols, fieldNames)
-            const displayValue = this.getFieldMeta(selectedIndex, fieldNames.label, cols)
+            const { fieldNames } = this.data
+            const inputValue = getRealValue(value, cols, fieldNames) || null
+            const selectedValue = inputValue
+            const selectedIndex = getIndexFromValue(value, cols, fieldNames)
+            const displayValue = getLabelFromIndex(selectedIndex, cols, fieldNames.label)
 
             return {
                 value: inputValue,
@@ -228,19 +159,232 @@ baseComponent({
                 cols,
             }
         },
-        getFieldMeta(indexes, member, cols = this.data.cols) {
-            return cols.reduce((acc, col, idx) => {
-                const item = col[indexes[idx]]
-                return [...acc, member ? item && item[member] : item]
-            }, [])
+        /**
+         * 设置选择器的位置信息
+         */
+        scrollTo(y, time = .3, runCallbacks = true) {
+            if (this.scrollY !== y) {
+                if (this.runCallbacks) {
+                    clearTimeout(this.runCallbacks)
+                    this.runCallbacks = null
+                }
+                this.scrollY = y
+                this.setTransform(-y, time, () => {
+                    runCallbacks && (this.runCallbacks = setTimeout(() => {
+                        this.setTransform(-y, 0, this.scrollingComplete)
+                    }, +time * 1000))
+                })
+            }
+        },
+        /**
+         * 滚动结束时的回调函数
+         */
+        onFinish() {
+            this.isMoving = false
+            let targetY = this.scrollY
+            const { cols, itemHeight } = this.data
+            const height = (cols.length - 1) * itemHeight
+
+            let time = .3
+
+            // const velocity = this.Velocity.getVelocity(targetY) * 4
+            // if (velocity) {
+            //     targetY = velocity * 40 + targetY
+            //     time = Math.abs(velocity) * .1
+            //     time = parseFloat(time.toFixed(2))
+            // }
+
+            if (targetY % itemHeight !== 0) {
+                targetY = Math.round(targetY / itemHeight) * itemHeight
+            }
+
+            if (targetY < 0) {
+                targetY = 0
+            } else if (targetY > height) {
+                targetY = height
+            }
+
+            // check disabled & reset
+            const child = this.getChildMeta(targetY, itemHeight)
+            if (child && !child.disabled) {
+                this.scrollTo(targetY, time < .3 ? .3 : time)
+            } else {
+                this.select(this.data.inputValue, itemHeight, (y) => this.scrollTo(y, 0, false))
+            }
+
+            this.onScrollChange()
+        },
+        /**
+         * 手指触摸动作开始
+         */
+        onTouchStart(e) {
+            if (getPointsNumber(e) > 1) return
+            this.isMoving = true
+            this.startY = getTouchPoints(e).y
+            this.lastY = this.scrollY
+            this.triggerEvent('beforeChange', this.getValue())
+        },
+        /**
+         * 手指触摸后移动
+         */
+        onTouchMove(e) {
+            if (!this.isMoving || getPointsNumber(e) > 1) return
+            this.scrollY = this.lastY - getTouchPoints(e).y + this.startY
+            this.setTransform(-this.scrollY, false, this.onScrollChange)
+        },
+        /**
+         * 手指触摸动作结束
+         */
+        onTouchEnd(e) {
+            if (getPointsNumber(e) > 1) return
+            this.onFinish()
+        },
+        /**
+         * 手指触摸后马上离开
+         */
+        onItemClick(e) {
+            const { index, disabled } = e.currentTarget.dataset
+            if (!disabled) {
+                this.scrollTo(index * this.data.itemHeight)
+            }
+        },
+        /**
+         * 设置滚动样式
+         */
+        setTransform(y, time, cb) {
+            const contentStyle = {
+                transform: `translate3d(0,${y}px,0)`,
+                transition: time ? `cubic-bezier(0, 0, 0.2, 1.15) ${time}s` : 'none',
+            }
+            this.setData({ contentStyle: styleToCssString(contentStyle) }, cb)
+        },
+        /**
+         * 设置选择器
+         */
+        select(value, itemHeight, scrollTo) {
+            const { cols: children, fieldNames } = this.data
+            const index = getIndexFromValue(value, children, fieldNames)
+            this.selectByIndex(index, itemHeight, scrollTo)
+        },
+        /**
+         * 通过元素的索引值设置选择器
+         */
+        selectByIndex(index, itemHeight, zscrollTo) {
+            if (index < 0 || index >= this.data.cols.length || !itemHeight) return
+            zscrollTo.call(this, index * itemHeight)
+        },
+        /**
+         * 计算子元素的索引值
+         */
+        computeChildIndex(top, itemHeight, childrenLength) {
+            const index = Math.round(top / itemHeight)
+            return Math.min(index, childrenLength - 1)
+        },
+        /**
+         * 获取子元素的属性
+         */
+        getChildMeta(top, itemHeight) {
+            const { cols: children, fieldNames } = this.data
+            const index = this.computeChildIndex(top, itemHeight, children.length)
+            const child = children[index]
+            return child
+        },
+        /**
+         * 滚动完成的回调函数
+         */
+        scrollingComplete() {
+            const top = this.scrollY
+            if (top >= 0) {
+                const { itemHeight, fieldNames } = this.data
+                const child = this.getChildMeta(top, itemHeight)
+                if (child) {
+                    const inputValue = child[fieldNames.value]
+                    if (this.data.inputValue !== inputValue) {
+                        this.fireValueChange(inputValue)
+                    }
+                }
+            }
+        },
+        /**
+         * 滚动数据选择变化后的回调函数
+         */
+        onScrollChange() {
+            const top = this.scrollY
+            if (top >= 0) {
+                const { cols: children, itemHeight, fieldNames } = this.data
+                const index = this.computeChildIndex(top, itemHeight, children.length)
+                if (this.scrollValue !== index) {
+                    this.scrollValue = index
+                    const child = children[index]
+                    if (child) {
+                        const values = this.getValue(child[fieldNames.value])
+                        this.triggerEvent('scrollChange', values)
+                    }
+
+                    // 振动反馈
+                    this.vibrateShort()
+                }
+            }
+        },
+        /**
+         * 数据选择变化后的回调函数
+         */
+        fireValueChange(value) {
+            if (!this.data.controlled) {
+                this.updated(value)
+            }
+            this.triggerEvent('valueChange', this.getValue(value))
+
+            // 振动反馈
+            this.vibrateShort()
         },
     },
+    created() {
+        const systemInfo = getSystemInfo()
+        this.vibrateShort = () => {
+            if (systemInfo.platform !== 'devtools') {
+                wx.vibrateShort()
+            }
+        }
+
+        this.scrollValue = undefined
+        this.scrollY = -1
+        this.lastY = 0
+        this.startY = 0
+        this.isMoving = false
+
+        // this.Velocity = ((minInterval = 30, maxInterval = 100) => {
+        //     let _time = 0
+        //     let _y = 0
+        //     let _velocity = 0
+        //     const recorder = {
+        //         record: (y) => {
+        //             const now = +new Date()
+        //             _velocity = (y - _y) / (now - _time)
+        //             if (now - _time >= minInterval) {
+        //                 _velocity = now - _time <= maxInterval ? _velocity : 0
+        //                 _y = y
+        //                 _time = now
+        //             }
+        //         },
+        //         getVelocity: (y) => {
+        //             if (y !== _y) {
+        //                 recorder.record(y)
+        //             }
+        //             return _velocity
+        //         },
+        //     }
+        //     return recorder
+        // })()
+    },
     attached() {
-        const { defaultValue, value, controlled, options } = this.data
+        const { defaultValue, value, controlled, options, itemHeight } = this.data
         const inputValue = controlled ? value : defaultValue
         const fieldNames = Object.assign({}, defaultFieldNames, this.data.defaultFieldNames)
-        const cols = getRealCols(options, fieldNames)
-
-        this.setData({ cols, fieldNames }, () => this.setValue(inputValue))
+        const cols = getRealCol(options, fieldNames)
+        
+        this.updatedStyles(itemHeight)
+        this.setData({ cols, fieldNames })
+        this.setValue(inputValue, true)
     },
 })

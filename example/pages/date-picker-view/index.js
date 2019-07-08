@@ -36,32 +36,9 @@ Page({
             [`displayValue${key}`]: values.displayValue.join(' '),
         })
     },
-    onChange1(e) {
-        this.setValue(e.detail, '1')
-        console.log('onChange1', e.detail)
-    },
-    onChange2(e) {
-        this.setValue(e.detail, '2')
-        console.log('onChange2', e.detail)
-    },
-    onChange3(e) {
-        this.setValue(e.detail, '3')
-        console.log('onChange3', e.detail)
-    },
-    onChange4(e) {
-        this.setValue(e.detail, '4')
-        console.log('onChange4', e.detail)
-    },
-    onChange5(e) {
-        this.setValue(e.detail, '5')
-        console.log('onChange5', e.detail)
-    },
-    onChange6(e) {
-        this.setValue(e.detail, '6')
-        console.log('onChange6', e.detail)
-    },
-    onChange7(e) {
-        this.setValue(e.detail, '7')
-        console.log('onChange7', e.detail)
+    onValueChange(e) {
+        const { index } = e.currentTarget.dataset
+        this.setValue(e.detail, index)
+        console.log(`onValueChange${index}`, e.detail)
     },
 })

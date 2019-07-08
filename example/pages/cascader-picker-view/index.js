@@ -19,16 +19,16 @@ Page({
             })
         }, 3000)
     },
-    onChange1(e) {
+    onValueChange1(e) {
         this.setData({ value1: e.detail.value })
-        console.log('onChange1', e.detail)
+        console.log('onValueChange1', e.detail)
     },
-    onChange2(e) {
+    onValueChange2(e) {
         this.setData({ value2: e.detail.value })
-        console.log('onChange2', e.detail)
+        console.log('onValueChange2', e.detail)
     },
-    onChange3(e) {
+    onValueChange3(e) {
         this.setData({ value3: e.detail.value })
-        console.log('onChange3', e.detail)
+        console.log('onValueChange3', e.detail)
     },
 })

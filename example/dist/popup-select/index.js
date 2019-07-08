@@ -56,9 +56,18 @@ baseComponent({
                     popupVisible,
                 }
                 this.setData(popupVisible ? params : { popupVisible }, () => {
+                    // collect field component & forceUpdate
                     if (popupVisible) {
+                        let newValue = params.inputValue
+                        let field = this.getFieldElem()
+                        if (this.hasFieldDecorator && field) {
+                            newValue = field.data.value
+                            field.changeValue(newValue)
+                        }
+
+                        // scroll into view
                         this.getBoundingClientRect((height) => {
-                            this.scrollIntoView(params.inputValue, height)
+                            this.scrollIntoView(newValue, height)
                         })
                     }
                     callback()
@@ -73,7 +82,7 @@ baseComponent({
 
             this.setScrollValue(value)
             this.updated(value, true)
-            this.triggerEvent('valueChange', { ...e.detail, value })
+            this.triggerEvent('valueChange', this.formatPickerValue({ ...e.detail, value }))
         },
         scrollIntoView(value, height) {
             const { options, multiple } = this.data

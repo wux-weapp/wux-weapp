@@ -28,7 +28,7 @@ const provinceLite = [{
 
 Page({
 	data: {
-        value1: [],
+        value1: ['320000', '320800', '320831'],
         value2: [],
         value3: [],
         value4: [],
@@ -47,7 +47,7 @@ Page({
     setValue(values, key) {
         this.setData({
             [`value${key}`]: values.value,
-            [`displayValue${key}`]: values.displayValue.join(' '),
+            [`displayValue${key}`]: values.label,
         })
     },
     onConfirm(e) {
