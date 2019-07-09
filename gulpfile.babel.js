@@ -116,6 +116,6 @@ const watchFiles = () => {
 
 export { watchFiles as watch }
 
-export default gulp.series(clean, gulp.parallel(styles, copy), watchFiles)
+export default gulp.series(gulp.parallel(styles, copy), watchFiles)
 
 export const build = gulp.series(clean, gulp.parallel(styles, copy), scripts)
