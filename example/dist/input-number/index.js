@@ -1,6 +1,7 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
 import eventsMixin from '../helpers/eventsMixin'
+import NP from './utils'
 
 const MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER || Math.pow(2, 53) - 1
 
@@ -158,7 +159,7 @@ baseComponent({
          */
         setValue(value, runCallbacks = true) {
             const { min, max } = this.data
-            const inputValue = getValidValue(value, min, max)
+            const inputValue = NP.strip(getValidValue(value, min, max))
 
             this.updated(inputValue)
 
@@ -182,13 +183,13 @@ baseComponent({
             // add
             if (type === 'add') {
                 if (disabledMax) return
-                this.setValue(inputValue + step)
+                this.setValue(NP.plus(inputValue, step))
             }
 
             // sub
             if (type === 'sub') {
                 if (disabledMin) return
-                this.setValue(inputValue - step)
+                this.setValue(NP.minus(inputValue, step))
             }
 
             // longpress

@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 11,
+			"current": 12,
 			"list": [
 				{
 					"id": 0,
@@ -115,6 +115,14 @@
 					"id": -1,
 					"name": "date-picker-view",
 					"pathName": "pages/date-picker-view/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "input-number",
+					"pathName": "pages/input-number/index",
+					"query": "",
 					"scene": null
 				}
 			]
