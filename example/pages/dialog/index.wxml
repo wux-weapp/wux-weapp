@@ -13,5 +13,6 @@
         <wux-button block type="light" bind:click="prompt">Prompt Dialog</wux-button>
         <wux-button block type="light" bind:click="custom">Custom Dialog</wux-button>
         <wux-button block type="light" bind:click="vertical">Vertical Buttons Dialog</wux-button>
+        <wux-button block type="light" bind:click="openType">OpenType Dialog</wux-button>
     </view>
 </view>

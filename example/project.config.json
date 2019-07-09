@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 12,
+			"current": 14,
 			"list": [
 				{
 					"id": 0,
@@ -122,6 +122,20 @@
 					"id": -1,
 					"name": "input-number",
 					"pathName": "pages/input-number/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "select",
+					"pathName": "pages/select/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "dialog",
+					"pathName": "pages/dialog/index",
 					"query": "",
 					"scene": null
 				}

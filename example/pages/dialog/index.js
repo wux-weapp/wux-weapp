@@ -127,4 +127,23 @@ Page({
             ],
         })
     },
+    openType() {
+        $wuxDialog().open({
+            resetOnClose: true,
+            title: '提示',
+            content: '获取用户信息',
+            buttons: [{
+                    text: '取消',
+                },
+                {
+                    text: '确定',
+                    type: 'primary',
+                    openType: 'getUserInfo',
+                    onGetUserInfo(e) {
+                        console.log(e)
+                    },
+                },
+            ],
+        })
+    },
 })
