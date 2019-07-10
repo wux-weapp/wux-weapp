@@ -13,6 +13,7 @@ const defaults = {
     duration: 500,
     circular: false,
     vertical: false,
+    icon: '',
     showDelete: true,
     allowScale: true,
     current: 0,

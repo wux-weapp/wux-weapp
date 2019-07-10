@@ -28,7 +28,7 @@
 }
 .wux-gallery__remark {
   position: absolute;
-  bottom: 80rpx;
+  bottom: 120rpx;
   left: 0;
   right: 0;
   color: #fff;
@@ -53,7 +53,17 @@
   text-align: center
 }
 .wux-gallery__del {
-  display: block
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 36rpx 0
+}
+.wux-gallery__del > image {
+  width: 48rpx;
+  height: 48rpx
 }
 .wux-gallery__icon {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAQAAAAAYLlVAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAHdElNRQfhAgcLJQQVEPJBAAAA9UlEQVRo3u2YwRGDIBBF1xTjeLAPW6AE27GQXKyJOvJz0DjGBHZZ9JDJf9xwgccCzoAIIYSQQtBiRp4Z7ZXD27hKYZv9I1nWLFwlsNBnIvolxNpjUyqwtEo3gwiUkDdunjw0zm9GAYT03nrlIYcaExRh+/p52S/PtyUIgq2sTlXl2IeWgc9sWDeUpw/XJjwTClDAJYBw/J3k63O4jmHqYJVFV2TgTChAAQpQgAIUoAAFKPCjAuF4xVTqM/BySgGTQM2bjdZWE4h2zewI0StwFxGRoUJg2PVTDjrj27BG554AxhOGHysyKIIOE6Jz6IipYvaE/AVPaUL1Zysou40AAAAldEVYdGRhdGU6Y3JlYXRlADIwMTctMDItMDdUMTE6Mzc6MDQrMDg6MDCcsdZ8AAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE3LTAyLTA3VDExOjM3OjA0KzA4OjAw7exuwAAAAABJRU5ErkJggg==);
@@ -62,6 +72,5 @@
   background-size: contain;
   color: #fff;
   width: 48rpx;
-  height: 48rpx;
-  margin: 36rpx auto
+  height: 48rpx
 }

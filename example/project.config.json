@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 15,
+			"current": 16,
 			"list": [
 				{
 					"id": 0,
@@ -143,6 +143,13 @@
 					"id": -1,
 					"name": "filterbar",
 					"pathName": "pages/filterbar/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "gallery",
+					"pathName": "pages/gallery/index",
 					"query": "",
 					"scene": null
 				}

@@ -29,7 +29,7 @@
 
 	&__remark {
 		position: absolute;
-		bottom: 40px;
+		bottom: 60px;
 		left: 0;
 		right: 0;
 		color: white;
@@ -57,7 +57,15 @@
 	}
 
 	&__del {
-		display: block;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 18px 0;
+
+		> image {
+			width: 24px;
+			height: 24px;
+		}
 	}
 
 	&__icon {
@@ -68,6 +76,5 @@
 		color: #FFFFFF;
 		width: 24px;
 		height: 24px;
-		margin: 18px auto;
 	}
 }

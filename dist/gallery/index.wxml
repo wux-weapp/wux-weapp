@@ -7,9 +7,10 @@
             </swiper-item>
         </block>
     </swiper>
-    <view class="{{ classes.opr }}" wx:if="{{ showDelete }}" bindtap="onDelete">
+    <view class="{{ classes.opr }}" wx:if="{{ showDelete || icon }}" bindtap="onDelete">
         <view class="{{ classes.del }}">
-            <view class="{{ classes.icon }}"></view>
+            <view class="{{ classes.icon }}" wx:if="{{ !icon }}" />
+            <image src="{{ icon }}" wx:if="{{ icon }}" />
         </view>
     </view>
 </wux-animation-group>
