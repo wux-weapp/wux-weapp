@@ -289,13 +289,13 @@ Page({
         })
     },
     onOpen(e) {
-        this.setData({
-            pageStyle: 'height: 100%; overflow: hidden',
-        })
+        this.setData({ opened: true })
     },
     onClose(e) {
-        this.setData({
-            pageStyle: '',
-        })
+        this.setData({ opened: false })
     },
+    /**
+     * 阻止触摸移动
+     */
+    noop() {},
 })
