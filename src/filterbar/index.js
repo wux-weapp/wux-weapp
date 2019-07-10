@@ -177,7 +177,7 @@ baseComponent({
                 this.setData({ values }, callback)
             }
         },
-        updatedDisplayValues(options) {
+        updatedDisplayValues(options = this.data.options) {
             const displayValues = getDisplayValues(options)
             if (this.data.displayValues !== displayValues) {
                 this.setData({ displayValues })
@@ -190,18 +190,11 @@ baseComponent({
          */
         onClose(e) {
             const { index } = e.currentTarget.dataset
-            const params = {
-                [`options[${index}].visible`]: false,
-            }
-
-            this.setData(params, () => {
-                // this.onSelectReset(e)
-                this.$wuxBackdrop.release()
-            })
+            this.onSelectClose(index)
         },
         onPopupSelectChange(e) {
             const values = [...this.data.values]
-            const options = JSON.parse(JSON.stringify(this.data.options))
+            const options = this.showOptions || JSON.parse(JSON.stringify(this.data.options))
             const { value } = e.detail
             const { index, parentIndex } = e.currentTarget.dataset
 
@@ -211,6 +204,7 @@ baseComponent({
             if (options[parentIndex].children[index] && options[parentIndex].children[index].children) {
                 options[parentIndex].children[index].children = options[parentIndex].children[index].children.map((v) => ({ ...v, checked: value.includes(v.value) }))
                 this.updatedDisplayValues(options)
+                this.showOptions = options
             }
             
             this.updatedValues(values)
@@ -235,6 +229,7 @@ baseComponent({
         },
         onSelectClose(index, callback) {
             const params = {
+                values: getValues(this.data.options),
                 [`options[${index}].visible`]: false,
             }
 
@@ -242,6 +237,7 @@ baseComponent({
                 if (typeof callback === 'function') {
                     callback.call(this)
                 }
+                this.showOptions = null
                 this.$wuxBackdrop.release()
             })
         },
@@ -252,6 +248,19 @@ baseComponent({
             values[index] = []
 
             this.updatedValues(values)
+
+            const showOptions = this.showOptions || JSON.parse(JSON.stringify(this.data.options))
+            if (showOptions && showOptions.length > 0) {
+                showOptions.forEach((option, index) => {
+                    if (option.type === 'filter') {
+                        option.children = option.children.reduce((acc, child) => {
+                            return [...acc, { ...child, children: child.children.map((v) => ({ ...v, checked: false })) }]
+                        }, [])
+                    }
+                })
+                this.updatedDisplayValues(showOptions)
+                this.showOptions = null
+            }
         },
         onSelectConfirm(e) {
             const { options, values } = this.data
