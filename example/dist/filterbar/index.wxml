@@ -1,10 +1,12 @@
 <view class="wux-class {{ classes.wrap }}">
-    <wux-backdrop id="wux-backdrop" data-index="{{ index }}" data-item="{{ options[index] }}" bind:click="onClose" />
+    <wux-backdrop id="wux-backdrop" data-index="{{ index }}" bind:click="onClose" />
     <view class="{{ classes.bd }}">
         <block wx:for="{{ options }}" wx:key="">
-            <view class="{{ classes.item }} {{ item.checked ? prefixCls + '__item--checked' : '' }}" bindtap="onClick" data-index="{{ index }}">
-                <text class="{{ classes.text }}">{{ item.label }}</text>
-                <view class="{{ classes.icon }} {{ prefixCls + '__icon--' + item.type }} {{ item.sort === 1 ? prefixCls + '__icon--sort-asc' : item.sort === -1 ? prefixCls + '__icon--sort-desc' : '' }}" wx:if="{{ item.type === 'radio' || item.type === 'checkbox' || item.type === 'sort' || item.type === 'filter' }}"></view>
+            <view class="{{ classes.item }} {{ common.getItemCls(prefixCls, item) }}" bindtap="onClick" data-index="{{ index }}">
+                <view class="{{ classes.text }}">
+                    {{ item.type !== 'filter' ? displayValues[index] : item.label }}
+                    <view class="{{ classes.icon }} {{ common.getIconCls(prefixCls, item) }}" wx:if="{{ item.type !== 'text' }}"></view>
+                </view>
             </view>
         </block>
     </view>
@@ -15,25 +17,33 @@
                     <view class="{{ classes.panel }}">
                         <view class="{{ classes.panelHd }}">
                             <div class="{{ classes.panelTitle }}">{{ p.label }}</div>
-                            <div class="{{ classes.panelSelected }}">{{ p.selected }}</div>
+                            <div class="{{ classes.panelSelected }}">{{ displayValues[index] && displayValues[index][pIndex] }}</div>
                         </view>
                         <view class="{{ classes.panelBd }}">
-                            <radio-group bindchange="onRadioChange" data-parent-index="{{ index }}" data-index="{{ pIndex }}" data-item="{{ p }}" wx:if="{{ p.type === 'radio' }}">
+                            <radio-group bindchange="onPopupSelectChange" data-parent-index="{{ index }}" data-index="{{ pIndex }}" wx:if="{{ p.type === 'radio' }}">
                                 <view class="{{ classes.groups }}">
-                                    <block wx:for="{{ p.children }}" wx:for-item="g" wx:key="">
+                                    <block wx:for="{{ p.children }}" wx:for-item="g" wx:for-index="cIndex" wx:key="">
                                         <view class="{{ classes.group }}">
-                                            <radio class="{{ classes.radio }}" value="{{ g.value }}" checked="{{ g.checked }}" />
-                                            <view class="{{ classes.btn }} {{ g.checked ? prefixCls + '__btn--checked' : '' }}">{{ g.label }}</view>
+                                            <radio
+                                                class="{{ classes.radio }}"
+                                                value="{{ g.value }}"
+                                                checked="{{ common.getChecked(values[index] && values[index][pIndex], g.value) }}"
+                                            />
+                                            <view class="{{ classes.btn }} {{ common.getChecked(values[index] && values[index][pIndex], g.value) ? prefixCls + '__btn--checked' : '' }}">{{ g.label }}</view>
                                         </view>
                                     </block>
                                 </view>
                             </radio-group>
-                            <checkbox-group bindchange="onCheckboxChange" data-parent-index="{{ index }}" data-index="{{ pIndex }}" data-item="{{ p }}" wx:else="{{ p.type === 'checkbox' }}">
+                            <checkbox-group bindchange="onPopupSelectChange" data-parent-index="{{ index }}" data-index="{{ pIndex }}" wx:else="{{ p.type === 'checkbox' }}">
                                 <view class="{{ classes.groups }}">
-                                    <block wx:for="{{ p.children }}" wx:for-item="g" wx:key="">
+                                    <block wx:for="{{ p.children }}" wx:for-item="g" wx:for-index="cIndex" wx:key="">
                                         <view class="{{ classes.group }}">
-                                            <checkbox class="{{ classes.check }}" value="{{ g.value }}" checked="{{ g.checked }}" />
-                                            <view class="{{ classes.btn }} {{ g.checked ? prefixCls + '__btn--checked' : '' }}">{{ g.label }}</view>
+                                            <checkbox
+                                                class="{{ classes.check }}"
+                                                value="{{ g.value }}"
+                                                checked="{{ common.getChecked(values[index] && values[index][pIndex], g.value) }}"
+                                            />
+                                            <view class="{{ classes.btn }} {{ common.getChecked(values[index] && values[index][pIndex], g.value) ? prefixCls + '__btn--checked' : '' }}">{{ g.label }}</view>
                                         </view>
                                     </block>
                                 </view>
@@ -43,26 +53,34 @@
                 </block>
             </scroll-view>
             <div class="{{ classes.btns }}">
-                <view class="{{ classes.btn }}" data-index="{{ index }}" data-item="{{ item }}" bindtap="onReset">重置</view>
-                <view class="{{ classes.btn }} {{ prefixCls + '__btn--danger' }}" data-index="{{ index }}" bindtap="onConfirm">确定</view>
+                <view class="{{ classes.btn }}" data-index="{{ index }}" bindtap="onSelectReset">{{ cancelText }}</view>
+                <view class="{{ classes.btn }} {{ prefixCls + '__btn--danger' }}" data-index="{{ index }}" bindtap="onSelectConfirm">{{ confirmText }}</view>
             </div>
         </wux-animation-group>
         <wux-animation-group wux-class="{{ classes.select }}" in="{{ item.visible }}" class-names="wux-animate--fadeIn" bind:enter="onEnter" bind:exit="onExit" wx:if="{{ item.type === 'radio' }}">
             <scroll-view class="{{ classes.scrollView }}" scroll-y>
-                <wux-radio-group value="{{ common.getRadioValue(item.children) }}" bind:change="radioChange" data-index="{{ index }}"  data-item="{{ item }}">
-                    <block wx:for="{{ item.children }}" wx:for-item="p" wx:key="{{ item.value }}">
-                        <wux-radio title="{{ p.label }}" value="{{ p.value }}" />
-                    </block>
-                </wux-radio-group>
+                <wux-radio-group
+                    value="{{ values[index] }}"
+                    options="{{ common.getOptions(item.children) }}"
+                    bind:change="onSelectChange"
+                    data-index="{{ index }}"
+                    data-type="{{ item.type }}"
+                />
             </scroll-view>
         </wux-animation-group>
         <wux-animation-group wux-class="{{ classes.select }}" in="{{ item.visible }}" class-names="wux-animate--fadeIn" bind:enter="onEnter" bind:exit="onExit" wx:if="{{ item.type === 'checkbox' }}">
             <scroll-view class="{{ classes.scrollView }}" scroll-y>
-                <wux-checkbox-group name="a" value="{{ common.getCheckboxValue(item.children) }}" bind:change="checkboxChange" data-index="{{ index }}"  data-item="{{ item }}">
-                    <block wx:for="{{ item.children }}" wx:for-item="p" wx:key="{{ item.value }}">
-                        <wux-checkbox title="{{ p.label }}" value="{{ p.value }}" />
-                    </block>
-                </wux-checkbox-group>
+                <wux-checkbox-group
+                    value="{{ values[index] }}"
+                    options="{{ common.getOptions(item.children) }}"
+                    bind:change="onSelectChange"
+                    data-index="{{ index }}"
+                    data-type="{{ item.type }}"
+                />
+                <div class="{{ classes.btns }}">
+                    <view class="{{ classes.btn }}" data-index="{{ index }}" bindtap="onSelectReset">{{ cancelText }}</view>
+                    <view class="{{ classes.btn }} {{ prefixCls + '__btn--danger' }}" data-index="{{ index }}" bindtap="onSelectConfirm">{{ confirmText }}</view>
+                </div>
             </scroll-view>
         </wux-animation-group>
     </block>
@@ -70,15 +88,47 @@
 
 <wxs module="common">
     module.exports = {
-        getRadioValue: function(array) {
-            var result = array.filter(function(n) { return n.checked })[0]
-            if (result) {
-                return result.value
-            }
-            return ''
+        getOptions: function(options) {
+            return options.map(function(option) {
+                if (option.constructor === 'String') {
+                    return {
+                        title: option,
+                        value: option
+                    }
+                }
+                return {
+                    title: option.label,
+                    value: option.value
+                }
+            })
         },
-        getCheckboxValue: function(array) {
-            return array.filter(function(n) { return n.checked }).map(function(n) { return n.value })
+        getChecked: function(values, value) {
+            if (!values || !values.length) return false
+            if (values.constructor === 'Array') {
+                return values.indexOf(value) !== -1
+            }
+            return values === value
+        },
+        getItemCls: function(prefixCls, item) {
+            var itemCls = []
+            if (item.type !== 'text') {
+                itemCls.push(prefixCls + '__item--has-icon')
+            }
+            if (item.checked) {
+                itemCls.push(prefixCls + '__item--checked')
+            }
+            return itemCls.join(' ')
+        },
+        getIconCls: function(prefixCls, icon) {
+            var iconCls = [prefixCls + '__icon--' + icon.type]
+            if (icon.type === 'sort') {
+                if (icon.sort === 1) {
+                    iconCls.push(prefixCls + '__icon--sort-asc')
+                } else if (icon.sort === -1) {
+                    iconCls.push(prefixCls + '__icon--sort-desc')
+                }
+            }
+            return iconCls.join(' ')
         },
     }
 </wxs>
