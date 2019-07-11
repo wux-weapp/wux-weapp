@@ -218,11 +218,11 @@ baseComponent({
             this.triggerEvent('confirm', e.detail)
         },
         onClear(e) {
-            const { controlled, inputValue: value } = this.data
-            const inputValue = controlled ? value : ''
             const params = { value: '' }
 
-            this.updated({ inputValue })
+            if (!this.data.controlled) {
+                this.updated(params.value)
+            }
 
             this.triggerEvent('change', params)
             this.triggerEvent('clear', params)
