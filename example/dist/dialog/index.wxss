@@ -1,21 +1,45 @@
 .wux-dialog__button {
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  color: inherit!important;
+  background: 0 0!important;
+  font-size: inherit;
+  line-height: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  overflow: inherit;
   display: block;
   -ms-flex: 1;
   flex: 1;
   color: #33cd5f;
   position: relative
 }
+.wux-dialog__button:after {
+  position: static;
+  top: auto;
+  left: auto;
+  width: auto;
+  height: auto;
+  border: none;
+  border-radius: 0;
+  transform: none;
+  transform-origin: 0 0
+}
 .wux-dialog__button--default {
   color: #353535
 }
 .wux-dialog__button--primary {
-  color: #33cd5f
+  color: #33cd5f!important
 }
 .wux-dialog__button--bold {
-  font-weight: 500
+  font-weight: 500!important
 }
 .wux-dialog__button--hover {
-  background-color: #ececec
+  background-color: #ececec!important
+}
+.wux-dialog__button--disabled {
+  opacity: .3
 }
 .wux-dialog__prompt {
   position: relative;

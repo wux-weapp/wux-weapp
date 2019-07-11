@@ -1,0 +1,24 @@
+<wux-popup-select visible="{{ visible }}" controlled value="{{ value1 }}" options="{{ options1 }}" data-index="1" bind:confirm="onConfirm" bind:valueChange="onValueChange" bind:visibleChange="onVisibleChange" />
+
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">PopupSelect</view>
+        <view class="page__desc">下拉框</view>
+    </view>
+    <view class="page__bd">
+        <wux-cell-group>
+            <wux-popup-select value="{{ value1 }}" options="{{ options1 }}" data-index="1" bind:confirm="onConfirm" bind:valueChange="onValueChange">
+                <wux-cell title="Single" is-link extra="{{ displayValue1 }}"></wux-cell>
+            </wux-popup-select>
+            <wux-popup-select value="{{ value2 }}" options="{{ options2 }}" multiple data-index="2" bind:confirm="onConfirm" bind:valueChange="onValueChange">
+                <wux-cell title="Multiple" is-link extra="{{ displayValue2 }}"></wux-cell>
+            </wux-popup-select>
+            <wux-popup-select value="{{ value3 }}" options="{{ options3 }}" multiple max="3" data-index="3" bind:confirm="onConfirm" bind:valueChange="onValueChange">
+                <wux-cell title="Multiple & max = 3" is-link extra="{{ displayValue3 }}"></wux-cell>
+            </wux-popup-select>
+        </wux-cell-group>
+        <view class="button-sp-area">
+            <wux-button block type="light" bind:click="onClick">Button click - {{ displayValue1 }}</wux-button>
+        </view>
+    </view>
+</view>

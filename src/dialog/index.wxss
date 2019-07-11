@@ -2,6 +2,7 @@
 
 .@{wuxClassNamePrefix}-dialog {
 	&__button {
+		.button-reset();
 		display: block;
 		flex: 1;
 		color: @balanced;
@@ -12,16 +13,20 @@
 		}
 
 		&--primary {
-			color: @balanced;
+			color: @balanced !important;
 		}
 
 		&--bold {
-			font-weight: 500;
+			font-weight: 500 !important;
 		}
 
 		&--hover {
-			background-color: #ECECEC;
+			background-color: #ECECEC !important;
 		}
+
+		&--disabled {
+	        opacity: .3;
+	    }
 	}
 
     &__prompt {

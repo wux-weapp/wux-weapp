@@ -4,7 +4,7 @@ import classNames from '../helpers/classNames'
 baseComponent({
     relations: {
         '../cell/index': {
-            type: 'child',
+            type: 'descendant',
             observer() {
                 this.debounce(this.updateIsLastElement)
             },
@@ -48,6 +48,18 @@ baseComponent({
                     element.updateIsLastElement(index === lastIndex)
                 })
             }
+        },
+        getBoundingClientRect(callback) {
+            const className = `.${this.data.prefixCls}`
+            wx
+                .createSelectorQuery()
+                .in(this)
+                .select(className)
+                .boundingClientRect((rect) => {
+                    if (!rect) return
+                    callback.call(this, rect.height)
+                })
+                .exec()
         },
     },
 })

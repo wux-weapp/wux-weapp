@@ -1,0 +1,58 @@
+@import "./setOnepx.wxss";
+
+.toolbar-style(@text-color, @cancel-text-color, @confirm-text-color) {
+    &__toolbar {
+        position: relative;
+        width: 100%;
+        font-size: 17px;
+        line-height: 1.5;
+        color:  @text-color;
+        background: #f7f7f8;
+
+        &:before {
+            .setTopLine(#D9D9D9);
+        }
+    }
+
+    &__inner {
+        height: 44px;
+        display: flex;
+        text-align: center;
+    }
+
+    &__title {
+        position: absolute;
+        display: block;
+        width: 100%;
+        padding: 0;
+        font-size: 17px;
+        font-weight: normal;
+        line-height: 44px;
+        color:  @text-color;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    &__button {
+        position: absolute;
+        box-sizing: border-box;
+        height: 44px;
+        line-height: 44px;
+        padding: 0 15px;
+        z-index: 10;
+
+        &--cancel {
+            left: 0;
+            color: @cancel-text-color;
+        }
+
+        &--confirm {
+            right: 0;
+            color: @confirm-text-color;
+        }
+
+        &--hover {
+            background-color: #ECECEC;
+        }
+    }
+}

@@ -1,4 +1,4 @@
-<wux-cell-group wux-class="{{ prefixCls }}" prefixCls="{{ cellGroupPrefixCls }}" title="{{ title }}" label="{{ label }}">
+<wux-cell-group id="wux-cell-group" wux-class="{{ prefixCls }}" prefixCls="{{ cellGroupPrefixCls }}" title="{{ title }}" label="{{ label }}">
     <block wx:for="{{ common.getOptions(options) }}" wx:for-item="option" wx:key="" wx:if="{{ options.length > 0 }}">
         <wux-radio
             prefixCls="{{ option.prefixCls || 'wux-radio' }}"

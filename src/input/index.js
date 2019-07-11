@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import eventsMixin from '../helpers/eventsMixin'
 import styleToCssString from '../helpers/styleToCssString'
 
 const defaultEvents = {
@@ -12,8 +13,7 @@ const defaultEvents = {
 }
 
 baseComponent({
-    useEvents: true,
-    defaultEvents,
+    behaviors: [eventsMixin({ defaultEvents })],
     relations: {
         '../field/index': {
             type: 'ancestor',
@@ -167,7 +167,7 @@ baseComponent({
                 this.updated(value)
             }
 
-            this.emitEvent('change', e.detail)
+            this.triggerEvent('change', e.detail)
         },
         onFocus(e) {
             this.clearTimer()
@@ -176,14 +176,14 @@ baseComponent({
                 inputFocus: true,
             })
 
-            this.emitEvent('focus', e.detail)
+            this.triggerEvent('focus', e.detail)
         },
         onBlur(e) {
             this.setTimer()
-            this.emitEvent('blur', e.detail)
+            this.triggerEvent('blur', e.detail)
         },
         onConfirm(e) {
-            this.emitEvent('confirm', e.detail)
+            this.triggerEvent('confirm', e.detail)
         },
         onClear(e) {
             const { controlled, inputValue: value } = this.data
@@ -192,12 +192,12 @@ baseComponent({
 
             this.updated({ inputValue })
 
-            this.emitEvent('change', params)
-            this.emitEvent('clear', params)
+            this.triggerEvent('change', params)
+            this.triggerEvent('clear', params)
         },
         onError() {
             const { inputValue: value } = this.data
-            this.emitEvent('error', { value })
+            this.triggerEvent('error', { value })
         },
         setTimer() {
             this.clearTimer()

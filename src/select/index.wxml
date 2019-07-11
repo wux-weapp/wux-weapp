@@ -1,27 +1,16 @@
-<wux-popup position="bottom" visible="{{ in }}" safeArea="bottom" bind:close="onCancel">
-    <view class="{{ classes.wrap }}">
-        <view class="{{ classes.toolbar }}" wx:if="{{ toolbar }}">
-            <view class="{{ classes.inner }}">
-                <view class="{{ classes.cancel }}" hover-class="{{ classes.hover }}" bindtap="onCancel" wx:if="{{ toolbar.cancelText }}">{{ toolbar.cancelText }}</view>
-                <view class="{{ classes.title }}">{{ toolbar.title }}</view>
-                <view class="{{ classes.confirm }}" hover-class="{{ classes.hover }}" bindtap="onConfirm" wx:if="{{ toolbar.confirmText }}">{{ toolbar.confirmText }}</view>
-            </view>
-        </view>
-        <scroll-view scroll-y scroll-into-view="{{ activeIndex }}" class="{{ classes.scrollView }}">
-            <wux-radio-group value="{{ value }}" bind:change="onRadioChange" wx:if="{{ !multiple }}">
-                <block wx:for="{{ common.getItems(options) }}" wx:key="index">
-                    <wux-radio id="{{ 'select-' + index }}" color="{{ item.color }}" thumb="{{ item.thumb }}" title="{{ item.title }}" label="{{ item.label }}" disabled="{{ item.disabled }}" value="{{ item.value }}" />
-                </block>
-            </wux-radio-group>
-            <wux-checkbox-group value="{{ value }}" bind:change="onCheckboxChange" wx:else>
-                <block wx:for="{{ common.getItems(options) }}" wx:key="index">
-                    <wux-checkbox id="{{ 'select-' + index }}" color="{{ item.color }}" extra="{{ item.extra }}" title="{{ item.title }}" label="{{ item.label }}" disabled="{{ item.disabled }}" value="{{ item.value }}" />
-                </block>
-            </wux-checkbox-group>
-        </scroll-view>
-    </view>
-</wux-popup>
-
-<wxs module="common">
-    module.exports.getItems = function(array) { return array.map(function(n) { if (n.constructor !== 'Object') { return { value: n, title: n } } return n }) }
-</wxs>
+<wux-popup-select
+    id="wux-popup-select"
+    prefixCls="{{ prefixCls }}"
+    value="{{ value }}"
+    options="{{ options }}"
+    multiple="{{ multiple }}"
+    max="{{ max }}"
+    toolbar="{{ toolbar }}"
+    visible="{{ visible }}"
+    controlled
+    disabled
+    bind:cancel="onCancel"
+    bind:confirm="onConfirm"
+    bind:visibleChange="onVisibleChange"
+    bind:valueChange="onValueChange"
+/>

@@ -1,0 +1,14 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">CascaderPickerView</view>
+        <view class="page__desc">级联选择器</view>
+    </view>
+    <view class="page__bd">
+        <view class="sub-title">Default</view>
+        <wux-cascader-picker-view value="{{ value1 }}" options="{{ options }}" bind:valueChange="onValueChange1" />
+        <view class="sub-title">Multiple & cols = 2</view>
+        <wux-cascader-picker-view value="{{ value2 }}" options="{{ options }}" cols="2" bind:valueChange="onValueChange2" />
+        <view class="sub-title">Multiple & loading</view>
+        <wux-cascader-picker-view value="{{ value3 }}" options="{{ province }}" cols="1" loading="{{ loading }}" bind:valueChange="onValueChange3" />
+    </view>
+</view>

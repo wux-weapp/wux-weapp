@@ -1,0 +1,8 @@
+{
+    "component": true,
+    "usingComponents": {
+        "wux-popup": "../popup/index",
+        "wux-cascader-picker-view": "../cascader-picker-view/index",
+        "wux-multi-picker-view": "../multi-picker-view/index"
+    }
+}

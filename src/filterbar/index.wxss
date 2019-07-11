@@ -9,6 +9,12 @@
         display: flex;
         position: relative;
         background-color: #FAFAFA;
+        padding: 11px 0;
+        font-size: 14px;
+        height: 50px;
+        line-height: 24px;
+        text-align: center;
+        box-sizing: border-box;
         
         &:after {
             .setBottomLine(#D9D9D9)
@@ -19,9 +25,8 @@
         position: relative;
         display: block;
         flex: 1;
-        padding: 13px 0;
-        text-align: center;
-        font-size: 15px;
+        padding: 0 5px;
+        .ellipsis();
         
         &:after {
             .setRightLine(#D9D9D9);
@@ -34,10 +39,26 @@
         }
     }
 
+    &__text {
+        position: relative;
+        box-sizing: border-box;
+        display: inline-block;
+        max-width: 100%;
+        .ellipsis();
+    }
+
+    &__item--has-icon &__text {
+        padding-right: 20px;
+    }
+
     &__icon {
+        position: absolute;
+        right: 0;
+        top: 50%;
         width: 15px;
         height: 12px;
-        margin-left: 3px;
+        margin-top: -6px;
+        /*margin-left: 3px;*/
         display: inline-block;
         background-repeat: no-repeat;
         background-position: center center;

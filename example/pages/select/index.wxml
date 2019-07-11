@@ -8,10 +8,10 @@
         <view class="page__desc">下拉框</view>
     </view>
     <view class="page__bd">
-        <wux-cell-group title="Select">
-            <wux-cell title="职业" extra="{{ title1 }}" bind:click="onClick1"></wux-cell>
-            <wux-cell title="手机" extra="{{ title2 }}" bind:click="onClick2"></wux-cell>
-            <wux-cell title="爱好" extra="{{ title3 }}" bind:click="onClick3"></wux-cell>
+        <wux-cell-group>
+            <wux-cell title="Single" is-link extra="{{ displayValue1 }}" bind:click="onClick1"></wux-cell>
+            <wux-cell title="Multiple" is-link extra="{{ displayValue2 }}" bind:click="onClick2"></wux-cell>
+            <wux-cell title="Multiple & max = 3" is-link extra="{{ displayValue3 }}" bind:click="onClick3"></wux-cell>
         </wux-cell-group>
     </view>
 </view>

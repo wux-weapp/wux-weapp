@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "wux-multi-picker-view": "../multi-picker-view/index"
+    }
+}

@@ -1,0 +1,5 @@
+@import "../styles/base/fn.wxss";
+
+.@{wuxClassNamePrefix}-popup-picker {
+    .toolbar-style(@dark, @stable-inverse, @balanced)
+}

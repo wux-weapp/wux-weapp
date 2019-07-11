@@ -1,0 +1,15 @@
+<wux-multi-picker-view
+    id="wux-picker"
+    prefixCls="{{ multiPickerPrefixCls }}"
+    pickerPrefixCls="{{ pickerPrefixCls }}"
+    value="{{ inputValue }}"
+    itemHeight="{{ itemHeight }}"
+    itemStyle="{{ itemStyle }}"
+    indicatorStyle="{{ indicatorStyle }}"
+    indicatorClass="{{ indicatorClass }}"
+    maskStyle="{{ maskStyle }}"
+    maskClass="{{ maskClass }}"
+    labelAlign="{{ labelAlign }}"
+    options="{{ cols }}"
+    bind:valueChange="onValueChange"
+/>

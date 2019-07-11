@@ -16,60 +16,39 @@ function getValueFromEvent(e) {
     return e.detail.value
 }
 
+const children = [
+    'picker',
+    'date-picker',
+    'popup-select',
+    'radio-group',
+    'checkbox-group',
+    'switch',
+    'input',
+    'input-number',
+    'rater',
+    'slider',
+    'textarea',
+]
+
+const relations = children.map((name) => `../${name}/index`).reduce((acc, name) => {
+    return {
+        ...acc,
+        [name]: {
+            type: 'descendant',
+            observer: function() {
+                this.debounce(this.changeValue)
+            },
+        }
+    }
+}, {})
+
 baseComponent({
     useField: true,
     relations: {
         '../form/index': {
             type: 'ancestor',
         },
-        '../radio-group/index': {
-            type: 'descendant',
-            observer() {
-                this.debounce(this.changeValue)
-            },
-        },
-        '../checkbox-group/index': {
-            type: 'descendant',
-            observer() {
-                this.debounce(this.changeValue)
-            },
-        },
-        '../switch/index': {
-            type: 'descendant',
-            observer() {
-                this.debounce(this.changeValue)
-            },
-        },
-        '../input/index': {
-            type: 'descendant',
-            observer() {
-                this.debounce(this.changeValue)
-            },
-        },
-        '../input-number/index': {
-            type: 'descendant',
-            observer() {
-                this.debounce(this.changeValue)
-            },
-        },
-        '../rater/index': {
-            type: 'descendant',
-            observer() {
-                this.debounce(this.changeValue)
-            },
-        },
-        '../slider/index': {
-            type: 'descendant',
-            observer() {
-                this.debounce(this.changeValue)
-            },
-        },
-        '../textarea/index': {
-            type: 'descendant',
-            observer() {
-                this.debounce(this.changeValue)
-            },
-        },
+        ...relations,
     },
     properties: {
         initialValue: {
@@ -131,7 +110,7 @@ baseComponent({
             const inputValue = inputProps[valuePropName]
 
             delete inputProps[valuePropName]
-
+            
             inputElem.setData(inputProps)
             this.setValue(inputValue, inputElem, valuePropName)
         },

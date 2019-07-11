@@ -1,0 +1,27 @@
+<wux-picker visible="{{ visible }}" controlled options="{{ options }}" value="{{ value1 }}" cascade cols="3" data-index="1" bind:confirm="onConfirm" bind:valueChange="onValueChange" bind:visibleChange="onVisibleChange" />
+
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Picker</view>
+        <view class="page__desc">选择器</view>
+    </view>
+    <view class="page__bd">
+        <wux-cell-group>
+            <wux-picker options="{{ options }}" value="{{ value1 }}" cascade cols="3" data-index="1" bind:confirm="onConfirm" bind:valueChange="onValueChange">
+                <wux-cell title="Multiple & cascader" is-link extra="{{ displayValue1 }}"></wux-cell>
+            </wux-picker>
+            <wux-picker options="{{ seasons }}" value="{{ value2 }}" data-index="2" bind:confirm="onConfirm" bind:valueChange="onValueChange">
+                <wux-cell title="Multiple" is-link extra="{{ displayValue2 }}"></wux-cell>
+            </wux-picker>
+            <wux-picker options="{{ options }}" value="{{ value3 }}" cascade cols="1" data-index="3" bind:confirm="onConfirm" bind:valueChange="onValueChange">
+                <wux-cell title="Single" is-link extra="{{ displayValue3 }}"></wux-cell>
+            </wux-picker>
+            <wux-picker options="{{ asyncOptions }}" value="{{ value4 }}" cascade cols="{{ asyncCols }}" loading="{{ loading }}" data-index="4" bind:confirm="onConfirm" bind:valueChange="onValueChange">
+                <wux-cell title="Multiple & async" is-link extra="{{ displayValue4 }}"></wux-cell>
+            </wux-picker>
+        </wux-cell-group>
+        <view class="button-sp-area">
+            <wux-button block type="light" bind:click="onClick">Button click - {{ displayValue1 }}</wux-button>
+        </view>
+    </view>
+</view>

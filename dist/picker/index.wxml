@@ -1,0 +1,58 @@
+<wux-popup
+    position="bottom"
+    visible="{{ popupVisible }}"
+    hasHeader="{{ false }}"
+    hasFooter="{{ false }}"
+    mountOnEnter="{{ false }}"
+    safeArea="bottom"
+    bind:close="close"
+    bind:closed="onClosed"
+>
+    <view class="{{ classes.wrap }}" wx:if="{{ mounted }}">
+        <view class="{{ classes.toolbar }}" wx:if="{{ toolbar }}" catchtouchmove="noop">
+            <view class="{{ classes.inner }}">
+                <view class="{{ classes.cancel }}" hover-class="{{ classes.hover }}" bindtap="onCancel" wx:if="{{ toolbar.cancelText }}">{{ toolbar.cancelText }}</view>
+                <view class="{{ classes.title }}">{{ toolbar.title }}</view>
+                <view class="{{ classes.confirm }}" hover-class="{{ classes.hover }}" bindtap="onConfirm" wx:if="{{ toolbar.confirmText }}">{{ toolbar.confirmText }}</view>
+            </view>
+        </view>
+        <wux-cascader-picker-view
+            id="wux-picker"
+            prefixCls="{{ multiPickerPrefixCls }}"
+            pickerPrefixCls="{{ pickerPrefixCls }}"
+            value="{{ inputValue }}"
+            itemHeight="{{ itemHeight }}"
+            itemStyle="{{ itemStyle }}"
+            indicatorStyle="{{ indicatorStyle }}"
+            indicatorClass="{{ indicatorClass }}"
+            maskStyle="{{ maskStyle }}"
+            maskClass="{{ maskClass }}"
+            labelAlign="{{ labelAlign }}"
+            defaultFieldNames="{{ defaultFieldNames }}"
+            options="{{ options }}"
+            loading="{{ loading }}"
+            cols="{{ cols }}"
+            bind:valueChange="onValueChange"
+            wx:if="{{ cascade }}"
+        />
+        <wux-multi-picker-view
+            id="wux-picker"
+            prefixCls="{{ multiPickerPrefixCls }}"
+            pickerPrefixCls="{{ pickerPrefixCls }}"
+            value="{{ inputValue }}"
+            itemHeight="{{ itemHeight }}"
+            itemStyle="{{ itemStyle }}"
+            indicatorStyle="{{ indicatorStyle }}"
+            indicatorClass="{{ indicatorClass }}"
+            maskStyle="{{ maskStyle }}"
+            maskClass="{{ maskClass }}"
+            labelAlign="{{ labelAlign }}"
+            defaultFieldNames="{{ defaultFieldNames }}"
+            options="{{ options }}"
+            loading="{{ loading }}"
+            bind:valueChange="onValueChange"
+            wx:else
+        />
+    </view>
+</wux-popup>
+<slot></slot>

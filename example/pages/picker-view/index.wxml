@@ -1,0 +1,14 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">PickerView</view>
+        <view class="page__desc">单列选择器</view>
+    </view>
+    <view class="page__bd">
+        <view class="sub-title">Default</view>
+        <wux-picker-view options="{{ options[0] }}" />
+        <view class="sub-title">Loading</view>
+        <wux-picker-view options="{{ options[0] }}" loading />
+        <view class="sub-title">Controlled</view>
+        <wux-picker-view value="{{ value }}" controlled options="{{ options[1] }}" bind:valueChange="onValueChange" />
+    </view>
+</view>

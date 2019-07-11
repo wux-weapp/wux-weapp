@@ -1,0 +1,26 @@
+<wux-spin nested spinning="{{ loading }}">
+    <view class="wux-class {{ prefixCls }}" data-picker-value="{{ inputValue }}">
+        <wux-picker-view
+            wx:for="{{ cols }}"
+            wx:for-item="col"
+            wx:key="index"
+            prefixCls="{{ pickerPrefixCls }}"
+            value="{{ inputValue[index] }}"
+            controlled
+            itemHeight="{{ itemHeight }}"
+            itemStyle="{{ itemStyle }}"
+            indicatorStyle="{{ indicatorStyle }}"
+            indicatorClass="{{ indicatorClass }}"
+            maskStyle="{{ maskStyle }}"
+            maskClass="{{ maskClass }}"
+            labelAlign="{{ labelAlign }}"
+            defaultFieldNames="{{ fieldNames }}"
+            options="{{ col }}"
+            data-index="{{ index }}"
+            style="{{ 'width: ' + 100 / cols.length + '%' }}"
+            bind:beforeChange="onBeforeChange"
+            bind:valueChange="onValueChange"
+            bind:scrollChange="onScrollChange"
+        />
+    </view>
+</wux-spin>

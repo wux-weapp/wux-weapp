@@ -21,7 +21,13 @@
   display: -ms-flexbox;
   display: flex;
   position: relative;
-  background-color: #fafafa
+  background-color: #fafafa;
+  padding: 22rpx 0;
+  font-size: 28rpx;
+  height: 100rpx;
+  line-height: 48rpx;
+  text-align: center;
+  box-sizing: border-box
 }
 .wux-filterbar__bd:after {
   content: " ";
@@ -40,9 +46,12 @@
   display: block;
   -ms-flex: 1;
   flex: 1;
-  padding: 26rpx 0;
-  text-align: center;
-  font-size: 30rpx
+  padding: 0 10rpx;
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal
 }
 .wux-filterbar__item:after {
   content: " ";
@@ -61,10 +70,27 @@
 .wux-filterbar__item--checked {
   color: #f15353
 }
+.wux-filterbar__text {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-block;
+  max-width: 100%;
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal
+}
+.wux-filterbar__item--has-icon .wux-filterbar__text {
+  padding-right: 40rpx
+}
 .wux-filterbar__icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
   width: 30rpx;
   height: 24rpx;
-  margin-left: 6rpx;
+  margin-top: -12rpx;
   display: inline-block;
   background-repeat: no-repeat;
   background-position: center center;

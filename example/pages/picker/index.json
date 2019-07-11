@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "Picker",
+    "usingComponents": {
+        "wux-picker": "../../dist/picker/index",
+        "wux-cell-group": "../../dist/cell-group/index",
+        "wux-cell": "../../dist/cell/index",
+        "wux-button": "../../dist/button/index"
+    }
+}

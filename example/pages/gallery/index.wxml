@@ -42,7 +42,7 @@
                 </view>
             </view>
         </view>
-        <view class="weui-cells__title">带说明文案</view>
+        <view class="weui-cells__title">带说明文案 & 自定义图标</view>
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell">
                 <view class="weui-cell__bd">

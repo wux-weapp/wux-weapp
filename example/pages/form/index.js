@@ -1,11 +1,19 @@
 import { $wuxForm } from '../../dist/index'
+import data from '../cascader/data'
 
 Page({
     data: {
         checkbox: ['1'],
         radio: '1',
         switch: true,
-        disabled: false,
+        picker: [],
+        datePicker: [],
+        popupSelect: '猎人',
+        options1: [],
+        options2: ['法官', '医生', '猎人', '学生', '记者', '其他'],
+    },
+    onLoad() {
+        this.setData({ options1: data })
     },
     onCheckboxChange(e) {
         const { value } = e.detail
@@ -20,6 +28,15 @@ Page({
     },
     onSwitchChange(e) {
         this.setData({ switch: e.detail.value })
+    },
+    onValueChange(e) {
+        this.setData({ picker: e.detail.value })
+    },
+    onDatePickerChange(e) {
+        this.setData({ datePicker: e.detail.value })
+    },
+    onPopupSelectChange(e) {
+        this.setData({ popupSelect: e.detail.value })
     },
     formSubmit(e) {
         console.log('Default Form Submit \n', e.detail.value)

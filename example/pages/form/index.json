@@ -14,6 +14,9 @@
         "wux-checkbox": "../../dist/checkbox/index",
         "wux-radio-group": "../../dist/radio-group/index",
         "wux-radio": "../../dist/radio/index",
-        "wux-switch": "../../dist/switch/index"
+        "wux-switch": "../../dist/switch/index",
+        "wux-picker": "../../dist/picker/index",
+        "wux-date-picker": "../../dist/date-picker/index",
+        "wux-popup-select": "../../dist/popup-select/index"
     }
 }

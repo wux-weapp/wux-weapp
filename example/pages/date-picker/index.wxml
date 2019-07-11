@@ -1,0 +1,47 @@
+<wux-date-picker visible="{{ visible }}" controlled mode="datetime" value="{{ value1 }}" lang="{{ lang }}" data-index="1" data-mode="datetime" bind:confirm="onConfirm" bind:visibleChange="onVisibleChange" />
+
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">DatePicker</view>
+        <view class="page__desc">日期选择器</view>
+    </view>
+    <view class="page__bd">
+        <wux-segmented-control values="{{ ['zh_CN', 'zh_TW', 'en'] }}" bind:change="onChange" />
+        <wux-cell-group title="Default">
+            <wux-date-picker mode="datetime" value="{{ value1 }}" lang="{{ lang }}" data-index="1" data-mode="datetime" bind:confirm="onConfirm">
+                <wux-cell title="Datetime" is-link extra="{{ displayValue1 }}"></wux-cell>
+            </wux-date-picker>
+            <wux-date-picker mode="date" value="{{ value2 }}" lang="{{ lang }}" data-index="2" data-mode="date" bind:confirm="onConfirm">
+                <wux-cell title="Date" is-link extra="{{ displayValue2 }}"></wux-cell>
+            </wux-date-picker>
+            <wux-date-picker mode="year" value="{{ value3 }}" lang="{{ lang }}" data-index="3" data-mode="year" bind:confirm="onConfirm">
+                <wux-cell title="Year" is-link extra="{{ displayValue3 }}"></wux-cell>
+            </wux-date-picker>
+            <wux-date-picker mode="month" value="{{ value4 }}" lang="{{ lang }}" data-index="4" data-mode="month" bind:confirm="onConfirm">
+                <wux-cell title="Month" is-link extra="{{ displayValue4 }}"></wux-cell>
+            </wux-date-picker>
+            <wux-date-picker mode="time" value="{{ value5 }}" lang="{{ lang }}" data-index="5" data-mode="time" bind:confirm="onConfirm">
+                <wux-cell title="Time" is-link extra="{{ displayValue5 }}"></wux-cell>
+            </wux-date-picker>
+        </wux-cell-group>
+        <wux-cell-group title="Use12Hours">
+            <wux-date-picker mode="datetime" value="{{ value6 }}" lang="{{ lang }}" use12Hours data-index="6" data-mode="datetime" bind:confirm="onConfirm">
+                <wux-cell title="Datetime" is-link extra="{{ displayValue6 }}"></wux-cell>
+            </wux-date-picker>
+            <wux-date-picker mode="time" value="{{ value7 }}" lang="{{ lang }}" use12Hours data-index="7" data-mode="time" bind:confirm="onConfirm">
+                <wux-cell title="Time" is-link extra="{{ displayValue7 }}"></wux-cell>
+            </wux-date-picker>
+        </wux-cell-group>
+        <wux-cell-group title="MinuteStep">
+            <wux-date-picker mode="datetime" value="{{ value8 }}" lang="{{ lang }}" minuteStep="10" data-index="8" data-mode="datetime" bind:confirm="onConfirm">
+                <wux-cell title="Datetime" is-link extra="{{ displayValue8 }}"></wux-cell>
+            </wux-date-picker>
+            <wux-date-picker mode="time" value="{{ value9 }}" lang="{{ lang }}" minuteStep="10" data-index="9" data-mode="time" bind:confirm="onConfirm">
+                <wux-cell title="Time" is-link extra="{{ displayValue9 }}"></wux-cell>
+            </wux-date-picker>
+        </wux-cell-group>
+        <view class="button-sp-area">
+            <wux-button block type="light" bind:click="onClick">Button click - {{ displayValue1 }}</wux-button>
+        </view>
+    </view>
+</view>

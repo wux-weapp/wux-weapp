@@ -2,6 +2,99 @@ import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
 import { $wuxBackdrop } from '../index'
 
+function getLabels(children = []) {
+   return children.filter((v) => v.checked).map((v) => v.label).join(',')
+}
+
+function getDisplayValues(options = [], extra = true) {
+    return options.reduce((acc, option) => {
+        switch (option.type) {
+            case 'radio':
+            case 'checkbox':
+                acc.push(getLabels(option.children || []) || (extra ? option.label : ''))
+                break
+            case 'filter':
+                acc.push(getDisplayValues(option.children || [], false))
+                break
+            default:
+                acc.push(option.label)
+        }
+        return acc
+    }, [])
+}
+
+function getSortValue(sort) {
+    if (typeof sort === 'number' && [1, -1].includes(sort)) {
+        return sort
+    }
+    return 1
+}
+
+function getValue(children = [], single = false) {
+    const allValues = children.filter((v) => v.checked).map((v) => v.value)
+    if (!single) return allValues
+    return allValues[0] || ''
+}
+
+function getValues(options = []) {
+    return options.reduce((acc, option) => {
+        switch (option.type) {
+            case 'radio':
+                acc.push(getValue(option.children, true))
+                break
+            case 'checkbox':
+                acc.push(getValue(option.children, false))
+                break
+            case 'text':
+                acc.push(option.checked ? option.value : '')
+                break
+            case 'sort':
+                acc.push(option.checked ? getSortValue(option.sort) : '')
+                break
+            case 'filter':
+                acc.push(getValues(option.children))
+                break
+        }
+        return acc
+    }, [])
+}
+
+function getChangedValues(options = [], values = [], prefix = 'options') {
+    return options.reduce((acc, option, index) => {
+        if (option.type === 'radio') {
+            return {
+                ...acc,
+                [`${prefix}[${index}].children`]: option.children.map((v) => ({ ...v, checked: v.value === values[index] })),
+            }
+        }
+        if (option.type === 'checkbox') {
+            return {
+                ...acc,
+                [`${prefix}[${index}].children`]: option.children.map((v) => ({ ...v, checked: Array.isArray(values[index]) ? values[index].includes(v.value) : false })),
+            }
+        }
+        if (option.type === 'filter') {
+            return {
+                ...acc,
+                ...getChangedValues(option.children, values[index] || [], `options[${index}].children`),
+            }
+        }
+        return acc
+    }, {})
+}
+
+function getShowOptions(options = [], values = []) {
+    return options.reduce((acc ,option, index) => {
+        if (['radio', 'checkbox'].includes(option.type)) {
+            return [...acc, { ...option, selected: getLabels(option.children || []) }]
+        }
+        if (option.type === 'filter') {
+            return [...acc, { ...option, children: getShowOptions(option.children || [], values[index]) }]
+        }
+        return acc
+    }, [])
+}
+
 baseComponent({
     properties: {
         prefixCls: {
@@ -11,6 +104,26 @@ baseComponent({
         items: {
             type: Array,
             value: [],
+        },
+        cancelText: {
+            type: String,
+            value: '重置',
+        },
+        confirmText: {
+            type: String,
+            value: '确定',
+        },
+    },
+    data: {
+        displayValues: [],
+        values: [],
+    },
+    observers: {
+        ['items.**'](newVal) {
+            this.setData({ options: newVal, values: getValues(newVal) })
+        },
+        ['options.**'](newVal) {
+            this.updatedDisplayValues(newVal)
         },
     },
     computed: {
@@ -59,120 +172,102 @@ baseComponent({
         }],
     },
     methods: {
-        /**
-         * 重置按钮
-         * @param {Object} e 事件对象
-         * @param {Object} prevState 上一个状态值
-         */
-        onReset(e, prevState) {
-            const { index, item } = e.currentTarget.dataset
-            const children = prevState && prevState.children || item.children.map((n) => {
-                return Object.assign({}, n, {
-                    children: n.children.map((m) => Object.assign({}, m, {
-                        checked: false,
-                    })),
-                    selected: '',
-                })
-            })
-
-            this.setData({
-                [`options[${index}].children`]: children,
-            })
+        updatedValues(values, callback) {
+            if (this.data.values !== values) {
+                this.setData({ values }, callback)
+            }
+        },
+        updatedDisplayValues(options = this.data.options) {
+            const displayValues = getDisplayValues(options)
+            if (this.data.displayValues !== displayValues) {
+                this.setData({ displayValues })
+            }
         },
         /**
          * 关闭侧边栏筛选框
          * @param {Object} e 事件对象
          * @param {Function} callback 回调函数
          */
-        onClose(e, callback) {
+        onClose(e) {
             const { index } = e.currentTarget.dataset
-            const params = {
-                [`options[${index}].visible`]: false,
+            this.onSelectClose(index)
+        },
+        onPopupSelectChange(e) {
+            const values = [...this.data.values]
+            const options = this.showOptions || JSON.parse(JSON.stringify(this.data.options))
+            const { value } = e.detail
+            const { index, parentIndex } = e.currentTarget.dataset
+
+            values[parentIndex] = values[parentIndex] || []
+            values[parentIndex][index] = value
+
+            if (options[parentIndex].children[index] && options[parentIndex].children[index].children) {
+                options[parentIndex].children[index].children = options[parentIndex].children[index].children.map((v) => ({ ...v, checked: value.includes(v.value) }))
+                this.updatedDisplayValues(options)
+                this.showOptions = options
             }
-
-            this.setData(params, () => {
-                if (typeof callback === 'function') {
-                    callback.call(this, e)
-                } else {
-                    this.onReset(e, this.prevState)
-                }
-
-                this.$wuxBackdrop.release()
-            })
-        },
-        /**
-         * 确认按钮
-         * @param {Object} e 事件对象
-         */
-        onConfirm(e) {
-            this.onClose(e, this.onChange)
-        },
-        /**
-         * 筛选栏内单项选择触发 change 事件
-         * @param {Object} e 事件对象
-         */
-        onRadioChange(e) {
-            const { value } = e.detail
-            const { index, item, parentIndex } = e.currentTarget.dataset
-            const children = item.children.map((n) => Object.assign({}, n, {
-                checked: n.value === value,
-            }))
-            const selected = children.filter((n) => n.checked).map((n) => n.label).join(',')
-
-            this.setData({
-                [`options[${parentIndex}].children[${index}].children`]: children,
-                [`options[${parentIndex}].children[${index}].selected`]: selected,
-            })
-        },
-        /**
-         * 筛选栏内多项选择触发 change 事件
-         * @param {Object} e 事件对象
-         */
-        onCheckboxChange(e) {
-            const { value } = e.detail
-            const { index, item, parentIndex } = e.currentTarget.dataset
-            const children = item.children.map((n) => Object.assign({}, n, {
-                checked: value.includes(n.value),
-            }))
-            const selected = children.filter((n) => n.checked).map((n) => n.label).join(',')
-
-            this.setData({
-                [`options[${parentIndex}].children[${index}].children`]: children,
-                [`options[${parentIndex}].children[${index}].selected`]: selected,
-            })
-        },
-        /**
-         * 下拉框内单项选择触发 change 事件
-         * @param {Object} e 事件对象
-         */
-        radioChange(e) {
-            const { value } = e.detail
-            const { index, item } = e.currentTarget.dataset
-            const children = item.children.map((n) => Object.assign({}, n, {
-                checked: n.value === value,
-            }))
-            const params = {
-                [`options[${index}].children`]: children,
-            }
-
-            this.setData(params, this.onChange)
+            
+            this.updatedValues(values)
         },
         /**
          * 下拉框内多项选择触发 change 事件
          * @param {Object} e 事件对象
          */
-        checkboxChange(e) {
-            const { value } = e.detail
-            const { index, item } = e.currentTarget.dataset
-            const data = item.children.filter((n) => n.checked).map((n) => n.value)
-            const children = item.children.map((n) => Object.assign({}, n, {
-                checked: n.value === value ? !data.includes(n.value) : n.checked,
-            }))
+        onSelectChange(e) {
+            const values = [...this.data.values]
+            const { index, type } = e.currentTarget.dataset
+            const { selectedValue: value } = e.detail
+
+            values[index] = value
+
+            this.updatedValues(values)
+
+            // trigger onChange
+            if (type === 'radio') {
+                this.onSelectConfirm(e)
+            }
+        },
+        onSelectClose(index, callback) {
             const params = {
-                [`options[${index}].children`]: children,
+                values: getValues(this.data.options),
+                [`options[${index}].visible`]: false,
             }
 
-            this.setData(params, this.onChange)
+            this.setData(params, () => {
+                if (typeof callback === 'function') {
+                    callback.call(this)
+                }
+                this.showOptions = null
+                this.$wuxBackdrop.release()
+            })
+        },
+        onSelectReset(e) {
+            const values = [...this.data.values]
+            const { index } = e.currentTarget.dataset
+
+            values[index] = []
+
+            this.updatedValues(values)
+
+            const showOptions = this.showOptions || JSON.parse(JSON.stringify(this.data.options))
+            if (showOptions && showOptions.length > 0) {
+                showOptions.forEach((option, index) => {
+                    if (option.type === 'filter') {
+                        option.children = option.children.reduce((acc, child) => {
+                            return [...acc, { ...child, children: child.children.map((v) => ({ ...v, checked: false })) }]
+                        }, [])
+                    }
+                })
+                this.updatedDisplayValues(showOptions)
+                this.showOptions = null
+            }
+        },
+        onSelectConfirm(e) {
+            const { options, values } = this.data
+            const { index } = e.currentTarget.dataset
+            const params = getChangedValues(options, values)
+            
+            this.setData(params, () => this.onSelectClose(index, this.onChange))
         },
         /**
          * 点击事件
@@ -180,7 +275,16 @@ baseComponent({
          */
         onClick(e) {
             const { index } = e.currentTarget.dataset
-            this.onOpenSelect(this.data.options, index)
+            const { options } = this.data
+            const values = getValues(options)
+
+            // calc real values
+            if (!options[index].visible) {
+                this.setData({ values })
+            }
+            
+            // open
+            this.onOpenSelect(options, index)
         },
         /**
          * 打开下拉框
@@ -245,7 +349,6 @@ baseComponent({
             })
 
             this.setData({ options, index }, () => {
-                this.prevState = current
                 if (!['radio', 'checkbox', 'filter'].includes(current.type)) {
                     this.onChange()
                 }
@@ -255,14 +358,12 @@ baseComponent({
          * 关闭下拉框
          */
         onCloseSelect() {
-            const options = this.data.options
-            const params = {}
-
-            options.forEach((n, i) => {
-                if (n.checked && n.visible) {
-                    params[`options[${i}].visible`] = false
+            const params = this.data.options.reduce((acc, option, index) => {
+                if (option.checked && option.visible) {
+                    return { ...acc, [`options[${index}].visible`]: false }
                 }
-            })
+                return acc
+            }, {})
 
             this.setData(params)
         },
@@ -278,13 +379,18 @@ baseComponent({
          * 元素发生变化时的事件
          */
         onChange() {
-            setTimeout(() => {
-                const { options: items } = this.data
-                const checkedItems = items.filter((n) => n.checked)
+            const { options } = this.data
+            const checkedValues = getValues(options)
+            const items = getShowOptions(options, checkedValues)
 
+            this.updatedValues(checkedValues, () => {
                 this.onCloseSelect()
-                this.triggerEvent('change', { checkedItems, items })
-            }, 300)
+                this.triggerEvent('change', {
+                    checkedItems: items.filter((n) => n.checked),
+                    items,
+                    checkedValues,
+                })
+            })
         },
         /**
          * scroll-view 滚动时触发的事件
@@ -312,8 +418,7 @@ baseComponent({
         this.$wuxBackdrop = $wuxBackdrop('#wux-backdrop', this)
     },
     attached() {
-        this.setData({
-            options: this.data.items,
-        })
+        const { items: newVal } = this.data
+        this.setData({ options: newVal, values: getValues(newVal) })
     },
 })

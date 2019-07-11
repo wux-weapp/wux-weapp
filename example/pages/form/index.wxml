@@ -54,6 +54,27 @@
                     </wux-field>
                 </wux-cell>
             </wux-cell-group>
+            <wux-cell-group title="Picker">
+                <wux-field name="picker" initialValue="{{ picker }}">
+                    <wux-picker options="{{ options1 }}" cascade bind:change="onValueChange">
+                        <wux-cell title="Picker" is-link extra="{{ picker }}"></wux-cell>
+                    </wux-picker>
+                </wux-field>
+            </wux-cell-group>
+            <wux-cell-group title="DatePicker">
+                <wux-field name="datePicker" initialValue="{{ datePicker }}">
+                    <wux-date-picker bind:change="onDatePickerChange">
+                        <wux-cell title="DatePicker" is-link extra="{{ datePicker }}"></wux-cell>
+                    </wux-date-picker>
+                </wux-field>
+            </wux-cell-group>
+            <wux-cell-group title="PopupSelect">
+                <wux-field name="popupSelect" initialValue="{{ popupSelect }}">
+                    <wux-popup-select options="{{ options2 }}" bind:change="onPopupSelectChange">
+                        <wux-cell title="PopupSelect" is-link extra="{{ popupSelect }}"></wux-cell>
+                    </wux-popup-select>
+                </wux-field>
+            </wux-cell-group>
             <view class="btn-area">
                 <button formType="submit">Default Form Submit</button>
             </view>
@@ -113,6 +134,27 @@
                         <wux-slider />
                     </wux-field>
                 </wux-cell>
+            </wux-cell-group>
+            <wux-cell-group title="Picker">
+                <wux-field name="picker" initialValue="{{ picker }}">
+                    <wux-picker options="{{ options1 }}" cascade bind:change="onValueChange">
+                        <wux-cell title="Picker" is-link extra="{{ picker }}"></wux-cell>
+                    </wux-picker>
+                </wux-field>
+            </wux-cell-group>
+            <wux-cell-group title="DatePicker">
+                <wux-field name="datePicker" initialValue="{{ datePicker }}">
+                    <wux-date-picker bind:change="onDatePickerChange">
+                        <wux-cell title="DatePicker" is-link extra="{{ datePicker }}"></wux-cell>
+                    </wux-date-picker>
+                </wux-field>
+            </wux-cell-group>
+            <wux-cell-group title="PopupSelect">
+                <wux-field name="popupSelect" initialValue="{{ popupSelect }}">
+                    <wux-popup-select options="{{ options2 }}" bind:change="onPopupSelectChange">
+                        <wux-cell title="PopupSelect" is-link extra="{{ popupSelect }}"></wux-cell>
+                    </wux-popup-select>
+                </wux-field>
             </wux-cell-group>
             <view class="btn-area">
                 <button bindtap="onSubmit">Wux Form Submit</button>

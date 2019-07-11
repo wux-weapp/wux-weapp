@@ -4,9 +4,11 @@ Page({
                 type: 'radio',
                 label: 'Updated',
                 value: 'updated',
+                checked: true,
                 children: [{
                         label: 'Recently updated',
                         value: 'desc',
+                        checked: true, // 默认选中
                     },
                     {
                         label: 'Least recently updated',
@@ -31,6 +33,7 @@ Page({
                 type: 'filter',
                 label: '筛选',
                 value: 'filter',
+                checked: true,
                 children: [{
                         type: 'radio',
                         label: 'Languages（单选）',
@@ -68,6 +71,7 @@ Page({
                             {
                                 label: 'React',
                                 value: 'react',
+                                checked: true, // 默认选中
                             },
                             {
                                 label: 'Avalon',
@@ -224,10 +228,10 @@ Page({
         this.getRepos()
     },
     onChange(e) {
-        const { checkedItems, items } = e.detail
+        const { checkedItems, items, checkedValues } = e.detail
         const params = {}
 
-        console.log(checkedItems, items)
+        console.log(checkedItems, items, checkedValues)
 
         checkedItems.forEach((n) => {
             if (n.checked) {
@@ -253,6 +257,8 @@ Page({
                 }
             }
         })
+        
+        console.log('params', params)
 
         this.getRepos(params)
     },
@@ -262,6 +268,7 @@ Page({
         const q = `${query}+language:${language}`
         const data = Object.assign({
             q,
+            order: 'desc',
         }, params)
 
         wx.showLoading()
@@ -282,13 +289,13 @@ Page({
         })
     },
     onOpen(e) {
-        this.setData({
-            pageStyle: 'height: 100%; overflow: hidden',
-        })
+        this.setData({ opened: true })
     },
     onClose(e) {
-        this.setData({
-            pageStyle: '',
-        })
+        this.setData({ opened: false })
     },
+    /**
+     * 阻止触摸移动
+     */
+    noop() {},
 })

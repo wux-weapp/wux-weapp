@@ -1,9 +1,25 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import eventsMixin from '../helpers/eventsMixin'
+
+const defaultEvents = {
+    onClick() {},
+    onError() {},
+}
 
 baseComponent({
+    behaviors: [eventsMixin({ defaultEvents })],
     relations: {
         '../cell-group/index': {
+            type: 'ancestor',
+        },
+        '../picker/index': {
+            type: 'parent',
+        },
+        '../date-picker/index': {
+            type: 'parent',
+        },
+        '../popup-select/index': {
             type: 'parent',
         },
     },
