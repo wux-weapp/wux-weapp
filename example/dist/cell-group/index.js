@@ -2,6 +2,9 @@ import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
 
 baseComponent({
+    options: {
+        multipleSlots: false,
+    },
     relations: {
         '../cell/index': {
             type: 'descendant',
