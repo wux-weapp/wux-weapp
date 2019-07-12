@@ -4,7 +4,7 @@ import classNames from '../helpers/classNames'
 baseComponent({
     relations: {
         '../checkbox-group/index': {
-            type: 'parent',
+            type: 'ancestor',
         },
     },
     properties: {

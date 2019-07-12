@@ -31,7 +31,7 @@ baseComponent({
             type: 'ancestor',
         },
         '../checkbox/index': {
-            type: 'child',
+            type: 'descendant',
             observer() {
                 this.debounce(this.changeValue)
             },
