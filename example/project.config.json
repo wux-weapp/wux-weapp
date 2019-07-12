@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 17,
+			"current": 18,
 			"list": [
 				{
 					"id": 0,
@@ -157,6 +157,13 @@
 					"id": -1,
 					"name": "card",
 					"pathName": "pages/card/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "upload",
+					"pathName": "pages/upload/index",
 					"scene": null
 				}
 			]

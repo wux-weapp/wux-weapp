@@ -15,10 +15,11 @@
             width: 78px;
             height: 78px;
             border-radius: 4px;
+            margin: 0 8px 8px 0;
             background-color: #fafafa;
             transition: border-color .3s ease;
-            display: inline-block;
             box-sizing: border-box;
+            float: left;
         }
 
         .@{wuxClassNamePrefix}-upload__button {

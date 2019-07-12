@@ -18,10 +18,11 @@
   width: 156rpx;
   height: 156rpx;
   border-radius: 8rpx;
+  margin: 0 16rpx 16rpx 0;
   background-color: #fafafa;
   transition: border-color .3s ease;
-  display: inline-block;
-  box-sizing: border-box
+  box-sizing: border-box;
+  float: left
 }
 .wux-upload--picture-card .wux-upload__button {
   width: 100%;
