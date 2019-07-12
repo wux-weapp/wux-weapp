@@ -71,6 +71,11 @@ baseComponent({
             }
         }],
     },
+    observers: {
+        content() {
+            this.resetAnimation()
+        },
+    },
     methods: {
         clearMarqueeTimer() {
             if (this.marqueeTimer) {
@@ -89,9 +94,7 @@ baseComponent({
 
                 // 判断是否完成一次滚动
                 if (isRoundOver) {
-                    if (!loop) {
-                        return false
-                    }
+                    if (!loop) return
                     // 重置初始位置
                     animatedWidth = 0
                 }
@@ -99,16 +102,11 @@ baseComponent({
                 // 判断是否等待一段时间后进行下一次滚动
                 if (isRoundOver && trailing) {
                     setTimeout(() => {
-                        this.setData({
-                            animatedWidth,
-                        })
-
+                        this.setData({ animatedWidth })
                         this.marqueeTimer = setTimeout(animate, speed)
                     }, trailing)
                 } else {
-                    this.setData({
-                        animatedWidth,
-                    })
+                    this.setData({ animatedWidth })
                     this.marqueeTimer = setTimeout(animate, speed)
                 }
             }
@@ -117,7 +115,7 @@ baseComponent({
                 this.marqueeTimer = setTimeout(animate, timeout)
             }
         },
-        initAnimation() {
+        initAnimation(isForce) {
             const { prefixCls } = this.data
             const query = wx.createSelectorQuery().in(this)
             query.select(`.${prefixCls}__marquee-container`).boundingClientRect()
@@ -128,17 +126,28 @@ baseComponent({
                 const [container, text] = rects
                 const overflowWidth = text.width - container.width
 
-                if (overflowWidth !== this.data.overflowWidth) {
-                    this.setData({ overflowWidth }, this.startAnimation)
+                if (this.data.overflowWidth !== overflowWidth || isForce) {
+                    this.setData({ overflowWidth, animatedWidth: 0 }, () => {
+                        // 当文本内容存在且长度可滚动时，才触发动画
+                        if (text.width > 0 && overflowWidth > 0) {
+                            this.startAnimation()
+                        } else {
+                            this.clearMarqueeTimer()
+                        }
+                    })
                 }
             })
+        },
+        resetAnimation() {
+            this.initAnimation(true)
+        },
+        stopAnimation() {
+            this.clearMarqueeTimer()
         },
         onAction() {
             if (this.data.mode === 'closable') {
                 this.clearMarqueeTimer()
-                this.setData({
-                    visible: false
-                })
+                this.setData({ visible: false })
             }
             this.triggerEvent('click')
         },

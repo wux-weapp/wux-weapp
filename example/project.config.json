@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 18,
+			"current": 19,
 			"list": [
 				{
 					"id": 0,
@@ -164,6 +164,13 @@
 					"id": -1,
 					"name": "upload",
 					"pathName": "pages/upload/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "notice-bar",
+					"pathName": "pages/notice-bar/index",
 					"scene": null
 				}
 			]
