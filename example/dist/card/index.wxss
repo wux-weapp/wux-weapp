@@ -31,6 +31,9 @@
   border-right-width: 0;
   border-left-width: 0
 }
+.wux-card--has-actions {
+  padding-bottom: 0
+}
 .wux-card__hd {
   position: relative;
   display: -ms-flexbox;
@@ -88,4 +91,65 @@
   font-size: 28rpx;
   color: #888;
   padding: 0 30rpx
+}
+.wux-card__actions {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  line-height: 100rpx;
+  margin-top: 12rpx;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center
+}
+.wux-card__actions:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 2rpx;
+  border-top: 2rpx solid #d9d9d9;
+  color: #d9d9d9;
+  transform-origin: 0 0;
+  transform: scaleY(.5)
+}
+.wux-card__action {
+  position: relative;
+  display: block;
+  -ms-flex: 1;
+  flex: 1;
+  color: #33cd5f;
+  text-align: center
+}
+.wux-card__action:before {
+  content: " ";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 2rpx;
+  bottom: 0;
+  border-right: 2rpx solid #d9d9d9;
+  color: #d9d9d9;
+  transform-origin: 100% 0;
+  transform: scaleX(.5)
+}
+.wux-card__action:last-child:before {
+  display: none
+}
+.wux-card__action--default {
+  color: #353535
+}
+.wux-card__action--primary {
+  color: #33cd5f!important
+}
+.wux-card__action--bold {
+  font-weight: 500!important
+}
+.wux-card__action--hover {
+  background-color: #ececec!important
+}
+.wux-card__action--disabled {
+  opacity: .3
 }

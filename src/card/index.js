@@ -37,15 +37,20 @@ baseComponent({
             type: String,
             value: '',
         },
+        actions: {
+            type: Array,
+            value: [],
+        },
     },
     data: {
         extStyle: '',
     },
     computed: {
-        classes: ['prefixCls, bordered, full', function(prefixCls, bordered, full) {
+        classes: ['prefixCls, bordered, full, actions', function(prefixCls, bordered, full, _actions) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--bordered`]: bordered,
                 [`${prefixCls}--full`]: full,
+                [`${prefixCls}--has-actions`]: _actions.length > 0,
             })
             const hd = `${prefixCls}__hd`
             const content = `${prefixCls}__content`
@@ -53,6 +58,21 @@ baseComponent({
             const extra = `${prefixCls}__extra`
             const bd = `${prefixCls}__bd`
             const ft = `${prefixCls}__ft`
+            const actions = `${prefixCls}__actions`
+            const action = _actions.map((action) => {
+                const wrap = classNames(`${prefixCls}__action`, {
+                    [`${prefixCls}__action--${action.type || 'default'}`]: action.type || 'default',
+                    [`${prefixCls}__action--bold`]: action.bold,
+                    [`${prefixCls}__action--disabled`]: action.disabled,
+                    [`${action.className}`]: action.className,
+                })
+                const hover = action.hoverClass && action.hoverClass !== 'default' ? action.hoverClass : `${prefixCls}__action--hover`
+
+                return {
+                    wrap,
+                    hover,
+                }
+            })
 
             return {
                 wrap,
@@ -62,7 +82,20 @@ baseComponent({
                 extra,
                 bd,
                 ft,
+                actions,
+                action,
             }
         }],
+    },
+    methods: {
+        onAction(e) {
+            const { index } = e.currentTarget.dataset
+            const { actions } = this.data
+            const action = actions[index]
+
+            if (!action.disabled) {
+                this.triggerEvent('action', { index, action, actions })
+            }
+        },
     },
 })
