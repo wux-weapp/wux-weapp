@@ -10,7 +10,7 @@ const platformProps = {
             datetime: 'yyyy-MM-dd hh:mm',
             date: 'yyyy-MM-dd',
             year: 'yyyy',
-            month: 'MM-dd',
+            month: 'yyyy-MM',
             time: 'hh:mm',
         }
         return formatDate(values.date, o[props.mode])
