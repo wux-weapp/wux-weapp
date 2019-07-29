@@ -531,7 +531,7 @@
   -webkit-box-orient: vertical
 }
 .wux-hairline,
-.wux-hairline--buttom,
+.wux-hairline--bottom,
 .wux-hairline--horizontal,
 .wux-hairline--left,
 .wux-hairline--right,
@@ -540,7 +540,7 @@
 .wux-hairline--vertical {
   position: relative
 }
-.wux-hairline--buttom:after,
+.wux-hairline--bottom:after,
 .wux-hairline--horizontal:after,
 .wux-hairline--left:after,
 .wux-hairline--right:after,
