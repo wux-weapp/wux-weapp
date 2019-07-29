@@ -37,15 +37,15 @@
         <view class="sub-title">Slot</view>
         <wux-tabs controlled current="{{ current }}" bindchange="onChange">
             <wux-tab disabled key="tab1">
-                <image src="https://wux.cdn.cloverstd.com/logo.png" style="width: 20px; height: 20px; margin-right: 5px;" />
+                <image src="http://cdn.skyvow.cn/logo.png" style="width: 20px; height: 20px; margin-right: 5px;" />
                 <text>Tab 1</text>
             </wux-tab>
             <wux-tab key="tab2">
-                <image src="https://wux.cdn.cloverstd.com/logo.png" style="width: 20px; height: 20px; margin-right: 5px;" />
+                <image src="http://cdn.skyvow.cn/logo.png" style="width: 20px; height: 20px; margin-right: 5px;" />
                 <text>Tab 2</text>
             </wux-tab>
             <wux-tab key="tab3">
-                <image src="https://wux.cdn.cloverstd.com/logo.png" style="width: 20px; height: 20px; margin-right: 5px;" />
+                <image src="http://cdn.skyvow.cn/logo.png" style="width: 20px; height: 20px; margin-right: 5px;" />
                 <text>Tab 3</text>
             </wux-tab>
         </wux-tabs>

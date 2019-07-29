@@ -1,6 +1,6 @@
 <view class="page__bd">
     <view class="logo">
-        <image src="https://wux.cdn.cloverstd.com/logo.png" />
+        <image src="http://cdn.skyvow.cn/logo.png" />
         <view class="logo__text">Wux Weapp</view>
     </view>
     <view class="page-body">

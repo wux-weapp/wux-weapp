@@ -19,7 +19,7 @@ Page({
             }],
         },
         msg3: {
-            icon: 'https://wux.cdn.cloverstd.com/logo.png',
+            icon: 'http://cdn.skyvow.cn/logo.png',
             title: '授权失败',
             text: '获取用户信息失败，请重新授权',
             buttons: [{

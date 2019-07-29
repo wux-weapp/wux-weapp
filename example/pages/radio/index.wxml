@@ -21,8 +21,8 @@
                 <wux-radio title="PHP" label="details" value="2" />
             </wux-radio-group>
             <wux-radio-group name="c" value="{{ value3 }}" title="Thumb" bind:change="onChange3">
-                <wux-radio thumb="https://wux.cdn.cloverstd.com/logo.png" title="Java" value="1" />
-                <wux-radio thumb="https://wux.cdn.cloverstd.com/logo.png" title="PHP" value="2" />
+                <wux-radio thumb="http://cdn.skyvow.cn/logo.png" title="Java" value="1" />
+                <wux-radio thumb="http://cdn.skyvow.cn/logo.png" title="PHP" value="2" />
             </wux-radio-group>
             <wux-radio-group name="d" value="{{ value4 }}" title="Trigger onChange" bind:change="onChange4">
                 <wux-radio title="Java" value="1" />

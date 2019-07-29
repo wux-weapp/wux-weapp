@@ -10,9 +10,9 @@
             <wux-accordion title="Accordion 3" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>
         </wux-accordion-group>
         <wux-accordion-group title="Thumb">
-            <wux-accordion thumb="https://wux.cdn.cloverstd.com/logo.png" title="Accordion 1" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>
-            <wux-accordion thumb="https://wux.cdn.cloverstd.com/logo.png" title="Accordion 2" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>
-            <wux-accordion thumb="https://wux.cdn.cloverstd.com/logo.png" title="Accordion 3" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>
+            <wux-accordion thumb="http://cdn.skyvow.cn/logo.png" title="Accordion 1" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>
+            <wux-accordion thumb="http://cdn.skyvow.cn/logo.png" title="Accordion 2" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>
+            <wux-accordion thumb="http://cdn.skyvow.cn/logo.png" title="Accordion 3" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>
         </wux-accordion-group>
         <wux-accordion-group title="Disabled">
             <wux-accordion disabled title="Accordion 1" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp"></wux-accordion>

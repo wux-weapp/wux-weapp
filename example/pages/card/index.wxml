@@ -13,27 +13,27 @@
         </wux-wing-blank>
         <view class="sub-title">Thumb</view>
         <wux-wing-blank size="default">
-            <wux-card title="卡片标题" extra="额外内容" thumb="https://wux.cdn.cloverstd.com/logo.png">
+            <wux-card title="卡片标题" extra="额外内容" thumb="http://cdn.skyvow.cn/logo.png">
                 <view slot="body">卡片内容</view>
                 <view slot="footer">尾部内容</view>
             </wux-card>
         </wux-wing-blank>
         <view class="sub-title">Custom thumb style</view>
         <wux-wing-blank size="default">
-            <wux-card title="卡片标题" extra="额外内容" thumb="https://wux.cdn.cloverstd.com/logo.png" thumb-style="border-radius: 50%;">
+            <wux-card title="卡片标题" extra="额外内容" thumb="http://cdn.skyvow.cn/logo.png" thumb-style="border-radius: 50%;">
                 <view slot="body">卡片内容</view>
                 <view slot="footer">尾部内容</view>
             </wux-card>
         </wux-wing-blank>
         <view class="sub-title">No border</view>
         <wux-wing-blank size="default">
-            <wux-card bordered="{{ false }}" title="卡片标题" extra="额外内容" thumb="https://wux.cdn.cloverstd.com/logo.png">
+            <wux-card bordered="{{ false }}" title="卡片标题" extra="额外内容" thumb="http://cdn.skyvow.cn/logo.png">
                 <view slot="body">卡片内容</view>
                 <view slot="footer">尾部内容</view>
             </wux-card>
         </wux-wing-blank>
         <view class="sub-title">Full</view>
-        <wux-card full title="卡片标题" extra="额外内容" thumb="https://wux.cdn.cloverstd.com/logo.png">
+        <wux-card full title="卡片标题" extra="额外内容" thumb="http://cdn.skyvow.cn/logo.png">
             <view slot="body">卡片内容</view>
             <view slot="footer">尾部内容</view>
         </wux-card>

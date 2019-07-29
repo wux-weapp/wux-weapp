@@ -3,17 +3,17 @@ Page({
         fileList: [{
                 uid: 0,
                 status: 'uploading',
-                url: 'https://wux.cdn.cloverstd.com/qrcode.jpg',
+                url: 'http://cdn.skyvow.cn/qrcode.jpg',
             },
             {
                 uid: 1,
                 status: 'done',
-                url: 'https://wux.cdn.cloverstd.com/qrcode.jpg',
+                url: 'http://cdn.skyvow.cn/qrcode.jpg',
             },
             {
                 uid: 2,
                 status: 'error',
-                url: 'https://wux.cdn.cloverstd.com/qrcode.jpg',
+                url: 'http://cdn.skyvow.cn/qrcode.jpg',
             }
         ],
     },

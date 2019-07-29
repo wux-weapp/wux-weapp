@@ -76,20 +76,20 @@ demo/
 
 您可以扫码添加下方的小助手微信并备注 Wux Weapp 进交流群。
 
-<img src="https://wux.cdn.cloverstd.com/wechat.png" width="256" style="display:inline;">
+<img src="http://cdn.skyvow.cn/wechat.png" width="256" style="display:inline;">
 
 ## 赞助
 
 请作者喝营养快线补补小身体(`・ω・´)
 
 <p>
-  <img src="https://wux.cdn.cloverstd.com/alipay.jpg" width="256" height="350" style="display:inline;">
-  <img src="https://wux.cdn.cloverstd.com/wxpay.jpg" width="256" height="350" style="display:inline;">
+  <img src="http://cdn.skyvow.cn/alipay.jpg" width="256" height="350" style="display:inline;">
+  <img src="http://cdn.skyvow.cn/wxpay.jpg" width="256" height="350" style="display:inline;">
 </p>
 
 ## 案例
 
-<img src="https://wux.cdn.cloverstd.com/cases.png" style="display:inline;">
+<img src="http://cdn.skyvow.cn/cases.png" style="display:inline;">
 
 ## 贡献
 
