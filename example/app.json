@@ -80,6 +80,9 @@
     "pages/upload/index",
     "pages/utility/index",
     "pages/vcode/index",
+    "pages/virtual-list/index",
+    "pages/virtual-list/page-scroll",
+    "pages/virtual-list/scroll-view",
     "pages/white-space/index",
     "pages/wing-blank/index"
   ],

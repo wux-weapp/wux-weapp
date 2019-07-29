@@ -1,0 +1,18 @@
+/* pages/virtual-list/index.wxss */
+
+.item {
+	box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 10px;
+    border-bottom: 1px dashed #cecece;
+}
+
+.index {
+	flex: 1;
+}
+
+.desc {
+	flex: 4;
+}

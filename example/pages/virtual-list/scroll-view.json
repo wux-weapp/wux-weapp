@@ -1,0 +1,11 @@
+{
+    "navigationBarTitleText": "VirtualList",
+    "usingComponents": {
+        "wux-virtual-list": "../../dist/virtual-list/index",
+        "wux-virtual-item": "../../dist/virtual-item/index",
+        "wux-cell-group": "../../dist/cell-group/index",
+        "wux-cell": "../../dist/cell/index",
+        "wux-input": "../../dist/input/index",
+        "wux-switch": "../../dist/switch/index"
+    }
+}

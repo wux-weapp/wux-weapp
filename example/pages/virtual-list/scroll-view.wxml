@@ -1,0 +1,41 @@
+<view class="page">
+    <view class="page__bd">
+        <wux-cell-group title="ScrollView">
+            <wux-cell hover-class="none">
+                <wux-input type="number" label="Height" defaultValue="{{ height }}" data-meta="height" bind:blur="onInputBlur" />
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <wux-input type="number" label="Item Height" defaultValue="{{ itemHeight }}" data-meta="itemHeight" bind:blur="onInputBlur" />
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <wux-input type="number" label="Item Buffer" defaultValue="{{ itemBuffer }}" data-meta="itemBuffer" bind:blur="onInputBlur" />
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <wux-input type="number" label="ScrollToIndex" defaultValue="{{ scrollToIndex }}" data-meta="scrollToIndex" bind:blur="onInputBlur" />
+            </wux-cell>
+            <wux-cell title="ScrollWithAnimation">
+                <wux-switch slot="footer" color="balanced" value="{{ scrollWithAnimation }}" data-meta="scrollWithAnimation" bind:change="onSwicth" />
+            </wux-cell>
+        </wux-cell-group>
+        <view class="main">
+            <wux-virtual-list
+                id="wux-virtual-list"
+                height="{{ height }}"
+                itemHeight="{{ itemHeight }}"
+                itemBuffer="{{ itemBuffer }}"
+                scrollToIndex="{{ scrollToIndex }}"
+                scrollWithAnimation="{{ scrollWithAnimation }}"
+                disableScroll="{{ disableScroll }}"
+                bind:change="onChange"
+                bind:scrolltolower="onScrollToLower"
+            >
+                <wux-virtual-item wx:for="{{ virtual.items }}" wx:key="item">
+                    <view class="item">
+                        <view class="index">{{ '#' + item }}</view>
+                        <view class="desc">Wux NB</view>
+                    </view>
+                </wux-virtual-item>
+            </wux-virtual-list>
+        </view>
+    </view>
+</view>

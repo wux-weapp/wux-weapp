@@ -1,0 +1,16 @@
+<wux-virtual-list
+    id="wux-virtual-list"
+    enablePageScroll
+    height="{{ height }}"
+    itemHeight="100"
+    itemBuffer="30"
+    disableScroll="{{ disableScroll }}"
+    bind:change="onChange"
+>
+    <wux-virtual-item wx:for="{{ virtual.items }}" wx:key="item">
+        <view class="item">
+            <view class="index">{{ '#' + item }}</view>
+            <view class="desc">Wux NB</view>
+        </view>
+    </wux-virtual-item>
+</wux-virtual-list>
