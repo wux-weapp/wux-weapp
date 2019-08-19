@@ -1,11 +1,24 @@
 .wux-button {
+  padding: 0;
+  border-radius: 0;
+  color: inherit!important;
+  background: 0 0!important;
+  font-size: inherit;
+  font-weight: 400;
+  line-height: inherit;
+  text-align: inherit;
+  text-decoration: none;
+  overflow: visible;
+  min-height: 0!important;
+  width: auto!important;
+  -webkit-tap-highlight-color: transparent;
   position: relative;
   display: inline-block;
   box-sizing: border-box;
   margin: 0;
   padding: 0 24rpx;
   min-width: 104rpx;
-  min-height: 88rpx;
+  min-height: 88rpx!important;
   border: none;
   border-radius: 8rpx;
   vertical-align: middle;
@@ -14,6 +27,18 @@
   font-size: 32rpx;
   line-height: 84rpx;
   cursor: pointer
+}
+.wux-button:after {
+  display: block;
+  position: static;
+  top: auto;
+  left: auto;
+  width: auto;
+  height: auto;
+  border: none;
+  border-radius: 0;
+  transform: none;
+  transform-origin: 0 0
 }
 .wux-button:after {
   content: " ";
@@ -39,20 +64,20 @@
 .wux-button--small {
   padding: 4rpx 8rpx 2rpx;
   min-width: 56rpx;
-  min-height: 60rpx;
+  min-height: 60rpx!important;
   font-size: 24rpx;
   line-height: 52rpx
 }
 .wux-button--large {
   padding: 0 32rpx;
   min-width: 136rpx;
-  min-height: 118rpx;
+  min-height: 118rpx!important;
   font-size: 40rpx;
   line-height: 106rpx
 }
 .wux-button--block,
 .wux-button--full {
-  width: 100%;
+  width: 100%!important;
   margin-top: 20rpx;
   margin-bottom: 20rpx
 }
@@ -65,8 +90,8 @@
 }
 .wux-button--full {
   display: block;
-  margin-right: 0;
-  margin-left: 0;
+  margin-right: 0!important;
+  margin-left: 0!important;
   border-right-width: 0;
   border-left-width: 0;
   border-radius: 0

@@ -26,6 +26,7 @@
 }
 
 .@{wuxClassNamePrefix}-button {
+    .button-reset();
     position: relative;
     display: inline-block;
     // margin-left: auto;
@@ -46,7 +47,7 @@
     margin: 0;
     padding: 0 12px;
     min-width: 52px;
-    min-height: 44px;
+    min-height: 44px !important;
     border: none;
     border-radius: 4px;
     vertical-align: middle;
@@ -83,7 +84,7 @@
     &--small {
         padding: 2px 4px 1px;
         min-width: 28px;
-        min-height: 30px;
+        min-height: 30px !important;
         font-size: 12px;
         line-height: 26px;
     }
@@ -91,14 +92,14 @@
     &--large {
         padding: 0 16px;
         min-width: 68px;
-        min-height: 59px;
+        min-height: 59px !important;
         font-size: 20px;
         line-height: 53px;
     }
 
     &--block,
     &--full {
-        width: 100%;
+        width: 100% !important;
         margin-top: 10px;
         margin-bottom: 10px;
     }
@@ -114,8 +115,8 @@
 
     &--full {
         display: block;
-        margin-right: 0;
-        margin-left: 0;
+        margin-right: 0 !important;
+        margin-left: 0 !important;
         border-right-width: 0;
         border-left-width: 0;
         border-radius: 0;

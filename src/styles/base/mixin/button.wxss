@@ -27,12 +27,18 @@
     color: @color !important;
     background: @bg-color !important;
     font-size: inherit;
+    font-weight: normal;
     line-height: inherit;
     text-align: inherit;
-    text-decoration: inherit;
-    overflow: inherit;
+    text-decoration: none;
+    overflow: visible;
+    min-height: 0 !important;
+    width: auto !important;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 
     &:after {
+        display: block;
         position: static;
         top: auto;
         left: auto;

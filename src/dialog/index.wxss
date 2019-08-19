@@ -5,11 +5,11 @@
 		.button-reset();
 		display: block;
 		flex: 1;
-		color: @balanced;
+		color: @balanced !important;
 		position: relative;
 
 		&--default {
-			color: #353535;
+			color: #353535 !important;
 		}
 
 		&--primary {

@@ -5,17 +5,23 @@
   color: inherit!important;
   background: 0 0!important;
   font-size: inherit;
+  font-weight: 400;
   line-height: inherit;
   text-align: inherit;
-  text-decoration: inherit;
-  overflow: inherit;
+  text-decoration: none;
+  overflow: visible;
+  min-height: 0!important;
+  width: auto!important;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
   display: block;
   -ms-flex: 1;
   flex: 1;
-  color: #33cd5f;
+  color: #33cd5f!important;
   position: relative
 }
 .wux-dialog__button:after {
+  display: block;
   position: static;
   top: auto;
   left: auto;
@@ -27,7 +33,7 @@
   transform-origin: 0 0
 }
 .wux-dialog__button--default {
-  color: #353535
+  color: #353535!important
 }
 .wux-dialog__button--primary {
   color: #33cd5f!important

@@ -84,16 +84,16 @@
   color: inherit!important;
   background: 0 0!important;
   font-size: inherit;
+  font-weight: 400;
   line-height: inherit;
   text-align: inherit;
-  text-decoration: inherit;
-  overflow: inherit;
-  width: 80rpx;
-  height: 80rpx;
-  color: #fff;
+  text-decoration: none;
+  min-height: 0!important;
+  width: auto!important;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  color: #fff!important;
   border-radius: 50%;
-  position: relative;
-  z-index: 1;
   overflow: visible;
   background-color: #33cd5f!important;
   transition-duration: .3s;
@@ -109,10 +109,11 @@
   left: 0;
   opacity: 0;
   z-index: 2;
-  width: 100%;
+  width: 100%!important;
   height: 100%
 }
 .wux-fab-button__button:after {
+  display: block;
   position: static;
   top: auto;
   left: auto;

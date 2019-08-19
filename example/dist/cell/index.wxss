@@ -5,10 +5,15 @@
   color: inherit!important;
   background: 0 0!important;
   font-size: inherit;
+  font-weight: 400;
   line-height: inherit;
   text-align: inherit;
-  text-decoration: inherit;
-  overflow: inherit;
+  text-decoration: none;
+  overflow: visible;
+  min-height: 0!important;
+  width: auto!important;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
   padding: 20rpx 30rpx;
   position: relative;
   display: -ms-flexbox;
@@ -18,6 +23,7 @@
   background: #fff
 }
 .wux-cell:after {
+  display: block;
   position: static;
   top: auto;
   left: auto;

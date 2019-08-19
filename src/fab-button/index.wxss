@@ -100,13 +100,8 @@
 
     &__button {
         .button-reset();
-        width: 40px;
-        height: 40px;
-        opacity: 0;
-        color: #fff;
+        color: #fff !important;
         border-radius: 50%;
-        position: relative;
-        z-index: 1;
         overflow: visible;
         background-color: @balanced !important;
         transition-duration: .3s;
@@ -119,7 +114,7 @@
         left: 0;
         opacity: 0;
         z-index: 2;
-        width: 100%;
+        width: 100% !important;
         height: 100%;
 
         &--hover {
