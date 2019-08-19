@@ -77,11 +77,6 @@ baseComponent({
         value: {
             type: Number,
             value: 0,
-            observer(newVal) {
-                if (this.data.controlled) {
-                    this.setValue(newVal, false)
-                }
-            },
         },
         disabled: {
             type: Boolean,
@@ -133,10 +128,14 @@ baseComponent({
         }],
     },
     observers: {
-        inputValue(newVal) {
-            const { min, max } = this.data
-            const disabledMin = newVal <= min
-            const disabledMax = newVal >= max
+        value(newVal) {
+            if (this.data.controlled) {
+                this.setValue(newVal, false)
+            }
+        },
+        'inputValue, min, max'(inputValue, min, max) {
+            const disabledMin = inputValue <= min
+            const disabledMax = inputValue >= max
 
             this.setData({
                 disabledMin,
