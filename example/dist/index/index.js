@@ -1,6 +1,7 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
 import styleToCssString from '../helpers/styleToCssString'
+import { getSystemInfo } from '../helpers/checkIPhoneX'
 
 baseComponent({
     relations: {
@@ -96,6 +97,9 @@ baseComponent({
                         scrollTop: target.top,
                     })
                 }
+
+                // 振动反馈
+                this.vibrateShort()
             }
 
             this.triggerEvent('change', { index: current, name: currentName })
@@ -182,6 +186,14 @@ baseComponent({
 
             return target
         },
+    },
+    created() {
+        const systemInfo = getSystemInfo()
+        this.vibrateShort = () => {
+            if (systemInfo.platform !== 'devtools') {
+                wx.vibrateShort()
+            }
+        }
     },
     ready() {
         this.updateStyle()
