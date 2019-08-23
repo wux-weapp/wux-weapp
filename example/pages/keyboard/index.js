@@ -81,6 +81,7 @@ Page({
             showCancel: true,
             disorder: false,
             maxlength: 4,
+            closeOnReject: false,
             callback(value) {
                 console.log(`输入的密码是：${value}`)
 

@@ -11,6 +11,7 @@ const defaults = {
     disorder: false,
     password: true,
     maxlength: 6,
+    closeOnReject: true,
     onChange(value) {},
     callback(value) {},
     // onClose(value) {},
@@ -101,6 +102,7 @@ baseComponent({
          * @param {Boolean} opts.disorder 是否打乱键盘
          * @param {Boolean} opts.password 是否密码类型
          * @param {Number} opts.maxlength 最大输入长度，设置为 -1 的时候不限制最大长度
+         * @param {Boolean} opts.closeOnReject Promise 返回 reject 时关闭组件
          * @param {Function} opts.onChange change 事件触发的回调函数
          * @param {Function} opts.callback 输入完成后的回调函数
          * @param {Function} opts.onClose 输入完成后的回调函数，优先级高于 callback
@@ -151,21 +153,22 @@ baseComponent({
             // onClose
             if (value.length === this.data.maxlength) {
                 const preCloseCallback = this.fns.onClose || this.fns.callback
-                const performCloseDialog = () => this.hide()
+                const resolveFn = this.hide.bind(this)
+                const rejectFn = this.data.closeOnReject ? resolveFn : function reject() {}
 
                 if (preCloseCallback && typeof preCloseCallback === 'function') {
                     const preCloseCallbackResult = preCloseCallback.call(this, value)
                     if (typeof preCloseCallbackResult === 'object') {
                         if (preCloseCallbackResult.closePromise) {
-                            preCloseCallbackResult.closePromise.then(performCloseDialog, performCloseDialog)
+                            preCloseCallbackResult.closePromise.then(resolveFn, rejectFn)
                         } else {
-                            preCloseCallbackResult.then(performCloseDialog, performCloseDialog)
+                            preCloseCallbackResult.then(resolveFn, rejectFn)
                         }
                     } else if (preCloseCallbackResult !== false) {
-                        performCloseDialog()
+                        resolveFn()
                     }
                 } else {
-                    performCloseDialog()
+                    resolveFn()
                 }
             }
         },
