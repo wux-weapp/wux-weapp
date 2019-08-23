@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import styleToCssString from '../helpers/styleToCssString'
 import { safeAreaInset, checkIPhoneX } from '../helpers/checkIPhoneX'
 
 baseComponent({
@@ -23,11 +24,6 @@ baseComponent({
         current: {
             type: String,
             value: '',
-            observer(newVal) {
-                if (this.data.controlled) {
-                    this.updated(newVal)
-                }
-            },
         },
         controlled: {
             type: Boolean,
@@ -36,6 +32,10 @@ baseComponent({
         theme: {
             type: String,
             value: 'balanced',
+        },
+        backgroundColor: {
+            type: String,
+            value: '#fff',
         },
         position: {
             type: String,
@@ -61,6 +61,16 @@ baseComponent({
                 wrap,
             }
         }],
+    },
+    observers: {
+        current(newVal) {
+            if (this.data.controlled) {
+                this.updated(newVal)
+            }
+        },
+        ['backgroundColor, position, safeArea'](...args) {
+            this.updateStyle(...args)
+        },
     },
     methods: {
         updated(activeKey = this.data.activeKey) {
@@ -101,19 +111,29 @@ baseComponent({
 
             this.emitEvent(activeKey)
         },
-        applyIPhoneXShim(position = this.data.position) {
-            if (checkIPhoneX()) {
+        updateStyle(backgroundColor, position, safeArea) {
+            const tabbarStyle = {
+                backgroundColor,
+            }
+
+            // check iphonex & enable safeArea
+            if (checkIPhoneX() && safeArea) {
                 if (['bottom', 'top'].includes(position)) {
-                    this.setData({ tabbarStyle: `${position}: ${safeAreaInset[position]}px` })
+                    const field = position === 'bottom' ? 'paddingBottom' : 'paddingTop'
+                    tabbarStyle[field] = `${safeAreaInset[position]}px`
                 }
             }
-        },
+            
+            this.setData({
+                tabbarStyle: styleToCssString(tabbarStyle),
+            })
+        }
     },
     ready() {
-        const { defaultCurrent, current, controlled } = this.data
+        const { defaultCurrent, current, controlled, backgroundColor, position, safeArea } = this.data
         const activeKey = controlled ? current : defaultCurrent
 
         this.updated(activeKey)
-        this.applyIPhoneXShim()
+        this.updateStyle(backgroundColor, position, safeArea)
     },
 })

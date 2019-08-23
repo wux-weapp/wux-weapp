@@ -22,7 +22,7 @@ export const safeAreaInset = {
 	bottom: 34, // Home Indicator
 }
 
-const isIPhoneX = ({ model, platform, screenHeight }) => {
+const isIPhoneX = ({ model, platform }) => {
 	return /iPhone X/.test(model) && platform === 'ios'
 }
 

@@ -65,7 +65,7 @@
             </wux-tabbar-item>
         </wux-tabbar>
         <view class="sub-title">With Badge</view>
-        <wux-tabbar defaultCurrent="1" position="bottom" safeArea>
+        <wux-tabbar defaultCurrent="1" position="bottom" safeArea backgroundColor="#000">
             <wux-tabbar-item title="Tab 1">
                 <wux-badge count="1" slot="icon-on">
                     <wux-icon wux-class="icon" type="ios-home" size="22" />
