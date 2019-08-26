@@ -416,6 +416,11 @@ Page({
                         remark: '滑动操作',
                         url: '/pages/swipe-action/index',
                     },
+                    {
+                        title: 'VirtualList',
+                        remark: '虚拟列表',
+                        url: '/pages/virtual-list/index',
+                    },
                 ],
             },
         ],

@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 19,
+			"current": 20,
 			"list": [
 				{
 					"id": 0,
@@ -171,6 +171,13 @@
 					"id": -1,
 					"name": "notice-bar",
 					"pathName": "pages/notice-bar/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "virtual-list",
+					"pathName": "pages/virtual-list/index",
 					"scene": null
 				}
 			]

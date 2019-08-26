@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "VirtualList",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "wux-virtual-list": "../../dist/virtual-list/index",
+        "wux-virtual-item": "../../dist/virtual-item/index"
+    }
+}
