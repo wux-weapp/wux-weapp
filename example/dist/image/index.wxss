@@ -35,7 +35,9 @@
   top: 8rpx;
   right: 8rpx;
   bottom: 8rpx;
-  left: 8rpx
+  left: 8rpx;
+  width: calc(100% - 16rpx)!important;
+  height: calc(100% - 16rpx)!important
 }
 .wux-image--widthFix .wux-image__inner {
   position: relative

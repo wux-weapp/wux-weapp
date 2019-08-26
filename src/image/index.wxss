@@ -31,6 +31,8 @@
 		right: 4px;
 		bottom: 4px;
 		left: 4px;
+		width: calc(~"100% - 8px") !important;
+		height: calc(~"100% - 8px") !important;
 	}
 
 	&--widthFix &__inner {
