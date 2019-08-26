@@ -18,7 +18,6 @@ baseComponent({
         src: {
             type: String,
             value: '',
-            observer: 'updated',
         },
         mode: {
             type: String,
@@ -35,12 +34,10 @@ baseComponent({
         width: {
             type: null,
             value: 300,
-            observer: 'updateStyle',
         },
         height: {
             type: null,
             value: 225,
-            observer: 'updateStyle',
         },
         unmountOnEmpty: {
             type: Boolean,
@@ -89,18 +86,25 @@ baseComponent({
             }
         }],
     },
+    observers: {
+        src(newVal) {
+            this.updated(newVal)
+        },
+        ['width, height'](...args) {
+            this.updateStyle(...args)
+        },
+    },
     methods: {
         /**
          * 更新资源地址
          */
-        updated(src = this.data.src) {
+        updated(src) {
             this.updateStatus(!!src ? LOADING : this.data.unmountOnEmpty ? UNMOUNTED : EMPTY)
         },
         /**
          * 更新组件样式
          */
-        updateStyle(opts = {}) {
-            const { width, height } = Object.assign({}, this.data, opts)
+        updateStyle(width, height) {
             const style = `width: ${calcStyle(width)}; height: ${calcStyle(height)}`
 
             this.setData({
@@ -142,7 +146,8 @@ baseComponent({
         },
     },
     attached() {
-        this.updateStyle()
-        this.updated()
+        const { width, height, src } = this.data
+        this.updateStyle(width, height)
+        this.updated(src)
     },
 })
