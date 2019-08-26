@@ -1,0 +1,19 @@
+<view class="wux-class {{ classes.wrap }}" style="{{ !enablePageScroll ? wrapStyle : '' }}">
+	<view class="{{ classes.mask }}" wx:if="{{ disableScroll }}" catchtouchmove="noop"></view>
+	<scroll-view
+		class="{{ classes.scrollView }}"
+		scroll-y="{{ !enablePageScroll && !disableScroll }}"
+		upper-threshold="{{ upperThreshold }}"
+		lower-threshold="{{ lowerThreshold }}"
+		scroll-top="{{ innerScrollOffset }}"
+		scroll-with-animation="{{ scrollWithAnimation }}"
+		enable-back-to-top="{{ enableBackToTop }}"
+		bindscroll="scrollHandler"
+		bindscrolltoupper="onScrollToUpper"
+		bindscrolltolower="onScrollToLower"
+	>
+		<view class="{{ classes.scrollArea }}" style="{{ virtual && virtual.style }}">
+			<slot></slot>
+		</view>
+	</scroll-view>
+</view>
