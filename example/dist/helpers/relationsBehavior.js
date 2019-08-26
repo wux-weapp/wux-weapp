@@ -29,6 +29,11 @@ export default Behavior({
         created() {
             this._debounce = null
         },
+        detached() {
+            if (this._debounce && this._debounce.cancel) {
+                this._debounce.cancel()
+            }
+        },
     },
     definitionFilter(defFields) {
         const { relations } = defFields

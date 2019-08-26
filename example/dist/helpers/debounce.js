@@ -5,23 +5,23 @@ export default function debounce(func, wait, immediate) {
         timestamp,
         result
 
-    const later = function later() {
+    function later() {
         const last = +(new Date()) - timestamp
         if (last < wait && last >= 0) {
             timeout = setTimeout(later, wait - last)
         } else {
-            timeout = null
+            timeout = undefined
             if (!immediate) {
                 result = func.apply(context, args)
                 if (!timeout) {
-                    context = null
-                    args = null
+                    context = undefined
+                    args = undefined
                 }
             }
         }
     }
 
-    return function debounced() {
+    function debounced() {
         context = this
         args = arguments
         timestamp = +(new Date())
@@ -33,10 +33,24 @@ export default function debounce(func, wait, immediate) {
 
         if (callNow) {
             result = func.apply(context, args)
-            context = null
-            args = null
+            context = undefined
+            args = undefined
         }
 
         return result
     }
+
+    function cancel() {
+        if (timeout !== undefined) {
+            clearTimeout(timeout)
+            timeout = undefined
+        }
+
+        context = undefined
+        args = undefined
+    }
+
+    debounced.cancel = cancel
+
+    return debounced
 }
