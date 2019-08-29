@@ -1,10 +1,10 @@
 function getDateString(date = new Date) {
     return {
-        year: date.getFullYear(),
-        month: date.getMonth(),
-        day: date.getDate(),
-        hour: date.getHours(),
-        minute: date.getMinutes(),
+        year: date.getFullYear() + '',
+        month: date.getMonth() + '',
+        day: date.getDate() + '',
+        hour: date.getHours() + '',
+        minute: date.getMinutes() + '',
     }
 }
 
