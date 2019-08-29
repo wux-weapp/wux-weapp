@@ -37,5 +37,11 @@
                 <wux-cell title="Only right buttons" bind:click="onCellClick"></wux-cell>
             </wux-swipe-action>
         </wux-cell-group>
+        <view class="sub-title">Using data</view>
+        <wux-cell-group>
+            <wux-swipe-action autoClose right="{{ right }}" data="2019" bind:click="onClick">
+                <wux-cell title="Only right buttons"></wux-cell>
+            </wux-swipe-action>
+        </wux-cell-group>
     </view>
 </view>

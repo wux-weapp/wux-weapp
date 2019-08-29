@@ -35,6 +35,10 @@ baseComponent({
             type: Boolean,
             value: false,
         },
+        data: {
+            type: null,
+            value: null,
+        },
     },
     data: {
         index: 0,
@@ -117,12 +121,11 @@ baseComponent({
             })
         },
         onTap(e) {
-            const { index, value, type } = e.currentTarget.dataset
+            const { type } = e.currentTarget.dataset
             const params = {
-                index,
-                value,
-                type,
+                ...e.currentTarget.dataset,
                 buttons: this.data[type],
+                data: this.data.data,
             }
 
             if (this.data.autoClose) {
