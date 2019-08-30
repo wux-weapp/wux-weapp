@@ -218,7 +218,8 @@ baseComponent({
             }
         },
         onMaskClick() {
-            if (this.data.maskClosable) {
+            const { maskClosable, popoverVisible } = this.data
+            if (maskClosable && popoverVisible) {
                 this.onChange()
             }
         },
