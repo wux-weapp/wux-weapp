@@ -38,7 +38,16 @@ function setMonth(date, month) {
 }
 
 function valueToDate(value, props = {}) {
-    if (!Array.isArray(value)) return new Date(value)
+    if (!Array.isArray(value)) {
+        if (typeof value === 'string') {
+            value = value.replace(/\-/g, '/')
+        }
+        if (!isNaN(Number(value))) {
+            value = Number(value)
+        }
+        return new Date(value)
+    }
+
     const { mode, use12Hours } = props
     const now = new Date()
     const year = now.getFullYear()

@@ -19,6 +19,12 @@ Page({
     },
     onClick(e) {
         console.log('onClick', e.detail)
+        if (e.detail.data) {
+            wx.showModal({
+                title: `The data is ${e.detail.data}`,
+                showCancel: !1,
+            })
+        }
     },
     onShare() {
         console.log('onShare')
