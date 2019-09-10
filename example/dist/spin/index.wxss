@@ -92,7 +92,6 @@
 .wux-spin__container--blur {
   overflow: hidden;
   opacity: .5;
-  -webkit-filter: blur(1rpx);
   filter: blur(1rpx);
   transform: translateZ(0)
 }

@@ -12,6 +12,6 @@
         </view>
     </wux-animation-group>
 </view>
-<view class="{{ classes.element }}" bindtap="onClick">
+<view class="{{ classes.element }}" catchtap="onClick">
     <slot></slot>
 </view>
