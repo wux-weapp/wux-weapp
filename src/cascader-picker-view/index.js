@@ -131,10 +131,10 @@ baseComponent({
         },
     },
     attached() {
-        const { value } = this.data
+        const { value, options, cols } = this.data
         const fieldNames = Object.assign({}, defaultFieldNames, this.data.defaultFieldNames)
 
         this.setData({ fieldNames })
-        this.setValue(value)
+        this.setValue(value, options, cols)
     },
 })
