@@ -101,14 +101,14 @@ baseComponent({
         options: [],
     },
     observers: {
-        inputValue(newVal) {
+        inputValue() {
             this.updatedCols()
         },
-        value(newVal) {
-            this.setValue(newVal)
+        value(value) {
+            this.setValue(value)
         },
         ['mode, minuteStep, use12Hours, minDate, maxDate, minHour, maxHour, minMinute, maxMinute, lang']() {
-            this.setValue()
+            this.setValue(this.data.inputValue)
         },
     },
     methods: {
@@ -251,8 +251,9 @@ baseComponent({
             }
             return date
         },
-        getDate() {
-            return this.clipDate(this.data.value ? valueToDate(this.data.value, this.data) : this.getDefaultMinDate())
+        getDate(d) {
+            const date = d ? d : this.data.value
+            return this.clipDate(date ? valueToDate(date, this.data) : this.getMinDate())
         },
         getDateData(date) {
             const { mode, lang } = this.data
@@ -375,9 +376,9 @@ baseComponent({
 
             return [hours, minutes].concat(use12Hours ? [ampm] : [])
         },
-        getValueCols() {
+        getValueCols(d) {
             const { mode, use12Hours } = this.data
-            const date = this.getDate()
+            const date = this.getDate(d)
             let cols = []
             let value = []
 
@@ -420,9 +421,10 @@ baseComponent({
         },
         onValueChange(e) {
             const { value, index } = e.detail
-            const newValue = this.getNewDate(value, index)
-
-            this.triggerEvent('valueChange', { ...e.detail, date: +newValue })
+            const newDate = this.getNewDate(value, index)
+            const { value: newValue, cols: newCols } = this.getValueCols(newDate)
+            const values = this.getValue(newValue, newCols)
+            this.triggerEvent('valueChange', { ...e.detail, ...values, date: +newDate })
         },
         updatedCols() {
             const { cols } = this.getValueCols()

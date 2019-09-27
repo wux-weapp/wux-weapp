@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import shallowEqual from '../helpers/shallowEqual'
 import { defaultFieldNames, props } from './props'
 import {
     getRealCols,
@@ -12,27 +13,19 @@ baseComponent({
     properties: props,
     data: {
         inputValue: [],
-        selectedIndex: [],
-        selectedValue: [],
         cols: [],
         fieldNames: defaultFieldNames,
     },
     observers: {
         ['value, options'](value, options) {
-            const { fieldNames } = this.data
+            const fieldNames = Object.assign({}, defaultFieldNames, this.data.defaultFieldNames)
             const cols = getRealCols(options, fieldNames)
-            this.setData({ cols }, () => this.setValue(value, true))
-        },
-        inputValue(newVal) {
-            const {
-                selectedIndex,
-                selectedValue,
-            } = this.getValue(newVal)
 
-            this.setData({
-                selectedIndex,
-                selectedValue,
-            })
+            if (!shallowEqual(this.data.cols, cols)) {
+                this.setData({ cols })
+            }
+
+            this.setValue(value, true)
         },
     },
     methods: {
@@ -102,6 +95,7 @@ baseComponent({
         const fieldNames = Object.assign({}, defaultFieldNames, this.data.defaultFieldNames)
         const cols = getRealCols(options, fieldNames)
 
-        this.setData({ cols, fieldNames }, () => this.setValue(value))
+        this.setData({ cols, fieldNames })
+        this.setValue(value)
     },
 })

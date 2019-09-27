@@ -23,11 +23,6 @@ baseComponent({
         value: {
             type: Array,
             value: [],
-            observer(newVal) {
-                if (this.data.controlled) {
-                    this.setData({ activeValue: newVal }, () => this.getCurrentOptions(newVal))
-                }
-            },
         },
         controlled: {
             type: Boolean,
@@ -40,7 +35,6 @@ baseComponent({
         options: {
             type: Array,
             value: [],
-            observer: 'getCurrentOptions',
         },
         chooseTitle: {
             type: String,
@@ -93,6 +87,17 @@ baseComponent({
                 ft,
             }
         }],
+    },
+    observers: {
+        value(newVal) {
+            if (this.data.controlled) {
+                this.setData({ activeValue: newVal })
+                this.getCurrentOptions(newVal)
+            }
+        },
+        options() {
+            this.getCurrentOptions(this.data.activeValue)
+        },
     },
     methods: {
         getActiveOptions(activeValue) {
@@ -261,6 +266,7 @@ baseComponent({
         const activeValue = controlled ? value : defaultValue
         const fieldNames = Object.assign({}, defaultFieldNames, this.data.defaultFieldNames)
 
-        this.setData({ activeValue, fieldNames }, () => this.getCurrentOptions(activeValue))
+        this.setData({ activeValue, fieldNames })
+        this.getCurrentOptions(activeValue)
     },
 })

@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import shallowEqual from '../helpers/shallowEqual'
 import styleToCssString from '../helpers/styleToCssString'
 import { getTouchPoints, getPointsNumber } from '../helpers/gestures'
 import { getSystemInfo } from '../helpers/checkIPhoneX'
@@ -68,30 +69,19 @@ baseComponent({
                 extMaskStyle: getStyles(newVal),
             })
         },
-        value(value) {
-            const { controlled, options } = this.data
-            const cols = getRealCol(options, fieldNames)
+        ['value, options'](value, options) {
+            const { controlled } = this.data
             const fieldNames = Object.assign({}, defaultFieldNames, this.data.defaultFieldNames)
+            const cols = getRealCol(options, fieldNames)
+
+            if (!shallowEqual(this.data.cols, cols)) {
+                this.setData({ cols })
+            }
 
             if (controlled) {
-                this.setData({ cols }, () => this.setValue(value, true))
+                this.setValue(value, true)
             }
         },
-        options(options) {
-            const fieldNames = Object.assign({}, defaultFieldNames, this.data.defaultFieldNames)
-            const cols = getRealCol(options, fieldNames)
-
-            this.setData({ cols })
-        },
-        // ['value, options'](value, options) {
-        //     const { controlled, inputValue, defaultValue } = this.data
-        //     const fieldNames = Object.assign({}, defaultFieldNames, this.data.defaultFieldNames)
-        //     const cols = getRealCol(options, fieldNames)
-            
-        //     this.setData({ cols }, () => {
-        //         this.setValue(controlled ? value : (inputValue || defaultValue), true)
-        //     })
-        // },
         inputValue(newVal) {
             const {
                 selectedIndex,
@@ -129,15 +119,15 @@ baseComponent({
             this.setData({ styles })
         },
         updated(inputValue, isForce) {
-            if (this.data.inputValue !== inputValue) {
+            if (this.data.inputValue !== inputValue || isForce) {
                 this.setData({
                     inputValue,
                 })
-                
-                // 当接受外部参数时，需要设置选择器位置
-                if (isForce) {
-                    this.select(inputValue, this.data.itemHeight, (y) => this.scrollTo(y, 0, false))
-                }
+            }
+
+            // 设置选择器位置
+            if (isForce) {
+                this.select(inputValue, this.data.itemHeight, (y) => this.scrollTo(y, 0, false))
             }
         },
         setValue(value, isForce) {
@@ -231,6 +221,7 @@ baseComponent({
             if (!this.isMoving || getPointsNumber(e) > 1) return
             this.scrollY = this.lastY - getTouchPoints(e).y + this.startY
             this.setTransform(-this.scrollY, false, this.onScrollChange)
+            // this.Velocity.record(this.scrollY)
         },
         /**
          * 手指触摸动作结束
