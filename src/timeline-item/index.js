@@ -30,6 +30,10 @@ baseComponent({
             type: Boolean,
             value: false,
         },
+        position: {
+            type: String,
+            value: ''
+        }
     },
     data: {
         isLast: false,
@@ -63,7 +67,7 @@ baseComponent({
     methods: {
     	updateIsLastElement({ index, isLast, isPending, pending, position }) {
             const { prefixCls } = this.data
-            const className = position === 'alternate' ? index % 2 === 0 ? `${prefixCls}--alternate ${prefixCls}--left` : `${prefixCls}--alternate ${prefixCls}--right` : position === 'right' ? `${prefixCls}--right` : ''
+            const className = position === 'alternate' ? this.data.position ? `wux-timeline-item--alternate wux-timeline-item--${this.data.position}` : index % 2 === 0 ? `${prefixCls}--alternate ${prefixCls}--left` : `${prefixCls}--alternate ${prefixCls}--right` : position === 'right' ? `${prefixCls}--right` : ''
             this.setData({ isLast, isPending, pending, className })
         },
     },
