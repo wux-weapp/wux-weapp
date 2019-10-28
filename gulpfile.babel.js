@@ -39,14 +39,15 @@ const paths = {
  */
 const px2Rpx = () => {
 
-    // 正则匹配
-    const pxReplace = (value = '') => {
-        const pxRegExp = /(\d*\.?\d+)px/ig
-        const pxReplace = (strArg) => {
-            const str = parseFloat(strArg)
-            return str === 0 ? 0 : `${2 * str}rpx`
-        }
-        return value.replace(pxRegExp, pxReplace)
+    // 正则匹配，(\d+)px 替换成为 (\d+)rpx
+    function pxReplace(value = '') {
+        const pxRegExp = /\b(\d*\.?\d+)px(\s|;|$)/gi;
+        const pxReplace = (matchStr, num, separate) => {
+            return 0 === num ? `0${separate}` : `${num}rpx${separate}`;
+        };
+
+        const result = value.replace(pxRegExp, pxReplace);
+        return result;
     }
 
     return through2.obj(function(file, encoding, cb) {
