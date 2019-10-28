@@ -43,7 +43,7 @@ const px2Rpx = () => {
     function pxReplace(value = '') {
         const pxRegExp = /\b(\d*\.?\d+)px(\s|;|$)/gi;
         const pxReplace = (matchStr, num, separate) => {
-            return 0 === num ? `0${separate}` : `${num}rpx${separate}`;
+            return 0 === num ? `0${separate}` : `${2 * num}rpx${separate}`;
         };
 
         const result = value.replace(pxRegExp, pxReplace);
