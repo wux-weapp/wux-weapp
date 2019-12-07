@@ -1,7 +1,0 @@
-@import "../styles/base/fn.wxss";
-
-.@{wuxClassNamePrefix}-radio {
-    &__selectable {
-        position: static !important;
-    }
-}

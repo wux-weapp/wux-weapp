@@ -1,0 +1,65 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+@preset-colors: #eb2f96, #eb2f96, #f5222d, #fa541c, #fa8c16, #fadb14, #faad14, #13c2c2, #a0d911, #52c41a, #1890ff, #2f54eb, #722ed1;
+@preset-classnames: pink, magenta, red, volcano, orange, yellow, gold, cyan, lime, green, blue, geekblue, purple;
+
+// mixin to iterate over colors and create CSS class for each one
+.make-color-classes(@i: length(@preset-classnames)) when (@i > 0) {
+    .make-color-classes(@i - 1);
+    @classname: extract(@preset-classnames, @i);
+    @darkColor: extract(@preset-colors, @i);
+    @lightColor: fade(@darkColor, 6);
+    @lightBorderColor: fade(@darkColor, 30);
+
+    &--@{classname} {
+        color: @darkColor;
+        background: @lightColor;
+        border-color: @lightBorderColor;
+    }
+
+    &--@{classname}-inverse {
+        color: @text-color-inverse;
+        background: @darkColor;
+        border-color: @darkColor;
+    }
+}
+
+.@{wux-prefix}-tag {
+    color: @tag-default-color;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    line-height: 20px;
+    height: 22px;
+    padding: 0 7px;
+    border-radius: @border-radius-base;
+    border: @border-width-base @border-style-base @border-color-base;
+    background: @tag-default-bg;
+    font-size: @tag-font-size;
+    transition: all .3s cubic-bezier(.215,.61,.355,1);
+    opacity: 1;
+    margin-right: 8px;
+    cursor: pointer;
+    white-space: nowrap;
+
+    &--hover {
+        opacity: .85;
+    }
+
+    &__icon {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        margin-left: 7px;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: contain;
+        background-image: url('data:image/svg+xml;charset=utf-8,<svg class="icon" width="32px" height="32.00px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path fill="#595959" d="M557.312 513.248l265.28-263.904c12.544-12.48 12.608-32.704 0.128-45.248-12.512-12.576-32.704-12.608-45.248-0.128L512.128 467.904l-263.04-263.84c-12.448-12.48-32.704-12.544-45.248-0.064-12.512 12.48-12.544 32.736-0.064 45.28l262.976 263.776L201.6 776.8c-12.544 12.48-12.608 32.704-0.128 45.248a31.937 31.937 0 0 0 22.688 9.44c8.16 0 16.32-3.104 22.56-9.312l265.216-263.808 265.44 266.24c6.24 6.272 14.432 9.408 22.656 9.408a31.94 31.94 0 0 0 22.592-9.344c12.512-12.48 12.544-32.704 0.064-45.248L557.312 513.248z"  /></svg>');
+    }
+
+    .make-color-classes();
+}

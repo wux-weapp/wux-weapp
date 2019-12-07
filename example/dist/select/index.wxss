@@ -6,7 +6,7 @@
   width: 100%;
   font-size: 34rpx;
   line-height: 1.5;
-  color: #444;
+  color: rgba(0,0,0,.85);
   background: #f7f7f8
 }
 .wux-select__toolbar:before {
@@ -15,8 +15,8 @@
   left: 0;
   top: 0;
   right: 0;
-  height: 2rpx;
-  border-top: 2rpx solid #d9d9d9;
+  height: 1PX;
+  border-top: 1PX solid #d9d9d9;
   color: #d9d9d9;
   transform-origin: 0 0;
   transform: scaleY(.5)
@@ -35,7 +35,7 @@
   font-size: 34rpx;
   font-weight: 400;
   line-height: 88rpx;
-  color: #444;
+  color: rgba(0,0,0,.85);
   text-align: center;
   white-space: nowrap
 }

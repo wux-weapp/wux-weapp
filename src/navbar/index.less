@@ -1,0 +1,53 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.navbar-style(@theme, @bg-color, @color) {
+    &--@{theme} {
+        background-color: @bg-color;
+        color: @color;
+    }
+}
+
+.@{wux-prefix}-navbar {
+    display: flex;
+    align-items: center;
+    height: @navbar-size;
+    background-color: @navbar-light-bg;
+    color: @navbar-default-color;
+
+    &__left,
+    &__title,
+    &__right {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        height: 100%;
+    }
+
+    &__left {
+        padding-left: @navbar-margin;
+        font-size: @navbar-font-size;
+    }
+
+    &__title {
+        justify-content: center;
+        font-size: @navbar-font-size + 2px;
+        white-space: nowrap;
+    }
+
+    &__right {
+        justify-content: flex-end;
+        font-size: @navbar-font-size;
+        margin-right: @navbar-margin;
+    }
+
+    .navbar-style(light, @navbar-light-bg, @navbar-default-color);
+    .navbar-style(stable, @navbar-stable-bg, @navbar-default-color);
+    .navbar-style(positive, @navbar-positive-bg, @navbar-active-color);
+    .navbar-style(calm, @navbar-calm-bg, @navbar-active-color);
+    .navbar-style(assertive, @navbar-assertive-bg, @navbar-active-color);
+    .navbar-style(balanced, @navbar-balanced-bg, @navbar-active-color);
+    .navbar-style(energized, @navbar-energized-bg, @navbar-active-color);
+    .navbar-style(royal, @navbar-royal-bg, @navbar-active-color);
+    .navbar-style(dark, @navbar-dark-bg, @navbar-active-color);
+}

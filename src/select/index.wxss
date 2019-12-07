@@ -1,9 +1,0 @@
-@import "../styles/base/fn.wxss";
-
-.@{wuxClassNamePrefix}-select {
-    &__scroll-view {
-        max-height: 270px;
-    }
-
-    .toolbar-style(@dark, @stable-inverse, @balanced)
-}

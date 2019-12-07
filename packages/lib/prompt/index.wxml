@@ -1,0 +1,41 @@
+<wux-animation-group wux-class="{{ classes.wrap }}" in="{{ visible }}" classNames="{{ classNames }}">
+    <view class="{{ classes.bd }}">
+        <image src="{{ icon }}" class="{{ classes.icon }}" wx:if="{{ icon }}" />
+        <view class="{{ classes.title }}" wx:if="{{ title }}">{{ title }}</view>
+        <view class="{{ classes.text }}" wx:if="{{ text }}">{{ text }}</view>
+        <view class="{{ classes.buttons }}" wx:if="{{ buttons && !!buttons.length }}">
+            <block wx:for="{{ buttons }}" wx:for-item="button" wx:key="index">
+                <button
+                    class="{{ classes.button[index].wrap }}"
+                    type="{{ button.type || 'default' }}"
+                    size="{{ button.size || 'default' }}"
+                    loading="{{ button.loading }}"
+                    plain="{{ button.plain }}"
+                    disabled="{{ button.disabled }}"
+                    form-type="{{ button.formType }}"
+                    open-type="{{ button.openType }}"
+                    hover-class="{{ !button.disabled ? classes.button[index].hover : 'none' }}"
+                    hover-stop-propagation="{{ button.hoverStopPropagation }}"
+                    hover-start-time="{{ button.hoverStartTime }}"
+                    hover-stay-time="{{ button.hoverStayTime }}"
+                    lang="{{ button.lang }}"
+                    bindgetuserinfo="bindgetuserinfo"
+                    session-from="{{ button.sessionFrom }}"
+                    send-message-title="{{ button.sendMessageTitle }}"
+                    send-message-path="{{ button.sendMessagePath }}"
+                    send-message-img="{{ button.sendMessageImg }}"
+                    show-message-card="{{ button.showMessageCard }}"
+                    bindcontact="bindcontact"
+                    bindgetphonenumber="bindgetphonenumber"
+                    app-parameter="{{ button.appParameter }}"
+                    binderror="onError"
+                    bindopensetting="bindopensetting"
+                    bindtap="onTap"
+                    data-index="{{ index }}"
+                >
+                    {{ button.text }}
+                </button>
+            </block>
+        </view>
+    </view>
+</wux-animation-group>

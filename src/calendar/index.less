@@ -1,0 +1,205 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-calendar {
+    position: relative;
+    background: @calendar-bg;
+    height: @calendar-height;
+    width: 100%;
+    overflow: hidden;
+
+    &__content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform .3s;
+    }
+
+    &__bd {
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    &__hd {
+        position: relative;
+        width: 100%;
+
+        &:before {
+            .setTopLine(@border-color-split);
+        }
+    }
+
+    &__hd + &__bd {
+        height: calc(100% - 2.2rem);
+    }
+
+    &__toolbar {
+        height: 2.2rem;
+        display: flex;
+        text-align: center;
+    }
+
+    &__picker {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 50%;
+        max-width: 200px;
+        flex-shrink: 10;
+        display: block;
+        line-height: 2.2rem;
+    }
+
+    &__link {
+        float: left;
+        width: 25%;
+        height: 2.2rem;
+        line-height: 2rem;
+        min-width: 36px;
+    }
+
+    &__icon {
+        display: inline-block;
+        vertical-align: middle;
+        background-size: 100% auto;
+        background-position: center;
+
+        &--next,
+        &--prev {
+            width: 0.75rem;
+            height: 0.75rem;
+        }
+
+        &--next {
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2015%2015'%3E%3Cg%3E%3Cpath%20fill%3D'%23007aff'%20d%3D'M1%2C1.6l11.8%2C5.8L1%2C13.4V1.6%20M0%2C0v15l15-7.6L0%2C0L0%2C0z'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+        }
+
+        &--prev {
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2015%2015'%3E%3Cg%3E%3Cpath%20fill%3D'%23007aff'%20d%3D'M14%2C1.6v11.8L2.2%2C7.6L14%2C1.6%20M15%2C0L0%2C7.6L15%2C15V0L15%2C0z'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+        }
+    }
+
+    &__value {
+        flex-shrink: 1;
+        position: relative;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        float: left;
+        width: 50%;
+        height: 2.2rem;
+    }
+
+    &__weekdays {
+        height: 18px;
+        background: #f7f7f8;
+        display: flex;
+        font-size: 11px;
+        box-sizing: border-box;
+        position: relative;
+
+        &:after {
+            .setBottomLine(@border-color-split);
+        }
+    }
+
+    &__weekdays + &__months {
+        height: calc(100% - 18px);
+    }
+
+    &__weekday {
+        flex-shrink: 1;
+        width: 14.28571429%;
+        width: calc(100% / 7);
+        line-height: 17px;
+        text-align: center;
+    }
+
+    &__months {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+
+        &-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            position: relative;
+            -webkit-backface-visibility: hidden;
+            transform: translate3d(0px, 0px, 0px)
+        }
+    }
+
+    &__month {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    &__days {
+        height: 16.66666667%;
+        height: calc(100% / 6);
+        display: flex;
+        flex-shrink: 1;
+        width: 100%;
+        position: relative;
+
+        &:after {
+            .setBottomLine(@border-color-split);
+        }
+
+        &:last-child:after {
+            display: none;
+        }
+    }
+
+    &__day {
+        flex-shrink: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        width: 14.28571429%;
+        width: calc(100% / 7);
+        text-align: center;
+        color: @calendar-text-color;
+        font-size: @calendar-text-font-size;
+        cursor: pointer;
+
+        &--prev {
+            color: @calendar-prev-text-color;
+        }
+
+        &--next {
+            color: @calendar-next-text-color;
+        }
+
+        &--disabled {
+            color: @calendar-disabled-text-color;
+            cursor: auto;
+        }
+    }
+
+    &__day--today &__text {
+        background: @calendar-today-text-color;
+    }
+
+    &__day--selected &__text {
+        background: @calendar-active-text-bg;
+        color: @calendar-active-text-color;
+    }
+
+    &__text {
+        display: inline-block;
+        border-radius: 100%;
+        width: @calendar-text-size;
+        height: @calendar-text-size;
+        line-height: @calendar-text-size;
+    }
+}

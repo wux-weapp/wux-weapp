@@ -1,0 +1,51 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.avatar-size(@size) {
+    width: @size;
+    height: @size;
+    line-height: @size;
+}
+
+.@{wux-prefix}-skeleton-avatar {
+    display: inline-block;
+    vertical-align: top;
+    background: @skeleton-bg;
+    .avatar-size(@skeleton-avatar-size-base);
+
+    &--small {
+        .avatar-size(@skeleton-avatar-size-sm);
+    }
+
+    &--large {
+        .avatar-size(@skeleton-avatar-size-lg);
+    }
+
+    &--circle {
+        border-radius: 50%;
+    }
+
+    &--rounded {
+        border-radius: @skeleton-radius;
+    }
+
+    &--square {
+        border-radius: 0;
+    }
+
+    &--active {
+        background: linear-gradient(90deg, @skeleton-bg 25%, @skeleton-to-bg 37%, @skeleton-bg 63%);
+        animation: loading 1.4s ease infinite;
+        background-size: 400% 100%;
+    }
+}
+
+@keyframes loading {
+    0% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+}

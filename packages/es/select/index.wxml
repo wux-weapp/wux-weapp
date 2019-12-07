@@ -1,0 +1,16 @@
+<wux-popup-select
+    id="wux-popup-select"
+    prefixCls="{{ prefixCls }}"
+    value="{{ value }}"
+    options="{{ options }}"
+    multiple="{{ multiple }}"
+    max="{{ max }}"
+    toolbar="{{ toolbar }}"
+    visible="{{ visible }}"
+    controlled
+    disabled
+    bind:cancel="onCancel"
+    bind:confirm="onConfirm"
+    bind:visibleChange="onVisibleChange"
+    bind:valueChange="onValueChange"
+/>

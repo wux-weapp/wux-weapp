@@ -1,0 +1,56 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-swipe {
+    overflow: hidden;
+    position: relative;
+
+    &__cover {
+        position: absolute;
+        z-index: 2;
+        background: transparent;
+        height: 100%;
+        width: 100%;
+        top: 0;
+    }
+
+    &__actions {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        display: flex;
+        overflow: hidden;
+        white-space: nowrap;
+        transition: all .25s;
+
+        &--left {
+            left: 0;
+        }
+
+        &--right {
+            right: 0;
+        }
+    }
+
+    &__action {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    &__text {
+        padding: 0 8px;
+    }
+
+    &__content {
+        position: relative;
+        background-color: #fff;
+        transition: all .25s;
+    }
+
+    &--swiping &__actions,
+    &--swiping &__content {
+        transition: none;
+    }
+}

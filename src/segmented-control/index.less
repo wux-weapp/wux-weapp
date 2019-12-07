@@ -1,0 +1,67 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.segment(@theme, @color) {
+    &--@{theme} &__item {
+    	color: @color;
+    	border-color: @color;
+
+    	&--current {
+    		background: @color;
+    		color: @segment-default-color;
+    	}
+    }
+}
+
+.@{wux-prefix}-segment {
+    display: flex;
+    border-radius: @segment-radius;
+    overflow: hidden;
+    min-height: @segment-size;
+    opacity: 1;
+    margin: @segment-margin;
+
+    &--disabled {
+    	opacity: @disabled-opacity;
+    }
+
+    &__item {
+	    display: flex;
+	    flex: 1;
+	    justify-content: center;
+	    align-items: center;
+	    color: @segment-balanced-bg;
+	    font-size: @segment-font-size;
+	    line-height: 1;
+	    transition: background .3s;
+	    position: relative;
+	    border: 1px solid @segment-balanced-bg;
+	    width: 100%;
+	    box-sizing: border-box;
+	    border-left-width: 0;
+
+	    &:first-child {
+		    border-left-width: 1px;
+		    border-radius: @segment-radius 0 0 @segment-radius;
+		}
+
+		&:last-child {
+		    border-radius: 0 @segment-radius @segment-radius 0;
+		}
+
+		&--current {
+		    background: @segment-balanced-bg;
+		    color: @segment-default-color;
+		}
+	}
+
+	.segment(light, @segment-light-bg);
+    .segment(stable, @segment-light-bg);
+    .segment(positive, @segment-positive-bg);
+    .segment(calm, @segment-calm-bg);
+    .segment(assertive, @segment-assertive-bg);
+    .segment(balanced, @segment-balanced-bg);
+    .segment(energized, @segment-energized-bg);
+    .segment(royal, @segment-royal-bg);
+    .segment(dark, @segment-dark-bg);
+}

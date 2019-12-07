@@ -1,6 +1,6 @@
 {
   "name": "wux-weapp",
-  "version": "3.8.2",
+  "version": "3.8.3",
   "description": "一套组件化、可复用、易扩展的微信小程序 UI 组件库",
   "main": "dist/index.js",
   "miniprogram": "dist",
@@ -25,6 +25,9 @@
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development gulp",
+    "build:core": "cross-env NODE_ENV=production gulp buildCore",
+    "build:es": "cross-env NODE_ENV=production gulp buildEs",
+    "build:lib": "cross-env NODE_ENV=production gulp buildLib",
     "build": "cross-env NODE_ENV=production gulp build"
   },
   "repository": {

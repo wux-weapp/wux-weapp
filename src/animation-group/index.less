@@ -1,0 +1,276 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-animate {
+    &--fadeIn {
+        &-enter {
+            transition: opacity .3s;
+            opacity: 0;
+        }
+
+        &-enter-active,
+        &-enter-done {
+            opacity: 1;
+        }
+
+        &-exit {
+            transition: opacity .3s;
+            opacity: 1;
+        }
+
+        &-exit-active,
+        &-exit-done {
+            opacity: 0;
+        }
+    }
+
+    &--fadeInDown {
+        &-enter {
+            transition: opacity .3s, transform .3s;
+            opacity: 0;
+            transform: translate3d(0, -100%, 0);
+        }
+
+        &-enter-active,
+        &-enter-done {
+            opacity: 1;
+            transform: none;
+        }
+
+        &-exit {
+            transition: opacity .3s, transform .3s;
+            opacity: 1;
+            transform: none;
+        }
+
+        &-exit-active,
+        &-exit-done {
+            opacity: 0;
+            transform: translate3d(0, -100%, 0);
+        }
+    }
+
+    &--fadeInLeft {
+        &-enter {
+            transition: opacity .3s, transform .3s;
+            opacity: 0;
+            transform: translate3d(-100%, 0, 0);
+        }
+
+        &-enter-active,
+        &-enter-done {
+            opacity: 1;
+            transform: none;
+        }
+
+        &-exit {
+            transition: opacity .3s, transform .3s;
+            opacity: 1;
+            transform: none;
+        }
+
+        &-exit-active,
+        &-exit-done {
+            opacity: 0;
+            transform: translate3d(-100%, 0, 0);
+        }
+    }
+
+    &--fadeInRight {
+        &-enter {
+            transition: opacity .3s, transform .3s;
+            opacity: 0;
+            transform: translate3d(100%, 0, 0);
+        }
+
+        &-enter-active,
+        &-enter-done {
+            opacity: 1;
+            transform: none;
+        }
+
+        &-exit {
+            transition: opacity .3s, transform .3s;
+            opacity: 1;
+            transform: none;
+        }
+
+        &-exit-active,
+        &-exit-done {
+            opacity: 0;
+            transform: translate3d(100%, 0, 0);
+        }
+    }
+
+    &--fadeInUp {
+        &-enter {
+            transition: opacity .3s, transform .3s;
+            opacity: 0;
+            transform: translate3d(0, 100%, 0);
+        }
+
+        &-enter-active,
+        &-enter-done {
+            opacity: 1;
+            transform: none;
+        }
+
+        &-exit {
+            transition: opacity .3s, transform .3s;
+            opacity: 1;
+            transform: none;
+        }
+
+        &-exit-active,
+        &-exit-done {
+            opacity: 0;
+            transform: translate3d(0, 100%, 0);
+        }
+    }
+
+    &--slideInUp {
+        &-enter {
+            transition: transform .3s;
+            transform: translate3d(0, 100%, 0);
+            visibility: visible;
+        }
+
+        &-enter-active,
+        &-enter-done {
+            transform: translateZ(0);
+        }
+
+        &-exit {
+            transition: transform .3s;
+            transform: translateZ(0);
+        }
+
+        &-exit-active,
+        &-exit-done {
+            transform: translate3d(0, 100%, 0);
+            visibility: visible;
+        }
+    }
+
+    &--slideInDown {
+        &-enter {
+            transition: transform .3s;
+            transform: translate3d(0, -100%, 0);
+            visibility: visible;
+        }
+
+        &-enter-active,
+        &-enter-done {
+            transform: translateZ(0);
+        }
+
+        &-exit {
+            transition: transform .3s;
+            transform: translateZ(0);
+        }
+
+        &-exit-active,
+        &-exit-done {
+            transform: translate3d(0, -100%, 0);
+            visibility: visible;
+        }
+    }
+
+    &--slideInLeft {
+        &-enter {
+            transition: transform .3s;
+            transform: translate3d(-100%, 0, 0);
+            visibility: visible;
+        }
+
+        &-enter-active,
+        &-enter-done {
+            transform: translateZ(0);
+        }
+
+        &-exit {
+            transition: transform .3s;
+            transform: translateZ(0);
+        }
+
+        &-exit-active,
+        &-exit-done {
+            transform: translate3d(-100%, 0, 0);
+            visibility: visible;
+        }
+    }
+
+    &--slideInRight {
+        &-enter {
+            transition: transform .3s;
+            transform: translate3d(100%, 0, 0);
+            visibility: visible;
+        }
+
+        &-enter-active,
+        &-enter-done {
+            transform: none;
+        }
+
+        &-exit {
+            transition: transform .3s;
+            transform: none;
+        }
+
+        &-exit-active,
+        &-exit-done {
+            transform: translate3d(100%, 0, 0);
+            visibility: visible;
+        }
+    }
+
+    &--zoom {
+        &-enter {
+            transition: all .3s cubic-bezier(.215, .61, .355, 1);
+            opacity: .01;
+            transform: scale(.75);
+        }
+
+        &-enter-active,
+        &-enter-done {
+            opacity: 1;
+            transform: none;
+        }
+
+        &-exit {
+            transition: all .25s linear;
+            transform: none;
+        }
+
+        &-exit-active,
+        &-exit-done {
+            opacity: .01;
+            transform: scale(.75);
+        }
+    }
+
+    &--punch {
+        &-enter {
+            transition: all .3s cubic-bezier(.215, .61, .355, 1);
+            opacity: .01;
+            transform: scale(1.35);
+        }
+
+        &-enter-active,
+        &-enter-done {
+            opacity: 1;
+            transform: none;
+        }
+
+        &-exit {
+            transition: all .25s linear;
+            transform: none;
+        }
+
+        &-exit-active,
+        &-exit-done {
+            opacity: .01;
+            transform: scale(1.35);
+        }
+    }
+}

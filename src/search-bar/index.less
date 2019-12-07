@@ -1,0 +1,107 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-search-bar {
+	position: relative;
+    padding: 8px 10px;
+    display: flex;
+    box-sizing: border-box;
+    background-color: @search-bar-bg;
+
+    &:before {
+        .setTopLine(@border-color-split);
+    }
+
+    &:after {
+        .setBottomLine(@border-color-split);
+    }
+
+    &__form {
+		position: relative;
+		flex: 1;
+	    width: 100%;
+	    height: @search-bar-input-height;
+	    overflow: hidden;
+	    background-color: #fff;
+	    background-clip: padding-box;
+	    border-radius: @search-bar-radius;
+    }
+
+    &__box {
+    	position: relative;
+	    padding-left: 30px;
+	    padding-right: 30px;
+	    height: 100%;
+	    width: 100%;
+	    box-sizing: border-box;
+	    z-index: 1;
+    }
+
+    &__input {
+		padding: 4px 0;
+		width: 100%;
+		height: @search-bar-input-height;
+		min-height: inherit;
+		border: 0;
+		font-size: @search-bar-font-size;
+		line-height: @search-bar-input-height;
+		box-sizing: border-box;
+		background: transparent;
+    }
+
+    &__label {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+    	position: absolute;
+		top: 1px;
+		right: 1px;
+		bottom: 1px;
+		left: 1px;
+		z-index: 2;
+		border-radius: @search-bar-radius;
+		text-align: center;
+		color: @text-color-secondary;
+		background: #FFFFFF;
+    }
+
+    &__text {
+		display: inline-block;
+		font-size: @search-bar-font-size;
+		vertical-align: middle;
+		margin-left: @margin-component-base;
+    }
+
+    &__cancel {
+		margin-left: 10px;
+		line-height: @search-bar-input-height;
+		color: @balanced;
+		white-space: nowrap;
+    }
+
+    &__icon {
+    	vertical-align: middle;
+    }
+
+    &__search {
+    	position: absolute;
+	    left: 10px;
+	    top: 8px;
+    }
+
+    &__clear {
+    	display: none;
+    	position: absolute;
+	    top: 8px;
+	    right: 0;
+	    padding: 0 10px;
+    }
+
+    &--focus &__clear {
+		display: block;
+	}
+
+	&--disabled {
+		opacity: @disabled-opacity;
+	}
+}

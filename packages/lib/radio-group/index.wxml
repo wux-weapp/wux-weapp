@@ -1,0 +1,25 @@
+<wux-cell-group id="wux-cell-group" wux-class="{{ prefixCls }}" prefixCls="{{ cellGroupPrefixCls }}" title="{{ title }}" label="{{ label }}">
+    <block wx:for="{{ common.getOptions(options) }}" wx:for-item="option" wx:key="" wx:if="{{ options.length > 0 }}">
+        <wux-radio
+            prefixCls="{{ option.prefixCls || 'wux-radio' }}"
+            cellPrefixCls="{{ option.cellPrefixCls || 'wux-cell' }}"
+            selectablePrefixCls="{{ option.selectablePrefixCls || 'wux-selectable' }}"
+            thumb="{{ option.thumb }}"
+            title="{{ option.title }}"
+            label="{{ option.label }}"
+            value="{{ option.value }}"
+            checked="{{ inputValue === option.value }}"
+            disabled="{{ option.disabled }}"
+            color="{{ option.color || 'balanced' }}"
+            data-index="{{ index }}"
+            bind:change="onRadioChange"
+        />
+    </block>
+    <block wx:if="{{ options.length === 0 }}">
+        <slot></slot>
+    </block>
+</wux-cell-group>
+
+<wxs module="common">
+    module.exports.getOptions = function(options) { return options.map(function(option) { if (option.constructor === 'String') { return { title: option, value: option } } return option }) }
+</wxs>

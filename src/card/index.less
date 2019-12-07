@@ -1,0 +1,136 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-card {
+    position: relative;
+    min-height: @card-height;
+    padding-bottom: 6px;
+    display: flex;
+    -webkit-box-orient: vertical;
+    flex-direction: column;
+    background-color: @card-bg;
+
+    &--bordered {
+        border-radius: @card-radius;
+
+        &:before {
+            .hairline(@border-color-split);
+            border-radius: @card-radius;
+            border-top-width: @border-width-base;
+            border-right-width: @border-width-base;
+            border-bottom-width: @border-width-base;
+            border-left-width: @border-width-base;
+        }
+    }
+
+    &--full {
+        &:before {
+            border-radius: 0;
+            border-right-width: 0;
+            border-left-width: 0;
+        }
+    }
+
+    &--has-actions {
+        padding-bottom: 0;
+    }
+
+    &__hd {
+        position: relative;
+        display: flex;
+        font-size: 17px;
+        padding: @card-hd-padding;
+        align-items: center;
+
+        &:before {
+            .setBottomLine(@border-color-split);
+        }
+    }
+
+    &__content {
+        flex: 1;
+        text-align: left;
+        color: @black;
+    }
+
+    &__thumb {
+        .square(@card-icon-size);
+        display: inline-block;
+        position: relative;
+        margin-left: auto;
+        margin-right: @margin-component-base;
+        overflow: hidden;
+        vertical-align: middle;
+    }
+
+    &__extra {
+        flex: 1;
+        text-align: right;
+        font-size: 17px;
+        color: @text-color-secondary;
+    }
+
+    &__bd {
+        position: relative;
+        padding: @card-bd-padding;
+        font-size: 15px;
+        color: @heading-color;
+        min-height: 40px;
+    }
+
+    &__ft {
+        display: flex;
+        font-size: @font-size-base;
+        color: @text-color-secondary;
+        padding: @card-ft-padding;
+    }
+
+    &__actions {
+        position: relative;
+        display: flex;
+        line-height: 50px;
+        margin-top: 6px;
+        justify-content: center;
+        align-items: center;
+
+        &:before {
+            .setTopLine(@border-color-split);
+        }
+    }
+
+    &__action {
+        position: relative;
+        display: block;
+        flex: 1;
+        color: @balanced;
+        text-align: center;
+
+        &:before {
+            .setRightLine(@border-color-split);
+        }
+
+        &:last-child:before {
+            display: none;
+        }
+
+        &--default {
+            color: @dark;
+        }
+
+        &--primary {
+            color: @balanced !important;
+        }
+
+        &--bold {
+            font-weight: 500 !important;
+        }
+
+        &--hover {
+            background-color: @active-state-bg !important;
+        }
+
+        &--disabled {
+            opacity: @disabled-opacity;
+        }
+    }
+}

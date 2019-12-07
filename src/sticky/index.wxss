@@ -1,6 +1,0 @@
-@import "../styles/base/fn.wxss";
-
-.@{wuxClassNamePrefix}-sticky {
-    position: relative;
-    z-index: 1;
-}

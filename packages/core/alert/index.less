@@ -1,0 +1,48 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.alert(@theme, @bg-color) {
+    &--@{theme} {
+        color: @alert-color;
+        background-color: @bg-color;
+    }
+}
+
+.@{wux-prefix}-alert {
+    padding: 10px 15px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: @alert-border-radius;
+    font-size: @alert-font-size;
+
+    &__thumb {
+        .square(@alert-thumb-size);
+        display: block;
+        margin-right: @alert-thumb-margin;
+    }
+
+    &__bd {
+        flex: 1;
+    }
+
+    &__text {
+        text-align: left;
+    }
+
+    &__desc {
+        text-align: left;
+        line-height: 1.2;
+        font-size: 12px;
+    }
+
+    .alert(light, @alert-light-bg);
+    .alert(stable, @alert-stable-bg);
+    .alert(positive, @alert-positive-bg);
+    .alert(calm, @alert-calm-bg);
+    .alert(assertive, @alert-assertive-bg);
+    .alert(balanced, @alert-balanced-bg);
+    .alert(energized, @alert-energized-bg);
+    .alert(royal, @alert-royal-bg);
+    .alert(dark, @alert-dark-bg);
+}

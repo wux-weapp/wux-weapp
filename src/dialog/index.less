@@ -1,0 +1,83 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-dialog {
+	&__button {
+		.button-reset();
+		display: block;
+		flex: 1;
+		color: @balanced !important;
+		position: relative;
+
+		&--default {
+			color: @dark !important;
+		}
+
+		&--primary {
+			color: @balanced !important;
+		}
+
+		&--bold {
+			font-weight: 500 !important;
+		}
+
+		&--hover {
+			background-color: @active-state-bg !important;
+		}
+
+		&--disabled {
+	        opacity: @disabled-opacity;
+	    }
+	}
+
+    &__prompt {
+        position: relative;
+        margin-top: 10px;
+
+        &:after {
+            .hairline(@border-color-split);
+            border-top-width: @border-width-base;
+            border-right-width: @border-width-base;
+            border-bottom-width: @border-width-base;
+            border-left-width: @border-width-base;
+            border-radius: @border-radius-lg;
+        }
+    }
+
+	&__input {
+		padding: 4px 6px;
+		height: 36px;
+    	line-height: 1;
+		width: 100%;
+		text-align: left;
+		box-sizing: border-box;
+	}
+
+	&__buttons {
+		display: flex;
+		flex: 1;
+
+		&--horizontal {
+			.@{wux-prefix}-dialog__button {
+				&:after {
+					.setLeftLine(@border-color-split);
+				}
+
+				&:first-child:after {
+					display: none;
+				}
+			}
+		}
+
+		&--vertical {
+			display: block;
+			height: auto;
+
+			.@{wux-prefix}-dialog__button {
+				&:after {
+					.setTopLine(@border-color-split);
+				}
+			}
+		}
+	}
+}

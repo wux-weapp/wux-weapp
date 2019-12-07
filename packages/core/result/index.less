@@ -1,0 +1,46 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-result {
+    padding-top: 0;
+    text-align: center;
+
+    &__bd {
+        padding: @result-bd-padding;
+    }
+
+    &__icon {
+        padding-top: 36px;
+        text-align: center;
+    }
+
+    &__title {
+        margin-bottom: 5px;
+        font-weight: 400;
+        font-size: @result-title-font-size;
+    }
+
+    &__desc {
+        font-size: @font-size-base;
+        color: @text-color-secondary;
+    }
+
+    &__buttons {
+        margin-top: 30px;
+    }
+
+    &__ft {
+        font-size: @font-size-base;
+        color: @text-color-secondary;
+    }
+
+    &--fixed &__ft {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        padding: @result-ft-padding;
+        text-align: center;
+        box-sizing: border-box;
+    }
+}

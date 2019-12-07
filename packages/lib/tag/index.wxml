@@ -1,0 +1,4 @@
+<view class="wux-class {{ classes.wrap }} {{ className }}" hover-class="{{ classes.hover }}" style="{{ tagStyle }}" bindtap="onClick" wx:if="{{ tagVisible }}">
+    <slot></slot>
+    <view class="{{ classes.icon }}" catchtap="onClose" wx:if="{{ closable }}"></view>
+</view>

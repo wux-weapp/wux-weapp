@@ -1,0 +1,76 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-textarea {
+    position: relative;
+    display: flex;
+    align-item: center;
+
+    &__label {
+        margin-left: 0;
+        margin-right: @margin-component-base;
+        text-align: left;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 105px;
+    }
+
+    &__control {
+        flex: 1;
+    }
+
+    &__item {
+        width: 100%;
+        border: 0;
+        outline: 0;
+        -webkit-appearance: none;
+        background-color: transparent;
+        font-size: inherit;
+        color: inherit;
+        height: 1.47058824em;
+        min-height: 1.47058824em;
+        line-height: 1.47058824;
+    }
+
+    &__extra {
+        color: @text-color-secondary;
+        margin-left: @margin-component-base;
+    }
+
+    &__error {
+        margin-left: @margin-component-base;
+    }
+
+    &__clear {
+        display: none;
+    }
+
+    &--focus &__clear {
+        display: block;
+    }
+
+    &--disabled {
+        opacity: @disabled-opacity;
+    }
+
+    &--error &__control {
+        color: @assertive;
+    }
+
+    &__count {
+        position: absolute;
+        bottom: -6px;
+        right: 0;
+        color: @text-color-secondary;
+        font-size: @font-size-base;
+        line-height: 1.47058824;
+    }
+
+    &__current {
+        color: @heading-color;
+    }
+
+    &--has-count &__control {
+        padding-bottom: 10px;
+    }
+}

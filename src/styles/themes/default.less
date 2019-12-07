@@ -1,0 +1,558 @@
+// The prefix to use on all css classes from wux.
+@wux-prefix: wux;
+
+// -------- Colors -----------
+@light: #fff;
+@stable: #f8f8f8;
+@positive: #387ef5;
+@calm: #11c1f3;
+@balanced: #33cd5f;
+@energized: #ffc900;
+@assertive: #ef473a;
+@royal: #886aea;
+@dark: #444;
+
+@light-inverse: #ddd;
+@stable-inverse: #b2b2b2;
+
+@white: #fff;
+@black: #000;
+
+// Base Scaffolding Variables
+// ---
+
+// Background color for `<body>`
+@body-background: #fff;
+// Base background color for most components
+@component-background: #fff;
+@font-family: -apple-system-font, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+@text-color: fade(@black, 65%);
+@text-color-secondary: fade(@black, 45%);
+@text-color-inverse: @white;
+@heading-color: fade(@black, 85%);
+@heading-color-dark: fade(@white, 100%);
+@text-color-dark: fade(@white, 85%);
+@text-color-secondary-dark: fade(@white, 65%);
+@font-variant-base: tabular-nums;
+@font-feature-settings-base: 'tnum';
+@font-size-base: 14px;
+@font-size-lg: 16px;
+@font-size-sm: 12px;
+@line-height-base: 1.5;
+@line-height-lg: 2;
+@line-height-sm: 1;
+@border-radius-base: 4px;
+@border-radius-lg: 6px;
+@border-radius-sm: 2px;
+
+// SafeArea
+@safe-area-inset-top: 44px;
+@safe-area-inset-right: 0;
+@safe-area-inset-bottom: 34px;
+@safe-area-inset-left: 0;
+
+// Spacing
+@spacing-base: 10px;
+@spacing-xl: 20px;
+@spacing-lg: 15px;
+@spacing-sm: 5px;
+
+// Margin
+@margin-component-base: 5px;
+@margin-component-lg: 10px;
+@margin-component-sm: 2px;
+
+// Disabled states
+@disabled-opacity: .3;
+
+// Backdrop
+@backdrop-background: fade(@black, 40%);
+@backdrop-background-inverse: transparent;
+
+@background-color-base: #f5f5f5;
+@background-color-light: #fafafa;
+
+// Icon
+// Base background color for small icons. eg: dots
+@icon-color-base: #ccc;
+@icon-color-active: #888;
+
+// Scroll view max height
+@scroll-view-size: 270px;
+
+// The background color for active state
+// buttons & cells and so on
+@active-state-bg: #ececec;
+
+// Border color
+@border-color-base: #e8e8e8; // base border outline a component
+@border-color-split: #d9d9d9; // split border inside a component
+@border-color-inverse: @white;
+@border-width-base: 1PX; // width of the border for a component
+@border-style-base: solid; // style of a components border
+
+// Shadow
+@shadow-color: rgba(0, 0, 0, 0.15);
+@shadow-color-inverse: @component-background;
+@box-shadow-base: 0 2px 8px @shadow-color;
+
+// Buttons
+@button-border-radius: @border-radius-base;
+@button-block-margin: 10px;
+@button-opacity-hover: .3;
+@button-opacity-disabled: .4;
+@button-default-border: transparent;
+
+@button-font-size-base: @font-size-lg;
+@button-height-base: 44px;
+@button-padding-base: 12px;
+
+@button-font-size-lg: 20px;
+@button-height-lg: 59px;
+@button-padding-lg: 16px;
+
+@button-font-size-sm: 12px;
+@button-height-sm: 30px;
+@button-padding-sm: 4px;
+
+@button-light-bg: @light;
+@button-light-text: #444;
+@button-light-border: @light-inverse;
+@button-light-active-bg: darken(@button-light-bg, 10%);
+@button-light-active-border: transparent;
+
+@button-stable-bg: @stable;
+@button-stable-text: #444;
+@button-stable-border: @stable-inverse;
+@button-stable-active-bg: darken(@button-stable-bg, 10%);
+@button-stable-active-border: transparent;
+
+@button-positive-bg: @positive;
+@button-positive-text: #fff;
+@button-positive-border: transparent;
+@button-positive-active-bg: darken(@button-positive-bg, 10%);
+@button-positive-active-border: transparent;
+
+@button-calm-bg: @calm;
+@button-calm-text: #fff;
+@button-calm-border: transparent;
+@button-calm-active-bg: darken(@button-calm-bg, 10%);
+@button-calm-active-border: transparent;
+
+@button-assertive-bg: @assertive;
+@button-assertive-text: #fff;
+@button-assertive-border: transparent;
+@button-assertive-active-bg: darken(@button-assertive-bg, 10%);
+@button-assertive-active-border: transparent;
+
+@button-balanced-bg: @balanced;
+@button-balanced-text: #fff;
+@button-balanced-border: transparent;
+@button-balanced-active-bg: darken(@button-balanced-bg, 10%);
+@button-balanced-active-border: transparent;
+
+@button-energized-bg: @energized;
+@button-energized-text: #fff;
+@button-energized-border: transparent;
+@button-energized-active-bg: darken(@button-energized-bg, 10%);
+@button-energized-active-border: transparent;
+
+@button-royal-bg: @royal;
+@button-royal-text: #fff;
+@button-royal-border: transparent;
+@button-royal-active-bg: darken(@button-royal-bg, 10%);
+@button-royal-active-border: transparent;
+
+@button-dark-bg: @dark;
+@button-dark-text: #fff;
+@button-dark-border: transparent;
+@button-dark-active-bg: darken(@button-dark-bg, 10%);
+@button-dark-active-border: transparent;
+
+// Avatar
+@avatar-size-base: 32px;
+@avatar-size-lg: 40px;
+@avatar-size-sm: 24px;
+@avatar-font-size-base: 18px;
+@avatar-font-size-lg: 24px;
+@avatar-font-size-sm: 14px;
+@avatar-bg: @icon-color-base;
+@avatar-color: @text-color-inverse;
+@avatar-border-radius: @border-radius-base;
+
+// Progress
+@progress-remaining-color: #f3f3f3;
+@progress-default-color: @balanced;
+@progress-text-margin: @margin-component-base;
+@progress-radius: 100px;
+
+// Alert
+@alert-thumb-size: 20px;
+@alert-thumb-margin: @margin-component-base;
+@alert-font-size: @font-size-base;
+@alert-color: @text-color-inverse;
+@alert-border-radius: @border-radius-sm;
+@alert-light-bg: @light-inverse;
+@alert-stable-bg: @stable-inverse;
+@alert-positive-bg: @positive;
+@alert-calm-bg: @calm;
+@alert-assertive-bg: @assertive;
+@alert-balanced-bg: @balanced;
+@alert-energized-bg: @energized;
+@alert-royal-bg: @royal;
+@alert-dark-bg: @dark;
+
+// Spin
+@spin-font-size: @font-size-base;
+@spin-line-height: @line-height-base;
+@spin-color: #108ee9;
+@spin-dot-size-base: 20px;
+@spin-dot-size-lg: 32px;
+@spin-dot-size-sm: 14px;
+
+// Badge
+@badge-bg: #ed3f14;
+@badge-color: #fff;
+@badge-height: 18px;
+@badge-dot-size: 8px;
+@badge-status-size: 6px;
+@badge-font-size: @font-size-sm;
+@badge-success-bg: #52c41a;
+@badge-processing-bg: #1890ff;
+@badge-normal-bg: #d9d9d9;
+@badge-error-bg: #f5222d;
+@badge-warning-bg: #faad14;
+
+// Timeline
+@timeline-font-size: @font-size-base;
+@timeline-width: 2px;
+@timeline-color: @border-color-base;
+@timeline-dot-border-width: 2px;
+@timeline-dot-color: @positive;
+@timeline-dot-bg: @component-background;
+@timeline-dot-size: 12px;
+
+// Card
+@card-height: 96px;
+@card-bg: @component-background;
+@card-radius: 10px;
+@card-hd-padding: 9px @spacing-lg;
+@card-bd-padding: @spacing-lg @spacing-lg 6px;
+@card-ft-padding: 0 @spacing-lg;
+@card-icon-size: 32px;
+
+// Tabs
+@tabs-font-size: @font-size-base;
+@tabs-color: #80848f;
+@tabs-height: 44px;
+@tabs-bg: @component-background;
+@tabs-vertical-height: @scroll-view-size;
+@tabs-scrolling-size: 15px;
+@tabs-bar-size: 2px;
+@tabs-bar-light-bg: @light-inverse;
+@tabs-bar-stable-bg: @stable-inverse;
+@tabs-bar-positive-bg: @positive;
+@tabs-bar-calm-bg: @calm;
+@tabs-bar-assertive-bg: @assertive;
+@tabs-bar-balanced-bg: @balanced;
+@tabs-bar-energized-bg: @energized;
+@tabs-bar-royal-bg: @royal;
+@tabs-bar-dark-bg: @dark;
+
+// Switch
+@switch-height: 32px;
+@switch-bg: #dfdfdf;
+@switch-color: @balanced;
+
+// Pagination
+@pagination-height: 44px;
+@pagination-color: @positive;
+@pagination-dot-size: 8px;
+@pagination-dot-margin: @margin-component-sm;
+@pagination-dot-bg: @icon-color-base;
+@pagination-dot-active-bg: @icon-color-active;
+
+// InputNumber
+@input-number-disabled-color: @icon-color-base;
+@input-number-light-color: @light-inverse;
+@input-number-stable-color: @stable-inverse;
+@input-number-positive-color: @positive;
+@input-number-calm-color: @calm;
+@input-number-assertive-color: @assertive;
+@input-number-balanced-color: @balanced;
+@input-number-energized-color: @energized;
+@input-number-royal-color: @royal;
+@input-number-dark-color: @dark;
+
+// WhiteSpace
+@whitespace-size-base: @spacing-base;
+@whitespace-size-lg: @spacing-lg;
+@whitespace-size-sm: @spacing-sm;
+
+// WingBlank
+@wingblank-size-base: @spacing-base;
+@wingblank-size-lg: @spacing-lg;
+@wingblank-size-sm: @spacing-sm;
+
+// Toptips
+@toptips-font-size: @font-size-base;
+@toptips-color: @text-color-inverse;
+@toptips-success-bg: @balanced;
+@toptips-info-bg: @positive;
+@toptips-warn-bg: @energized;
+@toptips-cancel-bg: @assertive;
+
+// Steps
+@steps-default-color: @text-color-inverse;
+@steps-default-bg: #e9eaec;
+@steps-process-bg: @positive;
+@steps-wait-bg: @steps-default-bg;
+@steps-finish-bg: @steps-process-bg;
+@steps-error-bg: @assertive;
+@steps-line-size: 1px;
+@steps-icon-size: 24px;
+
+// Tag
+@tag-default-bg: @background-color-light;
+@tag-default-color: @text-color;
+@tag-font-size: @font-size-sm;
+
+// Tabbar
+@tabbar-height: 46px;
+@tabbar-bg: @component-background;
+@tabbar-font-size: @font-size-sm;
+@tabbar-default-color: #80848f;
+@tabbar-light-bg: @light-inverse;
+@tabbar-stable-bg: @stable-inverse;
+@tabbar-positive-bg: @positive;
+@tabbar-calm-bg: @calm;
+@tabbar-assertive-bg: @assertive;
+@tabbar-balanced-bg: @balanced;
+@tabbar-energized-bg: @energized;
+@tabbar-royal-bg: @royal;
+@tabbar-dark-bg: @dark;
+
+// Upload
+@upload-bg: @background-color-light;
+@upload-size: 78px;
+@upload-border-radius: @border-radius-base;
+@upload-icon-size: 15px;
+@upload-normal-border-style: dashed;
+@upload-success-border-style: solid;
+@upload-normal-border-color: #d9d9d9;
+@upload-error-border-color: #f5222d;
+
+// Action Sheets
+@action-sheet-margin: 8px;
+@action-sheet-border-radius: @border-radius-base;
+@action-sheet-options-bg: #f1f2f3;
+@action-sheet-options-active-bg: #e4e5e7;
+@action-sheet-options-normal-bg: #fff;
+@action-sheet-options-cancel-bg: #efeff4; // wx theme
+@action-sheet-options-text-color: #007aff;
+@action-sheet-options-destructive-text-color: #ff3b30;
+@action-sheet-options-border-color: #d1d3d6;
+@action-icon-size: 24px;
+
+// Navbar
+@navbar-size: 45px;
+@navbar-margin: @margin-component-lg;
+@navbar-font-size: @font-size-base;
+@navbar-default-color: #444;
+@navbar-active-color: @text-color-inverse;
+@navbar-light-bg: @light;
+@navbar-stable-bg: @stable;
+@navbar-positive-bg: @positive;
+@navbar-calm-bg: @calm;
+@navbar-assertive-bg: @assertive;
+@navbar-balanced-bg: @balanced;
+@navbar-energized-bg: @energized;
+@navbar-royal-bg: @royal;
+@navbar-dark-bg: @dark;
+
+// Grids
+@grids-bg: @component-background;
+@grids-color: @black;
+@grids-font-size: @font-size-base;
+@grids-icon-size: 28px;
+@grids-inner-padding: @spacing-base * 2 @spacing-base;
+
+// Fab Button
+@fab-button-icon-size: 20px;
+@fab-button-action-size: 50px;
+@fab-button-box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+@fab-button-label-color: @text-color-dark;
+@fab-button-label-bg: rgba(0, 0, 0, 0.4);
+@fab-button-label-padding: 4px @spacing-base;
+@fab-button-light-bg: @light-inverse;
+@fab-button-stable-bg: @stable-inverse;
+@fab-button-positive-bg: @positive;
+@fab-button-calm-bg: @calm;
+@fab-button-assertive-bg: @assertive;
+@fab-button-balanced-bg: @balanced;
+@fab-button-energized-bg: @energized;
+@fab-button-royal-bg: @royal;
+@fab-button-dark-bg: @dark;
+
+// Slider
+@slider-font-size: @font-size-base;
+@slider-radius: @border-radius-base;
+@slider-margin: 12px;
+@slider-rail-margin: @spacing-lg 0;
+@slider-rail-size: 4px;
+@slider-rail-bg: #e9e9e9;
+@slider-track-bg: @balanced;
+@slider-handle-size: 28px;
+@slider-handle-bg: @component-background;
+@slider-mark-bg: @icon-color-base;
+
+// Sticky
+@sticky-font-size: @font-size-base;
+@sticky-item-size: 32px;
+@sticky-item-bg: @border-color-split;
+
+// Accordion
+@accordion-color: @black;
+@accordion-bg: @component-background;
+@accordion-icon-size: 20px;
+@accordion-hd-padding: @spacing-base @spacing-lg;
+@accordion-hd-padding-extra: @spacing-lg * 2;
+@accordion-bd-padding: @spacing-lg;
+
+// Skeleton
+@skeleton-bg: #f2f2f2;
+@skeleton-to-bg: shade(@skeleton-bg, 5%);
+@skeleton-radius: @border-radius-base;
+@skeleton-avatar-size-base: 40px;
+@skeleton-avatar-size-lg: 48px;
+@skeleton-avatar-size-sm: 32px;
+@skeleton-paragraph-size: 16px;
+
+// Segment
+@segment-size: 27px;
+@segment-margin: 0 @spacing-lg @spacing-lg;
+@segment-font-size: @font-size-base;
+@segment-radius: @border-radius-lg;
+@segment-default-color: @text-color-inverse;
+@segment-light-bg: @light-inverse;
+@segment-stable-bg: @stable-inverse;
+@segment-positive-bg: @positive;
+@segment-calm-bg: @calm;
+@segment-assertive-bg: @assertive;
+@segment-balanced-bg: @balanced;
+@segment-energized-bg: @energized;
+@segment-royal-bg: @royal;
+@segment-dark-bg: @dark;
+
+// Search Bar
+@search-bar-bg: #efeff4;
+@search-bar-input-height: 28px;
+@search-bar-font-size: @font-size-base;
+@search-bar-radius: @border-radius-base;
+
+// Rater
+@rater-star-color: @icon-color-base;
+
+// Notice Bar
+@notice-bar-bg: #fefcec;
+@notice-bar-color: #f76a24;
+@notice-bar-height: 36px;
+@notice-bar-font-size: @font-size-base;
+@notice-bar-icon-size: 15px;
+@notice-bar-icon-margin: @margin-component-lg;
+
+// Index List
+@index-indicator-size: 50px;
+@index-indicator-bg: fade(@black, 70%);
+@index-indicator-color: @text-color-inverse;
+@index-indicator-font-size: 24px;
+@index-indicator-border-radius: @border-radius-lg;
+@index-font-size: @font-size-base;
+@index-item-size: 32px;
+@index-item-bg: @border-color-split;
+
+// KeyBoard
+@keyboard-bg: @component-background;
+@keyboard-input-size: 40px;
+@keyboard-dot-size: 6px;
+@keyboard-dot-bg: @black;
+
+// Popover
+@popover-bg: @component-background;
+@popover-dark-bg: #333;
+@popover-dark-color: @text-color-inverse;
+@popover-arrow-width: 6px;
+@popover-distance: @popover-arrow-width + 4px;
+@popover-min-width: 120px;
+@popover-radius: @border-radius-base;
+@popover-font-size: @font-size-base;
+@popover-line-height: @line-height-base;
+
+// Calendar
+@calendar-height: 300px;
+@calendar-bg: @component-background;
+@calendar-text-color: #3d4145;
+@calendar-disabled-text-color: #d4d4d4;
+@calendar-prev-text-color: @icon-color-base;
+@calendar-next-text-color: @calendar-prev-text-color;
+@calendar-today-text-color: #e3e3e3;
+@calendar-active-text-color: @text-color-inverse;
+@calendar-active-text-bg: #0894ec;
+@calendar-text-size: 30px;
+@calendar-text-font-size: 15px;
+
+// Cascader
+@cascader-font-size: 17px;
+@cascader-bg: @background-color-base;
+@cascader-color: #444;
+@cascader-inner-bg: #fff;
+@cascader-item-size: 40px;
+@cascader-item-active-color: @assertive;
+
+// Cell Group
+@cell-bg: @component-background;
+@cell-icon-size: 20px;
+@cell-padding: @spacing-base @spacing-lg;
+@cell-group-hd-padding: @spacing-lg @spacing-lg 9px;
+@cell-group-ft-padding: 9px @spacing-lg @spacing-lg;
+
+// Prompt
+@prompt-bg: #f2f3f4;
+@prompt-color: @text-color-secondary;
+@prompt-icon-size: 64px;
+
+// Result
+@result-title-font-size: 20px;
+@result-bd-padding: @spacing-lg * 2 @spacing-base * 2;
+@result-ft-padding: @spacing-lg;
+
+// Toast
+@toast-bg: rgba(40, 40, 40, 0.75);
+
+// Notification
+@notification-bg: rgba(0, 0, 0, .85);
+
+// Popup
+@popup-width: 80%;
+@popup-max-width: 300px;
+@popup-hd-padding: 1.3em 1.6em 0.5em;
+@popup-bd-padding: 0 1.6em 0.8em;
+@popup-bd-font-size: 15px;
+@popup-title-font-size: 18px;
+@popup-content-bg: @component-background;
+
+// Z-Indexes
+@z-index-backdrop: 1000;
+@z-index-popup: 1000;
+// @z-index-dialog: 1000;
+@z-index-filterbar: 1000;
+@z-index-gallery: 1000;
+// @z-index-action-sheet: 1010;
+@z-index-fab-button: 1020;
+@z-index-popover: 1030;
+// @z-index-calendar: 1040;
+// @z-index-cascader: 1040;
+// @z-index-picker: 1040;
+@z-index-toast: 5000;
+@z-index-toptips: 5000;
+@z-index-notification: 9999;

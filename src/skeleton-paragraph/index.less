@@ -1,0 +1,54 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-skeleton-paragraph {
+    position: relative;
+    overflow: hidden;
+
+    &__row {
+        height: @skeleton-paragraph-size;
+        background: @skeleton-bg;
+        width: 100%;
+        margin-top: 16px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        &:nth-child(4n + 1) {
+            width: 80%;
+        }
+
+        &:nth-child(4n + 2) {
+            width: 100%;
+        }
+
+        &:nth-child(4n + 3) {
+            width: 70%;
+        }
+
+        &:nth-child(4n + 4) {
+            width: 85%;
+        }
+    }
+
+    &--rounded &__row {
+        border-radius: @skeleton-radius;
+    }
+
+    &--active &__row {
+        background: linear-gradient(90deg, @skeleton-bg 25%, @skeleton-to-bg 37%, @skeleton-bg 63%);
+        animation: loading 1.4s ease infinite;
+        background-size: 400% 100%;
+    }
+}
+
+@keyframes loading {
+    0% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+}

@@ -1,0 +1,144 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-keyboard {
+    display: block;
+    width: 100%;
+    color: @heading-color;
+    background-color: #f7f7f7;
+
+    &__hd {
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #1f2324;
+        font-size: 15px;
+        position: relative;
+
+        &:after {
+            .setBottomLine(@border-color-split)
+        }
+    }
+
+    &__bd {
+        margin: 15px 40px;
+        display: flex;
+        position: relative;
+        background-color: @keyboard-bg;
+    }
+
+    &__input {
+        width: 100%;
+        padding: 4px;
+        height: @keyboard-input-size;
+        min-height: @keyboard-input-size;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    &__label {
+        flex: 1;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+
+        &:not(:last-child):after {
+            content: "";
+            width: 1px;
+            height: 50%;
+            position: absolute;
+            right: 0;
+            top: 25%;
+            background-color: @border-color-split;
+            transform: scaleX(.5);
+        }
+    }
+
+    &__password {
+        width: auto;
+        height: auto;
+        display: none;
+
+        &--dot {
+            .square(@keyboard-dot-size);
+            border-radius: 50%;
+            background-color: @keyboard-dot-bg;
+        }
+
+        &--active {
+            display: block;
+        }
+    }
+
+    &__ft {
+        background-color: @keyboard-bg;
+        position: relative;
+
+        &:before {
+            .setTopLine(@border-color-split)
+        }
+    }
+
+    &__title {
+        overflow: hidden;
+        padding: 10px 0 6px;
+        color: #222;
+        margin-bottom: 1px;
+        font-size: 12px;
+        text-align: center;
+        background-color: @keyboard-bg;
+
+        &:before {
+            font-size: 13px;
+            color: #ff2424;
+            line-height: 1;
+            margin-right: 3px;
+        }
+    }
+
+    &__numbers {
+        font-size: 24px;
+        background-color: @keyboard-bg;
+    }
+
+    &__number {
+        display: flex;
+        width: 100%;
+    }
+
+    &__text {
+        display: flex;
+        width: 1%;
+        flex: 1;
+        color: #222;
+        height: 50px;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+
+        &:before {
+            .setTopLine(@border-color-split)
+        }
+
+
+        &:not(:last-child):after {
+            .setRightLine(@border-color-split)
+        }
+
+        &--hover {
+            background-color: #dedede;
+            color: rgba(0, 0, 0, .6);
+        }
+    }
+
+    &__number:last-child &__text:last-child,
+    &__number:last-child &__text:nth-last-child(3) {
+        background-color: #f7f7f7;
+        font-size: 15px;
+        color: #686868;
+    }
+}

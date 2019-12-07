@@ -1,0 +1,50 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-prompt {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    color: @prompt-color;
+    background-color: @prompt-bg;
+
+    &__bd {
+        margin-top: 0;
+        text-align: center;
+    }
+
+    &__icon {
+        .square(@prompt-icon-size);
+    }
+
+    &__title {
+        font-size: @font-size-lg;
+        font-weight: bold;
+        color: @heading-color;
+        margin: 2px 0;
+    }
+
+    &__text {
+        font-size: @font-size-sm;
+        margin: 2px 0;
+    }
+
+    &__button {
+        font-size: @font-size-sm;
+        line-height: 2;
+        margin: 4px auto;
+        width: 100px;
+        padding: 2px 0;
+        border: @border-width-base @border-style-base @border-color-base;
+
+        &:after {
+            display: none;
+        }
+
+        &--hover {
+            color: @text-color !important;
+            background-color: @active-state-bg !important;
+        }
+    }
+}

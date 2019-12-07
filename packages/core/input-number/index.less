@@ -1,0 +1,92 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.input-number(@theme, @color) {
+    .@{wux-prefix}-input-number__selector--@{theme} {
+        color: @color;
+    }
+
+    &--circle .@{wux-prefix}-input-number__selector--@{theme} {
+        border-color: @color;
+    }
+}
+
+.@{wux-prefix}-input-number {
+    position: relative;
+    display: flex;
+
+    &__input {
+        width: 48px;
+        height: 26px;
+        font-size: @font-size-lg;
+        line-height: 26px;
+        color: @text-color;
+        appearance: none;
+        border: 1px solid @border-color-base;
+        padding: 3px 0;
+        text-align: center;
+        min-height: inherit;
+        box-sizing: border-box;
+    }
+
+    &__selector {
+        width: 34px;
+        height: 26px;
+        font-size: 24px;
+        line-height: 26px;
+        color: @input-number-balanced-color;
+        border: 1px solid @border-color-base;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &--disabled {
+            color: @input-number-disabled-color !important;
+        }
+
+        &--sub {
+            border-right: none;
+            padding: 3px 10px;
+            border-radius: @border-radius-sm 0 0 @border-radius-sm;
+        }
+
+        &--add {
+            border-left: none;
+            padding: 3px 8px;
+            border-radius: 0 @border-radius-sm @border-radius-sm 0;
+        }
+    }
+
+    &__icon {
+        font-size: inherit !important;
+        vertical-align: middle;
+        line-height: inherit;
+    }
+
+    &--circle {
+        .@{wux-prefix}-input-number__input {
+            border-color: transparent;
+        }
+
+        .@{wux-prefix}-input-number__selector {
+            width: 26px;
+            border-radius: 50%;
+            border: 1px solid @input-number-balanced-color;
+
+            &--disabled {
+                border-color: @input-number-disabled-color !important;
+            }
+        }
+    }
+
+    .input-number(light, @input-number-light-color);
+    .input-number(stable, @input-number-stable-color);
+    .input-number(positive, @input-number-positive-color);
+    .input-number(calm, @input-number-calm-color);
+    .input-number(assertive, @input-number-assertive-color);
+    .input-number(balanced, @input-number-balanced-color);
+    .input-number(energized, @input-number-energized-color);
+    .input-number(royal, @input-number-royal-color);
+    .input-number(dark, @input-number-dark-color);
+}

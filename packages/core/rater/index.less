@@ -1,0 +1,55 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-rater {
+	display: inline-block;
+    margin: 0;
+    padding: 0;
+	line-height: normal;
+    vertical-align: middle;
+    font-weight: 400;
+	font-style: normal;
+	text-align: left;
+	.clearfix();
+
+	&__star {
+		position: relative;
+		display: inline-block;
+	}
+
+	&__star:last-child &__box {
+		padding-right: 2px !important;
+		margin-right: 0px !important;
+	}
+
+	&__box {
+		position: relative;
+		display: inline-block;
+		text-align: center;
+		cursor: pointer;
+		color: @rater-star-color;
+		transition: color .3s ease;
+
+		&--disabled {
+			color: @rater-star-color !important;
+			cursor: not-allowed;
+		}
+	}
+
+	&__icon {
+		transition: color .3s ease;
+	}
+
+	&__inner {
+		position: relative;
+		display: inline-block;
+	}
+
+	&__outer {
+		position: absolute;
+		left: 0;
+		top: 0;
+		display: inline-block;
+		overflow: hidden;
+	}
+}

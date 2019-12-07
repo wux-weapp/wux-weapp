@@ -1,0 +1,58 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-switch {
+    &__input {
+        position: relative;
+        width: 52px;
+        height: @switch-height;
+        border: 1px solid @switch-bg;
+        outline: 0;
+        border-radius: @switch-height / 2;
+        box-sizing: border-box;
+        background-color: @switch-bg;
+        transition: background-color 0.1s, border 0.1s;
+
+        &:before {
+            content: " ";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: @switch-height - 2px;
+            border-radius: (@switch-height - 2px) / 2;
+            background-color: #FDFDFD;
+            transition: transform 0.35s cubic-bezier(0.45, 1, 0.4, 1);
+        }
+
+        &:after {
+            content: " ";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: @switch-height - 2px;
+            height: @switch-height - 2px;
+            border-radius: (@switch-height - 2px) / 2;
+            background-color: #FFFFFF;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+            transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
+        }
+
+        &--checked {
+            border-color: @switch-color;
+            background-color: @switch-color;
+
+            &:before {
+                transform: scale(0);
+            }
+
+            &:after {
+                transform: translateX(20px);
+            }
+        }
+
+        &--disabled {
+            opacity: @disabled-opacity;
+        }
+    }
+}

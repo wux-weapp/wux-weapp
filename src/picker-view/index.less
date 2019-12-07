@@ -1,0 +1,84 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+@picker-item-height: 34px;
+
+.@{wux-prefix}-picker-col {
+    display: block;
+    position: relative;
+    height: @picker-item-height * 7;
+    overflow: hidden;
+    width: 100%;
+    flex: 1;
+
+    &--left {
+        text-align: left;
+    }
+
+    &--center {
+        text-align: center;
+    }
+
+    &--right {
+        text-align: right;
+    }
+
+    &__mask,
+    &__indicator {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        z-index: 3;
+    }
+
+    &__mask {
+        top: 0;
+        height: 100%;
+        margin: 0 auto;
+        background-image: linear-gradient(180deg, hsla(0, 0%, 100%, .95), hsla(0, 0%, 100%, .6)), linear-gradient(0deg, hsla(0, 0%, 100%, .95), hsla(0, 0%, 100%, .6));
+        background-position: top,bottom;
+        background-size: 100% @picker-item-height * 3;
+        background-repeat: no-repeat;
+    }
+
+    &__indicator {
+        box-sizing: border-box;
+        height: @picker-item-height;
+        top: @picker-item-height * 3;
+
+        &:before {
+            .setTopLine(@border-color-split);
+        }
+
+        &:after {
+            .setBottomLine(@border-color-split);
+        }
+    }
+
+    &__content {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+        padding: @picker-item-height * 3 0;
+    }
+
+    &__item {
+        font-size: @font-size-lg;
+        height: @picker-item-height;
+        line-height: @picker-item-height;
+        color: @black;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+        &--disabled {
+            opacity: @disabled-opacity;
+        }
+
+        &--selected {
+            font-size: @font-size-lg + 1px;
+        }
+    }
+}

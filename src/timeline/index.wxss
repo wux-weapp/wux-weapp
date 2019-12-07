@@ -1,5 +1,0 @@
-@import "../styles/base/fn.wxss";
-
-.@{wuxClassNamePrefix}-timeline {
-	position: relative;
-}

@@ -1,0 +1,52 @@
+.wux-rater {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+  vertical-align: middle;
+  font-weight: 400;
+  font-style: normal;
+  text-align: left
+}
+.wux-rater:after,
+.wux-rater:before {
+  display: table;
+  content: " "
+}
+.wux-rater:after {
+  clear: both
+}
+.wux-rater__star {
+  position: relative;
+  display: inline-block
+}
+.wux-rater__star:last-child .wux-rater__box {
+  padding-right: 4rpx!important;
+  margin-right: 0!important
+}
+.wux-rater__box {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  color: #ccc;
+  transition: color .3s ease
+}
+.wux-rater__box--disabled {
+  color: #ccc!important;
+  cursor: not-allowed
+}
+.wux-rater__icon {
+  transition: color .3s ease
+}
+.wux-rater__inner {
+  position: relative;
+  display: inline-block
+}
+.wux-rater__outer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-block;
+  overflow: hidden
+}

@@ -1,0 +1,47 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-toptips {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: @z-index-toptips;
+
+    &__content {
+        padding: 5px;
+        font-size: @toptips-font-size;
+        color: @toptips-color;
+        word-wrap: break-word;
+        word-break: break-all;
+        transition: background-color .3s;
+
+        text {
+            display: block;
+            text-align: center;
+            padding: 0 26px;
+        }
+
+        &--success {
+            background-color: @toptips-success-bg;
+        }
+
+        &--info {
+            background-color: @toptips-info-bg;
+        }
+
+        &--warn {
+            background-color: @toptips-warn-bg;
+        }
+
+        &--cancel {
+            background-color: @toptips-cancel-bg;
+        }
+    }
+
+    &__icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}

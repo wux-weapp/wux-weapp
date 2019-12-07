@@ -1,0 +1,35 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-toast {
+    position: fixed;
+    z-index: @z-index-toast;
+    top: 50%;
+    left: 50%;
+    background: @toast-bg;
+    font-size: @font-size-base;
+    line-height: @line-height-base;
+    text-align: center;
+    border-radius: @border-radius-base;
+    color: @text-color-inverse;
+    transform: translate3d(-50%, -50%, 0);
+
+    &__content {
+        min-width: 118px;
+        padding: 9px 15px;
+        box-sizing: border-box;
+
+        &--has-icon {
+            padding: 15px;
+
+            .@{wux-prefix}-toast__text {
+                margin-top: 6px;
+            }
+        }
+    }
+
+    &__icon {
+        margin: 0;
+        display: block;
+    }
+}

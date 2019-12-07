@@ -1,0 +1,129 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-actionsheet {
+    &__popup {
+        background-color: transparent;
+    }
+
+    &__content {
+        margin-left: @action-sheet-margin;
+        margin-right: @action-sheet-margin;
+        width: auto;
+        overflow: hidden;
+
+        &--theme-wx {
+            margin-left: 0;
+            margin-right: 0;
+            margin-bottom: 0;
+
+            .@{wux-prefix}-actionsheet__group {
+                border-radius: 0;
+                margin-bottom: @action-sheet-margin - 2px;
+
+                &--options {
+                    background-color: @action-sheet-options-normal-bg;
+                }
+
+                &--cancel {
+                    margin-bottom: 0;
+                }
+            }
+
+            .@{wux-prefix}-actionsheet__button {
+                font-size: 18px;
+                color: #000;
+
+                &--cancel {
+                    font-weight: normal;
+                }
+            }
+        }
+
+        &--theme-wx&--has-cancel {
+            background-color: @action-sheet-options-cancel-bg;
+        }
+    }
+
+    &__group {
+        margin-bottom: @action-sheet-margin;
+        border-radius: @action-sheet-border-radius;
+        background-color: @action-sheet-options-normal-bg;
+        overflow: hidden;
+
+        &--options {
+            background-color: @action-sheet-options-bg;
+        }
+    }
+
+    &__title {
+        padding: 16px;
+        color: #8f8f8f;
+        text-align: center;
+        font-size: 13px;
+    }
+
+    &__button {
+        position: relative;
+        display: block;
+        margin: 0;
+        padding: 0;
+        border-radius: 0;
+        min-width: 52px;
+        min-height: 48px;
+        vertical-align: top;
+        text-align: center;
+        text-overflow: ellipsis;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 0;
+        background-color: transparent;
+        color: @action-sheet-options-text-color;
+        font-size: 21px;
+        line-height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &--hover {
+            box-shadow: none;
+            border-color: @action-sheet-options-border-color;
+            color: @action-sheet-options-text-color;
+            background: @action-sheet-options-active-bg;
+        }
+
+        &--destructive {
+            color: @action-sheet-options-destructive-text-color !important;
+        }
+
+        &--cancel {
+            font-weight: 500;
+        }
+
+        &--disabled {
+            opacity: @disabled-opacity !important;
+        }
+    }
+
+    &__group &__button {
+        border-top: none;
+
+        &:after {
+            transform: none;
+            transform-origin: none;
+            border: none;
+            border-radius: 0;
+            .setTopLine(@border-color-split)
+        }
+
+        &:first-child:last-child:after {
+            border-width: 0;
+        }
+    }
+
+    &__icon {
+        .square(@action-icon-size);
+        display: inline-block;
+        margin-right: 10px;
+    }
+}

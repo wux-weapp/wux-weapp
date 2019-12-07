@@ -1,0 +1,20 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-backdrop {
+    background: @backdrop-background;
+
+    &,
+    &--transparent {
+        position: fixed;
+        z-index: @z-index-backdrop;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+    }
+
+    &--transparent {
+        background: @backdrop-background-inverse;
+    }
+}

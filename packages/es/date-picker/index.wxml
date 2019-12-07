@@ -1,0 +1,45 @@
+<wux-popup
+    position="bottom"
+    visible="{{ popupVisible }}"
+    hasHeader="{{ false }}"
+    hasFooter="{{ false }}"
+    mountOnEnter="{{ false }}"
+    safeArea="bottom"
+    bind:close="close"
+    bind:closed="onClosed"
+>
+    <view class="{{ classes.wrap }}" wx:if="{{ mounted }}">
+        <view class="{{ classes.toolbar }}" wx:if="{{ toolbar }}" catchtouchmove="noop">
+            <view class="{{ classes.inner }}">
+                <view class="{{ classes.cancel }}" hover-class="{{ classes.hover }}" bindtap="onCancel" wx:if="{{ toolbar.cancelText }}">{{ toolbar.cancelText }}</view>
+                <view class="{{ classes.title }}">{{ toolbar.title }}</view>
+                <view class="{{ classes.confirm }}" hover-class="{{ classes.hover }}" bindtap="onConfirm" wx:if="{{ toolbar.confirmText }}">{{ toolbar.confirmText }}</view>
+            </view>
+        </view>
+        <wux-date-picker-view
+            id="wux-picker"
+            multiPickerPrefixCls="{{ multiPickerPrefixCls }}"
+            pickerPrefixCls="{{ pickerPrefixCls }}"
+            value="{{ inputValue }}"
+            itemHeight="{{ itemHeight }}"
+            itemStyle="{{ itemStyle }}"
+            indicatorStyle="{{ indicatorStyle }}"
+            indicatorClass="{{ indicatorClass }}"
+            maskStyle="{{ maskStyle }}"
+            maskClass="{{ maskClass }}"
+            labelAlign="{{ labelAlign }}"
+            mode="{{ mode }}"
+            minuteStep="{{ minuteStep }}"
+            use12Hours="{{ use12Hours }}"
+            minDate="{{ minDate }}"
+            maxDate="{{ maxDate }}"
+            minHour="{{ minHour }}"
+            maxHour="{{ maxHour }}"
+            minMinute="{{ minMinute }}"
+            maxMinute="{{ maxMinute }}"
+            lang="{{ lang }}"
+            bind:valueChange="onValueChange"
+        />
+    </view>
+</wux-popup>
+<slot></slot>

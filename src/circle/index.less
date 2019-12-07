@@ -1,0 +1,17 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-circle {
+	display: inline-block;
+    position: relative;
+
+    &__inner {
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translate3d(0, -50%, 0);
+        line-height: 1;
+    }
+}

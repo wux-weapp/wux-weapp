@@ -1,0 +1,10 @@
+<view class="wux-class {{ classes.wrap }}">
+    <view class="{{ classes.hd }}">
+        <image class="{{ classes.thumb }}" src="{{ thumb }}" mode="aspectFit" style="{{ extStyle }}" wx:if="{{ thumb }}" />
+    </view>
+    <view class="{{ classes.bd }}">
+        <view class="{{ classes.title }}" wx:if="{{ title }}">{{ title }}</view>
+        <view class="{{ classes.desc }}" wx:if="{{ label }}">{{ label }}</view>
+        <slot></slot>
+    </view>
+</view>

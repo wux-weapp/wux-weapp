@@ -1,0 +1,28 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-tabs {
+    display: flex;
+    width: 100%;
+    height: @tabs-height;
+    line-height: @tabs-height;
+    box-sizing: border-box;
+    position: relative;
+    justify-content: space-around;
+    align-items: center;
+    background: @tabs-bg;
+
+    &--scroll {
+        display: block;
+        overflow: auto;
+        white-space: nowrap;
+    }
+
+    &--vertical {
+        display: inline-flex;
+        width: auto;
+        height: auto;
+        max-height: @tabs-vertical-height;
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,53 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-notice-bar {
+    background-color: @notice-bar-bg;
+    height: @notice-bar-height;
+    overflow: hidden;
+    font-size: @notice-bar-font-size;
+    line-height: @notice-bar-height;
+    color: @notice-bar-color;
+    display: flex;
+    padding: 0 @notice-bar-icon-margin;
+
+    &__icon {
+        .square(@notice-bar-icon-size);
+        margin-right: @notice-bar-icon-margin;
+    }
+
+    &__action {
+        .square(@notice-bar-icon-size);
+        margin-left: @notice-bar-icon-margin;
+    }
+
+    &__hd {
+        display: flex;
+        align-items: center;
+    }
+
+    &__bd {
+        flex: 1;
+        width: 100%;
+        width: auto;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &__marquee-container {
+        overflow: hidden;
+    }
+
+    &__marquee {
+        position: relative;
+        transform: translate3d(0px, 0px, 0px);
+        white-space: nowrap;
+        display: inline-block;
+    }
+
+    &__ft {
+        display: flex;
+        align-items: center;
+    }
+}

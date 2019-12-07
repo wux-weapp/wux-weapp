@@ -1,0 +1,16 @@
+<view class="wux-class {{ classes.wrap }}" style="width: {{ width }}" bindtap="onTap">
+	<view class="{{ classes.icon }}">
+		<block wx:if="{{ current }}">
+			<slot name="icon-off"></slot>
+		</block>
+		<block wx:else>
+			<slot name="icon-on"></slot>
+		</block>
+	</view>
+	<view class="{{ classes.title }}">
+		<text wx:if="{{ title }}">{{ title }}</text>
+	    <block wx:else>
+	        <slot></slot>
+	    </block>
+	</view>
+</view>

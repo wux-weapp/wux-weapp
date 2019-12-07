@@ -1,0 +1,5 @@
+<view class="wux-class {{ classes.wrap }}" wx:if="{{ values.length }}">
+    <block wx:for="{{ values }}" wx:key="index">
+    	<view class="{{ classes.item }} {{ activeKey === index ? prefixCls + '__item--current' : '' }}" data-index="{{ index }}" bindtap="onTap">{{ item }}</view>
+    </block>
+</view>

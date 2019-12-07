@@ -1,0 +1,83 @@
+.wux-timeline-item {
+  position: relative;
+  padding: 0 0 24rpx;
+  margin: 0;
+  font-size: 28rpx;
+  box-sizing: border-box
+}
+.wux-timeline-item__tail {
+  height: 100%;
+  border-left: 4rpx solid #e8e8e8;
+  position: absolute;
+  left: 10rpx;
+  top: 0;
+  box-sizing: border-box
+}
+.wux-timeline-item__dot {
+  width: 24rpx;
+  height: 24rpx;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 4rpx solid #387ef5;
+  position: absolute;
+  color: #387ef5;
+  box-sizing: border-box
+}
+.wux-timeline-item__dot--custom {
+  margin-left: 2rpx!important;
+  left: 10rpx;
+  top: 16rpx;
+  border: 0;
+  border-radius: 0;
+  width: auto;
+  height: auto;
+  background-color: transparent;
+  text-align: center;
+  transform: translate(-50%,-50%)
+}
+.wux-timeline-item__content {
+  padding: 0 0 20rpx 40rpx;
+  position: relative;
+  top: -10rpx;
+  width: 100%;
+  box-sizing: border-box
+}
+.wux-timeline-item--last .wux-timeline-item__tail,
+.wux-timeline-item--pending .wux-timeline-item__tail--pending {
+  display: none
+}
+.wux-timeline-item--last.wux-timeline-item--pending .wux-timeline-item__tail {
+  display: block;
+  border-left-style: dotted
+}
+.wux-timeline-item--right .wux-timeline-item__tail {
+  left: 100%
+}
+.wux-timeline-item--right .wux-timeline-item__dot {
+  left: 100%;
+  margin-left: -10rpx
+}
+.wux-timeline-item--right .wux-timeline-item__content {
+  text-align: right;
+  right: 0;
+  left: -40rpx
+}
+.wux-timeline-item--alternate.wux-timeline-item--left .wux-timeline-item__tail,
+.wux-timeline-item--alternate.wux-timeline-item--right .wux-timeline-item__tail {
+  left: 50%
+}
+.wux-timeline-item--alternate.wux-timeline-item--left .wux-timeline-item__dot,
+.wux-timeline-item--alternate.wux-timeline-item--right .wux-timeline-item__dot {
+  left: 50%;
+  margin-left: -10rpx
+}
+.wux-timeline-item--alternate.wux-timeline-item--right .wux-timeline-item__content {
+  text-align: right;
+  right: 50%;
+  width: 50%
+}
+.wux-timeline-item--alternate.wux-timeline-item--left .wux-timeline-item__content {
+  text-align: left;
+  left: 50%;
+  width: 50%
+}

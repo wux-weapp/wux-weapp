@@ -1,0 +1,41 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-index {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+    &__nav {
+        position: fixed;
+        top: 50%;
+        right: 0;
+        transform: translate3d(0, -50%, 0);
+        display: flex;
+        max-height: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__nav-item {
+        padding: 2px 6px;
+        font-size: 12px;
+        line-height: 1.2;
+    }
+
+    &__indicator {
+        position: fixed;
+        width: @index-indicator-size;
+        height: @index-indicator-size;
+        line-height: @index-indicator-size;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+        text-align: center;
+        background-color: @index-indicator-bg;
+        border-radius: @index-indicator-border-radius;
+        color: @index-indicator-color;
+        font-size: @index-indicator-font-size;
+    }
+}

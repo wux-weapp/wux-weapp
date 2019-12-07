@@ -1,0 +1,71 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-divider {
+	display: block;
+    height: 1px;
+    width: 100%;
+    margin: 15px 0;
+    clear: both;
+    border-top: 1px solid @border-color-base;
+
+    &--text {
+		display: table;
+		white-space: nowrap;
+		text-align: center;
+		background: transparent;
+		font-weight: 500;
+		color: @heading-color;
+		font-size: @font-size-lg;
+		border-top: none !important;
+
+		&:before,
+		&:after {
+			content: '';
+			display: table-cell;
+			position: relative;
+			top: 50%;
+			width: 50%;
+			border-top-width: 1px;
+			border-top-style: solid;
+			border-top-color: @border-color-base;
+			transform: translateY(50%);
+		}
+	}
+
+	&--dashed {
+		border-top: 1px dashed @border-color-base;
+	}
+
+	&--dashed&--text {
+		&:before,
+		&:after {
+			border-top-style: dashed;
+		}
+	}
+
+	&--text-left {
+		&:before {
+			width: 5%;
+		}
+
+		&:after {
+			width: 95%;
+		}
+	}
+
+	&--text-right {
+		&:before {
+			width: 95%;
+		}
+
+		&:after {
+			width: 5%;
+		}
+	}
+
+	&__text {
+		display: inline-block;
+    	padding: 0 15px;
+	}
+}

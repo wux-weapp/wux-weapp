@@ -1,0 +1,45 @@
+<view class="wux-class {{ classes.wrap }}">
+	<view class="{{ classes.label }}" wx:if="{{ label }}">{{ label }}</view>
+	<block wx:else>
+		<slot></slot>
+	</block>
+	<view class="{{ classes.control }}">
+		<textarea
+			class="{{ classes.item }}"
+			value="{{ inputValue }}"
+			placeholder="{{ placeholder }}"
+			placeholder-style="{{ extStyle }}"
+			placeholder-class="{{ placeholderClass }}"
+			disabled="{{ disabled }}"
+			maxlength="{{ maxlength }}"
+			auto-height="{{ autoHeight }}"
+			fixed="{{ fixed }}"
+			cursor-spacing="{{ cursorSpacing }}"
+			focus="{{ focus }}"
+			cursor="{{ cursor }}"
+			show-confirm-bar="{{ showConfirmBar }}"
+			selection-start="{{ selectionStart }}"
+			selection-end="{{ selectionEnd }}"
+			adjust-position="{{ adjustPosition }}"
+			bindlinechange="onLineChange"
+			bindinput="onChange"
+			bindfocus="onFocus"
+			bindblur="onBlur"
+			bindconfirm="onConfirm"
+			style="{{ inputRows > 1 && !!inputHeight ? 'height: ' + inputHeight + 'px' : '' }}"
+		/>
+	</view>
+	<view class="{{ classes.clear }}" bindtap="onClear" wx:if="{{ clear && !disabled && inputValue && inputValue.length > 0 }}">
+		<icon type="clear" color="#B2B2B2" size="14" />
+	</view>
+	<view class="{{ classes.error }}" bindtap="onError" wx:if="{{ error }}">
+		<icon type="warn" color="#ef473a" size="14" />
+	</view>
+	<view class="{{ classes.extra }}" wx:if="{{ extra }}">{{ extra }}</view>
+	<block wx:else>
+		<slot name="footer"></slot>
+	</block>
+	<view class="{{ classes.count }}" wx:if="{{ hasCount }}">
+		<text class="{{ classes.current }}">{{ inputValue.length }}</text>/{{ maxlength === -1 ? '∞' : maxlength }}
+	</view>
+</view>

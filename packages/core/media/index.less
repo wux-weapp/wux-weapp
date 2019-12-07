@@ -1,0 +1,60 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-media {
+    position: relative;
+    display: flex;
+    padding: 15px;
+    overflow: hidden;
+
+    &--align-flex-start {
+        align-items: flex-start;
+    }
+
+    &--align-flex-end {
+        align-items: flex-end;
+    }
+
+    &--align-center {
+        align-items: center;
+    }
+
+    &--align-stretch {
+        align-items: stretch;
+    }
+
+    &--align-baseline {
+        align-items: baseline;
+    }
+
+    &__hd {
+        margin-right: .8em;
+        text-align: center;
+    }
+
+    &__thumb {
+        width: 60px;
+        height: 60px;
+        display: inline-block;
+        overflow: hidden;
+        vertical-align: top;
+    }
+
+    &__bd {
+        flex: 1;
+        min-width: 0;
+    }
+
+    &__title {
+        font-weight: 400;
+        font-size: 17px;
+        .ellipsis();
+    }
+
+    &__desc {
+        color: @text-color-secondary;
+        font-size: 13px;
+        line-height: 1.2;
+        .ellipsisLn(2);
+    }
+}

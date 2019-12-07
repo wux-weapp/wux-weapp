@@ -1,0 +1,61 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-pagination {
+    display: block;
+    width: 100%;
+    height: @pagination-height;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+
+    &__prev {
+        position: absolute;
+        left: 10px;
+        top: 0;
+    }
+
+    &__next {
+        position: absolute;
+        right: 10px;
+        top: 0;
+    }
+
+    &__number {
+        width: 100%;
+        height: @pagination-height;
+        line-height: @pagination-height;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    &__active {
+        display: inline;
+        color: @pagination-color;
+    }
+
+    &__pointer {
+        width: 100%;
+        height: @pagination-height;
+        line-height: @pagination-height;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    &__dot {
+        .square(@pagination-dot-size);
+        display: inline-block;
+        margin: 0 @pagination-dot-margin;
+        border-radius: 50%;
+        background: @pagination-dot-bg;
+
+        &--active {
+            background: @pagination-dot-active-bg;
+        }
+    }
+
+    &__button {
+        display: inline-block;
+        margin: 0;
+    }
+}

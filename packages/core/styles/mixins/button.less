@@ -1,0 +1,53 @@
+.button-style(@bg-color, @border-color: transparent, @color: #fff) {
+    border-color: @border-color !important;
+    background-color: @bg-color !important;
+    color: @color !important;
+}
+
+.button-hover(@active-bg-color, @active-color: #fff) {
+    background-color: @active-bg-color !important;
+    color: @active-color !important;
+}
+
+.button-clear(@color) {
+    background-color: transparent !important;
+    color: @color !important;
+}
+
+.button-outline(@color, @bg-color: transparent) {
+    border-color: @color !important;
+    background-color: @bg-color !important;
+    color: @color !important;
+}
+
+// reset button style for weapp
+.button-reset(@color: inherit, @bg-color: transparent) {
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    color: @color !important;
+    background: @bg-color !important;
+    font-size: inherit;
+    font-weight: normal;
+    line-height: inherit;
+    text-align: inherit;
+    text-decoration: none;
+    overflow: visible;
+    min-height: 0 !important;
+    width: auto !important;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+
+    &:after {
+        display: block;
+        position: static;
+        top: auto;
+        left: auto;
+        width: auto;
+        height: auto;
+        border: none;
+        border-radius: 0;
+        transform: none;
+        transform-origin: 0 0;
+    }
+}

@@ -1,0 +1,51 @@
+.wux-progress {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center
+}
+.wux-progress__outer {
+  -ms-flex: 1;
+  flex: 1
+}
+.wux-progress__inner {
+  background-color: #f3f3f3
+}
+.wux-progress__bar {
+  background-color: #33cd5f;
+  transition: all .3s linear 0s
+}
+.wux-progress__text {
+  margin-left: 10rpx;
+  text-align: left;
+  vertical-align: middle
+}
+.wux-progress--round .wux-progress__bar,
+.wux-progress--round .wux-progress__inner {
+  border-radius: 200rpx
+}
+.wux-progress--progress .wux-progress__bar {
+  position: relative
+}
+.wux-progress--progress .wux-progress__bar:before {
+  content: '';
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 20rpx;
+  animation: progress 2s ease-in-out infinite
+}
+@keyframes progress {
+  0% {
+    opacity: .3;
+    width: 0
+  }
+  100% {
+    opacity: 0;
+    width: 100%
+  }
+}

@@ -1,0 +1,159 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.button(@theme, @bg-color, @border-color, @active-bg-color, @color) {
+    &--@{theme},
+    &--@{theme}--disabled {
+        .button-style(@bg-color, @border-color, @color);
+    }
+
+    &--@{theme}&--hover {
+        .button-hover(@active-bg-color, @color);
+    }
+
+    &--@{theme}&--outline,
+    &--@{theme}&--outline&--disabled {
+        .button-outline(@bg-color);
+    }
+
+    &--@{theme}&--outline&--hover {
+        .button-hover(@bg-color, #fff);
+    }
+
+    &--@{theme}&--clear,
+    &--@{theme}&--clear&--disabled {
+        .button-clear(@active-bg-color);
+    }
+
+    &--@{theme}&--clear&--hover {
+        opacity: @button-opacity-hover !important;
+    }
+}
+
+.@{wux-prefix}-button {
+    .button-reset();
+    position: relative;
+    display: inline-block;
+    // margin-left: auto;
+    // margin-right: auto;
+    // padding-left: 14px;
+    // padding-right: 14px;
+    box-sizing: border-box;
+    // font-size: 18px;
+    // text-align: center;
+    // text-decoration: none;
+    // line-height: 2.55555556;
+    // border-radius: 5px;
+    // -webkit-tap-highlight-color: transparent;
+    // overflow: hidden;
+    // color: #000000;
+    // background-color: #F8F8F8;
+
+    margin: 0;
+    padding: 0 @button-padding-base;
+    min-width: (@button-padding-base * 3) + @button-font-size-base;
+    min-height: @button-height-base !important;
+    border: none;
+    border-radius: @button-border-radius;
+    vertical-align: middle;
+    text-align: center;
+    text-overflow: ellipsis;
+    font-size: @button-font-size-base;
+    line-height: @button-height-base - 2px;
+    cursor: pointer;
+
+    &:after {
+        content: " ";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        bottom: -6px;
+        left: -6px;
+        border: none;
+        transform: none;
+        transform-origin: 0 0;
+        box-sizing: border-box;
+        border-radius: 0;
+    }
+
+    &--bordered {
+        border: 1px solid transparent;
+    }
+
+    &--disabled {
+        opacity: @button-opacity-disabled !important;
+    }
+
+    &--small {
+        padding: 2px @button-padding-sm 1px;
+        min-width: @button-height-sm - 2px;
+        min-height: @button-height-sm !important;
+        font-size: @button-font-size-sm;
+        line-height: @button-height-sm - 4px;
+    }
+
+    &--large {
+        padding: 0 @button-padding-lg;
+        min-width: (@button-padding-lg * 3) + @button-font-size-lg;
+        min-height: @button-height-lg !important;
+        font-size: @button-font-size-lg;
+        line-height: @button-height-lg - 6px;
+    }
+
+    &--block,
+    &--full {
+        width: 100% !important;
+        margin-top: @button-block-margin;
+        margin-bottom: @button-block-margin;
+    }
+
+    &--block {
+        display: block;
+        clear: both;
+
+        &:after {
+            clear: both;
+        }
+    }
+
+    &--full {
+        display: block;
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+        border-right-width: 0;
+        border-left-width: 0;
+        border-radius: 0;
+    }
+
+    &--outline&--hover {
+        color: #fff !important;
+    }
+
+    .button(light, @button-light-bg, @button-default-border, @button-light-active-bg, @button-light-text);
+    .button(stable, @button-stable-bg, @button-default-border, @button-stable-active-bg, @button-stable-text);
+    .button(positive, @button-positive-bg, @button-default-border, @button-positive-active-bg, @button-positive-text);
+    .button(calm, @button-calm-bg, @button-default-border, @button-calm-active-bg, @button-calm-text);
+    .button(assertive, @button-assertive-bg, @button-default-border, @button-assertive-active-bg, @button-assertive-text);
+    .button(balanced, @button-balanced-bg, @button-default-border, @button-balanced-active-bg, @button-balanced-text);
+    .button(energized, @button-energized-bg, @button-default-border, @button-energized-active-bg, @button-energized-text);
+    .button(royal, @button-royal-bg, @button-default-border, @button-royal-active-bg, @button-royal-text);
+    .button(dark, @button-dark-bg, @button-default-border, @button-dark-active-bg, @button-dark-text);
+
+    &--light&--outline {
+        .button-outline(@button-light-border);
+    }
+
+    &--light&--outline&--hover {
+        .button-hover(@button-light-border, #fff);
+    }
+
+    &--stable&--outline {
+        .button-outline(@button-stable-border);
+    }
+
+    &--stable&--outline&--hover {
+        .button-hover(@button-stable-border, #fff);
+    }
+}

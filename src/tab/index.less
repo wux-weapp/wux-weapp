@@ -1,0 +1,73 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.tab-style(@theme, @color) {
+    &--@{theme} &-bar {
+        background: @color;
+    }
+
+    &--@{theme}&--current {
+        color: @color;
+    }
+}
+
+.@{wux-prefix}-tabs {
+    &__tab {
+        flex: 1;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        box-sizing: border-box;
+        font-size: @tabs-font-size;
+        color: @tabs-color;
+
+        &-bar {
+            display: block;
+            width: 100%;
+            height: @tabs-bar-size;
+            background: transparent;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: @tabs-bar-balanced-bg;
+        }
+
+        &--vertical {
+            padding: 0 @tabs-scrolling-size;
+        }
+
+        &--vertical &-bar {
+            width: @tabs-bar-size;
+            height: 100%;
+            right: 0;
+            left: auto;
+        }
+
+        &--current {
+            color: @tabs-bar-balanced-bg;
+        }
+
+        &--horizontal&--scroll {
+            display: inline-flex;
+            padding: 0 @tabs-scrolling-size;
+            width: auto;
+        }
+
+        &--disabled {
+            opacity: @disabled-opacity;
+        }
+
+        .tab-style(light, @tabs-bar-light-bg);
+        .tab-style(stable, @tabs-bar-stable-bg);
+        .tab-style(positive, @tabs-bar-positive-bg);
+        .tab-style(calm, @tabs-bar-calm-bg);
+        .tab-style(assertive, @tabs-bar-assertive-bg);
+        .tab-style(balanced, @tabs-bar-balanced-bg);
+        .tab-style(energized, @tabs-bar-energized-bg);
+        .tab-style(royal, @tabs-bar-royal-bg);
+        .tab-style(dark, @tabs-bar-dark-bg);
+    }
+}

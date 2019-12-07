@@ -1,0 +1,33 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.loop( @count )when( @count > 0 ){
+	@number: percentage( @count / 12 );
+
+    &--span-@{count}{
+		float: left;
+        width: @number;
+	}
+
+	&--pull-@{count}{
+        right: @number;
+	}
+
+	&--push-@{count}{
+        left: @number;
+	}
+
+	&--offset-@{count}{
+        margin-left: @number;
+	}
+
+    .loop((@count - 1));
+}
+
+.@{wux-prefix}-col {
+    position: relative;
+    min-height: 1px;
+    box-sizing: border-box;
+
+	.loop(12);
+}

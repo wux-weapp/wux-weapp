@@ -1,6 +1,0 @@
-@import "../styles/base/fn.wxss";
-
-.@{wuxClassNamePrefix}-skeleton {
-    position: relative;
-    width: 100%;
-}

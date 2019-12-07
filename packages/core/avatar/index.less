@@ -1,0 +1,52 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-avatar {
+    // font-family: Monospaced Number,Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
+    // font-size: 14px;
+    // line-height: 1.5;
+    // color: rgba(0, 0, 0, .65);
+    box-sizing: border-box;
+    display: inline-block;
+    text-align: center;
+    background: @avatar-bg;
+    color: @avatar-color;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    vertical-align: middle;
+    .avatar-size(@avatar-size-base, @avatar-font-size-base);
+
+    &--small {
+        .avatar-size(@avatar-size-sm, @avatar-font-size-sm);
+    }
+
+    &--large {
+        .avatar-size(@avatar-size-lg, @avatar-font-size-lg);
+    }
+
+    &--square {
+        border-radius: @avatar-border-radius;
+    }
+
+    &--thumb {
+        background: transparent;
+    }
+
+    > image {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.avatar-size(@size, @font-size) {
+    width: @size;
+    height: @size;
+    line-height: @size;
+    border-radius: @size / 2;
+    font-size: @font-size;
+
+    .@{wux-prefix}-avatar__string {
+        line-height: @size;
+    }
+}

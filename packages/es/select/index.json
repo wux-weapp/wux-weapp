@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "wux-popup-select": "../popup-select/index"
+    }
+}

@@ -1,0 +1,58 @@
+<view class="wux-class {{ classes.wrap }}">
+    <view class="{{ classes.hd }}">
+        <view wx:if="{{ resultIcon }}" class="{{ classes.icon }}">
+            <icon type="{{ resultIcon.type }}" size="{{ resultIcon.size }}" color="{{ resultIcon.color }}" />
+        </view>
+        <block wx:else>
+            <slot name="header"></slot>
+        </block>
+    </view>
+    <view class="{{ classes.bd }}">
+        <view wx:if="{{ title }}" class="{{ classes.title }}">{{ title }}</view>
+        <view wx:if="{{ label }}" class="{{ classes.desc }}">{{ label }}</view>
+        <view wx:if="{{ buttons.length }}" class="{{ classes.buttons }}">
+            <block wx:for="{{ buttons }}" wx:for-item="button" wx:key="index">
+                <wux-button
+                    type="{{ button.type }}"
+                    clear="{{ button.clear }}"
+                    block="{{ button.block }}"
+                    full="{{ button.full }}"
+                    outline="{{ button.outline }}"
+                    size="{{ button.size }}"
+                    disabled="{{ button.disabled }}"
+                    loading="{{ button.loading }}"
+                    form-type="{{ button.formType }}"
+                    open-type="{{ button.openType }}"
+                    hover-stop-propagation="{{ button.hoverStopPropagation }}"
+                    hover-start-time="{{ button.hoverStartTime }}"
+                    hover-stay-time="{{ button.hoverStayTime }}"
+                    lang="{{ button.lang }}"
+                    bind:getuserinfo="bindgetuserinfo"
+                    session-from="{{ button.sessionFrom }}"
+                    send-message-title="{{ button.sendMessageTitle }}"
+                    send-message-path="{{ button.sendMessagePath }}"
+                    send-message-img="{{ button.sendMessageImg }}"
+                    show-message-card="{{ button.showMessageCard }}"
+                    bind:contact="bindcontact"
+                    bind:getphonenumber="bindgetphonenumber"
+                    app-parameter="{{ button.appParameter }}"
+                    binderror="onError"
+                    bindopensetting="bindopensetting"
+                    data-index="{{ index }}"
+                    bind:click="onClick"
+                >
+                    {{ button.text }}
+                </wux-button>
+            </block>
+        </view>
+        <slot></slot>
+    </view>
+    <view class="{{ classes.ft }}">
+        <block wx:if="{{ extra }}">
+            <text>{{ extra }}</text>
+        </block>
+        <block wx:else>
+            <slot name="footer"></slot>
+        </block>
+    </view>
+</view>

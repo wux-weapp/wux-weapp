@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "usingComponents": {
+    	"wux-picker-view": "../picker-view/index",
+        "wux-spin": "../spin/index"
+    }
+}

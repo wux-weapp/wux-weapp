@@ -1,0 +1,173 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.fab-button-style(@theme, @color) {
+    &--@{theme} &__action,
+    &--@{theme} &__button,
+    &--@{theme} &__button--disabled {
+        background-color: @color !important;
+    }
+}
+
+.@{wux-prefix}-fab-button {
+    position: fixed;
+    z-index: @z-index-fab-button;
+
+    &--center {
+        left: 50%;
+        top: 50%;
+        transform: translate3d(-50%, -50%, 0);
+    }
+
+    &--topLeft {
+        left: 15px;
+        top: 15px;
+    }
+
+    &--topRight {
+        right: 15px;
+        top: 15px;
+    }
+
+    &--bottomLeft {
+        left: 15px;
+        bottom: 15px;
+    }
+
+    &--bottomRight {
+        right: 15px;
+        bottom: 15px;
+    }
+
+    &--vertical&--topLeft &__label,
+    &--vertical&--bottomLeft &__label {
+        left: 60px;
+    }
+
+    &--vertical&--center &__label,
+    &--vertical&--topRight &__label,
+    &--vertical&--bottomRight &__label {
+        right: 60px;
+    }
+
+    &__action {
+        .square(@fab-button-action-size);
+        position: relative;
+        border-radius: 50%;
+        z-index: @z-index-fab-button;
+        background-color: @fab-button-balanced-bg;
+        color: @text-color-inverse;
+        overflow: visible;
+        transition-duration: .3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: @fab-button-box-shadow;
+        right: 0;
+        bottom: 0;
+        position: relative;
+
+        &--hover {
+            transition-duration: 0s;
+            opacity: .8 !important;
+        }
+
+        &--hide-shadow {
+            box-shadow: none !important;
+        }
+    }
+
+    &__icon {
+        display: inline-block;
+        width: @fab-button-icon-size;
+        height: @fab-button-icon-size;
+        font-size: @fab-button-icon-size;
+        line-height: 1;
+    }
+
+    &__text {
+        display: inline-block;
+        width: @fab-button-icon-size;
+        height: @fab-button-icon-size;
+        font-size: @fab-button-icon-size;
+        line-height: 1;
+        transition: transform 150ms cubic-bezier(0.4, 0, 1, 1);
+
+        &--rotate {
+            transform: scale(1) rotate(135deg);
+        }
+    }
+
+    &__button {
+        .button-reset();
+        color: @text-color-inverse !important;
+        border-radius: 50%;
+        overflow: visible;
+        background-color: @fab-button-balanced-bg !important;
+        transition-duration: .3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: @fab-button-box-shadow;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        z-index: 2;
+        width: 100% !important;
+        height: 100%;
+
+        &--hover {
+            transition-duration: 0s;
+            opacity: .8 !important;
+        }
+
+        &--disabled {
+            opacity: @disabled-opacity !important;
+        }
+
+        &--hide-shadow {
+            box-shadow: none !important;
+        }
+    }
+
+    &__label {
+        position: absolute;
+        top: 50%;
+        padding: @fab-button-label-padding;
+        font-size: @font-size-sm;
+        background: @fab-button-label-bg;
+        border-radius: @border-radius-base;
+        color: @fab-button-label-color;
+        pointer-events: none;
+        white-space: nowrap;
+        opacity: 0;
+        box-sizing: border-box;
+        transform: translate3d(0, -50%, 0);
+        transition: all 0.3s;
+    }
+
+    &--vertical&--opened &__label {
+        opacity: 1;
+    }
+
+    &__backdrop {
+        position: fixed;
+        z-index: @z-index-backdrop;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: @backdrop-background-inverse;
+    }
+
+    .fab-button-style(light, @fab-button-light-bg);
+    .fab-button-style(stable, @fab-button-stable-bg);
+    .fab-button-style(positive, @fab-button-positive-bg);
+    .fab-button-style(calm, @fab-button-calm-bg);
+    .fab-button-style(assertive, @fab-button-assertive-bg);
+    .fab-button-style(balanced, @fab-button-balanced-bg);
+    .fab-button-style(energized, @fab-button-energized-bg);
+    .fab-button-style(royal, @fab-button-royal-bg);
+    .fab-button-style(dark, @fab-button-dark-bg);
+}

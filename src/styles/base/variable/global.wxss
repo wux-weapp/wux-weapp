@@ -1,8 +1,0 @@
-// font
-@wuxFontEN: -apple-system-font,"Helvetica Neue";
-@wuxFontCN: "PingFang SC","Hiragino Sans GB","Microsoft YaHei";
-@wuxFontSans: sans-serif;
-@wuxFontDefault: @wuxFontEN, @wuxFontSans;
-
-// classname
-@wuxClassNamePrefix: wux;

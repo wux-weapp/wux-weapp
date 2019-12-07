@@ -1,0 +1,16 @@
+<view class="wux-class {{ classes.wrap }}" bindtouchmove="onTouchMove">
+    <block wx:for="{{ stars }}" wx:key="">
+        <view class="{{ classes.star }}" bindtap="onTap" data-index="{{ index }}">
+            <view class="{{ classes.box }} {{ inputValue > index ? prefixCls + '__box--active' : '' }}" style="color: {{ colors && colors[index] ? colors[index]: '#ccc' }}; margin-right: {{ margin + 'px' }}; font-size: {{ fontSize + 'px' }}; width: {{ fontSize + 'px' }}; height: {{ fontSize + 'px' }}; line-height: {{ fontSize + 'px' }}">
+                <view class="{{ classes.inner }}">
+                    <wux-icon wx:if="{{ icon }}" wux-class="{{ classes.icon }}" type="{{ icon }}" size="{{ fontSize }}" color="{{ colors && colors[index] ? colors[index]: '#ccc' }}" />
+                    <block wx:else>{{ star }}</block>
+                    <view class="{{ classes.outer }}" style="color: {{ activeColor }}; width: {{ cutPercent + '%' }}" wx:if="{{ cutPercent > 0 && cutIndex === index }}">
+                        <wux-icon wx:if="{{ icon }}" wux-class="{{ classes.icon }}" type="{{ icon }}" size="{{ fontSize }}" color="{{ activeColor }}" />
+                        <block wx:else>{{ star }}</block>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>

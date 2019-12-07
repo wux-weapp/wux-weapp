@@ -1,0 +1,28 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-sticky-item {
+    position: relative;
+    font-size: @sticky-font-size;
+
+    &__hd {
+        background: @sticky-item-bg;
+        width: 100%;
+        height: @sticky-item-size;
+        line-height: @sticky-item-size;
+    }
+
+    &__title {
+        width: 100%;
+        padding: 0 15px;
+        box-sizing: border-box;
+        background: @sticky-item-bg;
+    }
+
+    &--fixed &__title {
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 2;
+    }
+}

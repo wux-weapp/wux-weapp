@@ -1,6 +1,0 @@
-@import "../styles/base/fn.wxss";
-
-.@{wuxClassNamePrefix}-steps {
-    position: relative;
-    width: 100%;
-}

@@ -1,0 +1,67 @@
+<wux-popup position="bottom" visible="{{ in }}" zIndex="1010" safeArea="bottom" bind:close="close">
+    <view class="wux-class {{ classes.wrap }}">
+        <view class="{{ classes.content }}">
+            <view class="{{ classes.hd }}" wx:if="{{ toolbar }}">
+                <view class="{{ classes.toolbar }}">
+                    <view class="{{ classes.picker }}">
+                        <view class="{{ classes.link }}" bindtap="prevMonth">
+                            <view class="{{ classes.prev }}"></view>
+                        </view>
+                        <view class="{{ classes.value }}">{{ currentMonthName }}</view>
+                        <view class="{{ classes.link }}" bindtap="nextMonth">
+                            <view class="{{ classes.next }}"></view>
+                        </view>
+                    </view>
+                    <view class="{{ classes.picker }}">
+                        <view class="{{ classes.link }}" bindtap="prevYear">
+                            <view class="{{ classes.prev }}"></view>
+                        </view>
+                        <text class="{{ classes.value }}">{{ currentYear }}</text>
+                        <view class="{{ classes.link }}" bindtap="nextYear">
+                            <view class="{{ classes.next }}"></view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="{{ classes.bd }}">
+                <view class="{{ classes.weekdays }}" wx:if="{{ weekHeader }}">
+                    <block wx:for="{{ weeks }}" wx:key="">
+                        <view class="{{ classes.weekday }} {{ item.weekend ? prefixCls + '__weekday--weekend' : '' }}">
+                            {{ item.dayName }}
+                        </view>
+                    </block>
+                </view>
+                <view class="{{ classes.months }}">
+                    <view class="{{ classes.monthsContent }}" bindtouchstart="onTouchStart" catchtouchmove="{{ swiping ? 'noop' : '' }}" capture-bind:touchmove="onTouchMove" bindtouchend="onTouchEnd" style="{{ wrapperTranslate }}">
+                        <block wx:for="{{ months }}" wx:for-item="month" wx:key="">
+                            <view
+                                data-year="{{ month.year }}"
+                                data-month="{{ month.month }}"
+                                class="{{ classes.month }} {{ index === 0 ? (prefixCls + '__month--prev') : index === 1 ? (prefixCls + '__month--current') : (prefixCls + '__month--next') }}"
+                                style="{{ monthsTranslate[index] }}"
+                            >
+                                <block wx:for="{{ month.items }}" wx:for-item="row" wx:key="">
+                                    <view class="{{ classes.days }}">
+                                        <block wx:for="{{ row }}" wx:for-item="col" wx:key="">
+                                            <view
+                                            data-year="{{ col.year }}"
+                                            data-month="{{ col.month }}"
+                                            data-day="{{ col.day }}"
+                                            data-date="{{ col.date }}"
+                                            data-type="{{ col.type }}"
+                                            class="{{ classes.day }} {{ col.type.prev ? prefixCls + '__day--prev' : '' }} {{ col.type.next ? prefixCls + '__day--next' : '' }} {{ col.type.today ? prefixCls + '__day--today' : '' }} {{ col.type.selected ? prefixCls + '__day--selected' : '' }} {{ col.type.weekend ? prefixCls + '__day--weekend' : '' }} {{ col.type.disabled ? prefixCls + '__day--disabled' : '' }}"
+                                            bindtap="onDayClick"
+                                            >
+                                                <text class="{{ classes.text }}">{{ col.day }}</text>
+                                            </view>
+                                        </block>
+                                    </view>
+                                </block>
+                            </view>
+                        </block>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</wux-popup>

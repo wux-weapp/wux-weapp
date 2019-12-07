@@ -1,0 +1,8 @@
+<view class="wux-class {{ classes.wrap }}">
+    <view class="{{ classes.outer }}">
+    	<view class="{{ classes.inner }}" style="background-color: {{ backgroundColor }}">
+    		<view class="{{ classes.bar }}" style="{{ style }} {{ extStyle }}"></view>
+    	</view>
+    </view>
+    <view class="{{ classes.text }}" wx:if="{{ showInfo }}">{{ width + '%' }}</view>
+</view>

@@ -1,7 +1,0 @@
-@import "../styles/base/fn.wxss";
-
-.@{wuxClassNamePrefix}-picker {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-}

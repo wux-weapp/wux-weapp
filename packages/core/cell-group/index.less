@@ -1,0 +1,29 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-cell-group {
+    &__hd {
+        padding: @cell-group-hd-padding;
+        font-size: @font-size-base;
+        color: @text-color-secondary;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    &__bd {
+        position: relative;
+        background-color: @cell-bg;
+
+        &:after {
+            .hairline(@border-color-split);
+            border-top-width: @border-width-base;
+            border-bottom-width: @border-width-base;
+        }
+    }
+
+    &__ft {
+        padding: @cell-group-ft-padding;
+        font-size: @font-size-base;
+        color: @text-color-secondary;
+    }
+}

@@ -1,0 +1,10 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-select {
+    &__scroll-view {
+        max-height: @scroll-view-size;
+    }
+
+    .toolbar-style(@heading-color, @stable-inverse, @balanced)
+}

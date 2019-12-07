@@ -1,0 +1,68 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-cell {
+    .button-reset();
+    padding: @cell-padding;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: @cell-bg;
+
+    &:after {
+        .setBottomLine(@border-color-split);
+        left: 15px;
+    }
+
+    &--last:after {
+        display: none;
+    }
+
+    &--hover {
+        background-color: @active-state-bg !important;
+    }
+
+    &--disabled {
+        opacity: @disabled-opacity;
+    }
+
+    &__thumb {
+        .square(@cell-icon-size);
+        display: block;
+        margin-right: @margin-component-base;
+    }
+
+    &__bd {
+        flex: 1;
+    }
+
+    &__text {
+        text-align: left;
+    }
+
+    &__desc {
+        text-align: left;
+        line-height: 1.2;
+        font-size: @font-size-sm;
+        color: @text-color-secondary;
+    }
+
+    &__ft {
+        text-align: right;
+        color: @text-color-secondary;
+    }
+
+    &--access &__ft {
+        padding-right: 13px;
+        position: relative;
+
+        &:after {
+            content: " ";
+            .setArrow(right, 6px, #C8C8CD, 2px);
+            position: absolute;
+            top: 50%;
+            margin-top: -4px;
+            right: 2px;
+        }
+    }
+}

@@ -1,0 +1,60 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-progress {
+	display: flex;
+    align-items: center;
+
+    &__outer {
+    	flex: 1;
+    }
+
+    &__inner {
+    	background-color: @progress-remaining-color;
+    }
+
+    &__bar {
+    	background-color: @progress-default-color;
+    	transition: all .3s linear 0s;
+    }
+
+    &__text {
+		margin-left: @progress-text-margin;
+		text-align: left;
+		vertical-align: middle;
+    }
+
+    &--round &__inner,
+    &--round &__bar {
+        border-radius: @progress-radius;
+    }
+
+    &--progress &__bar {
+        position: relative;
+
+        &:before {
+            content: '';
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #fff;
+            border-radius: 10px;
+            animation: progress 2s ease-in-out infinite;
+        }
+    }
+}
+
+@keyframes progress {
+    0% {
+        opacity: .3;
+        width: 0;
+    }
+
+    100% {
+        opacity: 0;
+        width: 100%;
+    }
+}
