@@ -96,7 +96,7 @@ demo/
 
 ![logo](./screenshots/qrcode.jpg)
 
-<img src="./screenshots/screenshorts-01.png" style="display:inline;">
+<img src="./screenshots/screenshorts-01.png" width="375" style="display:inline;">
 
 ## 相关链接
 
