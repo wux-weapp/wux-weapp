@@ -19,7 +19,7 @@ Page({
     },
     onChange(e) {
         console.log('onChange', e)
-        const { file } = e.detail
+        const { file, fileList } = e.detail
         if (file.status === 'uploading') {
             this.setData({
                 progress: 0,
@@ -30,6 +30,9 @@ Page({
                 imageUrl: file.url,
             })
         }
+
+        // Controlled state should set fileList
+        this.setData({ fileList })
     },
     onSuccess(e) {
         console.log('onSuccess', e)
