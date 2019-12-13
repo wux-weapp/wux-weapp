@@ -31,7 +31,7 @@
                         <text class="{{ classes.text }}">{{ button.text }}</text>
                     </button>
                 </block>
-                <button class="{{ classes.destructive }}" wx:if="{{ destructiveText }}" catchtap="destructiveButtonClicked">{{ destructiveText }}</button>
+                <button class="{{ classes.destructive }}" wx:if="{{ destructiveText }}" catchtap="destructiveButtonClicked" data-value="{{destructiveValue}}">{{ destructiveText }}</button>
             </view>
             <view class="{{ classes.group }}" wx:if="{{ cancelText }}">
                 <button class="{{ classes.cancel }}" hover-class="{{ classes.hover }}" catchtap="cancel">{{ cancelText }}</button>
