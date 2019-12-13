@@ -105,7 +105,8 @@ baseComponent({
          * 删除按钮点击事件
          */
         destructiveButtonClicked() {
-            if (this.fns.destructiveButtonClicked() === true) {
+            const { value } = e.currentTarget.dataset
+            if (this.fns.destructiveButtonClicked(value) === true) {
                 this.removeSheet()
             }
         },
