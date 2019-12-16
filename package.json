@@ -1,9 +1,10 @@
 {
   "name": "wux-weapp",
-  "version": "3.8.3",
+  "version": "3.8.4",
   "description": "一套组件化、可复用、易扩展的微信小程序 UI 组件库",
-  "main": "dist/index.js",
-  "miniprogram": "dist",
+  "main": "packages/lib/index.js",
+  "module": "packages/es/index.js",
+  "miniprogram": "packages/lib",
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
