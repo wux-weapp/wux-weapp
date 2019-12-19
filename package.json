@@ -10,8 +10,11 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/register": "^7.5.5",
+    "babel-eslint": "^10.0.3",
     "cross-env": "1.0.8",
     "del": "^5.0.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.19.1",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^3.10.0",
@@ -21,7 +24,11 @@
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^3.0.2",
     "gulp-util": "^3.0.8",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
     "postcss-font-base64": "^1.0.5",
+    "stylelint": "^12.0.0",
+    "stylelint-config-standard": "^19.0.0",
     "through2": "^2.0.3"
   },
   "scripts": {
@@ -29,11 +36,31 @@
     "build:core": "cross-env NODE_ENV=production gulp buildCore",
     "build:es": "cross-env NODE_ENV=production gulp buildEs",
     "build:lib": "cross-env NODE_ENV=production gulp buildLib",
-    "build": "cross-env NODE_ENV=production gulp build"
+    "build": "cross-env NODE_ENV=production gulp build",
+    "release": "bash ./scripts/release.sh",
+    "eslint": "eslint src example --ext .js",
+    "eslint:fix": "eslint src example --ext .js --fix",
+    "stylelint": "stylelint \"{src,example}/**/*.less\" --syntax less",
+    "stylelint:fix": "stylelint \"{src,example}/**/*.{wxss,less}\" --syntax less --fix",
+    "lint": "npm run eslint && npm run stylelint",
+    "lint:fix": "npm run eslint:fix && npm run stylelint:fix"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wux-weapp/wux-weapp.git"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "{src,example}/**/*.js": [
+      "eslint"
+    ],
+    "{src,example}/**/*.{wxss,less}": [
+      "stylelint"
+    ]
   },
   "keywords": [
     "wx-component",

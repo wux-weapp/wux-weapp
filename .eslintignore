@@ -1,0 +1,14 @@
+.git
+.github
+packages
+dist
+example/dist
+node_modules
+
+# Plugins
+src/barcode/barcode.js
+src/qrcode/qr.js
+src/input-number/utils.js
+src/helpers/classNames.js
+src/helpers/shallowEqual.js
+src/helpers/styleToCssString.js
