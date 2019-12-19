@@ -31,7 +31,7 @@ paths.styles.src = [
     ...files.map((v) => `${srcPath}/${v}/*.less`),
 ]
 paths.scripts.src = [
-    ...['helpers', ...files].map((v) => `${srcPath}/${v}/*.js`),
+    ...['helpers', ...files].map((v) => `${srcPath}/${v}/**/*.js`),
     `${srcPath}/index.js`,
 ]
 paths.copy.src = [
