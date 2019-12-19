@@ -5,71 +5,71 @@ import { $wuxBackdrop } from '../index'
 
 const getPlacements = ([a, s, b] = rects, placement = 'top') => {
     switch (placement) {
-        case 'topLeft':
-            return {
-                top: s.scrollTop + a.top - b.height - 4,
-                left: s.scrollLeft + a.left,
-            }
-        case 'top':
-            return {
-                top: s.scrollTop + a.top - b.height - 4,
-                left: s.scrollLeft + a.left + (a.width - b.width) / 2,
-            }
-        case 'topRight':
-            return {
-                top: s.scrollTop + a.top - b.height - 4,
-                left: s.scrollLeft + a.left + a.width - b.width,
-            }
-        case 'rightTop':
-            return {
-                top: s.scrollTop + a.top,
-                left: s.scrollLeft + a.left + a.width + 4,
-            }
-        case 'right':
-            return {
-                top: s.scrollTop + a.top + (a.height - b.height) / 2,
-                left: s.scrollLeft + a.left + a.width + 4,
-            }
-        case 'rightBottom':
-            return {
-                top: s.scrollTop + a.top + a.height - b.height,
-                left: s.scrollLeft + a.left + a.width + 4,
-            }
-        case 'bottomRight':
-            return {
-                top: s.scrollTop + a.top + a.height + 4,
-                left: s.scrollLeft + a.left + a.width - b.width,
-            }
-        case 'bottom':
-            return {
-                top: s.scrollTop + a.top + a.height + 4,
-                left: s.scrollLeft + a.left + (a.width - b.width) / 2,
-            }
-        case 'bottomLeft':
-            return {
-                top: s.scrollTop + a.top + a.height + 4,
-                left: s.scrollLeft + a.left,
-            }
-        case 'leftBottom':
-            return {
-                top: s.scrollTop + a.top + a.height - b.height,
-                left: s.scrollLeft + a.left - b.width - 4,
-            }
-        case 'left':
-            return {
-                top: s.scrollTop + a.top + (a.height - b.height) / 2,
-                left: s.scrollLeft + a.left - b.width - 4,
-            }
-        case 'leftTop':
-            return {
-                top: s.scrollTop + a.top,
-                left: s.scrollLeft + a.left - b.width - 4,
-            }
-        default:
-            return {
-                left: 0,
-                top: 0,
-            }
+            case 'topLeft':
+                return {
+                    top: s.scrollTop + a.top - b.height - 4,
+                    left: s.scrollLeft + a.left,
+                }
+            case 'top':
+                return {
+                    top: s.scrollTop + a.top - b.height - 4,
+                    left: s.scrollLeft + a.left + (a.width - b.width) / 2,
+                }
+            case 'topRight':
+                return {
+                    top: s.scrollTop + a.top - b.height - 4,
+                    left: s.scrollLeft + a.left + a.width - b.width,
+                }
+            case 'rightTop':
+                return {
+                    top: s.scrollTop + a.top,
+                    left: s.scrollLeft + a.left + a.width + 4,
+                }
+            case 'right':
+                return {
+                    top: s.scrollTop + a.top + (a.height - b.height) / 2,
+                    left: s.scrollLeft + a.left + a.width + 4,
+                }
+            case 'rightBottom':
+                return {
+                    top: s.scrollTop + a.top + a.height - b.height,
+                    left: s.scrollLeft + a.left + a.width + 4,
+                }
+            case 'bottomRight':
+                return {
+                    top: s.scrollTop + a.top + a.height + 4,
+                    left: s.scrollLeft + a.left + a.width - b.width,
+                }
+            case 'bottom':
+                return {
+                    top: s.scrollTop + a.top + a.height + 4,
+                    left: s.scrollLeft + a.left + (a.width - b.width) / 2,
+                }
+            case 'bottomLeft':
+                return {
+                    top: s.scrollTop + a.top + a.height + 4,
+                    left: s.scrollLeft + a.left,
+                }
+            case 'leftBottom':
+                return {
+                    top: s.scrollTop + a.top + a.height - b.height,
+                    left: s.scrollLeft + a.left - b.width - 4,
+                }
+            case 'left':
+                return {
+                    top: s.scrollTop + a.top + (a.height - b.height) / 2,
+                    left: s.scrollLeft + a.left - b.width - 4,
+                }
+            case 'leftTop':
+                return {
+                    top: s.scrollTop + a.top,
+                    left: s.scrollLeft + a.left - b.width - 4,
+                }
+            default:
+                return {
+                    left: 0,
+                    top: 0,
+                }
     }
 }
 

@@ -124,7 +124,7 @@ baseComponent({
 
                 activeOptions.push({
                     [value]: WUX_CASCADER,
-                    [label]: chooseTitle
+                    [label]: chooseTitle,
                 })
             }
 
@@ -186,7 +186,7 @@ baseComponent({
 
                 activeOptions.push({
                     [value]: WUX_CASCADER,
-                    [label]: this.data.chooseTitle
+                    [label]: this.data.chooseTitle,
                 })
 
                 const showOptions = this.getShowOptions(activeValue)

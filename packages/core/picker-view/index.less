@@ -36,7 +36,7 @@
         height: 100%;
         margin: 0 auto;
         background-image: linear-gradient(180deg, hsla(0, 0%, 100%, .95), hsla(0, 0%, 100%, .6)), linear-gradient(0deg, hsla(0, 0%, 100%, .95), hsla(0, 0%, 100%, .6));
-        background-position: top,bottom;
+        background-position: top, bottom;
         background-size: 100% @picker-item-height * 3;
         background-repeat: no-repeat;
     }
@@ -46,11 +46,11 @@
         height: @picker-item-height;
         top: @picker-item-height * 3;
 
-        &:before {
+        &::before {
             .setTopLine(@border-color-split);
         }
 
-        &:after {
+        &::after {
             .setBottomLine(@border-color-split);
         }
     }

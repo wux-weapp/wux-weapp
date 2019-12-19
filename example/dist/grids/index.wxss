@@ -4,7 +4,7 @@
   overflow: hidden;
   background-color: #fff
 }
-.wux-grids--bordered:before {
+.wux-grids--bordered::before {
   content: " ";
   position: absolute;
   left: 0;
@@ -16,7 +16,7 @@
   transform-origin: 0 0;
   transform: scaleY(.5)
 }
-.wux-grids--bordered:after {
+.wux-grids--bordered::after {
   content: " ";
   position: absolute;
   left: 0;

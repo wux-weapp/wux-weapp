@@ -6,7 +6,7 @@
     background-color: #fff;
 }
 
-.demo-item:after {
+.demo-item::after {
     content: " ";
     position: absolute;
     left: 0;
@@ -19,9 +19,9 @@
     transform: scaleY(.5);
 }
 
-/*.demo-item:last-child:after {
+/* .demo-item:last-child:after {
     display: none;
-}*/
+} */
 
 .demo-button {
     display: flex;

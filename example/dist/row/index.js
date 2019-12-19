@@ -40,9 +40,9 @@ baseComponent({
     		const colStyle = gutter > 0 ? `padding-left: ${gutter / 2}px; padding-right: ${gutter / 2}px` : ''
 
             if (elements.length > 0) {
-				elements.forEach((element) => {
+                elements.forEach((element) => {
 				    element.updateStyle(colStyle)
-				})
+                })
             }
 
             this.setData({

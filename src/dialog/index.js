@@ -181,7 +181,7 @@ baseComponent({
                     onTap: (e) => {
                         typeof opts.onConfirm === 'function' && opts.onConfirm(e)
                     },
-                }, ],
+                } ],
             }, opts))
         },
         /**
@@ -199,20 +199,19 @@ baseComponent({
         confirm(opts = {}) {
             return this.open(Object.assign({
                 buttons: [{
-                        text: opts.cancelText || defaultOptions.cancelText,
-                        type: opts.cancelType || defaultOptions.cancelType,
-                        onTap: (e) => {
-                            typeof opts.onCancel === 'function' && opts.onCancel(e)
-                        },
+                    text: opts.cancelText || defaultOptions.cancelText,
+                    type: opts.cancelType || defaultOptions.cancelType,
+                    onTap: (e) => {
+                        typeof opts.onCancel === 'function' && opts.onCancel(e)
                     },
-                    {
-                        text: opts.confirmText || defaultOptions.confirmText,
-                        type: opts.confirmType || defaultOptions.confirmType,
-                        onTap: (e) => {
-                            typeof opts.onConfirm === 'function' && opts.onConfirm(e)
-                        },
+                },
+                {
+                    text: opts.confirmText || defaultOptions.confirmText,
+                    type: opts.confirmType || defaultOptions.confirmType,
+                    onTap: (e) => {
+                        typeof opts.onConfirm === 'function' && opts.onConfirm(e)
                     },
-                ],
+                }],
             }, opts))
         },
         /**
@@ -244,20 +243,19 @@ baseComponent({
             return this.open(Object.assign({
                 prompt: prompt,
                 buttons: [{
-                        text: opts.cancelText || defaultOptions.cancelText,
-                        type: opts.cancelType || defaultOptions.cancelType,
-                        onTap: (e) => {
-                            typeof opts.onCancel === 'function' && opts.onCancel(e)
-                        },
+                    text: opts.cancelText || defaultOptions.cancelText,
+                    type: opts.cancelType || defaultOptions.cancelType,
+                    onTap: (e) => {
+                        typeof opts.onCancel === 'function' && opts.onCancel(e)
                     },
-                    {
-                        text: opts.confirmText || defaultOptions.confirmText,
-                        type: opts.confirmType || defaultOptions.confirmType,
-                        onTap: (e) => {
-                            typeof opts.onConfirm === 'function' && opts.onConfirm(e, this.data.prompt.response)
-                        },
+                },
+                {
+                    text: opts.confirmText || defaultOptions.confirmText,
+                    type: opts.confirmType || defaultOptions.confirmType,
+                    onTap: (e) => {
+                        typeof opts.onConfirm === 'function' && opts.onConfirm(e, this.data.prompt.response)
                     },
-                ],
+                }],
             }, opts))
         },
     },

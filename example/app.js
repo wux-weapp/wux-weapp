@@ -11,7 +11,7 @@ App({
                             if (res.networkType === 'wifi') {
                                 this.autoPlay()
                             }
-                        }
+                        },
                     })
                 }
             },

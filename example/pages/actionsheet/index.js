@@ -5,26 +5,25 @@ Page({
     onLoad() {},
     showActionSheet1() {
         wx.showActionSheet({
-            itemList: ['实例菜单', '实例菜单']
+            itemList: ['实例菜单', '实例菜单'],
         })
     },
     showActionSheet2() {
         $wuxActionSheet().showSheet({
             titleText: '自定义操作',
             buttons: [{
-                    text: 'Go Dialog'
-                },
-                {
-                    text: 'Go Toast'
-                },
-            ],
+                text: 'Go Dialog',
+            },
+            {
+                text: 'Go Toast',
+            }],
             buttonClicked(index, item) {
                 index === 0 && wx.navigateTo({
-                    url: '/pages/dialog/index'
+                    url: '/pages/dialog/index',
                 })
 
                 index === 1 && wx.navigateTo({
-                    url: '/pages/toast/index'
+                    url: '/pages/toast/index',
                 })
 
                 return true
@@ -42,12 +41,11 @@ Page({
             theme: 'wx',
             titleText: '三秒后自动关闭',
             buttons: [{
-                    text: '实例菜单'
-                },
-                {
-                    text: '实例菜单'
-                },
-            ],
+                text: '实例菜单',
+            },
+            {
+                text: '实例菜单',
+            }],
             buttonClicked(index, item) {
                 return true
             },

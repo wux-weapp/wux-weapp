@@ -6,7 +6,7 @@
   color: rgba(0,0,0,.85);
   background: #f7f7f8
 }
-.wux-popup-picker__toolbar:before {
+.wux-popup-picker__toolbar::before {
   content: " ";
   position: absolute;
   left: 0;

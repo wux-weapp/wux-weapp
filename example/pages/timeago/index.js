@@ -1,8 +1,8 @@
 Page({
-	data: {
-		to: null,
-		lang: 'zh_CN',
-	},
+    data: {
+        to: null,
+        lang: 'zh_CN',
+    },
     onLoad() {
         this.setData({
             to: new Date().getTime(),

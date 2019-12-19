@@ -16,7 +16,7 @@
   font-size: 30rpx;
   position: relative
 }
-.wux-keyboard__hd:after {
+.wux-keyboard__hd::after {
   content: " ";
   position: absolute;
   left: 0;
@@ -55,7 +55,7 @@
   align-items: center;
   height: 100rpx
 }
-.wux-keyboard__label:not(:last-child):after {
+.wux-keyboard__label:not(:last-child)::after {
   content: "";
   width: 1px;
   height: 50%;
@@ -83,7 +83,7 @@
   background-color: #fff;
   position: relative
 }
-.wux-keyboard__ft:before {
+.wux-keyboard__ft::before {
   content: " ";
   position: absolute;
   left: 0;
@@ -104,7 +104,7 @@
   text-align: center;
   background-color: #fff
 }
-.wux-keyboard__title:before {
+.wux-keyboard__title::before {
   font-size: 13px;
   color: #ff2424;
   line-height: 1;
@@ -134,7 +134,7 @@
   align-items: center;
   overflow: hidden
 }
-.wux-keyboard__text:before {
+.wux-keyboard__text::before {
   content: " ";
   position: absolute;
   left: 0;
@@ -146,7 +146,7 @@
   transform-origin: 0 0;
   transform: scaleY(.5)
 }
-.wux-keyboard__text:not(:last-child):after {
+.wux-keyboard__text:not(:last-child)::after {
   content: " ";
   position: absolute;
   right: 0;

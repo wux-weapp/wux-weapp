@@ -4,5 +4,5 @@
 }
 
 .checkbox {
-	position: static !important;
+    position: static !important;
 }

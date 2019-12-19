@@ -2,7 +2,8 @@
   position: relative;
   display: -ms-flexbox;
   display: flex;
-  align-item: center
+  -ms-flex-align: center;
+  align-items: center
 }
 .wux-textarea__label {
   margin-left: 0;
@@ -10,7 +11,9 @@
   text-align: left;
   white-space: nowrap;
   overflow: hidden;
-  width: 210rpx
+  width: 210rpx;
+  -ms-flex-item-align: start;
+  align-self: flex-start
 }
 .wux-textarea__control {
   -ms-flex: 1;

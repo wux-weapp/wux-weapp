@@ -11,7 +11,7 @@ function getDateString(date = new Date) {
 const { year, month, day, hour, minute } = getDateString()
 
 Page({
-	data: {
+    data: {
         value1: [year, month, day, hour, minute],
         value2: [year, month, day],
         value3: [year, month],
@@ -20,7 +20,7 @@ Page({
         value6: [year, month, day, hour, minute, '1'],
         value7: [hour, minute, '1'],
         lang: 'zh_CN',
-	},
+    },
     onChange(e) {
         console.log(e)
         const { key, values } = e.detail

@@ -8,7 +8,7 @@ Page({
     },
     onChange(field, e) {
         this.setData({
-            [field]: e.detail.value
+            [field]: e.detail.value,
         })
 
         console.log('radio发生change事件，携带value值为：', e.detail.value)

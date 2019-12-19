@@ -4,33 +4,33 @@
 }
 
 .checkbox {
-	position: static !important;
+    position: static !important;
 }
 
 .icon-off {
-	position: relative;
-	width: 23px;
-	height: 23px;
-	margin-left: 5px;
-	margin-right: 5px;
-	border: 1px solid #ccc;
-	box-sizing: border-box;
+    position: relative;
+    width: 23px;
+    height: 23px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 
 .icon-on {
-	position: relative;
-	width: 23px;
-	height: 23px;
-	margin-left: 5px;
-	margin-right: 5px;
-	border: 1px solid #ccc;
-	box-sizing: border-box;
-	border-color: #33cd5f;
+    position: relative;
+    width: 23px;
+    height: 23px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-color: #33cd5f;
     background: #33cd5f;
 }
 
-.icon-on:after {
-	position: absolute;
+.icon-on::after {
+    position: absolute;
     top: 1.5px;
     right: 7.5px;
     z-index: 999;

@@ -16,8 +16,8 @@
         font-size: 15px;
         position: relative;
 
-        &:after {
-            .setBottomLine(@border-color-split)
+        &::after {
+            .setBottomLine(@border-color-split);
         }
     }
 
@@ -45,7 +45,7 @@
         align-items: center;
         height: 50px;
 
-        &:not(:last-child):after {
+        &:not(:last-child)::after {
             content: "";
             width: 1px;
             height: 50%;
@@ -64,6 +64,7 @@
 
         &--dot {
             .square(@keyboard-dot-size);
+
             border-radius: 50%;
             background-color: @keyboard-dot-bg;
         }
@@ -77,8 +78,8 @@
         background-color: @keyboard-bg;
         position: relative;
 
-        &:before {
-            .setTopLine(@border-color-split)
+        &::before {
+            .setTopLine(@border-color-split);
         }
     }
 
@@ -91,7 +92,7 @@
         text-align: center;
         background-color: @keyboard-bg;
 
-        &:before {
+        &::before {
             font-size: 13px;
             color: #ff2424;
             line-height: 1;
@@ -120,13 +121,13 @@
         align-items: center;
         overflow: hidden;
 
-        &:before {
-            .setTopLine(@border-color-split)
+        &::before {
+            .setTopLine(@border-color-split);
         }
 
 
-        &:not(:last-child):after {
-            .setRightLine(@border-color-split)
+        &:not(:last-child)::after {
+            .setRightLine(@border-color-split);
         }
 
         &--hover {

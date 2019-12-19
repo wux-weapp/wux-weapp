@@ -14,8 +14,9 @@
         position: relative;
         background-color: @cell-bg;
 
-        &:after {
+        &::after {
             .hairline(@border-color-split);
+
             border-top-width: @border-width-base;
             border-bottom-width: @border-width-base;
         }

@@ -67,7 +67,7 @@ baseComponent({
         onClose() {
             if (this.data.closable) {
                 this.setData({
-                    visible: false
+                    visible: false,
                 })
             }
             this.triggerEvent('click')

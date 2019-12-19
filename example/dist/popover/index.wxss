@@ -20,7 +20,7 @@
   font-weight: 400;
   text-align: left
 }
-.wux-popover:after {
+.wux-popover::after {
   content: "";
   position: absolute;
   background: rgba(255,255,255,.01)
@@ -99,7 +99,7 @@
   color: rgba(0,0,0,.85);
   font-weight: 500
 }
-.wux-popover__title:after {
+.wux-popover__title::after {
   content: " ";
   position: absolute;
   left: 0;

@@ -80,7 +80,7 @@ baseComponent({
 
             if (this.data.sections.length !== elements.length) {
                 this.setData({
-                    sections: elements.map((element) => element.data)
+                    sections: elements.map((element) => element.data),
                 })
             }
         },

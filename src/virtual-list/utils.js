@@ -9,7 +9,7 @@ export const mapVirtualToProps = ({ items, itemHeight }, { startIndex, endIndex 
         virtual: {
             items: visibleItems,
             style: `height: ${height}px; padding-top: ${paddingTop}px; box-sizing: border-box;`,
-        }
+        },
     }
 }
 

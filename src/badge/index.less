@@ -32,6 +32,7 @@
 
     &__dot {
         .square(@badge-dot-size);
+
         position: absolute;
         transform: translateX(-50%);
         transform-origin: 0 center;
@@ -50,6 +51,7 @@
 
     &__status-dot {
         .square(@badge-status-size);
+
         display: inline-block;
         border-radius: 50%;
         vertical-align: middle;
@@ -65,7 +67,7 @@
             position: relative;
         }
 
-        &--processing:after {
+        &--processing::after {
             position: absolute;
             top: -1px;
             left: -1px;
@@ -93,7 +95,7 @@
     &__status-text {
         display: inline-block;
         color: @text-color;
-        font-size:  @font-size-base;
+        font-size: @font-size-base;
         margin-left: 8px;
     }
 }
@@ -101,11 +103,11 @@
 @keyframes statusProcessing {
     0% {
         transform: scale(.8);
-        opacity: .5
+        opacity: .5;
     }
 
     to {
         transform: scale(2.4);
-        opacity: 0
+        opacity: 0;
     }
 }

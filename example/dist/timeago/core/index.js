@@ -3,35 +3,35 @@
  * 解析时间
  */
 export const parse = (date) => {
-	if (date instanceof Date) return date
-	if (!isNaN(date) || /^\d+$/.test(date)) return new Date(parseInt(date, 10))
-	let s = date.trim()
-	s = s.replace(/\.\d+/,"") // remove milliseconds
-	s = s.replace(/-/,"/").replace(/-/,"/")
-	s = s.replace(/T/," ").replace(/Z/," UTC")
-	s = s.replace(/([\+\-]\d\d)\:?(\d\d)/," $1$2") // -04:00 -> -0400
-	s = s.replace(/([\+\-]\d\d)$/," $100") // +09 -> +0900
-	return new Date(s)
+    if (date instanceof Date) return date
+    if (!isNaN(date) || /^\d+$/.test(date)) return new Date(parseInt(date, 10))
+    let s = date.trim()
+    s = s.replace(/\.\d+/,'') // remove milliseconds
+    s = s.replace(/-/,'/').replace(/-/,'/')
+    s = s.replace(/T/,' ').replace(/Z/,' UTC')
+    s = s.replace(/([\+\-]\d\d)\:?(\d\d)/,' $1$2') // -04:00 -> -0400
+    s = s.replace(/([\+\-]\d\d)$/,' $100') // +09 -> +0900
+    return new Date(s)
 }
 
 /**
  * 计算月份差
  */
 export const monthDiff = (startMonth, endMonth) => {
-	const start = parse(startMonth)
-	const end = parse(endMonth)
-	return (start.getFullYear() - end.getFullYear()) * 12 + start.getMonth() - end.getMonth() 
+    const start = parse(startMonth)
+    const end = parse(endMonth)
+    return (start.getFullYear() - end.getFullYear()) * 12 + start.getMonth() - end.getMonth() 
 }
 
 /**
  * 计算时间差
  */
 export const diff = (date, nowDate, unit) => {
-	const start = parse(date)
-	const end = nowDate ? parse(nowDate) : new Date()
-	const output = end.getTime() - start.getTime()
+    const start = parse(date)
+    const end = nowDate ? parse(nowDate) : new Date()
+    const output = end.getTime() - start.getTime()
 
-	return unit === 'second' && output / 1000 ||
+    return unit === 'second' && output / 1000 ||
 		unit === 'minute' && output / 1000 / 60 ||
 		unit === 'hour' && output / 1000 / 60 / 60 ||
 		unit === 'day' && output / 1000 / 60 / 60 / 24 ||
@@ -66,15 +66,15 @@ const defaults = {
  * @return   {String}      文本内容
  */
 export const format = (diff, opts) => {
-	const options = Object.assign({}, defaults, opts)
-	const agoin = diff < 0 ? 1 : 0 // timein or timeago
-	const seconds = Math.abs(diff) / 1000
-	const minutes = seconds / 60
-	const hours = minutes / 60
-	const days = hours / 24
-	const years = days / 365
-	const substitute = (string, number) => string.replace(/%d/i, number)
-	return seconds < 10 && substitute(options.second[agoin], parseInt(seconds)) ||
+    const options = Object.assign({}, defaults, opts)
+    const agoin = diff < 0 ? 1 : 0 // timein or timeago
+    const seconds = Math.abs(diff) / 1000
+    const minutes = seconds / 60
+    const hours = minutes / 60
+    const days = hours / 24
+    const years = days / 365
+    const substitute = (string, number) => string.replace(/%d/i, number)
+    return seconds < 10 && substitute(options.second[agoin], parseInt(seconds)) ||
 		seconds < 45 && substitute(options.seconds[agoin], parseInt(seconds)) ||
 		seconds < 90 && substitute(options.minute[agoin], 1) ||
 		minutes < 45 && substitute(options.minutes[agoin], parseInt(minutes)) ||

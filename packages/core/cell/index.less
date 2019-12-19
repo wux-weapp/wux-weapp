@@ -3,18 +3,20 @@
 
 .@{wux-prefix}-cell {
     .button-reset();
+
     padding: @cell-padding;
     position: relative;
     display: flex;
     align-items: center;
     background: @cell-bg;
 
-    &:after {
+    &::after {
         .setBottomLine(@border-color-split);
+
         left: 15px;
     }
 
-    &--last:after {
+    &--last::after {
         display: none;
     }
 
@@ -28,6 +30,7 @@
 
     &__thumb {
         .square(@cell-icon-size);
+
         display: block;
         margin-right: @margin-component-base;
     }
@@ -56,9 +59,10 @@
         padding-right: 13px;
         position: relative;
 
-        &:after {
+        &::after {
             content: " ";
             .setArrow(right, 6px, #C8C8CD, 2px);
+
             position: absolute;
             top: 50%;
             margin-top: -4px;

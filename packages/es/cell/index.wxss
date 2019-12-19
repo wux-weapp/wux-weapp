@@ -22,7 +22,7 @@
   align-items: center;
   background: #fff
 }
-.wux-cell:after {
+.wux-cell::after {
   display: block;
   position: static;
   top: auto;
@@ -34,7 +34,7 @@
   transform: none;
   transform-origin: 0 0
 }
-.wux-cell:after {
+.wux-cell::after {
   content: " ";
   position: absolute;
   left: 0;
@@ -47,7 +47,7 @@
   transform: scaleY(.5);
   left: 30rpx
 }
-.wux-cell--last:after {
+.wux-cell--last::after {
   display: none
 }
 .wux-cell--hover {
@@ -83,7 +83,7 @@
   padding-right: 26rpx;
   position: relative
 }
-.wux-cell--access .wux-cell__ft:after {
+.wux-cell--access .wux-cell__ft::after {
   content: " ";
   display: inline-block;
   height: 12rpx;

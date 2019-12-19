@@ -179,40 +179,40 @@ baseComponent({
             let newValue = cloneDate(this.getDate())
             if (mode === DATETIME || mode === DATE || mode === YEAR || mode === MONTH) {
                 switch (index) {
-                case 0:
-                    newValue.setFullYear(value)
-                    break
-                case 1:
-                    setMonth(newValue, value)
-                    break
-                case 2:
-                    newValue.setDate(value)
-                    break
-                case 3:
-                    this.setHours(newValue, value)
-                    break
-                case 4:
-                    newValue.setMinutes(value)
-                    break
-                case 5:
-                    this.setAmPm(newValue, value)
-                    break
-                default:
-                    break
+                        case 0:
+                            newValue.setFullYear(value)
+                            break
+                        case 1:
+                            setMonth(newValue, value)
+                            break
+                        case 2:
+                            newValue.setDate(value)
+                            break
+                        case 3:
+                            this.setHours(newValue, value)
+                            break
+                        case 4:
+                            newValue.setMinutes(value)
+                            break
+                        case 5:
+                            this.setAmPm(newValue, value)
+                            break
+                        default:
+                            break
                 }
             } else if (mode === TIME) {
                 switch (index) {
-                case 0:
-                    this.setHours(newValue, value)
-                    break
-                case 1:
-                    newValue.setMinutes(value)
-                    break
-                case 2:
-                    this.setAmPm(newValue, value)
-                    break
-                default:
-                    break
+                        case 0:
+                            this.setHours(newValue, value)
+                            break
+                        case 1:
+                            newValue.setMinutes(value)
+                            break
+                        case 2:
+                            this.setAmPm(newValue, value)
+                            break
+                        default:
+                            break
                 }
             }
             return this.clipDate(newValue)

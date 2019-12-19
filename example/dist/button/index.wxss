@@ -28,7 +28,7 @@
   line-height: 84rpx;
   cursor: pointer
 }
-.wux-button:after {
+.wux-button::after {
   display: block;
   position: static;
   top: auto;
@@ -40,7 +40,7 @@
   transform: none;
   transform-origin: 0 0
 }
-.wux-button:after {
+.wux-button::after {
   content: " ";
   width: 100%;
   height: 100%;
@@ -85,7 +85,7 @@
   display: block;
   clear: both
 }
-.wux-button--block:after {
+.wux-button--block::after {
   clear: both
 }
 .wux-button--full {

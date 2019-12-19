@@ -13,7 +13,7 @@ Page({
     },
     onPageScroll(e) {
         this.setData({
-            scrollTop: e.scrollTop
+            scrollTop: e.scrollTop,
         })
     },
     onPulling() {
@@ -44,5 +44,5 @@ Page({
                 $stopWuxLoader('#wux-refresher', this, true)
             }
         }, 3000)
-    }
+    },
 })

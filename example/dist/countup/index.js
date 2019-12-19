@@ -42,8 +42,8 @@ class CountUp {
         return {
             useEasing: true, // toggle easing
             useGrouping: true, // 1,000,000 vs 1000000
-            separator: `,`, // character to use as a separator
-            decimal: `.`, // character to use as a decimal
+            separator: ',', // character to use as a separator
+            decimal: '.', // character to use as a decimal
             easingFn: null, // optional custom easing closure function, default is Robert Penner's easeOutExpo
             formattingFn: null, // optional custom formatting function, default is this.formatNumber below
             printValue(value) {}, // printValue
@@ -59,16 +59,16 @@ class CountUp {
         // extend default options with passed options object
         for (let key in defaultOptions) {
             if (defaultOptions.hasOwnProperty(key)) {
-                this.options[key] = typeof options[key] !== `undefined` ? options[key] : defaultOptions[key]
-                if (typeof this.options[key] === `function`) {
+                this.options[key] = typeof options[key] !== 'undefined' ? options[key] : defaultOptions[key]
+                if (typeof this.options[key] === 'function') {
                     this.options[key] = this.options[key].bind(this)
                 }
             }
         }
 
-        if (this.options.separator === ``) { this.options.useGrouping = !1 }
-        if (!this.options.prefix) this.options.prefix = ``
-        if (!this.options.suffix) this.options.suffix = ``
+        if (this.options.separator === '') { this.options.useGrouping = !1 }
+        if (!this.options.prefix) this.options.prefix = ''
+        if (!this.options.suffix) this.options.suffix = ''
 
         this.easingFn = this.options.easingFn ? this.options.easingFn : this.easeOutExpo
         this.formattingFn = this.options.formattingFn ? this.options.formattingFn : this.formatNumber
@@ -100,15 +100,15 @@ class CountUp {
      */
     formatNumber(nStr) {
         nStr = nStr.toFixed(this.decimals)
-        nStr += ``
+        nStr += ''
         let x, x1, x2, rgx
-        x = nStr.split(`.`)
+        x = nStr.split('.')
         x1 = x[0]
-        x2 = x.length > 1 ? this.options.decimal + x[1] : ``
+        x2 = x.length > 1 ? this.options.decimal + x[1] : ''
         rgx = /(\d+)(\d{3})/
         if (this.options.useGrouping) {
             while (rgx.test(x1)) {
-                x1 = x1.replace(rgx, `$1` + this.options.separator + `$2`)
+                x1 = x1.replace(rgx, '$1' + this.options.separator + '$2')
             }
         }
         return this.options.prefix + x1 + x2 + this.options.suffix

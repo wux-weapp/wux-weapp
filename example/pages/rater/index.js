@@ -1,16 +1,15 @@
 Page({
     data: {
         items: [{
-                id: '001',
-                text: 'Face',
-                value: 1,
-            },
-            {
-                id: '002',
-                text: 'Eye',
-                value: 2,
-            },
-        ],
+            id: '001',
+            text: 'Face',
+            value: 1,
+        },
+        {
+            id: '002',
+            text: 'Eye',
+            value: 2,
+        }],
         slider: 0,
         value: 3,
     },

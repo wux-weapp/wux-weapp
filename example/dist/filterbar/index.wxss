@@ -29,7 +29,7 @@
   text-align: center;
   box-sizing: border-box
 }
-.wux-filterbar__bd:after {
+.wux-filterbar__bd::after {
   content: " ";
   position: absolute;
   left: 0;
@@ -53,7 +53,7 @@
   white-space: nowrap;
   word-wrap: normal
 }
-.wux-filterbar__item:after {
+.wux-filterbar__item::after {
   content: " ";
   position: absolute;
   right: 0;
@@ -242,7 +242,7 @@
   height: 88rpx;
   line-height: 88rpx
 }
-.wux-filterbar__btns .wux-filterbar__btn:before {
+.wux-filterbar__btns .wux-filterbar__btn::before {
   content: " ";
   position: absolute;
   left: 0;
@@ -258,6 +258,6 @@
   background-color: #f23030;
   color: #fff
 }
-.wux-filterbar__btns .wux-filterbar__btn--danger:before {
+.wux-filterbar__btns .wux-filterbar__btn--danger::before {
   display: none
 }

@@ -1,21 +1,20 @@
 Page({
     data: {
         fileList: [{
-                uid: 0,
-                status: 'uploading',
-                url: 'http://cdn.skyvow.cn/qrcode.jpg',
-            },
-            {
-                uid: 1,
-                status: 'done',
-                url: 'http://cdn.skyvow.cn/qrcode.jpg',
-            },
-            {
-                uid: 2,
-                status: 'error',
-                url: 'http://cdn.skyvow.cn/qrcode.jpg',
-            }
-        ],
+            uid: 0,
+            status: 'uploading',
+            url: 'http://cdn.skyvow.cn/qrcode.jpg',
+        },
+        {
+            uid: 1,
+            status: 'done',
+            url: 'http://cdn.skyvow.cn/qrcode.jpg',
+        },
+        {
+            uid: 2,
+            status: 'error',
+            url: 'http://cdn.skyvow.cn/qrcode.jpg',
+        }],
     },
     onChange(e) {
         console.log('onChange', e)

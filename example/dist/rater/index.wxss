@@ -8,12 +8,12 @@
   font-style: normal;
   text-align: left
 }
-.wux-rater:after,
-.wux-rater:before {
+.wux-rater::after,
+.wux-rater::before {
   display: table;
   content: " "
 }
-.wux-rater:after {
+.wux-rater::after {
   clear: both
 }
 .wux-rater__star {

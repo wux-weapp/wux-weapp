@@ -32,6 +32,7 @@
 
 .@{wux-prefix}-button {
     .button-reset();
+
     position: relative;
     display: inline-block;
     // margin-left: auto;
@@ -62,7 +63,7 @@
     line-height: @button-height-base - 2px;
     cursor: pointer;
 
-    &:after {
+    &::after {
         content: " ";
         width: 100%;
         height: 100%;
@@ -113,7 +114,7 @@
         display: block;
         clear: both;
 
-        &:after {
+        &::after {
             clear: both;
         }
     }

@@ -265,10 +265,10 @@ export default function popupMixin(selector = '#wux-picker', platformProps = def
                     const toolbar = `${prefixCls}__toolbar`
                     const inner = `${prefixCls}__inner`
                     const cancel = classNames(`${prefixCls}__button`, {
-                        [`${prefixCls}__button--cancel`]: true
+                        [`${prefixCls}__button--cancel`]: true,
                     })
                     const confirm = classNames(`${prefixCls}__button`, {
-                        [`${prefixCls}__button--confirm`]: true
+                        [`${prefixCls}__button--confirm`]: true,
                     })
                     const hover = `${prefixCls}__button--hover`
                     const title = `${prefixCls}__title`

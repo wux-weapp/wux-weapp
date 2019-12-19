@@ -2,12 +2,12 @@
   position: relative;
   display: block
 }
-.wux-upload:after,
-.wux-upload:before {
+.wux-upload::after,
+.wux-upload::before {
   display: table;
   content: " "
 }
-.wux-upload:after {
+.wux-upload::after {
   clear: both
 }
 .wux-upload--disabled {
@@ -49,12 +49,12 @@
   display: block;
   float: left
 }
-.wux-upload--picture-card .wux-upload__files:after,
-.wux-upload--picture-card .wux-upload__files:before {
+.wux-upload--picture-card .wux-upload__files::after,
+.wux-upload--picture-card .wux-upload__files::before {
   display: table;
   content: " "
 }
-.wux-upload--picture-card .wux-upload__files:after {
+.wux-upload--picture-card .wux-upload__files::after {
   clear: both
 }
 .wux-upload--picture-card .wux-upload__file {

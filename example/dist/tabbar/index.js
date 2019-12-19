@@ -94,7 +94,7 @@ baseComponent({
 
             if (this.data.keys.length !== elements.length) {
                 this.setData({
-                    keys: elements.map((element) => element.data)
+                    keys: elements.map((element) => element.data),
                 })
             }
         },
@@ -127,7 +127,7 @@ baseComponent({
             this.setData({
                 tabbarStyle: styleToCssString(tabbarStyle),
             })
-        }
+        },
     },
     ready() {
         const { defaultCurrent, current, controlled, backgroundColor, position, safeArea } = this.data

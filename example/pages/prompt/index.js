@@ -38,7 +38,7 @@ Page({
                 that.setData({
                     sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
                 })
-            }
+            },
         })
     },
     tabClick(e) {

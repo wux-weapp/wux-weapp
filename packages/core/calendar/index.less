@@ -25,7 +25,7 @@
         position: relative;
         width: 100%;
 
-        &:before {
+        &::before {
             .setTopLine(@border-color-split);
         }
     }
@@ -98,7 +98,7 @@
         box-sizing: border-box;
         position: relative;
 
-        &:after {
+        &::after {
             .setBottomLine(@border-color-split);
         }
     }
@@ -128,7 +128,7 @@
             display: flex;
             position: relative;
             -webkit-backface-visibility: hidden;
-            transform: translate3d(0px, 0px, 0px)
+            transform: translate3d(0, 0, 0);
         }
     }
 
@@ -150,11 +150,11 @@
         width: 100%;
         position: relative;
 
-        &:after {
+        &::after {
             .setBottomLine(@border-color-split);
         }
 
-        &:last-child:after {
+        &:last-child::after {
             display: none;
         }
     }

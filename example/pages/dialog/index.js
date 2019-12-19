@@ -11,16 +11,15 @@ Page({
             title: '三秒后自动关闭',
             content: '弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内',
             buttons: [{
-                    text: '取消',
+                text: '取消',
+            },
+            {
+                text: '确定',
+                type: 'primary',
+                onTap(e) {
+                    console.log(e)
                 },
-                {
-                    text: '确定',
-                    type: 'primary',
-                    onTap(e) {
-                        console.log(e)
-                    },
-                },
-            ],
+            }],
         })
 
         this.timeout = setTimeout(hideDialog, 3000)
@@ -68,7 +67,7 @@ Page({
             placeholder: '请输入Wi-Fi密码',
             maxlength: 8,
             onConfirm(e, response) {
-                const content = response.length === 8 ? `Wi-Fi密码到手了: ${response}` : `请输入正确的Wi-Fi密码`
+                const content = response.length === 8 ? `Wi-Fi密码到手了: ${response}` : '请输入正确的Wi-Fi密码'
                 alert(content)
             },
         })
@@ -87,23 +86,22 @@ Page({
             title: '我是标题',
             content: '我是自定义的对话框！',
             buttons: [{
-                    text: '现金支付',
-                    type: 'primary',
-                    onTap(e) {
-                        alert('你选择了现金支付！')
-                    },
+                text: '现金支付',
+                type: 'primary',
+                onTap(e) {
+                    alert('你选择了现金支付！')
                 },
-                {
-                    text: '微信支付',
-                    type: 'primary',
-                    onTap(e) {
-                        alert('你选择了微信支付！')
-                    },
+            },
+            {
+                text: '微信支付',
+                type: 'primary',
+                onTap(e) {
+                    alert('你选择了微信支付！')
                 },
-                {
-                    text: '取消',
-                },
-            ],
+            },
+            {
+                text: '取消',
+            }],
         })
     },
     vertical() {
@@ -113,18 +111,17 @@ Page({
             content: '你也可以在个人页的反馈帮助中心里找到这个功能',
             verticalButtons: !0,
             buttons: [{
-                    text: '遇到问题',
-                    bold: !0,
-                },
-                {
-                    text: '意见建议',
-                    bold: !0,
-                },
-                {
-                    text: '没啥事',
-                    bold: !0,
-                },
-            ],
+                text: '遇到问题',
+                bold: !0,
+            },
+            {
+                text: '意见建议',
+                bold: !0,
+            },
+            {
+                text: '没啥事',
+                bold: !0,
+            }],
         })
     },
     openType() {
@@ -133,17 +130,16 @@ Page({
             title: '提示',
             content: '获取用户信息',
             buttons: [{
-                    text: '取消',
+                text: '取消',
+            },
+            {
+                text: '确定',
+                type: 'primary',
+                openType: 'getUserInfo',
+                onGetUserInfo(e) {
+                    console.log(e)
                 },
-                {
-                    text: '确定',
-                    type: 'primary',
-                    openType: 'getUserInfo',
-                    onGetUserInfo(e) {
-                        console.log(e)
-                    },
-                },
-            ],
+            }],
         })
     },
 })

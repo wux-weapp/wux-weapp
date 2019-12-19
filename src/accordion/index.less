@@ -16,14 +16,16 @@
         display: flex;
         align-items: center;
 
-        &:after {
+        &::after {
             .setBottomLine(@border-color-split);
+
             left: 0;
         }
     }
 
     &__thumb {
         .square(@accordion-icon-size);
+
         display: block;
         margin-right: @margin-component-base;
     }
@@ -56,8 +58,9 @@
         position: relative;
         padding: @accordion-bd-padding;
 
-        &:after {
+        &::after {
             .setBottomLine(@border-color-split);
+
             left: 0;
         }
     }

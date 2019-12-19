@@ -18,7 +18,7 @@
 .wux-popup-position.wux-popup-position--center .wux-popup__bd {
   padding: 0 1.6em .8em
 }
-.wux-popup-position.wux-popup-position--center .wux-popup__ft:after {
+.wux-popup-position.wux-popup-position--center .wux-popup__ft::after {
   content: " ";
   position: absolute;
   left: 0;

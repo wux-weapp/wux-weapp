@@ -42,9 +42,9 @@ baseComponent({
     	updated() {
     		const elements = this.getRelationNodes('../sticky-item/index')
             if (elements.length > 0) {
-				elements.forEach((element, index) => {
+                elements.forEach((element, index) => {
 				    element.updated(index)
-				})
+                })
             }
     	},
     },

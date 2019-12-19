@@ -19,7 +19,7 @@ Page({
         this.$wuxGallery.show({
             current,
             urls,
-            [`delete`]: (current, urls) => {
+            ['delete']: (current, urls) => {
                 urls.splice(current, 1)
                 this.setData({
                     urls,
@@ -49,7 +49,7 @@ Page({
             indicatorColor: '#fff',
             indicatorActiveColor: '#04BE02',
             icon: 'http://cdn.skyvow.cn/logo.png',
-            [`delete`]: (current, urls) => {
+            ['delete']: (current, urls) => {
                 console.log('onIconClick')
                 return true
             },

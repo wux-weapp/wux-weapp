@@ -2,10 +2,10 @@ Page({
     data: {
     	items: [{
     		value: '1',
-    		label: 'Wux'
+    		label: 'Wux',
     	}, {
     		value: '2',
-    		label: 'Weapp'
+    		label: 'Weapp',
     	}],
     	value: '1',
         checked: false,

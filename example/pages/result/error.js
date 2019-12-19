@@ -5,16 +5,15 @@ Page({
             color: '#ef473a',
         },
         buttons: [{
-                type: 'balanced',
-                block: true,
-                text: '确定',
-            },
-            {
-                type: 'light',
-                block: true,
-                text: '返回',
-            },
-        ],
+            type: 'balanced',
+            block: true,
+            text: '确定',
+        },
+        {
+            type: 'light',
+            block: true,
+            text: '返回',
+        }],
     },
     onClick(e) {
         console.log(e)

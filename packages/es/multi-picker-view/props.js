@@ -2,8 +2,8 @@ import * as picker from '../picker-view/props'
 
 export const defaultFieldNames = picker.defaultFieldNames
 export const props = {
-	...picker.props,
-	prefixCls: {
+    ...picker.props,
+    prefixCls: {
         type: String,
         value: 'wux-picker',
     },

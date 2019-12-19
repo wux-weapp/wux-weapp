@@ -14,7 +14,7 @@
   -ms-flex-align: center;
   align-items: center
 }
-.wux-accordion__hd:after {
+.wux-accordion__hd::after {
   content: " ";
   position: absolute;
   bottom: 0;
@@ -58,7 +58,7 @@
   position: relative;
   padding: 30rpx
 }
-.wux-accordion__bd:after {
+.wux-accordion__bd::after {
   content: " ";
   position: absolute;
   bottom: 0;

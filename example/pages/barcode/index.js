@@ -10,7 +10,7 @@ Page({
             onInvalid() { console.log('onInvalid') },
             onSuccess() { console.log('onSuccess') },
             onError() { console.log('onError') },
-        }
+        },
     },
     onLoad() {},
     bindinput(e) {

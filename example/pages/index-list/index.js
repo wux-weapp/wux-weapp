@@ -11,7 +11,7 @@ Page({
             const cells = NAMES.filter((name) => name.charAt(0) === initial)
             alphabet.push({
                 initial,
-                cells
+                cells,
             })
         })
 

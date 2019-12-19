@@ -4,10 +4,10 @@ const seasons = [
 ]
 
 Page({
-	data: {
+    data: {
         value: ['蔡', '🏀'],
         options: seasons,
-	},
+    },
     onValueChange(e) {
         this.setData({ value: e.detail.value })
         console.log('onValueChange', e.detail)

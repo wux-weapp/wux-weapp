@@ -20,7 +20,7 @@
   position: relative;
   width: 100%
 }
-.wux-calendar__hd:before {
+.wux-calendar__hd::before {
   content: " ";
   position: absolute;
   left: 0;
@@ -98,7 +98,7 @@
   box-sizing: border-box;
   position: relative
 }
-.wux-calendar__weekdays:after {
+.wux-calendar__weekdays::after {
   content: " ";
   position: absolute;
   left: 0;
@@ -157,7 +157,7 @@
   width: 100%;
   position: relative
 }
-.wux-calendar__days:after {
+.wux-calendar__days::after {
   content: " ";
   position: absolute;
   left: 0;
@@ -169,7 +169,7 @@
   transform-origin: 0 100%;
   transform: scaleY(.5)
 }
-.wux-calendar__days:last-child:after {
+.wux-calendar__days:last-child::after {
   display: none
 }
 .wux-calendar__day {

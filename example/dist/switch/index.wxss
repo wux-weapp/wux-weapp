@@ -9,7 +9,7 @@
   background-color: #dfdfdf;
   transition: background-color .1s,border .1s
 }
-.wux-switch__input:before {
+.wux-switch__input::before {
   content: " ";
   position: absolute;
   top: 0;
@@ -20,7 +20,7 @@
   background-color: #fdfdfd;
   transition: transform .35s cubic-bezier(.45,1,.4,1)
 }
-.wux-switch__input:after {
+.wux-switch__input::after {
   content: " ";
   position: absolute;
   top: 0;
@@ -36,10 +36,10 @@
   border-color: #33cd5f;
   background-color: #33cd5f
 }
-.wux-switch__input--checked:before {
+.wux-switch__input--checked::before {
   transform: scale(0)
 }
-.wux-switch__input--checked:after {
+.wux-switch__input--checked::after {
   transform: translateX(40rpx)
 }
 .wux-switch__input--disabled {

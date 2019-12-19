@@ -2,18 +2,18 @@
 @import "../styles/themes/index.less";
 
 .@{wux-prefix}-grids {
-	position: relative;
-	box-sizing: border-box;
-	overflow: hidden;
-	background-color: @grids-bg;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: @grids-bg;
 
     &--bordered {
-	    &:before {
-	        .setTopLine(@border-color-split);
-	    }
+        &::before {
+            .setTopLine(@border-color-split);
+        }
 
-	    &:after {
-	        .setLeftLine(@border-color-split);
-	    }
+        &::after {
+            .setLeftLine(@border-color-split);
+        }
     }
 }

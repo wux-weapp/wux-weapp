@@ -34,7 +34,7 @@
             padding: 30px 0 4px;
             margin-left: 0;
 
-            &:after {
+            &::after {
                 width: @steps-line-size;
                 height: 100%;
             }
@@ -50,7 +50,7 @@
         margin-left: 3px;
         box-sizing: border-box;
 
-        &:after {
+        &::after {
             content: "";
             display: inline-block;
             background: @border-color-split;
@@ -90,8 +90,8 @@
             background: @steps-process-bg;
         }
 
-        .@{wux-prefix}-step__ft:after {
-           // background: @steps-process-bg;
+        .@{wux-prefix}-step__ft::after {
+            // background: @steps-process-bg;
         }
     }
 
@@ -101,7 +101,7 @@
             color: @steps-wait-bg;
         }
 
-        .@{wux-prefix}-step__ft:after {
+        .@{wux-prefix}-step__ft::after {
             background: @steps-wait-bg;
         }
     }
@@ -112,7 +112,7 @@
             color: @steps-finish-bg;
         }
 
-        .@{wux-prefix}-step__ft:after {
+        .@{wux-prefix}-step__ft::after {
             background: @steps-finish-bg;
         }
     }
@@ -123,7 +123,7 @@
             color: @steps-error-bg;
         }
 
-        .@{wux-prefix}-step__ft:after {
+        .@{wux-prefix}-step__ft::after {
             background: @steps-error-bg;
         }
     }

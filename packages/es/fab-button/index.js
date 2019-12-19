@@ -232,21 +232,21 @@ baseComponent({
             // 更新样式
             this.getRect(`.${prefixCls}__action`).then((rect) => {
                 switch (direction) {
-                    case 'horizontal':
-                    case 'vertical':
-                        buttons.forEach((_, index) => {
-                            const offset = `${sign * (rect.width + spaceBetween) * (index + 1)}`
-                            const style = setTransform(offset, scale, duration, isH)
+                        case 'horizontal':
+                        case 'vertical':
+                            buttons.forEach((_, index) => {
+                                const offset = `${sign * (rect.width + spaceBetween) * (index + 1)}`
+                                const style = setTransform(offset, scale, duration, isH)
 
-                            buttonStyle.push(style)
-                        })
-                        break
-                    case 'circle':
-                        const radius = rect.width + spaceBetween
-                        buttons.forEach((_, index) => {
-                            buttonStyle.push(this.getCircleStyle(index, radius))
-                        })
-                        break
+                                buttonStyle.push(style)
+                            })
+                            break
+                        case 'circle':
+                            const radius = rect.width + spaceBetween
+                            buttons.forEach((_, index) => {
+                                buttonStyle.push(this.getCircleStyle(index, radius))
+                            })
+                            break
                 }
 
                 if (this.data.buttonStyle !== buttonStyle) {

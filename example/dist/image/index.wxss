@@ -15,7 +15,7 @@
   background-color: #fff;
   border-radius: 8rpx
 }
-.wux-image--thumbnail:after {
+.wux-image--thumbnail::after {
   content: " ";
   position: absolute;
   top: 0;

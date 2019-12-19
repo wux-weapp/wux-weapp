@@ -1,5 +1,5 @@
 Page({
-	data: {
+    data: {
         value1: [],
         value2: [],
         value3: [],
@@ -19,7 +19,7 @@ Page({
         displayValue8: '请选择',
         displayValue9: '请选择',
         lang: 'zh_CN',
-	},
+    },
     onChange(e) {
         console.log(e)
         const { key, values } = e.detail

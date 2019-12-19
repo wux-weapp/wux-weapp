@@ -9,7 +9,7 @@ Page({
             duration: 1500,
             color: '#fff',
             text: '已完成',
-            success: () => console.log('已完成')
+            success: () => console.log('已完成'),
         })
 
         // The same as above
@@ -25,7 +25,7 @@ Page({
             duration: 1500,
             color: '#fff',
             text: '取消操作',
-            success: () => console.log('取消操作')
+            success: () => console.log('取消操作'),
         })
 
         // The same as above
@@ -41,7 +41,7 @@ Page({
             duration: 1500,
             color: '#fff',
             text: '禁止操作',
-            success: () => console.log('禁止操作')
+            success: () => console.log('禁止操作'),
         })
 
         // The same as above
@@ -57,7 +57,7 @@ Page({
             duration: 1500,
             color: '#fff',
             text: '文本提示',
-            success: () => console.log('文本提示')
+            success: () => console.log('文本提示'),
         })
 
         // The same as above
@@ -74,7 +74,7 @@ Page({
             color: '#fff',
             icon: 'ios-happy',
             text: '自定义图标',
-            success: () => console.log('自定义图标')
+            success: () => console.log('自定义图标'),
         })
     },
     showToastReturn() {

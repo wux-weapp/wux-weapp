@@ -35,19 +35,19 @@ baseComponent({
         },
         prefixLCls: {
             type: String,
-            value: 'wux-loader'
+            value: 'wux-loader',
         },
         isShowLoadingText: {
             type: Boolean,
-            value: false
+            value: false,
         },
         loadingText: {
             type: String,
-            value: '正在加载'
+            value: '正在加载',
         },
         loadNoDataText: {
             type: String,
-            value: '没有更多数据'
+            value: '没有更多数据',
         },
         scrollTop: {
             type: Number,

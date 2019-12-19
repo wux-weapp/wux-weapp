@@ -6,7 +6,7 @@
   color: rgba(0,0,0,.85);
   background: #f7f7f8
 }
-.wux-date-picker__toolbar:before {
+.wux-date-picker__toolbar::before {
   content: " ";
   position: absolute;
   left: 0;

@@ -2,7 +2,7 @@
 @import "../styles/themes/index.less";
 
 .@{wux-prefix}-spin {
-	position: relative;
+    position: relative;
     display: inline-block;
 
     &__spinning {
@@ -44,6 +44,7 @@
 
     &__dots {
         .square(@spin-dot-size-base);
+
         overflow: hidden;
         display: inline-block;
         transform: rotate(45deg);
@@ -109,7 +110,7 @@
             filter: blur(.5px);
             transform: translateZ(0);
 
-            /*&:after {
+            /* &:after {
                 content: "";
                 position: absolute;
                 left: 0;
@@ -120,7 +121,7 @@
                 opacity: @disabled-opacity;
                 transition: all .3s;
                 z-index: 10;
-            }*/
+            } */
         }
     }
 
@@ -133,7 +134,7 @@
     }
 
     &--small&--nested &__dots {
-        margin: -@spin-dot-size-sm / 2 ;
+        margin: -@spin-dot-size-sm / 2;
     }
 
     &--small &__dot {
@@ -174,7 +175,7 @@
 }
 
 @keyframes spinMove {
-	to {
-		opacity: 1;
-	}
+    to {
+        opacity: 1;
+    }
 }

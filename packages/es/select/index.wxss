@@ -9,7 +9,7 @@
   color: rgba(0,0,0,.85);
   background: #f7f7f8
 }
-.wux-select__toolbar:before {
+.wux-select__toolbar::before {
   content: " ";
   position: absolute;
   left: 0;

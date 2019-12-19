@@ -3,21 +3,21 @@ import classNames from '../helpers/classNames'
 import { $wuxBackdrop } from '../index'
 
 function getLabels(children = []) {
-   return children.filter((v) => v.checked).map((v) => v.label).join(',')
+    return children.filter((v) => v.checked).map((v) => v.label).join(',')
 }
 
 function getDisplayValues(options = [], extra = true) {
     return options.reduce((acc, option) => {
         switch (option.type) {
-            case 'radio':
-            case 'checkbox':
-                acc.push(getLabels(option.children || []) || (extra ? option.label : ''))
-                break
-            case 'filter':
-                acc.push(getDisplayValues(option.children || [], false))
-                break
-            default:
-                acc.push(option.label)
+                case 'radio':
+                case 'checkbox':
+                    acc.push(getLabels(option.children || []) || (extra ? option.label : ''))
+                    break
+                case 'filter':
+                    acc.push(getDisplayValues(option.children || [], false))
+                    break
+                default:
+                    acc.push(option.label)
         }
         return acc
     }, [])
@@ -39,21 +39,21 @@ function getValue(children = [], single = false) {
 function getValues(options = []) {
     return options.reduce((acc, option) => {
         switch (option.type) {
-            case 'radio':
-                acc.push(getValue(option.children, true))
-                break
-            case 'checkbox':
-                acc.push(getValue(option.children, false))
-                break
-            case 'text':
-                acc.push(option.checked ? option.value : '')
-                break
-            case 'sort':
-                acc.push(option.checked ? getSortValue(option.sort) : '')
-                break
-            case 'filter':
-                acc.push(getValues(option.children))
-                break
+                case 'radio':
+                    acc.push(getValue(option.children, true))
+                    break
+                case 'checkbox':
+                    acc.push(getValue(option.children, false))
+                    break
+                case 'text':
+                    acc.push(option.checked ? option.value : '')
+                    break
+                case 'sort':
+                    acc.push(option.checked ? getSortValue(option.sort) : '')
+                    break
+                case 'filter':
+                    acc.push(getValues(option.children))
+                    break
         }
         return acc
     }, [])

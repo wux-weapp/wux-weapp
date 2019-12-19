@@ -141,21 +141,21 @@ baseComponent({
             let transitionName = ''
 
             switch (value) {
-                case 'top':
-                    transitionName = `${animationPrefixCls}--slideInDown`
-                    break
-                case 'right':
-                    transitionName = `${animationPrefixCls}--slideInRight`
-                    break
-                case 'bottom':
-                    transitionName = `${animationPrefixCls}--slideInUp`
-                    break
-                case 'left':
-                    transitionName = `${animationPrefixCls}--slideInLeft`
-                    break
-                default:
-                    transitionName = `${animationPrefixCls}--fadeIn`
-                    break
+                    case 'top':
+                        transitionName = `${animationPrefixCls}--slideInDown`
+                        break
+                    case 'right':
+                        transitionName = `${animationPrefixCls}--slideInRight`
+                        break
+                    case 'bottom':
+                        transitionName = `${animationPrefixCls}--slideInUp`
+                        break
+                    case 'left':
+                        transitionName = `${animationPrefixCls}--slideInLeft`
+                        break
+                    default:
+                        transitionName = `${animationPrefixCls}--fadeIn`
+                        break
             }
 
             this.setData({ transitionName })

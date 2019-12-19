@@ -7,11 +7,11 @@
     box-sizing: border-box;
 
     &--bordered {
-        &:before {
+        &::before {
             .setRightLine(@border-color-split);
         }
 
-        &:after {
+        &::after {
             .setBottomLine(@border-color-split);
         }
     }
@@ -22,16 +22,17 @@
 
     &__thumb {
         .square(@grids-icon-size);
+
         display: block;
-		margin: 0 auto;
+        margin: 0 auto;
     }
 
     &__label {
-    	text-align: center;
-	    color: @grids-color;
-	    font-size: @grids-font-size;
+        text-align: center;
+        color: @grids-color;
+        font-size: @grids-font-size;
         margin-top: @margin-component-base;
-	    .ellipsis();
+        .ellipsis();
     }
 
     &__inner {

@@ -1,13 +1,13 @@
 /* pages/divider/index.wxss */
 .loadmore {
-	display: inline-block;
+    display: inline-block;
     vertical-align: middle;
     font-weight: normal;
     font-size: 14px;
 }
 
 .loading {
-	width: 20px;
+    width: 20px;
     height: 20px;
     display: inline-block;
     vertical-align: middle;
@@ -17,7 +17,7 @@
 }
 
 .text {
-	display: inline-block;
+    display: inline-block;
     vertical-align: middle;
 }
 

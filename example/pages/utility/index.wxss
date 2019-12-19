@@ -1,4 +1,5 @@
 @import '../../dist/styles/index.wxss';
+
 .color {
     width: 200rpx;
     color: #fff;

@@ -20,7 +20,7 @@
   color: #33cd5f!important;
   position: relative
 }
-.wux-dialog__button:after {
+.wux-dialog__button::after {
   display: block;
   position: static;
   top: auto;
@@ -51,7 +51,7 @@
   position: relative;
   margin-top: 20rpx
 }
-.wux-dialog__prompt:after {
+.wux-dialog__prompt::after {
   content: " ";
   position: absolute;
   top: 0;
@@ -83,7 +83,7 @@
   -ms-flex: 1;
   flex: 1
 }
-.wux-dialog__buttons--horizontal .wux-dialog__button:after {
+.wux-dialog__buttons--horizontal .wux-dialog__button::after {
   content: " ";
   position: absolute;
   left: 0;
@@ -95,14 +95,14 @@
   transform-origin: 0 0;
   transform: scaleX(.5)
 }
-.wux-dialog__buttons--horizontal .wux-dialog__button:first-child:after {
+.wux-dialog__buttons--horizontal .wux-dialog__button:first-child::after {
   display: none
 }
 .wux-dialog__buttons--vertical {
   display: block;
   height: auto
 }
-.wux-dialog__buttons--vertical .wux-dialog__button:after {
+.wux-dialog__buttons--vertical .wux-dialog__button::after {
   content: " ";
   position: absolute;
   left: 0;

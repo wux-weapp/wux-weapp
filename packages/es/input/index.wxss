@@ -2,7 +2,8 @@
   position: relative;
   display: -ms-flexbox;
   display: flex;
-  align-item: center
+  -ms-flex-align: center;
+  align-items: center
 }
 .wux-input__label {
   margin-left: 0;

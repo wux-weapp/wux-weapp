@@ -2,7 +2,7 @@
 @import "../styles/themes/index.less";
 
 .@{wux-prefix}-popover {
-    font-family: Monospaced Number,Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-family: Monospaced Number, Chinese Quote, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: @popover-font-size;
     line-height: @popover-line-height;
     color: @text-color;
@@ -20,7 +20,7 @@
     font-weight: 400;
     text-align: left;
 
-    &:after {
+    &::after {
         content: "";
         position: absolute;
         background: fade(@white, 1%);
@@ -28,8 +28,8 @@
 
     &__container {
         position: absolute;
-        top: 0px;
-        left: 0px;
+        top: 0;
+        left: 0;
         width: 100%;
     }
 
@@ -113,7 +113,7 @@
         color: @heading-color;
         font-weight: 500;
 
-        &:after {
+        &::after {
             .setBottomLine(@border-color-split);
         }
     }

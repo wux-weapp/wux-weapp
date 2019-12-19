@@ -34,17 +34,17 @@ Page({
                 console.log(`输入的密码是：${value}`)
 
                 wx.showLoading({
-                    title: '验证支付密码'
+                    title: '验证支付密码',
                 })
 
                 return http({
-                        url: 'https://www.skyvow.cn/api/user/sign/in',
-                        method: 'POST',
-                        data: {
-                            username: 'admin',
-                            password: value
-                        }
-                    })
+                    url: 'https://www.skyvow.cn/api/user/sign/in',
+                    method: 'POST',
+                    data: {
+                        username: 'admin',
+                        password: value,
+                    },
+                })
                     .then(res => {
                         const data = res.data
 
@@ -86,7 +86,7 @@ Page({
                 console.log(`输入的密码是：${value}`)
 
                 wx.showLoading({
-                    title: '验证支付密码'
+                    title: '验证支付密码',
                 })
 
                 return new Promise((resolve, reject) => {

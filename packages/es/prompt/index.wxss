@@ -35,7 +35,7 @@
   padding: 4rpx 0;
   border: 1PX solid #e8e8e8
 }
-.wux-prompt__button:after {
+.wux-prompt__button::after {
   display: none
 }
 .wux-prompt__button--hover {

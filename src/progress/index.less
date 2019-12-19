@@ -2,26 +2,26 @@
 @import "../styles/themes/index.less";
 
 .@{wux-prefix}-progress {
-	display: flex;
+    display: flex;
     align-items: center;
 
     &__outer {
-    	flex: 1;
+        flex: 1;
     }
 
     &__inner {
-    	background-color: @progress-remaining-color;
+        background-color: @progress-remaining-color;
     }
 
     &__bar {
-    	background-color: @progress-default-color;
-    	transition: all .3s linear 0s;
+        background-color: @progress-default-color;
+        transition: all .3s linear 0s;
     }
 
     &__text {
-		margin-left: @progress-text-margin;
-		text-align: left;
-		vertical-align: middle;
+        margin-left: @progress-text-margin;
+        text-align: left;
+        vertical-align: middle;
     }
 
     &--round &__inner,
@@ -32,7 +32,7 @@
     &--progress &__bar {
         position: relative;
 
-        &:before {
+        &::before {
             content: '';
             opacity: 0;
             position: absolute;

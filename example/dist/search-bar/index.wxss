@@ -6,7 +6,7 @@
   box-sizing: border-box;
   background-color: #efeff4
 }
-.wux-search-bar:before {
+.wux-search-bar::before {
   content: " ";
   position: absolute;
   left: 0;
@@ -18,7 +18,7 @@
   transform-origin: 0 0;
   transform: scaleY(.5)
 }
-.wux-search-bar:after {
+.wux-search-bar::after {
   content: " ";
   position: absolute;
   left: 0;

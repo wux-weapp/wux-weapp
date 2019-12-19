@@ -495,12 +495,12 @@
 .wux-ph--0 {
   padding: 0 0rpx!important
 }
-.wux-clearfix:after,
-.wux-clearfix:before {
+.wux-clearfix::after,
+.wux-clearfix::before {
   display: table;
   content: " "
 }
-.wux-clearfix:after {
+.wux-clearfix::after {
   clear: both
 }
 .wux-pull-right {
@@ -540,14 +540,14 @@
 .wux-hairline--vertical {
   position: relative
 }
-.wux-hairline--bottom:after,
-.wux-hairline--horizontal:after,
-.wux-hairline--left:after,
-.wux-hairline--right:after,
-.wux-hairline--surrounded:after,
-.wux-hairline--top:after,
-.wux-hairline--vertical:after,
-.wux-hairline:after {
+.wux-hairline--bottom::after,
+.wux-hairline--horizontal::after,
+.wux-hairline--left::after,
+.wux-hairline--right::after,
+.wux-hairline--surrounded::after,
+.wux-hairline--top::after,
+.wux-hairline--vertical::after,
+.wux-hairline::after {
   content: " ";
   position: absolute;
   top: 0;
@@ -560,24 +560,24 @@
   box-sizing: border-box;
   border: 0 solid #d9d9d9
 }
-.wux-hairline--top:after {
+.wux-hairline--top::after {
   border-top-width: 1PX
 }
-.wux-hairline--right:after {
+.wux-hairline--right::after {
   border-right-width: 1PX
 }
-.wux-hairline--bottom:after {
+.wux-hairline--bottom::after {
   border-bottom-width: 1PX
 }
-.wux-hairline--left:after {
+.wux-hairline--left::after {
   border-left-width: 1PX
 }
-.wux-hairline--horizontal:after {
+.wux-hairline--horizontal::after {
   border-width: 1PX 0
 }
-.wux-hairline--vertical:after {
+.wux-hairline--vertical::after {
   border-width: 0 1PX
 }
-.wux-hairline--surrounded:after {
+.wux-hairline--surrounded::after {
   border-width: 1PX
 }

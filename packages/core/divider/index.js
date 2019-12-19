@@ -2,7 +2,7 @@ import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
 
 baseComponent({
-	properties: {
+    properties: {
         prefixCls: {
             type: String,
             value: 'wux-divider',

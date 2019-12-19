@@ -89,7 +89,7 @@
 .wux-actionsheet__group .wux-actionsheet__button {
   border-top: none
 }
-.wux-actionsheet__group .wux-actionsheet__button:after {
+.wux-actionsheet__group .wux-actionsheet__button::after {
   transform: none;
   transform-origin: none;
   border: none;
@@ -105,7 +105,7 @@
   transform-origin: 0 0;
   transform: scaleY(.5)
 }
-.wux-actionsheet__group .wux-actionsheet__button:first-child:last-child:after {
+.wux-actionsheet__group .wux-actionsheet__button:first-child:last-child::after {
   border-width: 0
 }
 .wux-actionsheet__icon {

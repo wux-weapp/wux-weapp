@@ -545,17 +545,17 @@ baseComponent({
                 items: [],
             }
 
-            if (offset === `next`) {
+            if (offset === 'next') {
                 if (month === 11) date = new Date(year + 1, 0)
                 else date = new Date(year, month + 1, 1)
             }
 
-            if (offset === `prev`) {
+            if (offset === 'prev') {
                 if (month === 0) date = new Date(year - 1, 11)
                 else date = new Date(year, month - 1, 1)
             }
 
-            if (offset === `next` || offset === `prev`) {
+            if (offset === 'next' || offset === 'prev') {
                 month = date.getMonth()
                 year = date.getFullYear()
                 time = date.getTime()
@@ -649,9 +649,9 @@ baseComponent({
          */
         setMonthsHTML() {
             const layoutDate = this.data.value && this.data.value.length ? this.data.value[0] : new Date().setHours(0, 0, 0, 0)
-            const prevMonthHTML = this.monthHTML(layoutDate, `prev`)
+            const prevMonthHTML = this.monthHTML(layoutDate, 'prev')
             const currentMonthHTML = this.monthHTML(layoutDate)
-            const nextMonthHTML = this.monthHTML(layoutDate, `next`)
+            const nextMonthHTML = this.monthHTML(layoutDate, 'next')
 
             return [prevMonthHTML, currentMonthHTML, nextMonthHTML]
         },

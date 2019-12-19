@@ -112,7 +112,7 @@
   width: 100%!important;
   height: 100%
 }
-.wux-fab-button__button:after {
+.wux-fab-button__button::after {
   display: block;
   position: static;
   top: auto;

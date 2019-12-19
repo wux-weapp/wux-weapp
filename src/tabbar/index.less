@@ -2,30 +2,30 @@
 @import "../styles/themes/index.less";
 
 .@{wux-prefix}-tabbar {
-	position: relative;
-	z-index: 500;
-	width: 100%;
-	min-height: @tabbar-height;
-	background-color: @tabbar-bg;
-	box-sizing: border-box;
+    position: relative;
+    z-index: 500;
+    width: 100%;
+    min-height: @tabbar-height;
+    background-color: @tabbar-bg;
+    box-sizing: border-box;
 
-	&--bottom {
-		position: fixed;
-		left: 0;
-		bottom: 0;
+    &--bottom {
+        position: fixed;
+        left: 0;
+        bottom: 0;
 
-		&:after {
-	        .setTopLine(@border-color-split);
-	    }
-	}
+        &::after {
+            .setTopLine(@border-color-split);
+        }
+    }
 
-	&--top {
-		position: fixed;
-		left: 0;
-		top: 0;
+    &--top {
+        position: fixed;
+        left: 0;
+        top: 0;
 
-		&:after {
-	        .setBottomLine(@border-color-split);
-	    }
-	}
+        &::after {
+            .setBottomLine(@border-color-split);
+        }
+    }
 }

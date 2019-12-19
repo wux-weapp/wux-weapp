@@ -2,14 +2,14 @@ import { $wuxDatePicker, $wuxPopupPicker } from '../../dist/index'
 import data from '../cascader/data'
 
 Page({
-	data: {
+    data: {
         value1: [],
         value2: [],
         value3: [],
         options: [],
         province: [],
         loading: true,
-	},
+    },
     onLoad() {
         this.setData({ options: data })
         setTimeout(() => {

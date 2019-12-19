@@ -11,7 +11,7 @@
 .wux-card--bordered {
   border-radius: 20rpx
 }
-.wux-card--bordered:before {
+.wux-card--bordered::before {
   content: " ";
   position: absolute;
   top: 0;
@@ -29,7 +29,7 @@
   border-bottom-width: 1PX;
   border-left-width: 1PX
 }
-.wux-card--full:before {
+.wux-card--full::before {
   border-radius: 0;
   border-right-width: 0;
   border-left-width: 0
@@ -46,7 +46,7 @@
   -ms-flex-align: center;
   align-items: center
 }
-.wux-card__hd:before {
+.wux-card__hd::before {
   content: " ";
   position: absolute;
   left: 0;
@@ -106,7 +106,7 @@
   -ms-flex-align: center;
   align-items: center
 }
-.wux-card__actions:before {
+.wux-card__actions::before {
   content: " ";
   position: absolute;
   left: 0;
@@ -126,7 +126,7 @@
   color: #33cd5f;
   text-align: center
 }
-.wux-card__action:before {
+.wux-card__action::before {
   content: " ";
   position: absolute;
   right: 0;
@@ -138,7 +138,7 @@
   transform-origin: 100% 0;
   transform: scaleX(.5)
 }
-.wux-card__action:last-child:before {
+.wux-card__action:last-child::before {
   display: none
 }
 .wux-card__action--default {

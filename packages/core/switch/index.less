@@ -13,7 +13,7 @@
         background-color: @switch-bg;
         transition: background-color 0.1s, border 0.1s;
 
-        &:before {
+        &::before {
             content: " ";
             position: absolute;
             top: 0;
@@ -25,7 +25,7 @@
             transition: transform 0.35s cubic-bezier(0.45, 1, 0.4, 1);
         }
 
-        &:after {
+        &::after {
             content: " ";
             position: absolute;
             top: 0;
@@ -33,7 +33,7 @@
             width: @switch-height - 2px;
             height: @switch-height - 2px;
             border-radius: (@switch-height - 2px) / 2;
-            background-color: #FFFFFF;
+            background-color: #FFF;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
             transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
         }
@@ -42,11 +42,11 @@
             border-color: @switch-color;
             background-color: @switch-color;
 
-            &:before {
+            &::before {
                 transform: scale(0);
             }
 
-            &:after {
+            &::after {
                 transform: translateX(20px);
             }
         }

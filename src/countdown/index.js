@@ -20,7 +20,7 @@ class Countdown {
      */
     setDefaults() {
         return {
-            date: `June 7, 2087 15:03:25`,
+            date: 'June 7, 2087 15:03:25',
             refresh: 1000,
             offset: 0,
             onEnd() {},
@@ -36,19 +36,19 @@ class Countdown {
 
         for (let i in defaultOptions) {
             if (defaultOptions.hasOwnProperty(i)) {
-                this.options[i] = typeof options[i] !== `undefined` ? options[i] : defaultOptions[i]
+                this.options[i] = typeof options[i] !== 'undefined' ? options[i] : defaultOptions[i]
 
-                if (i === `date` && typeof this.options.date !== `object`) {
+                if (i === 'date' && typeof this.options.date !== 'object') {
                     this.options.date = new Date(this.options.date)
                 }
 
-                if (typeof this.options[i] === `function`) {
+                if (typeof this.options[i] === 'function') {
                     this.options[i] = this.options[i].bind(this)
                 }
             }
         }
 
-        if (typeof this.options.date !== `object`) {
+        if (typeof this.options.date !== 'object') {
             this.options.date = new Date(this.options.date)
         }
     }
@@ -109,14 +109,14 @@ class Countdown {
     leadingZeros(num, length = 2) {
         num = String(num)
         if (num.length > length) return num
-        return (Array(length + 1).join(`0`) + num).substr(-length)
+        return (Array(length + 1).join('0') + num).substr(-length)
     }
 
     /**
      * 更新组件
      */
     update(newDate) {
-        this.options.date = typeof newDate !== `object` ? new Date(newDate) : newDate
+        this.options.date = typeof newDate !== 'object' ? new Date(newDate) : newDate
         this.render()
         return this
     }

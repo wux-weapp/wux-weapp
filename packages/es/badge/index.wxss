@@ -58,7 +58,7 @@
   background-color: #1890ff;
   position: relative
 }
-.wux-badge__status-dot--processing:after {
+.wux-badge__status-dot--processing::after {
   position: absolute;
   top: -2rpx;
   left: -2rpx;

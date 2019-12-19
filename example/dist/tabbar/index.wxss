@@ -11,7 +11,7 @@
   left: 0;
   bottom: 0
 }
-.wux-tabbar--bottom:after {
+.wux-tabbar--bottom::after {
   content: " ";
   position: absolute;
   left: 0;
@@ -28,7 +28,7 @@
   left: 0;
   top: 0
 }
-.wux-tabbar--top:after {
+.wux-tabbar--top::after {
   content: " ";
   position: absolute;
   left: 0;

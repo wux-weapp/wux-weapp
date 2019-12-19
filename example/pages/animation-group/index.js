@@ -56,18 +56,18 @@ Page({
         const { animateStatus } = e.detail
 
         switch (animateStatus) {
-            case 'entering':
-                this.setData({ status: 'Entering…' })
-                break
-            case 'entered':
-                this.setData({ status: 'Entered!' })
-                break
-            case 'exiting':
-                this.setData({ status: 'Exiting…' })
-                break
-            case 'exited':
-                this.setData({ status: 'Exited!' })
-                break
+                case 'entering':
+                    this.setData({ status: 'Entering…' })
+                    break
+                case 'entered':
+                    this.setData({ status: 'Entered!' })
+                    break
+                case 'exiting':
+                    this.setData({ status: 'Exiting…' })
+                    break
+                case 'exited':
+                    this.setData({ status: 'Exited!' })
+                    break
         }
     },
 })

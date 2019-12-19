@@ -10,13 +10,13 @@ Page({
     retain() {
         this.$wuxBackdrop.retain()
         this.setData({
-            locks: this.$wuxBackdrop.backdropHolds
+            locks: this.$wuxBackdrop.backdropHolds,
         })
     },
     release() {
         this.$wuxBackdrop.release()
         this.setData({
-            locks: this.$wuxBackdrop.backdropHolds
+            locks: this.$wuxBackdrop.backdropHolds,
         })
-    }
+    },
 })

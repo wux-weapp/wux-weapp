@@ -37,7 +37,7 @@
   height: 68rpx;
   top: 204rpx
 }
-.wux-picker-col__indicator:before {
+.wux-picker-col__indicator::before {
   content: " ";
   position: absolute;
   left: 0;
@@ -49,7 +49,7 @@
   transform-origin: 0 0;
   transform: scaleY(.5)
 }
-.wux-picker-col__indicator:after {
+.wux-picker-col__indicator::after {
   content: " ";
   position: absolute;
   left: 0;

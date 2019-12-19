@@ -8,7 +8,7 @@ Page({
                 this.setData({
                     c1: value,
                 })
-            }
+            },
         })
 
         this.c2 = new $wuxCountUp(0, 88.88, 2, 2, {
@@ -16,7 +16,7 @@ Page({
                 this.setData({
                     c2: value,
                 })
-            }
+            },
         })
 
         this.c3 = new $wuxCountUp(0, 520, 0, 2, {
@@ -24,7 +24,7 @@ Page({
                 this.setData({
                     c3: value,
                 })
-            }
+            },
         })
 
         this.c1.start()

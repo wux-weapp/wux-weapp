@@ -27,7 +27,7 @@ const provinceLite = [{
 }]
 
 Page({
-	data: {
+    data: {
         value1: ['320000', '320800', '320831'],
         value2: [],
         value3: [],
@@ -40,7 +40,7 @@ Page({
         displayValue4: '请选择',
         options: [],
         seasons,
-	},
+    },
     onLoad() {
         this.setData({ options: data })
     },
