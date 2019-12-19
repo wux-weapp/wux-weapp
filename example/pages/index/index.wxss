@@ -27,6 +27,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-align: left;
+    padding-right: 12rpx;
 }
 
 .logo__ft {
