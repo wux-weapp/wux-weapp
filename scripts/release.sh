@@ -19,17 +19,18 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 
   # remove old builds
   rm -rf ./packages
+  rm -rf ./example/dist
 
   # build
-  VERSION=$VERSION npm run build
-
-  # update packages
-  npm version "$VERSION"
-  npm publish
+  VERSION=$VERSION npm run build:example && npm run build
 
   # commit
   git add -A
-  git commit -m "$VERSION release"
+  git commit -m "Compile $VERSION"
+
+  # update packages
+  npm version "$VERSION" --message "Release $VERSION"
+  npm publish
 
   # publish
   git push

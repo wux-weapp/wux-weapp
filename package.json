@@ -33,6 +33,7 @@
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development gulp",
+    "build:example": "cross-env NODE_ENV=development gulp buildExample",
     "build:core": "cross-env NODE_ENV=production gulp buildCore",
     "build:es": "cross-env NODE_ENV=production gulp buildEs",
     "build:lib": "cross-env NODE_ENV=production gulp buildLib",

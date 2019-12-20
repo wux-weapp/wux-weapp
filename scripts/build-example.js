@@ -54,5 +54,4 @@ export default gulp.series(
         utils.generateConfig(buildPath),
     ),
     colors,
-    watchFiles,
 )
