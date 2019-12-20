@@ -1,38 +1,72 @@
-._setArrow(@arrowsize, @borderColor, @borderWidth) {
+// Encoded SVG Background
+.encoded-svg-background-i(@svg) {
+    @url: `encodeURIComponent(@{svg}) `;
+
+    background-image: url("data:image/svg+xml;charset=utf-8,@{url}");
+}
+
+// Arrow Icon
+.encoded-svg-background(@svg, @color: #c7c7cc) when (@svg = right) {
+    @svg-bg-img: '<svg width="16" height="26" viewBox="0 0 16 26" xmlns="http://www.w3.org/2000/svg"><path d="M2 0L0 2l11.5 11L0 24l2 2 14-13z" fill="@{color}" fill-rule="evenodd"/></svg>';
+
+    .encoded-svg-background-i(@svg-bg-img);
+}
+
+// Loading Icon
+.encoded-svg-background(@svg) when (@svg = loading) {
+    @svg-bg-img: '<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 100 100"><path fill="none" d="M0 0h100v100H0z"/><rect width="7" height="20" x="46.5" y="40" fill="#E9E9E9" rx="5" ry="5" transform="translate(0 -30)"/><rect width="7" height="20" x="46.5" y="40" fill="#989697" rx="5" ry="5" transform="rotate(30 105.98 65)"/><rect width="7" height="20" x="46.5" y="40" fill="#9B999A" rx="5" ry="5" transform="rotate(60 75.98 65)"/><rect width="7" height="20" x="46.5" y="40" fill="#A3A1A2" rx="5" ry="5" transform="rotate(90 65 65)"/><rect width="7" height="20" x="46.5" y="40" fill="#ABA9AA" rx="5" ry="5" transform="rotate(120 58.66 65)"/><rect width="7" height="20" x="46.5" y="40" fill="#B2B2B2" rx="5" ry="5" transform="rotate(150 54.02 65)"/><rect width="7" height="20" x="46.5" y="40" fill="#BAB8B9" rx="5" ry="5" transform="rotate(180 50 65)"/><rect width="7" height="20" x="46.5" y="40" fill="#C2C0C1" rx="5" ry="5" transform="rotate(-150 45.98 65)"/><rect width="7" height="20" x="46.5" y="40" fill="#CBCBCB" rx="5" ry="5" transform="rotate(-120 41.34 65)"/><rect width="7" height="20" x="46.5" y="40" fill="#D2D2D2" rx="5" ry="5" transform="rotate(-90 35 65)"/><rect width="7" height="20" x="46.5" y="40" fill="#DADADA" rx="5" ry="5" transform="rotate(-60 24.02 65)"/><rect width="7" height="20" x="46.5" y="40" fill="#E2E2E2" rx="5" ry="5" transform="rotate(-30 -5.98 65)"/></svg>';
+
+    .encoded-svg-background-i(@svg-bg-img);
+}
+
+// Delete Icon
+.encoded-svg-background(@svg, @color: #888) when (@svg = delete) {
+    @svg-bg-img: '<svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><g fill="@{color}" fill-rule="evenodd"><path d="M1.414 0l28.284 28.284-1.414 1.414L0 1.414z"/><path d="M28.284 0L0 28.284l1.414 1.414L29.698 1.414z"/></g></svg>';
+
+    .encoded-svg-background-i(@svg-bg-img);
+}
+
+// Upload Delete Icon
+.encoded-svg-background(@svg) when (@svg = upload_delete) {
+    @svg-bg-img: '<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill-opacity=".4" fill="#404040" cx="8" cy="8" r="8"/><path d="M11.898 4.101a.345.345 0 0 0-.488 0L8 7.511l-3.411-3.41a.345.345 0 0 0-.488.488l3.411 3.41-3.41 3.412a.345.345 0 0 0 .488.488L8 8.487l3.411 3.411a.345.345 0 0 0 .488-.488L8.488 8l3.41-3.412a.344.344 0 0 0 0-.487z" fill="#FFF"/></g></svg>';
+
+    .encoded-svg-background-i(@svg-bg-img);
+}
+
+// Set Arrow Icon
+// Direction - top|right|down|left
+._setArrow(@size: 15px, @color: #c7c7cc) {
     display: inline-block;
-    height: @arrowsize;
-    width: @arrowsize;
-    border-width: @borderWidth @borderWidth 0 0;
-    border-color: @borderColor;
-    border-style: solid;
+    width: @size;
+    height: @size;
+
+    .encoded-svg-background(right, @color);
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
 }
 
-.setArrow(@direction, @arrowsize, @borderColor, @borderWidth) when (@direction = top) {
-    ._setArrow(@arrowsize, @borderColor, @borderWidth);
+.setArrow(@direction, @size: 15px, @color: #c7c7cc) when (@direction = top) {
+    ._setArrow(@size, @color);
 
-    transform: matrix(0.71, -0.71, 0.71, 0.71, 0, 0); // rotate(-45deg)
+    transform: rotate(270deg);
 }
 
-.setArrow(@direction, @arrowsize, @borderColor,@borderWidth) when (@direction = right) {
-    ._setArrow(@arrowsize, @borderColor, @borderWidth);
+.setArrow(@direction, @size: 15px, @color: #c7c7cc) when (@direction = right) {
+    ._setArrow(@size, @color);
 
-    transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0); // rotate(45deg);
-    position: relative;
-    top: -2px;
+    transform: rotate(0);
 }
 
-.setArrow(@direction, @arrowsize, @borderColor,@borderWidth) when (@direction = down) {
-    ._setArrow(@arrowsize, @borderColor, @borderWidth);
+.setArrow(@direction, @size: 15px, @color: #c7c7cc) when (@direction = down) {
+    ._setArrow(@size, @color);
 
-    transform: matrix(-0.71, 0.71, -0.71, -0.71, 0, 0); // rotate(135deg);
-    position: relative;
-    top: -3px;
+    transform: rotate(90deg);
 }
 
-.setArrow(@direction, @arrowsize, @borderColor,@borderWidth) when (@direction = left) {
-    ._setArrow(@arrowsize, @borderColor, @borderWidth);
+.setArrow(@direction, @size: 15px, @color: #c7c7cc) when (@direction = left) {
+    ._setArrow(@size, @color);
 
-    transform: matrix(-0.71, -0.71, 0.71, -0.71, 0, 0); // rotate(-135deg);
-    position: relative;
-    top: -2px;
+    transform: rotate(180deg);
 }

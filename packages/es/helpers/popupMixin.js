@@ -26,6 +26,12 @@ const defaultPlatformProps = {
     },
 }
 
+const defaultFieldNames = {
+    label: 'label',
+    value: 'value',
+    children: 'children',
+}
+
 export default function popupMixin(selector = '#wux-picker', platformProps = defaultPlatformProps) {
     return Behavior({
         behaviors: [eventsMixin({ defaultEvents })],
@@ -234,6 +240,13 @@ export default function popupMixin(selector = '#wux-picker', platformProps = def
             ready() {
                 const { defaultVisible, visible, controlled, value } = this.data
                 const popupVisible = controlled ? visible : defaultVisible
+
+                // 若 defaultFieldNames 存在，则缓存之，并传递给子组件，只生效一次
+                if ('defaultFieldNames' in this.data) {
+                    this.setData({
+                        fieldNames: Object.assign({}, defaultFieldNames, this.data.defaultFieldNames),
+                    })
+                }
 
                 this.mounted = true
                 this.scrollValue = undefined

@@ -80,22 +80,21 @@
   color: rgba(0,0,0,.45)
 }
 .wux-cell--access .wux-cell__ft {
-  padding-right: 26rpx;
+  padding-right: 34rpx;
   position: relative
 }
 .wux-cell--access .wux-cell__ft::after {
   content: " ";
   display: inline-block;
-  height: 12rpx;
-  width: 12rpx;
-  border-width: 4rpx 4rpx 0 0;
-  border-color: #c8c8cd;
-  border-style: solid;
-  transform: matrix(.71,.71,-.71,.71,0,0);
-  position: relative;
-  top: -4rpx;
+  width: 30rpx;
+  height: 30rpx;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width%3D%2216%22%20height%3D%2226%22%20viewBox%3D%220%200%2016%2026%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M2%200L0%202l11.5%2011L0%2024l2%202%2014-13z%22%20fill%3D%22%23c7c7cc%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  transform: rotate(0);
+  transform: rotate(0) translateY(-50%);
   position: absolute;
   top: 50%;
-  margin-top: -8rpx;
-  right: 4rpx
+  right: 0
 }

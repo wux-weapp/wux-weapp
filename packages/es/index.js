@@ -7,7 +7,7 @@
  *
  * Released under the MIT License
  *
- * Released on: 2019-12-19
+ * Released on: 2019-12-20
  */
 
 import $wuxCountDown from './countdown/index'
