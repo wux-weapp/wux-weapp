@@ -85,8 +85,10 @@
             text-align: right;
             vertical-align: top;
             z-index: 2;
+            background-repeat: no-repeat;
             background-size: @upload-icon-size auto;
-            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Ccircle fill-opacity='.4' fill='%23404040' cx='8' cy='8' r='8'/%3E%3Cpath d='M11.898 4.101a.345.345 0 0 0-.488 0L8 7.511l-3.411-3.41a.345.345 0 0 0-.488.488l3.411 3.41-3.41 3.412a.345.345 0 0 0 .488.488L8 8.487l3.411 3.411a.345.345 0 0 0 .488-.488L8.488 8l3.41-3.412a.344.344 0 0 0 0-.487z' fill='%23FFF'/%3E%3C/g%3E%3C/svg%3E");
+
+            .encoded-svg-background(upload_delete);
         }
     }
 }
