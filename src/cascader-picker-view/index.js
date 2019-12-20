@@ -18,15 +18,19 @@ baseComponent({
     },
     observers: {
         inputValue(newVal) {
+            this.fixFieldName()
+
             // HACK: 去掉不必要的属性，防止数据溢出
             const value = this.getFieldName('value')
             const label = this.getFieldName('label')
             const showOptions = this.getShowOptions(newVal).reduce((acc, option) => (
                 [...acc, option.map((v) => ({ [value]: v[value], [label]: v[label], disabled: !!v.disabled }))]
             ), [])
+
             this.setData({ showOptions })
         },
         ['value, options, cols'](value, options, cols) {
+            this.fixFieldName()
             this.setValue(value, options, cols)
         },
     },
@@ -38,7 +42,7 @@ baseComponent({
                 })
             }
         },
-        setValue(value = this.data.inputValue, options = this.data.options, cols = this.data.cols) {
+        setValue(value, options, cols) {
             const inputValue = this.getRealValue(options, value, cols)
             this.updated(inputValue)
         },
@@ -47,7 +51,7 @@ baseComponent({
             const newValue = this.getNextValue(value, index)
             const inputValue = this.getRealValue(this.data.options, newValue)
             const values = this.getValue(inputValue)
-            
+
             // forceUpdate picker
             this.updated(inputValue)
             this.triggerEvent('valueChange', { ...values, index })
@@ -129,12 +133,23 @@ baseComponent({
         getFieldName(name) {
             return this.data.fieldNames[name]
         },
+        /**
+         * Allways set fieldNames
+         * Because `observers` always takes precedence over `attached` on first mount
+         * HACK: https://github.com/wux-weapp/wux-weapp/issues/352
+         */
+        fixFieldName() {
+            if (!this.hasFieldName) {
+                const fieldNames = Object.assign({}, defaultFieldNames, this.data.defaultFieldNames)
+                this.setData({ fieldNames })
+                this.hasFieldName = true
+            }
+        },
     },
     attached() {
         const { value, options, cols } = this.data
-        const fieldNames = Object.assign({}, defaultFieldNames, this.data.defaultFieldNames)
 
-        this.setData({ fieldNames })
+        this.fixFieldName()
         this.setValue(value, options, cols)
     },
 })
