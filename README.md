@@ -36,6 +36,16 @@
     <a href="https://www.npmjs.com/package/wux-weapp" target="_blank">
         <img alt="license" src="https://img.shields.io/npm/l/wux-weapp.svg" />
     </a>
+    <br />
+    <a href="https://github.com/wux-weapp/wux-weapp-sublime-snippets" target="_blank">
+        <img alt="Snippets for Sublime" src="https://img.shields.io/badge/Snippets%20for-Sublime-blue" />
+    </a>
+    <a href="https://github.com/wux-weapp/wux-weapp-snippets" target="_blank">
+        <img alt="Snippets for VScode" src="https://img.shields.io/badge/Snippets%20for-VScode-blue" />
+    </a>
+    <a href="https://github.com/wux-weapp/wux-weapp-atom-snippets" target="_blank">
+        <img alt="Snippets for Atom" src="https://img.shields.io/badge/Snippets%20for-Atom-blue" />
+    </a>
 </div>
 
 # 快速上手
