@@ -1,4 +1,5 @@
 /* pages/countup/index.wxss */
+
 .text-center {
     text-align: center;
 }
@@ -9,6 +10,6 @@
     color: #04BE02;
 }
 
-.weui-btn {
-    margin: 0 5px;
+.btn {
+    margin: 0 5px 10px !important;
 }

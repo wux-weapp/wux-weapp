@@ -10,10 +10,10 @@
         	<view class="countup">{{ c3 }}</view>
         </view>
         <view class="weui-btn-area text-center">
-            <button type="primary" size="mini" bindtap="start">Start</button>
-            <button type="primary" size="mini" bindtap="pauseResume">Pause/Resume</button>
-            <button type="primary" size="mini" bindtap="reset">Reset</button>
-            <button type="primary" size="mini" bindtap="update">Update</button>
+            <wux-button wux-class="btn" type="light" bind:click="start">Start</wux-button>
+            <wux-button wux-class="btn" type="light" bind:click="pauseResume">Pause/Resume</wux-button>
+            <wux-button wux-class="btn" type="light" bind:click="reset">Reset</wux-button>
+            <wux-button wux-class="btn" type="light" bind:click="update">Update</wux-button>
         </view>
     </view>
 </view>
