@@ -23,7 +23,7 @@
             <wux-step title="Third"></wux-step>
         </wux-steps>
         <view class="button-sp-area">
-            <button type="default" bindtap="onClick">Next step</button>
+            <wux-button block type="light" bind:click="onClick">Next step</wux-button>
         </view>
     </view>
 </view>
