@@ -1,6 +1,6 @@
 Page({
     data: {
-        items: [
+        animations: [
             'fadeIn',
             'fadeInDown',
             'fadeInLeft',
@@ -12,62 +12,49 @@ Page({
             'slideInRight',
             'zoom',
             'punch',
+            'custom',
         ],
-        index: 0,
         example: {
+            animation: 'fadeIn',
             classNames: 'wux-animate--fadeIn',
             enter: true,
             exit: true,
             in: false,
         },
-        show: false,
-        status: '',
     },
-    pickerChange(e) {
-        const index = e.detail.value
-        const value = this.data.items[index]
-        const classNames = `wux-animate--${value}`
+    onClick(e) {
+        const { index } = e.currentTarget.dataset
+        const animation = this.data.animations[index]
+        const classNames = `wux-animate--${animation}`
 
         this.setData({
-            index,
+            'example.in': true,
             'example.classNames': classNames,
+            'example.animation': animation,
         })
     },
-    switchChange(e) {
-        const { model } = e.currentTarget.dataset
+    onEnter(e) {
+        console.log('onEnter', e.detail)
+    },
+    onEntering(e) {
+        console.log('onEntering', e.detail)
+    },
+    onEntered(e) {
+        console.log('onEntered', e.detail)
 
-        this.setData({
-            [model]: e.detail.value,
-        })
+        // delay 300ms close animation
+        setTimeout(() => this.setData({ 'example.in': false }), 300)
     },
-    onClick() { console.log('onClick') },
-    onEnter(e) { console.log('onEnter', e.detail) },
-    onEntering(e) { console.log('onEntering', e.detail) },
-    onEntered(e) { console.log('onEntered', e.detail) },
-    onExit() { console.log('onExit') },
-    onExiting() { console.log('onExiting') },
-    onExited() { console.log('onExited') },
-    onToggle() {
-        this.setData({
-            show: !this.data.show,
-        })
+    onExit() {
+        console.log('onExit')
+    },
+    onExiting() {
+        console.log('onExiting')
+    },
+    onExited() {
+        console.log('onExited')
     },
     onChange(e) {
-        const { animateStatus } = e.detail
-
-        switch (animateStatus) {
-                case 'entering':
-                    this.setData({ status: 'Entering…' })
-                    break
-                case 'entered':
-                    this.setData({ status: 'Entered!' })
-                    break
-                case 'exiting':
-                    this.setData({ status: 'Exiting…' })
-                    break
-                case 'exited':
-                    this.setData({ status: 'Exited!' })
-                    break
-        }
+        console.log('onChange', e.detail)
     },
 })

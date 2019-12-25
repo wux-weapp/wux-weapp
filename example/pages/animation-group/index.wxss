@@ -1,1 +1,44 @@
 /* pages/animation-group/index.wxss */
+
+.example {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 256rpx;
+    height: 256rpx;
+    margin-top: -128rpx;
+    margin-left: -128rpx;
+    background-color: #387ef5;
+    color: #fff;
+    font-size: 36rpx;
+    font-weight: bold;
+    border-radius: 8rpx;
+}
+
+.wux-animate--custom-enter {
+    transition: opacity .3s, transform .3s;
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0) rotate(-120deg);
+}
+
+.wux-animate--custom-enter-active,
+.wux-animate--custom-enter-done {
+    opacity: 1;
+    transform: translateZ(0);
+}
+
+.wux-animate--custom-exit {
+    transition: opacity .3s, transform .3s;
+    opacity: 1;
+    transform: translateZ(0);
+}
+
+.wux-animate--custom-exit-active,
+.wux-animate--custom-exit-done {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0) rotate(-120deg);
+}
