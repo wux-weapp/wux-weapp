@@ -6,59 +6,29 @@
         <view class="page__desc">画廊</view>
     </view>
     <view class="page__bd">
-        <view class="weui-cells__title">基于小程序原生的wx.previewImage</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__bd">
-                    <view class="weui-uploader">
-                        <view class="weui-uploader__bd">
-                            <view class="weui-uploader__files">
-                                <block wx:for-items="{{ urls }}" wx:key="{{ index }}">
-                                    <view class="weui-uploader__file" bindtap="previewImage" data-current="{{ item }}">
-                                        <image class="weui-uploader__img" src="{{ item }}" />
-                                    </view>
-                                </block>
-                            </view>
-                        </view>
-                    </view>
+        <view class="sub-title">基于小程序原生的wx.previewImage</view>
+        <view class="uploader__files">
+            <block wx:for-items="{{ urls }}" wx:key="">
+                <view class="uploader__file" bindtap="previewImage" data-current="{{ item }}">
+                    <image class="uploader__img" src="{{ item }}" />
                 </view>
-            </view>
+            </block>
         </view>
-        <view class="weui-cells__title">自定义gallery</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__bd">
-                    <view class="weui-uploader">
-                        <view class="weui-uploader__bd">
-                            <view class="weui-uploader__files">
-                                <block wx:for-items="{{ urls }}" wx:key="{{ index }}">
-                                    <view class="weui-uploader__file" bindtap="showGallery" data-current="{{ index }}">
-                                        <image class="weui-uploader__img" src="{{ item }}" />
-                                    </view>
-                                </block>
-                            </view>
-                        </view>
-                    </view>
+        <view class="sub-title">自定义gallery</view>
+        <view class="uploader__files">
+            <block wx:for-items="{{ urls }}" wx:key="{{ index }}">
+                <view class="uploader__file" bindtap="showGallery" data-current="{{ index }}">
+                    <image class="uploader__img" src="{{ item }}" />
                 </view>
-            </view>
+            </block>
         </view>
-        <view class="weui-cells__title">带说明文案 & 自定义图标</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__bd">
-                    <view class="weui-uploader">
-                        <view class="weui-uploader__bd">
-                            <view class="weui-uploader__files">
-                                <block wx:for-items="{{ urls }}" wx:key="{{ index }}">
-                                    <view class="weui-uploader__file" bindtap="showGallery2" data-current="{{ index }}">
-                                        <image class="weui-uploader__img" src="{{ item }}" />
-                                    </view>
-                                </block>
-                            </view>
-                        </view>
-                    </view>
+        <view class="sub-title">带说明文案 & 自定义图标</view>
+        <view class="uploader__files">
+            <block wx:for-items="{{ urls }}" wx:key="{{ index }}">
+                <view class="uploader__file" bindtap="showGallery2" data-current="{{ index }}">
+                    <image class="uploader__img" src="{{ item }}" />
                 </view>
-            </view>
+            </block>
         </view>
     </view>
 </view>

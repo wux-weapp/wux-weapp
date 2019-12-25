@@ -1,1 +1,21 @@
 /* pages/gallery/index.wxss */
+
+.uploader__files {
+    padding: 16px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+}
+
+.uploader__file {
+    float: left;
+    margin-right: 9px;
+    margin-bottom: 9px;
+}
+
+.uploader__img {
+    display: block;
+    width: 79px;
+    height: 79px;
+}
