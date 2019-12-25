@@ -1,6 +1,9 @@
 {
     "navigationBarTitleText": "Qrcode",
     "usingComponents": {
-        "wux-qrcode": "../../dist/qrcode/index"
+        "wux-qrcode": "../../dist/qrcode/index",
+        "wux-cell-group": "../../dist/cell-group/index",
+        "wux-cell": "../../dist/cell/index",
+        "wux-textarea": "../../dist/textarea/index"
     }
 }

@@ -1,10 +1,9 @@
 Page({
     data: {
-        value: 'https://github.com/skyvow/wux',
+        value: 'https://github.com/wux-weapp/wux-weapp',
         fgColor: 'black',
     },
-    onLoad() {},
-    bindinput(e) {
+    onChange(e) {
         const value = e.detail.value
         const fgColor = this.randomColor()
 
@@ -16,7 +15,7 @@ Page({
     previewImage() {
         // 在自定义组件下，当前组件实例的 this，以操作组件内 <canvas> 组件
         const that = this.selectComponent('#qrcode')
-        
+
         wx.canvasToTempFilePath({
             canvasId: 'wux-qrcode',
             success: (res) => {

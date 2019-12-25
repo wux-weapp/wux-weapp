@@ -4,16 +4,15 @@
         <view class="page__desc">二维码</view>
     </view>
     <view class="page__bd">
-        <view class="weui-cells__title">请输入文字，即时输入即时生成</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__bd">
-                    <textarea value="{{ value }}" bindinput="bindinput" class="weui-textarea" placeholder="支持文本、网址和电子邮箱" style="height: 4.2em" maxlength="300" />
-                    <view class="weui-textarea-counter">{{ value.length }}/300</view>
-                </view>
-            </view>
+        <view class="sub-title">请输入文字，即时输入即时生成</view>
+        <wux-cell-group>
+            <wux-cell hover-class="none">
+                <wux-textarea hasCount rows="3" placeholder="支持文本、网址和电子邮箱" maxlength="300" value="{{ value }}" controlled bind:change="onChange" />
+            </wux-cell>
+        </wux-cell-group>
+        <view class="sub-title">提示：Canvas 在微信中无法长按识别, 点击图片进入保存页面长按图片可以保存</view>
+        <view class="qrcode">
+            <wux-qrcode id="qrcode" data="{{ value }}" fg-color="{{ fgColor }}" width="200" height="200" bind:click="previewImage" />
         </view>
-        <view class="weui-cells__tips">提示：Canvas 在微信中无法长按识别, 点击图片进入保存页面长按图片可以保存</view>
-        <wux-qrcode id="qrcode" wux-class="qrcode" data="{{ value }}" fg-color="{{ fgColor }}" width="200" height="200" bind:click="previewImage" />
     </view>
 </view>
