@@ -1,11 +1,6 @@
-const sliderWidth = 96
-
 Page({
     data: {
-        tabs: ['全部', '待收货', '待评价'],
-        activeIndex: 0,
-        sliderOffset: 0,
-        sliderLeft: 0,
+        activeKey: '0',
         msg1: {
             title: '空空如也',
             text: '暂时没有相关数据',
@@ -28,26 +23,10 @@ Page({
             }],
         },
     },
-    onLoad() {
-        this.getSystemInfo()
-    },
-    getSystemInfo() {
-        const that = this
-        wx.getSystemInfo({
-            success(res) {
-                that.setData({
-                    sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
-                })
-            },
-        })
-    },
-    tabClick(e) {
-        const { offsetLeft, dataset } = e.currentTarget
-        const { id } = dataset
-
+    onChange(e) {
+        console.log('onChange', e)
         this.setData({
-            sliderOffset: offsetLeft,
-            activeIndex: id,
+            activeKey: e.detail.key,
         })
     },
     buttonClicked(e) {

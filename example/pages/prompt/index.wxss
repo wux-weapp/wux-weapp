@@ -1,7 +1,11 @@
 /* pages/prompt/index.wxss */
+
 .page,
-.page__bd,
-.weui-tab__content {
+.page__bd {
     height: 100%;
     padding-bottom: 0;
+}
+
+.content {
+    height: calc(100% - 88rpx);
 }

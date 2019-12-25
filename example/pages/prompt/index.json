@@ -1,6 +1,8 @@
 {
     "navigationBarTitleText": "Prompt",
     "usingComponents": {
-        "wux-prompt": "../../dist/prompt/index"
+        "wux-prompt": "../../dist/prompt/index",
+        "wux-tabs": "../../dist/tabs/index",
+        "wux-tab": "../../dist/tab/index"
     }
 }
