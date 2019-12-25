@@ -1,4 +1,9 @@
 /* pages/countdown/index.wxss */
+
+.wux-input__label {
+    width: auto !important;
+}
+
 .text-center {
     text-align: center;
 }
@@ -10,6 +15,15 @@
     margin: 20px 0;
 }
 
-.weui-btn {
-    margin: 0 5px;
+.vcode-btn {
+    margin-left: 5px;
+    padding: 0 12px;
+    border-left: 1px solid #E5E5E5;
+    vertical-align: middle;
+    color: #3CC51F;
+    white-space: nowrap;
+}
+
+.btn {
+    margin: 0 5px !important;
 }

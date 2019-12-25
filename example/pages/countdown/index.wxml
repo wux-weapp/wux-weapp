@@ -4,27 +4,20 @@
         <view class="page__desc">倒计时</view>
     </view>
     <view class="page__bd">
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_input weui-cell_vcode">
-                <view class="weui-cell__hd">
-                    <view class="weui-label">手机号</view>
-                </view>
-                <view class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请输入手机号" />
-                </view>
-                <view class="weui-cell__ft">
-                    <view class="weui-vcode-btn" bindtap="vcode">{{ c2 || '获取验证码' }}</view>
-                </view>
-            </view>
-        </view>
+        <wux-cell-group>
+            <wux-cell hover-class="none">
+                <wux-input label="Mobile" placeholder="Please input mobile" />
+                <view slot="footer" class="vcode-btn" bindtap="vcode">{{ c2 || '获取验证码' }}</view>
+            </wux-cell>
+        </wux-cell-group>
         <view class="text-center">
         	<view class="countdown">{{ c1 }}</view>
         	<view class="countdown">{{ c3 }}</view>
         </view>
-        <view class="weui-btn-area text-center">
-            <button type="primary" size="mini" bindtap="stop">Stop</button>
-            <button type="primary" size="mini" bindtap="start">Start</button>
-            <button type="primary" size="mini" bindtap="update">Update</button>
+        <view class="button-sp-area">
+            <wux-button wux-class="btn" type="light" bind:click="stop">Stop</wux-button>
+            <wux-button wux-class="btn" type="light" bind:click="start">Start</wux-button>
+            <wux-button wux-class="btn" type="light" bind:click="update">Update</wux-button>
         </view>
     </view>
 </view>
