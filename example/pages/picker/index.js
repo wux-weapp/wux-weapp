@@ -26,7 +26,9 @@ const provinceLite = [{
     label: '四川省',
 }]
 
-Page({
+import ad from '../index/ad'
+
+ad({
     data: {
         value1: ['320000', '320800', '320831'],
         value2: [],

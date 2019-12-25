@@ -1,6 +1,8 @@
 const isTel = (value) => !/^1[34578]\d{9}$/.test(value)
 
-Page({
+import ad from '../index/ad'
+
+ad({
     onChange(e) {
         console.log('onChange', e)
         this.setData({

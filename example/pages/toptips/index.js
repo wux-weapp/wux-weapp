@@ -1,6 +1,8 @@
 import { $wuxToptips } from '../../dist/index'
 
-Page({
+import ad from '../index/ad'
+
+ad({
     showToptips1() {
         $wuxToptips().show({
             icon: 'cancel',

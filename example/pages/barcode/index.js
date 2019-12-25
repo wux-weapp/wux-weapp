@@ -1,4 +1,6 @@
-Page({
+import ad from '../index/ad'
+
+ad({
     data: {
         number: '9787115335524',
         options: {

@@ -1,4 +1,6 @@
-Page({
+import ad from '../index/ad'
+
+ad({
     data: {
         motto: 'Star me',
         github: 'https://github.com/wux-weapp/wux-weapp',

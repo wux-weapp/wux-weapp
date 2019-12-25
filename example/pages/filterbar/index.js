@@ -1,4 +1,6 @@
-Page({
+import ad from '../index/ad'
+
+ad({
     data: {
         items: [{
             type: 'radio',
@@ -246,7 +248,7 @@ Page({
                 }
             }
         })
-        
+
         console.log('params', params)
 
         this.getRepos(params)

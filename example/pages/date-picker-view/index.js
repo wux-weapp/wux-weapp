@@ -10,7 +10,9 @@ function getDateString(date = new Date) {
 
 const { year, month, day, hour, minute } = getDateString()
 
-Page({
+import ad from '../index/ad'
+
+ad({
     data: {
         value1: [year, month, day, hour, minute],
         value2: [year, month, day],

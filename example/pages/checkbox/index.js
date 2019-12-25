@@ -1,4 +1,6 @@
-Page({
+import ad from '../index/ad'
+
+ad({
     data: {
         value1: ['1'],
         value2: ['1'],

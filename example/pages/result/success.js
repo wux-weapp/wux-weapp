@@ -1,4 +1,6 @@
-Page({
+import ad from '../index/ad'
+
+ad({
     data: {
         buttons: [{
             type: 'balanced',

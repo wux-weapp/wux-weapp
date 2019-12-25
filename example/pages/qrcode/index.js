@@ -1,4 +1,6 @@
-Page({
+import ad from '../index/ad'
+
+ad({
     data: {
         value: 'https://github.com/wux-weapp/wux-weapp',
         fgColor: 'black',

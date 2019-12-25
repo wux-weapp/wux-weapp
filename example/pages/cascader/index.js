@@ -1,6 +1,8 @@
 import data from './data'
 
-Page({
+import ad from '../index/ad'
+
+ad({
     data: {
         options1: data,
         value1: [],

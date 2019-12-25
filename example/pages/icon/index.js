@@ -1,6 +1,8 @@
 import { icons, logos } from './data'
 
-Page({
+import ad from '../index/ad'
+
+ad({
     data: {
         style: 'ios',
         icons,

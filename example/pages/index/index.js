@@ -1,6 +1,7 @@
 import components from './components'
+import ad from './ad'
 
-Page({
+ad({
     data: {
         components,
     },

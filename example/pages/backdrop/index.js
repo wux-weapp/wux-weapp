@@ -1,6 +1,8 @@
 import { $wuxBackdrop } from '../../dist/index'
 
-Page({
+import ad from '../index/ad'
+
+ad({
     data: {
         locks: 0,
     },

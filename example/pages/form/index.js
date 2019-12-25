@@ -1,7 +1,9 @@
 import { $wuxForm } from '../../dist/index'
 import data from '../cascader/data'
 
-Page({
+import ad from '../index/ad'
+
+ad({
     data: {
         checkbox: ['1'],
         radio: '1',

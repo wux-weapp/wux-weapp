@@ -1,6 +1,8 @@
 import { $wuxGallery } from '../../dist/index'
 
-Page({
+import ad from '../index/ad'
+
+ad({
     data: {
         urls: [
             'http://cdn.skyvow.cn/logo.png',

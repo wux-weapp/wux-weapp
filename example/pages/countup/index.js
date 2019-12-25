@@ -1,6 +1,8 @@
 import { $wuxCountUp } from '../../dist/index'
 
-Page({
+import ad from '../index/ad'
+
+ad({
     data: {},
     onLoad() {
         this.c1 = new $wuxCountUp(1, 1024, 0, 2, {

@@ -2,7 +2,9 @@ import { $startWuxRefresher, $stopWuxRefresher, $stopWuxLoader } from '../../dis
 
 const getList = (count = 10, step = 0) => [...new Array(count)].map((n, i) => ({ title: `Pull down ${i + step}`, content: 'Wux Weapp' }))
 
-Page({
+import ad from '../index/ad'
+
+ad({
     data: {
         items: [],
         count: 0,

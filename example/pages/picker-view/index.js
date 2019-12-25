@@ -3,7 +3,9 @@ const seasons = [
     ['撕葱', '粑粑', '🏀'],
 ]
 
-Page({
+import ad from '../index/ad'
+
+ad({
     data: {
         value: ['蔡', '🏀'],
         options: seasons,

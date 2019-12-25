@@ -1,7 +1,9 @@
 import { $wuxDatePicker, $wuxPopupPicker } from '../../dist/index'
 import data from '../cascader/data'
 
-Page({
+import ad from '../index/ad'
+
+ad({
     data: {
         value1: [],
         value2: [],

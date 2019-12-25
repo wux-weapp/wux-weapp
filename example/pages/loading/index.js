@@ -1,6 +1,8 @@
 import { $wuxLoading } from '../../dist/index'
 
-Page({
+import ad from '../index/ad'
+
+ad({
     data: {},
     onLoad() {},
     showLoading() {

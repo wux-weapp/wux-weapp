@@ -1,6 +1,8 @@
 import { $wuxCalendar } from '../../dist/index'
 
-Page({
+import ad from '../index/ad'
+
+ad({
     data: {
         value1: [],
         value2: [],

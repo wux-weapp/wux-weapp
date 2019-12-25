@@ -2,7 +2,9 @@ let height = wx.getSystemInfoSync().windowHeight
 let itemCount = 1000
 let items = [...new Array(itemCount)].map((v, i) => i)
 
-Page({
+import ad from '../index/ad'
+
+ad({
     data: {
         disableScroll: false,
         height,

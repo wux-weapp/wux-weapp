@@ -1,7 +1,9 @@
 let itemCount = 100
 let items = [...new Array(itemCount)].map((v, i) => i)
 
-Page({
+import ad from '../index/ad'
+
+ad({
     data: {
         disableScroll: false,
         height: 300,

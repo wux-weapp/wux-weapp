@@ -1,4 +1,6 @@
-Page({
+import ad from '../index/ad'
+
+ad({
     data: {
         content: '微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp',
     },
