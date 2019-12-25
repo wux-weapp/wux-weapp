@@ -9,7 +9,7 @@
         	<view class="countup">{{ c2 }}</view>
         	<view class="countup">{{ c3 }}</view>
         </view>
-        <view class="weui-btn-area text-center">
+        <view class="button-sp-area">
             <wux-button wux-class="btn" type="light" bind:click="start">Start</wux-button>
             <wux-button wux-class="btn" type="light" bind:click="pauseResume">Pause/Resume</wux-button>
             <wux-button wux-class="btn" type="light" bind:click="reset">Reset</wux-button>
