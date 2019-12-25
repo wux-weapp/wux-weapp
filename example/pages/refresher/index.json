@@ -1,6 +1,8 @@
 {
     "navigationBarTitleText": "Refresher",
     "usingComponents": {
-        "wux-refresher": "../../dist/refresher/index"
+        "wux-refresher": "../../dist/refresher/index",
+        "wux-cell-group": "../../dist/cell-group/index",
+        "wux-cell": "../../dist/cell/index"
     }
 }
