@@ -1,6 +1,10 @@
 {
     "navigationBarTitleText": "Vcode",
     "usingComponents": {
-        "wux-vcode": "../../dist/vcode/index"
+        "wux-vcode": "../../dist/vcode/index",
+        "wux-cell-group": "../../dist/cell-group/index",
+        "wux-cell": "../../dist/cell/index",
+        "wux-input": "../../dist/input/index",
+        "wux-button": "../../dist/button/index"
     }
 }

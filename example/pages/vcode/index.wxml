@@ -4,30 +4,22 @@
         <view class="page__desc">验证码</view>
     </view>
     <view class="page__bd">
-        <view class="weui-cells__title">默认 & 自定义</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_input weui-cell_vcode">
-                <view class="weui-cell__hd">
-                    <view class="weui-label">验证码</view>
-                </view>
-                <view class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请输入验证码" />
-                </view>
-                <view class="weui-cell__ft" style="text-align: left">
+        <wux-cell-group title="Default">
+            <wux-cell hover-class="none">
+                <wux-input label="Vcode" placeholder="Please input vcode" />
+                <view slot="footer" class="vcode">
                     <wux-vcode bind:change="onChange" />
                 </view>
-            </view>
-            <view class="weui-cell weui-cell_input weui-cell_vcode">
-                <view class="weui-cell__hd">
-                    <view class="weui-label">验证码</view>
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <wux-input label="Vcode" placeholder="Please input vcode" />
+                <view slot="footer" class="vcode">
+                    <wux-vcode id="custom-canvas" str="1234567890" bgColor="#e6f6ff" fontColor="#165189" hasPoint hasLine bind:change="onChange" />
                 </view>
-                <view class="weui-cell__bd">
-                    <input class="weui-input" placeholder="请输入验证码" />
-                </view>
-                <view class="weui-cell__ft" style="text-align: left">
-                    <wux-vcode canvas-id="custom-canvas" bg-color="#e6f6ff" font-color="#165189" has-point="{{ false }}" has-line="{{ false }}" bind:change="onChange" />
-                </view>
-            </view>
+            </wux-cell>
+        </wux-cell-group>
+        <view class="button-sp-area">
+            <wux-button block type="light" bind:click="onClick">Refresh Vcode</wux-button>
         </view>
     </view>
 </view>
