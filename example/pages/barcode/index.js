@@ -12,8 +12,7 @@ Page({
             onError() { console.log('onError') },
         },
     },
-    onLoad() {},
-    bindinput(e) {
+    onChange(e) {
         this.setData({
             number: e.detail.value,
         })

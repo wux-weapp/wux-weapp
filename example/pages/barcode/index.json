@@ -1,6 +1,9 @@
 {
     "navigationBarTitleText": "Barcode",
     "usingComponents": {
-        "wux-barcode": "../../dist/barcode/index"
+        "wux-barcode": "../../dist/barcode/index",
+        "wux-cell-group": "../../dist/cell-group/index",
+        "wux-cell": "../../dist/cell/index",
+        "wux-input": "../../dist/input/index"
     }
 }

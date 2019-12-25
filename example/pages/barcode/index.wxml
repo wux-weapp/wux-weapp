@@ -4,15 +4,15 @@
         <view class="page__desc">条形码</view>
     </view>
     <view class="page__bd">
-        <view class="weui-cells__title">请输入13位条形码，即时输入即时生成</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_input">
-                <view class="weui-cell__bd">
-                    <input value="{{ number }}" type="number" class="weui-input" bindinput="bindinput" />
-                </view>
-            </view>
+        <view class="sub-title">请输入13位条形码，即时输入即时生成</view>
+        <wux-cell-group>
+            <wux-cell hover-class="none">
+                <wux-input value="{{ number }}" controlled bind:change="onChange" />
+            </wux-cell>
+        </wux-cell-group>
+        <view class="sub-title">提示：扫描只能识别有效的条形码</view>
+        <view class="barcode">
+            <wux-barcode number="{{ number }}" options="{{ options }}" width="200" height="100" />
         </view>
-        <view class="weui-cells__tips">提示：扫描只能识别有效的条形码</view>
-        <wux-barcode wux-class="barcode" number="{{ number }}" options="{{ options }}" width="200" height="100" />
     </view>
 </view>
