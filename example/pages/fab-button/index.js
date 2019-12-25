@@ -21,15 +21,6 @@ const buttons = [{
 
 Page({
     data: {
-        types: ['topLeft', 'topRight', 'bottomLeft', 'bottomRight', 'center'],
-        typeIndex: 3,
-        colors: ['light', 'stable', 'positive', 'calm', 'balanced', 'energized', 'assertive', 'royal', 'dark'],
-        colorIndex: 4,
-        dirs: ['horizontal', 'vertical', 'circle'],
-        dirIndex: 0,
-        sAngle: 0,
-        eAngle: 360,
-        spaceBetween: 10,
         buttons,
     },
     onClick(e) {
@@ -51,30 +42,5 @@ Page({
     },
     onChange(e) {
         console.log('onChange', e)
-    },
-    pickerChange(e) {
-        const { value } = e.detail
-        const { model } = e.currentTarget.dataset
-
-        this.setData({
-            [model]: value,
-        })
-    },
-    onSwitch(e) {
-        this.setData({
-            reverse: e.detail.value,
-        })
-    },
-    onAngle(e) {
-        const { value } = e.detail
-        const sAngle = value ? -90 : 0
-        const eAngle = value ? -210 : 360
-        const spaceBetween = value ? 30 : 10
-
-        this.setData({
-            sAngle,
-            eAngle,
-            spaceBetween,
-        })
     },
 })
