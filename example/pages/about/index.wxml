@@ -4,8 +4,38 @@
 		<text class="userinfo-nickname">{{ userInfo.nickname }}</text>
         <view class="userinfo-desc">{{ userInfo.desc }}</view>
 	</view>
-	<view class="usermotto" data-clipboard="{{ github }}" bindtap="clipboard">
-		<view class="user-motto">{{ motto }}</view>
-		<text class="user-github">{{ github }}</text>
-	</view>
 </view>
+<wux-grids wux-class="grid-box">
+    <wux-grid>
+        <view class="grid-title">30K</view>
+        <view class="grid-desc">
+            <wux-icon wux-class="grid-icon" type="ios-eye" size="18" />
+            <view>Views</view>
+        </view>
+    </wux-grid>
+    <wux-grid>
+        <view class="grid-title">4k</view>
+        <view class="grid-desc">
+            <wux-icon wux-class="grid-icon" type="ios-star" size="18" />
+            <view>Stars</view>
+        </view>
+    </wux-grid>
+    <wux-grid>
+        <view class="grid-title">800</view>
+        <view class="grid-desc">
+            <wux-icon wux-class="grid-icon" type="ios-git-branch" size="18" />
+            <view>Forks</view>
+        </view>
+    </wux-grid>
+</wux-grids>
+<wux-cell-group>
+    <wux-cell title="Github" is-link data-clipboard="https://github.com/skyvow" bind:click="clipboard">
+        <wux-icon wux-class="icon" slot="header" type="logo-github" size="22" />
+    </wux-cell>
+    <wux-cell title="Sponsor" is-link data-url="http://cdn.skyvow.cn/wxpay.jpg" bind:click="onPreview">
+        <wux-icon wux-class="icon" slot="header" type="ios-thumbs-up" size="22" />
+    </wux-cell>
+    <wux-cell title="Share" is-link open-type="share">
+        <wux-icon wux-class="icon" slot="header" type="ios-share-alt" size="22" />
+    </wux-cell>
+</wux-cell-group>

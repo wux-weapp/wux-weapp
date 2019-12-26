@@ -1,3 +1,10 @@
 {
-	"navigationBarTitleText": "About"
+	"navigationBarTitleText": "About",
+    "usingComponents": {
+        "wux-cell-group": "../../dist/cell-group/index",
+        "wux-cell": "../../dist/cell/index",
+        "wux-grids": "../../dist/grids/index",
+        "wux-grid": "../../dist/grid/index",
+        "wux-icon": "../../dist/icon/index"
+    }
 }
