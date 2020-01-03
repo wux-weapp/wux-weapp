@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://wux-weapp.github.io/wux-weapp-docs/">
+    <a href="https://wuxui.com/">
         <img width="200" src="./screenshots/logo.png">
     </a>
 </p>
@@ -15,13 +15,13 @@
         <img alt="fork this repo" src="https://img.shields.io/github/forks/wux-weapp/wux-weapp" />
     </a>
     <a href="https://circleci.com/gh/wux-weapp/wux-weapp" target="_blank">
-        <img alt="circleci" src="https://img.shields.io/circleci/build/github/wux-weapp/wux-weapp/master.svg" />
+        <img alt="circleci" src="https://img.shields.io/circleci/build/github/wux-weapp/wux-weapp/master.svg?label=circleci" />
     </a>
     <a href="https://travis-ci.org/wux-weapp/wux-weapp" target="_blank">
-        <img alt="travis" src="https://img.shields.io/travis/wux-weapp/wux-weapp.svg" />
+        <img alt="travis" src="https://img.shields.io/travis/wux-weapp/wux-weapp.svg?label=travis" />
     </a>
     <a href="https://github.com/wux-weapp/wux-weapp/actions" target="_blank">
-        <img alt="github workflow" src="https://img.shields.io/github/workflow/status/wux-weapp/wux-weapp/test" />
+        <img alt="github workflow" src="https://img.shields.io/github/workflow/status/wux-weapp/wux-weapp/test?label=github workflow" />
     </a>
     <br />
     <a href="https://www.npmjs.com/package/wux-weapp" target="_blank">
@@ -82,7 +82,7 @@ cd wux-weapp
 
 ### 方法三. 选择需要的模块，量身定制
 
-参考 [量身定制](https://wux-weapp.github.io/wux-weapp-docs/#/customize-theme)。
+参考 [量身定制](https://wuxui.com/#/customize-theme)。
 
 ## 如何使用
 
@@ -108,7 +108,7 @@ cd wux-weapp
 
 随着组件库越来越丰富，文件的体积也越来越大，某些时候我们可能只需要其中的一个或多个组件，如果直接引入整个组件库的话是不合适的，这时候就需要我们将要使用到组件给单独抽离出来。
 
-1. 使用 [量身定制](https://wux-weapp.github.io/wux-weapp-docs/#/customize-theme) 功能自动抽离组件（官方推荐）。
+1. 使用 [量身定制](https://wuxui.com/#/customize-theme) 功能自动抽离组件（官方推荐）。
 
 2. 手动抽离组件，也很简单直接拷贝 `packages/` 目录下对应的组件即可，当然某些组件存在依赖关系，则抽离过程会相对复杂一些，以 ActionSheet、Badge、Button 为例。
 
@@ -139,8 +139,8 @@ demo/
 ## 相关链接
 
 - [Wux Weapp 源码地址](https://github.com/wux-weapp/wux-weapp/)
-- [Wux Weapp 文档地址](https://wux-weapp.github.io/wux-weapp-docs/)
-- [Wux Weapp 更新日志](https://wux-weapp.github.io/wux-weapp-docs/#/changelog)
+- [Wux Weapp 文档地址](https://wuxui.com/)
+- [Wux Weapp 更新日志](https://wuxui.com/#/changelog)
 - [Wux Weapp 案例征集](https://github.com/wux-weapp/wux-weapp/issues/123)
 
 ## 讨论组
