@@ -181,6 +181,7 @@ baseComponent({
             }
         },
         updateIsLastElement(isLast) {
+            if(isLast === this.data.isLast) return;
             this.setData({ isLast })
         },
     },
