@@ -195,7 +195,7 @@ baseComponent({
         onPopupSelectChange(e) {
             const values = [...this.data.values]
             const options = this.showOptions || JSON.parse(JSON.stringify(this.data.options))
-            const { value } = e.detail
+            const value = Array.isArray(e.detail.value) ? e.detail.value : [e.detail.value]
             const { index, parentIndex } = e.currentTarget.dataset
 
             values[parentIndex] = values[parentIndex] || []
