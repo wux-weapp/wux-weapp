@@ -10,13 +10,13 @@
     align-items: center;
     background: @cell-bg;
 
-    &::after {
+    &--has-line&::after {
         .setBottomLine(@border-color-split);
 
         left: 15px;
     }
 
-    &--last::after {
+    &--has-line&--last::after {
         display: none;
     }
 

@@ -92,6 +92,10 @@ baseComponent({
             type: String,
             value: '',
         },
+        hasLine: {
+            type: Boolean,
+            value: true,
+        },
         isLink: {
             type: Boolean,
             value: false,
@@ -113,9 +117,10 @@ baseComponent({
         isLast: false,
     },
     computed: {
-        classes: ['prefixCls, hoverClass, isLast, isLink, disabled', function(prefixCls, hoverClass, isLast, isLink, disabled) {
+        classes: ['prefixCls, hoverClass, isLast, hasLine, isLink, disabled', function(prefixCls, hoverClass, isLast, hasLine, isLink, disabled) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--last`]: isLast,
+                [`${prefixCls}--has-line`]: hasLine,
                 [`${prefixCls}--access`]: isLink,
                 [`${prefixCls}--disabled`]: disabled,
             })
