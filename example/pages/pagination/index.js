@@ -10,4 +10,10 @@ ad({
             current: e.detail.current,
         })
     },
+    onPrev(e) {
+        console.log('onPrev', e)
+    },
+    onNext(e) {
+        console.log('onNext', e)
+    },
 })

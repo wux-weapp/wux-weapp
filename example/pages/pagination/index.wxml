@@ -5,7 +5,7 @@
     </view>
     <view class="page__bd page__bd_spacing">
         <view class="sub-title">Button with text</view>
-        <wux-pagination defaultCurrent="1" total="5">
+        <wux-pagination defaultCurrent="1" total="5" bind:prev="onPrev" bind:next="onNext">
             <view slot="prev">Prev</view>
             <view slot="next">Next</view>
         </wux-pagination>
