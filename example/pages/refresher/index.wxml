@@ -1,7 +1,7 @@
 <wux-refresher id="wux-refresher" bind:pulling="onPulling" bind:refresh="onRefresh" bind:loadmore="onLoadmore" scrollTop="{{ scrollTop }}">
     <view class="panel panel_access">
         <view class="panel__bd">
-            <view class="media-box media-box_text" wx:for="{{ items }}" wx:key="">
+            <view class="media-box media-box_text" wx:for="{{ items }}" wx:key="index">
                 <view class="media-box__title media-box__title_in-text">{{ item.title }}</view>
                 <view class="media-box__desc">{{ item.content }}</view>
             </view>

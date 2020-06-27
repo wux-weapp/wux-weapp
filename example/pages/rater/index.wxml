@@ -78,7 +78,7 @@
             </wux-cell>
         </wux-cell-group>
         <wux-cell-group title="Set callback">
-            <block wx:for="{{ items }}" wx:key="">
+            <block wx:for="{{ items }}" wx:key="index">
                 <wux-cell title="{{ item.text }}" hover-class="none">
                     <wux-rater slot="footer" default-value="{{ item.value }}" />
                 </wux-cell>

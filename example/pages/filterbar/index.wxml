@@ -7,7 +7,7 @@
         <wux-filterbar items="{{ items }}" bind:change="onChange" bind:open="onOpen" bind:close="onClose" />
         <view class="panel panel_access" catchtouchmove="{{ opened ? 'noop' : '' }}">
             <view class="panel__bd">
-                <view class="media-box media-box_appmsg" hover-class="cell_active" wx:for="{{ repos }}" wx:key="">
+                <view class="media-box media-box_appmsg" hover-class="cell_active" wx:for="{{ repos }}" wx:key="index">
                     <view class="media-box__hd media-box__hd_in-appmsg">
                         <image class="media-box__thumb" src="{{ item.owner.avatar_url }}" />
                     </view>

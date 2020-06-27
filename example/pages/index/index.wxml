@@ -7,10 +7,10 @@
         <view class="logo__ft">一套组件化、可复用、易扩展的微信小程序 UI 组件库</view>
     </view>
     <view class="page-body">
-        <block wx:for="{{ components }}" wx:key="">
+        <block wx:for="{{ components }}" wx:key="index">
             <wux-accordion-group cellGroupPrefixCls="demo-category" defaultCurrent="0">
                 <wux-accordion prefixCls="demo-category-item" key="{{ index }}" title="{{ item.title }}">
-                    <block wx:for="{{ item.children }}" wx:key="" wx:for-item="child">
+                    <block wx:for="{{ item.children }}" wx:key="index" wx:for-item="child">
                         <wux-cell prefixCls="demo-category-cell" title="{{ child.title + ' ' + child.remark }}" is-link url="{{ child.url }}"></wux-cell>
                     </block>
                 </wux-accordion>

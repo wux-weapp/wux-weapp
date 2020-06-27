@@ -98,7 +98,7 @@
             </wux-cell>
         </wux-cell-group>
         <wux-cell-group title="循环输出多个组件">
-            <block wx:for="{{ items }}" wx:key="">
+            <block wx:for="{{ items }}" wx:key="index">
                 <wux-cell title="{{ item.text }}" hover-class="none">
                     <wux-input-number default-value="{{ item.value }}" slot="footer" />
                 </wux-cell>

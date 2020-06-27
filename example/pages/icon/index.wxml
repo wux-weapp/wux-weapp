@@ -7,7 +7,7 @@
         <wux-segmented-control values="{{ ['iOS style', 'Material style'] }}" bind:change="onChange" />
         <view class="sub-title">App icons</view>
         <wux-row>
-            <block wx:for="{{ icons }}" wx:key="">
+            <block wx:for="{{ icons }}" wx:key="index">
                 <wux-col span="3">
                     <view class="cell">
                         <wux-icon type="{{ style + '-' + item }}" />
@@ -18,7 +18,7 @@
         </wux-row>
         <view class="sub-title">Logos</view>
         <wux-row>
-            <block wx:for="{{ logos }}" wx:key="">
+            <block wx:for="{{ logos }}" wx:key="index">
                 <wux-col span="3">
                     <view class="cell">
                         <wux-icon type="{{ item }}" />

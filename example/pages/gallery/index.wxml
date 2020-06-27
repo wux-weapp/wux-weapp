@@ -8,7 +8,7 @@
     <view class="page__bd">
         <view class="sub-title">基于小程序原生的wx.previewImage</view>
         <view class="uploader__files">
-            <block wx:for-items="{{ urls }}" wx:key="">
+            <block wx:for-items="{{ urls }}" wx:key="index">
                 <view class="uploader__file" bindtap="previewImage" data-current="{{ item }}">
                     <image class="uploader__img" src="{{ item }}" />
                 </view>

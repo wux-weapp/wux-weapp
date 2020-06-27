@@ -32,7 +32,7 @@
         </wux-selectable>
         <view class="sub-title">With cellGroup</view>
         <wux-cell-group>
-            <block wx:for="{{ items }}" wx:key="">
+            <block wx:for="{{ items }}" wx:key="index">
                 <wux-cell title="{{ item.label }}">
                     <wux-selectable slot="header" wux-class="checkbox" value="{{ item.value }}" />
                 </wux-cell>
@@ -40,7 +40,7 @@
         </wux-cell-group>
         <view class="sub-title">With cellGroup</view>
         <wux-cell-group>
-            <block wx:for="{{ items }}" wx:key="">
+            <block wx:for="{{ items }}" wx:key="index">
                 <wux-cell title="{{ item.label }}">
                     <wux-selectable slot="footer" wux-class="checkbox" type="radio" value="{{ item.value }}" checked="{{ value === item.value }}" controlled bind:change="onChange" />
                 </wux-cell>

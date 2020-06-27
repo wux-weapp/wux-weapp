@@ -5,7 +5,7 @@
     </view>
     <view class="page__bd">
         <wux-cell-group>
-            <block wx:for="{{ animations }}" wx:key="">
+            <block wx:for="{{ animations }}" wx:key="index">
                 <wux-cell title="{{ item }}" isLink data-index="{{ index }}" bind:click="onClick"></wux-cell>
             </block>
         </wux-cell-group>
