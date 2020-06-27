@@ -1,7 +1,7 @@
 <view class="wux-class {{ classes.wrap }}">
     <wux-backdrop id="wux-backdrop" data-index="{{ index }}" bind:click="onClose" />
     <view class="{{ classes.bd }}">
-        <block wx:for="{{ options }}" wx:key="">
+        <block wx:for="{{ options }}" wx:key="index">
             <view class="{{ classes.item }} {{ common.getItemCls(prefixCls, item) }}" bindtap="onClick" data-index="{{ index }}">
                 <view class="{{ classes.text }}">
                     {{ item.type !== 'filter' ? displayValues[index] : item.label }}
@@ -10,10 +10,10 @@
             </view>
         </block>
     </view>
-    <block wx:for="{{ options }}" wx:key="">
+    <block wx:for="{{ options }}" wx:key="index">
         <wux-animation-group wux-class="{{ classes.pop }}" in="{{ item.visible }}" class-names="wux-animate--slideInRight" bind:enter="onEnter" bind:exit="onExit" wx:if="{{ item.type === 'filter' }}">
             <scroll-view class="{{ classes.scrollView }}" scroll-y bindscroll="onScroll">
-                <block wx:for="{{ item.children }}" wx:for-item="p" wx:for-index="pIndex" wx:key="">
+                <block wx:for="{{ item.children }}" wx:for-item="p" wx:for-index="pIndex" wx:key="pIndex">
                     <view class="{{ classes.panel }}">
                         <view class="{{ classes.panelHd }}">
                             <div class="{{ classes.panelTitle }}">{{ p.label }}</div>
@@ -22,7 +22,7 @@
                         <view class="{{ classes.panelBd }}">
                             <radio-group bindchange="onPopupSelectChange" data-parent-index="{{ index }}" data-index="{{ pIndex }}" wx:if="{{ p.type === 'radio' }}">
                                 <view class="{{ classes.groups }}">
-                                    <block wx:for="{{ p.children }}" wx:for-item="g" wx:for-index="cIndex" wx:key="">
+                                    <block wx:for="{{ p.children }}" wx:for-item="g" wx:for-index="cIndex" wx:key="cIndex">
                                         <view class="{{ classes.group }}">
                                             <radio
                                                 class="{{ classes.radio }}"
@@ -36,7 +36,7 @@
                             </radio-group>
                             <checkbox-group bindchange="onPopupSelectChange" data-parent-index="{{ index }}" data-index="{{ pIndex }}" wx:else="{{ p.type === 'checkbox' }}">
                                 <view class="{{ classes.groups }}">
-                                    <block wx:for="{{ p.children }}" wx:for-item="g" wx:for-index="cIndex" wx:key="">
+                                    <block wx:for="{{ p.children }}" wx:for-item="g" wx:for-index="cIndex" wx:key="cIndex">
                                         <view class="{{ classes.group }}">
                                             <checkbox
                                                 class="{{ classes.check }}"

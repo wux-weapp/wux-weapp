@@ -14,7 +14,7 @@
         <slot name="footer"></slot>
     </view>
     <view class="{{ classes.actions }}" wx:if="{{ actions.length > 0 }}">
-        <block wx:for="{{ actions }}" wx:for-item="action" wx:key="">
+        <block wx:for="{{ actions }}" wx:for-item="action" wx:key="index">
             <view
                 class="{{ classes.action[index].wrap }}"
                 hover-class="{{ !action.disabled ? classes.action[index].hover : 'none' }}"

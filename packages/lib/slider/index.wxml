@@ -2,10 +2,10 @@
 	<view class="{{ classes.min }}" wx:if="{{ common.getValue(showValue, 'min') }}">{{ min }}</view>
     <slot name="min" wx:else></slot>
     <view class="{{ classes.rail }}" style="{{ extRailStyle }}">
-    	<block wx:for="{{ marks }}" wx:key="" wx:if="{{ showMark && marks.length > 0 }}">
+    	<block wx:for="{{ marks }}" wx:key="index" wx:if="{{ showMark && marks.length > 0 }}">
     		<view class="{{ classes.mark }}" style="left: {{ item + '%' }}; {{ common.getStyle(extMarkStyle, index) }}" />
     	</block>
-	    <block wx:for="{{ inputValue }}" wx:key="">
+	    <block wx:for="{{ inputValue }}" wx:key="index">
 	    	<view
 	    		class="{{ classes.track }}"
 	    		style="{{ common.getTrackStyle(offsets, index, inputValue.length > 1) }}; {{ common.getStyle(extTrackStyle, index) }}"

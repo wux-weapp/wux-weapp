@@ -1,5 +1,5 @@
 <template name="actions">
-    <block wx:for="{{ actions }}" wx:for-item="action" wx:key="">
+    <block wx:for="{{ actions }}" wx:for-item="action" wx:key="index">
         <view class="{{ classes.action }} {{ action.className }}" style="{{ action.style }}" data-index="{{ index }}" data-value="{{ action }}" data-type="{{ type }}" catchtap="onTap">
             <view class="{{ classes.text }}">{{ action.text }}</view>
         </view>

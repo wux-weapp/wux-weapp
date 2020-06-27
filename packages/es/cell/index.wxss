@@ -34,7 +34,7 @@
   transform: none;
   transform-origin: 0 0
 }
-.wux-cell::after {
+.wux-cell--has-line.wux-cell::after {
   content: " ";
   position: absolute;
   left: 0;
@@ -47,7 +47,7 @@
   transform: scaleY(.5);
   left: 30rpx
 }
-.wux-cell--last::after {
+.wux-cell--has-line.wux-cell--last::after {
   display: none
 }
 .wux-cell--hover {

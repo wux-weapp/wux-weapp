@@ -1,5 +1,5 @@
 <view class="wux-class {{ classes.wrap }}" bindtouchmove="onTouchMove">
-    <block wx:for="{{ stars }}" wx:key="">
+    <block wx:for="{{ stars }}" wx:key="index">
         <view class="{{ classes.star }}" bindtap="onTap" data-index="{{ index }}">
             <view class="{{ classes.box }} {{ inputValue > index ? prefixCls + '__box--active' : '' }}" style="color: {{ colors && colors[index] ? colors[index]: '#ccc' }}; margin-right: {{ margin + 'px' }}; font-size: {{ fontSize + 'px' }}; width: {{ fontSize + 'px' }}; height: {{ fontSize + 'px' }}; line-height: {{ fontSize + 'px' }}">
                 <view class="{{ classes.inner }}">

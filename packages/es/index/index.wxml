@@ -2,7 +2,7 @@
     <scroll-view scroll-y scroll-top="{{ scrollTop }}" bindscroll="onScroll" style="{{ extStyle }}">
         <slot></slot>
         <view class="{{ classes.nav }}" wx:if="{{ sections.length > 0 }}" catchtouchstart="onTouchStart" catchtouchmove="onTouchMove" catchtouchend="onTouchEnd">
-            <block wx:for="{{ sections }}" wx:key="">
+            <block wx:for="{{ sections }}" wx:key="index">
                 <view class="{{ classes.navItem }}" data-index="{{ index }}" data-name="{{ item.name }}">{{ item.name }}</view>
             </block>
         </view>

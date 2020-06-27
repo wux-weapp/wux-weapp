@@ -3,17 +3,17 @@
 	    <view class="{{ classes.hd }}">
 	    	<view class="{{ classes.title }}" wx:if="{{ title }}">{{ title }}</view>
 	    	<view class="{{ classes.menus }}" wx:if="{{ activeOptions.length }}">
-	    		<block wx:for="{{ activeOptions }}" wx:key="">
+	    		<block wx:for="{{ activeOptions }}" wx:key="index">
 	    			<view class="{{ classes.menu }} {{ activeIndex === index ? prefixCls + '__menu--active' : '' }}" data-menu-index="{{ index }}" bindtap="onMenuClick">{{ item[fieldNames['label']] }}</view>
 	    		</block>
 	    	</view>
 	    </view>
 	    <view class="{{ classes.bd }}" style="{{ bodyStyle }}">
-	    	<block wx:for="{{ showOptions }}" wx:for-item="option" wx:for-index="optionIndex" wx:key="">
+	    	<block wx:for="{{ showOptions }}" wx:for-item="option" wx:for-index="optionIndex" wx:key="optionIndex">
 	    		<view class="{{ classes.inner }}">
 		    		<scroll-view scroll-y class="wux-scroll-view-class {{ classes.scrollView }}">
 			    		<view class="{{ classes.option }}">
-			    			<block wx:for="{{ option }}" wx:key="">
+			    			<block wx:for="{{ option }}" wx:key="index">
 					    		<view
 						    		class="{{ classes.item }} {{ activeValue[optionIndex] === item[fieldNames['value']] ? prefixCls + '__item--active' : '' }} {{ item.disabled ? prefixCls + '__item--disabled' : '' }}"
 						    		data-option-index="{{ optionIndex }}"
