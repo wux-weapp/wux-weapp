@@ -57,10 +57,10 @@
   },
   "lint-staged": {
     "{src,example}/**/*.js": [
-      "eslint"
+      "npm run eslint"
     ],
     "{src,example}/**/*.{wxss,less}": [
-      "stylelint"
+      "npm run stylelint"
     ]
   },
   "keywords": [
