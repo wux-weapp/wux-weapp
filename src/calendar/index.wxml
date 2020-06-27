@@ -25,24 +25,24 @@
             </view>
             <view class="{{ classes.bd }}">
                 <view class="{{ classes.weekdays }}" wx:if="{{ weekHeader }}">
-                    <block wx:for="{{ weeks }}" wx:key="">
-                        <view class="{{ classes.weekday }} {{ item.weekend ? prefixCls + '__weekday--weekend' : '' }}">
-                            {{ item.dayName }}
+                    <block wx:for="{{ weeks }}" wx:for-item="week" wx:for-index="weekIndex" wx:key="weekIndex">
+                        <view class="{{ classes.weekday }} {{ week.weekend ? prefixCls + '__weekday--weekend' : '' }}">
+                            {{ week.dayName }}
                         </view>
                     </block>
                 </view>
                 <view class="{{ classes.months }}">
                     <view class="{{ classes.monthsContent }}" bindtouchstart="onTouchStart" catchtouchmove="{{ swiping ? 'noop' : '' }}" capture-bind:touchmove="onTouchMove" bindtouchend="onTouchEnd" style="{{ wrapperTranslate }}">
-                        <block wx:for="{{ months }}" wx:for-item="month" wx:key="">
+                        <block wx:for="{{ months }}" wx:for-item="month" wx:for-index="monthIndex" wx:key="monthIndex">
                             <view
                                 data-year="{{ month.year }}"
                                 data-month="{{ month.month }}"
-                                class="{{ classes.month }} {{ index === 0 ? (prefixCls + '__month--prev') : index === 1 ? (prefixCls + '__month--current') : (prefixCls + '__month--next') }}"
-                                style="{{ monthsTranslate[index] }}"
+                                class="{{ classes.month }} {{ monthIndex === 0 ? (prefixCls + '__month--prev') : monthIndex === 1 ? (prefixCls + '__month--current') : (prefixCls + '__month--next') }}"
+                                style="{{ monthsTranslate[monthIndex] }}"
                             >
-                                <block wx:for="{{ month.items }}" wx:for-item="row" wx:key="">
+                                <block wx:for="{{ month.items }}" wx:for-item="row" wx:for-index="rowIndex" wx:key="rowIndex">
                                     <view class="{{ classes.days }}">
-                                        <block wx:for="{{ row }}" wx:for-item="col" wx:key="">
+                                        <block wx:for="{{ row }}" wx:for-item="col" wx:for-index="colIndex" wx:key="colIndex">
                                             <view
                                             data-year="{{ col.year }}"
                                             data-month="{{ col.month }}"
