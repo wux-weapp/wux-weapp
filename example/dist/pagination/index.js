@@ -82,10 +82,14 @@ baseComponent({
             })
         },
     	onPrev() {
-            this.onChange(this.data.activeIndex - 1, 'prev')
+            const current = this.data.activeIndex - 1
+            this.onChange(current, 'prev')
+            this.triggerEvent('prev', { current })
         },
         onNext() {
-            this.onChange(this.data.activeIndex + 1, 'next')
+            const current = this.data.activeIndex + 1
+            this.onChange(current, 'next')
+            this.triggerEvent('next', { current })
         },
     },
     attached() {

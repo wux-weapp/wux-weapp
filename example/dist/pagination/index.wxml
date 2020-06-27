@@ -8,7 +8,7 @@
         <view class="{{ classes.active }}">{{ activeIndex }}</view>/{{ total }}
     </view>
     <view class="{{ classes.pointer }}" wx:if="{{ mode === 'pointer' }}">
-        <block wx:for="{{ total }}" wx:key="">
+        <block wx:for="{{ total }}" wx:key="index">
             <view class="{{ classes.dot }} {{ index + 1 === activeIndex ? prefixCls + '__dot--active' : '' }}"></view>
         </block>
     </view>

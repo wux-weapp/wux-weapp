@@ -3,11 +3,11 @@
  * 一套组件化、可复用、易扩展的微信小程序 UI 组件库
  * https://github.com/wux-weapp/wux-weapp#readme
  *
- * Copyright 2017-2019 skyvow
+ * Copyright 2017-2020 skyvow
  *
  * Released under the MIT License
  *
- * Released on: 2019-12-20
+ * Released on: 2020-6-27
  */
 
 import $wuxCountDown from './countdown/index'

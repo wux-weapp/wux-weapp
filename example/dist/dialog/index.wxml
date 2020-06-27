@@ -25,7 +25,7 @@
         </view>
     </view>
     <view slot="footer" class="{{ classes.buttons }}">
-        <block wx:for="{{ buttons }}" wx:for-item="button" wx:key="">
+        <block wx:for="{{ buttons }}" wx:for-item="button" wx:key="index">
             <button
                 class="{{ classes.button[index].wrap }}"
                 disabled="{{ button.disabled }}"
