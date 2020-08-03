@@ -19,6 +19,20 @@ ad({
             groups: ['001'],
         },
         {
+            type: 'checkbox',
+            label: 'Select type',
+            value: 'type',
+            children: [{
+                label: 'Public',
+                value: 'public',
+            },
+            {
+                label: 'Private',
+                value: 'private',
+            }],
+            groups: ['002'],
+        },
+        {
             type: 'text',
             label: 'Forks',
             value: 'forks',
@@ -230,6 +244,9 @@ ad({
                     const selected = n.children.filter((n) => n.checked).map((n) => n.value).join(' ')
                     params.sort = n.value
                     params.order = selected
+                } else if (n.value === 'type') {
+                    const selected = n.children.filter((n) => n.checked).map((n) => n.value).join(' ')
+                    params.type = selected
                 } else if (n.value === 'stars') {
                     params.sort = n.value
                     params.order = n.sort === 1 ? 'asc' : 'desc'
@@ -263,21 +280,22 @@ ad({
         }, params)
 
         wx.showLoading()
-        wx.request({
-            url: 'https://api.github.com/search/repositories',
-            data,
-            success: (res) => {
-                console.log(res)
 
-                wx.hideLoading()
-
-                this.setData({
-                    repos: res.data.items.map((n) => Object.assign({}, n, {
-                        date: n.created_at.substr(0, 7),
-                    })),
+        setTimeout(() => {
+            let repos = []
+            for (let i = 0; i < 20; i++) {
+                repos.push({
+                    owner: { avatar_url: 'https://cdn.skyvow.cn/logo.png' },
+                    name: 'wux-weapp',
+                    description: '一套组件化、可复用、易扩展的微信小程序 UI 组件库',
+                    forks_count: 4400,
+                    stargazers_count: 850,
+                    date: Date.now(),
                 })
-            },
-        })
+            }
+            this.setData({ repos })
+            wx.hideLoading()
+        }, 1500)
     },
     onOpen(e) {
         this.setData({ opened: true })

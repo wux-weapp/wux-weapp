@@ -168,7 +168,7 @@
   flex: 1;
   text-align: right;
   font-size: 26rpx;
-  line-height: 48rpx;
+  padding-left: 60rpx;
   color: #f23030
 }
 .wux-filterbar__groups {

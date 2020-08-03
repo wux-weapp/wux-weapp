@@ -59,24 +59,35 @@ function getValues(options = []) {
     }, [])
 }
 
-function getChangedValues(options = [], values = [], prefix = 'options') {
-    return options.reduce((acc, option, index) => {
-        if (option.type === 'radio') {
-            return {
-                ...acc,
-                [`${prefix}[${index}].children`]: option.children.map((v) => ({ ...v, checked: v.value === values[index] })),
-            }
+function clone(obj) {
+    return JSON.parse(JSON.stringify(obj))
+}
+
+function isContain(a, b) {
+    return Array.isArray(a) ? a.includes(b) : b === a
+}
+
+function getChangedParamPathFromFilter(children = [], values = [], paramKey = '') {
+    return children.reduce((acc, option, index) => {
+        return {
+            ...acc,
+            [`${paramKey}[${index}].checked`]: isContain(values, option.value),
         }
-        if (option.type === 'checkbox') {
+    }, {})
+}
+
+function getChangedValuesFromFilter(options = [], values = [], paramKey = 'options') {
+    return options.reduce((acc, option, index) => {
+        if (option.type === 'radio' || option.type === 'checkbox') {
             return {
                 ...acc,
-                [`${prefix}[${index}].children`]: option.children.map((v) => ({ ...v, checked: Array.isArray(values[index]) ? values[index].includes(v.value) : false })),
+                ...getChangedParamPathFromFilter(option.children, values[index], `${paramKey}[${index}].children`),
             }
         }
         if (option.type === 'filter') {
             return {
                 ...acc,
-                ...getChangedValues(option.children, values[index] || [], `options[${index}].children`),
+                ...getChangedValuesFromFilter(option.children, values[index] || [], `${paramKey}[${index}].children`),
             }
         }
         return acc
@@ -91,7 +102,7 @@ function getShowOptions(options = [], values = []) {
         if (option.type === 'filter') {
             return [...acc, { ...option, children: getShowOptions(option.children || [], values[index]) }]
         }
-        return acc
+        return [...acc, { ...option }]
     }, [])
 }
 
@@ -123,6 +134,7 @@ baseComponent({
             this.setData({ options: newVal, values: getValues(newVal) })
         },
         ['options.**'](newVal) {
+            console.log('options', newVal)
             this.updatedDisplayValues(newVal)
         },
     },
@@ -193,16 +205,23 @@ baseComponent({
             this.onSelectClose(index)
         },
         onPopupSelectChange(e) {
-            const values = [...this.data.values]
-            const options = this.showOptions || JSON.parse(JSON.stringify(this.data.options))
-            const value = Array.isArray(e.detail.value) ? e.detail.value : [e.detail.value]
+            let values = [...this.data.values]
+            const options = this.showOptions || clone(this.data.options)
+            const { value } = e.detail
             const { index, parentIndex } = e.currentTarget.dataset
-
             values[parentIndex] = values[parentIndex] || []
             values[parentIndex][index] = value
-
-            if (options[parentIndex].children[index] && options[parentIndex].children[index].children) {
-                options[parentIndex].children[index].children = options[parentIndex].children[index].children.map((v) => ({ ...v, checked: value.includes(v.value) }))
+            // fix array empty
+            values = [...values].map(v => v)
+            if (options[parentIndex].children.length) {
+                options[parentIndex].children.forEach((opt, idx) => {
+                    if (opt.children) {
+                        opt.children = opt.children.map((v) => ({
+                            ...v,
+                            checked: values[parentIndex][idx] ? isContain(values[parentIndex][idx], v.value) : false,
+                        }))
+                    }
+                })
                 this.updatedDisplayValues(options)
                 this.showOptions = options
             }
@@ -249,7 +268,7 @@ baseComponent({
 
             this.updatedValues(values)
 
-            const showOptions = this.showOptions || JSON.parse(JSON.stringify(this.data.options))
+            const showOptions = this.showOptions || clone(this.data.options)
             if (showOptions && showOptions.length > 0) {
                 showOptions.forEach((option, index) => {
                     if (option.type === 'filter') {
@@ -264,9 +283,12 @@ baseComponent({
         },
         onSelectConfirm(e) {
             const { options, values } = this.data
-            const { index } = e.currentTarget.dataset
-            const params = getChangedValues(options, values)
-            
+            const { index, type } = e.currentTarget.dataset
+            const params = getChangedValuesFromFilter(options, values)
+            if (type === 'checkbox' && (!values[index] || !values[index].length)) {
+                params[`options[${index}].checked`] = false
+            }
+            console.log('params', params)
             this.setData(params, () => this.onSelectClose(index, this.onChange))
         },
         /**
