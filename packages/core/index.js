@@ -1,5 +1,5 @@
 /**
- * Wux Weapp 3.8.6
+ * Wux Weapp 3.8.7
  * 一套组件化、可复用、易扩展的微信小程序 UI 组件库
  * https://github.com/wux-weapp/wux-weapp#readme
  *
@@ -28,7 +28,7 @@ export const getCtx = (selector, ctx = getCurrentPages()[getCurrentPages().lengt
     return componentCtx
 }
 
-const version = '3.8.6'
+const version = '3.8.7'
 const $wuxActionSheet = (selector = '#wux-actionsheet', ctx) => getCtx(selector, ctx)
 const $wuxBackdrop = (selector = '#wux-backdrop', ctx) => getCtx(selector, ctx)
 const $wuxCalendar = (selector = '#wux-calendar', ctx) => getCtx(selector, ctx)
