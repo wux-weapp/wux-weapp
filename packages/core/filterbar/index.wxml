@@ -79,7 +79,7 @@
                 />
                 <div class="{{ classes.btns }}">
                     <view class="{{ classes.btn }}" data-index="{{ index }}" bindtap="onSelectReset">{{ cancelText }}</view>
-                    <view class="{{ classes.btn }} {{ prefixCls + '__btn--danger' }}" data-index="{{ index }}" bindtap="onSelectConfirm">{{ confirmText }}</view>
+                    <view class="{{ classes.btn }} {{ prefixCls + '__btn--danger' }}" data-index="{{ index }}" data-type="{{ item.type }}" bindtap="onSelectConfirm">{{ confirmText }}</view>
                 </div>
             </scroll-view>
         </wux-animation-group>
@@ -93,12 +93,14 @@
                 if (option.constructor === 'String') {
                     return {
                         title: option,
-                        value: option
+                        value: option,
+                        color: '#f15353'
                     }
                 }
                 return {
                     title: option.label,
-                    value: option.value
+                    value: option.value,
+                    color: '#f15353'
                 }
             })
         },
@@ -116,6 +118,9 @@
             }
             if (item.checked) {
                 itemCls.push(prefixCls + '__item--checked')
+            }
+            if (item.visible) {
+                itemCls.push(prefixCls + '__item--visible')
             }
             return itemCls.join(' ')
         },

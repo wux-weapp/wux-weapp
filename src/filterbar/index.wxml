@@ -93,12 +93,14 @@
                 if (option.constructor === 'String') {
                     return {
                         title: option,
-                        value: option
+                        value: option,
+                        color: '#f15353'
                     }
                 }
                 return {
                     title: option.label,
-                    value: option.value
+                    value: option.value,
+                    color: '#f15353'
                 }
             })
         },
@@ -116,6 +118,9 @@
             }
             if (item.checked) {
                 itemCls.push(prefixCls + '__item--checked')
+            }
+            if (item.visible) {
+                itemCls.push(prefixCls + '__item--visible')
             }
             return itemCls.join(' ')
         },

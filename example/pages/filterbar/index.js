@@ -19,20 +19,6 @@ ad({
             groups: ['001'],
         },
         {
-            type: 'checkbox',
-            label: 'Select type',
-            value: 'type',
-            children: [{
-                label: 'Public',
-                value: 'public',
-            },
-            {
-                label: 'Private',
-                value: 'private',
-            }],
-            groups: ['002'],
-        },
-        {
             type: 'text',
             label: 'Forks',
             value: 'forks',
@@ -244,9 +230,6 @@ ad({
                     const selected = n.children.filter((n) => n.checked).map((n) => n.value).join(' ')
                     params.sort = n.value
                     params.order = selected
-                } else if (n.value === 'type') {
-                    const selected = n.children.filter((n) => n.checked).map((n) => n.value).join(' ')
-                    params.type = selected
                 } else if (n.value === 'stars') {
                     params.sort = n.value
                     params.order = n.sort === 1 ? 'asc' : 'desc'
