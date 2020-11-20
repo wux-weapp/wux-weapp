@@ -26,6 +26,10 @@ baseComponent({
             type: Boolean,
             value: true,
         },
+        parentOffsetTop: {
+          type: Number,
+          value: 0,
+      },
     },
     data: {
         scrollTop: 0,
@@ -94,7 +98,7 @@ baseComponent({
                     this.setData({
                         current,
                         currentName,
-                        scrollTop: target.top,
+                        scrollTop: target.top - this.data.parentOffsetTop,
                     })
                 }
 
