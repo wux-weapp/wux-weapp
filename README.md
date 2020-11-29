@@ -149,8 +149,8 @@ demo/
 注意：如果添加『Wux 小猪手』没有反应，可以再尝试添加后边作者『Skyvow』微信。
 
 <p>
-  <img src="http://cdn.skyvow.cn/wxrobot-helper.png" width="256" style="display: inline;">
-  <img src="http://cdn.skyvow.cn/wechat.png" width="256" style="display: inline;">
+  <img src="./screenshots/wxrobot-helper.png" width="256" style="display: inline;">
+  <img src="./screenshots/wechat.png" width="256" style="display: inline;">
 </p>
 
 ## 赞助
@@ -158,13 +158,13 @@ demo/
 请作者喝营养快线补补小身体(`・ω・´)
 
 <p>
-  <img src="http://cdn.skyvow.cn/alipay.jpg" width="256" height="350" style="display: inline;">
-  <img src="http://cdn.skyvow.cn/wxpay.jpg" width="256" height="350" style="display: inline;">
+  <img src="./screenshots/alipay.jpg" width="256" height="350" style="display: inline;">
+  <img src="./screenshots/wxpay.jpg" width="256" height="350" style="display: inline;">
 </p>
 
 ## 案例
 
-<img src="http://cdn.skyvow.cn/cases.png" style="display: inline;">
+<img src="./screenshots/cases.png" style="display: inline;">
 
 ## 贡献
 
