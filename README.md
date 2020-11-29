@@ -148,9 +148,10 @@ demo/
 您可以扫码添加下方的左侧『Wux 小助手』微信并备注『Wux Weapp』或者『加群』进交流群。
 注意：如果添加『Wux 小猪手』没有反应，可以再尝试添加后边作者『Skyvow』的微信。
 
-<img src="http://cdn.skyvow.cn/wxrobot-helper.png" width="256" style="display: inline;">
-<img src="http://cdn.skyvow.cn/wechat.png" width="256" style="display: inline;">
-
+<p>
+  <img src="http://cdn.skyvow.cn/wxrobot-helper.png" width="256" style="display: inline;">
+  <img src="http://cdn.skyvow.cn/wechat.png" width="256" style="display: inline;">
+</p>
 ## 赞助
 
 请作者喝营养快线补补小身体(`・ω・´)
