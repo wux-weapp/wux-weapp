@@ -1,6 +1,6 @@
 {
   "name": "wux-weapp",
-  "version": "3.8.7",
+  "version": "3.8.8",
   "description": "一套组件化、可复用、易扩展的微信小程序 UI 组件库",
   "main": "packages/lib/index.js",
   "module": "packages/es/index.js",
