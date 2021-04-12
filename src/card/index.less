@@ -1,6 +1,12 @@
 @import "../styles/mixins/index.less";
 @import "../styles/themes/index.less";
 
+.card-button-style(@theme, @color) {
+    &--@{theme} {
+        color: @color !important;
+    }
+}
+
 .@{wux-prefix}-card {
     position: relative;
     min-height: @card-height;
@@ -115,13 +121,17 @@
             display: none;
         }
 
-        &--default {
-            color: @dark;
-        }
-
-        &--primary {
-            color: @balanced !important;
-        }
+        .card-button-style(default, @dark);
+        .card-button-style(primary, @balanced);
+        .card-button-style(light, @light-inverse);
+        .card-button-style(stable, @stable-inverse);
+        .card-button-style(positive, @positive);
+        .card-button-style(calm, @calm);
+        .card-button-style(assertive, @assertive);
+        .card-button-style(balanced, @balanced);
+        .card-button-style(energized, @energized);
+        .card-button-style(royal, @royal);
+        .card-button-style(dark, @dark);
 
         &--bold {
             font-weight: 500 !important;

@@ -27,9 +27,9 @@ baseComponent({
             value: true,
         },
         parentOffsetTop: {
-          type: Number,
-          value: 0,
-      },
+            type: Number,
+            value: 0,
+        },
     },
     data: {
         scrollTop: 0,
