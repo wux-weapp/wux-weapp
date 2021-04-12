@@ -16,6 +16,10 @@
     flex-direction: column;
     background-color: @card-bg;
 
+    &--hover {
+        background-color: @active-state-bg;
+    }
+
     &--bordered {
         border-radius: @card-radius;
 
@@ -31,6 +35,8 @@
     }
 
     &--full {
+        border-radius: 0;
+
         &::before {
             border-radius: 0;
             border-right-width: 0;
