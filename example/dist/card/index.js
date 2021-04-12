@@ -8,6 +8,10 @@ baseComponent({
             type: String,
             value: 'wux-card',
         },
+        hoverClass: {
+            type: String,
+            value: 'none',
+        },
         bordered: {
             type: Boolean,
             value: true,
@@ -44,9 +48,10 @@ baseComponent({
     },
     data: {
         extStyle: '',
+        disabled: false,
     },
     computed: {
-        classes: ['prefixCls, bordered, full, actions', function(prefixCls, bordered, full, _actions) {
+        classes: ['prefixCls, hoverClass, bordered, full, actions', function(prefixCls, hoverClass, bordered, full, _actions) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--bordered`]: bordered,
                 [`${prefixCls}--full`]: full,
@@ -73,6 +78,7 @@ baseComponent({
                     hover,
                 }
             })
+            const hover = hoverClass && hoverClass !== 'default' ? hoverClass : `${prefixCls}--hover`
 
             return {
                 wrap,
@@ -84,6 +90,7 @@ baseComponent({
                 ft,
                 actions,
                 action,
+                hover,
             }
         }],
     },
@@ -92,7 +99,7 @@ baseComponent({
             const { index } = e.currentTarget.dataset
             const { actions } = this.data
             const action = actions[index]
-
+            
             if (!action.disabled) {
                 this.triggerEvent('action', { index, action, actions })
             }

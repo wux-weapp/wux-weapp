@@ -114,7 +114,8 @@ function buildRule(key, value) {
 function styleToCssString(rules) {
     var result = ''
     if (typeof rules === 'string') {
-        return rules
+        rules = rules.trim()
+        return rules.slice(-1) === ";" ? `${rules} ` : `${rules}; `
     }
     if (!rules || keys(rules).length === 0) {
         return result;

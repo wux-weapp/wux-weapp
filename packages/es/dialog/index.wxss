@@ -38,6 +38,33 @@
 .wux-dialog__button--primary {
   color: #33cd5f!important
 }
+.wux-dialog__button--light {
+  color: #ddd!important
+}
+.wux-dialog__button--stable {
+  color: #b2b2b2!important
+}
+.wux-dialog__button--positive {
+  color: #387ef5!important
+}
+.wux-dialog__button--calm {
+  color: #11c1f3!important
+}
+.wux-dialog__button--assertive {
+  color: #ef473a!important
+}
+.wux-dialog__button--balanced {
+  color: #33cd5f!important
+}
+.wux-dialog__button--energized {
+  color: #ffc900!important
+}
+.wux-dialog__button--royal {
+  color: #886aea!important
+}
+.wux-dialog__button--dark {
+  color: #444!important
+}
 .wux-dialog__button--bold {
   font-weight: 500!important
 }

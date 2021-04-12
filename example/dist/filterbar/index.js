@@ -134,7 +134,6 @@ baseComponent({
             this.setData({ options: newVal, values: getValues(newVal) })
         },
         ['options.**'](newVal) {
-            console.log('options', newVal)
             this.updatedDisplayValues(newVal)
         },
     },
@@ -288,7 +287,6 @@ baseComponent({
             if (type === 'checkbox' && (!values[index] || !values[index].length)) {
                 params[`options[${index}].checked`] = false
             }
-            console.log('params', params)
             this.setData(params, () => this.onSelectClose(index, this.onChange))
         },
         /**

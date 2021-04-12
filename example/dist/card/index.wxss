@@ -8,6 +8,9 @@
   flex-direction: column;
   background-color: #fff
 }
+.wux-card--hover {
+  background-color: #ececec
+}
 .wux-card--bordered {
   border-radius: 20rpx
 }
@@ -28,6 +31,9 @@
   border-right-width: 1PX;
   border-bottom-width: 1PX;
   border-left-width: 1PX
+}
+.wux-card--full {
+  border-radius: 0
 }
 .wux-card--full::before {
   border-radius: 0;
@@ -142,10 +148,37 @@
   display: none
 }
 .wux-card__action--default {
-  color: #444
+  color: #444!important
 }
 .wux-card__action--primary {
   color: #33cd5f!important
+}
+.wux-card__action--light {
+  color: #ddd!important
+}
+.wux-card__action--stable {
+  color: #b2b2b2!important
+}
+.wux-card__action--positive {
+  color: #387ef5!important
+}
+.wux-card__action--calm {
+  color: #11c1f3!important
+}
+.wux-card__action--assertive {
+  color: #ef473a!important
+}
+.wux-card__action--balanced {
+  color: #33cd5f!important
+}
+.wux-card__action--energized {
+  color: #ffc900!important
+}
+.wux-card__action--royal {
+  color: #886aea!important
+}
+.wux-card__action--dark {
+  color: #444!important
 }
 .wux-card__action--bold {
   font-weight: 500!important

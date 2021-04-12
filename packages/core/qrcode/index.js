@@ -64,6 +64,15 @@ Component({
                 })
             },
         },
+        whiteSpace: {
+            type: Number,
+            value: 0,
+            observer(newVal) {
+                this.draw({
+                    whiteSpace: newVal,
+                })
+            },
+        },
         fgColor: {
             type: String,
             value: 'black',
@@ -101,24 +110,27 @@ Component({
          * 将之前在绘图上下文中的描述（路径、变形、样式）画到 canvas 中
          */
         draw(opts = {}) {
-            const { typeNumber, errorCorrectLevel, width, height, fgColor, bgColor, canvasId, data } = Object.assign({}, this.data, opts)
+            const { typeNumber, errorCorrectLevel, width, height, whiteSpace, fgColor, bgColor, canvasId, data } = Object.assign({}, this.data, opts)
             const qrcode = qrjs(utf16to8(data), {
                 typeNumber,
                 errorCorrectLevel,
             })
             const cells = qrcode.modules
-            const tileW = width / cells.length
-            const tileH = height / cells.length
+            const tileW = (width - whiteSpace * 2) / cells.length
+            const tileH = (height - whiteSpace * 2) / cells.length
 
             this.ctx = this.ctx || wx.createCanvasContext(canvasId, this)
             this.ctx.scale(1, 1)
+
+            this.ctx.setFillStyle('#ffffff')
+            this.ctx.fillRect(0, 0 , width, height)
 
             cells.forEach((row, rdx) => {
                 row.forEach((cell, cdx) => {
                     this.ctx.setFillStyle(cell ? fgColor : bgColor)
                     const w = (Math.ceil((cdx + 1) * tileW) - Math.floor(cdx * tileW))
                     const h = (Math.ceil((rdx + 1) * tileH) - Math.floor(rdx * tileH))
-                    this.ctx.fillRect(Math.round(cdx * tileW), Math.round(rdx * tileH), w, h)
+                    this.ctx.fillRect(Math.round(cdx * tileW) + whiteSpace, Math.round(rdx * tileH) + whiteSpace, w, h)
                 })
             })
 

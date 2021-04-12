@@ -1,4 +1,4 @@
-<view class="wux-class {{ classes.wrap }}">
+<view class="wux-class {{ classes.wrap }}" hover-class="{{ !disabled ? classes.hover : 'none' }}">
     <view class="{{ classes.hd }}" wx:if="{{ thumb || title || extra }}">
         <view class="{{ classes.content }}" wx:if="{{ thumb || title }}">
             <image class="{{ classes.thumb }}" src="{{ thumb }}" mode="aspectFit" style="{{ extStyle }}" wx:if="{{ thumb }}" />
@@ -19,7 +19,7 @@
                 class="{{ classes.action[index].wrap }}"
                 hover-class="{{ !action.disabled ? classes.action[index].hover : 'none' }}"
                 data-index="{{ index }}"
-                bindtap="onAction"
+                catchtap="onAction"
             >
                 {{ action.text }}
             </view>
