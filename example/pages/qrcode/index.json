@@ -4,6 +4,7 @@
         "wux-qrcode": "../../dist/qrcode/index",
         "wux-cell-group": "../../dist/cell-group/index",
         "wux-cell": "../../dist/cell/index",
+        "wux-slider": "../../dist/slider/index",
         "wux-textarea": "../../dist/textarea/index"
     }
 }

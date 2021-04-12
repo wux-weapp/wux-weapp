@@ -4,6 +4,7 @@ ad({
     data: {
         value: 'https://github.com/wux-weapp/wux-weapp',
         fgColor: 'black',
+        whiteSpace: [20],
     },
     onChange(e) {
         const value = e.detail.value
@@ -12,6 +13,12 @@ ad({
         this.setData({
             value,
             fgColor,
+        })
+    },
+    onSliderChange(e) {
+        const value = e.detail.value
+        this.setData({
+            whiteSpace: [value],
         })
     },
     previewImage() {

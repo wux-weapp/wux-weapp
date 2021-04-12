@@ -10,9 +10,22 @@
                 <wux-textarea hasCount rows="3" placeholder="支持文本、网址和电子邮箱" maxlength="300" value="{{ value }}" controlled bind:change="onChange" />
             </wux-cell>
         </wux-cell-group>
+        <wux-cell-group title="留白">
+            <wux-cell hover-class="none">
+                <wux-slider value="{{ whiteSpace }}" controlled showValue showMark step="10" min="10" max="30" bind:change="onSliderChange" />
+            </wux-cell>
+        </wux-cell-group>
         <view class="sub-title">提示：Canvas 在微信中无法长按识别, 点击图片进入保存页面长按图片可以保存</view>
         <view class="qrcode">
-            <wux-qrcode id="qrcode" data="{{ value }}" fg-color="{{ fgColor }}" width="200" height="200" bind:click="previewImage" />
+            <wux-qrcode
+                id="qrcode"
+                data="{{ value }}"
+                fg-color="{{ fgColor }}"
+                width="200"
+                height="200"
+                whiteSpace="{{ whiteSpace }}"
+                bind:click="previewImage"
+            />
         </view>
     </view>
 </view>
