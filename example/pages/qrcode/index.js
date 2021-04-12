@@ -4,7 +4,7 @@ ad({
     data: {
         value: 'https://github.com/wux-weapp/wux-weapp',
         fgColor: 'black',
-        whiteSpace: [20],
+        whiteSpace: [10],
     },
     onChange(e) {
         const value = e.detail.value
