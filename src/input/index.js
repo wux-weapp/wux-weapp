@@ -126,6 +126,10 @@ baseComponent({
             type: Boolean,
             value: false,
         },
+        requiredMark: {
+            type: Boolean,
+            value: false,
+        },
     },
     data: {
         inputValue: '',
@@ -133,7 +137,7 @@ baseComponent({
         extStyle: '',
     },
     computed: {
-        classes: ['prefixCls, disabled, inputFocus, error, labelWrap', function(prefixCls, disabled, inputFocus, hasError, labelWrap) {
+        classes: ['prefixCls, disabled, inputFocus, error, labelWrap, requiredMark', function(prefixCls, disabled, inputFocus, hasError, labelWrap, requiredMark) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--focus`]: inputFocus,
                 [`${prefixCls}--disabled`]: disabled,
@@ -141,6 +145,7 @@ baseComponent({
             })
             const label = classNames(`${prefixCls}__label`, {
                 [`${prefixCls}__label--wrap`]: labelWrap,
+                [`${prefixCls}__label--required`]: requiredMark,
             })
             const control = `${prefixCls}__control`
             const item = `${prefixCls}__item`

@@ -12,10 +12,10 @@
                 <wux-input label="WeChat" />
             </wux-cell>
             <wux-cell hover-class="none">
-                <wux-input label="QQ" placeholder="Input your QQ" />
+                <wux-input label="QQ" placeholder="Input your QQ" requiredMark />
             </wux-cell>
             <wux-cell hover-class="none">
-                <wux-input label="Password" placeholder="Input your password" password type="number" />
+                <wux-input label="Password" placeholder="Input your password" password type="number" requiredMark />
             </wux-cell>
             <wux-cell hover-class="none">
                 <wux-input label="Super long label text" labelWrap />
