@@ -71,6 +71,14 @@ const baseComponent = (options = {}) => {
         ...options.options,
     }
 
+    // 属性的类型（可以指定多个）
+    options.properties && Object.keys(options.properties).forEach((propKey) => {
+        const prop = options.properties[propKey]
+        if (Array.isArray(prop.type)) {
+            prop.optionalTypes = prop.type
+        }
+    })
+
     return Component(options)
 }
 

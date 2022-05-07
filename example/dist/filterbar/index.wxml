@@ -53,8 +53,8 @@
                 </block>
             </scroll-view>
             <view class="{{ classes.btns }}">
-                <view class="{{ classes.btn }}" data-index="{{ index }}" bindtap="onSelectReset">{{ cancelText }}</view>
-                <view class="{{ classes.btn }} {{ prefixCls + '__btn--danger' }}" data-index="{{ index }}" bindtap="onSelectConfirm">{{ confirmText }}</view>
+                <view class="{{ classes.btn }}" data-index="{{ index }}" bindtap="onSelectReset" catchtouchmove="noop">{{ cancelText }}</view>
+                <view class="{{ classes.btn }} {{ prefixCls + '__btn--danger' }}" data-index="{{ index }}" bindtap="onSelectConfirm" catchtouchmove="noop">{{ confirmText }}</view>
             </view>
         </wux-animation-group>
         <wux-animation-group wux-class="{{ classes.select }}" in="{{ item.visible }}" class-names="wux-animate--fadeIn" bind:enter="onEnter" bind:exit="onExit" wx:if="{{ item.type === 'radio' }}">
@@ -78,8 +78,8 @@
                     data-type="{{ item.type }}"
                 />
                 <view class="{{ classes.btns }}">
-                    <view class="{{ classes.btn }}" data-index="{{ index }}" bindtap="onSelectReset">{{ cancelText }}</view>
-                    <view class="{{ classes.btn }} {{ prefixCls + '__btn--danger' }}" data-index="{{ index }}" data-type="{{ item.type }}" bindtap="onSelectConfirm">{{ confirmText }}</view>
+                    <view class="{{ classes.btn }}" data-index="{{ index }}" bindtap="onSelectReset" catchtouchmove="noop">{{ cancelText }}</view>
+                    <view class="{{ classes.btn }} {{ prefixCls + '__btn--danger' }}" data-index="{{ index }}" data-type="{{ item.type }}" bindtap="onSelectConfirm" catchtouchmove="noop">{{ confirmText }}</view>
                 </view>
             </scroll-view>
         </wux-animation-group>

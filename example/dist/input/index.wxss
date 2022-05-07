@@ -6,12 +6,25 @@
   align-items: center
 }
 .wux-input__label {
+  position: relative;
   margin-left: 0;
   margin-right: 10rpx;
   text-align: left;
   white-space: nowrap;
   overflow: hidden;
   width: 210rpx
+}
+.wux-input__label--wrap {
+  white-space: normal
+}
+.wux-input__label--required::before {
+  display: inline-block;
+  margin-right: 6rpx;
+  color: #ef473a;
+  font-size: 28rpx;
+  font-family: SimSun,sans-serif;
+  line-height: 1;
+  content: "*"
 }
 .wux-input__control {
   -ms-flex: 1;

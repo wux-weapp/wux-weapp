@@ -157,6 +157,7 @@ baseComponent({
                 [`${prefixCls}--has-tip`]: !!tipFormatter,
             })
             const min = `${prefixCls}__min`
+            const railWrap = `${prefixCls}__rail-wrap`
             const rail = `${prefixCls}__rail`
             const mark = `${prefixCls}__mark`
             const track = `${prefixCls}__track`
@@ -166,6 +167,7 @@ baseComponent({
             return {
                 wrap,
                 min,
+                railWrap,
                 rail,
                 mark,
                 track,
@@ -342,6 +344,68 @@ baseComponent({
             this.setData({ marks })
         },
         noop() {},
+        getValueByPosition(position) {
+            const { min, max, step } = this.data
+            const newPosition = position < min ? min : position > max ? max : position
+            let value = min
+            const lengthPerStep = 100 / ((max - min) / step)
+            const steps = Math.round(newPosition / lengthPerStep)
+            value = steps * lengthPerStep * (max - min) * 0.01 + min
+            return value
+        },
+        onRailClick(e) {
+            if (this.data.disabled || getPointsNumber(e) > 1) return
+            const { prefixCls, min, max, inputValue: sliderValue } = this.data
+            this.getRect(`.${prefixCls}__rail-wrap`).then((rect) => {
+                const position = ((getTouchPoints(e).x - rect.left) / Math.ceil(rect.width)) * (max - min) + min
+                const targetValue = this.getValueByPosition(position)
+                const indexLength = sliderValue.length - 1
+                const range = indexLength > 0
+                const nextOffsets = [...this.data.offsets]
+                let nextSliderValue = [...sliderValue]
+                let currentIndex = 0
+                if (range) {
+                    let prevIndex = 0
+                    let nextIndex = null
+                    for (let i = indexLength; i >= 0; i--) {
+                        if (sliderValue[i] <= targetValue) {
+                            prevIndex = i
+                            break
+                        }
+                    }
+                    if (prevIndex === indexLength) {
+                        nextIndex = prevIndex
+                        prevIndex = nextIndex - 1
+                    } else {
+                        nextIndex = prevIndex + 1
+                    }
+                    // 移动的滑块采用就近原则
+                    if (
+                        Math.abs(targetValue - sliderValue[prevIndex]) >
+                        Math.abs(targetValue - sliderValue[nextIndex])
+                    ) {
+                        currentIndex = nextIndex
+                        nextSliderValue[nextIndex] = targetValue
+                    } else {
+                        currentIndex = prevIndex
+                        nextSliderValue[prevIndex] = targetValue
+                    }
+                } else {
+                    nextSliderValue = [targetValue]
+                }
+
+                nextOffsets[currentIndex] = this.calcOffset(targetValue)
+
+                if (sliderValue[currentIndex] !== targetValue) {
+                    if (!this.data.controlled) {
+                        this.updated(nextSliderValue)
+                    }
+
+                    this.triggerEvent('change', { offsets: nextOffsets, value: nextSliderValue })
+                    this.triggerEvent('afterChange', { offsets: nextOffsets, value: nextSliderValue })
+                }
+            })
+        },
     },
     attached() {
         const { defaultValue, value, controlled } = this.data

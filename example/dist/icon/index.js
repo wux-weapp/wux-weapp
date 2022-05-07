@@ -1,4 +1,6 @@
-Component({
+import baseComponent from '../helpers/baseComponent'
+
+baseComponent({
     externalClasses: ['wux-class'],
     properties: {
         type: {

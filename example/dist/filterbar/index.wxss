@@ -148,10 +148,30 @@
 .wux-filterbar__scroll-view {
   max-height: 540rpx
 }
+@supports (padding-bottom:constant(safe-area-inset-bottom)) {
+  .wux-filterbar__pop .wux-filterbar__btn {
+    padding-bottom: constant(safe-area-inset-bottom)
+  }
+}
+@supports (padding-bottom:env(safe-area-inset-bottom)) {
+  .wux-filterbar__pop .wux-filterbar__btn {
+    padding-bottom: env(safe-area-inset-bottom)
+  }
+}
 .wux-filterbar__pop .wux-filterbar__scroll-view {
   max-height: none;
   height: 85%;
   height: calc(100% - 88rpx)
+}
+@supports (padding-bottom:constant(safe-area-inset-bottom)) {
+  .wux-filterbar__pop .wux-filterbar__scroll-view {
+    height: calc(100% - 88rpx - constant(safe-area-inset-bottom))
+  }
+}
+@supports (padding-bottom:env(safe-area-inset-bottom)) {
+  .wux-filterbar__pop .wux-filterbar__scroll-view {
+    height: calc(100% - 88rpx - env(safe-area-inset-bottom))
+  }
 }
 .wux-filterbar__panel {
   padding: 0 30rpx
@@ -248,7 +268,8 @@
   z-index: 1
 }
 .wux-filterbar__btns {
-  height: 44px;
+  height: auto;
+  min-height: 44px;
   display: -webkit-box;
   overflow: hidden
 }
@@ -263,7 +284,8 @@
   -webkit-box-pack: center;
   border: none;
   border-radius: 0;
-  height: 44px;
+  min-height: 44px;
+  height: auto;
   line-height: 44px
 }
 .wux-filterbar__btns .wux-filterbar__btn::before {

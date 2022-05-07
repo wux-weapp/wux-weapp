@@ -1,28 +1,30 @@
 <view class="wux-class {{ classes.wrap }}" style="{{ extWrapStyle }}">
 	<view class="{{ classes.min }}" wx:if="{{ common.getValue(showValue, 'min') }}">{{ min }}</view>
     <slot name="min" wx:else></slot>
-    <view class="{{ classes.rail }}" style="{{ extRailStyle }}">
-    	<block wx:for="{{ marks }}" wx:key="index" wx:if="{{ showMark && marks.length > 0 }}">
-    		<view class="{{ classes.mark }}" style="left: {{ item + '%' }}; {{ common.getStyle(extMarkStyle, index) }}" />
-    	</block>
-	    <block wx:for="{{ inputValue }}" wx:key="index">
-	    	<view
-	    		class="{{ classes.track }}"
-	    		style="{{ common.getTrackStyle(offsets, index, inputValue.length > 1) }}; {{ common.getStyle(extTrackStyle, index) }}"
-	    		wx:if="{{ inputValue.length === 1 || index !== inputValue.length - 1 }}"
-	    	/>
-	    	<view
-	    		class="{{ classes.handle }} {{ last === index ? prefixCls + '__handle--last' : '' }} {{ last === index && isTouched ? prefixCls + '__handle--is-touched' : '' }}"
-	    		data-index="{{ index }}"
-                data-meta="{{ common.format(tipFormatter, item) }}"
-	    		bindtouchstart="onTouchStart"
-	    		catchtouchmove="{{ isMoved ? 'noop' : '' }}"
-                capture-bind:touchmove="onTouchMove"
-	    		bindtouchend="onTouchEnd"
-	    		style="left: {{ offsets[index] + '%' }}; {{ common.getStyle(extHandleStyle, index) }}"
-	    	/>
-	    </block>
-    </view>
+		<view class="{{ classes.railWrap }}" bindtap="onRailClick">
+			<view class="{{ classes.rail }}" style="{{ extRailStyle }}">
+				<block wx:for="{{ marks }}" wx:key="index" wx:if="{{ showMark && marks.length > 0 }}">
+					<view class="{{ classes.mark }}" style="left: {{ item + '%' }}; {{ common.getStyle(extMarkStyle, index) }}" />
+				</block>
+				<block wx:for="{{ inputValue }}" wx:key="index">
+					<view
+						class="{{ classes.track }}"
+						style="{{ common.getTrackStyle(offsets, index, inputValue.length > 1) }}; {{ common.getStyle(extTrackStyle, index) }}"
+						wx:if="{{ inputValue.length === 1 || index !== inputValue.length - 1 }}"
+					/>
+					<view
+						class="{{ classes.handle }} {{ last === index ? prefixCls + '__handle--last' : '' }} {{ last === index && isTouched ? prefixCls + '__handle--is-touched' : '' }}"
+						data-index="{{ index }}"
+						data-meta="{{ common.format(tipFormatter, item) }}"
+						bindtouchstart="onTouchStart"
+						catchtouchmove="{{ isMoved ? 'noop' : '' }}"
+						capture-bind:touchmove="onTouchMove"
+						bindtouchend="onTouchEnd"
+						style="left: {{ offsets[index] + '%' }}; {{ common.getStyle(extHandleStyle, index) }}"
+					/>
+				</block>
+			</view>
+		</view>
     <view class="{{ classes.max }}" wx:if="{{ common.getValue(showValue, 'max') }}">{{ max }}</view>
     <slot name="max" wx:else></slot>
 </view>

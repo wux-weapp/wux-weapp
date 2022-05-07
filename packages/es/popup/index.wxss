@@ -65,6 +65,16 @@
 .wux-popup-position.wux-popup-position--is-iphonex .wux-popup__content {
   padding-bottom: 68rpx
 }
+@supports (padding-bottom:constant(safe-area-inset-bottom)) {
+  .wux-popup-position.wux-popup-position--is-iphonex .wux-popup__content {
+    padding-bottom: constant(safe-area-inset-bottom)
+  }
+}
+@supports (padding-bottom:env(safe-area-inset-bottom)) {
+  .wux-popup-position.wux-popup-position--is-iphonex .wux-popup__content {
+    padding-bottom: env(safe-area-inset-bottom)
+  }
+}
 .wux-popup__content {
   position: relative;
   background-color: #fff;

@@ -7,12 +7,29 @@
     align-items: center;
 
     &__label {
+        position: relative;
         margin-left: 0;
         margin-right: @margin-component-base;
         text-align: left;
         white-space: nowrap;
         overflow: hidden;
         width: 105px;
+
+        &--wrap {
+            white-space: normal;
+        }
+
+        &--required {
+            &::before {
+                display: inline-block;
+                margin-right: 3px;
+                color: @assertive;
+                font-size: 14px;
+                font-family: SimSun, sans-serif;
+                line-height: 1;
+                content: "*";
+            }
+        }
     }
 
     &__control {

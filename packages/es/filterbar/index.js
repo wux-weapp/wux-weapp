@@ -224,7 +224,7 @@ baseComponent({
                 this.updatedDisplayValues(options)
                 this.showOptions = options
             }
-            
+
             this.updatedValues(values)
         },
         /**
@@ -302,7 +302,7 @@ baseComponent({
             if (!options[index].visible) {
                 this.setData({ values })
             }
-            
+
             // open
             this.onOpenSelect(options, index)
         },
@@ -323,6 +323,10 @@ baseComponent({
                     const has = this.getDifference(n.groups, current.groups)
 
                     params.checked = !!has.length
+
+                    if (n.type === 'text' && index === i) {
+                        params.checked = false
+                    }
 
                     // 判断非同组的元素清空选择内容
                     if (index !== i && !has.length) {
@@ -433,6 +437,7 @@ baseComponent({
         onExit(e) {
             this.triggerEvent('close', e)
         },
+        noop() {},
     },
     created() {
         this.$wuxBackdrop = $wuxBackdrop('#wux-backdrop', this)
