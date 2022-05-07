@@ -31,6 +31,10 @@ baseComponent({
             type: Boolean,
             value: true,
         },
+        shape: {
+            type: String,
+            value: 'default',
+        },
         size: {
             type: String,
             value: 'default',
@@ -97,10 +101,13 @@ baseComponent({
         },
     },
     computed: {
-        classes: ['prefixCls, hoverClass, type, size, block, full, clear, outline, bordered, disabled', function(prefixCls, hoverClass, type, size, block, full, clear, outline, bordered, disabled) {
+        classes: ['prefixCls, hoverClass, type, shape, size, block, full, clear, outline, bordered, disabled', function(prefixCls, hoverClass, type, shape, size, block, full, clear, outline, bordered, disabled) {
+            const finalShape = ['rounded', 'rectangular'].includes(shape) ? shape : ''
+            const finalSize = ['small', 'large'].includes(size) ? size : ''
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${type}`]: type,
-                [`${prefixCls}--${size}`]: size,
+                [`${prefixCls}--${shape}`]: finalShape,
+                [`${prefixCls}--${size}`]: finalSize,
                 [`${prefixCls}--block`]: block,
                 [`${prefixCls}--full`]: full,
                 [`${prefixCls}--clear`]: clear,

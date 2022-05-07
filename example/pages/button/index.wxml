@@ -24,6 +24,16 @@
         <wux-button block outline type="energized">energized</wux-button>
         <wux-button block outline type="royal">royal</wux-button>
         <wux-button block outline type="dark">dark</wux-button>
+        <view class="sub-title">Shapes</view>
+        <wux-button block type="light">light</wux-button>
+        <wux-button block type="stable">stable</wux-button>
+        <wux-button block type="positive">positive</wux-button>
+        <wux-button block shape="rounded" type="calm">calm</wux-button>
+        <wux-button block shape="rounded" type="assertive">assertive</wux-button>
+        <wux-button block shape="rounded" type="balanced">balanced</wux-button>
+        <wux-button block shape="rectangular" type="energized">energized</wux-button>
+        <wux-button block shape="rectangular" type="royal">royal</wux-button>
+        <wux-button block shape="rectangular" type="dark">dark</wux-button>
         <view class="sub-title">Size</view>
         <wux-button block size="small" type="light">light</wux-button>
         <wux-button block size="small" type="stable">stable</wux-button>

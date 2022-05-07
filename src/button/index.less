@@ -123,8 +123,19 @@
         display: block;
         margin-right: 0 !important;
         margin-left: 0 !important;
+    }
+
+    &--full:not(&--rounded) {
         border-right-width: 0;
         border-left-width: 0;
+        border-radius: 0;
+    }
+
+    &--rounded {
+        border-radius: @button-height-lg;
+    }
+
+    &--rectangular {
         border-radius: 0;
     }
 

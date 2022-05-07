@@ -188,6 +188,12 @@
           "pathName": "pages/rater/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "button",
+          "pathName": "pages/button/index",
+          "query": "",
+          "scene": null
         }
       ]
     }
