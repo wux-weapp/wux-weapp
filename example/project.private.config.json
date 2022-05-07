@@ -170,6 +170,18 @@
           "pathName": "pages/input/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "tabbar",
+          "pathName": "pages/tabbar/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "actionsheet",
+          "pathName": "pages/actionsheet/index",
+          "query": "",
+          "scene": null
         }
       ]
     }
