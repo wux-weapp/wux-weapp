@@ -164,6 +164,12 @@
           "pathName": "pages/result/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "input",
+          "pathName": "pages/input/index",
+          "query": "",
+          "scene": null
         }
       ]
     }
