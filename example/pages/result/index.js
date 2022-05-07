@@ -11,4 +11,9 @@ ad({
             url: '../../pages/result/error',
         })
     },
+    onInfo() {
+        wx.navigateTo({
+            url: '../../pages/result/info',
+        })
+    },
 })

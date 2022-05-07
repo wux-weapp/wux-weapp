@@ -14,6 +14,8 @@ const getIcon = (icon) => {
         return Object.assign({}, defaultIcon, {
             type: icon,
         })
+    } else if (icon === '' || icon === false) {
+        return null
     }
     return defaultIcon
 }

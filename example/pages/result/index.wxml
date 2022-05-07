@@ -6,5 +6,6 @@
     <view class="page__bd page__bd_spacing">
         <wux-button block type="light" bind:click="onSuccess">Success</wux-button>
         <wux-button block type="light" bind:click="onError">Error</wux-button>
+        <wux-button block type="light" bind:click="onInfo">Custom Icon</wux-button>
     </view>
 </view>
