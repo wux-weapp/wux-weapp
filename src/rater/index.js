@@ -76,7 +76,7 @@ baseComponent({
         },
     },
     data: {
-        inputValue: 0,
+        inputValue: -1,
     },
     computed: {
         classes: ['prefixCls, disabled', function(prefixCls, disabled) {

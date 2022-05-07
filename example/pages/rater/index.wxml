@@ -5,6 +5,9 @@
     </view>
     <view class="page__bd">
         <wux-cell-group title="Normal Usage">
+            <wux-cell title="Default" hover-class="none">
+                <wux-rater slot="footer" />
+            </wux-cell>
             <wux-cell title="Set default score = 5" hover-class="none">
                 <wux-rater slot="footer" default-value="{{ 5 }}" />
             </wux-cell>

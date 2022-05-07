@@ -182,6 +182,12 @@
           "pathName": "pages/actionsheet/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "rater",
+          "pathName": "pages/rater/index",
+          "query": "",
+          "scene": null
         }
       ]
     }
