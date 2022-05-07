@@ -7,10 +7,16 @@
     display: flex;
     align-items: center;
 
+    &__rail-wrap {
+        position: relative;
+        flex: 1;
+        width: 100%;
+        padding: @slider-rail-margin;
+    }
+
     &__rail {
         width: 100%;
         height: @slider-rail-size;
-        margin: @slider-rail-margin;
         background-color: @slider-rail-bg;
         border-radius: @slider-radius;
         vertical-align: middle;

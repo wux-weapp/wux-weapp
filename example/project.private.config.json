@@ -194,6 +194,12 @@
           "pathName": "pages/button/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "slider",
+          "pathName": "pages/slider/index",
+          "query": "",
+          "scene": null
         }
       ]
     }
