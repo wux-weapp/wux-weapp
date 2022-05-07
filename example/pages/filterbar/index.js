@@ -268,7 +268,7 @@ ad({
             let repos = []
             for (let i = 0; i < 20; i++) {
                 repos.push({
-                    owner: { avatar_url: 'https://cdn.skyvow.cn/logo.png' },
+                    owner: { avatar_url: 'http://cdn.skyvow.cn/logo.png' },
                     name: 'wux-weapp',
                     description: '一套组件化、可复用、易扩展的微信小程序 UI 组件库',
                     forks_count: 4400,

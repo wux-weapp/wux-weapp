@@ -433,6 +433,7 @@ baseComponent({
         onExit(e) {
             this.triggerEvent('close', e)
         },
+        noop() {},
     },
     created() {
         this.$wuxBackdrop = $wuxBackdrop('#wux-backdrop', this)
