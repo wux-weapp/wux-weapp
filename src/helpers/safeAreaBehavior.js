@@ -25,6 +25,7 @@ export default Behavior({
     properties: {
         safeArea: {
             type: [Boolean, String, Object],
+            optionalTypes: [Boolean, String, Object],
             value: false,
         },
     },
