@@ -3,6 +3,9 @@ const isTel = (value) => !/^1[34578]\d{9}$/.test(value)
 import ad from '../index/ad'
 
 ad({
+    data: {
+        value: '',
+    },
     onChange(e) {
         console.log('onChange', e)
         this.setData({

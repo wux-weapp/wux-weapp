@@ -6,7 +6,7 @@ baseComponent({
         '../grid/index': {
             type: 'child',
             observer() {
-                this.debounce(this.changeCurrent)
+                this.callDebounceFn(this.changeCurrent)
             },
         },
     },

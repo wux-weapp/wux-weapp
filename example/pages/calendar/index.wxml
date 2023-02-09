@@ -7,10 +7,10 @@
     </view>
     <view class="page__bd">
         <wux-cell-group title="Calendar">
-            <wux-cell title="单选" extra="{{ value1 }}" bind:click="openCalendar1"></wux-cell>
-            <wux-cell title="多选" extra="{{ value2 }}" bind:click="openCalendar2"></wux-cell>
-            <wux-cell title="Direction = Vertical" extra="{{ value3 }}" bind:click="openCalendar3"></wux-cell>
-            <wux-cell title="MinDate & MaxDate" extra="{{ value4 }}" bind:click="openCalendar4"></wux-cell>
+            <wux-cell title="单选" extra="{{ displayValue1 }}" bind:click="openCalendar1"></wux-cell>
+            <wux-cell title="多选" extra="{{ displayValue2 }}" bind:click="openCalendar2"></wux-cell>
+            <wux-cell title="Direction = Vertical" extra="{{ displayValue3 }}" bind:click="openCalendar3"></wux-cell>
+            <wux-cell title="MinDate & MaxDate" extra="{{ displayValue4 }}" bind:click="openCalendar4"></wux-cell>
         </wux-cell-group>
     </view>
 </view>

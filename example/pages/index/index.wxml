@@ -8,7 +8,7 @@
     </view>
     <view class="page-body">
         <block wx:for="{{ components }}" wx:key="index">
-            <wux-accordion-group cellGroupPrefixCls="demo-category" defaultCurrent="0">
+            <wux-accordion-group cellGroupPrefixCls="demo-category">
                 <wux-accordion prefixCls="demo-category-item" key="{{ index }}" title="{{ item.title }}">
                     <block wx:for="{{ item.children }}" wx:key="index" wx:for-item="child">
                         <wux-cell prefixCls="demo-category-cell" title="{{ child.title + ' ' + child.remark }}" is-link url="{{ child.url }}"></wux-cell>

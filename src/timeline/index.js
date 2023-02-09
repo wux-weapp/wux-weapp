@@ -6,7 +6,7 @@ baseComponent({
         '../timeline-item/index': {
             type: 'child',
             observer() {
-                this.debounce(this.updateIsLastElement)
+                this.callDebounceFn(this.updateIsLastElement)
             },
         },
     },

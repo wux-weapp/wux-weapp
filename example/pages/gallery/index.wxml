@@ -16,7 +16,7 @@
         </view>
         <view class="sub-title">自定义gallery</view>
         <view class="uploader__files">
-            <block wx:for-items="{{ urls }}" wx:key="{{ index }}">
+            <block wx:for-items="{{ urls }}" wx:key="index">
                 <view class="uploader__file" bindtap="showGallery" data-current="{{ index }}">
                     <image class="uploader__img" src="{{ item }}" />
                 </view>
@@ -24,7 +24,7 @@
         </view>
         <view class="sub-title">带说明文案 & 自定义图标</view>
         <view class="uploader__files">
-            <block wx:for-items="{{ urls }}" wx:key="{{ index }}">
+            <block wx:for-items="{{ urls }}" wx:key="index">
                 <view class="uploader__file" bindtap="showGallery2" data-current="{{ index }}">
                     <image class="uploader__img" src="{{ item }}" />
                 </view>

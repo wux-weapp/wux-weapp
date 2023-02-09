@@ -13,6 +13,10 @@ const adUnitIds = [
 ]
 
 export default function ad(config) {
+    if (wx.getSystemInfoSync().platform === 'devtools') {
+        return Page(config)
+    }
+
     const { onLoad, onUnload } = config
     let timeout = null
 

@@ -33,7 +33,7 @@ baseComponent({
         '../checkbox/index': {
             type: 'descendant',
             observer() {
-                this.debounce(this.changeValue)
+                this.callDebounceFn(this.changeValue)
             },
         },
     },

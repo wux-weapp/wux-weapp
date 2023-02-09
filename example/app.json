@@ -58,6 +58,7 @@
     "pages/result/index",
     "pages/result/success",
     "pages/result/error",
+    "pages/result/info",
     "pages/search-bar/index",
     "pages/segmented-control/index",
     "pages/select/index",
@@ -117,5 +118,6 @@
     "audio"
   ],
   "debug": true,
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
 }

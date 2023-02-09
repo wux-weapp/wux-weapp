@@ -36,7 +36,7 @@ baseComponent({
          */
         open(opts = {}) {
             const options = this.$$mergeOptionsAndBindMethods(Object.assign({}, defaults, opts, {
-                max: parseInt(opts.max),
+                max: opts.max ? parseInt(opts.max) : -1,
             }))
             this.$$setData({ visible: true, ...options })
         },

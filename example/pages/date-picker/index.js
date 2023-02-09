@@ -1,14 +1,26 @@
+function getDateString(date = new Date) {
+    return {
+        year: date.getFullYear() + '',
+        month: date.getMonth() + '',
+        day: date.getDate() + '',
+        hour: date.getHours() + '',
+        minute: date.getMinutes() + '',
+    }
+}
+
+const { year, month, day, hour, minute } = getDateString()
+
 import ad from '../index/ad'
 
 ad({
     data: {
-        value1: [],
-        value2: [],
-        value3: [],
-        value4: [],
-        value5: [],
-        value6: [],
-        value7: [],
+        value1: [year, month, day, hour, minute],
+        value2: [year, month, day],
+        value3: [year],
+        value4: [year, month],
+        value5: [hour, minute],
+        value6: [year, month, day, hour, minute, '1'],
+        value7: [hour, minute, '1'],
         value8: [],
         value9: [],
         displayValue1: '请选择',

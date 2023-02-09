@@ -84,7 +84,7 @@ ad({
                 if (index !== -1) {
                     this.setData({
                         value2: value,
-                        displayValue2: index.map((n) => options[n].title),
+                        displayValue2: index.map((n) => options[n].title).join(','),
                     })
                 }
             },
@@ -104,14 +104,14 @@ ad({
                 console.log('onChange', value, index, options)
                 this.setData({
                     value3: value,
-                    displayValue3: index.map((n) => options[n].title),
+                    displayValue3: index.map((n) => options[n].title).join(','),
                 })
             },
             onConfirm: (value, index, options) => {
                 console.log('onConfirm', value, index, options)
                 this.setData({
                     value3: value,
-                    displayValue3: index.map((n) => options[n].title),
+                    displayValue3: index.map((n) => options[n].title).join(','),
                 })
             },
         })

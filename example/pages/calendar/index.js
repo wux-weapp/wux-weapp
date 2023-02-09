@@ -5,9 +5,13 @@ import ad from '../index/ad'
 ad({
     data: {
         value1: [],
+        displayValue1: '请选择',
         value2: [],
+        displayValue2: '请选择',
         value3: [],
+        displayValue3: '请选择',
         value4: [],
+        displayValue4: '请选择',
     },
     openCalendar1() {
         $wuxCalendar().open({
@@ -16,6 +20,7 @@ ad({
                 console.log('onChange', values, displayValues)
                 this.setData({
                     value1: displayValues,
+                    displayValue1: displayValues.join(','),
                 })
             },
         })
@@ -28,6 +33,7 @@ ad({
                 console.log('onChange', values, displayValues)
                 this.setData({
                     value2: displayValues,
+                    displayValue2: displayValues.join(','),
                 })
             },
         })
@@ -40,6 +46,7 @@ ad({
                 console.log('onChange', values, displayValues)
                 this.setData({
                     value3: displayValues,
+                    displayValue3: displayValues.join(','),
                 })
             },
         })
@@ -57,6 +64,7 @@ ad({
                 console.log('onChange', values, displayValues)
                 this.setData({
                     value4: displayValues,
+                    displayValue4: displayValues.join(','),
                 })
             },
         })

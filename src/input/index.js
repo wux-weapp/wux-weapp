@@ -94,6 +94,10 @@ baseComponent({
             type: String,
             value: 'done',
         },
+        alwaysEmbed: {
+            type: Boolean,
+            value: false,
+        },
         confirmHold: {
             type: Boolean,
             value: false,
@@ -113,6 +117,34 @@ baseComponent({
         adjustPosition: {
             type: Boolean,
             value: true,
+        },
+        holdKeyboard: {
+            type: Boolean,
+            value: false,
+        },
+        safePasswordCertPath: {
+            type: String,
+            value: null,
+        },
+        safePasswordLength: {
+            type: Number,
+            value: null,
+        },
+        safePasswordTimeStamp: {
+            type: Number,
+            value: null,
+        },
+        safePasswordNonce: {
+            type: String,
+            value: null,
+        },
+        safePasswordSalt: {
+            type: String,
+            value: null,
+        },
+        safePasswordCustomHash: {
+            type: String,
+            value: null,
         },
         clear: {
             type: Boolean,
@@ -195,6 +227,12 @@ baseComponent({
         },
         onConfirm(e) {
             this.triggerEvent('confirm', e.detail)
+        },
+        onKeyboardHeightChange(e) {
+            this.triggerEvent('keyboardheightchange', e.detail)
+        },
+        onNicknameReview(e) {
+            this.triggerEvent('nicknamereview', e.detail)
         },
         onClear(e) {
             const params = { value: '' }

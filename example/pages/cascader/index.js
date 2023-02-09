@@ -6,6 +6,7 @@ ad({
     data: {
         options1: data,
         value1: [],
+        title1: '请选择',
         options2: [
             {
                 value: 'beijing',
@@ -19,6 +20,7 @@ ad({
             },
         ],
         value2: [],
+        title2: '请选择',
     },
     onOpen1() {
         this.setData({ visible1: true })

@@ -1,5 +1,6 @@
 <wux-multi-picker-view
     id="wux-picker"
+    wx:if="{{ cols.length > 0 }}"
     prefixCls="{{ multiPickerPrefixCls }}"
     pickerPrefixCls="{{ pickerPrefixCls }}"
     value="{{ inputValue }}"

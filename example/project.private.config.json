@@ -1,159 +1,117 @@
 {
   "setting": {},
   "condition": {
-    "plugin": {
-      "list": []
-    },
-    "game": {
-      "list": []
-    },
-    "gamePlugin": {
-      "list": []
-    },
     "miniprogram": {
       "list": [
         {
-          "id": 0,
           "name": "picker",
           "pathName": "pages/picker/index",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "popup-select",
           "pathName": "pages/popup-select/index",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "form",
           "pathName": "pages/form/index",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "date-picker",
           "pathName": "pages/date-picker/index",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "select",
           "pathName": "pages/select/index",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "picker-view",
           "pathName": "pages/picker-view/index",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "calendar",
           "pathName": "pages/calendar/index",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "date-picker-view",
           "pathName": "pages/date-picker-view/index",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "cascader-picker-view",
           "pathName": "pages/cascader-picker-view/index",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "cascader",
           "pathName": "pages/cascader/index",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "multi-picker-view",
           "pathName": "pages/multi-picker-view/index",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
-          "name": "date-picker-view",
-          "pathName": "pages/date-picker-view/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "id": -1,
           "name": "input-number",
           "pathName": "pages/input-number/index",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
-          "name": "select",
-          "pathName": "pages/select/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "id": -1,
           "name": "dialog",
           "pathName": "pages/dialog/index",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "filterbar",
           "pathName": "pages/filterbar/index",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "gallery",
           "pathName": "pages/gallery/index",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "card",
           "pathName": "pages/card/index",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "upload",
           "pathName": "pages/upload/index",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "notice-bar",
           "pathName": "pages/notice-bar/index",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
           "name": "virtual-list",
           "pathName": "pages/virtual-list/index",
           "query": "",
@@ -200,8 +158,66 @@
           "pathName": "pages/slider/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "fab-button",
+          "pathName": "pages/fab-button/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "list",
+          "pathName": "pages/list/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "textarea",
+          "pathName": "pages/textarea/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "image",
+          "pathName": "pages/image/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "tabs",
+          "pathName": "pages/tabs/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "index-list",
+          "pathName": "pages/index-list/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "sticky",
+          "pathName": "pages/sticky/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "toptips",
+          "pathName": "pages/toptips/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
-  }
+  },
+  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "libVersion": "2.30.0"
 }

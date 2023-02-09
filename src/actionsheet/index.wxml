@@ -25,6 +25,8 @@
                         app-parameter="{{ button.appParameter }}"
                         binderror="onError"
                         bindopensetting="bindopensetting"
+                        bindlaunchapp="bindlaunchapp"
+                        bindchooseavatar="bindchooseavatar"
                         catchtap="buttonClicked"
                     >
                         <image class="{{ classes.icon }}" src="{{ button.icon }}" wx:if="{{ button.icon }}" />

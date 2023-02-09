@@ -16,8 +16,8 @@ ad({
     data: {
         value1: [year, month, day, hour, minute],
         value2: [year, month, day],
-        value3: [year, month],
-        value4: [year],
+        value3: [year],
+        value4: [year, month],
         value5: [hour, minute],
         value6: [year, month, day, hour, minute, '1'],
         value7: [hour, minute, '1'],

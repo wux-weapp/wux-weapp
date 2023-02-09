@@ -7,7 +7,7 @@ import ad from '../index/ad'
 
 ad({
     data: {
-        value: ['蔡', '🏀'],
+        value: '🏀',
         options: seasons,
     },
     onValueChange(e) {

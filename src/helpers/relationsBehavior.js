@@ -1,5 +1,6 @@
 import isEmpty from './isEmpty'
 import debounce from './debounce'
+import throttle from './throttle'
 
 /**
  * bind func to obj
@@ -27,11 +28,30 @@ const extProps = ['observer']
 export default Behavior({
     lifetimes: {
         created() {
-            this._debounce = null
+            this.useThrottleFn = function (fn, wait = 0, options) {
+                const throttled = throttle(fn.bind(this), wait, options)
+                this._throttledFns.push(throttled)
+                return {
+                    run: throttled,
+                    cancel: throttled.cancel,
+                    flush: throttled.flush,
+                }
+            }
+            this._throttledFns = []
+            this.callDebounceFn = function(fn, wait = 0, options) {
+                return (this._debounced = this._debounced || debounce(fn.bind(this), wait, options)).call(this)
+            }
+            this._debounced = null
         },
         detached() {
-            if (this._debounce && this._debounce.cancel) {
-                this._debounce.cancel()
+            if (this._debounced && this._debounced.cancel) {
+                this._debounced.cancel()
+            }
+            if (this._throttledFns.length > 0) {
+                this._throttledFns.forEach((throttled) => {
+                    throttled.cancel()
+                })
+                this._throttledFns = []
             }
         },
     },
@@ -58,9 +78,6 @@ export default Behavior({
                     }
                     return null
                 }).filter((v) => !!v)
-            },
-            debounce: function(func, wait = 0, immediate = false) {
-                return (this._debounce = this._debounce || debounce(func.bind(this), wait, immediate)).call(this)
             },
         })
     },
