@@ -84,6 +84,9 @@
     "pages/virtual-list/index",
     "pages/virtual-list/page-scroll",
     "pages/virtual-list/scroll-view",
+    "pages/water-mark/index",
+    "pages/water-mark/fullscreen",
+    "pages/water-mark/halfscreen",
     "pages/white-space/index",
     "pages/wing-blank/index"
   ],

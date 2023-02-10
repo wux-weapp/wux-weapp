@@ -1,0 +1,17 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">WaterMark</view>
+        <view class="page__desc">水印</view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+        <wux-button block type="light" bind:click="setProps1">普通水印</wux-button>
+        <wux-button block type="light" bind:click="setProps2">多行文字水印</wux-button>
+        <wux-button block type="light" bind:click="setProps3">图片水印</wux-button>
+    </view>
+    <wux-water-mark
+      content="{{ content }}"
+      image="{{ image }}"
+      width="{{ width }}"
+      height="{{ height }}"
+    />
+</view>

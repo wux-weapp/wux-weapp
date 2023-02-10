@@ -306,6 +306,11 @@ export default [{
         title: 'Vcode',
         remark: '验证码',
         url: '/pages/vcode/index',
+    },
+    {
+        title: 'WaterMark',
+        remark: '水印',
+        url: '/pages/water-mark/index',
     }],
 },
 {

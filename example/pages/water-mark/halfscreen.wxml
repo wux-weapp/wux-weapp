@@ -1,0 +1,24 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">WaterMark</view>
+        <view class="page__desc">水印</view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+        <wux-button block type="light" bind:click="setProps1">普通水印</wux-button>
+        <wux-button block type="light" bind:click="setProps2">多行文字水印</wux-button>
+        <wux-button block type="light" bind:click="setProps3">图片水印</wux-button>
+        <view class="page__image">
+            <image class="page__image-img" mode="widthFix" src="http://cdn.skyvow.cn/public/bluesky.jpg" />
+            <wux-water-mark
+                content="{{ content }}"
+                image="{{ image }}"
+                width="{{ width }}"
+                height="{{ height }}"
+                gapX="{{ 12 }}"
+                gapY="{{ 36 }}"
+                fullPage="{{ false }}"
+            />
+        </view>
+        <text class="page__desc">把 WaterMark 放到一个 relative 定位的父元素，它会自动撑满这个父元素的范围。</text>
+    </view>
+</view>

@@ -1,0 +1,10 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">WaterMark</view>
+        <view class="page__desc">水印</view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+        <wux-button block type="light" bind:click="onFullscreen">全局水印</wux-button>
+        <wux-button block type="light" bind:click="onHalfscreen">局部水印</wux-button>
+    </view>
+</view>

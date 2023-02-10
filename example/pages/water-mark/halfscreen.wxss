@@ -1,0 +1,12 @@
+/* pages/water-mark/halfscreen/index.wxss */
+.page__image {
+    display: inline-flex;
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.page__image-img {
+    display: block;
+    width: 100%;
+}

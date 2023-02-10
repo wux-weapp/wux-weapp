@@ -307,6 +307,10 @@
         "files": ["virtual-list", "virtual-item"],
         "dependencies": []
     },
+    "water-mark": {
+        "files": ["water-mark"],
+        "dependencies": []
+    },
     "white-space": {
         "files": ["white-space"],
         "dependencies": []

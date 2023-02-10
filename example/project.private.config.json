@@ -214,6 +214,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "water-mark",
+          "pathName": "pages/water-mark/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

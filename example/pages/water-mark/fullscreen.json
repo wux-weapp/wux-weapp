@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "WaterMark",
+    "usingComponents": {
+        "wux-water-mark": "../../dist/water-mark/index",
+        "wux-button": "../../dist/button/index"
+    }
+}
