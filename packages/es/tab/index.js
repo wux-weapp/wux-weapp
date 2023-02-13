@@ -49,6 +49,25 @@ baseComponent({
         }],
     },
     methods: {
+        activeTabRef() {
+            return new Promise((resolve) => {
+                const { prefixCls } = this.data
+                const query = wx.createSelectorQuery().in(this)
+                query.select(`.${prefixCls}`).boundingClientRect((activeTab) => {
+                    const activeTabLeft = activeTab.left
+                    const activeTabWidth = activeTab.width
+                    const activeTabTop = activeTab.top
+                    const activeTabHeight = activeTab.height
+                    resolve({
+                        activeTabLeft,
+                        activeTabWidth,
+                        activeTabTop,
+                        activeTabHeight,
+                    })
+                })
+                query.exec()
+            })
+        },
         changeCurrent({ current, scroll, theme, direction }) {
             this.setData({
                 current,

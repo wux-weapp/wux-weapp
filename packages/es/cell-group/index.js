@@ -9,7 +9,7 @@ baseComponent({
         '../cell/index': {
             type: 'descendant',
             observer() {
-                this.debounce(this.updateIsLastElement)
+                this.callDebounceFn(this.updateIsLastElement)
             },
         },
     },

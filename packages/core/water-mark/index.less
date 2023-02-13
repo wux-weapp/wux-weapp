@@ -1,0 +1,24 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-water-mark {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2000;
+    pointer-events: none;
+    background-repeat: repeat;
+    box-sizing: border-box;
+
+    &--full-page {
+        position: fixed;
+    }
+
+    &__canvas {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+    }
+}

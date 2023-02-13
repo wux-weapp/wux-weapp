@@ -141,6 +141,12 @@ baseComponent({
         bindopensetting(e) {
             this.triggerEvent('opensetting', e.detail)
         },
+        bindlaunchapp(e) {
+            this.triggerEvent('launchapp', e.detail)
+        },
+        bindchooseavatar(e) {
+            this.triggerEvent('chooseavatar', e.detail)
+        },
         onError(e) {
             this.triggerEvent('error', e.detail)
         },

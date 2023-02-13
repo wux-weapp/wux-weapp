@@ -24,11 +24,13 @@ baseComponent({
                 [`${prefixCls}__content--${ico}`]: ico,
             })
             const icon = `${prefixCls}__icon`
+            const text = `${prefixCls}__text`
 
             return {
                 wrap,
                 content,
                 icon,
+                text,
             }
         }],
     },

@@ -18,6 +18,8 @@
     app-parameter="{{ appParameter }}"
     binderror="onError"
     bindopensetting="bindopensetting"
+    bindlaunchapp="bindlaunchapp"
+    bindchooseavatar="bindchooseavatar"
     bindtap="onTap"
 >
     <view class="{{ classes.hd }}">

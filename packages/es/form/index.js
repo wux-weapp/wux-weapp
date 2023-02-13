@@ -7,7 +7,7 @@ baseComponent({
             type: 'descendant',
             observer(e, { unlinked }) {
                 this.renderFields[e.data.name] = unlinked === false
-                this.debounce(this.changeValue)
+                this.callDebounceFn(this.changeValue)
             },
         },
     },

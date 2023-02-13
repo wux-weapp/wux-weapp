@@ -20,6 +20,8 @@
     app-parameter="{{ appParameter }}"
     binderror="onError"
     bindopensetting="bindopensetting"
+    bindlaunchapp="bindlaunchapp"
+    bindchooseavatar="bindchooseavatar"
     bindtap="onTap"
 >
     <slot></slot>

@@ -6,7 +6,7 @@ baseComponent({
         '../step/index': {
             type: 'child',
             observer() {
-                this.debounce(this.updateCurrent)
+                this.callDebounceFn(this.updateCurrent)
             },
         },
     },

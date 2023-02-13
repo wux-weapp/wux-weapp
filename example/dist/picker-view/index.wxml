@@ -2,6 +2,8 @@
     <view
         class="wux-class {{ classes.wrap }}"
         data-picker-value="{{ inputValue }}"
+        data-picker-col-value="{{ fieldNames.value }}"
+        data-picker-col-label="{{ fieldNames.label }}"
         style="{{ styles.wrap }}"
         bind:touchstart="onTouchStart"
         catch:touchmove="onTouchMove"
@@ -11,7 +13,7 @@
         <view class="wux-mask-class {{ maskClass }} {{ classes.mask }}" style="{{ styles.mask }} {{ extMaskStyle }}"></view>
         <view class="wux-indicator-class {{ indicatorClass }} {{ classes.indicator }}" style="{{ styles.indicator }} {{ extIndicatorStyle }}"></view>
         <view class="wux-content-class {{ classes.content }}" style="{{ styles.content }} {{ contentStyle }}">
-            <block wx:for="{{ cols }}" wx:for-item="col" wx:key="{{ col[fieldNames.value] }}">
+            <block wx:for="{{ cols }}" wx:for-item="col" wx:key="{{ fieldNames.value }}">
                 <view
                     style="{{ styles.item }} {{ extItemStyle }}"
                     class="{{ classes.item }} {{ col.disabled ? prefixCls + '__item--disabled' : '' }} {{ selectedIndex === index ? prefixCls + '__item--selected' : '' }}"

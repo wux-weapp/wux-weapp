@@ -8,7 +8,7 @@ baseComponent({
         '../tabbar-item/index': {
             type: 'child',
             observer() {
-                this.debounce(this.updated)
+                this.callDebounceFn(this.updated)
             },
         },
     },

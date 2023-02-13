@@ -6,7 +6,7 @@ baseComponent({
         '../swipe-action/index': {
             type: 'descendant',
             observer() {
-                this.debounce(this.updated)
+                this.callDebounceFn(this.updated)
             },
         },
     },

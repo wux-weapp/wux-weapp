@@ -28,7 +28,7 @@ baseComponent({
         '../radio/index': {
             type: 'child',
             observer() {
-                this.debounce(this.changeValue)
+                this.callDebounceFn(this.changeValue)
             },
         },
     },

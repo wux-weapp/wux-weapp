@@ -18,10 +18,29 @@
   -ms-flex-pack: center;
   justify-content: center
 }
+.wux-index__nav-row {
+  cursor: pointer;
+  width: auto;
+  text-align: right;
+  position: relative;
+  padding: 0 12rpx
+}
 .wux-index__nav-item {
-  padding: 4rpx 12rpx;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: 32rpx;
+  height: 32rpx;
+  line-height: 32rpx;
   font-size: 24rpx;
-  line-height: 1.2
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center
+}
+.wux-index__nav-item--current {
+  color: #fff;
+  background-color: #33cd5f;
+  border-radius: 50%
 }
 .wux-index__indicator {
   position: fixed;

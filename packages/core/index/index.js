@@ -3,12 +3,26 @@ import classNames from '../helpers/classNames'
 import styleToCssString from '../helpers/styleToCssString'
 import { getSystemInfo } from '../helpers/checkIPhoneX'
 
+const findActiveByIndex = (current, currentName, sections) => {
+    return sections.filter((section) => (
+        section.index === current &&
+            section.name === currentName
+    ))[0]
+}
+  
+const findActiveByPosition = (scrollTop, offsetY, sections) => {
+    return sections.filter((section) => (
+        scrollTop < (section.top + section.height - offsetY) &&
+            scrollTop >= (section.top - offsetY)
+    ))[0]
+}
+
 baseComponent({
     relations: {
         '../index-item/index': {
             type: 'child',
             observer() {
-                this.debounce(this.updated)
+                this.callDebounceFn(this.updated)
             },
         },
     },
@@ -43,12 +57,14 @@ baseComponent({
         classes: ['prefixCls', function(prefixCls) {
             const wrap = classNames(prefixCls)
             const nav = `${prefixCls}__nav`
+            const navRow = `${prefixCls}__nav-row`
             const navItem = `${prefixCls}__nav-item`
             const indicator = `${prefixCls}__indicator`
 
             return {
                 wrap,
                 nav,
+                navRow,
                 navItem,
                 indicator,
             }
@@ -93,8 +109,8 @@ baseComponent({
          */
         setActive(current, currentName) {
             if (current !== this.data.current || currentName !== this.data.currentName) {
-                const target = this.data.sections.filter((section) => section.index === current && section.name === currentName)[0]
-                if (target) {
+                const target = findActiveByIndex(current, currentName, this.data.sections)
+                if (target !== undefined) {
                     this.setData({
                         current,
                         currentName,
@@ -104,9 +120,8 @@ baseComponent({
 
                 // 振动反馈
                 this.vibrateShort()
+                this.triggerEvent('change', { index: current, name: currentName })
             }
-
-            this.triggerEvent('change', { index: current, name: currentName })
         },
         /**
          * 手指触摸动作开始
@@ -140,17 +155,26 @@ baseComponent({
          */
         onScroll(e) {
             if (this.data.moving) return
-            const { scrollTop } = e.detail
-            this.data.sections.forEach((section, index) => {
-                if (scrollTop < section.top + section.height && scrollTop >= section.top) {
-                    if (index !== this.data.current || section.name !== this.data.currentName) {
-                        this.setData({
-                            current: index,
-                            currentName: section.name,
-                        })
+
+            if (!this.checkActiveIndex) {
+                const { run: checkActiveIndex } = this.useThrottleFn((data, event) => {
+                    const target = findActiveByPosition(event.detail.scrollTop, data.parentOffsetTop, data.sections)
+                    if (target !== undefined) {
+                        const current = target.index
+                        const currentName = target.name
+                        if (current !== data.current || currentName !== data.currentName) {
+                            this.setData({
+                                current,
+                                currentName,
+                            })
+                            this.triggerEvent('change', { index: current, name: currentName })
+                        }
                     }
-                }
-            })
+                }, 50, { trailing: true, leading: true })
+                this.checkActiveIndex = checkActiveIndex
+            }
+
+            this.checkActiveIndex.call(this, this.data, e)
         },
         /**
          * 获取右侧导航对应的坐标

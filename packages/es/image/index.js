@@ -23,7 +23,15 @@ baseComponent({
             type: String,
             value: 'scaleToFill',
         },
+        webp: {
+            type: Boolean,
+            value: false,
+        },
         lazyLoad: {
+            type: Boolean,
+            value: false,
+        },
+        showMenuByLongpress: {
             type: Boolean,
             value: false,
         },

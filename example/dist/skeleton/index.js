@@ -6,13 +6,13 @@ baseComponent({
         '../skeleton-avatar/index': {
             type: 'descendant',
             observer() {
-                this.debounce(this.updated)
+                this.callDebounceFn(this.updated)
             },
         },
         '../skeleton-paragraph/index': {
             type: 'descendant',
             observer() {
-                this.debounce(this.updated)
+                this.callDebounceFn(this.updated)
             },
         },
     },

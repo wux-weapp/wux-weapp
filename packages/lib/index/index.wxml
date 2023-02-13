@@ -3,7 +3,9 @@
         <slot></slot>
         <view class="{{ classes.nav }}" wx:if="{{ sections.length > 0 }}" catchtouchstart="onTouchStart" catchtouchmove="onTouchMove" catchtouchend="onTouchEnd">
             <block wx:for="{{ sections }}" wx:key="index">
-                <view class="{{ classes.navItem }}" data-index="{{ index }}" data-name="{{ item.name }}">{{ item.name }}</view>
+                <view class="{{ classes.navRow }}" data-index="{{ index }}" data-name="{{ item.name }}">
+                    <view class="{{ classes.navItem }} {{ index === current ? classes.navItem + '--current' : ''  }}" data-index="{{ index }}" data-name="{{ item.name }}">{{ item.name }}</view>
+                </view>
             </block>
         </view>
         <div class="{{ classes.indicator }}" wx:if="{{ showIndicator && moving }}">{{ currentName }}</div>

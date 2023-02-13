@@ -1,6 +1,16 @@
 <view class="wux-class {{ classes.wrap }}" style="{{ style }}" bindtap="onTap" wx:if="{{ status !== 'unmounted' }}">
 	<view class="{{ classes.inner }}">
-    	<image class="{{ classes.thumb }}" lazy-load="{{ lazyLoad }}" mode="{{ mode }}" src="{{ src }}" bindload="onLoad" binderror="onError" wx:if="{{ src }}" />
+    	<image
+				class="{{ classes.thumb }}"
+				src="{{ src }}"
+				mode="{{ mode }}"
+				webp="{{ webp }}"
+				lazy-load="{{ lazyLoad }}"
+				show-menu-by-longpress="{{ showMenuByLongpress }}"
+				binderror="onError"
+				bindload="onLoad"
+				wx:if="{{ src }}"
+			/>
     	<slot></slot>
     </view>
 	<view class="{{ classes.mask }}" wx:if="{{ status === 'empty' }}">

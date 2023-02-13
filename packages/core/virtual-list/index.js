@@ -9,7 +9,7 @@ baseComponent({
         '../virtual-item/index': {
             type: 'descendant',
             observer() {
-                this.debounce(this.updated)
+                this.callDebounceFn(this.updated)
             },
         },
     },
@@ -274,10 +274,10 @@ baseComponent({
         },
         /**
          * 绑定滚动事件
-         * @param {Boolean} _debounce 是否防抖
+         * @param {Boolean} useDebounce 是否防抖
          */
-        setScrollHandler(_debounce = this.data.debounce) {
-            this.scrollHandler = _debounce ? debounce(this.onScroll.bind(this), _debounce, false) : this.onScroll
+        setScrollHandler(useDebounce = this.data.debounce) {
+            this.scrollHandler = useDebounce ? debounce(this.onScroll.bind(this), useDebounce, { leading: true, maxWait: useDebounce, trailing: true }) : this.onScroll
         },
         /**
          * 阻止触摸移动

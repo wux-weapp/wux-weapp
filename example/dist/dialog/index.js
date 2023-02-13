@@ -136,6 +136,18 @@ baseComponent({
             this.runCallbacks(e, 'onOpenSetting')
         },
         /**
+         * 打开 APP 成功的回调，open-type=launchApp时有效
+         */
+        bindlaunchapp(e) {
+            this.runCallbacks(e, 'onLaunchApp')
+        },
+        /**
+         * 获取用户头像回调，open-type=chooseAvatar时有效
+         */
+        bindchooseavatar(e) {
+            this.runCallbacks(e, 'onChooseAvatar')
+        },
+        /**
          * 当使用开放能力时，发生错误的回调，open-type=launchApp时有效
          */
         onError(e) {

@@ -46,6 +46,8 @@
                 app-parameter="{{ button.appParameter }}"
                 binderror="onError"
                 bindopensetting="bindopensetting"
+                bindlaunchapp="bindlaunchapp"
+                bindchooseavatar="bindchooseavatar"
                 data-index="{{ index }}"
                 bindtap="buttonTapped"
             >

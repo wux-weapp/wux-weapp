@@ -107,6 +107,22 @@ baseComponent({
             type: Boolean,
             value: true,
         },
+        holdKeyboard: {
+            type: Boolean,
+            value: false,
+        },
+        disableDefaultPadding: {
+            type: Boolean,
+            value: false,
+        },
+        confirmType: {
+            type: String,
+            value: 'return',
+        },
+        confirmHold: {
+            type: Boolean,
+            value: false,
+        },
         rows: {
             type: Number,
             value: 1,
@@ -216,6 +232,9 @@ baseComponent({
         },
         onConfirm(e) {
             this.triggerEvent('confirm', e.detail)
+        },
+        onKeyboardHeightChange(e) {
+            this.triggerEvent('keyboardheightchange', e.detail)
         },
         onClear(e) {
             const params = { value: '' }

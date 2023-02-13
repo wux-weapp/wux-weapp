@@ -36,7 +36,7 @@ const relations = children.map((name) => `../${name}/index`).reduce((acc, name) 
         [name]: {
             type: 'descendant',
             observer: function() {
-                this.debounce(this.changeValue)
+                this.callDebounceFn(this.changeValue)
             },
         },
     }

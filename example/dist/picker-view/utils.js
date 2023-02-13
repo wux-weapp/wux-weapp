@@ -31,7 +31,7 @@ export function getValuesFromIndexes(indexes = [], cols = [], fieldNames = defau
 }
 
 export function getRealValue(value = '', col = [], fieldNames = defaultFieldNames) {
-    return col.length > 0 ? col[getIndexFromValue(value, col, fieldNames)][fieldNames.value] : null
+    return col.length > 0 ? col[getIndexFromValue(value, col, fieldNames)][fieldNames.value] : ''
 }
 
 export function getRealValues(values = [], cols = [], fieldNames = defaultFieldNames) {

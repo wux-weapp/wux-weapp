@@ -18,10 +18,28 @@
         justify-content: center;
     }
 
+    &__nav-row {
+        cursor: pointer;
+        width: auto;
+        text-align: right;
+        position: relative;
+        padding: 0 6px;
+    }
+
     &__nav-item {
-        padding: 2px 6px;
+        display: inline-flex;
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
         font-size: 12px;
-        line-height: 1.2;
+        justify-content: center;
+        align-items: center;
+
+        &--current {
+            color: @text-color-inverse;
+            background-color: @balanced;
+            border-radius: 50%;
+        }
     }
 
     &__indicator {

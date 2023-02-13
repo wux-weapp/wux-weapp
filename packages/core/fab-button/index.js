@@ -290,6 +290,12 @@ baseComponent({
         bindopensetting(e) {
             this.triggerEvent('opensetting', {...e.detail, ...e.currentTarget.dataset })
         },
+        bindlaunchapp(e) {
+            this.triggerEvent('launchapp', {...e.detail, ...e.currentTarget.dataset })
+        },
+        bindchooseavatar(e) {
+            this.triggerEvent('chooseavatar', {...e.detail, ...e.currentTarget.dataset })
+        },
         onError(e) {
             this.triggerEvent('error', {...e.detail, ...e.currentTarget.dataset })
         },

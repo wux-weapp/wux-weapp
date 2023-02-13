@@ -1,6 +1,35 @@
-<scroll-view wx:if="{{ scroll }}" scroll-x="{{ direction === 'horizontal' }}" scroll-y="{{ direction === 'vertical' }}" class="wux-class {{ classes.wrap }}">
-    <slot></slot>
-</scroll-view>
+<block wx:if="{{ scroll }}">
+    <view class="wux-class {{ classes.wrap }}">
+        <view class="{{ classes.prev }}" wx:if="{{ scroll && showPrevMask }}"></view>
+        <view class="{{ classes.next }}" wx:if="{{ scroll && showNextMask }}"></view>
+        <scroll-view
+            wx:if="{{ direction === 'horizontal' }}"
+            scroll-x
+            scroll-left="{{ scrollLeft }}"
+            scroll-with-animation
+            enhanced
+            show-scrollbar="{{ false }}"
+            class="{{ classes.scrollView }}"
+            bindscroll="onScrollFix"
+        >
+            <slot></slot>
+        </scroll-view>
+        <scroll-view
+            wx:else
+            scroll-y
+            scroll-top="{{ scrollTop }}"
+            scroll-with-animation
+            enhanced
+            show-scrollbar="{{ false }}"
+            class="{{ classes.scrollView }}"
+            bindscroll="onScrollFix"
+        >
+            <slot></slot>
+        </scroll-view>
+    </view>
+</block>
 <view wx:else class="wux-class {{ classes.wrap }}">
-    <slot></slot>
+    <view class="{{ classes.scrollView }}">
+        <slot></slot>
+    </view>
 </view>

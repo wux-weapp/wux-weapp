@@ -21,13 +21,20 @@
 			selection-start="{{ selectionStart }}"
 			selection-end="{{ selectionEnd }}"
 			adjust-position="{{ adjustPosition }}"
+			hold-keyboard="{{ holdKeyboard }}"
+			disable-default-padding="{{ disableDefaultPadding }}"
+			confirm-type="{{ confirmType }}"
+			confirm-hold="{{ confirmHold }}"
 			bindlinechange="onLineChange"
 			bindinput="onChange"
 			bindfocus="onFocus"
 			bindblur="onBlur"
 			bindconfirm="onConfirm"
+			bindkeyboardheightchange="onKeyboardHeightChange"
 			style="{{ inputRows > 1 && !!inputHeight ? 'height: ' + inputHeight + 'px' : '' }}"
-		/>
+		>
+			<slot name="keyboard-accessory"></slot>
+		</textarea>
 	</view>
 	<view class="{{ classes.clear }}" bindtap="onClear" wx:if="{{ clear && !disabled && inputValue && inputValue.length > 0 }}">
 		<icon type="clear" color="#B2B2B2" size="14" />

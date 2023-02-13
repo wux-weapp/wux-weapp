@@ -13,11 +13,6 @@
   word-break: break-all;
   transition: background-color .3s
 }
-.wux-toptips__content text {
-  display: block;
-  text-align: center;
-  padding: 0 52rpx
-}
 .wux-toptips__content--success {
   background-color: #33cd5f
 }
@@ -34,4 +29,9 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%)
+}
+.wux-toptips__text {
+  display: block;
+  text-align: center;
+  padding: 0 52rpx
 }

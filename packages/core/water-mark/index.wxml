@@ -1,0 +1,4 @@
+<view class="wux-class {{ classes.wrap }}" style="{{ wrapStyle }}">
+    <canvas type="2d" id="{{ classes.canvas }}" class="{{ classes.canvas }}" />
+    <slot></slot>
+</view>
