@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "FloatingPanel",
+    "usingComponents": {
+        "wux-floating-panel": "../../dist/floating-panel/index",
+        "wux-button": "../../dist/button/index",
+        "wux-cell-group": "../../dist/cell-group/index",
+        "wux-cell": "../../dist/cell/index"
+    }
+}

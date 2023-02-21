@@ -1,0 +1,24 @@
+<map
+    style="width: 100vw; height: 100vh;"
+    scale="9"
+    longitude="{{ geo[0] }}"
+    latitude="{{ geo[1] }}"
+/>
+<view class="page page_fixed">
+    <view class="page__hd">
+        <view class="page__title">FloatingPanel</view>
+        <view class="page__desc">浮动面板</view>
+    </view>
+    <view class="page__bd">
+        <wux-floating-panel id="wux-floating-panel" defaultAnchors="{{ defaultAnchors }}" bind:heightChange="onHeightChange">
+            <view style="box-sizing: border-box; padding: 20px; height: {{ height }}; background-image: {{ backgroundImage }};">
+                <wux-cell-group>
+                    <block wx:for="{{ locations }}" wx:key="name">
+                        <wux-cell is-link title="{{ item.name }}" data-geo="{{ item.geo }}" bind:click="onLocation"></wux-cell>
+                    </block>
+                </wux-cell-group>
+                <wux-button block type="light" bind:click="setHeight">收起至200px</wux-button>
+            </view>
+        </wux-floating-panel>
+    </view>
+</view>

@@ -243,6 +243,11 @@ export default [{
         url: '/pages/fab-button/index',
     },
     {
+        title: 'FloatingPanel',
+        remark: '浮动面板',
+        url: '/pages/floating-panel/index',
+    },
+    {
         title: 'Image',
         remark: '图片',
         url: '/pages/image/index',

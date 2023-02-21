@@ -103,6 +103,10 @@
         "files": ["filterbar"],
         "dependencies": ["animation-group", "backdrop", "radio", "checkbox"]
     },
+    "floating-panel": {
+        "files": ["floating-panel"],
+        "dependencies": []
+    },
     "form": {
         "files": ["form"],
         "dependencies": []

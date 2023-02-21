@@ -56,11 +56,12 @@ const baseComponent = (options = {}) => {
     if (options.useExport) {
         options.behaviors = [...options.behaviors, 'wx://component-export']
         options.methods = {
-            export () {
+            ['export'] () {
                 return this
             },
             ...options.methods,
         }
+        options['export'] = options.methods['export']
         delete options.useExport
     }
 

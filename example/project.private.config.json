@@ -221,6 +221,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "floating-panel",
+          "pathName": "pages/floating-panel/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
