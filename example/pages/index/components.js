@@ -248,6 +248,11 @@ export default [{
         url: '/pages/floating-panel/index',
     },
     {
+        title: 'Footer',
+        remark: '页脚',
+        url: '/pages/footer/index',
+    },
+    {
         title: 'Image',
         remark: '图片',
         url: '/pages/image/index',

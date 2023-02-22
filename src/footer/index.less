@@ -1,0 +1,78 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.footer-style(@theme, @color) {
+    &--@{theme} &__chip--link {
+        color: @color;
+        background-color: lighten(@color, 30%);
+    }
+
+    &--@{theme} &__links {
+        color: @color;
+    }
+}
+
+.@{wux-prefix}-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: @component-background;
+    color: @text-color;
+    font-size: @font-size-sm + 1;
+
+    &__label {
+        width: 100%;
+    }
+
+    &__links {
+        margin: @margin-component-lg 0;
+        color: @balanced;
+        white-space: nowrap;
+    }
+
+    &__link {
+        display: inline-block;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+        margin: @margin-component-lg 0;
+        color: @text-color-secondary;
+    }
+
+    &__chips {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        margin: @margin-component-lg 0;
+    }
+
+    &__chip {
+        white-space: nowrap;
+        margin-right: @spacing-base * 2;
+        font-size: @font-size-sm;
+        background-color: @background-color-base;
+        color: @text-color-secondary;
+        padding: @margin-component-sm + 2 @margin-component-lg + 2;
+        border-radius: 100px;
+
+        &--link {
+            cursor: pointer;
+            background-color: lighten(@balanced, 30%);
+            color: @balanced;
+        }
+    }
+
+    .footer-style(light, @light-inverse);
+    .footer-style(stable, @stable-inverse);
+    .footer-style(positive, @positive);
+    .footer-style(calm, @calm);
+    .footer-style(assertive, @assertive);
+    .footer-style(balanced, @balanced);
+    .footer-style(energized, @energized);
+    .footer-style(royal, @royal);
+    .footer-style(dark, @dark);
+}

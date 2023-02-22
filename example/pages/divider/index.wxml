@@ -18,5 +18,12 @@
         		<text class="text">正在加载</text>
         	</view>
         </wux-divider>
+        <view style="padding: 12px; font-size: 16px;">
+          <text>Wux Weapp</text>
+          <wux-divider direction="vertical" show-text="{{ false }}" />
+          <text>Wux Weapp</text>
+          <wux-divider direction="vertical" show-text="{{ false }}" />
+          <text>Wux Weapp</text>
+        </view>
     </view>
 </view>

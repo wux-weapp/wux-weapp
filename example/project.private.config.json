@@ -228,6 +228,20 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "footer",
+          "pathName": "pages/footer/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "divider",
+          "pathName": "pages/divider/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "Footer",
+    "usingComponents": {
+        "wux-footer": "../../dist/footer/index"
+    }
+}

@@ -1,6 +1,7 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
 import eventsMixin from '../helpers/eventsMixin'
+import withNativeRoutes from '../helpers/withNativeRoutes'
 
 const defaultEvents = {
     onClick() {},
@@ -146,9 +147,16 @@ baseComponent({
     },
     methods: {
         onTap() {
-            if (!this.data.disabled) {
+            const { disabled, url, isLink, openType, delta } = this.data
+            if (!disabled) {
                 this.triggerEvent('click')
-                this.linkTo()
+                if (isLink) {
+                    withNativeRoutes({
+                        url,
+                        openType,
+                        delta,
+                    }, this)
+                }
             }
         },
         bindgetuserinfo(e) {
@@ -171,25 +179,6 @@ baseComponent({
         },
         onError(e) {
             this.triggerEvent('error', e.detail)
-        },
-        linkTo() {
-            const { url, isLink, openType, delta } = this.data
-            const navigate = [
-                'navigateTo',
-                'redirectTo',
-                'switchTab',
-                'navigateBack',
-                'reLaunch',
-            ]
-
-            // openType 属性可选值为 navigateTo、redirectTo、switchTab、navigateBack、reLaunch
-            if (!isLink || !url || !navigate.includes(openType)) {
-                return false
-            } else if (openType === 'navigateBack') {
-                return wx[openType].call(wx, { delta })
-            } else {
-                return wx[openType].call(wx, { url })
-            }
         },
         updateIsLastElement(isLast) {
             if(isLast === this.data.isLast) return;

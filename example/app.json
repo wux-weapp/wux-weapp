@@ -26,6 +26,7 @@
     "pages/fab-button/index",
     "pages/filterbar/index",
     "pages/floating-panel/index",
+    "pages/footer/index",
     "pages/form/index",
     "pages/gallery/index",
     "pages/grid/index",

@@ -107,6 +107,10 @@
         "files": ["floating-panel"],
         "dependencies": []
     },
+    "footer": {
+        "files": ["footer"],
+        "dependencies": ["divider"]
+    },
     "form": {
         "files": ["form"],
         "dependencies": []

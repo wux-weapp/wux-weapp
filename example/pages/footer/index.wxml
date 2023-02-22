@@ -1,0 +1,22 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Footer</view>
+        <view class="page__desc">页脚</view>
+    </view>
+    <view class="page__bd">
+        <view class="sub-title">基础页脚</view>
+        <wux-footer theme="positive" label="WuxUI NB" />
+        <view class="sub-title">带内容的页脚</view>
+        <wux-footer theme="positive" content="@2019-2023 WuxUI.com All rights reserved" />
+        <view class="sub-title">带链接的页脚</view>
+        <wux-footer theme="positive" links="{{ links }}" />
+        <view class="sub-title">通过点击事件跳转</view>
+        <wux-footer theme="positive" links="{{ linksNoLinkData }}" bind:linkClick="onLinkClick" />
+        <view class="sub-title">带标签的页脚</view>
+        <wux-footer theme="positive" chips="{{ chipsNoLinkData }}" />
+        <view class="sub-title">标签可点击</view>
+        <wux-footer theme="positive" chips="{{ chips }}" bind:chipClick="onChipClick" />
+        <view class="sub-title">组合使用</view>
+        <wux-footer theme="positive" label="WuxUI NB" content="@2019-2023 WuxUI.com All rights reserved" links="{{ links }}" chips="{{ chips }}" bind:chipClick="onChipClick" />
+    </view>
+</view>
