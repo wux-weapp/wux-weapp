@@ -209,7 +209,7 @@
     },
     "qrcode": {
         "files": ["qrcode"],
-        "dependencies": []
+        "dependencies": ["spin", "icon"]
     },
     "radio": {
         "files": ["radio", "radio-group"],

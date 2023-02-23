@@ -1,0 +1,68 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-qrcode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    &__canvas {
+        position: absolute;
+        left: -9999em;
+        top: -9999em;
+        // (fix) canvasToTempFilePath:fail no image found
+        // display: none;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    &__image {
+        display: flex;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__mask {
+        position: absolute;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        color: @heading-color;
+        background: fade(@white, 85%);
+        text-align: center;
+        font-size: @font-size-base;
+        line-height: @line-height-base;
+    }
+
+    &__expired {
+        color: @heading-color;
+    }
+
+    &__refresh {
+        position: relative;
+        display: flex;
+        align-items: center;
+        font-weight: 400;
+        white-space: nowrap;
+        text-align: center;
+        height: 32px;
+        padding: 4px 15px;
+        box-sizing: border-box;
+        color: @spin-color;
+    }
+
+    &__icon {
+        display: inline-flex;
+        vertical-align: middle;
+        font-size: 0;
+        margin-right: @margin-component-base;
+    }
+}

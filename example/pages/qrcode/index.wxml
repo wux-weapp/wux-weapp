@@ -15,7 +15,7 @@
                 <wux-slider value="{{ whiteSpace }}" controlled showValue showMark step="10" min="0" max="20" bind:change="onSliderChange" />
             </wux-cell>
         </wux-cell-group>
-        <view class="sub-title">提示：Canvas 在微信中无法长按识别, 点击图片进入保存页面长按图片可以保存</view>
+        <view class="sub-title">提示：支持在微信中长按识别；同时，也支持点击图片进入保存页面长按图片可以保存</view>
         <view class="qrcode">
             <wux-qrcode
                 id="qrcode"
@@ -24,8 +24,12 @@
                 width="200"
                 height="200"
                 whiteSpace="{{ whiteSpace }}"
+                showMenuByLongpress
+                qrcodeStatus="{{ qrcodeStatus }}"
                 bind:click="previewImage"
+                bind:refresh="onRefresh"
             />
+            <wux-button block type="light" bind:click="downloadQRCode">保存图片到系统相册</wux-button>
         </view>
     </view>
 </view>

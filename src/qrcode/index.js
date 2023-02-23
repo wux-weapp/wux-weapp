@@ -1,3 +1,7 @@
+import baseComponent from '../helpers/baseComponent'
+import classNames from '../helpers/classNames'
+import styleToCssString from '../helpers/styleToCssString'
+
 import qrjs from './qr.js/index'
 
 /**
@@ -26,91 +30,145 @@ const utf16to8 = (str) => {
     return out
 }
 
-Component({
+baseComponent({
+    useExport: true,
     properties: {
+        prefixCls: {
+            type: String,
+            value: 'wux-qrcode',
+        },
         typeNumber: {
             type: Number,
             value: -1,
-            observer(newVal) {
-                this.draw({
-                    typeNumber: newVal,
-                })
-            },
         },
         errorCorrectLevel: {
             type: Number,
             value: 2,
-            observer(newVal) {
-                this.draw({
-                    errorCorrectLevel: newVal,
-                })
-            },
         },
         width: {
             type: Number,
             value: 200,
-            observer(newVal) {
-                this.draw({
-                    width: newVal,
-                })
-            },
         },
         height: {
             type: Number,
             value: 200,
-            observer(newVal) {
-                this.draw({
-                    height: newVal,
-                })
-            },
         },
         whiteSpace: {
             type: Number,
             value: 0,
-            observer(newVal) {
-                this.draw({
-                    whiteSpace: newVal,
-                })
-            },
         },
         fgColor: {
             type: String,
             value: 'black',
-            observer(newVal) {
-                this.draw({
-                    fgColor: newVal,
-                })
-            },
         },
         bgColor: {
             type: String,
             value: 'white',
-            observer(newVal) {
-                this.draw({
-                    bgColor: newVal,
-                })
-            },
-        },
-        canvasId: {
-            type: String,
-            value: 'wux-qrcode',
         },
         data: {
             type: String,
             value: '',
-            observer(newVal) {
-                this.draw({
-                    data: newVal,
-                })
-            },
+        },
+        showMenuByLongpress: {
+            type: Boolean,
+            value: false,
+        },
+        qrcodeStatus: {
+            type: String,
+            value: 'activated',
+        },
+        qrcodeExpiredText: {
+            type: String,
+            value: '二维码过期',
+        },
+        qrcodeRefreshText: {
+            type: String,
+            value: '点击刷新',
         },
     },
+    data: {
+        wrapStyle: '',
+        base64Url: '',
+    },
+    observers: {
+        ['height, width'](height, width) {
+            this.updateStyle(height, width)
+        },
+        ['prefixCls, typeNumber, errorCorrectLevel, width, height, whiteSpace, fgColor, bgColor, data'](...args) {
+            this.setBase64Url(...args)
+        },
+    },
+    computed: {
+        classes: ['prefixCls', function(prefixCls) {
+            const wrap = classNames(prefixCls)
+            const canvas = `${prefixCls}__canvas`
+            const image = `${prefixCls}__image`
+            const mask = `${prefixCls}__mask`
+            const expired = `${prefixCls}__expired`
+            const refresh = `${prefixCls}__refresh`
+            const icon = `${prefixCls}__icon`
+
+            return {
+                wrap,
+                canvas,
+                image,
+                mask,
+                expired,
+                refresh,
+                icon,
+            }
+        }],
+    },
     methods: {
+        updateStyle(height, width) {
+            const wrapStyle = styleToCssString({
+                height: `${height}px`,
+                width: `${width}px`,
+            })
+            this.setData({
+                wrapStyle,
+            })
+        },
+        setBase64Url(...args) {
+            const [
+                prefixCls,
+                typeNumber,
+                errorCorrectLevel,
+                width,
+                height,
+                whiteSpace,
+                fgColor,
+                bgColor,
+                data,
+            ] = args
+
+            this.createCanvasContext({
+                prefixCls,
+                typeNumber,
+                errorCorrectLevel,
+                width,
+                height,
+                whiteSpace,
+                fgColor,
+                bgColor,
+                data,
+            })
+        },
         /**
          * 将之前在绘图上下文中的描述（路径、变形、样式）画到 canvas 中
          */
-        draw(opts = {}) {
-            const { typeNumber, errorCorrectLevel, width, height, whiteSpace, fgColor, bgColor, canvasId, data } = Object.assign({}, this.data, opts)
+        createCanvasContext(props) {
+            const {
+                prefixCls,
+                typeNumber,
+                errorCorrectLevel,
+                width,
+                height,
+                whiteSpace,
+                fgColor,
+                bgColor,
+                data,
+            } = props
             const qrcode = qrjs(utf16to8(data), {
                 typeNumber,
                 errorCorrectLevel,
@@ -118,23 +176,69 @@ Component({
             const cells = qrcode.modules
             const tileW = (width - whiteSpace * 2) / cells.length
             const tileH = (height - whiteSpace * 2) / cells.length
+            const setBase64Url = (base64Url) => {
+                if (props.base64Url !== base64Url) {
+                    this.setData({
+                        base64Url,
+                    })
+                }
+            }
+            const renderCanvas = () => new Promise((resolve, reject) => {
+                const canvasId = `${prefixCls}__canvas`
+                const query = wx.createSelectorQuery().in(this)
+                query.select(`#${canvasId}`)
+                    .fields({ node: true, size: true })
+                    .exec((res) => {
+                        if (!res[0]) {
+                            reject('Canvas is not supported in the current environment.')
+                            return
+                        }
 
-            this.ctx = this.ctx || wx.createCanvasContext(canvasId, this)
-            this.ctx.scale(1, 1)
+                        // always cache node
+                        this.canvas = res[0].node
 
-            this.ctx.setFillStyle('#ffffff')
-            this.ctx.fillRect(0, 0 , width, height)
+                        const canvas = res[0].node
+                        const ctx = canvas.getContext('2d')
+                        const ratio = wx.getSystemInfoSync().pixelRatio
+                        const canvasWidth = width * ratio
+                        const canvasHeight = height * ratio
 
-            cells.forEach((row, rdx) => {
-                row.forEach((cell, cdx) => {
-                    this.ctx.setFillStyle(cell ? fgColor : bgColor)
-                    const w = (Math.ceil((cdx + 1) * tileW) - Math.floor(cdx * tileW))
-                    const h = (Math.ceil((rdx + 1) * tileH) - Math.floor(rdx * tileH))
-                    this.ctx.fillRect(Math.round(cdx * tileW) + whiteSpace, Math.round(rdx * tileH) + whiteSpace, w, h)
-                })
+                        canvas.width = canvasWidth
+                        canvas.height = canvasHeight
+
+                        ctx.scale(ratio, ratio)
+                        ctx.fillStyle = '#ffffff'
+                        ctx.fillRect(0, 0 , width, height)
+
+                        cells.forEach((row, rdx) => {
+                            row.forEach((cell, cdx) => {
+                                ctx.fillStyle = cell ? fgColor : bgColor
+                                const x = Math.round(cdx * tileW) + whiteSpace
+                                const y = Math.round(rdx * tileH) + whiteSpace
+                                const w = (Math.ceil((cdx + 1) * tileW) - Math.floor(cdx * tileW))
+                                const h = (Math.ceil((rdx + 1) * tileH) - Math.floor(rdx * tileH))
+                                ctx.fillRect(x, y, w, h)
+                            })
+                        })
+
+                        ctx.restore()
+                        resolve(canvas.toDataURL())
+                    })
             })
 
-            this.ctx.draw()
+            let promise = Promise.resolve()
+
+            promise = promise.then((imageUrl) => {
+                return renderCanvas(imageUrl)
+            })
+
+            promise = promise.then((base64Url) => {
+                setBase64Url(base64Url)
+            }, (errMsg) => {
+                console.error(errMsg)
+            })
+
+            return promise
         },
         /**
          * 手指触摸后马上离开
@@ -142,11 +246,31 @@ Component({
         onTap() {
             this.triggerEvent('click')
         },
+        /**
+         * 蒙层的点击事件
+         */
+        onMaskClick() {
+            if (this.data.qrcodeStatus === 'expired') {
+                this.triggerEvent('refresh')
+            }
+        },
+        ['export']() {
+            const getCanvasNode = () => {
+                return this.canvas
+            }
+            const getBase64Url = () => {
+                return this.data.base64Url
+            }
+
+            return {
+                getCanvasNode,
+                getBase64Url,
+            }
+        },
     },
-    attached() {
-        this.draw()
-    },
-    detached() {
-        this.ctx = null
+    ready() {
+        const { height, width } = this.data
+        this.updateStyle(height, width)
+        this.createCanvasContext(this.data)
     },
 })

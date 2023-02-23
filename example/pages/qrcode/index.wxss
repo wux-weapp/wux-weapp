@@ -2,6 +2,8 @@
 
 .qrcode {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     margin: 30px auto;
 }
