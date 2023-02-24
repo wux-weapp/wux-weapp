@@ -16,7 +16,7 @@ const rowsTextProps = {
 
 const imageProps = {
     content: '',
-    image: 'http://cdn.skyvow.cn/logo.png',
+    image: '/assets/images/logo.png',
     imageWidth: 115,
     imageHeight: 36,
     width: 140,

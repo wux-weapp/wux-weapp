@@ -1,6 +1,7 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
 import styleToCssString from '../helpers/styleToCssString'
+import { toDataURL, getCanvas } from '../helpers/canvasPolyfill'
 
 import qrjs from './qr.js/index'
 
@@ -181,61 +182,55 @@ baseComponent({
                     this.setData({
                         base64Url,
                     })
+                    this.triggerEvent('load', { base64Url })
                 }
             }
-            const renderCanvas = () => new Promise((resolve, reject) => {
-                const canvasId = `${prefixCls}__canvas`
-                const query = wx.createSelectorQuery().in(this)
-                query.select(`#${canvasId}`)
-                    .fields({ node: true, size: true })
-                    .exec((res) => {
-                        if (!res[0]) {
-                            reject('Canvas is not supported in the current environment.')
-                            return
-                        }
+            const canvasId = `${prefixCls}__canvas`
+            const renderCanvas = () => getCanvas({ canvasId }, this).then((canvas) => {
+                // always cache node
+                this.canvas = canvas
 
-                        // always cache node
-                        this.canvas = res[0].node
+                const ctx = canvas.getContext('2d')
+                const ratio = wx.getSystemInfoSync().pixelRatio
+                const canvasWidth = width * ratio
+                const canvasHeight = height * ratio
 
-                        const canvas = res[0].node
-                        const ctx = canvas.getContext('2d')
-                        const ratio = wx.getSystemInfoSync().pixelRatio
-                        const canvasWidth = width * ratio
-                        const canvasHeight = height * ratio
+                canvas.width = canvasWidth
+                canvas.height = canvasHeight
 
-                        canvas.width = canvasWidth
-                        canvas.height = canvasHeight
+                ctx.scale(ratio, ratio)
+                ctx.fillStyle = '#ffffff'
+                ctx.fillRect(0, 0, width, height)
 
-                        ctx.scale(ratio, ratio)
-                        ctx.fillStyle = '#ffffff'
-                        ctx.fillRect(0, 0 , width, height)
+                cells.forEach((row, rdx) => {
+                    row.forEach((cell, cdx) => {
+                        ctx.fillStyle = cell ? fgColor : bgColor
+                        const x = Math.round(cdx * tileW) + whiteSpace
+                        const y = Math.round(rdx * tileH) + whiteSpace
+                        const w = (Math.ceil((cdx + 1) * tileW) - Math.floor(cdx * tileW))
+                        const h = (Math.ceil((rdx + 1) * tileH) - Math.floor(rdx * tileH))
+                        ctx.fillRect(x, y, w, h)
+                    })
+                })
 
-                        cells.forEach((row, rdx) => {
-                            row.forEach((cell, cdx) => {
-                                ctx.fillStyle = cell ? fgColor : bgColor
-                                const x = Math.round(cdx * tileW) + whiteSpace
-                                const y = Math.round(rdx * tileH) + whiteSpace
-                                const w = (Math.ceil((cdx + 1) * tileW) - Math.floor(cdx * tileW))
-                                const h = (Math.ceil((rdx + 1) * tileH) - Math.floor(rdx * tileH))
-                                ctx.fillRect(x, y, w, h)
-                            })
-                        })
-
+                return toDataURL({ width, height }, canvas)
+                    .then((base64Url) => {
                         ctx.restore()
-                        resolve(canvas.toDataURL())
+                        return base64Url
                     })
             })
 
             let promise = Promise.resolve()
 
-            promise = promise.then((imageUrl) => {
-                return renderCanvas(imageUrl)
+            promise = promise.then(() => {
+                return renderCanvas()
             })
 
             promise = promise.then((base64Url) => {
                 setBase64Url(base64Url)
-            }, (errMsg) => {
-                console.error(errMsg)
+            }, (err) => {
+                this.triggerEvent('error', err)
+                // console.error(err)
             })
 
             return promise

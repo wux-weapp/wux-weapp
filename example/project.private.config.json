@@ -263,6 +263,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "vcode",
+          "pathName": "pages/vcode/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

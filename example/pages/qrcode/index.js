@@ -1,10 +1,12 @@
 import ad from '../index/ad'
 
+const ratio = wx.getSystemInfoSync().pixelRatio
+
 ad({
     data: {
         value: 'https://github.com/wux-weapp/wux-weapp',
         fgColor: 'black',
-        whiteSpace: [10],
+        whiteSpace: 10,
         qrcodeStatus: 'expired',
     },
     onChange(e) {
@@ -17,10 +19,19 @@ ad({
         })
     },
     onSliderChange(e) {
-        const value = e.detail.value
-        this.setData({
-            whiteSpace: [value],
-        })
+        console.log('onSliderChange', e.detail)
+        const whiteSpace = e.detail.value[0]
+        if (this.data.whiteSpace !== whiteSpace) {
+            this.setData({
+                whiteSpace,
+            })
+        }
+    },
+    QRCodeLoad(e) {
+        console.log('QRCodeLoad', e.detail)
+    },
+    QRCodeError(e) {
+        console.log('QRCodeError', e.detail)
     },
     onRefresh() {
         console.log('onRefresh')
@@ -49,6 +60,8 @@ ad({
         const canvas = that.getCanvasNode()
         wx.canvasToTempFilePath({
             canvas,
+            destWidth: 200 * ratio,
+            destHeight: 200 * ratio,
             success: (res) => {
                 wx.previewImage({
                     urls: [res.tempFilePath],
@@ -63,6 +76,8 @@ ad({
         const canvas = that.getCanvasNode()
         wx.canvasToTempFilePath({
             canvas,
+            destWidth: 200 * ratio,
+            destHeight: 200 * ratio,
             success: (res) => {
                 wx.saveImageToPhotosAlbum({
                     filePath: res.tempFilePath,

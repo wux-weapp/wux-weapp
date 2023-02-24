@@ -13,5 +13,7 @@
       image="{{ image }}"
       width="{{ width }}"
       height="{{ height }}"
+      bind:load="onWaterMarkLoad"
+      bind:error="onWaterMarkError"
     />
 </view>
