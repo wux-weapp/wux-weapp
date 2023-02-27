@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "Ellipsis",
+    "usingComponents": {
+        "wux-ellipsis": "../../dist/ellipsis/index"
+    }
+}

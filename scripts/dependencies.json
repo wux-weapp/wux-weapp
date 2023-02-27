@@ -91,6 +91,10 @@
         "files": ["divider"],
         "dependencies": []
     },
+    "ellipsis": {
+        "files": ["ellipsis"],
+        "dependencies": []
+    },
     "fab-button": {
         "files": ["fab-button"],
         "dependencies": []

@@ -1,0 +1,17 @@
+<view class="wux-class {{ classes.wrap }}" bindtap="onTap">
+    <block wx:if="{{ !exceeded }}">
+        <text>{{ content }}</text>
+    </block>
+    <block wx:elif="{{ expanded }}">
+        <text>{{ content }}</text>
+        <text class="{{ classes.collapsed }}" wx-if="{{ exceeded && collapseText }}" data-expanded="0" catchtap="setExpanded">{{ collapseText }}</text>
+    </block>
+    <block wx:else>
+        <text>{{ ellipsised.leading }}</text>
+        <text class="{{ classes.expanded }}" wx-if="{{ exceeded && expandText }}" data-expanded="1" catchtap="setExpanded">{{ expandText }}</text>
+        <text>{{ ellipsised.tailing }}</text>
+    </block>
+</view>
+<view class="wux-class {{ classes.container }}" style="{{ containerStyle }}" wx:if="{{ containerStyle }}">
+    {{ innerText }}
+</view>

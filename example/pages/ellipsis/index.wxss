@@ -1,0 +1,4 @@
+/* pages/ellipsis/index.wxss */
+.word-break {
+    word-break: break-word;
+}

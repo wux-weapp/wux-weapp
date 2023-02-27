@@ -1,0 +1,30 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Ellipsis</view>
+        <view class="page__desc">文本省略</view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+        <view class="sub-title">尾部省略</view>
+        <wux-ellipsis direction="end" content="{{ content }}" bind:click="onContentClick" />
+        <view class="sub-title">头部省略</view>
+        <wux-ellipsis direction="start" content="{{ content }}" />
+        <view class="sub-title">中间省略</view>
+        <wux-ellipsis direction="middle" content="{{ content }}" />
+        <view class="sub-title">多行省略</view>
+        <wux-ellipsis rows="3" content="{{ content }}" />
+        <view class="sub-title">展开收起</view>
+        <wux-ellipsis expandText="展开" collapseText="收起" content="{{ content }}" />
+        <view class="sub-title">仅展开</view>
+        <wux-ellipsis direction="end" expandText="展开" content="{{ content }}" />
+        <wux-ellipsis direction="start" expandText="展开" content="{{ content }}" />
+        <wux-ellipsis direction="middle" expandText="展开" content="{{ content }}" />
+        <view class="sub-title">默认展开</view>
+        <wux-ellipsis defaultExpanded expandText="展开" collapseText="收起" content="{{ content }}" />
+        <view class="sub-title">emoji</view>
+        <wux-ellipsis expandText="展开" collapseText="收起" content="🐮🐮🐮🐶🐶🐶🐱🐱🐱🐯🐯🐯🐻🐻🐻🐮🐮🐮🐶🐶🐶🐱🐱🐱🐯🐯🐯🐻🐻🐻" />
+        <view class="sub-title">数字或英文</view>
+        <wux-ellipsis wux-class="word-break" expandText="展开" collapseText="收起" content="6666666666666666666666666666666666666666666666666666" />
+        <wux-ellipsis wux-class="word-break" expandText="展开" collapseText="收起" content="bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" />
+        <view class="page__desc">当文本内容中包含大量数字或英文时，文本内容无法省略；此时，如果需要让文本省略生效，可以手动添加 word-break 样式（如 word-break: break-word），从而实现自动省略。</view>
+    </view>
+</view>

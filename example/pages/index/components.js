@@ -238,6 +238,11 @@ export default [{
         url: '/pages/divider/index',
     },
     {
+        title: 'Ellipsis',
+        remark: '文本省略',
+        url: '/pages/ellipsis/index',
+    },
+    {
         title: 'FabButton',
         remark: '浮动按钮',
         url: '/pages/fab-button/index',

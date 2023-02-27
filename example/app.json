@@ -23,6 +23,7 @@
     "pages/date-picker-view/index",
     "pages/divider/index",
     "pages/dialog/index",
+    "pages/ellipsis/index",
     "pages/fab-button/index",
     "pages/filterbar/index",
     "pages/floating-panel/index",

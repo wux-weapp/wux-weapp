@@ -270,6 +270,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "ellipsis",
+          "pathName": "pages/ellipsis/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

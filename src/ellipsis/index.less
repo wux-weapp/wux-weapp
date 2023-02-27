@@ -1,0 +1,28 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-ellipsis {
+    overflow: hidden;
+    line-height: 1.5;
+
+    &--container {
+        position: fixed;
+        left: -9999PX;
+        top: -9999PX;
+        z-index: -1000;
+        height: auto;
+        min-height: auto;
+        max-height: auto;
+        text-overflow: clip;
+        white-space: normal;
+        -webkit-line-clamp: unset;
+        display: block;
+    }
+
+    &__collapsed,
+    &__expanded {
+        display: inline;
+        color: @positive;
+        cursor: pointer;
+    }
+}
