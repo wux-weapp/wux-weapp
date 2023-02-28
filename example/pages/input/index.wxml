@@ -36,7 +36,7 @@
                 <wux-input clear label="WeChat" />
             </wux-cell>
             <wux-cell hover-class="none">
-                <wux-input clear label="QQ" placeholder="Input your QQ" />
+                <wux-input clear onlyShowClearWhenFocus="{{ false }}" label="QQ" placeholder="Input your QQ" />
             </wux-cell>
         </wux-cell-group>
         <wux-cell-group title="Extra">

@@ -277,6 +277,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "search-bar",
+          "pathName": "pages/search-bar/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

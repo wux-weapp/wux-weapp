@@ -10,5 +10,7 @@
         <wux-search-bar clear focus />
         <view class="sub-title">Show cancel button</view>
         <wux-search-bar clear show-cancel value="{{ value }}" controlled placeholder="Search" bind:change="onChange" bind:focus="onFocus" bind:blur="onBlur" bind:confirm="onConfirm" bind:clear="onClear" bind:cancel="onCancel" />
+        <view class="sub-title">Always show clear button</view>
+        <wux-search-bar clear onlyShowClearWhenFocus="{{ false }}" />
     </view>
 </view>
