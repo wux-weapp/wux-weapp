@@ -150,7 +150,7 @@ baseComponent({
             const { disabled, url, isLink, openType, delta } = this.data
             if (!disabled) {
                 this.triggerEvent('click')
-                if (isLink) {
+                if (isLink && url) {
                     withNativeRoutes({
                         url,
                         openType,
