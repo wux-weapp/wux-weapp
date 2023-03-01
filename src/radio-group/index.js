@@ -123,8 +123,8 @@ baseComponent({
 
             return {
                 value,
-                displayValue: displayValue[0] || '',
-                selectedIndex: selectedIndex[0] || '',
+                displayValue: displayValue[0] != null ? displayValue[0] : '',
+                selectedIndex: selectedIndex[0] != null ? selectedIndex[0] : 0,
                 selectedValue: value,
                 cols,
             }
