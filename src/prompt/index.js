@@ -32,6 +32,10 @@ baseComponent({
             type: Boolean,
             value: false,
         },
+        wrapStyle: {
+            type: [String, Object],
+            value: '',
+        },
     },
     computed: {
         classes: ['prefixCls, buttons', function(prefixCls, btns) {
