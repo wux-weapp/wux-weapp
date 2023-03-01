@@ -127,7 +127,13 @@ baseComponent({
             this.onChange({ ...e.detail, index })
         },
         getValue(value = this.data.inputValue, cols = this.data.keys) {
-            const checkedValues = cols.filter((option) => value.includes(option.value))
+            // Keep sort with value
+            const checkedValues = value.reduce((acc, val) => (
+                [
+                    ...acc,
+                    ...cols.filter((option) => option.value === val),
+                ]
+            ), [])
             const displayValue = checkedValues.map((option) => option.title) || []
             const allValues = cols.map((option) => option.value)
             const selectedIndex = value.map((n) => allValues.indexOf(n))
