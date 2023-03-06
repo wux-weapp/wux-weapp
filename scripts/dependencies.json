@@ -201,7 +201,7 @@
     },
     "popup-select": {
         "files": ["popup-select"],
-        "dependencies": ["popup", "radio", "checkbox"]
+        "dependencies": ["popup", "prompt", "cell", "radio", "checkbox"]
     },
     "progress": {
         "files": ["progress"],

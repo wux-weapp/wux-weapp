@@ -53,6 +53,10 @@ baseComponent({
             type: String,
             value: 'balanced',
         },
+        wrapStyle: {
+            type: [String, Object],
+            value: '',
+        },
     },
     data: {
         index: 0,

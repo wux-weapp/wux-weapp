@@ -28,9 +28,9 @@
                 <wux-checkbox title="Java" value="1" />
                 <wux-checkbox title="PHP" value="2" />
             </wux-checkbox-group>
-            <wux-checkbox-group name="e" value="{{ ['1'] }}" title="Disabled">
+            <wux-checkbox-group name="e" value="{{ value4 }}" title="Disabled" bind:change="onChange4">
                 <wux-checkbox title="AV" value="1" disabled />
-                <wux-checkbox title="PHP" value="2" disabled />
+                <wux-checkbox title="PHP" value="2" />
             </wux-checkbox-group>
             <wux-checkbox-group name="f" value="{{ value5 }}" options="{{ options }}" title="Options" bind:change="onChange5" />
             <view class="btn-area">

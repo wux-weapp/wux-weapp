@@ -6,6 +6,8 @@
     <view class="page__bd page__bd_spacing">
         <view class="sub-title">Default</view>
         <wux-spin wux-class="spin" />
+        <view class="sub-title">Color</view>
+        <wux-spin wux-class="spin" spinColor="#33cd5f" />
         <view class="sub-title">Size</view>
         <wux-spin wux-class="spin" size="small" />
         <wux-spin wux-class="spin" size="default" />

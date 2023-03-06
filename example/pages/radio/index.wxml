@@ -28,9 +28,9 @@
                 <wux-radio title="Java" value="1" />
                 <wux-radio title="PHP" value="2" />
             </wux-radio-group>
-            <wux-radio-group name="e" title="Disabled" value="1">
+            <wux-radio-group name="e" title="Disabled" value="{{ value4 }}" bind:change="onChange4">
                 <wux-radio title="AV" value="1" disabled />
-                <wux-radio title="PHP" value="2" disabled />
+                <wux-radio title="PHP" value="2" />
             </wux-radio-group>
             <wux-radio-group name="f" value="{{ value5 }}" options="{{ options }}" title="Options" bind:change="onChange5" />
             <view class="btn-area">

@@ -20,3 +20,68 @@ export function getRealValue(options = [], value = '', multiple = false) {
     }
     return newValue.filter((n) => values.includes(n))
 }
+
+export const defaultFieldNames = {
+    title: 'title',
+    value: 'value',
+    options: 'options',
+}
+
+export function fillFieldNames(fieldNames = {}) {
+    const { title, value, options } = { ...defaultFieldNames, ...fieldNames }
+  
+    return {
+        title: title || defaultFieldNames.title,
+        value: value || defaultFieldNames.value,
+        options: options || defaultFieldNames.options,
+    }
+}
+
+export function flattenOptions(options, { fieldNames = defaultFieldNames } = {}) {
+    const flattenList = []
+
+    const {
+        title: fieldTitle,
+        value: fieldValue,
+        options: fieldOptions,
+    } = fillFieldNames(fieldNames)
+
+    function dig(list, isGroupOption) {
+        list.forEach((data) => {
+            data = typeof data === 'string' ? ({ [fieldTitle]: data, [fieldValue]: data }) : data
+            const title = data[fieldTitle]
+
+            if (isGroupOption || !(fieldOptions in data)) {
+                const value = data[fieldValue]
+
+                // Option
+                flattenList.push({
+                    ...data,
+                    isGroupOption,
+                    data,
+                    title,
+                    value,
+                })
+            } else {
+                let grpTitle = title
+                if (grpTitle === undefined) {
+                    grpTitle = data.title
+                }
+
+                // Option Group
+                flattenList.push({
+                    ...data,
+                    isGroup: true,
+                    data,
+                    title: grpTitle,
+                })
+
+                dig(data[fieldOptions], true)
+            }
+        })
+    }
+
+    dig(options, false)
+
+    return flattenList
+}

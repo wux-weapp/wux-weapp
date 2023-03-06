@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import styleToCssString from '../helpers/styleToCssString'
 import eventsMixin from '../helpers/eventsMixin'
 import withNativeRoutes from '../helpers/withNativeRoutes'
 
@@ -113,9 +114,19 @@ baseComponent({
             type: Number,
             value: 1,
         },
+        wrapStyle: {
+            type: [String, Object],
+            value: '',
+            observer(newVal) {
+                this.setData({
+                    extStyle: styleToCssString(newVal),
+                })
+            },
+        },
     },
     data: {
         isLast: false,
+        extStyle: '',
     },
     computed: {
         classes: ['prefixCls, hoverClass, isLast, hasLine, isLink, disabled', function(prefixCls, hoverClass, isLast, hasLine, isLink, disabled) {

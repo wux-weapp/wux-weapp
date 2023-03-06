@@ -284,6 +284,20 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "radio",
+          "pathName": "pages/radio/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "checkbox",
+          "pathName": "pages/checkbox/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

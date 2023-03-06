@@ -10,11 +10,18 @@
             <wux-popup-select value="{{ value1 }}" options="{{ options1 }}" data-index="1" bind:confirm="onConfirm" bind:valueChange="onValueChange">
                 <wux-cell title="Single" is-link extra="{{ displayValue1 }}"></wux-cell>
             </wux-popup-select>
-            <wux-popup-select value="{{ value2 }}" options="{{ options2 }}" multiple data-index="2" bind:confirm="onConfirm" bind:valueChange="onValueChange">
+            <wux-popup-select value="{{ value2 }}" options="{{ options2 }}" data-index="2" bind:confirm="onConfirm" bind:valueChange="onValueChange">
                 <wux-cell title="Multiple" is-link extra="{{ displayValue2 }}"></wux-cell>
             </wux-popup-select>
             <wux-popup-select value="{{ value3 }}" options="{{ options3 }}" multiple max="3" data-index="3" bind:confirm="onConfirm" bind:valueChange="onValueChange">
                 <wux-cell title="Multiple & max = 3" is-link extra="{{ displayValue3 }}"></wux-cell>
+            </wux-popup-select>
+            <wux-popup-select value="{{ value4 }}" options="{{ options4 }}" data-index="4" bind:confirm="onConfirm" bind:valueChange="onValueChange">
+                <wux-cell title="Group" is-link extra="{{ displayValue4 }}"></wux-cell>
+            </wux-popup-select>
+            <wux-popup-select value="{{ value5 }}" options="{{ options5 }}" notFoundContent="{{ null }}" data-index="5" bind:confirm="onConfirm" bind:valueChange="onValueChange" bind:visibleChange="onVisibleChange5">
+                <wux-cell title="Async" is-link extra="{{ displayValue5 }}"></wux-cell>
+                <wux-spin slot="notFoundContent" spinColor="dark" />
             </wux-popup-select>
         </wux-cell-group>
         <view class="button-sp-area">

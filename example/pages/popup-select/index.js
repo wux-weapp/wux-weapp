@@ -5,9 +5,13 @@ ad({
         value1: '',
         value2: '',
         value3: '',
+        value4: '',
+        value5: '',
         displayValue1: '请选择',
         displayValue2: '请选择',
         displayValue3: '请选择',
+        displayValue4: '请选择',
+        displayValue5: '请选择',
         options1: ['法官', '医生', '猎人', '学生', '记者', '其他'],
         options2: [{
             title: 'iPhone 3GS',
@@ -18,6 +22,7 @@ ad({
         }, {
             title: 'iPhone 5S',
             value: '003',
+            disabled: true,
         }, {
             title: 'iPhone 6',
             value: '004',
@@ -27,6 +32,7 @@ ad({
         }, {
             title: 'iPhone 6P',
             value: '006',
+            disabled: true,
         }, {
             title: 'iPhone 6SP',
             value: '007',
@@ -56,6 +62,23 @@ ad({
             title: '睡觉',
             value: '6',
         }],
+        options4: [
+            {
+                title: '富二代',
+                options: [
+                    { title: '王撕葱', value: 'wang' },
+                    { title: '秦愤', value: 'qin' },
+                ],
+            },
+            {
+                title: '练习生',
+                options: [
+                    { title: '蔡🏀', value: 'cai' },
+                    { title: '赵四', value: 'zhao', disabled: true },
+                ],
+            },
+        ],
+        options5: [],
     },
     setValue(values, key) {
         this.setData({
@@ -77,5 +100,15 @@ ad({
     },
     onClick() {
         this.setData({ visible: true })
+    },
+    onVisibleChange5(e) {
+        if (e.detail.visible && !this.data.options5.length) {
+            setTimeout(() => {
+                this.setData({
+                    options5: this.data.options1,
+                    value5: this.data.options1[1],
+                })
+            }, 3000)
+        }
     },
 })
