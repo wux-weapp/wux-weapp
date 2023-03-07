@@ -6,6 +6,7 @@
     "pages/actionsheet/index",
     "pages/alert/index",
     "pages/animation-group/index",
+    "pages/app/index",
     "pages/avatar/index",
     "pages/backdrop/index",
     "pages/badge/index",

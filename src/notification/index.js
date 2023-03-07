@@ -1,17 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
-
-const defaults = {
-    prefixCls: 'wux-notification',
-    classNames: 'wux-animate--slideInDown',
-    image: '',
-    title: '',
-    text: '',
-    duration: 3000,
-    data: '',
-    onClick() {},
-    onClose() {},
-}
+import { defaults } from './utils'
 
 let _notification = null
 

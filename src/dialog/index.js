@@ -1,27 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
-
-const defaults = {
-    prefixCls: 'wux-dialog',
-    title: '',
-    content: '',
-    buttons: [],
-    verticalButtons: !1,
-    resetOnClose: false,
-    closable: false,
-    mask: true,
-    maskClosable: true,
-    zIndex: 1000,
-}
-
-const defaultOptions = {
-    onCancel() {},
-    cancelText: '取消',
-    cancelType: 'default',
-    onConfirm() {},
-    confirmText: '确定',
-    confirmType: 'primary',
-}
+import { defaults, defaultOptions } from './utils'
 
 baseComponent({
     useFunc: true,
@@ -187,6 +166,7 @@ baseComponent({
          */
         alert(opts = {}) {
             return this.open(Object.assign({
+                ...opts,
                 buttons: [{
                     text: opts.confirmText || defaultOptions.confirmText,
                     type: opts.confirmType || defaultOptions.confirmType,
@@ -194,7 +174,7 @@ baseComponent({
                         typeof opts.onConfirm === 'function' && opts.onConfirm(e)
                     },
                 } ],
-            }, opts))
+            }))
         },
         /**
          * 显示dialog组件
@@ -210,6 +190,7 @@ baseComponent({
          */
         confirm(opts = {}) {
             return this.open(Object.assign({
+                ...opts,
                 buttons: [{
                     text: opts.cancelText || defaultOptions.cancelText,
                     type: opts.cancelType || defaultOptions.cancelType,
@@ -224,7 +205,7 @@ baseComponent({
                         typeof opts.onConfirm === 'function' && opts.onConfirm(e)
                     },
                 }],
-            }, opts))
+            }))
         },
         /**
          * 显示dialog组件
@@ -253,6 +234,7 @@ baseComponent({
             }
 
             return this.open(Object.assign({
+                ...opts,
                 prompt: prompt,
                 buttons: [{
                     text: opts.cancelText || defaultOptions.cancelText,
@@ -268,7 +250,7 @@ baseComponent({
                         typeof opts.onConfirm === 'function' && opts.onConfirm(e, this.data.prompt.response)
                     },
                 }],
-            }, opts))
+            }))
         },
     },
 })

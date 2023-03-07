@@ -404,6 +404,11 @@ export default [{
 {
     title: 'Expanding 拓展组件',
     children: [{
+        title: 'App',
+        remark: '包裹组件',
+        url: '/pages/app/index',
+    },
+    {
         title: 'FilterBar',
         remark: '筛选栏',
         url: '/pages/filterbar/index',

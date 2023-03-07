@@ -15,6 +15,10 @@
         "files": ["animation-group"],
         "dependencies": []
     },
+    "app": {
+        "files": ["app"],
+        "dependencies": ["dialog", "loading", "notification", "toast", "toptips"]
+    },
     "avatar": {
         "files": ["avatar"],
         "dependencies": []

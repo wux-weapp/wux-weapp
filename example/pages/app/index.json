@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "App",
+    "usingComponents": {
+        "wux-app": "../../dist/app/index",
+        "wux-button": "../../dist/button/index"
+    }
+}

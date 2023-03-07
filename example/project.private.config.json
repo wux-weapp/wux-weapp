@@ -298,6 +298,34 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "app",
+          "pathName": "pages/app/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "loading",
+          "pathName": "pages/loading/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "notification",
+          "pathName": "pages/notification/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "toast",
+          "pathName": "pages/toast/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

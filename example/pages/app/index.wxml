@@ -1,0 +1,15 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">App</view>
+        <view class="page__desc">包裹组件</view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+        <wux-app shadowRoot id="wux-app">
+            <wux-button block type="light" bind:click="showDialog">Open dialog</wux-button>
+            <wux-button block type="light" bind:click="showLoading">Open loading</wux-button>
+            <wux-button block type="light" bind:click="showNotification">Open notification</wux-button>
+            <wux-button block type="light" bind:click="showToast">Open toast</wux-button>
+            <wux-button block type="light" bind:click="showToptips">Open toptips</wux-button>
+        </wux-app>
+    </view>
+</view>
