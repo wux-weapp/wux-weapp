@@ -8,6 +8,8 @@ import { defaults as notificationConfig } from '../notification/utils'
 import { defaults as toastConfig } from '../toast/utils'
 import { defaults as toptipsConfig } from '../toptips/utils'
 
+let uuid = 0
+
 const appConfig = {
     dialog: omit({
         ...dialogConfig,
@@ -20,7 +22,128 @@ const appConfig = {
     toptips: omit(toptipsConfig, ['success']),
 }
 
-let uuid = 0
+const warning = (valid, componentName) => {
+    if (!valid && console !== undefined) {
+        console.error(`[Warning: ${componentName}] 无法找到对应的组件，请按文档说明使用组件`)
+    }
+}
+
+const useRef = (componentName, vm) => {
+    const { prefixCls, uuid } = vm.data
+    const selector =  `#${prefixCls}__${componentName}-${uuid}`
+    const componentCtx = vm.selectComponent(selector)
+
+    return {
+        current: componentCtx,
+    }
+}
+
+const useDialog = (props, vm) => {
+    const holderRef = useRef('dialog', vm)
+    const wrapAPI = {}
+    const keys = ['show', 'open', 'alert', 'confirm', 'prompt']
+    keys.forEach((type) => {
+        wrapAPI[type] = (config) => {
+            if (!holderRef.current) {
+                warning(false, 'Dialog')
+                const fakeResult = () => {}
+                fakeResult.then = () => {}
+                return fakeResult
+            }
+            return holderRef.current[type]({ ...props, ...config })
+        }
+    })
+    return [
+        wrapAPI,
+        holderRef,
+    ]
+}
+
+const useLoading = (props, vm) => {
+    const holderRef = useRef('loading', vm)
+    const show = (config) => {
+        if (!holderRef.current) {
+            warning(false, 'Loading')
+            const fakeResult = () => {}
+            fakeResult.then = () => {}
+            return fakeResult
+        }
+        return holderRef.current.show({ ...props, ...config })
+    }
+    const hide = () => {
+        if (holderRef.current) {
+            holderRef.current.hide()
+        }
+    }
+    return [
+        { show, hide },
+        holderRef,
+    ]
+}
+
+const useNotification = (props, vm) => {
+    const holderRef = useRef('notification', vm)
+    const show = (config) => {
+        if (!holderRef.current) {
+            warning(false, 'Notification')
+            const fakeResult = () => {}
+            fakeResult.then = () => {}
+            return fakeResult
+        }
+        return holderRef.current.show({ ...props, ...config })
+    }
+    const hide = () => {
+        if (holderRef.current) {
+            holderRef.current.hide()
+        }
+    }
+    return [
+        { show, hide },
+        holderRef,
+    ]
+}
+
+const useToast = (props, vm) => {
+    const holderRef = useRef('toast', vm)
+    const wrapAPI = {}
+    const keys = ['show', 'success', 'warning', 'info', 'error']
+    keys.forEach((type) => {
+        wrapAPI[type] = (config) => {
+            if (!holderRef.current) {
+                warning(false, 'Toast')
+                const fakeResult = () => {}
+                fakeResult.then = () => {}
+                return fakeResult
+            }
+            return holderRef.current[type]({ ...props, ...config })
+        }
+    })
+    return [
+        wrapAPI,
+        holderRef,
+    ]
+}
+
+const useToptips = (props, vm) => {
+    const holderRef = useRef('toptips', vm)
+    const wrapAPI = {}
+    const keys = ['show', 'success', 'warn', 'info', 'error']
+    keys.forEach((type) => {
+        wrapAPI[type] = (config) => {
+            if (!holderRef.current) {
+                warning(false, 'Toptips')
+                const fakeResult = () => {}
+                fakeResult.then = () => {}
+                return fakeResult
+            }
+            return holderRef.current[type]({ ...props, ...config })
+        }
+    })
+    return [
+        wrapAPI,
+        holderRef,
+    ]
+}
 
 baseComponent({
     useExport: true,
@@ -55,15 +178,22 @@ baseComponent({
     },
     data: {
         extStyle: '',
+        uuid,
+        memoizedAPI: null,
+    },
+    observers: {
+        ['prefixCls, config'](...args) {
+            this.updateMemoizedAPI(args[1])
+        },
     },
     computed: {
-        classes: ['prefixCls', function(prefixCls) {
+        classes: ['prefixCls, uuid', function(prefixCls, uuid) {
             const wrap = classNames(prefixCls)
-            const dialog = `${prefixCls}__dialog-${this.uuid}`
-            const loading = `${prefixCls}__loading-${this.uuid}`
-            const notification = `${prefixCls}__notification-${this.uuid}`
-            const toast = `${prefixCls}__toast-${this.uuid}`
-            const toptips = `${prefixCls}__toptips-${this.uuid}`
+            const dialog = `${prefixCls}__dialog-${uuid}`
+            const loading = `${prefixCls}__loading-${uuid}`
+            const notification = `${prefixCls}__notification-${uuid}`
+            const toast = `${prefixCls}__toast-${uuid}`
+            const toptips = `${prefixCls}__toptips-${uuid}`
 
             return {
                 wrap,
@@ -76,80 +206,35 @@ baseComponent({
         }],
     },
     methods: {
-        getCtx(componentName) {
-            const { prefixCls } = this.data
-            const selector =  `#${prefixCls}__${componentName}-${this.uuid}`
-            const componentCtx = this.selectComponent(selector)
-
-            if (!componentCtx) {
-                throw new Error('无法找到对应的组件，请按文档说明使用组件')
+        updateMemoizedAPI(config) {
+            const [dialogAPI] = useDialog(appConfig.dialog, this)
+            const [loadingAPI] = useLoading(config.loading, this)
+            const [notificationAPI] = useNotification(config.notification, this)
+            const [toastAPI] = useToast(config.toast, this)
+            const [toptipsAPI] = useToptips(config.toptips, this)
+            const memoizedAPI = {
+                dialog: dialogAPI,
+                loading: loadingAPI,
+                notification: notificationAPI,
+                toast: toastAPI,
+                toptips: toptipsAPI,
             }
-
-            return componentCtx
+            if (this.data.memoizedAPI !== memoizedAPI) {
+                this.setData({
+                    memoizedAPI,
+                })
+            }
         },
         ['export']() {
-            const useApp = () => {
-                const { config: appConfig } = this.data
-
-                // ============================== Dialog ===============================
-                const dialogInst = this.getCtx('dialog')
-                const dialogApi = {
-                    show: (config) => dialogInst.show({ ...appConfig.dialog, ...config }),
-                    open: (config) => dialogInst.open({ ...appConfig.dialog, ...config }),
-                    alert: (config) => dialogInst.alert({ ...appConfig.dialog, ...config }),
-                    confirm: (config) => dialogInst.confirm({ ...appConfig.dialog, ...config }),
-                    prompt: (config) => dialogInst.prompt({ ...appConfig.dialog, ...config }),
-                }
-
-                // ============================== Loading ===============================
-                const loadingInst = this.getCtx('loading')
-                const loadingApi = {
-                    show: (config) => loadingInst.show({ ...appConfig.loading, ...config }),
-                    hide: loadingInst.hide.bind(loadingInst),
-                }
-                
-                // ============================== Notification ===============================
-                const notificationInst = this.getCtx('notification')
-                const notificationApi = {
-                    show: (config) => notificationInst.show({ ...appConfig.notification, ...config }),
-                    hide: notificationInst.hide.bind(notificationInst),
-                }
-
-                // ============================== Toast ===============================
-                const toastInst = this.getCtx('toast')
-                const toastApi = {
-                    show: (config) => toastInst.show({ ...appConfig.toast, ...config }),
-                    success: (config) => toastInst.success({ ...appConfig.toast, ...config }),
-                    warning: (config) => toastInst.warning({ ...appConfig.toast, ...config }),
-                    error: (config) => toastInst.error({ ...appConfig.toast, ...config }),
-                    info: (config) => toastInst.info({ ...appConfig.toast, ...config }),
-                }
-
-                // ============================== Toptips ===============================
-                const toptipsInst = this.getCtx('toptips')
-                const toptipsApi = {
-                    show: (config) => toptipsInst.show({ ...appConfig.toptips, ...config }),
-                    success: (config) => toptipsInst.success({ ...appConfig.toptips, ...config }),
-                    warn: (config) => toptipsInst.warn({ ...appConfig.toptips, ...config }),
-                    error: (config) => toptipsInst.error({ ...appConfig.toptips, ...config }),
-                    info: (config) => toptipsInst.info({ ...appConfig.toptips, ...config }),
-                }
-
-                return {
-                    dialog: dialogApi,
-                    loading: loadingApi,
-                    notification: notificationApi,
-                    toast: toastApi,
-                    toptips: toptipsApi,
-                }
-            }
-
             return {
-                useApp,
+                useApp: () => this.data.memoizedAPI,
             }
         },
     },
-    created() {
-        this.uuid = ++uuid
+    attached() {
+        this.setData({
+            uuid: ++uuid,
+        })
+        this.updateMemoizedAPI(this.data.config)
     },
 })
