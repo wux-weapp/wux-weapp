@@ -1,1 +1,14 @@
 /* pages/pagination/index.wxss */
+.swiper {
+    position: relative;
+}
+
+.swiper__pagination {
+    position: absolute;
+    right: 0;
+    bottom: 15px;
+    border-radius: 22px 0 0 22px;
+    background: rgba(0, 0, 0, .2);
+    color: #fff;
+    padding: 0 15px;
+}

@@ -20,14 +20,21 @@
             <view slot="next">Next</view>
         </wux-pagination>
         <view class="sub-title">Show number only</view>
-        <wux-pagination defaultCurrent="1" total="5" mode="number">
-            <view slot="prev">Prev</view>
-            <view slot="next">Next</view>
-        </wux-pagination>
+        <wux-pagination defaultCurrent="1" total="5" mode="number" />
         <view class="sub-title">Point style</view>
-        <wux-pagination defaultCurrent="1" total="5" mode="pointer">
-            <view slot="prev">Prev</view>
-            <view slot="next">Next</view>
-        </wux-pagination>
+        <wux-pagination defaultCurrent="1" total="5" mode="pointer" />
+        <view class="sub-title">With swiper</view>
+        <view class="swiper">
+          <swiper style="height: 256px;" current="{{ swiperCurrent }}" bindchange="onSwiperChange">
+              <block wx:for="{{ 5 }}" wx:key="index">
+                  <swiper-item>
+                      <image style="width: 100%; height: 100%;" mode="aspectFill" src="{{ 'https://picsum.photos/750/750/?random&s=' + item }}"></image>
+                  </swiper-item>
+              </block>
+          </swiper>
+          <view class="swiper__pagination">
+            <wux-pagination controlled current="{{ swiperCurrent + 1 }}" total="5" mode="number" />
+          </view>
+        </view>
     </view>
 </view>

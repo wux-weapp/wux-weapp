@@ -326,6 +326,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "pagination",
+          "pathName": "pages/pagination/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

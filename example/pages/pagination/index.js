@@ -3,6 +3,13 @@ import ad from '../index/ad'
 ad({
     data: {
         current: 1,
+        swiperCurrent: 0,
+    },
+    onSwiperChange(e) {
+        console.log('onSwiperChange', e)
+        this.setData({
+            swiperCurrent: e.detail.current,
+        })
     },
     onChange(e) {
         console.log('onChange', e)
