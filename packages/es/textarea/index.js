@@ -2,6 +2,7 @@ import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
 import eventsMixin from '../helpers/eventsMixin'
 import styleToCssString from '../helpers/styleToCssString'
+import { nativeTextareaProps } from './props'
 
 const defaultEvents = {
     onChange() {},
@@ -21,6 +22,7 @@ baseComponent({
         },
     },
     properties: {
+        ...nativeTextareaProps,
         prefixCls: {
             type: String,
             value: 'wux-textarea',
@@ -50,76 +52,11 @@ baseComponent({
             type: Boolean,
             value: false,
         },
-        placeholder: {
-            type: String,
-            value: '',
-        },
-        placeholderStyle: {
-            type: [String, Object],
-            value: '',
-            observer(newVal) {
-                this.setData({
-                    extStyle: styleToCssString(newVal),
-                })
-            },
-        },
-        placeholderClass: {
-            type: String,
-            value: 'textarea-placeholder',
-        },
         disabled: {
             type: Boolean,
             value: false,
         },
-        maxlength: {
-            type: Number,
-            value: 140,
-        },
-        autoHeight: {
-            type: Boolean,
-            value: false,
-        },
-        cursorSpacing: {
-            type: Number,
-            value: 11,
-        },
-        focus: {
-            type: Boolean,
-            value: false,
-        },
-        cursor: {
-            type: Number,
-            value: -1,
-        },
-        showConfirmBar: {
-            type: Boolean,
-            value: true,
-        },
-        selectionStart: {
-            type: Number,
-            value: -1,
-        },
-        selectionEnd: {
-            type: Number,
-            value: -1,
-        },
-        adjustPosition: {
-            type: Boolean,
-            value: true,
-        },
-        holdKeyboard: {
-            type: Boolean,
-            value: false,
-        },
-        disableDefaultPadding: {
-            type: Boolean,
-            value: false,
-        },
-        confirmType: {
-            type: String,
-            value: 'return',
-        },
-        confirmHold: {
+        readOnly: {
             type: Boolean,
             value: false,
         },
@@ -146,13 +83,19 @@ baseComponent({
         inputFocus: false,
         inputRows: 1,
         inputHeight: '',
-        extStyle: '',
+        internalPlaceholderStyle: '',
+    },
+    observers: {
+        placeholderStyle(placeholderStyle) {
+            this.setInternalPlaceholderStyle(placeholderStyle)
+        },
     },
     computed: {
-        classes: ['prefixCls, disabled, inputFocus, error, hasCount', function(prefixCls, disabled, inputFocus, hasError, hasCount) {
+        classes: ['prefixCls, disabled, readOnly, inputFocus, error, hasCount', function(prefixCls, disabled, readOnly, inputFocus, hasError, hasCount) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--focus`]: inputFocus,
                 [`${prefixCls}--disabled`]: disabled,
+                [`${prefixCls}--readonly`]: readOnly,
                 [`${prefixCls}--error`]: hasError,
                 [`${prefixCls}--has-count`]: hasCount,
             })
@@ -179,6 +122,15 @@ baseComponent({
         }],
     },
     methods: {
+        setInternalPlaceholderStyle(placeholderStyle) {
+            const internalPlaceholderStyle = styleToCssString(placeholderStyle)
+
+            if (this.data.internalPlaceholderStyle !== internalPlaceholderStyle) {
+                this.setData({
+                    internalPlaceholderStyle,
+                })
+            }
+        },
         updateHeight(val = this.data.rows) {
             // rows 取值为大于或等于 1 的正整数
             const rows = Math.max(1, parseInt(val))
@@ -270,10 +222,11 @@ baseComponent({
         },
     },
     attached() {
-        const { defaultValue, value, controlled } = this.data
+        const { defaultValue, value, controlled, placeholderStyle } = this.data
         const inputValue = controlled ? value : defaultValue
 
         this.updated(inputValue)
+        this.setInternalPlaceholderStyle(placeholderStyle)
     },
     ready() {
         this.updateHeight()

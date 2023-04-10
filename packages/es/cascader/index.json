@@ -1,6 +1,7 @@
 {
     "component": true,
     "usingComponents": {
-        "wux-popup": "../popup/index"
+        "wux-popup": "../popup/index",
+        "wux-cascader-view": "../cascader-view/index"
     }
 }

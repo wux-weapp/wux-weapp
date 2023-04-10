@@ -1,14 +1,7 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
 import { $wuxBackdrop } from '../index'
-
-const defaults = {
-    prefixCls: 'wux-loading',
-    classNames: 'wux-animate--fadeIn',
-    text: '数据加载中',
-    mask: true,
-    transparent: true,
-}
+import { defaults } from './utils'
 
 baseComponent({
     useFunc: true,

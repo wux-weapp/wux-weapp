@@ -100,14 +100,11 @@
   top: 16rpx
 }
 .wux-search-bar__clear {
-  display: none;
+  display: block;
   position: absolute;
   top: 16rpx;
   right: 0;
   padding: 0 20rpx
-}
-.wux-search-bar--focus .wux-search-bar__clear {
-  display: block
 }
 .wux-search-bar--disabled {
   opacity: .3

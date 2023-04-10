@@ -6,5 +6,15 @@
         max-height: @scroll-view-size;
     }
 
+    &__prompt {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: @scroll-view-size / 2;
+        padding: 24px 12px;
+        box-sizing: border-box;
+    }
+
     .toolbar-style(@heading-color, @stable-inverse, @balanced);
 }

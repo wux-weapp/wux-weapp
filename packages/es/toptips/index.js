@@ -1,15 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
-
-const defaults = {
-    prefixCls: 'wux-toptips',
-    classNames: 'wux-animate--slideInDown',
-    icon: 'cancel',
-    hidden: false,
-    text: '',
-    duration: 3000,
-    success() {},
-}
+import { defaults } from './utils'
 
 let _toptips = null
 
@@ -88,23 +79,27 @@ baseComponent({
         },
         success(opts = {}) {
             return this.show(Object.assign({
+                ...opts,
                 icon: 'success',
-            }, opts))
+            }))
         },
         info(opts = {}) {
             return this.show(Object.assign({
+                ...opts,
                 icon: 'info',
-            }, opts))
+            }))
         },
         warn(opts = {}) {
             return this.show(Object.assign({
+                ...opts,
                 icon: 'warn',
-            }, opts))
+            }))
         },
         error(opts = {}) {
             return this.show(Object.assign({
+                ...opts,
                 icon: 'cancel',
-            }, opts))
+            }))
         },
     },
 })

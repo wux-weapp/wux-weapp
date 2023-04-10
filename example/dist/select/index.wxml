@@ -5,6 +5,7 @@
     options="{{ options }}"
     multiple="{{ multiple }}"
     max="{{ max }}"
+    notFoundContent="{{ notFoundContent }}"
     toolbar="{{ toolbar }}"
     visible="{{ visible }}"
     controlled

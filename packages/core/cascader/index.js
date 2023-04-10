@@ -1,12 +1,11 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
-import arrayTreeFilter from '../helpers/arrayTreeFilter'
 
-const WUX_CASCADER = 'wux-cascader'
 const defaultFieldNames = {
     label: 'label',
     value: 'value',
     children: 'children',
+    disabled: 'disabled',
 }
 
 baseComponent({
@@ -23,6 +22,12 @@ baseComponent({
         value: {
             type: Array,
             value: [],
+            observer(newVal) {
+                if (this.data.controlled) {
+                    this.setActiveValue(newVal)
+                    this.setInnerValue(newVal)
+                }
+            },
         },
         controlled: {
             type: Boolean,
@@ -32,9 +37,25 @@ baseComponent({
             type: String,
             value: '',
         },
+        cancelText: {
+            type: String,
+            value: '取消',
+        },
+        confirmText: {
+            type: String,
+            value: '确定',
+        },
         options: {
             type: Array,
             value: [],
+        },
+        full: {
+            type: Boolean,
+            value: false,
+        },
+        height: {
+            type: [String, Number],
+            value: 'auto',
         },
         chooseTitle: {
             type: String,
@@ -43,230 +64,153 @@ baseComponent({
         visible: {
             type: Boolean,
             value: false,
+            observer(shouldRender) {
+                if (shouldRender) {
+                    this.setShouldRender(true)
+                }
+            },
         },
         defaultFieldNames: {
             type: Object,
             value: defaultFieldNames,
         },
+        skipAnimation: {
+            type: Boolean,
+            value: false,
+        },
     },
     data: {
-        activeOptions: [],
-        activeIndex: 0,
-        bodyStyle: '',
+        shouldRender: false,
+        innerValue: [],
         activeValue: [],
-        showOptions: [],
-        fieldNames: {},
     },
     computed: {
         classes: ['prefixCls', function(prefixCls) {
             const wrap = classNames(prefixCls)
             const hd = `${prefixCls}__hd`
-            const title = `${prefixCls}__title`
-            const menus = `${prefixCls}__menus`
-            const menu = `${prefixCls}__menu`
             const bd = `${prefixCls}__bd`
+            const toolbar = `${prefixCls}__toolbar`
             const inner = `${prefixCls}__inner`
-            const scrollView = `${prefixCls}__scroll-view`
-            const option = `${prefixCls}__option`
-            const item = `${prefixCls}__item`
-            const icon = `${prefixCls}__icon`
-            const ft = `${prefixCls}__ft`
+            const cancel = classNames(`${prefixCls}__button`, {
+                [`${prefixCls}__button--cancel`]: true,
+            })
+            const confirm = classNames(`${prefixCls}__button`, {
+                [`${prefixCls}__button--confirm`]: true,
+            })
+            const hover = `${prefixCls}__button--hover`
+            const title = `${prefixCls}__title`
 
             return {
                 wrap,
                 hd,
-                title,
-                menus,
-                menu,
                 bd,
+                toolbar,
                 inner,
-                scrollView,
-                option,
-                item,
-                icon,
-                ft,
+                cancel,
+                confirm,
+                hover,
+                title,
             }
         }],
     },
-    observers: {
-        value(newVal) {
-            if (this.data.controlled) {
-                this.setData({ activeValue: newVal })
-                this.getCurrentOptions(newVal)
-            }
-        },
-        options() {
-            this.getCurrentOptions(this.data.activeValue)
-        },
-    },
     methods: {
-        getActiveOptions(activeValue) {
-            const { options } = this.data
-            const value = this.getFieldName('value')
-            const childrenKeyName = this.getFieldName('children')
-
-            return arrayTreeFilter(options, (option, level) => option[value] === activeValue[level], { childrenKeyName })
-        },
-        getShowOptions(activeValue) {
-            const { options } = this.data
-            const children = this.getFieldName('children')
-            const result = this.getActiveOptions(activeValue).map((activeOption) => activeOption[children]).filter((activeOption) => !!activeOption)
-
-            return [options, ...result]
-        },
-        getMenus(activeValue = [], hasChildren) {
-            const { options, chooseTitle } = this.data
-            const activeOptions = this.getActiveOptions(activeValue)
-
-            if (hasChildren) {
-                const value = this.getFieldName('value')
-                const label = this.getFieldName('label')
-
-                activeOptions.push({
-                    [value]: WUX_CASCADER,
-                    [label]: chooseTitle,
+        setShouldRender(shouldRender) {
+            if (this.data.shouldRender !== shouldRender) {
+                this.setData({
+                    shouldRender,
                 })
             }
-
-            return activeOptions
         },
-        getNextActiveValue(value, optionIndex) {
-            let { activeValue } = this.data
-
-            activeValue = activeValue.slice(0, optionIndex + 1)
-            activeValue[optionIndex] = value
-
-            return activeValue
-        },
-        updated(currentOptions, optionIndex, condition, callback) {
-            const value = this.getFieldName('value')
-            const children = this.getFieldName('children')
-            const hasChildren = currentOptions[children] && currentOptions[children].length > 0
-            const activeValue = this.getNextActiveValue(currentOptions[value], optionIndex)
-            const activeOptions = this.getMenus(activeValue, hasChildren)
-            const activeIndex = activeOptions.length - 1
-            const showOptions = this.getShowOptions(activeValue)
-            const params = {
-                activeValue,
-                activeOptions,
-                activeIndex,
-                showOptions,
-            }
-
-            // 判断 hasChildren 计算需要更新的数据
-            if (hasChildren || (activeValue.length === showOptions.length && (optionIndex = Math.max(0, optionIndex - 1)))) {
-                params.bodyStyle = `transform: translate(${-50 * optionIndex}%)`
-                params.showOptions = showOptions
-            }
-
-            // 判断是否需要 setData 更新数据
-            if (condition) {
-                this.setData(params)
-            }
-
-            // 回调函数
-            if (typeof callback === 'function') {
-                callback.call(this, currentOptions, activeOptions, !hasChildren)
-            }
-        },
-        /**
-         * 更新级联数据
-         * @param {Array} activeValue 当前选中值
-         */
-        getCurrentOptions(activeValue = this.data.activeValue) {
-            const optionIndex = Math.max(0, activeValue.length - 1)
-            const activeOptions = this.getActiveOptions(activeValue)
-            const currentOptions = activeOptions[optionIndex]
-
-            if (currentOptions) {
-                this.updated(currentOptions, optionIndex, true)
-            } else {
-                const value = this.getFieldName('value')
-                const label = this.getFieldName('label')
-
-                activeOptions.push({
-                    [value]: WUX_CASCADER,
-                    [label]: this.data.chooseTitle,
+        setActiveValue(activeValue, forceTrigger) {
+            if (this.data.activeValue !== activeValue || forceTrigger) {
+                this.setData({
+                    activeValue,
                 })
-
-                const showOptions = this.getShowOptions(activeValue)
-                const activeIndex = activeOptions.length - 1
-                const params = {
-                    showOptions,
-                    activeOptions,
-                    activeIndex,
-                    bodyStyle: '',
-                }
-
-                this.setData(params)
             }
         },
-        /**
-         * 点击菜单时的回调函数
-         */
-        onMenuClick(e) {
-            const { menuIndex } = e.currentTarget.dataset
-            const index = menuIndex > 1 ? menuIndex - 1 : 0
-            const bodyStyle = `transform: translate(${-50 * index}%)`
-
-            this.setData({
-                bodyStyle,
-                activeIndex: menuIndex,
-            })
+        setInnerValue(innerValue) {
+            if (this.data.innerValue !== innerValue) {
+                this.setData({
+                    innerValue,
+                })
+            }
+        },
+        getValue(value = this.data.activeValue) {
+            this.cascaderView = this.cascaderView || this.selectComponent('#wux-cascader-view')
+            return this.cascaderView && this.cascaderView.getValue(value)
         },
         /**
-         * 点击选项时的回调函数
+         * 切换面板的回调
          */
-        onItemSelect(e) {
-            const { item, optionIndex } = e.currentTarget.dataset
+        onTabsChange(e) {
+            this.triggerEvent('tabsChange', e.detail)
+        },
+        /**
+         * 叶子节点加载的回调
+         */
+        onLoadOptions(e) {
+            this.triggerEvent('load', e.detail)
+        },
+        /**
+         * 选项改变时触发
+         */
+        onChange(e) {
+            const { visible } = this.data
+            const props = e.detail
+            const { value: innerValue } = props
 
-            // 判断是否禁用
-            if (!item || item.disabled) return
+            this.setInnerValue(innerValue)
 
-            // updated
-            this.updated(item, optionIndex, !this.data.controlled, this.onChange)
+            if (visible) {
+                this.triggerEvent('change', props)
+            }
         },
         /**
          * 组件关闭时的回调函数
          */
-        onPopupClose() {
+        close() {
             this.triggerEvent('close')
         },
         /**
-         * 选择完成时的回调函数
+         * 组件关闭时重置其内部数据
          */
-        onChange(currentOptions = {}, activeOptions = [], done = false) {
-            const options = activeOptions.filter((n) => n[this.getFieldName('value')] !== WUX_CASCADER)
-            const value = options.map((n) => n[this.getFieldName('value')])
+        onClosed() {
+            const { activeValue: innerValue } = this.data
 
-            // 判断是否异步加载
-            if (currentOptions.isLeaf === false && !currentOptions.children) {
-                this.emitEvent({ value, options, done: false })
-                this.triggerEvent('load', { value, options })
-                return
+            this.setInnerValue(innerValue)
+            this.setShouldRender(false)
+        },
+        /**
+         * 点击确定按钮时的回调函数
+         */
+        onConfirm() {
+            const { innerValue: activeValue } = this.data
+
+            if (!this.data.controlled) {
+                this.setActiveValue(activeValue, true)
             }
 
-            // 正常加载
-            this.emitEvent({ value, options, done })
+            this.triggerEvent('confirm', { ...this.getValue(activeValue) })
+            this.close()
         },
-        emitEvent(params = {}) {
-            this.triggerEvent('change', params)
-
-            // 当选择完成时关闭组件
-            if (params.done) {
-                this.onPopupClose()
-            }
+        /**
+         * 点击取消按钮时的回调函数
+         */
+        onCancel() {
+            this.triggerEvent('cancel', { ...this.getValue() })
+            this.close()
         },
-        getFieldName(name) {
-            return this.data.fieldNames[name]
-        },
+        /**
+         * 阻止移动触摸
+         */
+        noop() {},
     },
     attached() {
-        const { defaultValue, value, controlled } = this.data
+        const { defaultValue, value, controlled, visible: shouldRender } = this.data
         const activeValue = controlled ? value : defaultValue
-        const fieldNames = Object.assign({}, defaultFieldNames, this.data.defaultFieldNames)
 
-        this.setData({ activeValue, fieldNames })
-        this.getCurrentOptions(activeValue)
+        this.setActiveValue(activeValue)
+        this.setInnerValue(activeValue)
+        this.setShouldRender(shouldRender)
     },
 })

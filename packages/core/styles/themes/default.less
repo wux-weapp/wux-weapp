@@ -394,6 +394,12 @@
 @fab-button-royal-bg: @royal;
 @fab-button-dark-bg: @dark;
 
+// Floating Panel
+@floating-panel-bg: @component-background;
+@floating-panel-bar-bg: @icon-color-base;
+@floating-panel-hd-size: 28px;
+@floating-panel-hd-radius: @border-radius-lg;
+
 // Slider
 @slider-font-size: @font-size-base;
 @slider-radius: @border-radius-base;
@@ -502,10 +508,10 @@
 @calendar-text-font-size: 15px;
 
 // Cascader
-@cascader-font-size: 17px;
+@cascader-font-size: @font-size-base;
 @cascader-bg: @background-color-base;
-@cascader-color: #444;
-@cascader-inner-bg: #fff;
+@cascader-color: @heading-color;
+@cascader-inner-bg: @component-background;
 @cascader-item-size: 40px;
 @cascader-item-active-color: @assertive;
 
@@ -515,6 +521,8 @@
 @cell-padding: @spacing-base @spacing-lg;
 @cell-group-hd-padding: @spacing-lg @spacing-lg 9px;
 @cell-group-ft-padding: 9px @spacing-lg @spacing-lg;
+@cell-group-margin: @spacing-lg;
+@cell-group-bd-radius: @border-radius-lg;
 
 // Prompt
 @prompt-bg: #f2f3f4;
@@ -549,6 +557,7 @@
 @z-index-gallery: 1000;
 // @z-index-action-sheet: 1010;
 @z-index-fab-button: 1020;
+@z-index-floating-panel: 1020;
 @z-index-popover: 1030;
 // @z-index-calendar: 1040;
 // @z-index-cascader: 1040;

@@ -2,6 +2,10 @@
 @import "../styles/themes/index.less";
 
 .@{wux-prefix}-cell-group {
+    &--card {
+        margin: @cell-group-margin;
+    }
+
     &__hd {
         padding: @cell-group-hd-padding;
         font-size: @font-size-base;
@@ -13,6 +17,7 @@
     &__bd {
         position: relative;
         background-color: @cell-bg;
+        overflow: hidden;
 
         &::after {
             .hairline(@border-color-split);
@@ -26,5 +31,19 @@
         padding: @cell-group-ft-padding;
         font-size: @font-size-base;
         color: @text-color-secondary;
+    }
+
+    &--card &__hd {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    &--card &__bd,
+    &--card &__ft {
+        border-radius: @cell-group-bd-radius;
+
+        &::after {
+            display: none;
+        }
     }
 }

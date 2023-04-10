@@ -1,0 +1,9 @@
+{
+    "component": true,
+    "usingComponents": {
+        "wux-tabs": "../tabs/index",
+        "wux-tab": "../tab/index",
+        "wux-radio-group": "../../dist/radio-group/index",
+        "wux-radio": "../../dist/radio/index"
+    }
+}

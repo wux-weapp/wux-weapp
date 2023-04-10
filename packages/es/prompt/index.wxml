@@ -1,4 +1,4 @@
-<wux-animation-group wux-class="{{ classes.wrap }}" in="{{ visible }}" classNames="{{ classNames }}">
+<wux-animation-group wux-class="{{ classes.wrap }}" in="{{ visible }}" classNames="{{ classNames }}" wrapStyle="{{ wrapStyle }}">
     <view class="{{ classes.bd }}">
         <image src="{{ icon }}" class="{{ classes.icon }}" wx:if="{{ icon }}" />
         <view class="{{ classes.title }}" wx:if="{{ title }}">{{ title }}</view>

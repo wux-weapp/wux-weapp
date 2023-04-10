@@ -1,6 +1,15 @@
-<wux-cell-group id="wux-cell-group" wux-class="{{ prefixCls }}" prefixCls="{{ cellGroupPrefixCls }}" title="{{ title }}" label="{{ label }}">
+<wux-cell-group
+    id="wux-cell-group"
+    wux-class="{{ prefixCls }}"
+    prefixCls="{{ cellGroupPrefixCls }}"
+    title="{{ title }}"
+    label="{{ label }}"
+    mode="{{ mode }}"
+    bodyStyle="{{ bodyStyle }}"
+>
     <block wx:for="{{ common.getOptions(options) }}" wx:for-item="option" wx:key="index" wx:if="{{ options.length > 0 }}">
         <wux-radio
+            class="{{ prefixCls + '__radio' }}"
             prefixCls="{{ option.prefixCls || 'wux-radio' }}"
             cellPrefixCls="{{ option.cellPrefixCls || 'wux-cell' }}"
             selectablePrefixCls="{{ option.selectablePrefixCls || 'wux-selectable' }}"
@@ -9,7 +18,8 @@
             label="{{ option.label || '' }}"
             value="{{ option.value }}"
             checked="{{ inputValue === option.value }}"
-            disabled="{{ option.disabled }}"
+            disabled="{{ option.disabled || disabled }}"
+            readOnly="{{ option.readOnly || readOnly }}"
             color="{{ option.color || 'balanced' }}"
             data-index="{{ index }}"
             bind:change="onRadioChange"

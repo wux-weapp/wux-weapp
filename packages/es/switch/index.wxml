@@ -1,3 +1,21 @@
-<view class="wux-class {{ classes.wrap }}">
-    <view class="{{ classes.input }}" style="{{ inputChecked ? inputStyle : '' }}" bindtap="onTap"></view>
+<view
+    class="wux-class {{ classes.wrap }}"
+    aria-role="switch"
+    aria-label="switch"
+    aria-checked="{{ inputChecked }}"
+    aria-disabled="{{ disabled }}"
+>
+    <view class="{{ classes.input }}" style="{{ inputChecked ? inputStyle : '' }}" bindtap="onTap">
+        <view class="{{ classes.text }}">
+            <block wx:if="{{ inputChecked }}">
+                <view wx:if="{{ checkedText }}">{{ checkedText }}</view>
+                <slot name="checked" wx:else></slot>
+            </block>
+            <block wx:else>
+                <view wx:if="{{ uncheckedText }}">{{ uncheckedText }}</view>
+                <slot name="unchecked" wx:else></slot>
+            </block>
+        </view>
+        <view class="{{ classes.spin }}" wx:if="{{ loading }}"></view>
+    </view>
 </view>

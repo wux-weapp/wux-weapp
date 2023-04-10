@@ -1,5 +1,7 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import styleToCssString from '../helpers/styleToCssString'
+import { isPresetColor } from '../helpers/colors'
 
 baseComponent({
     properties: {
@@ -28,9 +30,16 @@ baseComponent({
             type: Boolean,
             value: false,
         },
+        spinColor: {
+            type: String,
+            value: 'default',
+            observer: 'setStyles',
+        },
     },
     data: {
         spinVisible: true,
+        dotStyle: '',
+        tipStyle: '',
     },
     computed: {
         classes: ['prefixCls, size, nested, tip, spinVisible', function(prefixCls, size, nested, showText, spinVisible) {
@@ -64,6 +73,23 @@ baseComponent({
                     spinVisible,
                 })
             }
+        },
+        setStyles(spinColor) {
+            const inputColor = isPresetColor(spinColor)
+            const dotStyle = inputColor !== 'default' ? styleToCssString({ backgroundColor: inputColor }) : ''
+            const tipStyle = inputColor !== 'default' ? styleToCssString({ color: inputColor }) : ''
+            if (
+                this.data.dotStyle !== dotStyle ||
+                this.data.tipStyle !== tipStyle
+            ) {
+                this.setData({
+                    dotStyle,
+                    tipStyle,
+                })
+            }
+        },
+        attached() {
+            this.setStyles(this.data.spinColor)
         },
     },
 })

@@ -21,6 +21,7 @@
     bindlaunchapp="bindlaunchapp"
     bindchooseavatar="bindchooseavatar"
     bindtap="onTap"
+    style="{{ extStyle }}"
 >
     <view class="{{ classes.hd }}">
         <block wx:if="{{ thumb }}">

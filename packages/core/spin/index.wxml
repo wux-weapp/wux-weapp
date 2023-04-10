@@ -1,12 +1,11 @@
 <view class="wux-class {{ classes.wrap }}">
     <wux-animation-group wux-class="{{ classes.anim }}" in="{{ spinVisible }}" classNames="{{ classNames }}">
         <view class="{{ classes.dots }}">
-            <view class="{{ classes.dot }}">dot</view>
-            <view class="{{ classes.dot }}">dot</view>
-            <view class="{{ classes.dot }}">dot</view>
-            <view class="{{ classes.dot }}">dot</view>
+            <block wx:for="{{ [1, 2, 3, 4] }}" wx:key="*this">
+                <view class="{{ classes.dot }}" style="{{ dotStyle }}">dot</view>
+            </block>
         </view>
-        <view class="{{ classes.tip }}" wx:if="{{ tip }}">{{ tip }}</view>
+        <view class="{{ classes.tip }}" wx:if="{{ tip }}" style="{{ tipStyle }}">{{ tip }}</view>
     </wux-animation-group>
     <view class="{{ classes.container }}" wx:if="{{ nested }}">
         <slot></slot>

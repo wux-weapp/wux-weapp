@@ -10,9 +10,9 @@
 			type="{{ type }}"
 			password="{{ password }}"
 			placeholder="{{ placeholder }}"
-			placeholder-style="{{ extStyle }}"
+			placeholder-style="{{ internalPlaceholderStyle }}"
 			placeholder-class="{{ placeholderClass }}"
-			disabled="{{ disabled }}"
+			disabled="{{ disabled || readOnly }}"
 			maxlength="{{ maxlength }}"
 			cursor-spacing="{{ cursorSpacing }}"
 			focus="{{ focus }}"
@@ -38,7 +38,7 @@
 			bindnicknamereview="onNicknameReview"
 		/>
 	</view>
-	<view class="{{ classes.clear }}" bindtap="onClear" wx:if="{{ clear && !disabled && inputValue && inputValue.length > 0 }}">
+	<view class="{{ classes.clear }}" bindtap="onClear" wx:if="{{ shouldShowClear }}">
 		<icon type="clear" color="#B2B2B2" size="14" />
 	</view>
 	<view class="{{ classes.error }}" bindtap="onError" wx:if="{{ error }}">

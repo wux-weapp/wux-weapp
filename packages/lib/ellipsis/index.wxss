@@ -1,0 +1,1 @@
+.wux-ellipsis{overflow:hidden;line-height:1.5}.wux-ellipsis--container{position:fixed;left:-9999PX;top:-9999PX;z-index:-1000;height:auto;min-height:auto;max-height:auto;text-overflow:clip;white-space:normal;-webkit-line-clamp:unset;display:block}.wux-ellipsis__collapsed,.wux-ellipsis__expanded{display:inline;color:#387ef5;cursor:pointer}

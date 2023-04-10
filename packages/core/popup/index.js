@@ -36,9 +36,28 @@ baseComponent({
             type: [String, Object],
             value: '',
             observer(newVal) {
-                this.setData({
-                    extStyle: styleToCssString(newVal),
-                })
+                this.updateStyle(newVal, 'popupWrapStyle')
+            },
+        },
+        containerStyle: {
+            type: [String, Object],
+            value: '',
+            observer(newVal) {
+                this.updateStyle(newVal, 'popupContainerStyle')
+            },
+        },
+        contentStyle: {
+            type: [String, Object],
+            value: '',
+            observer(newVal) {
+                this.updateStyle(newVal, 'popupContentStyle')
+            },
+        },
+        bodyStyle: {
+            type: [String, Object],
+            value: '',
+            observer(newVal) {
+                this.updateStyle(newVal, 'popupBodyStyle')
             },
         },
         closable: {
@@ -82,7 +101,10 @@ baseComponent({
     data: {
         transitionName: '',
         popupVisible: false,
-        extStyle: '',
+        popupWrapStyle: '',
+        popupContainerStyle: '',
+        popupContentStyle: '',
+        popupBodyStyle: '',
     },
     computed: {
         classes: ['prefixCls, position, safeAreaConfig, isIPhoneX', function(prefixCls, position, safeAreaConfig, isIPhoneX) {
@@ -113,6 +135,14 @@ baseComponent({
         }],
     },
     methods: {
+        updateStyle(value, key) {
+            const newVal = styleToCssString(value)
+            if (this.data[key] !== newVal) {
+                this.setData({
+                    [key]: newVal,
+                })
+            }
+        },
         /**
          * 点击关闭按钮事件
          */
@@ -128,7 +158,13 @@ baseComponent({
             }
         },
         /**
-         * 组件关闭后的回调函数
+         * 完全展示后触发
+         */
+        onEntered() {
+            this.triggerEvent('showed')
+        },
+        /**
+         * 完全关闭后触发
          */
         onExited() {
             this.triggerEvent('closed')

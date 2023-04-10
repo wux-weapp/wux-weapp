@@ -1,0 +1,23 @@
+<view class="wux-class {{ classes.wrap }}">
+    <view class="{{ classes.label }}" wx:if="{{ label }}">
+        <wux-divider text="{{ label }}" />
+    </view>
+    <view class="{{ classes.links }}" wx:if="{{ links.length > 0 }}">
+        <block wx:for="{{ links }}" wx:for-item="link" wx:key="index">
+            <view class="{{ classes.link }}" data-index="{{ index }}" catchtap="clickLinkItem">
+                {{ link.text }}
+            </view>
+            <wux-divider direction="vertical" show-text="{{ false }}" wx:if="{{ index !== links.length - 1 }}" />
+        </block>
+    </view>
+    <view class="{{ classes.content }}" wx:if="{{ content }}">
+        {{ content }}
+    </view>
+    <view class="{{ classes.chips }}" wx:if="{{ chips.length > 0 }}">
+        <block wx:for="{{ chips }}" wx:for-item="chip" wx:key="index">
+            <view class="{{ classes.chip }} {{ chip.type === 'link' ? classes.chip + '--link' : '' }}" data-index="{{ index }}" catchtap="clickChipItem">
+                {{ chip.text }}
+            </view>
+        </block>
+    </view>
+</view>

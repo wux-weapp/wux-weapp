@@ -13,7 +13,9 @@
   position: fixed
 }
 .wux-water-mark__canvas {
-  display: none;
+  position: absolute;
+  left: -9999em;
+  top: -9999em;
   opacity: 0;
   visibility: hidden
 }

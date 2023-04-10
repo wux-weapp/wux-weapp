@@ -1,14 +1,14 @@
 @import "../themes/index.less";
 @import "./setOnepx.less";
 
-.toolbar-style(@text-color, @cancel-text-color, @confirm-text-color) {
+.toolbar-style(@text-color, @cancel-text-color, @confirm-text-color, @background-color: #f7f7f8) {
     &__toolbar {
         position: relative;
         width: 100%;
         font-size: 17px;
         line-height: 1.5;
         color: @text-color;
-        background: #f7f7f8;
+        background-color: @background-color;
 
         &::before {
             .setTopLine(@border-color-split);

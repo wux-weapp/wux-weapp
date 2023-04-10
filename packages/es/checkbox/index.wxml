@@ -1,3 +1,24 @@
-<wux-cell wux-class="{{ classes.cell }}" prefixCls="{{ cellPrefixCls }}" title="{{ title }}" label="{{ label }}" extra="{{ extra }}">
-    <wux-selectable slot="header" wux-class="{{ classes.selectable }}" prefixCls="{{ selectablePrefixCls }}" value="{{ value }}" checked="{{ inputChecked }}" color="{{ color }}" disabled="{{ disabled }}" controlled bind:change="checkboxChange" />
+<wux-cell
+    wux-class="{{ classes.cell }}"
+    prefixCls="{{ cellPrefixCls }}"
+    title="{{ title }}"
+    label="{{ label }}"
+    extra="{{ extra }}"
+    hasLine="{{ !isLast }}"
+    disabled="{{ disabled || context.disabled }}"
+    hoverClass="{{ !(readOnly || context.readOnly) ? 'default' : 'none' }}"
+    wrapStyle="{{ wrapStyle }}"
+>
+    <wux-selectable
+        slot="header"
+        wux-class="{{ classes.selectable }}"
+        prefixCls="{{ selectablePrefixCls }}"
+        value="{{ value }}"
+        checked="{{ inputChecked }}"
+        color="{{ color }}"
+        disabled="{{ disabled || context.disabled }}"
+        readOnly="{{ readOnly || context.readOnly }}"
+        controlled
+        bind:change="checkboxChange"
+    />
 </wux-cell>

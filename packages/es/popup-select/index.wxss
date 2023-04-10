@@ -1,13 +1,25 @@
 .wux-select__scroll-view {
   max-height: 540rpx
 }
+.wux-select__prompt {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  min-height: 270rpx;
+  padding: 48rpx 24rpx;
+  box-sizing: border-box
+}
 .wux-select__toolbar {
   position: relative;
   width: 100%;
   font-size: 34rpx;
   line-height: 1.5;
   color: rgba(0,0,0,.85);
-  background: #f7f7f8
+  background-color: #f7f7f8
 }
 .wux-select__toolbar::before {
   content: " ";

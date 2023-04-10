@@ -2,20 +2,22 @@
 @import "../styles/themes/index.less";
 
 .@{wux-prefix}-divider {
-    display: block;
-    height: 1px;
-    width: 100%;
-    margin: 15px 0;
-    clear: both;
-    border-top: 1px solid @border-color-base;
+    &--horizontal {
+        display: block;
+        height: 1px;
+        width: 100%;
+        margin: @spacing-lg 0;
+        clear: both;
+        border-top: 1px solid @border-color-base;
+    }
 
-    &--text {
+    &--horizontal&--text {
         display: table;
         white-space: nowrap;
         text-align: center;
         background: transparent;
-        font-weight: 500;
-        color: @heading-color;
+        font-weight: normal;
+        color: @text-color-secondary;
         font-size: @font-size-lg;
         border-top: none !important;
 
@@ -33,18 +35,18 @@
         }
     }
 
-    &--dashed {
+    &--horizontal&--dashed {
         border-top: 1px dashed @border-color-base;
     }
 
-    &--dashed&--text {
+    &--horizontal&--dashed&--text {
         &::before,
         &::after {
             border-top-style: dashed;
         }
     }
 
-    &--text-left {
+    &--horizontal&--text-left {
         &::before {
             width: 5%;
         }
@@ -54,7 +56,7 @@
         }
     }
 
-    &--text-right {
+    &--horizontal&--text-right {
         &::before {
             width: 95%;
         }
@@ -64,8 +66,19 @@
         }
     }
 
-    &__text {
+    &--horizontal &__text {
         display: inline-block;
-        padding: 0 15px;
+        padding: 0 @spacing-lg;
+    }
+
+    &--vertical {
+        position: relative;
+        top: -0.06em;
+        display: inline-block;
+        height: 0.9em;
+        margin: 0 @spacing-lg;
+        vertical-align: middle;
+        border-top: 0;
+        border-left: 1px solid  @border-color-base;
     }
 }

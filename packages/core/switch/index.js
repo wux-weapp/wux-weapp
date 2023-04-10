@@ -28,10 +28,22 @@ baseComponent({
             type: Boolean,
             value: false,
         },
+        loading: {
+            type: Boolean,
+            value: false,
+        },
         color: {
             type: String,
             value: 'balanced',
             observer: 'updateStyle',
+        },
+        checkedText: {
+            type: String,
+            value: '',
+        },
+        uncheckedText: {
+            type: String,
+            value: '',
         },
     },
     data: {
@@ -39,16 +51,24 @@ baseComponent({
         inputChecked: false,
     },
     computed: {
-        classes: ['prefixCls, inputChecked, disabled', function(prefixCls, inputChecked, disabled) {
-            const wrap = classNames(prefixCls)
+        classes: ['prefixCls, inputChecked, disabled, loading, color', function(prefixCls, inputChecked, disabled, loading, color) {
+            const wrap = classNames(prefixCls, {
+                [`${prefixCls}--${color}`]: color,
+                [`${prefixCls}--checked`]: inputChecked,
+                [`${prefixCls}--disabled`]: disabled || loading,
+            })
             const input = classNames(`${prefixCls}__input`, {
                 [`${prefixCls}__input--checked`]: inputChecked,
-                [`${prefixCls}__input--disabled`]: disabled,
+                [`${prefixCls}__input--disabled`]: disabled || loading,
             })
+            const text = `${prefixCls}__text`
+            const spin = `${prefixCls}__spin`
 
             return {
                 wrap,
                 input,
+                text,
+                spin,
             }
         }],
     },
@@ -59,10 +79,10 @@ baseComponent({
             }
         },
         onTap(e) {
-            const { inputChecked, disabled } = this.data
+            const { inputChecked, disabled, loading } = this.data
             const newInputChecked = !inputChecked
 
-            if (disabled) return
+            if (disabled || loading) return
 
             this.triggerEvent('change', { value: newInputChecked })
         },

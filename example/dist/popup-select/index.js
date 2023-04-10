@@ -1,6 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import popupMixin from '../helpers/popupMixin'
-import { getSelectIndex, getRealValue } from './utils'
+import { notFoundContent, getNotFoundContent, getSelectIndex, getRealValue, flattenOptions } from './utils'
 
 baseComponent({
     behaviors: [popupMixin('#wux-select')],
@@ -25,24 +25,38 @@ baseComponent({
             type: Number,
             value: -1,
         },
+        notFoundContent: {
+            type: null,
+            value: notFoundContent,
+            observer(newVal) {
+                this.setData({
+                    mergedNotFoundContent: getNotFoundContent(newVal),
+                })
+            },
+        },
     },
     data: {
         scrollTop: 0,
+        mergedOptions: [],
+        mergedNotFoundContent: null,
     },
     observers: {
         ['options, multiple'](options, multiple) {
+            const mergedOptions = flattenOptions(options)
+            const inputValue = this.getRealValue(mergedOptions, this.data.inputValue, multiple)
             this.setData({
-                inputValue: this.getRealValue(options, this.data.inputValue, multiple),
+                inputValue,
+                mergedOptions,
             })
         },
     },
     methods: {
-        getRealValue(options = this.data.options, value = this.data.inputValue, multiple = this.data.multiple) {
+        getRealValue(options = this.data.mergedOptions, value = this.data.inputValue, multiple = this.data.multiple) {
             return getRealValue(options, value, multiple)
         },
         updated(value, isForce) {
             if (!this.hasFieldDecorator || isForce) {
-                const inputValue = this.getRealValue(this.data.options, value)
+                const inputValue = this.getRealValue(this.data.mergedOptions, value)
                 if (this.data.inputValue !== inputValue) {
                     this.setData({ inputValue })
                 }
@@ -52,7 +66,7 @@ baseComponent({
             if (this.data.popupVisible !== popupVisible) {
                 const params = {
                     mounted: true,
-                    inputValue: this.getRealValue(this.data.options, this.data.value), // forceUpdate
+                    inputValue: this.getRealValue(this.data.mergedOptions, this.data.value), // forceUpdate
                     popupVisible,
                 }
                 this.setData(popupVisible ? params : { popupVisible }, () => {
@@ -105,5 +119,10 @@ baseComponent({
         getBoundingClientRect(callback) {
             return this.selectComponent('#wux-select').getBoundingClientRect(callback)
         },
+    },
+    ready() {
+        this.setData({
+            mergedNotFoundContent: getNotFoundContent(this.data.notFoundContent),
+        })
     },
 })

@@ -1,1 +1,25 @@
-<canvas class="wux-class" canvas-id="{{ canvasId }}" style="width: {{ width + 'px' }}; height: {{ height + 'px' }};" bindtap="onTap"></canvas>
+<view class="wux-class {{ classes.wrap }}" style="{{ wrapStyle }}" bindtap="onTap">
+  <canvas
+    type="2d"
+    id="{{ classes.canvas }}"
+    class="{{ classes.canvas }}"
+  />
+  <image
+    wx:if="{{ base64Url }}"
+    src="{{ base64Url }}"
+    show-menu-by-longpress="{{ showMenuByLongpress }}"
+    class="{{ classes.image }}"
+  />
+  <view class="{{ classes.mask }}" wx:if="{{ base64Url && qrcodeStatus !== 'activated' }}" catchtap="onMaskClick">
+    <wux-spin wx:if="{{ qrcodeStatus === 'loading' }}" />
+    <block wx:elif="{{ qrcodeStatus === 'expired' }}">
+      <view class="{{ classes.expired }}">{{ qrcodeExpiredText }}</view>
+      <view class="{{ classes.refresh }}">
+        <view class="{{ classes.icon }}">
+          <wux-icon type="ios-refresh" size="32rpx" />
+        </view>
+        <text>{{ qrcodeRefreshText }}</text>
+      </view>
+    </block>
+  </view>
+</view>

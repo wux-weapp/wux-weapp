@@ -1,3 +1,5 @@
+import { toDataURL, getCanvas } from '../helpers/canvasPolyfill'
+
 /**
  * 获取范围内的随机数
  * @param {Number} min 最小值
@@ -22,26 +24,25 @@ const randomColor = (min, max) => {
 /**
  * 创建 canvas 绘图上下文
  * @param {Object} ctx canvas 绘图上下文
- * @param {Object} opts 配置项
- * @param {String} opts.str 验证码范围
- * @param {Number} opts.num 验证码长度，默认值 6
- * @param {Number} opts.width 画布宽度，默认值 120
- * @param {Number} opts.height 画布高度，默认值 40
- * @param {String} opts.bgColor 画布背景色
- * @param {String} opts.fontColor 画布字体颜色
- * @param {Boolean} opts.hasPoint 是否显示干扰点，默认 true
- * @param {Boolean} opts.hasLine 是否显示干扰线，默认 true
+ * @param {Object} props 配置项
+ * @param {String} props.str 验证码范围
+ * @param {Number} props.num 验证码长度，默认值 6
+ * @param {Number} props.width 画布宽度，默认值 120
+ * @param {Number} props.height 画布高度，默认值 40
+ * @param {String} props.bgColor 画布背景色
+ * @param {String} props.fontColor 画布字体颜色
+ * @param {Boolean} props.hasPoint 是否显示干扰点，默认 true
+ * @param {Boolean} props.hasLine 是否显示干扰线，默认 true
  */
-const render = (ctx, opts = {}) => {
-    const { str, num, width, height, bgColor, fontColor, hasPoint, hasLine } = opts
+const render = (ctx, props = {}) => {
+    const { str, num, width, height, bgColor, fontColor, hasPoint, hasLine } = props
+    const ratio = wx.getSystemInfoSync().pixelRatio
     let vcode = ''
 
-    if (typeof ctx.setTextBaseline === 'function') {
-        ctx.setTextBaseline('bottom')
-    }
-
     // 绘制矩形，并设置填充色
-    ctx.setFillStyle(bgColor ? bgColor : randomColor(180, 240))
+    ctx.textBaseline = 'bottom'
+    ctx.fillStyle = bgColor ? bgColor : randomColor(180, 240)
+    ctx.scale(ratio, ratio)
     ctx.fillRect(0, 0, width, height)
 
     // 绘制随机生成 n 位的验证码
@@ -54,8 +55,8 @@ const render = (ctx, opts = {}) => {
         const halfHeight = parseInt(height / 2)
 
         vcode += txt
-        ctx.setFillStyle(fontColor ? fontColor : randomColor(10, 100))
-        ctx.setFontSize(fontSize > halfHeight ? halfHeight : fontSize)
+        ctx.fillStyle = fontColor ? fontColor : randomColor(10, 100)
+        ctx.font = `normal normal normal ${fontSize > halfHeight ? halfHeight : fontSize}px sans-serif`
         ctx.translate(x, y)
         ctx.rotate(deg * Math.PI / 180)
         ctx.fillText(txt, 0, 0)
@@ -66,7 +67,7 @@ const render = (ctx, opts = {}) => {
     // 绘制干扰线
     if (!!hasLine) {
         for (let i = 0; i < num; i++) {
-            ctx.setStrokeStyle(randomColor(90, 180))
+            ctx.strokeStyle = randomColor(90, 180)
             ctx.beginPath()
             ctx.moveTo(randomNum(0, width), randomNum(0, height))
             ctx.lineTo(randomNum(0, width), randomNum(0, height))
@@ -77,7 +78,7 @@ const render = (ctx, opts = {}) => {
     // 绘制干扰点
     if (!!hasPoint) {
         for (let i = 0; i < num * 10; i++) {
-            ctx.setFillStyle(randomColor(0, 255))
+            ctx.fillStyle = randomColor(0, 255)
             ctx.beginPath()
             ctx.arc(randomNum(0, width), randomNum(0, height), 1, 0, 2 * Math.PI)
             ctx.fill()
@@ -130,18 +131,48 @@ Component({
         /**
          * 将之前在绘图上下文中的描述（路径、变形、样式）画到 canvas 中
          */
+        createCanvasContext(props) {
+            const { width, height, canvasId } = props
+            const setBase64Url = ({ value, base64Url }) => {
+                this.triggerEvent('change', { value, base64Url })
+            }
+            const renderCanvas = () => getCanvas({ canvasId }, this).then((canvas) => {
+                const ctx = canvas.getContext('2d')
+                const ratio = wx.getSystemInfoSync().pixelRatio
+                const canvasWidth = width * ratio
+                const canvasHeight = height * ratio
+
+                canvas.width = canvasWidth
+                canvas.height = canvasHeight
+    
+                const value = render(ctx, props)
+                return toDataURL({ width, height }, canvas)
+                    .then((base64Url) => {
+                        ctx.restore()
+                        return { value, base64Url }
+                    })
+            })
+
+            let promise = Promise.resolve()
+
+            promise = promise.then(() => {
+                return renderCanvas()
+            })
+
+            promise = promise.then(({ value, base64Url }) => {
+                setBase64Url({ value, base64Url })
+            }, (err) => {
+                this.triggerEvent('error', err)
+                // console.error(err)
+            })
+
+            return promise
+        },
         draw() {
-            const { width, height, canvasId } = this.data
-            this.ctx = this.ctx || wx.createCanvasContext(canvasId, this)
-            this.ctx.clearRect(0, 0, width, height)
-            const value = render(this.ctx, this.data)
-            this.ctx.draw(false, () => this.triggerEvent('change', { value }))
+            this.createCanvasContext(this.data)
         },
     },
-    attached() {
-        this.draw()
-    },
-    detached() {
-        this.ctx = null
+    ready() {
+        this.createCanvasContext(this.data)
     },
 })

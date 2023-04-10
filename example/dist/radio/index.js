@@ -1,5 +1,12 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import { getDefaultContext } from '../helpers/getDefaultContext'
+import { props as radioGroupProps } from '../radio-group/props'
+
+const defaultContext = getDefaultContext(radioGroupProps, [
+    'disabled',
+    'readOnly',
+])
 
 baseComponent({
     relations: {
@@ -49,14 +56,24 @@ baseComponent({
             type: Boolean,
             value: false,
         },
+        readOnly: {
+            type: Boolean,
+            value: false,
+        },
         color: {
             type: String,
             value: 'balanced',
         },
+        wrapStyle: {
+            type: [String, Object],
+            value: '',
+        },
     },
     data: {
-        index: 0,
         inputChecked: false,
+        index: 0,
+        isLast: false,
+        context: defaultContext,
     },
     computed: {
         classes: ['prefixCls', function(prefixCls) {
@@ -71,7 +88,7 @@ baseComponent({
     },
     methods: {
         radioChange(e) {
-            const { value, index, disabled } = this.data
+            const { value, index, disabled, readOnly, context } = this.data
             const parent = this.getRelationNodes('../radio-group/index')[0]
             const item = {
                 checked: e.detail.checked,
@@ -79,14 +96,16 @@ baseComponent({
                 index,
             }
 
-            if (disabled) return
+            if (disabled || context.disabled || readOnly || context.readOnly) return
 
             parent ? parent.onChange(item) : this.triggerEvent('change', item)
         },
-        changeValue(inputChecked = false, index = 0) {
+        changeValue(inputChecked = false, index = 0, isLast = false, context = defaultContext) {
             this.setData({
                 inputChecked,
                 index,
+                isLast,
+                context,
             })
         },
     },

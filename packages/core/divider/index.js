@@ -23,13 +23,18 @@ baseComponent({
             type: Boolean,
             value: true,
         },
+        direction: {
+            type: String,
+            value: 'horizontal',
+        },
     },
     computed: {
-        classes: ['prefixCls, dashed, showText, position', function(prefixCls, dashed, showText, position) {
+        classes: ['prefixCls, dashed, showText, position, direction', function(prefixCls, dashed, showText, position, direction) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--dashed`]: dashed,
                 [`${prefixCls}--text`]: showText,
                 [`${prefixCls}--text-${position}`]: showText && position,
+                [`${prefixCls}--${direction}`]: direction,
             })
             const text = `${prefixCls}__text`
 

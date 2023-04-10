@@ -11,6 +11,7 @@
             show-scrollbar="{{ false }}"
             class="{{ classes.scrollView }}"
             bindscroll="onScrollFix"
+            style="{{ scrollViewStyle }}"
         >
             <slot></slot>
         </scroll-view>
@@ -29,7 +30,7 @@
     </view>
 </block>
 <view wx:else class="wux-class {{ classes.wrap }}">
-    <view class="{{ classes.scrollView }}">
+    <view class="{{ classes.scrollView }}" style="{{ scrollViewStyle }}">
         <slot></slot>
     </view>
 </view>

@@ -1,5 +1,14 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import { getDefaultContext } from '../helpers/getDefaultContext'
+import { props as tabsProps } from '../tabs/props'
+
+const defaultContext = getDefaultContext(tabsProps, [
+    'scroll',
+    'theme',
+    'direction',
+    'activeLineMode',
+])
 
 baseComponent({
     relations: {
@@ -27,10 +36,11 @@ baseComponent({
     },
     data: {
         current: false,
-        scroll: false,
+        context: defaultContext,
     },
     computed: {
-        classes: ['prefixCls, direction, scroll, theme, current, disabled', function(prefixCls, direction, scroll, theme, current, disabled) {
+        classes: ['prefixCls, disabled, current, context', function(prefixCls, disabled, current, context) {
+            const { direction, scroll, theme, activeLineMode } = context
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${direction}`]: direction,
                 [`${prefixCls}--${theme}`]: theme,
@@ -39,7 +49,9 @@ baseComponent({
                 [`${prefixCls}--disabled`]: disabled,
             })
             const title = `${prefixCls}-title`
-            const bar = `${prefixCls}-bar`
+            const bar = classNames(`${prefixCls}-bar`, {
+                [`${prefixCls}-bar--${activeLineMode}`]: activeLineMode,
+            })
 
             return {
                 wrap,
@@ -68,12 +80,10 @@ baseComponent({
                 query.exec()
             })
         },
-        changeCurrent({ current, scroll, theme, direction }) {
+        changeCurrent({ current, context = defaultContext }) {
             this.setData({
                 current,
-                scroll,
-                theme,
-                direction,
+                context,
             })
         },
         onTap() {

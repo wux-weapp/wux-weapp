@@ -13,6 +13,18 @@
 .wux-backdrop--transparent {
   background: 0 0
 }
+.wux-backdrop__bd {
+  z-index: 1
+}
+.wux-backdrop__aria-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none
+}
 .wux-filterbar {
   position: relative;
   z-index: 1000

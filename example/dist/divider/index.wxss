@@ -1,4 +1,4 @@
-.wux-divider {
+.wux-divider--horizontal {
   display: block;
   height: 2rpx;
   width: 100%;
@@ -6,18 +6,18 @@
   clear: both;
   border-top: 2rpx solid #e8e8e8
 }
-.wux-divider--text {
+.wux-divider--horizontal.wux-divider--text {
   display: table;
   white-space: nowrap;
   text-align: center;
   background: 0 0;
-  font-weight: 500;
-  color: rgba(0,0,0,.85);
+  font-weight: 400;
+  color: rgba(0,0,0,.45);
   font-size: 32rpx;
   border-top: none!important
 }
-.wux-divider--text::after,
-.wux-divider--text::before {
+.wux-divider--horizontal.wux-divider--text::after,
+.wux-divider--horizontal.wux-divider--text::before {
   content: '';
   display: table-cell;
   position: relative;
@@ -28,26 +28,36 @@
   border-top-color: #e8e8e8;
   transform: translateY(50%)
 }
-.wux-divider--dashed {
+.wux-divider--horizontal.wux-divider--dashed {
   border-top: 2rpx dashed #e8e8e8
 }
-.wux-divider--dashed.wux-divider--text::after,
-.wux-divider--dashed.wux-divider--text::before {
+.wux-divider--horizontal.wux-divider--dashed.wux-divider--text::after,
+.wux-divider--horizontal.wux-divider--dashed.wux-divider--text::before {
   border-top-style: dashed
 }
-.wux-divider--text-left::before {
+.wux-divider--horizontal.wux-divider--text-left::before {
   width: 5%
 }
-.wux-divider--text-left::after {
+.wux-divider--horizontal.wux-divider--text-left::after {
   width: 95%
 }
-.wux-divider--text-right::before {
+.wux-divider--horizontal.wux-divider--text-right::before {
   width: 95%
 }
-.wux-divider--text-right::after {
+.wux-divider--horizontal.wux-divider--text-right::after {
   width: 5%
 }
-.wux-divider__text {
+.wux-divider--horizontal .wux-divider__text {
   display: inline-block;
   padding: 0 30rpx
+}
+.wux-divider--vertical {
+  position: relative;
+  top: -.06em;
+  display: inline-block;
+  height: .9em;
+  margin: 0 30rpx;
+  vertical-align: middle;
+  border-top: 0;
+  border-left: 2rpx solid #e8e8e8
 }

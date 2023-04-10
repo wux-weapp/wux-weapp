@@ -47,6 +47,14 @@ baseComponent({
             type: String,
             value: '',
         },
+        mode: {
+            type: String,
+            value: 'default',
+        },
+        bodyStyle: {
+            type: [String, Object],
+            value: '',
+        },
     },
     data: {
         activeKey: '',

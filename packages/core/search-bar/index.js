@@ -99,11 +99,35 @@ baseComponent({
             type: Boolean,
             value: false,
         },
+        onlyShowClearWhenFocus: {
+            type: Boolean,
+            value: true,
+        },
     },
     data: {
         inputValue: '',
         inputFocus: false,
+        shouldShowClear: false,
         extStyle: '',
+    },
+    observers: {
+        ['clear, disabled, inputValue, inputFocus, onlyShowClearWhenFocus'](...args) {
+            const [
+                clear,
+                disabled,
+                inputValue,
+                inputFocus,
+                onlyShowClearWhenFocus,
+            ] = args
+
+            this.setClear({
+                clear,
+                disabled,
+                inputValue,
+                inputFocus,
+                onlyShowClearWhenFocus,
+            })
+        },
     },
     computed: {
         classes: ['prefixCls, disabled, inputFocus', function(prefixCls, disabled, inputFocus) {
@@ -136,6 +160,21 @@ baseComponent({
         }],
     },
     methods: {
+        setClear(props) {
+            const shouldShowClear = (() => {
+                if (!props.clear || !props.inputValue || props.disabled) return false
+                if (props.onlyShowClearWhenFocus) {
+                    return props.inputFocus
+                } else {
+                    return true
+                }
+            })()
+            if (this.data.shouldShowClear !== shouldShowClear) {
+                this.setData({
+                    shouldShowClear,
+                })
+            }
+        },
         updated(inputValue) {
             if (this.data.inputValue !== inputValue) {
                 this.setData({
@@ -199,5 +238,6 @@ baseComponent({
         const inputValue = controlled ? value : defaultValue
 
         this.updated(inputValue)
+        this.setClear({ ...this.data, inputValue })
     },
 })

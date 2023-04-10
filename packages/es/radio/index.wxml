@@ -1,3 +1,25 @@
-<wux-cell wux-class="{{ classes.cell }}" prefixCls="{{ cellPrefixCls }}" thumb="{{ thumb }}" title="{{ title }}" label="{{ label }}">
-    <wux-selectable slot="footer" wux-class="{{ classes.selectable }}" prefixCls="{{ selectablePrefixCls }}" type="radio" value="{{ value }}" checked="{{ inputChecked }}" color="{{ color }}" disabled="{{ disabled }}" controlled bind:change="radioChange" />
+<wux-cell
+    wux-class="{{ classes.cell }}"
+    prefixCls="{{ cellPrefixCls }}"
+    thumb="{{ thumb }}"
+    title="{{ title }}"
+    label="{{ label }}"
+    hasLine="{{ !isLast }}"
+    disabled="{{ disabled || context.disabled }}"
+    hoverClass="{{ !(readOnly || context.readOnly) ? 'default' : 'none' }}"
+    wrapStyle="{{ wrapStyle }}"
+>
+    <wux-selectable
+        slot="footer"
+        wux-class="{{ classes.selectable }}"
+        prefixCls="{{ selectablePrefixCls }}"
+        type="radio"
+        value="{{ value }}"
+        checked="{{ inputChecked }}"
+        color="{{ color }}"
+        disabled="{{ disabled || context.disabled }}"
+        readOnly="{{ readOnly || context.readOnly }}"
+        controlled
+        bind:change="radioChange"
+    />
 </wux-cell>

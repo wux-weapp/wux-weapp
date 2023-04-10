@@ -1,0 +1,16 @@
+<block wx:if="{{ shadowRoot }}">
+    <wux-dialog id="{{ classes.dialog }}" />
+    <wux-loading id="{{ classes.loading }}" />
+    <wux-notification id="{{ classes.notification }}" />
+    <wux-toast id="{{ classes.toast }}" />
+    <wux-toptips id="{{ classes.toptips }}" />
+    <slot></slot>
+</block>
+<view class="wux-class {{ wrapCls }} {{ classes.wrap }}" style="{{ extStyle }}" wx:else>
+    <wux-dialog id="{{ classes.dialog }}" />
+    <wux-loading id="{{ classes.loading }}" />
+    <wux-notification id="{{ classes.notification }}" />
+    <wux-toast id="{{ classes.toast }}" />
+    <wux-toptips id="{{ classes.toptips }}" />
+    <slot></slot>
+</view>

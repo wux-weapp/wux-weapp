@@ -12,17 +12,22 @@
   position: relative;
   box-sizing: border-box;
   font-size: 28rpx;
-  color: #80848f
+  padding: 0 30rpx
 }
 .wux-tabs__tab-bar {
   display: block;
-  width: 100%;
+  width: calc(100% - 60rpx);
   height: 4rpx;
   background: 0 0;
   position: absolute;
   bottom: 0;
-  left: 0;
-  background: #33cd5f
+  left: 30rpx;
+  background: #33cd5f;
+  border-radius: 4rpx
+}
+.wux-tabs__tab-bar--full {
+  width: 100%;
+  left: 0
 }
 .wux-tabs__tab--vertical {
   padding: 0 30rpx
@@ -39,7 +44,6 @@
 .wux-tabs__tab--horizontal.wux-tabs__tab--scroll {
   display: -ms-inline-flexbox;
   display: inline-flex;
-  padding: 0 30rpx;
   width: auto
 }
 .wux-tabs__tab--disabled {

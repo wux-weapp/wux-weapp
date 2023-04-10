@@ -1,0 +1,10 @@
+{
+    "component": true,
+    "usingComponents": {
+        "wux-dialog": "../dialog/index",
+        "wux-loading": "../loading/index",
+        "wux-notification": "../notification/index",
+        "wux-toast": "../toast/index",
+        "wux-toptips": "../toptips/index"
+    }
+}

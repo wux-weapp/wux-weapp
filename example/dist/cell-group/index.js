@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import styleToCssString from '../helpers/styleToCssString'
 
 baseComponent({
     options: {
@@ -26,10 +27,28 @@ baseComponent({
             type: String,
             value: '',
         },
+        mode: {
+            type: String,
+            value: 'default',
+        },
+        bodyStyle: {
+            type: [String, Object],
+            value: '',
+            observer(newVal) {
+                this.setData({
+                    internalBodyStyle: styleToCssString(newVal),
+                })
+            },
+        },
+    },
+    data: {
+        internalBodyStyle: '',
     },
     computed: {
-        classes: ['prefixCls', function(prefixCls) {
-            const wrap = classNames(prefixCls)
+        classes: ['prefixCls, mode', function(prefixCls, mode) {
+            const wrap = classNames(prefixCls, {
+                [`${prefixCls}--card`]: mode === 'card',
+            })
             const hd = `${prefixCls}__hd`
             const bd = `${prefixCls}__bd`
             const ft = `${prefixCls}__ft`

@@ -1,27 +1,7 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
 import { $wuxBackdrop } from '../index'
-
-const defaults = {
-    prefixCls: 'wux-toast',
-    classNames: 'wux-animate--fadeIn',
-    type: 'default',
-    duration: 1500,
-    color: '#fff',
-    text: '',
-    icon: '',
-    mask: true,
-    transparent: true,
-    success() {},
-}
-
-const iconTypes = {
-    success: 'ios-checkmark-circle-outline',
-    cancel: 'ios-close-circle-outline',
-    forbidden: 'ios-alert',
-    text: '',
-    'default': '',
-}
+import { defaults, iconTypes } from './utils'
 
 let _toast = null
 
@@ -120,8 +100,9 @@ baseComponent({
             }
 
             return this.show(Object.assign({
+                ...opts,
                 type: 'success',
-            }, opts))
+            }))
         },
         /**
          * 警告提示
@@ -134,8 +115,9 @@ baseComponent({
             }
 
             return this.show(Object.assign({
+                ...opts,
                 type: 'forbidden',
-            }, opts))
+            }))
         },
         /**
          * 错误提示
@@ -148,8 +130,9 @@ baseComponent({
             }
 
             return this.show(Object.assign({
+                ...opts,
                 type: 'cancel',
-            }, opts))
+            }))
         },
         /**
          * 文本提示
@@ -162,8 +145,9 @@ baseComponent({
             }
 
             return this.show(Object.assign({
+                ...opts,
                 type: 'text',
-            }, opts))
+            }))
         },
     },
     created() {

@@ -35,6 +35,10 @@ baseComponent({
             type: Boolean,
             value: false,
         },
+        readOnly: {
+            type: Boolean,
+            value: false,
+        },
         color: {
             type: String,
             value: 'balanced',
@@ -64,10 +68,11 @@ baseComponent({
         extStyle: '',
     },
     computed: {
-        classes: ['prefixCls, inputChecked, disabled', function(prefixCls, inputChecked, disabled) {
+        classes: ['prefixCls, inputChecked, disabled, readOnly', function(prefixCls, inputChecked, disabled, readOnly) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--checked`]: inputChecked,
                 [`${prefixCls}--disabled`]: disabled,
+                [`${prefixCls}--readonly`]: readOnly,
             })
             const input = `${prefixCls}__input`
             const icon = `${prefixCls}__icon`
@@ -88,13 +93,13 @@ baseComponent({
             }
         },
         onChange() {
-            const { value, inputChecked, disabled, controlled } = this.data
+            const { value, inputChecked, disabled, readOnly, controlled } = this.data
             const item = {
                 checked: !inputChecked,
                 value,
             }
 
-            if (disabled) return
+            if (disabled || readOnly) return
 
             if (!controlled) {
                 this.updated(!inputChecked)

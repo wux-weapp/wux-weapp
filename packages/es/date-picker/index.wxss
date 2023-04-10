@@ -4,7 +4,7 @@
   font-size: 34rpx;
   line-height: 1.5;
   color: rgba(0,0,0,.85);
-  background: #f7f7f8
+  background-color: #f7f7f8
 }
 .wux-date-picker__toolbar::before {
   content: " ";

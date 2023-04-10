@@ -49,12 +49,6 @@
 .wux-input__error {
   margin-left: 10rpx
 }
-.wux-input__clear {
-  display: none
-}
-.wux-input--focus .wux-input__clear {
-  display: block
-}
 .wux-input--disabled {
   opacity: .3
 }

@@ -1,14 +1,24 @@
 <wux-backdrop id="wux-backdrop" wx:if="{{ mask }}" bind:click="onMaskClick" zIndex="{{ zIndex }}" />
-<view class="wux-class {{ classes.wrap }}" style="{{ extStyle }}">
-    <wux-animation-group wux-class="{{ prefixCls }}" in="{{ popupVisible }}" classNames="{{ transitionName }}" bind:exited="onExited" wrapStyle="{{ { zIndex } }}" mountOnEnter="{{ mountOnEnter }}" unmountOnExit="{{ unmountOnExit }}">
-        <view class="wux-content-class {{ classes.content }}">
+<view class="wux-class {{ classes.wrap }}" style="{{ popupWrapStyle }}">
+    <wux-animation-group
+        wux-class="{{ prefixCls }}"
+        in="{{ popupVisible }}"
+        classNames="{{ transitionName }}"
+        wrapStyle="{{ { zIndex } }}"
+        mountOnEnter="{{ mountOnEnter }}"
+        unmountOnExit="{{ unmountOnExit }}"
+        wrapStyle="{{ popupContainerStyle }}"
+        bind:entered="onEntered"
+        bind:exited="onExited"
+    >
+        <view class="wux-content-class {{ classes.content }}" style="{{ popupContentStyle }}">
             <view class="wux-header-class {{ classes.hd }}" wx:if="{{ hasHeader }}">
                 <view class="{{ classes.title }}" wx:if="{{ title }}">{{ title }}</view>
                 <block wx:else>
                     <slot name="header"></slot>
                 </block>
             </view>
-            <view class="wux-body-class {{ classes.bd }}">
+            <view class="wux-body-class {{ classes.bd }}" style="{{ popupBodyStyle }}">
                 <view wx:if="{{ content }}">{{ content }}</view>
                 <slot></slot>
             </view>

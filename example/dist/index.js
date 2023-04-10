@@ -1,5 +1,5 @@
 /**
- * Wux Weapp 3.9.0
+ * Wux Weapp 3.10.0
  * 一套组件化、可复用、易扩展的微信小程序 UI 组件库
  * https://github.com/wux-weapp/wux-weapp#readme
  *
@@ -7,7 +7,7 @@
  *
  * Released under the MIT License
  *
- * Released on: 2023-2-13
+ * Released on: 2023-4-10
  */
 
 import $wuxCountDown from './countdown/index'
@@ -28,22 +28,22 @@ export const getCtx = (selector, ctx = getCurrentPages()[getCurrentPages().lengt
     return componentCtx
 }
 
-const version = '3.9.0'
+const version = '3.10.0'
 const $wuxActionSheet = (selector = '#wux-actionsheet', ctx) => getCtx(selector, ctx)
 const $wuxBackdrop = (selector = '#wux-backdrop', ctx) => getCtx(selector, ctx)
-const $wuxCalendar = (selector = '#wux-calendar', ctx) => getCtx(selector, ctx)
 const $wuxDialog = (selector = '#wux-dialog', ctx) => getCtx(selector, ctx)
+const $wuxLoading = (selector = '#wux-loading', ctx) => getCtx(selector, ctx)
+const $wuxNotification = (selector = '#wux-notification', ctx) => getCtx(selector, ctx)
+const $wuxToast = (selector = '#wux-toast', ctx) => getCtx(selector, ctx)
+const $wuxToptips = (selector = '#wux-toptips', ctx) => getCtx(selector, ctx)
+const $wuxCalendar = (selector = '#wux-calendar', ctx) => getCtx(selector, ctx)
 const $wuxForm = (selector = '#wux-form', ctx) => getCtx(selector, ctx)
 const $wuxGallery = (selector = '#wux-gallery', ctx) => getCtx(selector, ctx)
 const $wuxKeyBoard = (selector = '#wux-keyboard', ctx) => getCtx(selector, ctx)
-const $wuxLoading = (selector = '#wux-loading', ctx) => getCtx(selector, ctx)
-const $wuxNotification = (selector = '#wux-notification', ctx) => getCtx(selector, ctx)
 const $startWuxRefresher = (selector = '#wux-refresher', ctx) => getCtx(selector, ctx).triggerRefresh()
 const $stopWuxRefresher = (selector = '#wux-refresher', ctx) => getCtx(selector, ctx).finishPullToRefresh()
 const $stopWuxLoader = (selector = '#wux-refresher', ctx, isEnd) => getCtx(selector, ctx).finishLoadmore(isEnd)
 const $wuxSelect = (selector = '#wux-select', ctx) => getCtx(selector, ctx)
-const $wuxToast = (selector = '#wux-toast', ctx) => getCtx(selector, ctx)
-const $wuxToptips = (selector = '#wux-toptips', ctx) => getCtx(selector, ctx)
 
 export {
     version,
@@ -51,17 +51,17 @@ export {
 	$wuxCountUp,
 	$wuxActionSheet,
 	$wuxBackdrop,
-	$wuxCalendar,
 	$wuxDialog,
+	$wuxLoading,
+	$wuxNotification,
+	$wuxToast,
+	$wuxToptips,
+	$wuxCalendar,
 	$wuxForm,
 	$wuxGallery,
 	$wuxKeyBoard,
-	$wuxLoading,
-	$wuxNotification,
 	$startWuxRefresher,
 	$stopWuxRefresher,
 	$stopWuxLoader,
-	$wuxSelect,
-	$wuxToast,
-	$wuxToptips
+	$wuxSelect
 }

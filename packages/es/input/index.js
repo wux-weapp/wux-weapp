@@ -2,6 +2,8 @@ import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
 import eventsMixin from '../helpers/eventsMixin'
 import styleToCssString from '../helpers/styleToCssString'
+import bound from '../helpers/bound'
+import { nativeInputProps } from './props'
 
 const defaultEvents = {
     onChange() {},
@@ -20,6 +22,7 @@ baseComponent({
         },
     },
     properties: {
+        ...nativeInputProps,
         prefixCls: {
             type: String,
             value: 'wux-input',
@@ -49,102 +52,13 @@ baseComponent({
             type: Boolean,
             value: false,
         },
-        type: {
-            type: String,
-            value: 'text',
-        },
-        password: {
-            type: Boolean,
-            value: false,
-        },
-        placeholder: {
-            type: String,
-            value: '',
-        },
-        placeholderStyle: {
-            type: [String, Object],
-            value: '',
-            observer(newVal) {
-                this.setData({
-                    extStyle: styleToCssString(newVal),
-                })
-            },
-        },
-        placeholderClass: {
-            type: String,
-            value: 'input-placeholder',
-        },
         disabled: {
             type: Boolean,
             value: false,
         },
-        maxlength: {
-            type: Number,
-            value: 140,
-        },
-        cursorSpacing: {
-            type: Number,
-            value: 11,
-        },
-        focus: {
+        readOnly: {
             type: Boolean,
             value: false,
-        },
-        confirmType: {
-            type: String,
-            value: 'done',
-        },
-        alwaysEmbed: {
-            type: Boolean,
-            value: false,
-        },
-        confirmHold: {
-            type: Boolean,
-            value: false,
-        },
-        cursor: {
-            type: Number,
-            value: -1,
-        },
-        selectionStart: {
-            type: Number,
-            value: -1,
-        },
-        selectionEnd: {
-            type: Number,
-            value: -1,
-        },
-        adjustPosition: {
-            type: Boolean,
-            value: true,
-        },
-        holdKeyboard: {
-            type: Boolean,
-            value: false,
-        },
-        safePasswordCertPath: {
-            type: String,
-            value: null,
-        },
-        safePasswordLength: {
-            type: Number,
-            value: null,
-        },
-        safePasswordTimeStamp: {
-            type: Number,
-            value: null,
-        },
-        safePasswordNonce: {
-            type: String,
-            value: null,
-        },
-        safePasswordSalt: {
-            type: String,
-            value: null,
-        },
-        safePasswordCustomHash: {
-            type: String,
-            value: null,
         },
         clear: {
             type: Boolean,
@@ -162,17 +76,55 @@ baseComponent({
             type: Boolean,
             value: false,
         },
+        onlyShowClearWhenFocus: {
+            type: Boolean,
+            value: true,
+        },
+        min: {
+            type: Number,
+            value: null,
+        },
+        max: {
+            type: Number,
+            value: null,
+        },
     },
     data: {
         inputValue: '',
         inputFocus: false,
-        extStyle: '',
+        shouldShowClear: false,
+        internalPlaceholderStyle: '',
+    },
+    observers: {
+        placeholderStyle(placeholderStyle) {
+            this.setInternalPlaceholderStyle(placeholderStyle)
+        },
+        ['clear, disabled, readOnly, inputValue, inputFocus, onlyShowClearWhenFocus'](...args) {
+            const [
+                clear,
+                disabled,
+                readOnly,
+                inputValue,
+                inputFocus,
+                onlyShowClearWhenFocus,
+            ] = args
+
+            this.setClear({
+                clear,
+                disabled,
+                readOnly,
+                inputValue,
+                inputFocus,
+                onlyShowClearWhenFocus,
+            })
+        },
     },
     computed: {
-        classes: ['prefixCls, disabled, inputFocus, error, labelWrap, requiredMark', function(prefixCls, disabled, inputFocus, hasError, labelWrap, requiredMark) {
+        classes: ['prefixCls, disabled, readOnly, inputFocus, error, labelWrap, requiredMark', function(prefixCls, disabled, readOnly, inputFocus, hasError, labelWrap, requiredMark) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--focus`]: inputFocus,
                 [`${prefixCls}--disabled`]: disabled,
+                [`${prefixCls}--readonly`]: readOnly,
                 [`${prefixCls}--error`]: hasError,
             })
             const label = classNames(`${prefixCls}__label`, {
@@ -197,6 +149,50 @@ baseComponent({
         }],
     },
     methods: {
+        setInternalPlaceholderStyle(placeholderStyle) {
+            const internalPlaceholderStyle = styleToCssString(placeholderStyle)
+
+            if (this.data.internalPlaceholderStyle !== internalPlaceholderStyle) {
+                this.setData({
+                    internalPlaceholderStyle,
+                })
+            }
+        },
+        setClear(props) {
+            const shouldShowClear = (() => {
+                if (!props.clear || !props.inputValue || props.disabled || props.readOnly) return false
+                if (props.onlyShowClearWhenFocus) {
+                    return props.inputFocus
+                } else {
+                    return true
+                }
+            })()
+            if (this.data.shouldShowClear !== shouldShowClear) {
+                this.setData({
+                    shouldShowClear,
+                })
+            }
+        },
+        checkValue() {
+            const props = this.data
+            const { inputValue: value } = props
+            let nextValue = value
+            if (props.type === 'number' || props.type === 'digit') {
+                nextValue =
+                    nextValue &&
+                    bound(
+                        parseFloat(nextValue),
+                        props.min !== null ? props.min : undefined,
+                        props.max !== null ? props.max : undefined
+                    ).toString()
+            }
+            if (nextValue !== value) {
+                if (!this.data.controlled) {
+                    this.updated(nextValue)
+                }
+                this.triggerEvent('change', { value: nextValue })
+            }
+        },
         updated(inputValue) {
             if (this.hasFieldDecorator) return
             if (this.data.inputValue !== inputValue) {
@@ -223,6 +219,7 @@ baseComponent({
         },
         onBlur(e) {
             this.setTimer()
+            this.checkValue()
             this.triggerEvent('blur', e.detail)
         },
         onConfirm(e) {
@@ -234,7 +231,7 @@ baseComponent({
         onNicknameReview(e) {
             this.triggerEvent('nicknamereview', e.detail)
         },
-        onClear(e) {
+        onClear() {
             const params = { value: '' }
 
             if (!this.data.controlled) {
@@ -265,9 +262,11 @@ baseComponent({
         },
     },
     attached() {
-        const { defaultValue, value, controlled } = this.data
+        const { defaultValue, value, controlled, placeholderStyle } = this.data
         const inputValue = controlled ? value : defaultValue
 
         this.updated(inputValue)
+        this.setClear({ ...this.data, inputValue })
+        this.setInternalPlaceholderStyle(placeholderStyle)
     },
 })
