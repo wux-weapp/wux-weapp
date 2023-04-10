@@ -1,15 +1,82 @@
-<wux-popup closable visible="{{ visible1 }}" title="Delete" content="Are you sure???" bind:close="onClose1" bind:closed="onClosed1">
-    <view slot="footer" class="popup__button" bindtap="close1">OK</view>
+<wux-popup visible="{{ visible1 }}" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp" bind:close="onClose" data-key="1" />
+<wux-popup position="top" visible="{{ visible2 }}" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp" contentStyle="{{ { height: '40vh', padding: '30px' } }}" bind:close="onClose" data-key="2" />
+<wux-popup position="right" visible="{{ visible3 }}" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp" contentStyle="{{ { width: 'auto', padding: '30px' } }}" bind:close="onClose" data-key="3" />
+<wux-popup position="bottom" visible="{{ visible4 }}" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp" contentStyle="{{ { height: '40vh', padding: '30px' } }}" bind:close="onClose" data-key="4" />
+<wux-popup position="left" visible="{{ visible5 }}" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp" contentStyle="{{ { width: 'auto', padding: '30px' } }}" bind:close="onClose" data-key="5" />
+
+<wux-popup
+    position="bottom"
+    visible="{{ visible6 }}"
+    contentStyle="{{ { borderTopLeftRadius: '8px', borderTopRightRadius: '8px', minHeight: '40vh', padding: '30px' } }}"
+    bind:close="onClose"
+    data-key="6"
+>
+    <view>微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp</view>
 </wux-popup>
 
-<wux-popup position="bottom" visible="{{ visible2 }}" bind:close="onClose2">
-    <wux-cell-group title="Your fathers">
-        <wux-cell hover-class="none" title="Jack Ma"></wux-cell>
-        <wux-cell hover-class="none" title="Pony"></wux-cell>
-        <wux-cell hover-class="none">
-            <wux-button block type="balanced" bindtap="close2">Yes</wux-button>
-        </wux-cell>
-    </wux-cell-group>
+<wux-popup
+    closable
+    visible="{{ visible7 }}"
+    title="Delete"
+    content="Are you sure???"
+    bind:showed="onShowed"
+    bind:close="onClose"
+    bind:closed="onClosed"
+    data-key="7"
+>
+    <view slot="footer" class="popup__button" bindtap="onClose" data-key="7">OK</view>
+</wux-popup>
+
+<wux-popup
+    position="bottom"
+    visible="{{ visible8 }}"
+    contentStyle="{{ { height: '540rpx' } }}"
+    bind:close="onClose"
+    data-key="8"
+>
+    <scroll-view scroll-y style="height: 540rpx;">
+        <wux-cell-group>
+            <block wx:for="{{ 20 }}" wx:key="index">
+                <wux-cell hover-class="none" title="Your father is Jack Ma"></wux-cell>
+            </block>
+            <wux-cell hover-class="none">
+                <wux-button block type="balanced" bindtap="onClose" data-key="8">Yes</wux-button>
+            </wux-cell>
+        </wux-cell-group>
+    </scroll-view>
+</wux-popup>
+
+<wux-popup
+    closable
+    position="right"
+    visible="{{ visible9 }}"
+    containerStyle="{{ { width: '100%', maxWidth: '100%' } }}"
+    contentStyle="{{ { width: 'auto', padding: '40px 30px 30px' } }}"
+    bind:close="onClose"
+    data-key="9"
+>
+    <view>微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp</view>
+</wux-popup>
+
+<wux-popup
+    position="bottom"
+    visible="{{ visible10 }}"
+    contentStyle="{{ { minHeight: '40vh', padding: '30px' } }}"
+    bind:close="onClose"
+    data-key="10"
+>
+    <view>这是第一个弹出层...这是第一个弹出层...</view>
+    <wux-button block type="stable" bind:click="onOpen" data-key="11">显示第二个弹出层</wux-button>
+</wux-popup>
+
+<wux-popup
+    position="bottom"
+    visible="{{ visible11 }}"
+    contentStyle="{{ { minHeight: '20vh', padding: '30px' } }}"
+    bind:close="onClose"
+    data-key="11"
+>
+    <view>这是第二个弹出层...这是第二个弹出层...</view>
 </wux-popup>
 
 <view class="page">
@@ -18,7 +85,17 @@
         <view class="page__desc">弹出框</view>
     </view>
     <view class="page__bd page__bd_spacing">
-        <wux-button block type="light" bind:click="open1">Default</wux-button>
-        <wux-button block type="light" bind:click="open2">Popup</wux-button>
+        <view class="sub-title">弹出位置</view>
+        <wux-button block type="light" bind:click="onOpen" data-key="1">中间弹出</wux-button>
+        <wux-button block type="light" bind:click="onOpen" data-key="2">顶部弹出</wux-button>
+        <wux-button block type="light" bind:click="onOpen" data-key="3">右部弹出</wux-button>
+        <wux-button block type="light" bind:click="onOpen" data-key="4">底部弹出</wux-button>
+        <wux-button block type="light" bind:click="onOpen" data-key="5">左部弹出</wux-button>
+        <view class="sub-title">自定义样式</view>
+        <wux-button block type="light" bind:click="onOpen" data-key="6">圆角的弹出层</wux-button>
+        <wux-button block type="light" bind:click="onOpen" data-key="7">显示关闭按钮</wux-button>
+        <wux-button block type="light" bind:click="onOpen" data-key="8">内容超长滚动</wux-button>
+        <wux-button block type="light" bind:click="onOpen" data-key="9">显示右侧弹出关闭按钮</wux-button>
+        <wux-button block type="light" bind:click="onOpen" data-key="10">多层堆叠</wux-button>
     </view>
 </view>

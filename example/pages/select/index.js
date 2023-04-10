@@ -7,9 +7,13 @@ ad({
         value1: '',
         value2: '',
         value3: '',
+        value4: '',
+        value5: '',
         displayValue1: '请选择',
         displayValue2: '请选择',
         displayValue3: '请选择',
+        displayValue4: '请选择',
+        displayValue5: '请选择',
         options1: ['法官', '医生', '猎人', '学生', '记者', '其他'],
         options2: [{
             title: 'iPhone 3GS',
@@ -58,6 +62,23 @@ ad({
             title: '睡觉',
             value: '6',
         }],
+        options4: [
+            {
+                title: '富二代',
+                options: [
+                    { title: '王撕葱', value: 'wang' },
+                    { title: '秦愤', value: 'qin' },
+                ],
+            },
+            {
+                title: '练习生',
+                options: [
+                    { title: '蔡🏀', value: 'cai' },
+                    { title: '赵四', value: 'zhao', disabled: true },
+                ],
+            },
+        ],
+        options5: [],
     },
     onClick1() {
         $wuxSelect('#wux-select1').open({
@@ -113,6 +134,41 @@ ad({
                     value3: value,
                     displayValue3: index.map((n) => options[n].title).join(','),
                 })
+            },
+        })
+    },
+    onClick4() {
+        $wuxSelect('#wux-select4').open({
+            value: this.data.value4,
+            multiple: true,
+            max: 3,
+            options: this.data.options4,
+            onChange: (value, index, options) => {
+                console.log('onChange', value, index, options)
+                this.setData({
+                    value4: value,
+                    displayValue4: index.map((n) => options[n].title).join(','),
+                })
+            },
+            onConfirm: (value, index, options) => {
+                console.log('onConfirm', value, index, options)
+                this.setData({
+                    value4: value,
+                    displayValue4: index.map((n) => options[n].title).join(','),
+                })
+            },
+        })
+    },
+    onClick5() {
+        $wuxSelect('#wux-select5').open({
+            value: this.data.value5,
+            multiple: true,
+            max: 3,
+            options: this.data.options1,
+            notFoundContent: {
+                icon: '',
+                title: '',
+                text: 'Not found content',
             },
         })
     },

@@ -1,6 +1,8 @@
 <wux-select id="wux-select1" />
 <wux-select id="wux-select2" />
 <wux-select id="wux-select3" />
+<wux-select id="wux-select4" />
+<wux-select id="wux-select5" />
 
 <view class="page">
     <view class="page__hd">
@@ -12,6 +14,8 @@
             <wux-cell title="Single" is-link extra="{{ displayValue1 }}" bind:click="onClick1"></wux-cell>
             <wux-cell title="Multiple" is-link extra="{{ displayValue2 }}" bind:click="onClick2"></wux-cell>
             <wux-cell title="Multiple & max = 3" is-link extra="{{ displayValue3 }}" bind:click="onClick3"></wux-cell>
+            <wux-cell title="Group" is-link extra="{{ displayValue4 }}" bind:click="onClick4"></wux-cell>
+            <wux-cell title="Async" is-link extra="{{ displayValue5 }}" bind:click="onClick5"></wux-cell>
         </wux-cell-group>
     </view>
 </view>

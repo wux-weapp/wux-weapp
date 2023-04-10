@@ -64,6 +64,14 @@
                 <wux-textarea disabled label="Last name" defaultValue="1024" />
             </wux-cell>
         </wux-cell-group>
+        <wux-cell-group title="ReadOnly">
+            <wux-cell hover-class="none">
+                <wux-textarea readOnly label="First name" defaultValue="read-only mode" />
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <wux-textarea readOnly label="Last name" defaultValue="1024" />
+            </wux-cell>
+        </wux-cell-group>
         <wux-cell-group title="Controlled">
             <wux-cell hover-class="none">
                 <wux-textarea label="Uncontrolled" defaultValue="1024" />

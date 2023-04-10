@@ -28,11 +28,18 @@
                 <wux-radio title="Java" value="1" />
                 <wux-radio title="PHP" value="2" />
             </wux-radio-group>
-            <wux-radio-group name="e" title="Disabled" value="{{ value4 }}" bind:change="onChange4">
-                <wux-radio title="AV" value="1" disabled />
+            <wux-radio-group name="e" title="Disabled & readOnly" value="{{ value4 }}" bind:change="onChange4">
+                <wux-radio title="Java" value="1" disabled />
+                <wux-radio title="PHP" value="2" />
+                <wux-radio title="AV" value="3" readOnly />
+            </wux-radio-group>
+            <wux-radio-group name="f" disabled value="{{ value4 }}" title="Disable for the radio group" bind:change="onChange4">
+                <wux-radio title="Java" value="1" />
                 <wux-radio title="PHP" value="2" />
             </wux-radio-group>
-            <wux-radio-group name="f" value="{{ value5 }}" options="{{ options }}" title="Options" bind:change="onChange5" />
+            <wux-radio-group name="g" readOnly value="{{ value5 }}" options="{{ options }}" title="ReadOnly for the radio group" bind:change="onChange5" />
+            <wux-radio-group name="h" value="{{ value5 }}" options="{{ options }}" title="Options" bind:change="onChange5" />
+            <wux-radio-group name="i" mode="card" value="{{ value5 }}" options="{{ options }}" title="Card List" bind:change="onChange5" />
             <view class="btn-area">
                 <button formType="submit">Submit</button>
             </view>

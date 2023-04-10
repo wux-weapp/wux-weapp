@@ -24,5 +24,10 @@
             <wux-cell title="获取用户信息" is-link open-type="getUserInfo" bind:getuserinfo="onGotUserInfo"></wux-cell>
             <wux-cell title="获取用户手机号" is-link open-type="getPhoneNumber" bind:getphonenumber="onGotPhoneNumber"></wux-cell>
         </wux-cell-group>
+        <wux-cell-group mode="card" title="卡片列表">
+            <wux-cell title="扣款方式" extra="按照支付设置的顺序扣款" is-link></wux-cell>
+            <wux-cell title="月限额" extra="500元" is-link></wux-cell>
+            <wux-cell title="关于我们" is-link url="/pages/about/index" open-type="switchTab"></wux-cell>
+        </wux-cell-group>
     </view>
 </view>

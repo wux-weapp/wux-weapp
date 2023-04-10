@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "CascaderView",
+    "usingComponents": {
+        "wux-cascader-view": "../../dist/cascader-view/index"
+    }
+}

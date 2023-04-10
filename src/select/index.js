@@ -1,6 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import { getSelectIndex } from '../popup-select/utils'
+import { notFoundContent, getNotFoundContent, getSelectIndex, flattenOptions } from '../popup-select/utils'
 
 const defaults = {
     prefixCls: 'wux-select',
@@ -8,6 +7,7 @@ const defaults = {
     options: [],
     multiple: false,
     max: -1,
+    notFoundContent,
     toolbar: {
         title: '请选择',
         cancelText: '取消',
@@ -21,9 +21,10 @@ const defaults = {
 function runCallbacks(method, values, vm) {
     const { value } = values
     const { options, multiple } = vm.data
-    const index = getSelectIndex(options, value, multiple)
+    const mergedOptions = flattenOptions(options)
+    const index = getSelectIndex(mergedOptions, value, multiple)
     if (typeof vm.fns[method] === 'function') {
-        vm.fns[method].call(vm, value, index, options)
+        vm.fns[method].call(vm, value, index, mergedOptions)
     }
 }
 
@@ -37,6 +38,7 @@ baseComponent({
         open(opts = {}) {
             const options = this.$$mergeOptionsAndBindMethods(Object.assign({}, defaults, opts, {
                 max: opts.max ? parseInt(opts.max) : -1,
+                notFoundContent: getNotFoundContent(opts.notFoundContent),
             }))
             this.$$setData({ visible: true, ...options })
         },

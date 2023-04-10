@@ -28,11 +28,18 @@
                 <wux-checkbox title="Java" value="1" />
                 <wux-checkbox title="PHP" value="2" />
             </wux-checkbox-group>
-            <wux-checkbox-group name="e" value="{{ value4 }}" title="Disabled" bind:change="onChange4">
-                <wux-checkbox title="AV" value="1" disabled />
+            <wux-checkbox-group name="e" value="{{ value4 }}" title="Disabled & readOnly" bind:change="onChange4">
+                <wux-checkbox title="Java" value="1" disabled />
+                <wux-checkbox title="PHP" value="2" />
+                <wux-checkbox title="AV" value="3" readOnly />
+            </wux-checkbox-group>
+            <wux-checkbox-group name="f" disabled value="{{ value4 }}" title="Disable for the checkbox group" bind:change="onChange4">
+                <wux-checkbox title="Java" value="1" />
                 <wux-checkbox title="PHP" value="2" />
             </wux-checkbox-group>
-            <wux-checkbox-group name="f" value="{{ value5 }}" options="{{ options }}" title="Options" bind:change="onChange5" />
+            <wux-checkbox-group name="g" readOnly value="{{ value5 }}" options="{{ options }}" title="ReadOnly for the checkbox group" bind:change="onChange5" />
+            <wux-checkbox-group name="h" value="{{ value5 }}" options="{{ options }}" title="Options" bind:change="onChange5" />
+            <wux-checkbox-group name="i" mode="card" value="{{ value5 }}" options="{{ options }}" title="Card List" bind:change="onChange5" />
             <view class="btn-area">
                 <button formType="submit">Submit</button>
             </view>

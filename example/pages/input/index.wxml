@@ -57,6 +57,14 @@
                 <wux-input disabled label="QQ" defaultValue="1024" />
             </wux-cell>
         </wux-cell-group>
+        <wux-cell-group title="ReadOnly">
+            <wux-cell hover-class="none">
+                <wux-input readOnly label="WeChat" defaultValue="read-only mode" />
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <wux-input readOnly label="QQ" defaultValue="1024" />
+            </wux-cell>
+        </wux-cell-group>
         <wux-cell-group title="Controlled">
             <wux-cell hover-class="none">
                 <wux-input label="Uncontrolled" defaultValue="1024" />

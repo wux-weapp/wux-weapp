@@ -2,6 +2,7 @@ import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
 
 baseComponent({
+    useFieldButton: true,
     properties: {
         prefixCls: {
             type: String,

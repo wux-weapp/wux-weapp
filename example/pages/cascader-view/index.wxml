@@ -1,0 +1,20 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">CascaderView</view>
+        <view class="page__desc">级联选择视图</view>
+    </view>
+    <view class="page__bd">
+        <view class="sub-title">Default</view>
+        <wux-cascader-view options="{{ options1 }}" bind:change="onChange1" />
+        <view class="sub-title">Full</view>
+        <wux-cascader-view full options="{{ options1 }}" bind:change="onChange1" />
+        <view class="sub-title">Custom Height</view>
+        <wux-cascader-view height="540rpx" options="{{ options1 }}" bind:change="onChange1" />
+        <view class="sub-title">Skip Animation</view>
+        <wux-cascader-view skipAnimation options="{{ options1 }}" bind:change="onChange1" />
+        <view class="sub-title">Controlled</view>
+        <wux-cascader-view controlled value="{{ value2 }}" options="{{ options2 }}" bind:change="onChange2" bind:tabsChange="onTabsChange2" />
+        <view class="sub-title">Async</view>
+        <wux-cascader-view controlled value="{{ value3 }}" options="{{ options3 }}" bind:change="onChange3" bind:load="onLoadOptions" />
+    </view>
+</view>

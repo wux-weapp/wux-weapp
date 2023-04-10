@@ -1,5 +1,39 @@
-<wux-cascader visible="{{ visible1 }}" default-value="{{ value1 }}" title="所在地区" options="{{ options1 }}" bind:close="onClose1" bind:change="onChange1" />
-<wux-cascader visible="{{ visible2 }}" controlled value="{{ value2 }}" title="所在地区" options="{{ options2 }}" bind:close="onClose2" bind:change="onChange2" bind:load="onLoadOptions" />
+<wux-cascader
+  visible="{{ visible1 }}"
+  default-value="{{ value1 }}"
+  title="所在地区"
+  options="{{ options1 }}"
+  bind:close="onClose1"
+  bind:change="onChange1"
+  bind:confirm="onConfirm1"
+/>
+
+<wux-cascader
+  visible="{{ visible2 }}"
+  controlled
+  value="{{ value2 }}"
+  title="所在地区"
+  options="{{ options2 }}"
+  bind:close="onClose2"
+  bind:change="onChange2"
+  bind:load="onLoadOptions"
+/>
+
+<wux-cascader
+  visible="{{ visible3 }}"
+  controlled
+  value="{{ value3 }}"
+  title="Your city"
+  cancelText="cancel"
+  confirmText="ok"
+  options="{{ options3 }}"
+  full
+  height="540rpx"
+  bind:close="onClose3"
+  bind:change="onChange3"
+  bind:confirm="onConfirm3"
+  bind:tabsChange="onTabsChange3"
+/>
 
 <view class="page">
     <view class="page__hd">
@@ -10,6 +44,7 @@
     	<wux-cell-group title="Cascader">
     		<wux-cell title="Default" extra="{{ title1 }}" bind:click="onOpen1"></wux-cell>
     		<wux-cell title="Async" extra="{{ title2 }}" bind:click="onOpen2"></wux-cell>
+    		<wux-cell title="Controlled" extra="{{ title3 }}" bind:click="onOpen3"></wux-cell>
     	</wux-cell-group>
     </view>
 </view>

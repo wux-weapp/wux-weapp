@@ -95,6 +95,11 @@ export default [{
         url: '/pages/cascader-picker-view/index',
     },
     {
+        title: 'CascaderView',
+        remark: '级联选择视图',
+        url: '/pages/cascader-view/index',
+    },
+    {
         title: 'Checkbox',
         remark: '复选框',
         url: '/pages/checkbox/index',

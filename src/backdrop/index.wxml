@@ -1,1 +1,17 @@
-<wux-animation-group wux-class="{{ classes.wrap }}" in="{{ in }}" classNames="{{ classNames }}" bind:click="onClick" wrapStyle="{{ { zIndex } }}" disableScroll />
+<wux-animation-group
+  wux-class="{{ classes.wrap }}"
+  in="{{ active }}"
+  classNames="{{ classNames }}"
+  wrapStyle="{{ { zIndex } }}"
+  mountOnEnter="{{ mountOnEnter }}"
+  unmountOnExit="{{ unmountOnExit }}"
+  disableScroll
+  bind:click="onClick"
+  bind:entered="onEntered"
+  bind:exited="onExited"
+>
+  <view class="{{ classes.btn }}" aria-role="button" aria-label="backdrop" catchtap="onClick"></view>
+  <view class="{{ classes.bd }}" catchtap="noop">
+    <slot></slot>
+  </view>
+</wux-animation-group>

@@ -7,86 +7,6 @@
     width: @popup-width;
     max-width: @popup-max-width;
 
-    &-position&-position--center {
-        .@{wux-prefix}-popup {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .@{wux-prefix}-popup__content {
-            border-radius: @border-radius-base;
-        }
-
-        .@{wux-prefix}-popup__hd {
-            padding: @popup-hd-padding;
-        }
-
-        .@{wux-prefix}-popup__bd {
-            padding: @popup-bd-padding;
-        }
-
-        .@{wux-prefix}-popup__ft::after {
-            .setTopLine(@border-color-split);
-        }
-    }
-
-    &-position&-position--top {
-        .@{wux-prefix}-popup {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            max-width: 100%;
-        }
-    }
-
-    &-position&-position--right {
-        .@{wux-prefix}-popup {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: @popup-width;
-            max-width: 100%;
-            height: 100%;
-            max-height: 100%;
-        }
-    }
-
-    &-position&-position--bottom {
-        .@{wux-prefix}-popup {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            max-width: 100%;
-        }
-    }
-
-    &-position&-position--left {
-        .@{wux-prefix}-popup {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: @popup-width;
-            max-width: 100%;
-            height: 100%;
-            max-height: 100%;
-        }
-    }
-
-    &-position&-position--is-iphonex &__content {
-        padding-bottom: @safe-area-inset-bottom;
-
-        @supports (padding-bottom: constant(safe-area-inset-bottom)) {
-            padding-bottom: constant(safe-area-inset-bottom);
-        }
-
-        @supports (padding-bottom: env(safe-area-inset-bottom)) {
-            padding-bottom: env(safe-area-inset-bottom);
-        }
-    }
-
     &__content {
         position: relative;
         background-color: @popup-content-bg;
@@ -129,6 +49,9 @@
         right: 6px;
         height: 21px;
         width: 21px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     &__close-x {
@@ -139,5 +62,95 @@
         background-size: cover;
 
         .encoded-svg-background(delete);
+    }
+
+    &-position&-position--center {
+        .@{wux-prefix}-popup {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .@{wux-prefix}-popup__content {
+            border-radius: @border-radius-base;
+        }
+
+        .@{wux-prefix}-popup__hd {
+            padding: @popup-hd-padding;
+        }
+
+        .@{wux-prefix}-popup__bd {
+            padding: @popup-bd-padding;
+        }
+
+        .@{wux-prefix}-popup__ft::after {
+            .setTopLine(@border-color-split);
+        }
+    }
+
+    &-position&-position--top {
+        .@{wux-prefix}-popup {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            max-width: 100%;
+
+            &__close {
+                top: unset;
+                bottom: 6px;
+            }
+        }
+    }
+
+    &-position&-position--right {
+        .@{wux-prefix}-popup {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: @popup-width;
+            max-width: 100%;
+            height: 100%;
+            max-height: 100%;
+
+            &__close {
+                right: unset;
+                left: 6px;
+            }
+        }
+    }
+
+    &-position&-position--bottom {
+        .@{wux-prefix}-popup {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+
+    &-position&-position--left {
+        .@{wux-prefix}-popup {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: @popup-width;
+            max-width: 100%;
+            height: 100%;
+            max-height: 100%;
+        }
+    }
+
+    &-position&-position--is-iphonex &__content {
+        padding-bottom: @safe-area-inset-bottom;
+
+        @supports (padding-bottom: constant(safe-area-inset-bottom)) {
+            padding-bottom: constant(safe-area-inset-bottom);
+        }
+
+        @supports (padding-bottom: env(safe-area-inset-bottom)) {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
     }
 }

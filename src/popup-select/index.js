@@ -1,26 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import popupMixin from '../helpers/popupMixin'
-import { getSelectIndex, getRealValue, flattenOptions } from './utils'
-import { defaultIcon } from '../prompt/props'
-
-const notFoundContent = {
-    icon: defaultIcon,
-    title: '',
-    text: '暂无数据',
-}
-
-const getNotFoundContent = (newVal) => {
-    if (newVal !== null && typeof newVal === 'object') {
-        return Object.assign({}, notFoundContent, newVal)
-    } else if (typeof newVal === 'string') {
-        return Object.assign({}, notFoundContent, {
-            text: newVal,
-        })
-    } else if (newVal === null || newVal === false) {
-        return null
-    }
-    return notFoundContent
-}
+import { notFoundContent, getNotFoundContent, getSelectIndex, getRealValue, flattenOptions } from './utils'
 
 baseComponent({
     behaviors: [popupMixin('#wux-select')],
@@ -50,7 +30,7 @@ baseComponent({
             value: notFoundContent,
             observer(newVal) {
                 this.setData({
-                    mergedNotFound: getNotFoundContent(newVal),
+                    mergedNotFoundContent: getNotFoundContent(newVal),
                 })
             },
         },
@@ -58,7 +38,7 @@ baseComponent({
     data: {
         scrollTop: 0,
         mergedOptions: [],
-        mergedNotFound: null,
+        mergedNotFoundContent: null,
     },
     observers: {
         ['options, multiple'](options, multiple) {
@@ -142,7 +122,7 @@ baseComponent({
     },
     ready() {
         this.setData({
-            mergedNotFound: getNotFoundContent(this.data.notFoundContent),
+            mergedNotFoundContent: getNotFoundContent(this.data.notFoundContent),
         })
     },
 })

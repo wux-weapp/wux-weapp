@@ -52,6 +52,12 @@ const baseComponent = (options = {}) => {
         delete options.useField
     }
 
+    // use field button
+    if (options.useFieldButton) {
+        options.behaviors = [...options.behaviors, 'wx://form-field-button']
+        delete options.useFieldButton
+    }
+
     // use export
     if (options.useExport) {
         options.behaviors = [...options.behaviors, 'wx://component-export']

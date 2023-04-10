@@ -1,0 +1,41 @@
+<view class="wux-class {{ classes.wrap }}">
+    <view class="{{ classes.hd }}">
+        <wux-tabs
+            controlled
+            current="{{ activeIndex + '' }}"
+            theme="assertive"
+            justify="flex-start"
+            bind:change="onTabsChange"
+            data-active-index="{{ activeIndex + '' }}"
+            wx:if="{{ activeOptions.length }}"
+        >
+             <block wx:for="{{ activeOptions }}" wx:key="index">
+                <wux-tab key="{{ index + '' }}" title="{{ item[fieldNames['label']] + '' }}"></wux-tab>
+             </block>
+        </wux-tabs>
+    </view>
+    <view class="{{ classes.bd }}" style="{{ bodyStyle }}">
+        <block wx:for="{{ showOptions }}" wx:for-item="option" wx:for-index="optionIndex" wx:key="optionIndex" wx:if="{{ showOptions.length }}">
+            <view class="{{ classes.innerScroll }}">
+                <scroll-view scroll-y class="wux-scroll-view-class {{ classes.scrollView }}" style="{{ scrollViewStyle }}">
+                    <wux-radio-group
+                        data-option-index="{{ optionIndex }}"
+                        value="{{ activeValue[optionIndex] || '' }}"
+                        bodyStyle="{{ { backgroundColor: 'unset' } }}"
+                        bind:change="onItemSelect"
+                        wx:if="{{ option.length }}"
+                    >
+                        <block wx:for="{{ option }}" wx:key="index">
+                            <wux-radio
+                                color="assertive"
+                                title="{{ item[fieldNames['label']] + '' }}"
+                                value="{{ item[fieldNames['value']] }}"
+                                disabled="{{ item[fieldNames['disabled']] }}"
+                            />
+                        </block>
+                    </wux-radio-group>
+                </scroll-view>
+            </view>
+        </block>
+    </view>
+</view>

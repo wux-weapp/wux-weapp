@@ -11,7 +11,13 @@
             <wux-tab key="tab3" title="Tab 3"></wux-tab>
         </wux-tabs>
         <view class="sub-title">Theme = positive</view>
-        <wux-tabs defaultCurrent="tab1" theme="positive">
+        <wux-tabs defaultCurrent="tab2" theme="positive">
+            <wux-tab key="tab1" title="Tab 1"></wux-tab>
+            <wux-tab key="tab2" title="Tab 2"></wux-tab>
+            <wux-tab key="tab3" title="Tab 3"></wux-tab>
+        </wux-tabs>
+        <view class="sub-title">ActiveLineMode = full</view>
+        <wux-tabs defaultCurrent="tab3" activeLineMode="full">
             <wux-tab key="tab1" title="Tab 1"></wux-tab>
             <wux-tab key="tab2" title="Tab 2"></wux-tab>
             <wux-tab key="tab3" title="Tab 3"></wux-tab>

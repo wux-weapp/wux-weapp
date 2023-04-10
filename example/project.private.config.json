@@ -333,6 +333,48 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "cascader-view",
+          "pathName": "pages/cascader-view/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "accordion",
+          "pathName": "pages/accordion/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "backdrop",
+          "pathName": "pages/backdrop/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "popup",
+          "pathName": "pages/popup/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "swipe-action",
+          "pathName": "pages/swipe-action/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "switch",
+          "pathName": "pages/switch/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

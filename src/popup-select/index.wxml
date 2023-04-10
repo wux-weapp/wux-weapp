@@ -83,11 +83,11 @@
         <view class="{{ prefixCls + '__prompt' }}" wx:if="{{ !mergedOptions || mergedOptions.length === 0 }}">
             <wux-prompt
                 visible
-                icon="{{ mergedNotFound.icon }}"
-                title="{{ mergedNotFound.title }}"
-                text="{{ mergedNotFound.text }}"
+                icon="{{ mergedNotFoundContent.icon }}"
+                title="{{ mergedNotFoundContent.title }}"
+                text="{{ mergedNotFoundContent.text }}"
                 wrapStyle="{{ { backgroundColor: 'unset' } }}"
-                wx:if="{{ mergedNotFound }}"
+                wx:if="{{ mergedNotFoundContent }}"
             />
             <slot name="notFoundContent" wx:else></slot>
         </view>

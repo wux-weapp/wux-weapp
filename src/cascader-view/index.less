@@ -1,0 +1,50 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+@active-icon-size: 16px;
+
+.@{wux-prefix}-cascader-view {
+    position: relative;
+    font-size: @cascader-font-size;
+    line-height: @line-height-base;
+    color: @cascader-color;
+    background-color: @cascader-inner-bg;
+    overflow: hidden;
+
+    &__hd {
+        position: relative;
+        width: 100%;
+
+        &::after {
+            .setBottomLine(@border-color-split);
+        }
+    }
+
+    &__bd {
+        width: 100%;
+        display: flex;
+        background-color: @cascader-bg;
+    }
+
+    &__inner-scroll {
+        display: block;
+        height: inherit;
+        width: 50%;
+        flex: 0 0 50%;
+        background-color: @cascader-inner-bg;
+
+        &--full {
+            width: 100%;
+            flex: 0 0 100%;
+            background-color: @cascader-inner-bg !important;
+        }
+
+        &:nth-child(2n) {
+            background-color: @cascader-bg;
+        }
+    }
+
+    &__scroll-view {
+        max-height: @scroll-view-size;
+    }
+}

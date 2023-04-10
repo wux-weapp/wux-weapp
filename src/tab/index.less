@@ -22,17 +22,24 @@
         position: relative;
         box-sizing: border-box;
         font-size: @tabs-font-size;
-        color: @tabs-color;
+        // color: @tabs-color;
+        padding: 0 @tabs-scrolling-size;
 
         &-bar {
             display: block;
-            width: 100%;
+            width: calc(~"100%" - @tabs-scrolling-size * 2);
             height: @tabs-bar-size;
             background: transparent;
             position: absolute;
             bottom: 0;
-            left: 0;
+            left: @tabs-scrolling-size;
             background: @tabs-bar-balanced-bg;
+            border-radius: @tabs-bar-size;
+
+            &--full {
+                width: 100%;
+                left: 0;
+            }
         }
 
         &--vertical {
@@ -52,7 +59,6 @@
 
         &--horizontal&--scroll {
             display: inline-flex;
-            padding: 0 @tabs-scrolling-size;
             width: auto;
         }
 

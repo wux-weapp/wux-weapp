@@ -1,3 +1,24 @@
+import { defaultIcon } from '../prompt/props'
+
+export const notFoundContent = {
+    icon: defaultIcon,
+    title: '',
+    text: '暂无数据',
+}
+
+export const getNotFoundContent = (newVal) => {
+    if (newVal !== null && typeof newVal === 'object') {
+        return Object.assign({}, notFoundContent, newVal)
+    } else if (typeof newVal === 'string') {
+        return Object.assign({}, notFoundContent, {
+            text: newVal,
+        })
+    } else if (newVal === null || newVal === false) {
+        return null
+    }
+    return notFoundContent
+}
+
 export function convertValue(value) {
     return Array.isArray(value) ? [...value] : typeof value === 'string' ? [value] : []
 }

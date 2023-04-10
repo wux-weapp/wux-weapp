@@ -1,3 +1,8 @@
+<wux-backdrop visible="{{ visible1 }}" bind:click="onMaskClick1" />
+<wux-backdrop transparent visible="{{ visible2 }}" bind:click="onMaskClick2" />
+<wux-backdrop visible="{{ visible3 }}" bind:click="onMaskClick3" bind:showed="onShowed3" bind:closed="onClosed3">
+    <view class="custom-content">内容内容内容内容内容内容内容内容内容内容内容</view>
+</wux-backdrop>
 <wux-backdrop id="wux-backdrop" />
 
 <view class="page">
@@ -6,7 +11,12 @@
         <view class="page__desc">背景幕</view>
     </view>
     <view class="page__bd page__bd_spacing">
-        <view class="btn-group">
+        <view class="sub-title">声明式</view>
+        <wux-button block type="light" bind:click="setVisible1">显示背景蒙层</wux-button>
+        <wux-button block type="light" bind:click="setVisible2">显示透明的背景蒙层</wux-button>
+        <wux-button block type="light" bind:click="setVisible3">显示带内容的背景蒙层</wux-button>
+        <view class="sub-title">函数式</view>
+        <view class="btn-group" style="z-index: {{ zIndex }};">
             <wux-button block type="light" bind:click="retain">保持背景幕 retain</wux-button>
             <wux-button block type="light" bind:click="release">释放背景幕 release</wux-button>
         </view>

@@ -1,10 +1,27 @@
 @import "../styles/mixins/index.less";
 @import "../styles/themes/index.less";
 
+@switch-handle-height: @switch-height - 1px * 2;
+@switch-spin-height: @switch-handle-height / 2;
+@switch-spin-marign: (@switch-handle-height - @switch-spin-height) / 2;
+
+.switch-style(@theme, @color) {
+    &--@{theme} &__spin {
+        .encoded-svg-background(spin, @color);
+    }
+}
+
 .@{wux-prefix}-switch {
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+    position: relative;
+    align-self: center;
+    cursor: pointer;
+
     &__input {
         position: relative;
-        width: 52px;
+        min-width: 52px;
         height: @switch-height;
         border: 1px solid @switch-bg;
         outline: 0;
@@ -18,9 +35,9 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 50px;
-            height: @switch-height - 2px;
-            border-radius: (@switch-height - 2px) / 2;
+            width: 100%;
+            height: @switch-handle-height;
+            border-radius: @switch-handle-height / 2;
             background-color: #FDFDFD;
             transition: transform 0.35s cubic-bezier(0.45, 1, 0.4, 1);
         }
@@ -30,12 +47,13 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: @switch-height - 2px;
-            height: @switch-height - 2px;
-            border-radius: (@switch-height - 2px) / 2;
+            width: @switch-handle-height;
+            height: @switch-handle-height;
+            border-radius: @switch-handle-height / 2;
             background-color: #FFF;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-            transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
+            // transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
+            transition: left 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
         }
 
         &--checked {
@@ -47,12 +65,63 @@
             }
 
             &::after {
-                transform: translateX(20px);
+                // transform: translateX(20px);
+                left: calc(~"100% - 30px - 1px / 2");
             }
         }
 
         &--disabled {
             opacity: @disabled-opacity;
         }
+    }
+
+    &__text {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        transition: margin .2s;
+        margin: 0 8px 0 calc(@switch-height - 1px + 4px);
+    }
+
+    &--checked &__text {
+        color: @text-color-inverse;
+        margin: 0 calc(@switch-height - 1px + 5px) 0 10px;
+    }
+
+    &__spin {
+        position: absolute;
+        left: @switch-spin-marign;
+        top: @switch-spin-marign;
+        z-index: 10;
+        width: @switch-spin-height;
+        height: @switch-spin-height;
+        background-size: contain;
+        animation: switch-spin-rotate 1s linear infinite;
+
+        .encoded-svg-background(spin, @switch-color);
+    }
+
+    &--checked &__spin {
+        left: unset;
+        right: @switch-spin-marign;
+    }
+
+    .switch-style(light, @light);
+    .switch-style(stable, @stable);
+    .switch-style(positive, @positive);
+    .switch-style(calm, @calm);
+    .switch-style(assertive, @assertive);
+    .switch-style(balanced, @balanced);
+    .switch-style(energized, @energized);
+    .switch-style(royal, @royal);
+    .switch-style(dark, @dark);
+}
+
+@keyframes switch-spin-rotate {
+    to {
+        transform: rotate(1turn);
     }
 }

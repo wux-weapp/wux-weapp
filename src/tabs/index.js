@@ -1,6 +1,8 @@
 import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
+import styleToCssString from '../helpers/styleToCssString'
 import bound from '../helpers/bound'
+import { props } from './props'
 
 const getDefaultActiveKey = (elements) => {
     const target = elements.filter((element) => !element.data.disabled)[0]
@@ -28,41 +30,7 @@ baseComponent({
             },
         },
     },
-    properties: {
-        prefixCls: {
-            type: String,
-            value: 'wux-tabs',
-        },
-        defaultCurrent: {
-            type: String,
-            value: '',
-        },
-        current: {
-            type: String,
-            value: '',
-            observer(newVal) {
-                if (this.data.controlled) {
-                    this.updated(newVal)
-                }
-            },
-        },
-        scroll: {
-            type: Boolean,
-            value: false,
-        },
-        controlled: {
-            type: Boolean,
-            value: false,
-        },
-        theme: {
-            type: String,
-            value: 'balanced',
-        },
-        direction: {
-            type: String,
-            value: 'horizontal',
-        },
-    },
+    properties: props,
     data: {
         activeKey: '',
         keys: [],
@@ -70,6 +38,17 @@ baseComponent({
         scrollTop: 0,
         showPrevMask: false,
         showNextMask: false,
+        scrollViewStyle: '',
+    },
+    observers: {
+        current(newVal) {
+            if (this.data.controlled) {
+                this.updated(newVal)
+            }
+        },
+        justify(newVal) {
+            this.setStyles(newVal)
+        },
     },
     computed: {
         classes: ['prefixCls, direction, scroll', function(prefixCls, direction, scroll) {
@@ -229,15 +208,18 @@ baseComponent({
             this.changeCurrent(activeKey, elements)
         },
         changeCurrent(activeKey, elements) {
-            const { scroll, theme, direction } = this.data
+            const { scroll, theme, direction, activeLineMode } = this.data
 
             if (elements.length > 0) {
                 elements.forEach((element) => {
                     element.changeCurrent({
                         current: element.data.key === activeKey,
-                        scroll,
-                        theme,
-                        direction,
+                        context: {
+                            scroll,
+                            theme,
+                            direction,
+                            activeLineMode,
+                        },
                     })
                     if (element.data.key === activeKey) {
                         this.setNextScroll(element)
@@ -264,11 +246,27 @@ baseComponent({
 
             this.emitEvent(activeKey)
         },
+        /**
+         * 水平排列方式
+         */
+        setStyles(justify) {
+            if (this.data.direction === 'horizontal') {
+                const scrollViewStyle = styleToCssString({
+                    'justify-content': justify,
+                })
+                if (this.data.scrollViewStyle !== scrollViewStyle) {
+                    this.setData({
+                        scrollViewStyle,
+                    })
+                }
+            }
+        },
     },
     ready() {
-        const { defaultCurrent, current, controlled } = this.data
+        const { defaultCurrent, current, controlled, justify } = this.data
         const activeKey = controlled ? current : defaultCurrent
 
         this.updated(activeKey)
+        this.setStyles(justify)
     },
 })

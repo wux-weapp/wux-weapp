@@ -51,6 +51,21 @@
                 <wux-cell title="Disabled off">
                     <wux-switch name="f" slot="footer" value="{{ false }}" disabled />
                 </wux-cell>
+                <wux-cell title="Custom Text">
+                    <wux-switch name="g" slot="footer" value="{{ value5 }}" checkedText="开" uncheckedText="关" bind:change="onChange5" />
+                </wux-cell>
+                <wux-cell title="Custom Text">
+                    <wux-switch name="h" slot="footer" value="{{ value5 }}" bind:change="onChange5">
+                        <text slot="checked">√</text>
+                        <text slot="unchecked">×</text>
+                    </wux-switch>
+                </wux-cell>
+                <wux-cell title="Loading">
+                    <wux-switch name="i" slot="footer" value="{{ value6 }}" loading bind:change="onChange6" />
+                </wux-cell>
+                <wux-cell title="Async">
+                    <wux-switch name="j" slot="footer" color="positive" value="{{ value7 }}" loading="{{ loading }}" bind:change="onChange7" />
+                </wux-cell>
             </wux-cell-group>
             <view class="btn-area">
                 <button formType="submit">Submit</button>

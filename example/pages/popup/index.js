@@ -4,40 +4,32 @@ ad({
     data: {
         visible1: false,
         visible2: false,
+        visible3: false,
+        visible4: false,
+        visible5: false,
+        visible6: false,
+        visible7: false,
+        visible8: false,
+        visible9: false,
     },
-    open1() {
+    onOpen(e) {
+        const { key } = e.currentTarget.dataset
         this.setData({
-            visible1: true,
+            [`visible${key}`]: true,
         })
+        console.log('onOpen', `visible${key}`)
     },
-    open2() {
+    onClose(e) {
+        const { key } = e.currentTarget.dataset
         this.setData({
-            visible2: true,
+            [`visible${key}`]: false,
         })
+        console.log('onClose', `visible${key}`)
     },
-    close1() {
-        this.setData({
-            visible1: false,
-        })
+    onShowed() {
+        console.log('onShowed')
     },
-    close2() {
-        this.setData({
-            visible2: false,
-        })
-    },
-    onClose(key) {
-        console.log('onClose')
-        this.setData({
-            [key]: false,
-        })
-    },
-    onClose1() {
-        this.onClose('visible1')
-    },
-    onClose2() {
-        this.onClose('visible2')
-    },
-    onClosed1() {
+    onClosed() {
         console.log('onClosed')
     },
 })

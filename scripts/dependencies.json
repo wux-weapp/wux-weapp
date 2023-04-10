@@ -49,11 +49,15 @@
     },
     "cascader": {
         "files": ["cascader"],
-        "dependencies": ["popup"]
+        "dependencies": ["popup", "cascader-view"]
     },
     "cascader-picker-view": {
         "files": ["cascader-picker-view"],
         "dependencies": ["multi-picker-view"]
+    },
+    "cascader-view": {
+        "files": ["cascader-view"],
+        "dependencies": ["tabs", "radio"]
     },
     "cell": {
         "files": ["cell", "cell-group"],

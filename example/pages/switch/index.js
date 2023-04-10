@@ -7,6 +7,10 @@ ad({
         value2: false,
         value3: true,
         value4: true,
+        value5: false,
+        value6: false,
+        value7: false,
+        loading: false,
     },
     onChange(field, e) {
         this.setData({
@@ -29,6 +33,20 @@ ad({
     },
     onChange5(e) {
         this.onChange('value5', e)
+    },
+    onChange6(e) {
+        this.onChange('value6', e)
+    },
+    onChange7(e) {
+        this.setData({
+            loading: true,
+        })
+        setTimeout(() => {
+            this.setData({
+                loading: false,
+            })
+            this.onChange('value7', e)
+        }, 1500)
     },
     formSubmit(e) {
         console.log('form发生了submit事件，携带数据为：', e.detail.value)

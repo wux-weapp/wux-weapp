@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
 import eventsMixin from '../helpers/eventsMixin'
+import { props } from './props'
 
 function getOptions(options = []) {
     return options.map((option, index) => {
@@ -37,32 +38,7 @@ baseComponent({
             },
         },
     },
-    properties: {
-        prefixCls: {
-            type: String,
-            value: 'wux-checkbox-group',
-        },
-        cellGroupPrefixCls: {
-            type: String,
-            value: 'wux-cell-group',
-        },
-        value: {
-            type: Array,
-            value: [],
-        },
-        title: {
-            type: String,
-            value: '',
-        },
-        label: {
-            type: String,
-            value: '',
-        },
-        options: {
-            type: Array,
-            value: [],
-        },
-    },
+    properties: props,
     data: {
         inputValue: [],
         keys: [],
@@ -78,8 +54,8 @@ baseComponent({
                 this.changeValue(newVal)
             }
         },
-        options(newVal) {
-            this.changeValue(this.data.inputValue, newVal)
+        ['options, disabled, readOnly, prefixCls'](options, disabled, readOnly, prefixCls) {
+            this.changeValue(this.data.inputValue, options, disabled, readOnly, prefixCls)
         },
     },
     methods: {
@@ -88,23 +64,45 @@ baseComponent({
                 this.setData({ inputValue })
             }
         },
-        changeValue(value = this.data.inputValue, options = this.data.options) {
+        changeValue(
+            value = this.data.inputValue,
+            options = this.data.options,
+            disabled = this.data.disabled,
+            readOnly = this.data.readOnly,
+            prefixCls = this.data.prefixCls,
+        ) {
             const showOptions = getOptions(options)
-            const elements = this.getRelationNodes('../checkbox/index')
-            const keys = showOptions.length > 0 ? showOptions : elements ? elements.map((element) => element.data) : []
 
-            // Elements should be updated when not using the options
-            if (!showOptions.length && elements && elements.length > 0) {
-                elements.forEach((element, index) => {
-                    element.changeValue(Array.isArray(value) && value.includes(element.data.value), index)
-                })
+            const setChildrenValues = (children) => {
+                const keys = []
+
+                if (children && children.length > 0) {
+                    const lastIndex = children.length - 1
+                    children.forEach((child, index) => {
+                        const active = Array.isArray(value) && value.includes(child.data.value)
+                        const isLast = index === lastIndex
+                        child.changeValue(active, index, isLast, {
+                            disabled,
+                            readOnly,
+                        })
+                        keys.push(child.data)
+                    })
+                }
+
+                if (this.data.keys !== keys) {
+                    this.setData({
+                        keys,
+                    })
+                }
             }
 
-            if (this.data.keys !== keys) {
-                this.setData({
-                    keys,
-                })
-            }
+            wx.nextTick(() => {
+                const elements = showOptions.length > 0
+                    ? this.selectAllComponents(`.${prefixCls}__checkbox`)
+                    : this.getRelationNodes('../checkbox/index')
+
+                setChildrenValues(elements)
+            })
         },
         onChange(item) {
             const checkedValues = getCheckedValues(item.value, this.data.inputValue)
