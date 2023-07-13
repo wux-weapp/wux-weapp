@@ -67,9 +67,19 @@
                 <wux-input-number shape="circle" color="dark" slot="footer" />
             </wux-cell>
         </wux-cell-group>
-        <wux-cell-group title="设置 callback 回调函数，在调试窗口中输出">
+        <wux-cell-group title="监听 onChange 事件，在调试窗口中输出">
             <wux-cell title="数量" hover-class="none">
-                <wux-input-number longpress disabled="{{ false }}" value="{{ value }}" controlled min="{{ -10 }}" max="{{ 10 }}" bind:change="onChange" slot="footer" />
+                <wux-input-number disabled="{{ false }}" value="{{ value }}" controlled min="{{ -10 }}" max="{{ 10 }}" bind:change="onChange" slot="footer" />
+            </wux-cell>
+        </wux-cell-group>
+        <wux-cell-group title="格式化到整数">
+            <wux-cell title="数量" hover-class="none">
+                <wux-input-number digits="{{ 0 }}" disabled="{{ false }}" default-value="1" slot="footer" />
+            </wux-cell>
+        </wux-cell-group>
+        <wux-cell-group title="格式化到一位小数">
+            <wux-cell title="数量" hover-class="none">
+                <wux-input-number digits="{{ 1 }}" disabled="{{ false }}" default-value="1.1" slot="footer" />
             </wux-cell>
         </wux-cell-group>
         <wux-cell-group title="自定义样式">

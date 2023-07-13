@@ -82,6 +82,10 @@ baseComponent({
             type: Boolean,
             value: true,
         },
+        readOnly: {
+            type: Boolean,
+            value: false,
+        },
         longpress: {
             type: Boolean,
             value: false,
@@ -94,6 +98,10 @@ baseComponent({
             type: Boolean,
             value: false,
         },
+        digits: {
+            type: Number,
+            value: -1,
+        },
     },
     data: {
         inputValue: 0,
@@ -101,7 +109,7 @@ baseComponent({
         disabledMax: false,
     },
     computed: {
-        classes: ['prefixCls, shape, color, disabledMin, disabledMax', function(prefixCls, shape, color, disabledMin, disabledMax) {
+        classes: ['prefixCls, shape, color, disabled, readOnly, disabledMin, disabledMax', function(prefixCls, shape, color, disabled, readOnly, disabledMin, disabledMax) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${shape}`]: shape,
             })
@@ -116,7 +124,10 @@ baseComponent({
                 [`${prefixCls}__selector--disabled`]: disabledMax,
             })
             const icon = `${prefixCls}__icon`
-            const input = `${prefixCls}__input`
+            const input = classNames(`${prefixCls}__input`, {
+                [`${prefixCls}__input--disabled`]: disabled,
+                [`${prefixCls}__input--readonly`]: readOnly,
+            })
 
             return {
                 wrap,
@@ -157,8 +168,13 @@ baseComponent({
          * 设置值
          */
         setValue(value, runCallbacks = true) {
-            const { min, max } = this.data
-            const inputValue = NP.strip(getValidValue(value, min, max))
+            const { min, max, digits } = this.data
+            let inputValue =  NP.strip(getValidValue(value, min, max))
+
+            // Fix digits
+            if (digits !== -1) {
+                inputValue = NP.round(inputValue, digits)
+            }
 
             this.updated(inputValue)
 
