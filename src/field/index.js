@@ -171,6 +171,7 @@ baseComponent({
             const meta = {
                 ...field,
                 ...fieldOption,
+                initialValue: 'initialValue' in field ? field.initialValue : fieldOption.initialValue,
                 name,
                 oriInputProps,
                 inputElem,

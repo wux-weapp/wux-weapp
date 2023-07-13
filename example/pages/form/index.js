@@ -3,13 +3,25 @@ import data from '../cascader/data'
 
 import ad from '../index/ad'
 
+function getDateString(date = new Date) {
+    return {
+        year: date.getFullYear() + '',
+        month: date.getMonth() + '',
+        day: date.getDate() + '',
+        hour: date.getHours() + '',
+        minute: date.getMinutes() + '',
+    }
+}
+
+const { year, month, day, hour, minute } = getDateString()
+
 ad({
     data: {
         checkbox: ['1'],
         radio: '1',
         switch: true,
         picker: [],
-        datePicker: [],
+        datePicker: [year, month, day, hour, minute],
         popupSelect: '猎人',
         options1: [],
         options2: ['法官', '医生', '猎人', '学生', '记者', '其他'],
@@ -44,39 +56,36 @@ ad({
         console.log('Default Form Submit \n', e.detail.value)
     },
     onSubmit() {
-        const { getFieldsValue, getFieldValue, setFieldsValue } = $wuxForm()
+        const { getFieldsValue } = $wuxForm()
         const value = getFieldsValue()
 
         console.log('Wux Form Submit \n', value)
     },
-    onChange(e) {
-        const { form, changedValues, allValues } = e.detail
+    onValuesChange(e) {
+        const { changedValues, allValues } = e.detail
+        this.setDataFromValue(changedValues)
 
-        console.log('onChange \n', changedValues, allValues)
+        console.log('onValuesChange \n', changedValues, allValues)
     },
     onReset() {
-        const { getFieldsValue, setFieldsValue } = $wuxForm()
-        const fields = getFieldsValue()
+        const { getFieldsValue, resetFields } = $wuxForm()
+        resetFields()
+        const value = getFieldsValue()
+        this.setDataFromValue(value)
 
-        for (let item in fields) {
-            if ({}.hasOwnProperty.call(fields, item)) {
-                if (Array.isArray(fields[item])) {
-                    fields[item] = []
-                    if (item === 'slider') {
-                        fields[item] = [10, 80]
-                    }
-                } else if (typeof fields[item] === 'boolean') {
-                    fields[item] = false
-                } else if (typeof fields[item] === 'number') {
-                    fields[item] = 0
-                } else {
-                    fields[item] = ''
-                }
-            }
-        }
-
+        console.log('Wux Form Reset \n', value)
+    },
+    onFill() {
+        const { setFieldsValue } = $wuxForm()
         setFieldsValue({
-            ...fields,
+            textarea: 'Hello wux! Hello wux! Hello wux!',
+        })
+    },
+    setDataFromValue(changedValues) {
+        Object.keys(changedValues).forEach((field) => {
+            this.setData({
+                [field]: changedValues[field],
+            })
         })
     },
 })
