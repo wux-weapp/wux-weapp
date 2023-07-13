@@ -3,7 +3,7 @@
     "usingComponents": {
         "wux-tabs": "../tabs/index",
         "wux-tab": "../tab/index",
-        "wux-radio-group": "../../dist/radio-group/index",
-        "wux-radio": "../../dist/radio/index"
+        "wux-radio-group": "../radio-group/index",
+        "wux-radio": "../radio/index"
     }
 }

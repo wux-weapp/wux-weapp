@@ -1,5 +1,5 @@
 /**
- * Wux Weapp 3.9.0
+ * Wux Weapp 3.10.0
  * 一套组件化、可复用、易扩展的微信小程序 UI 组件库
  * https://github.com/wux-weapp/wux-weapp#readme
  *
@@ -7,7 +7,7 @@
  *
  * Released under the MIT License
  *
- * Released on: 2023-4-10
+ * Released on: 2023-7-13
  */
 
 import $wuxCountDown from './countdown/index'
@@ -28,7 +28,7 @@ export const getCtx = (selector, ctx = getCurrentPages()[getCurrentPages().lengt
     return componentCtx
 }
 
-const version = '3.9.0'
+const version = '3.10.0'
 const $wuxActionSheet = (selector = '#wux-actionsheet', ctx) => getCtx(selector, ctx)
 const $wuxBackdrop = (selector = '#wux-backdrop', ctx) => getCtx(selector, ctx)
 const $wuxDialog = (selector = '#wux-dialog', ctx) => getCtx(selector, ctx)

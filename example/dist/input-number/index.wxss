@@ -18,6 +18,9 @@
   min-height: inherit;
   box-sizing: border-box
 }
+.wux-input-number__input--disabled {
+  opacity: 1
+}
 .wux-input-number__selector {
   width: 68rpx;
   height: 52rpx;

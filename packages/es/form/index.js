@@ -27,6 +27,7 @@ baseComponent({
                     const meta = {
                         ...originalProps,
                         ...field,
+                        initialValue: 'initialValue' in field ? field.initialValue : originalProps.initialValue,
                         originalProps,
                         fieldElem,
                     }
@@ -91,7 +92,9 @@ baseComponent({
          * 重置字段
          */
         resetFields(ns) {
-            const names = Array.isArray(ns) ? ns : [ns]
+            const names = typeof ns === 'undefined'
+                ? ns : Array.isArray(ns)
+                    ? ns : [ns]
             const newFields = this.fieldsStore.resetFields(names)
             if (Object.keys(newFields).length > 0) {
                 this.setFields(newFields)
