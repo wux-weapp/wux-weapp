@@ -21,7 +21,7 @@
         <img alt="travis" src="https://img.shields.io/travis/wux-weapp/wux-weapp.svg?label=travis" />
     </a>
     <a href="https://github.com/wux-weapp/wux-weapp/actions" target="_blank">
-        <img alt="github workflow" src="https://img.shields.io/github/workflow/status/wux-weapp/wux-weapp/test?label=github workflow" />
+        <img alt="github workflow" src="https://img.shields.io/github/actions/workflow/status/wux-weapp/wux-weapp/test.yml?branch=master&label=github workflow" />
     </a>
     <br />
     <a href="https://www.npmjs.com/package/wux-weapp" target="_blank">
