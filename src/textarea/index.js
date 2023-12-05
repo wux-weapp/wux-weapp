@@ -107,6 +107,7 @@ baseComponent({
             const extra = `${prefixCls}__extra`
             const count = `${prefixCls}__count`
             const current = `${prefixCls}__current`
+            const keyboardAccessory = `${prefixCls}__keyboard-accessory`
 
             return {
                 wrap,
@@ -118,6 +119,7 @@ baseComponent({
                 extra,
                 count,
                 current,
+                keyboardAccessory,
             }
         }],
     },

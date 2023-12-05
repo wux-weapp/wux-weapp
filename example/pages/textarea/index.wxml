@@ -85,5 +85,15 @@
                 <wux-textarea label="Tel number" value="{{ value }}" controlled error="{{ error }}" bind:change="onChange" bind:focus="onFocus" bind:blur="onBlur" bind:confirm="onConfirm" bind:clear="onClear" bind:error="onError" />
             </wux-cell>
         </wux-cell-group>
+        <wux-cell-group title="Keyboard accessory" label="tip: 视图最大高度为 200px">
+            <wux-cell hover-class="none">
+                <wux-textarea hold-keyboard="{{ true }}" rows="3" cursorSpacing="80" placeholder="设置 input / textarea 聚焦时键盘上方 cover-view / cover-image 工具栏视图">
+                    <cover-view slot="keyboard-accessory" class="container" style="height: 50px;">
+                        <cover-view style="flex: 1; background: green;">1</cover-view>
+                        <cover-image src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" style="flex: 1; background: red;"></cover-image>
+                    </cover-view>
+                </wux-textarea>
+            </wux-cell>
+        </wux-cell-group>
     </view>
 </view>

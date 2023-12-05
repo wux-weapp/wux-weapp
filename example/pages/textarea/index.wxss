@@ -1,1 +1,4 @@
 /* pages/list/index.wxss */
+.container {
+    display: flex;
+}

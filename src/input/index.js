@@ -136,6 +136,7 @@ baseComponent({
             const clear = `${prefixCls}__clear`
             const error = `${prefixCls}__error`
             const extra = `${prefixCls}__extra`
+            const keyboardAccessory = `${prefixCls}__keyboardAccessory`
 
             return {
                 wrap,
@@ -145,6 +146,7 @@ baseComponent({
                 clear,
                 error,
                 extra,
+                keyboardAccessory,
             }
         }],
     },

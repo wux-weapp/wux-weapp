@@ -33,7 +33,9 @@
 			bindkeyboardheightchange="onKeyboardHeightChange"
 			style="{{ inputRows > 1 && !!inputHeight ? 'height: ' + inputHeight + 'px' : '' }}"
 		>
-			<slot name="keyboard-accessory"></slot>
+			<keyboard-accessory class="{{ classes.keyboardAccessory }}" style="max-height: 200px;">
+				<slot name="keyboard-accessory"></slot>
+			</keyboard-accessory>
 		</textarea>
 	</view>
 	<view class="{{ classes.clear }}" bindtap="onClear" wx:if="{{ clear && !disabled && inputValue && inputValue.length > 0 }}">
