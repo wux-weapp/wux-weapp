@@ -4,6 +4,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "calendar",
+          "pathName": "pages/calendar/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "picker",
           "pathName": "pages/picker/index",
           "query": "",

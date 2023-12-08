@@ -4,10 +4,9 @@
         wux-class="{{ prefixCls }}"
         in="{{ popupVisible }}"
         classNames="{{ transitionName }}"
-        wrapStyle="{{ { zIndex } }}"
         mountOnEnter="{{ mountOnEnter }}"
         unmountOnExit="{{ unmountOnExit }}"
-        wrapStyle="{{ popupContainerStyle }}"
+        wrapStyle="{{ { ...popupContainerStyle, zIndex } }}"
         bind:entered="onEntered"
         bind:exited="onExited"
     >
