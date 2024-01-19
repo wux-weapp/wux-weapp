@@ -158,6 +158,12 @@ baseComponent({
             }
         },
         /**
+         * 开始展示前触发
+         */
+        onEnter() {
+            this.triggerEvent('show')
+        },
+        /**
          * 完全展示后触发
          */
         onEntered() {

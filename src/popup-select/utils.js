@@ -1,5 +1,7 @@
 import { defaultIcon } from '../prompt/props'
 
+export const POPUP_SELECTOR = '#wux-select'
+
 export const notFoundContent = {
     icon: defaultIcon,
     title: '',

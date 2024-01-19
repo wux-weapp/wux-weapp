@@ -13,7 +13,7 @@ ad({
         value3: '',
         value4: '',
         value5: '',
-        value6: '',
+        value6: ['item_2'],
         displayValue1: '请选择',
         displayValue2: '请选择',
         displayValue3: '请选择',

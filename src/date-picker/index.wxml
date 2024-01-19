@@ -5,7 +5,7 @@
     hasFooter="{{ false }}"
     mountOnEnter="{{ false }}"
     safeArea="bottom"
-    bind:showed="onShowed"
+    bind:show="onShow"
     bind:close="close"
     bind:closed="onClosed"
 >

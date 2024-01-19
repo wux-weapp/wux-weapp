@@ -67,7 +67,7 @@ const baseComponent = (options = {}) => {
             },
             ...options.methods,
         }
-        options['export'] = options.methods['export']
+        options['export'] = options.methods['expose'] || options.methods['export']
         delete options.useExport
     }
 

@@ -38,7 +38,7 @@ export default function popupMixin(selector = '#wux-picker', platformProps = def
         properties: {
             toolbar: {
                 type: Object,
-                value: defaultToolbar,
+                value: { ...defaultToolbar },
             },
             trigger: {
                 type: String,
@@ -64,7 +64,6 @@ export default function popupMixin(selector = '#wux-picker', platformProps = def
         data: {
             popupVisible: false,
             inputValue: [],
-            scrollTop: 0,
             fieldNames: { ...defaultFieldNames },
         },
         methods: {
@@ -93,7 +92,7 @@ export default function popupMixin(selector = '#wux-picker', platformProps = def
             open() {
                 this.fireVisibleChange(true)
             },
-            onShowed() {
+            onShow() {
                 let value = this.data.value
                 let newValue = this.data.inputValue
     
@@ -109,7 +108,6 @@ export default function popupMixin(selector = '#wux-picker', platformProps = def
                         field.changeValue(newValue)
                     }
                 }
-    
     
                 if (this.data.inputValue !== newValue) {
                     this.updated(newValue)
@@ -140,7 +138,7 @@ export default function popupMixin(selector = '#wux-picker', platformProps = def
                 }
     
                 this.picker = null
-                this.setData({ inputValue: value, scrollTop: 0 })
+                this.setData({ inputValue: value })
             },
             /**
              * 点击确定按钮时的回调函数

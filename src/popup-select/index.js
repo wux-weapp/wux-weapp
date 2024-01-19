@@ -1,8 +1,7 @@
 import baseComponent from '../helpers/baseComponent'
 import popupMixin from '../helpers/popupMixin'
-import { notFoundContent, getNotFoundContent, getSelectIndex, getRealValue, flattenOptions } from './utils'
-
-const POPUP_SELECTOR = '#wux-select'
+import nextTick from '../helpers/nextTick'
+import { POPUP_SELECTOR, notFoundContent, getNotFoundContent, flattenOptions } from './utils'
 
 baseComponent({
     behaviors: [popupMixin(POPUP_SELECTOR)],
@@ -33,43 +32,76 @@ baseComponent({
         },
         notFoundContent: {
             type: null,
-            value: notFoundContent,
-            observer(newVal) {
-                this.setData({
-                    mergedNotFoundContent: getNotFoundContent(newVal),
-                })
-            },
+            value: { ...notFoundContent },
         },
     },
     data: {
-        scrollTop: 0,
         mergedOptions: [],
-        mergedNotFoundContent: null,
+        mergedOptionsValueMap: new Map(),
+        mergedNotFoundContent: { ...notFoundContent },
     },
     observers: {
-        ['options, multiple, virtualized'](options, multiple, virtualized) {
+        ['options, multiple'](options, multiple) {
             const mergedOptions = flattenOptions(options)
-            const inputValue = this.getRealValue(mergedOptions, this.data.inputValue, multiple)
-            this.setData({
-                inputValue,
-                mergedOptions,
+            
+            const mergedOptionsValueMap = new Map()
+            mergedOptions.forEach((option, index) => {
+                mergedOptionsValueMap.set(option.value, { option, index })
             })
-            this.initVirtual(virtualized, mergedOptions)
+
+            this.setData({
+                mergedOptions,
+                mergedOptionsValueMap,
+            })
+        },
+        notFoundContent(notFoundContent) {
+            this.renderEmpty(notFoundContent)
         },
     },
     methods: {
-        getRealValue(options = this.data.mergedOptions, value = this.data.inputValue, multiple = this.data.multiple) {
-            return getRealValue(options, value, multiple)
+        renderEmpty(notFoundContent) {
+            const mergedNotFoundContent = getNotFoundContent(notFoundContent)
+            if (this.data.mergedNotFoundContent !== mergedNotFoundContent) {
+                this.setData({ mergedNotFoundContent })
+            }
         },
-        updated(value, isForce) {
+        updated(inputValue, isForce) {
             if (this.hasFieldDecorator && !isForce) { return }
-            const inputValue = this.getRealValue(this.data.mergedOptions, value)
             if (this.data.inputValue !== inputValue) {
                 this.setData({ inputValue })
             }
         },
-        onShowed() {
-            const { value, virtualized, mergedOptions } = this.data
+        getIndexRef(props = this.data) {
+            if (props.multiple) {
+                const len = props.value.length
+                if (
+                    props.value.length > 0 &&
+                    props.mergedOptionsValueMap.has(props.value[len - 1])
+                ) {
+                    const { index } = props.mergedOptionsValueMap.get(
+                        props.value[len - 1]
+                    )
+                    return index
+                }
+            } else {
+                if (
+                    props.value &&
+                    props.mergedOptionsValueMap.has(props.value)
+                ) {
+                    const { index } = props.mergedOptionsValueMap.get(props.value)
+                    return index
+                }
+            }
+            return -1
+        },
+        scrollToItem(index) {
+            const menuRef = this.selectComponent(POPUP_SELECTOR)
+            if (menuRef) {
+                menuRef.scrollToItem(index)
+            }
+        },
+        onShow() {
+            const { value } = this.data
             let newValue = this.data.inputValue
 
             if (newValue !== value) {
@@ -85,18 +117,16 @@ baseComponent({
                 }
             }
 
-            if (!virtualized) {
-                // scroll into view
-                this.getBoundingClientRect((height) => {
-                    this.scrollIntoView(newValue, height)
-                })
-            }
-
             if (this.data.inputValue !== newValue) {
                 this.updated(newValue)
             }
 
-            this.initVirtual(virtualized, mergedOptions)
+            nextTick(() => {
+                const index = this.getIndexRef({ ...this.data, value: newValue  })
+                if (index !== -1) {
+                    this.scrollToItem(index)
+                }
+            })
         },
         getPickerValue(value = this.data.inputValue) {
             const { virtualized, mergedOptions } = this.data
@@ -104,61 +134,14 @@ baseComponent({
             this.picker = this.picker || this.selectComponent(POPUP_SELECTOR)
             return this.picker && this.picker.getValue(value, cols)
         },
-        onValueChange(e) {
+        onSelectChange(e) {
             if (!this.mounted) { return }
-            const { max, multiple } = this.data
-            const { selectedValue: value } = e.detail
-            if (multiple && max >= 1 && max < value.length) return
-
+            const { value } = e.detail
             this.updated(value, true)
-            this.triggerEvent('valueChange', this.formatPickerValue({ ...e.detail, value }))
-        },
-        scrollIntoView(value, height) {
-            const { options, multiple } = this.data
-            const index = getSelectIndex(options, value, multiple)
-            const nums = options.length
-
-            // scroll into view
-            let activeIndex = Array.isArray(index) ? index[index.length - 1] : index
-            if (activeIndex === -1 || activeIndex === undefined) {
-                activeIndex = 0
-            }
-
-            // set scrollTop
-            const scrollTop = nums >= 1 ? parseFloat(height / nums * activeIndex) : 0
-
-            if (this.data.scrollTop !== scrollTop) {
-                this.setData({ scrollTop })
-            }
-        },
-        getBoundingClientRect(callback) {
-            return this.selectComponent(POPUP_SELECTOR).getBoundingClientRect(callback)
-        },
-        onVirtualChange(e) {
-            const { startIndex, endIndex } = e.detail
-            if (
-                this.data.startIndex !== startIndex ||
-                this.data.endIndex !== endIndex
-            ) {
-                this.setData(e.detail)
-            }
-        },
-        initVirtual(virtualized, items) {
-            if (virtualized) {
-                const startTime = Date.now()
-                const virtualListRef = this.selectComponent('#wux-virtual-list')
-                if (virtualListRef) {
-                    virtualListRef.render(items, () => {
-                        const diffTime = Date.now() - startTime
-                        console.log(`onSuccess - render time: ${diffTime}ms`)
-                    })
-                }
-            }
+            this.triggerEvent('valueChange', this.formatPickerValue({ ...e.detail }))
         },
     },
     ready() {
-        this.setData({
-            mergedNotFoundContent: getNotFoundContent(this.data.notFoundContent),
-        })
+        this.renderEmpty(this.data.notFoundContent)
     },
 })
