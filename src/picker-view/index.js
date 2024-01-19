@@ -27,7 +27,7 @@ baseComponent({
         extItemStyle: '',
         extMaskStyle: '',
         contentStyle: '',
-        fieldNames: defaultFieldNames,
+        fieldNames: { ...defaultFieldNames },
         itemCount: 7, // 默认显示的子元素个数
         styles: {},
     },

@@ -2,12 +2,14 @@ import baseComponent from '../helpers/baseComponent'
 import popupMixin from '../helpers/popupMixin'
 import { notFoundContent, getNotFoundContent, getSelectIndex, getRealValue, flattenOptions } from './utils'
 
+const POPUP_SELECTOR = '#wux-select'
+
 baseComponent({
-    behaviors: [popupMixin('#wux-select')],
+    behaviors: [popupMixin(POPUP_SELECTOR)],
     properties: {
         prefixCls: {
             type: String,
-            value: 'wux-select',
+            value: POPUP_SELECTOR.substring(1),
         },
         value: {
             type: [String, Array],
@@ -25,6 +27,10 @@ baseComponent({
             type: Number,
             value: -1,
         },
+        virtualized: {
+            type: Boolean,
+            value: false,
+        },
         notFoundContent: {
             type: null,
             value: notFoundContent,
@@ -41,13 +47,14 @@ baseComponent({
         mergedNotFoundContent: null,
     },
     observers: {
-        ['options, multiple'](options, multiple) {
+        ['options, multiple, virtualized'](options, multiple, virtualized) {
             const mergedOptions = flattenOptions(options)
             const inputValue = this.getRealValue(mergedOptions, this.data.inputValue, multiple)
             this.setData({
                 inputValue,
                 mergedOptions,
             })
+            this.initVirtual(virtualized, mergedOptions)
         },
     },
     methods: {
@@ -55,46 +62,54 @@ baseComponent({
             return getRealValue(options, value, multiple)
         },
         updated(value, isForce) {
-            if (!this.hasFieldDecorator || isForce) {
-                const inputValue = this.getRealValue(this.data.mergedOptions, value)
-                if (this.data.inputValue !== inputValue) {
-                    this.setData({ inputValue })
-                }
+            if (this.hasFieldDecorator && !isForce) { return }
+            const inputValue = this.getRealValue(this.data.mergedOptions, value)
+            if (this.data.inputValue !== inputValue) {
+                this.setData({ inputValue })
             }
         },
-        setVisibleState(popupVisible, callback = () => {}) {
-            if (this.data.popupVisible !== popupVisible) {
-                const params = {
-                    mounted: true,
-                    inputValue: this.getRealValue(this.data.mergedOptions, this.data.value), // forceUpdate
-                    popupVisible,
-                }
-                this.setData(popupVisible ? params : { popupVisible }, () => {
-                    // collect field component & forceUpdate
-                    if (popupVisible) {
-                        let newValue = params.inputValue
-                        let field = this.getFieldElem()
-                        if (this.hasFieldDecorator && field) {
-                            newValue = field.data.value
-                            field.changeValue(newValue)
-                        }
+        onShowed() {
+            const { value, virtualized, mergedOptions } = this.data
+            let newValue = this.data.inputValue
 
-                        // scroll into view
-                        this.getBoundingClientRect((height) => {
-                            this.scrollIntoView(newValue, height)
-                        })
-                    }
-                    callback()
+            if (newValue !== value) {
+                newValue = value
+            }
+
+            // collect field component & forceUpdate
+            if (this.hasFieldDecorator) {
+                const field = this.getFieldElem()
+                if (field) {
+                    newValue = field.data.value
+                    field.changeValue(newValue)
+                }
+            }
+
+            if (!virtualized) {
+                // scroll into view
+                this.getBoundingClientRect((height) => {
+                    this.scrollIntoView(newValue, height)
                 })
             }
+
+            if (this.data.inputValue !== newValue) {
+                this.updated(newValue)
+            }
+
+            this.initVirtual(virtualized, mergedOptions)
+        },
+        getPickerValue(value = this.data.inputValue) {
+            const { virtualized, mergedOptions } = this.data
+            const cols = virtualized ? mergedOptions : undefined
+            this.picker = this.picker || this.selectComponent(POPUP_SELECTOR)
+            return this.picker && this.picker.getValue(value, cols)
         },
         onValueChange(e) {
-            if (!this.data.mounted) return
-            const { options, max, multiple } = this.data
+            if (!this.mounted) { return }
+            const { max, multiple } = this.data
             const { selectedValue: value } = e.detail
             if (multiple && max >= 1 && max < value.length) return
 
-            this.setScrollValue(value)
             this.updated(value, true)
             this.triggerEvent('valueChange', this.formatPickerValue({ ...e.detail, value }))
         },
@@ -117,7 +132,28 @@ baseComponent({
             }
         },
         getBoundingClientRect(callback) {
-            return this.selectComponent('#wux-select').getBoundingClientRect(callback)
+            return this.selectComponent(POPUP_SELECTOR).getBoundingClientRect(callback)
+        },
+        onVirtualChange(e) {
+            const { startIndex, endIndex } = e.detail
+            if (
+                this.data.startIndex !== startIndex ||
+                this.data.endIndex !== endIndex
+            ) {
+                this.setData(e.detail)
+            }
+        },
+        initVirtual(virtualized, items) {
+            if (virtualized) {
+                const startTime = Date.now()
+                const virtualListRef = this.selectComponent('#wux-virtual-list')
+                if (virtualListRef) {
+                    virtualListRef.render(items, () => {
+                        const diffTime = Date.now() - startTime
+                        console.log(`onSuccess - render time: ${diffTime}ms`)
+                    })
+                }
+            }
         },
     },
     ready() {

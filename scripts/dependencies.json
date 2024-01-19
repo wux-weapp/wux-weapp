@@ -99,6 +99,10 @@
         "files": ["divider"],
         "dependencies": []
     },
+    "e-sign": {
+        "files": ["e-sign"],
+        "dependencies": []
+    },
     "ellipsis": {
         "files": ["ellipsis"],
         "dependencies": []

@@ -1,0 +1,16 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">ESign</view>
+        <view class="page__desc">电子签名</view>
+    </view>
+    <view class="page__bd">
+        <view class="sub-title">Default</view>
+        <wux-e-sign bind:signing="onSigning" bind:clear="onClear" bind:submit="onSubmit" />
+        <view class="sub-title">Custom lineColor</view>
+        <wux-e-sign lineColor="#ff0000" bind:signing="onSigning" bind:clear="onClear" bind:submit="onSubmit" />
+        <view class="sub-title">Custom lineWidth</view>
+        <wux-e-sign lineWidth="6" bind:signing="onSigning" bind:clear="onClear" bind:submit="onSubmit" />
+        <view class="sub-title">Custom bgColor</view>
+        <wux-e-sign bgColor="#cccccc" bind:signing="onSigning" bind:clear="onClear" bind:submit="onSubmit" />
+    </view>
+</view>

@@ -45,24 +45,39 @@ export function createImage({ imageWidth, imageHeight, imageUrl }, canvas) {
     })
 }
 
+/**
+ * 把当前画布指定区域的内容导出生成指定大小的图片
+ *
+ * @export
+ * @param {number} width 指定的画布区域的宽度
+ * @param {number} height 指定的画布区域的高度
+ * @param {string} type 目标文件的类型，可选值为 png, jpg, jpeg, webp
+ * @param {number} quality 图片的质量，目前仅对 jpg 有效。取值范围为 (0, 1]，不在范围内时当作 1.0 处理。
+ * @param {object} canvas 画布标识，传入 canvas 组件实例 （canvas type="2d" 时使用该属性）。
+ * @return {string} 
+ */
 export function toDataURL({
     width,
     height,
-    type ='image/png',
+    type ='png',
     quality = 1,
 }, canvas) {
     return new Promise((resolve) => {
         if (typeof canvas.toDataURL === 'function') {
             // 基础库 2.11.0 开始支持
             // @see https://developers.weixin.qq.com/miniprogram/dev/api/canvas/Canvas.toDataURL.html
-            resolve(canvas.toDataURL(type, quality))
+            const fileType = type === 'jpg' || type === 'jpeg' ? 'jpeg' : type
+            resolve(canvas.toDataURL(`image/${fileType}`, quality))
         } else if (typeof wx.canvasToTempFilePath === 'function') {
+            // 基础库 1.9.6 开始支持
+            // @see https://developers.weixin.qq.com/miniprogram/dev/api/canvas/wx.canvasToTempFilePath.html
             const ratio = wx.getSystemInfoSync().pixelRatio
+            const fileType = type === 'jpg' || type === 'jpeg' ? 'jpg' : 'png'
             wx.canvasToTempFilePath({
                 destWidth: width * ratio,
                 destHeight: height * ratio,
                 canvas,
-                fileType: type.indexOf('png') !== -1 ? 'png' : 'jpg',
+                fileType,
                 quality,
                 success: (res) => resolve(res.tempFilePath),
                 fail: () => resolve(''),

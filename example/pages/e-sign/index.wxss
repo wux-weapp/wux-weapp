@@ -1,0 +1,16 @@
+/* pages/vcode/index.wxss */
+
+.wux-cell {
+    padding-right: 250rpx !important;
+}
+
+.wux-input__label {
+    width: auto !important;
+}
+
+.vcode {
+    position: absolute;
+    right: 0;
+    top: 5rpx;
+    z-index: 2;
+}

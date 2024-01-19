@@ -2,6 +2,12 @@ import { $wuxSelect } from '../../dist/index'
 
 import ad from '../index/ad'
 
+let itemCount = 100
+let items = [...new Array(itemCount)].map((v, i) => ({
+    value: `item_${i}`,
+    title: `#item_${i}`,
+}))
+
 ad({
     data: {
         value1: '',
@@ -9,11 +15,13 @@ ad({
         value3: '',
         value4: '',
         value5: '',
+        value6: '',
         displayValue1: '请选择',
         displayValue2: '请选择',
         displayValue3: '请选择',
         displayValue4: '请选择',
         displayValue5: '请选择',
+        displayValue6: '请选择',
         options1: ['法官', '医生', '猎人', '学生', '记者', '其他'],
         options2: [{
             title: 'iPhone 3GS',
@@ -79,6 +87,7 @@ ad({
             },
         ],
         options5: [],
+        options6: items,
     },
     onClick1() {
         $wuxSelect('#wux-select1').open({
@@ -89,7 +98,7 @@ ad({
                 if (index !== -1) {
                     this.setData({
                         value1: value,
-                        displayValue1: options[index],
+                        displayValue1: options[index].title,
                     })
                 }
             },
@@ -169,6 +178,22 @@ ad({
                 icon: '',
                 title: '',
                 text: 'Not found content',
+            },
+        })
+    },
+    onClick6() {
+        $wuxSelect('#wux-select6').open({
+            virtualized: true,
+            value: this.data.value6,
+            options: this.data.options6,
+            onConfirm: (value, index, options) => {
+                console.log('onConfirm', value, index, options)
+                if (index !== -1) {
+                    this.setData({
+                        value6: value,
+                        displayValue6: options[index].title,
+                    })
+                }
             },
         })
     },

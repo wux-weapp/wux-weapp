@@ -62,31 +62,18 @@ export default function popupMixin(selector = '#wux-picker', platformProps = def
             },
         },
         data: {
-            mounted: false,
             popupVisible: false,
             inputValue: [],
+            scrollTop: 0,
+            fieldNames: { ...defaultFieldNames },
         },
         methods: {
             /**
              * 设置组件显示或隐藏
              */
-            setVisibleState(popupVisible, callback = () => {}) {
+            setVisibleState(popupVisible) {
                 if (this.data.popupVisible !== popupVisible) {
-                    const params = {
-                        mounted: true,
-                        inputValue: this.data.value, // forceUpdate
-                        popupVisible,
-                    }
-                    this.setData(popupVisible ? params : { popupVisible }, () => {
-                        // collect field component & forceUpdate
-                        if (popupVisible && this.hasFieldDecorator) {
-                            const field = this.getFieldElem()
-                            if (field) {
-                                field.changeValue(field.data.value)
-                            }
-                        }
-                        callback()
-                    })
+                    this.setData({ popupVisible })
                 }
             },
             /**
@@ -97,7 +84,6 @@ export default function popupMixin(selector = '#wux-picker', platformProps = def
                     if (!this.data.controlled) {
                         this.setVisibleState(popupVisible)
                     }
-                    this.setScrollValue(undefined)
                     this.triggerEvent('visibleChange', { visible: popupVisible })
                 }
             },
@@ -107,12 +93,34 @@ export default function popupMixin(selector = '#wux-picker', platformProps = def
             open() {
                 this.fireVisibleChange(true)
             },
+            onShowed() {
+                let value = this.data.value
+                let newValue = this.data.inputValue
+    
+                if (newValue !== value) {
+                    newValue = value
+                }
+    
+                // collect field component & forceUpdate
+                if (this.hasFieldDecorator) {
+                    const field = this.getFieldElem()
+                    if (field) {
+                        newValue = field.data.value
+                        field.changeValue(newValue)
+                    }
+                }
+    
+    
+                if (this.data.inputValue !== newValue) {
+                    this.updated(newValue)
+                }
+            },
             /**
              * 关闭
              */
             close(callback) {
                 if (typeof callback === 'function') {
-                    const values = this.getPickerValue(this.scrollValue || this.data.inputValue)
+                    const values = this.getPickerValue(this.data.inputValue)
                     callback.call(this, this.formatPickerValue(values))
                 }
                 this.fireVisibleChange(false)
@@ -121,8 +129,18 @@ export default function popupMixin(selector = '#wux-picker', platformProps = def
              * 组件关闭时重置其内部数据
              */
             onClosed() {
+                let value = this.data.value
+    
+                // collect field component & forceUpdate
+                if (this.hasFieldDecorator) {
+                    const field = this.getFieldElem()
+                    if (field) {
+                        value = field.data.value
+                    }
+                }
+    
                 this.picker = null
-                this.setData({ mounted: false, inputValue: null })
+                this.setData({ inputValue: value, scrollTop: 0 })
             },
             /**
              * 点击确定按钮时的回调函数
@@ -143,14 +161,8 @@ export default function popupMixin(selector = '#wux-picker', platformProps = def
              * 每列数据选择变化后的回调函数
              */
             onValueChange(e) {
-                if (!this.data.mounted) return
+                if (!this.mounted) { return }
                 const { value } = e.detail
-                if (this.data.cascade) {
-                    this.setCasecadeScrollValue(value)
-                } else {
-                    this.setScrollValue(value)
-                }
-
                 this.updated(value, true)
                 this.triggerEvent('valueChange', this.formatPickerValue(e.detail))
             },
@@ -211,29 +223,10 @@ export default function popupMixin(selector = '#wux-picker', platformProps = def
              * 更新值
              */
             updated(inputValue, isForce) {
-                if (!this.hasFieldDecorator || isForce) {
-                    if (this.data.inputValue !== inputValue) {
-                        this.setData({ inputValue })
-                    }
+                if (this.hasFieldDecorator && !isForce) { return }
+                if (this.data.inputValue !== inputValue) {
+                    this.setData({ inputValue })
                 }
-            },
-            /**
-             * 记录每列数据的变化值
-             */
-            setScrollValue(value) {
-                this.scrollValue = value
-            },
-            /**
-             * 记录每列数据的变化值 - 针对于级联
-             */
-            setCasecadeScrollValue(value) {
-                if (value && this.scrollValue) {
-                    const length = this.scrollValue.length
-                    if (length === value.length && this.scrollValue[length - 1] === value[length - 1]) {
-                        return
-                    }
-                }
-                this.setScrollValue(value)
             },
         },
         lifetimes: {
@@ -249,8 +242,8 @@ export default function popupMixin(selector = '#wux-picker', platformProps = def
                 }
 
                 this.mounted = true
-                this.scrollValue = undefined
                 this.setVisibleState(popupVisible)
+                this.updated(value)
                 this.setChildProps()
             },
             detached() {
@@ -284,6 +277,7 @@ export default function popupMixin(selector = '#wux-picker', platformProps = def
                         [`${prefixCls}__button--confirm`]: true,
                     })
                     const hover = `${prefixCls}__button--hover`
+                    const disabled = `${prefixCls}__button--disabled`
                     const title = `${prefixCls}__title`
 
                     return {
@@ -293,6 +287,7 @@ export default function popupMixin(selector = '#wux-picker', platformProps = def
                         cancel,
                         confirm,
                         hover,
+                        disabled,
                         title,
                     }
                 }],
@@ -301,11 +296,13 @@ export default function popupMixin(selector = '#wux-picker', platformProps = def
             // set default observers
             Object.assign(defFields.observers = (defFields.observers || {}), {
                 visible(popupVisible) {
+                    if (!this.mounted) { return }
                     if (this.data.controlled) {
                         this.setVisibleState(popupVisible)
                     }
                 },
                 value(value) {
+                    if (!this.mounted) { return }
                     this.updated(value)
                 },
             })

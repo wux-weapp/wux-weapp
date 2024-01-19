@@ -243,6 +243,11 @@ export default [{
         url: '/pages/divider/index',
     },
     {
+        title: 'ESign',
+        remark: '电子签名',
+        url: '/pages/e-sign/index',
+    },
+    {
         title: 'Ellipsis',
         remark: '文本省略',
         url: '/pages/ellipsis/index',

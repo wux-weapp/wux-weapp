@@ -8,6 +8,7 @@ const defaults = {
     multiple: false,
     max: -1,
     notFoundContent,
+    virtualized: false,
     toolbar: {
         title: '请选择',
         cancelText: '取消',

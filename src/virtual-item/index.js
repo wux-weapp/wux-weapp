@@ -21,7 +21,13 @@ baseComponent({
         updated(index, height) {
             this.setData({
                 index,
-                wrapStyle: styleToCssString({ height }),
+                wrapStyle: styleToCssString({
+                    position: 'absolute',
+                    left: 0,
+                    top: index * height,
+                    width: '100%',
+                    height,
+                }),
             })
         },
     },

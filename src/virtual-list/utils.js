@@ -1,3 +1,5 @@
+import styleToCssString from '../helpers/styleToCssString'
+
 export const mapVirtualToProps = ({ items, itemHeight }, { startIndex, endIndex }) => {
     const visibleItems = endIndex > -1 ? items.slice(startIndex, endIndex + 1) : []
 
@@ -8,7 +10,12 @@ export const mapVirtualToProps = ({ items, itemHeight }, { startIndex, endIndex 
     return {
         virtual: {
             items: visibleItems,
-            style: `height: ${height}px; padding-top: ${paddingTop}px; box-sizing: border-box;`,
+            style: styleToCssString({
+                boxSizing: 'border-box',
+                width: '100%',
+                height,
+                // paddingTop,
+            }),
         },
     }
 }

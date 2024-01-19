@@ -26,7 +26,7 @@ baseComponent({
             type: 'ancestor',
         },
         '../radio/index': {
-            type: 'child',
+            type: 'descendant',
             observer() {
                 this.callDebounceFn(this.changeValue)
             },

@@ -405,12 +405,11 @@ baseComponent({
         this.activated = false
     },
     attached() {
-        wx.getSystemInfo({
-            success: (res) => {
-                this.setData({
-                    windowHeight: res.windowHeight,
-                })
-            },
-        })
+        const windowHeight = wx.getSystemInfoSync().windowHeight
+        if (this.data.windowHeight !== windowHeight) {
+            this.setData({
+                windowHeight,
+            })
+        }
     },
 })

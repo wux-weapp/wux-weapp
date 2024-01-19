@@ -24,6 +24,7 @@
     "pages/date-picker/index",
     "pages/date-picker-view/index",
     "pages/divider/index",
+    "pages/e-sign/index",
     "pages/dialog/index",
     "pages/ellipsis/index",
     "pages/fab-button/index",

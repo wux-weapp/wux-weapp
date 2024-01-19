@@ -31,7 +31,7 @@
 
 <wxs module="common">
     module.exports.format = function(source, value) { return source.replace(getRegExp('\{d\}', 'g'), value) }
-	module.exports.getTrackStyle = function(offsets, index, multiple) { if (!multiple) { return 'width: ' + offsets[index] + '%' } return 'left: ' + offsets[index] + '%; width: ' + (offsets[index + 1] - offsets[index]) + '%' }
+		module.exports.getTrackStyle = function(offsets, index, multiple) { if (!multiple) { return 'width: ' + offsets[index] + '%' } return 'left: ' + offsets[index] + '%; width: ' + (offsets[index + 1] - offsets[index]) + '%' }
     module.exports.getStyle = function(style, index) { if (style.constructor !== 'String') { return style[index] } return style }
     module.exports.getValue = function(obj, name) { if (obj.constructor === 'Object') { return obj[name] } return obj }
 </wxs>

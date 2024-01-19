@@ -112,10 +112,11 @@ baseComponent({
          * @param {Number} itemHeight 子元素高度
          */
         updated(itemHeight = this.data.itemHeight) {
+            const { startIndex } = this.data
             const elements = this.getRelationNodes('../virtual-item/index')
             if (elements.length > 0) {
                 elements.forEach((element, index) => {
-                    element.updated(index, itemHeight)
+                    element.updated(startIndex + index, itemHeight)
                 })
             }
         },

@@ -51,7 +51,7 @@ export const props = {
     },
     defaultFieldNames: {
         type: Object,
-        value: defaultFieldNames,
+        value: { ...defaultFieldNames },
     },
     loading: {
         type: Boolean,

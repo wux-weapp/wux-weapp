@@ -72,7 +72,7 @@ baseComponent({
         },
         defaultFieldNames: {
             type: Object,
-            value: defaultFieldNames,
+            value: { ...defaultFieldNames },
         },
         skipAnimation: {
             type: Boolean,

@@ -29,7 +29,7 @@
                 bind:change="onChange"
                 bind:scrolltolower="onScrollToLower"
             >
-                <wux-virtual-item wx:for="{{ virtual.items }}" wx:key="item">
+                <wux-virtual-item wx:for="{{ virtual.items }}" wx:key="*this">
                     <view class="item">
                         <view class="index">{{ '#' + item }}</view>
                         <view class="desc">Wux NB</view>

@@ -14,7 +14,7 @@ baseComponent({
     data: {
         inputValue: [],
         showOptions: [],
-        fieldNames: defaultFieldNames,
+        fieldNames: { ...defaultFieldNames },
     },
     observers: {
         inputValue(newVal) {

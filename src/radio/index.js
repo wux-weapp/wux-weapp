@@ -11,7 +11,7 @@ const defaultContext = getDefaultContext(radioGroupProps, [
 baseComponent({
     relations: {
         '../radio-group/index': {
-            type: 'parent',
+            type: 'ancestor',
         },
     },
     properties: {

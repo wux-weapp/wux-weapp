@@ -5,10 +5,11 @@
     hasFooter="{{ false }}"
     mountOnEnter="{{ false }}"
     safeArea="bottom"
+    bind:showed="onShowed"
     bind:close="close"
     bind:closed="onClosed"
 >
-    <view class="{{ classes.wrap }}" wx:if="{{ mounted }}">
+    <view class="{{ classes.wrap }}">
         <view class="{{ classes.toolbar }}" wx:if="{{ toolbar }}" catchtouchmove="noop">
             <view class="{{ classes.inner }}">
                 <view class="{{ classes.cancel }}" hover-class="{{ classes.hover }}" bindtap="onCancel" wx:if="{{ toolbar.cancelText }}">{{ toolbar.cancelText }}</view>
@@ -16,14 +17,14 @@
                 <view class="{{ classes.confirm }}" hover-class="{{ classes.hover }}" bindtap="onConfirm" wx:if="{{ toolbar.confirmText }}">{{ toolbar.confirmText }}</view>
             </view>
         </view>
-        <scroll-view scroll-y scroll-top="{{ scrollTop }}" class="{{ prefixCls + '__scroll-view' }}">
+        <scroll-view scroll-y scroll-top="{{ scrollTop }}" class="{{ prefixCls + '__scroll-view' }}" wx-if="{{ !virtualized }}">
             <wux-radio-group
                 id="wux-select"
-                value="{{ inputValue }}"
+                value="{{ common.getValue(inputValue, 'radio') }}"
                 bind:change="onValueChange"
                 wx:if="{{ !multiple }}"
             >
-                <block wx:for="{{ mergedOptions }}" wx:for-item="option" wx:key="index" wx:if="{{ mergedOptions.length > 0 }}">
+                <block wx:for="{{ mergedOptions }}" wx:for-item="option" wx:key="value" wx:if="{{ mergedOptions.length > 0 }}">
                     <wux-cell
                         title="{{ option.title }}"
                         hoverClass="none"
@@ -39,7 +40,7 @@
                         title="{{ option.title || '' }}"
                         label="{{ option.label || '' }}"
                         value="{{ option.value }}"
-                        checked="{{ inputValue === option.value }}"
+                        checked="{{ common.getChecked(inputValue, option, 'radio') }}"
                         disabled="{{ option.disabled }}"
                         color="{{ option.color || 'balanced' }}"
                         data-index="{{ index }}"
@@ -50,11 +51,11 @@
             </wux-radio-group>
             <wux-checkbox-group
                 id="wux-select"
-                value="{{ inputValue }}"
+                value="{{ common.getValue(inputValue) }}"
                 bind:change="onValueChange"
                 wx:else
             >
-                <block wx:for="{{ mergedOptions }}" wx:for-item="option" wx:key="index" wx:if="{{ mergedOptions.length > 0 }}">
+                <block wx:for="{{ mergedOptions }}" wx:for-item="option" wx:key="value" wx:if="{{ mergedOptions.length > 0 }}">
                     <wux-cell
                         title="{{ option.title }}"
                         hoverClass="none"
@@ -80,6 +81,81 @@
                 </block>
             </wux-checkbox-group>
         </scroll-view>
+        <wux-virtual-list
+            id="wux-virtual-list"
+            height="{{ 270 }}"
+            itemHeight="46"
+            itemBuffer="12"
+            bind:change="onVirtualChange"
+            wx:else
+        >
+            <wux-radio-group
+                id="wux-select"
+                bodyStyle="{{ { position: 'unset' } }}"
+                value="{{ common.getValue(inputValue, 'radio') }}"
+                bind:change="onValueChange"
+                wx:if="{{ !multiple }}"
+            >   
+                <wux-virtual-item wx:for="{{ virtual.items }}" wx:for-item="option" wx:key="value" wx:if="{{ virtual && virtual.items.length > 0 }}">
+                    <wux-cell
+                        wrapStyle="{{ { height: 46 } }}"
+                        title="{{ option.title }}"
+                        hoverClass="none"
+                        data-group="{{ option.isGroup }}"
+                        wx:if="{{ option.isGroup }}"
+                    />
+                    <wux-radio
+                        wrapStyle="{{ option.isGroupOption ? { paddingLeft: 30, height: 46 } : { height: 46 } }}"
+                        prefixCls="{{ option.prefixCls || 'wux-radio' }}"
+                        cellPrefixCls="{{ option.cellPrefixCls || 'wux-cell' }}"
+                        selectablePrefixCls="{{ option.selectablePrefixCls || 'wux-selectable' }}"
+                        thumb="{{ option.thumb || '' }}"
+                        title="{{ option.title || '' }}"
+                        label="{{ option.label || '' }}"
+                        value="{{ option.value }}"
+                        checked="{{ common.getChecked(inputValue, option, 'radio') }}"
+                        disabled="{{ option.disabled }}"
+                        color="{{ option.color || 'balanced' }}"
+                        data-index="{{ startIndex + index }}"
+                        data-group-option="{{ option.isGroupOption }}"
+                        wx:else
+                    />
+                </wux-virtual-item>
+            </wux-radio-group>
+            <wux-checkbox-group
+                id="wux-select"
+                bodyStyle="{{ { position: 'unset' } }}"
+                value="{{ common.getValue(inputValue) }}"
+                bind:change="onValueChange"
+                wx:else
+            >
+                <wux-virtual-item wx:for="{{ virtual.items }}" wx:for-item="option" wx:key="value" wx:if="{{ virtual && virtual.items.length > 0 }}">
+                    <wux-cell
+                        wrapStyle="{{ { height: 46 } }}"
+                        title="{{ option.title }}"
+                        hoverClass="none"
+                        data-group="{{ option.isGroup }}"
+                        wx:if="{{ option.isGroup }}"
+                    />
+                    <wux-checkbox
+                        wrapStyle="{{ option.isGroupOption ? { paddingLeft: 30, height: 46 } : { height: 46 } }}"
+                        prefixCls="{{ option.prefixCls || 'wux-checkbox' }}"
+                        cellPrefixCls="{{ option.cellPrefixCls || 'wux-cell' }}"
+                        selectablePrefixCls="{{ option.selectablePrefixCls || 'wux-selectable' }}"
+                        title="{{ option.title || '' }}"
+                        label="{{ option.label || '' }}"
+                        extra="{{ option.extra || '' }}"
+                        value="{{ option.value }}"
+                        checked="{{ common.getChecked(inputValue, option) }}"
+                        disabled="{{ option.disabled }}"
+                        color="{{ option.color || 'balanced' }}"
+                        data-index="{{ startIndex + index }}"
+                        data-group-option="{{ option.isGroupOption }}"
+                        wx:else
+                    />
+                </wux-virtual-item>
+            </wux-checkbox-group>
+        </wux-virtual-list>
         <view class="{{ prefixCls + '__prompt' }}" wx:if="{{ !mergedOptions || mergedOptions.length === 0 }}">
             <wux-prompt
                 visible
@@ -94,3 +170,22 @@
     </view>
 </wux-popup>
 <slot></slot>
+<wxs module="common">
+    module.exports = {
+        getValue: function(values, type) {
+            if (type === 'radio') {
+                if (values.constructor === 'Array') {
+                    return values[0] || ''
+                }
+                return values || ''
+            }
+            return values || []
+        },
+        getChecked: function(values, option, type) {
+            if (type === 'radio') {
+                return this.getValue(values, type) === option.value
+            }
+            return values.indexOf(option.value) !== -1
+        }
+    }
+</wxs>

@@ -2,12 +2,7 @@ import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/classNames'
 import styleToCssString from '../helpers/styleToCssString'
 import runes2 from '../helpers/runes2'
-
-function pxToNumber(value) {
-    if (!value) return 0
-    const match = value.match(/^\d*(\.\d*)?/)
-    return match ? Number(match[0]) : 0
-}
+import pxToNumber from '../helpers/pxToNumber'
 
 function getSubString(chars, start, end) {
     return chars.slice(start, end).join('')

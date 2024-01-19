@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "ESign",
+    "usingComponents": {
+        "wux-e-sign": "../../dist/e-sign/index"
+    }
+}
