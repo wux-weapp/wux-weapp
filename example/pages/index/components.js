@@ -180,6 +180,11 @@ export default [{
         url: '/pages/selectable/index',
     },
     {
+        title: 'SelectorGroup',
+        remark: '选择组',
+        url: '/pages/selector-group/index',
+    },
+    {
         title: 'Slider',
         remark: '滑动选择器',
         url: '/pages/slider/index',
