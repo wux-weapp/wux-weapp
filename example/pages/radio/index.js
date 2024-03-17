@@ -7,8 +7,19 @@ ad({
         value3: '1',
         value4: '1',
         value5: '1',
+        value6: '1',
         options: [{ title: 'Java', value: '1' }, { title: 'PHP', value: '2' }],
         // options: ['1', '2'],
+        iconPosition: 'right',
+    },
+    onSegmentedControlChange(e) {
+        console.log(e)
+        const { key, values } = e.detail
+        const iconPosition = values[key]
+
+        this.setData({
+            iconPosition,
+        })
     },
     onChange(field, e) {
         this.setData({
@@ -31,6 +42,16 @@ ad({
     },
     onChange5(e) {
         this.onChange('value5', e)
+    },
+    onItemClick(e) {
+        const { radioRef } = e.currentTarget.dataset
+        const ref = this.selectComponent(`#${radioRef}`)
+        if (this.data.value6 !== ref.data.value) {
+            this.setData({
+                value6: ref.data.value,
+            })
+        }
+        console.log('onItemClick', ref)
     },
     formSubmit(e) {
         console.log('form发生了submit事件，携带数据为：', e.detail.value)

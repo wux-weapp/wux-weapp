@@ -3,8 +3,39 @@ import data from '../cascader/data'
 
 import ad from '../index/ad'
 
+const fieldNamesOptions = [
+    {
+        labelT: '选项一',
+        valueT: '1',
+        childrenT: [{
+            labelT: '选项A',
+            valueT: 'A',
+            childrenT: [{
+                labelT: '选项B',
+                valueT: 'B',
+            }],
+        }],
+    },
+    {
+        labelT: '选项二',
+        valueT: '2',
+    },
+    {
+        labelT: '选项三',
+        valueT: '3',
+        disabledT: true,
+    },
+]
+
 ad({
     data: {
+        fieldNames: {
+            label: 'labelT',
+            value: 'valueT',
+            disabled: 'disabledT',
+            children: 'childrenT',
+        },
+        fieldNamesOptions,
         value1: [],
         value2: [],
         value3: [],

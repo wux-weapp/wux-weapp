@@ -1,8 +1,9 @@
 import baseComponent from '../helpers/baseComponent'
-import { toDataURL, getCanvas } from '../helpers/canvasPolyfill'
-import pxToNumber from '../helpers/pxToNumber'
-import styleToCssString from '../helpers/styleToCssString'
-import { getTouchPoints } from '../helpers/gestures'
+import { toDataURL, getCanvasRef } from '../helpers/hooks/useCanvasAPI'
+import { getSystemInfoSync } from '../helpers/hooks/useNativeAPI'
+import { useRef } from '../helpers/hooks/useDOM'
+import styleToCssString from '../helpers/libs/styleToCssString'
+import { getTouchPoints } from '../helpers/shared/gestures'
 
 baseComponent({
     properties: {
@@ -139,18 +140,18 @@ baseComponent({
         createCanvasContext(props) {
             const getWrapRef = () => {
                 if (props.width === 'auto') {
-                    return this.getBodyRef()
+                    return useRef(`.${props.prefixCls}__bd`, this)
                 }
                 return Promise.resolve({
-                    offsetWidth: props.width,
-                    offsetHeight: props.height,
+                    clientWidth: props.width,
+                    clientHeight: props.height,
                 })
             }
             const renderCanvas = () => {
-                return getWrapRef().then(({ offsetWidth: width, offsetHeight: height }) => {
-                    return getCanvas({ canvasId: props.prefixCls }, this).then((canvas) => {
+                return getWrapRef().then(({ clientWidth: width, clientHeight: height }) => {
+                    return getCanvasRef(props.prefixCls, this).then((canvas) => {
                         const ctx = canvas.getContext('2d')
-                        const ratio = wx.getSystemInfoSync().pixelRatio
+                        const ratio = getSystemInfoSync(['window']).pixelRatio
                         const canvasWidth = width * ratio
                         const canvasHeight = height * ratio
                         const setCanvasBgColor = (ctx) => {
@@ -190,24 +191,6 @@ baseComponent({
             }
 
             return Promise.resolve().then(renderCanvas)
-        },
-        getBodyRef() {
-            return new Promise((resolve) => {
-                const { prefixCls } = this.data
-                const query = wx.createSelectorQuery().in(this)
-                query
-                    .select(`.${prefixCls}__bd`)
-                    .fields({
-                        size: true,
-                        computedStyle: ['width', 'height'],
-                    })
-                query.exec(([container]) => {
-                    resolve({
-                        offsetWidth: pxToNumber(container.width),
-                        offsetHeight: pxToNumber(container.height),
-                    })
-                })
-            })
         },
         setBodyStyle(props) {
             const bodyStyle = styleToCssString({
@@ -251,7 +234,7 @@ baseComponent({
         },
         ['export']() {
             return {
-                resize: () => this.resize,
+                resize: this.resize.bind(this),
             }
         },
     },

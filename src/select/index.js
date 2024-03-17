@@ -47,7 +47,7 @@ baseComponent({
          * 关闭
          */
         close(callback) {
-            this.select = this.select || this.selectComponent('#wux-popup-select')
+            this.select = this.select || this.querySelector('#wux-popup-select')
             this.select && this.select.close(callback)
         },
         /**

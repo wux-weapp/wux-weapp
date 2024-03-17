@@ -1,8 +1,6 @@
-export const defaultFieldNames = {
-    label: 'label',
-    value: 'value',
-    children: 'children',
-}
+import { getDefaultFieldNames } from '../helpers/mixins/fieldNamesBehavior'
+
+const DEFAULT_FIELD_NAMES = getDefaultFieldNames()
 
 export function getRealIndex(value = 0, min = 0, max) {
     if (value <= min) return min
@@ -14,27 +12,27 @@ export function getRealIndexes(indexes = [], cols = []) {
     return cols.reduce((acc, col, idx) => ([...acc, getRealIndex(indexes[idx], 0, col.length - 1)]), [])
 }
 
-export function getIndexFromValue(value, col = [], fieldNames = defaultFieldNames) {
+export function getIndexFromValue(value, col = [], fieldNames = DEFAULT_FIELD_NAMES) {
     return getRealIndex(col.map((v) => v[fieldNames.value]).indexOf(value), 0, col.length - 1)
 }
 
-export function getIndexesFromValues(values = [], cols = [], fieldNames = defaultFieldNames) {
+export function getIndexesFromValues(values = [], cols = [], fieldNames = DEFAULT_FIELD_NAMES) {
     return cols.reduce((acc, col, idx) => ([...acc, getIndexFromValue(values[idx], col, fieldNames)]), [])
 }
 
-export function getValueFromIndex(index, col = [], fieldNames = defaultFieldNames) {
+export function getValueFromIndex(index, col = [], fieldNames = DEFAULT_FIELD_NAMES) {
     return col[getRealIndex(index, 0, col.length - 1)][fieldNames.value]
 }
 
-export function getValuesFromIndexes(indexes = [], cols = [], fieldNames = defaultFieldNames) {
+export function getValuesFromIndexes(indexes = [], cols = [], fieldNames = DEFAULT_FIELD_NAMES) {
     return cols.reduce((acc, col, idx) => ([...acc, getValueFromIndex(indexes[idx], col, fieldNames)]), [])
 }
 
-export function getRealValue(value = '', col = [], fieldNames = defaultFieldNames) {
+export function getRealValue(value = '', col = [], fieldNames = DEFAULT_FIELD_NAMES) {
     return col.length > 0 ? col[getIndexFromValue(value, col, fieldNames)][fieldNames.value] : ''
 }
 
-export function getRealValues(values = [], cols = [], fieldNames = defaultFieldNames) {
+export function getRealValues(values = [], cols = [], fieldNames = DEFAULT_FIELD_NAMES) {
     return cols.length > 0 ? cols.reduce((acc, col, idx) => ([...acc, getRealValue(values[idx], col, fieldNames)]), []) : []
 }
 
@@ -50,16 +48,19 @@ export function isMultiPicker(data = []) {
     return !data ? false : Array.isArray(data[0])
 }
 
-export function getRealCol(data = [], fieldNames = defaultFieldNames) {
+export function getRealCol(data = [], fieldNames = DEFAULT_FIELD_NAMES) {
     return data.map((v) => {
         if (typeof v !== 'object') {
-            return { [fieldNames.value]: v, [fieldNames.label]: v }
+            return {
+                [fieldNames.value]: v,
+                [fieldNames.label]: v,
+            }
         }
         return v
     })
 }
 
-export function getRealCols(data = [], fieldNames = defaultFieldNames) {
+export function getRealCols(data = [], fieldNames = DEFAULT_FIELD_NAMES) {
     const cols = isMultiPicker(data) ? data : [data]
     return cols.reduce((acc, col) => ([...acc, getRealCol(col, fieldNames)]), [])
 }

@@ -8,10 +8,10 @@ ad({
             // prefix: true,
             // color: 'black',
             // debug: false,
-            onValid() { console.log('onValid') },
-            onInvalid() { console.log('onInvalid') },
-            onSuccess() { console.log('onSuccess') },
-            onError() { console.log('onError') },
+            // onValid() { console.log('onValid') },
+            // onInvalid() { console.log('onInvalid') },
+            // onSuccess() { console.log('onSuccess') },
+            // onError() { console.log('onError') },
         },
     },
     onChange(e) {
@@ -19,4 +19,9 @@ ad({
             number: e.detail.value,
         })
     },
+    onValid() { console.log('onValid') },
+    onInvalid() { console.log('onInvalid') },
+    onSuccess() { console.log('onSuccess') },
+    onError() { console.log('onError') },
+    onLoad(e) { console.log('onLoad', e.detail) },
 })

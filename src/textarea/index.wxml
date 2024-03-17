@@ -49,6 +49,6 @@
 		<slot name="footer"></slot>
 	</block>
 	<view class="{{ classes.count }}" wx:if="{{ hasCount }}">
-		<text class="{{ classes.current }}">{{ inputValue.length }}</text>/{{ maxlength === -1 ? '∞' : maxlength }}
+		<text class="{{ classes.current }}">{{ inputValue ? inputValue.length : 0 }}</text>/{{ maxlength === -1 ? '∞' : maxlength }}
 	</view>
 </view>

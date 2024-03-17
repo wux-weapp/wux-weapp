@@ -1,5 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
-import popupMixin from '../helpers/popupMixin'
+import popupMixin from '../helpers/mixins/popupMixin'
 import { props } from '../date-picker-view/props'
 import { formatDate } from './utils'
 

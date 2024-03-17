@@ -4,5 +4,28 @@
 .@{wux-prefix}-radio {
     &__selectable {
         position: static !important;
+
+        // &-horizontal {
+        //     padding-top: @spacing-sm;
+        //     padding-bottom: @spacing-sm;
+        // }
+    }
+
+    &__icon-position {
+        display: flex;
+        align-items: center;
+    }
+
+    &__icon-selectable {
+        // default icon size = 16
+        min-width: 16px + @margin-component-base * 2;
+        margin-right: @spacing-lg;
+    }
+
+    &__thumb {
+        .square(@cell-icon-size);
+
+        display: block;
+        margin-right: @margin-component-base;
     }
 }

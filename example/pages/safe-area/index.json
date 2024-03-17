@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "SafeArea",
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "wux-safe-area": "../../dist/safe-area/index"
+    }
+}

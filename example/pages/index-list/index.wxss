@@ -21,3 +21,10 @@
 .demo-item:last-child::after {
     display: none;
 }
+
+.demo-btn {
+    position: absolute !important;
+    left: 50%;
+    bottom: 88px;
+    transform: translateX(-50%);
+}

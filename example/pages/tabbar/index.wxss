@@ -3,3 +3,7 @@
 .icon {
     vertical-align: middle;
 }
+
+.tabbar-icon-badge {
+    top: 6px !important;
+}

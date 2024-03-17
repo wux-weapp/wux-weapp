@@ -1,8 +1,8 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import eventsMixin from '../helpers/eventsMixin'
-import styleToCssString from '../helpers/styleToCssString'
-import bound from '../helpers/bound'
+import classNames from '../helpers/libs/classNames'
+import eventsMixin from '../helpers/mixins/eventsMixin'
+import styleToCssString from '../helpers/libs/styleToCssString'
+import { bound } from '../helpers/shared/bound'
 import { nativeInputProps } from './props'
 
 const defaultEvents = {
@@ -88,12 +88,17 @@ baseComponent({
             type: Number,
             value: null,
         },
+        visibilityToggle: {
+            type: Boolean,
+            value: false,
+        },
     },
     data: {
         inputValue: '',
         inputFocus: false,
         shouldShowClear: false,
         internalPlaceholderStyle: '',
+        internalVisible: false,
     },
     observers: {
         placeholderStyle(placeholderStyle) {
@@ -120,7 +125,7 @@ baseComponent({
         },
     },
     computed: {
-        classes: ['prefixCls, disabled, readOnly, inputFocus, error, labelWrap, requiredMark', function(prefixCls, disabled, readOnly, inputFocus, hasError, labelWrap, requiredMark) {
+        classes: ['prefixCls, disabled, readOnly, inputFocus, error, labelWrap, requiredMark, internalVisible', function(prefixCls, disabled, readOnly, inputFocus, hasError, labelWrap, requiredMark, internalVisible) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--focus`]: inputFocus,
                 [`${prefixCls}--disabled`]: disabled,
@@ -134,6 +139,9 @@ baseComponent({
             const control = `${prefixCls}__control`
             const item = `${prefixCls}__item`
             const clear = `${prefixCls}__clear`
+            const eye = classNames(`${prefixCls}__eye`, {
+                [`${prefixCls}__eye--invisible`]: !internalVisible,
+            })
             const error = `${prefixCls}__error`
             const extra = `${prefixCls}__extra`
             const keyboardAccessory = `${prefixCls}__keyboardAccessory`
@@ -144,6 +152,7 @@ baseComponent({
                 control,
                 item,
                 clear,
+                eye,
                 error,
                 extra,
                 keyboardAccessory,
@@ -151,6 +160,16 @@ baseComponent({
         }],
     },
     methods: {
+        onInternalVisibleChange() {
+            const { disabled } = this.data
+            if (disabled) {
+                return
+            }
+            const internalVisible = !this.data.internalVisible
+            this.setData({
+                internalVisible,
+            })
+        },
         setInternalPlaceholderStyle(placeholderStyle) {
             const internalPlaceholderStyle = styleToCssString(placeholderStyle)
 
@@ -207,7 +226,6 @@ baseComponent({
             if (!this.data.controlled) {
                 this.updated(value)
             }
-
             this.triggerEvent('change', e.detail)
         },
         onFocus(e) {

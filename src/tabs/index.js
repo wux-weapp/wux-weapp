@@ -1,7 +1,8 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import styleToCssString from '../helpers/styleToCssString'
-import bound from '../helpers/bound'
+import classNames from '../helpers/libs/classNames'
+import styleToCssString from '../helpers/libs/styleToCssString'
+import { bound } from '../helpers/shared/bound'
+import { useRef } from '../helpers/hooks/useDOM'
 import { props } from './props'
 
 const getDefaultActiveKey = (elements) => {
@@ -115,25 +116,18 @@ baseComponent({
             }
         },
         tabsContainerRef() {
-            return new Promise((resolve) => {
-                const { prefixCls } = this.data
-                const query = wx.createSelectorQuery().in(this)
-                query.select(`.${prefixCls}__scroll-view`).boundingClientRect()
-                query.select(`.${prefixCls}__scroll-view`).fields({
-                    size: true,
-                    scrollOffset: true,
-                    properties: ['scrollX', 'scrollY'],
-                })
-                query.exec(([containerRect, container]) => {
+            const { prefixCls } = this.data
+            return useRef(`.${prefixCls}__scroll-view`, this)               
+                .then((container) => {
                     const containerWidth = container.width
                     const containerHeight = container.height
                     const containerScrollWidth = container.scrollWidth
                     const containerScrollHeight = container.scrollHeight
                     const containerScrollLeft = container.scrollLeft
                     const containerScrollTop = container.scrollTop
-                    const containerOffsetX = containerRect.left
-                    const containerOffsetY = containerRect.top
-                    resolve({
+                    const containerOffsetX = container.left
+                    const containerOffsetY = container.top
+                    return {
                         containerWidth,
                         containerHeight,
                         containerScrollWidth,
@@ -142,9 +136,8 @@ baseComponent({
                         containerScrollTop,
                         containerOffsetX,
                         containerOffsetY,
-                    })
+                    }
                 })
-            })
         },
         setNextScroll(activeElement) {
             const { direction, scroll } = this.data
@@ -198,7 +191,7 @@ baseComponent({
             return promise
         },
         updated(value = this.data.activeKey) {
-            const elements = this.getRelationNodes('../tab/index')
+            const elements = this.getRelationsByName('../tab/index')
             const activeKey = getActiveKey(elements, value)
 
             if (this.data.activeKey !== activeKey) {

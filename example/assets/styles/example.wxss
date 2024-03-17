@@ -32,6 +32,10 @@ page {
     padding-right: 15px;
 }
 
+.page__bd_bottom-0 {
+    padding-bottom: 0;
+}
+
 .page__ft {
     padding-bottom: 10px;
     text-align: center;
@@ -76,6 +80,10 @@ page {
 
 .btn-area {
     margin: 1.17647059em 15px 0.3em;
+}
+
+.btn-area_auto {
+    margin: 0;
 }
 
 .btn-area button {

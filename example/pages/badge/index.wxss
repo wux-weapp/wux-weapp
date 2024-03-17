@@ -9,7 +9,7 @@
     height: 42px;
     background: #ddd;
     border-radius: 4px;
-    display: inline-block;
+    display: block;
 }
 
 .bg-green {

@@ -12,6 +12,8 @@
         <wux-cascader-view height="540rpx" options="{{ options1 }}" bind:change="onChange1" />
         <view class="sub-title">Skip Animation</view>
         <wux-cascader-view skipAnimation options="{{ options1 }}" bind:change="onChange1" />
+        <view class="sub-title">Custom FieldName</view>
+        <wux-cascader-view options="{{ fieldNamesOptions }}" defaultFieldNames="{{ fieldNames }}" />
         <view class="sub-title">Controlled</view>
         <wux-cascader-view controlled value="{{ value2 }}" options="{{ options2 }}" bind:change="onChange2" bind:tabsChange="onTabsChange2" />
         <view class="sub-title">Async</view>

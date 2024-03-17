@@ -1,4 +1,4 @@
-import styleToCssString from '../helpers/styleToCssString'
+import styleToCssString from '../helpers/libs/styleToCssString'
 
 export const mapVirtualToProps = ({ items, itemHeight }, { startIndex, endIndex }) => {
     const visibleItems = endIndex > -1 ? items.slice(startIndex, endIndex + 1) : []

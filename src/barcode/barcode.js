@@ -86,10 +86,18 @@ EAN13 = (function() {
             height = border_height;
         }
         item_width = width / 95;
-        if (this.id) {
-            context = wx.createCanvasContext(this.id, this.ctx);
+        if (this.canvas) {
+            context = this.canvas.getContext('2d');
+            var ratio = this.ratio || 1
+            var canvasWidth = this.settings.width * ratio
+            var canvasHeight = this.settings.height * ratio
+            this.canvas.width = canvasWidth
+            this.canvas.height = canvasHeight
+            context.scale(ratio, ratio)
+            // context.fillStyle = '#ffffff'
+            context.fillRect(0, 0, this.settings.width, this.settings.height)
             this.clear(context);
-            context.setFillStyle(this.settings.color);
+            context.fillStyle = this.settings.color;
             left = this.settings.number && this.settings.prefix ? this.settings.width * layout.prefix_offset : 0;
             lines = code.split("");
             context.fillRect(left, 0, item_width, border_height);
@@ -121,7 +129,7 @@ EAN13 = (function() {
             left = left + item_width * 2;
             context.fillRect(left, 0, item_width, border_height);
             if (this.settings.number) {
-                context.setFontSize(layout.font_size * height + "px monospace");
+                context.font = layout.font_size * height + "px monospace";
                 prefix = this.number.substr(0, 1);
                 if (this.settings.prefix) {
                     context.fillText(prefix, 0, border_height * layout.font_y);
@@ -143,11 +151,10 @@ EAN13 = (function() {
                 for (x = _i = 0, _ref = item_width * 2; _ref > 0 ? _i <= width : _i >= width; x = _i += _ref) {
                     context.beginPath();
                     context.rect(x, height * 0.4, item_width, height * 0.1);
-                    context.setFillStyle('red');
+                    context.fillStyle = 'red';
                     context.fill();
                 }
             }
-            context.draw()
             return this.settings.onSuccess.call();
         } else {
             return this.settings.onError.call();
@@ -172,11 +179,11 @@ EAN13 = (function() {
         return parseInt(this.number.slice(-1), 10) === this.generateCheckDigit(this.number.slice(0, -1));
     };
 
-    function EAN13(id, number, options, ctx) {
+    function EAN13(canvas, ratio, number, options) {
         var option;
-        this.id = id;
+        this.canvas = canvas;
+        this.ratio = ratio;
         this.number = number;
-        this.ctx = ctx
         this.settings = {
             width: 200,
             height: 100,

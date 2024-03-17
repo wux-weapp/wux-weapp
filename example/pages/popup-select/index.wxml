@@ -10,6 +10,9 @@
             <wux-popup-select value="{{ value1 }}" options="{{ options1 }}" data-index="1" bind:confirm="onConfirm" bind:valueChange="onValueChange">
                 <wux-cell title="Single" is-link extra="{{ displayValue1 }}"></wux-cell>
             </wux-popup-select>
+            <wux-popup-select value="{{ value1 }}" options="{{ options1 }}" iconPosition="left" data-index="1" bind:confirm="onConfirm" bind:valueChange="onValueChange">
+                <wux-cell title="Set icon to left" is-link extra="{{ displayValue1 }}"></wux-cell>
+            </wux-popup-select>
             <wux-popup-select value="{{ value2 }}" options="{{ options2 }}" data-index="2" bind:confirm="onConfirm" bind:valueChange="onValueChange">
                 <wux-cell title="Multiple" is-link extra="{{ displayValue2 }}"></wux-cell>
             </wux-popup-select>

@@ -34,6 +34,11 @@ export default [{
         url: '/pages/layout/index',
     },
     {
+        title: 'SafeArea',
+        remark: '安全区',
+        url: '/pages/safe-area/index',
+    },
+    {
         title: 'WhiteSpace',
         remark: '上下留白',
         url: '/pages/white-space/index',

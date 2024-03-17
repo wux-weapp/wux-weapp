@@ -1,11 +1,17 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import styleToCssString from '../helpers/styleToCssString'
+import classNames from '../helpers/libs/classNames'
+import styleToCssString from '../helpers/libs/styleToCssString'
+import { safeAreaProps } from '../helpers/mixins/safeAreaBehavior'
 import { $wuxBackdrop } from '../index'
 
 baseComponent({
-    useSafeArea: true,
-    externalClasses: ['wux-content-class', 'wux-header-class', 'wux-body-class', 'wux-footer-class', 'wux-close-class'],
+    externalClasses: [
+        'wux-content-class',
+        'wux-header-class',
+        'wux-body-class',
+        'wux-footer-class',
+        'wux-close-class',
+    ],
     properties: {
         prefixCls: {
             type: String,
@@ -97,6 +103,7 @@ baseComponent({
             type: Boolean,
             value: true,
         },
+        ...safeAreaProps,
     },
     data: {
         transitionName: '',
@@ -107,10 +114,9 @@ baseComponent({
         popupBodyStyle: '',
     },
     computed: {
-        classes: ['prefixCls, position, safeAreaConfig, isIPhoneX', function(prefixCls, position, safeAreaConfig, isIPhoneX) {
+        classes: ['prefixCls, position', function(prefixCls, position) {
             const wrap = classNames(`${prefixCls}-position`, {
                 [`${prefixCls}-position--${position}`]: position,
-                [`${prefixCls}-position--is-iphonex`]: safeAreaConfig.bottom && isIPhoneX,
             })
             const content = `${prefixCls}__content`
             const hd = `${prefixCls}__hd`

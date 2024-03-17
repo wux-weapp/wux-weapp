@@ -9,6 +9,16 @@ ad({
         value5: ['1'],
         options: [{ title: 'Java', value: '1' }, { title: 'PHP', value: '2' }],
         // options: ['1', '2'],
+        iconPosition: 'left',
+    },
+    onSegmentedControlChange(e) {
+        console.log(e)
+        const { key, values } = e.detail
+        const iconPosition = values[key]
+
+        this.setData({
+            iconPosition,
+        })
     },
     onChange(field, e) {
         const { value } = e.detail
@@ -36,6 +46,12 @@ ad({
     },
     onChange5(e) {
         this.onChange('value5', e)
+    },
+    onItemClick(e) {
+        const { checkboxRef } = e.currentTarget.dataset
+        const ref = this.selectComponent(`#${checkboxRef}`)
+        ref.toggle()
+        console.log('onItemClick', ref)
     },
     formSubmit(e) {
         console.log('form发生了submit事件，携带数据为：', e.detail.value)

@@ -1,6 +1,9 @@
 {
     "navigationBarTitleText": "Radio",
     "usingComponents": {
+        "wux-segmented-control": "../../dist/segmented-control/index",
+        "wux-cell-group": "../../dist/cell-group/index",
+        "wux-cell": "../../dist/cell/index",
         "wux-radio-group": "../../dist/radio-group/index",
         "wux-radio": "../../dist/radio/index"
     }

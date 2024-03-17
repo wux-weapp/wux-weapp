@@ -14,8 +14,6 @@
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
     "useMultiFrameRuntime": true,
-    "useApiHook": true,
-    "useApiHostProcess": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -31,12 +29,10 @@
     "useCompilerPlugins": false,
     "minifyWXML": true,
     "useStaticServer": true,
-    "ignoreUploadUnusedFiles": true
+    "ignoreUploadUnusedFiles": true,
+    "enhance": false
   },
   "compileType": "miniprogram",
-  "libVersion": "2.7.2",
-  "appid": "wx816264ac1982a645",
-  "projectname": "wux-weapp",
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
@@ -204,12 +200,14 @@
       ]
     }
   },
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  },
   "packOptions": {
     "ignore": [],
     "include": []
   },
-  "editorSetting": {
-    "tabIndent": "insertSpaces",
-    "tabSize": 2
-  }
+  "appid": "wx816264ac1982a645",
+  "projectname": "wux-weapp"
 }

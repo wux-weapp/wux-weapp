@@ -69,7 +69,7 @@ baseComponent({
             this.changeCurrent(activeKey)
         },
         changeCurrent(activeKey) {
-            const elements = this.getRelationNodes('../accordion/index')
+            const elements = this.getRelationsByName('../accordion/index')
 
             if (elements.length > 0) {
                 elements.forEach((element, index) => {

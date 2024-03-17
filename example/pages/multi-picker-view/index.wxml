@@ -8,6 +8,8 @@
         <wux-multi-picker-view value="{{ value }}" options="{{ options }}" bind:valueChange="onValueChange" />
         <view class="sub-title">Single</view>
         <wux-multi-picker-view value="{{ value }}" options="{{ options[0] }}" bind:valueChange="onValueChange" />
+        <view class="sub-title">Custom FieldNames</view>
+        <wux-multi-picker-view defaultFieldNames="{{ fieldNames }}" options="{{ fieldNamesOptions }}" />
         <view class="sub-title">Loading</view>
         <wux-multi-picker-view options="{{ options }}" loading />
     </view>

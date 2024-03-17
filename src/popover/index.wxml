@@ -12,6 +12,6 @@
         </view>
     </wux-animation-group>
 </view>
-<view class="{{ classes.element }}" catchtap="onClick">
+<view class="{{ classes.element }}" catchtap="onClick" wx:if="{{ useSlot && !slotRect }}">
     <slot></slot>
 </view>

@@ -49,12 +49,32 @@
         line-height: 1.47058824;
     }
 
-    &__extra {
-        color: @text-color-secondary;
+    &__clear {
+        display: flex;
+    }
+
+    &__eye {
+        display: flex;
+        width: 16px;
+        height: 16px;
+        background-repeat: no-repeat;
+        background-size: contain;
         margin-left: @margin-component-base;
+
+        .encoded-svg-background(eye, @text-color-secondary);
+
+        &--invisible {
+            .encoded-svg-background(eye_invisible, @text-color-secondary);
+        }
     }
 
     &__error {
+        display: flex;
+        margin-left: @margin-component-base;
+    }
+
+    &__extra {
+        color: @text-color-secondary;
         margin-left: @margin-component-base;
     }
 

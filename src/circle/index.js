@@ -1,5 +1,7 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
+import classNames from '../helpers/libs/classNames'
+import { getSystemInfoSync } from '../helpers/hooks/useNativeAPI'
+import { getCanvasRef } from '../helpers/hooks/useCanvasAPI'
 
 const toAngle = (a) => a / 180 * Math.PI
 const percent = (a) => toAngle(a / 100 * 360)
@@ -115,41 +117,52 @@ baseComponent({
         /**
          * 绘制 canvas
          */
-        draw(line = true) {
+        draw(hasLine = true) {
+            const props = this.data
             const { lineCap, backgroundColor, color, size, strokeWidth, counterclockwise, background } = this.data
             const position = size / 2
             const radius = position - strokeWidth / 2
             const p = 2 * Math.PI
-            const startAngle = counterclockwise ? p - this.data.beginAngle : this.data.beginAngle
-            const endAngle = counterclockwise ? p - (this.data.beginAngle + this.data.currentAngle) : this.data.beginAngle + this.data.currentAngle
+            const startAngle = counterclockwise ? p - props.beginAngle : props.beginAngle
+            const endAngle = counterclockwise ? p - (props.beginAngle + props.currentAngle) : props.beginAngle + props.currentAngle
 
             // 创建 canvas 绘图上下文
-            this.ctx = this.ctx || wx.createCanvasContext('circle', this)
+            getCanvasRef(props.prefixCls, this).then((canvas) => {
+                const ctx = canvas.getContext('2d')
+                const ratio = getSystemInfoSync(['window']).pixelRatio
+                const canvasWidth = size * ratio
+                const canvasHeight = size * ratio
 
-            // 清除画布
-            this.ctx.clearRect(0, 0, size, size)
+                canvas.width = canvasWidth
+                canvas.height = canvasHeight
 
-            // 绘制背景
-            if (background) {
-                this.ctx.beginPath()
-                this.ctx.arc(position, position, radius, 0, 2 * Math.PI)
-                this.ctx.setLineWidth(strokeWidth)
-                this.ctx.setStrokeStyle(backgroundColor)
-                this.ctx.stroke()
-            }
+                ctx.scale(ratio, ratio)
+                // ctx.fillStyle = '#ffffff'
+                ctx.fillRect(0, 0, size, size)
 
-            // 绘制进度
-            if (line) {
-                this.ctx.beginPath()
-                this.ctx.arc(position, position, radius, startAngle, endAngle)
-                this.ctx.setLineWidth(strokeWidth)
-                this.ctx.setStrokeStyle(color)
-                this.ctx.setLineCap(lineCap)
-                this.ctx.stroke()
-            }
+                // 清除画布
+                ctx.clearRect(0, 0, size, size)
 
-            // 绘制完成
-            this.ctx.draw(false, () => {
+                // 绘制背景
+                if (background) {
+                    ctx.beginPath()
+                    ctx.arc(position, position, radius, 0, 2 * Math.PI)
+                    ctx.lineWidth = strokeWidth
+                    ctx.strokeStyle = backgroundColor
+                    ctx.stroke()
+                }
+
+                // 绘制进度
+                if (hasLine) {
+                    ctx.beginPath()
+                    ctx.arc(position, position, radius, startAngle, endAngle)
+                    ctx.lineWidth = strokeWidth
+                    ctx.strokeStyle = color
+                    ctx.lineCap = lineCap
+                    ctx.stroke()
+                }
+
+                // 绘制完成
                 this.triggerEvent('change', { value: this.data.currentAngle })
             })
         },
@@ -193,7 +206,6 @@ baseComponent({
         }
     },
     detached() {
-        this.ctx = null
         this.clearTimer()
     },
 })

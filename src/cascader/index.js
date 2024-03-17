@@ -1,12 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-
-const defaultFieldNames = {
-    label: 'label',
-    value: 'value',
-    children: 'children',
-    disabled: 'disabled',
-}
+import classNames from '../helpers/libs/classNames'
+import { fieldNamesProps } from '../helpers/mixins/fieldNamesBehavior'
 
 baseComponent({
     externalClasses: ['wux-scroll-view-class'],
@@ -70,14 +64,11 @@ baseComponent({
                 }
             },
         },
-        defaultFieldNames: {
-            type: Object,
-            value: { ...defaultFieldNames },
-        },
         skipAnimation: {
             type: Boolean,
             value: false,
         },
+        ...fieldNamesProps,
     },
     data: {
         shouldRender: false,
@@ -136,7 +127,7 @@ baseComponent({
             }
         },
         getValue(value = this.data.activeValue) {
-            this.cascaderView = this.cascaderView || this.selectComponent('#wux-cascader-view')
+            this.cascaderView = this.cascaderView || this.querySelector('#wux-cascader-view')
             return this.cascaderView && this.cascaderView.getValue(value)
         },
         /**

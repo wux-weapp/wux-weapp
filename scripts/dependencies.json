@@ -113,7 +113,7 @@
     },
     "field": {
         "files": ["field"],
-        "dependencies": []
+        "dependencies": ["cell", "popover"]
     },
     "filterbar": {
         "files": ["filterbar"],
@@ -129,7 +129,7 @@
     },
     "form": {
         "files": ["form"],
-        "dependencies": []
+        "dependencies": ["cell"]
     },
     "gallery": {
         "files": ["gallery"],
@@ -209,7 +209,7 @@
     },
     "popup": {
         "files": ["popup"],
-        "dependencies": ["animation-group", "backdrop"]
+        "dependencies": ["animation-group", "backdrop", "safe-area"]
     },
     "popup-select": {
         "files": ["popup-select"],
@@ -243,6 +243,10 @@
         "files": ["result"],
         "dependencies": ["button"]
     },
+    "safe-area": {
+        "files": ["safe-area"],
+        "dependencies": []
+    },
     "search-bar": {
         "files": ["search-bar"],
         "dependencies": []
@@ -259,12 +263,20 @@
         "files": ["selectable"],
         "dependencies": []
     },
+    "selector-group": {
+        "files": ["selector-group"],
+        "dependencies": ["selectable"]
+    },
     "skeleton": {
         "files": ["skeleton", "skeleton-avatar", "skeleton-paragraph"],
         "dependencies": []
     },
     "slider": {
         "files": ["slider"],
+        "dependencies": []
+    },
+    "touch-view": {
+        "files": ["touch-view"],
         "dependencies": []
     },
     "spin": {
@@ -293,7 +305,7 @@
     },
     "tabbar": {
         "files": ["tabbar", "tabbar-item"],
-        "dependencies": []
+        "dependencies": ["safe-area"]
     },
     "tag": {
         "files": ["tag"],

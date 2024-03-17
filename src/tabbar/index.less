@@ -5,9 +5,14 @@
     position: relative;
     z-index: 500;
     width: 100%;
-    min-height: @tabbar-height;
     background-color: @tabbar-bg;
     box-sizing: border-box;
+
+    &-wrap {
+        width: 100%;
+        min-height: @tabbar-height;
+        box-sizing: border-box;
+    }
 
     &--bottom {
         position: fixed;

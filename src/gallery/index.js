@@ -1,6 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import { getTouchPoints, getPointsNumber, getPointsDistance } from '../helpers/gestures'
+import classNames from '../helpers/libs/classNames'
+import { getTouchPoints, getPointsNumber, getPointsDistance } from '../helpers/shared/gestures'
 
 const defaults = {
     prefixCls: 'wux-gallery',

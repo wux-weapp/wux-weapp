@@ -8,9 +8,9 @@ let items = [...new Array(itemCount)].map((v, i) => ({
 
 ad({
     data: {
-        value1: '',
-        value2: '',
-        value3: '',
+        value1: '学生',
+        value2: [],
+        value3: [],
         value4: '',
         value5: '',
         value6: ['item_2'],

@@ -1,7 +1,8 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import styleToCssString from '../helpers/styleToCssString'
-import { getCanvas, toDataURL, createImage, downloadImage } from '../helpers/canvasPolyfill'
+import classNames from '../helpers/libs/classNames'
+import styleToCssString from '../helpers/libs/styleToCssString'
+import { getSystemInfoSync } from '../helpers/hooks/useNativeAPI'
+import { getCanvasRef, toDataURL, createImage, downloadImage } from '../helpers/hooks/useCanvasAPI'
 
 baseComponent({
     properties: {
@@ -165,9 +166,9 @@ baseComponent({
                 }
             }
             const canvasId = `${prefixCls}__canvas`
-            const renderCanvas = (imageUrl) => getCanvas({ canvasId }, this).then((canvas) => {
+            const renderCanvas = (imageUrl) => getCanvasRef(canvasId, this).then((canvas) => {
                 const ctx = canvas.getContext('2d')
-                const ratio = wx.getSystemInfoSync().pixelRatio
+                const ratio = getSystemInfoSync(['window']).pixelRatio
                 const canvasWidth = (gapX + width) * ratio
                 const canvasHeight = (gapY + height) * ratio
                 const markWidth = width * ratio

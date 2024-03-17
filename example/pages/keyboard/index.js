@@ -40,7 +40,7 @@ ad({
                 })
 
                 return http({
-                    url: 'https://www.skyvow.cn/api/user/sign/in',
+                    url: 'your_server_address/api/xxx',
                     method: 'POST',
                     data: {
                         username: 'admin',

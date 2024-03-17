@@ -3,22 +3,67 @@
     prefixCls="{{ cellPrefixCls }}"
     title="{{ title }}"
     label="{{ label }}"
-    extra="{{ extra }}"
-    hasLine="{{ !isLast }}"
+    extra="{{ context.iconPosition === 'left' ? extra : '' }}"
+    hasLine="{{ !context.hasFieldDecorator ? (hasLine || context.hasLine) && !isLast : false }}"
     disabled="{{ disabled || context.disabled }}"
-    hoverClass="{{ !(readOnly || context.readOnly) ? 'default' : 'none' }}"
-    wrapStyle="{{ wrapStyle }}"
+    hoverClass="{{ !(readOnly || context.readOnly || context.hasFieldDecorator) ? 'default' : 'none' }}"
+    wrapStyle="{{ !context.hasFieldDecorator ? wrapStyle : { paddingLeft: 0, paddingRight: 0, ...wrapStyle } }}"
+    wx:if="{{ context.withListComponent }}"
 >
+    <block wx:if="{{ context.iconPosition === 'left' }}">
+        <view slot="header" class="{{ classes.iconPosition }}">
+            <view class="{{ classes.iconSelectable }}">
+                <wux-selectable
+                    wux-class="{{ classes.selectable }}"
+                    prefixCls="{{ selectablePrefixCls }}"
+                    value="{{ value }}"
+                    checked="{{ inputChecked }}"
+                    color="{{ color }}"
+                    disabled="{{ disabled || context.disabled }}"
+                    readOnly="{{ readOnly || context.readOnly }}"
+                    iconSize="{{ context.iconSize }}"
+                    iconOn="{{ context.iconOn }}"
+                    iconOff="{{ context.iconOff }}"
+                    controlled
+                    bind:change="checkboxChange"
+                />
+            </view>
+        </view>
+    </block>
+    <block wx:else>
+        <view slot="header" class="{{ classes.extra }}">{{ extra }}</view>
+        <wux-selectable
+            slot="footer"
+            wux-class="{{ classes.selectable }}"
+            prefixCls="{{ selectablePrefixCls }}"
+            value="{{ value }}"
+            checked="{{ inputChecked }}"
+            color="{{ color }}"
+            disabled="{{ disabled || context.disabled }}"
+            readOnly="{{ readOnly || context.readOnly }}"
+            iconSize="{{ context.iconSize }}"
+            iconOn="{{ context.iconOn }}"
+            iconOff="{{ context.iconOff }}"
+            controlled
+            bind:change="checkboxChange"
+        />
+    </block>
+</wux-cell>
+<block wx:else>
     <wux-selectable
-        slot="header"
-        wux-class="{{ classes.selectable }}"
+        wux-class="{{ classes.selectableH }}"
         prefixCls="{{ selectablePrefixCls }}"
         value="{{ value }}"
         checked="{{ inputChecked }}"
         color="{{ color }}"
         disabled="{{ disabled || context.disabled }}"
         readOnly="{{ readOnly || context.readOnly }}"
+        iconSize="{{ context.iconSize }}"
+        iconOn="{{ context.iconOn }}"
+        iconOff="{{ context.iconOff }}"
         controlled
         bind:change="checkboxChange"
-    />
-</wux-cell>
+    >
+        {{ title }}
+    </wux-selectable>
+</block>

@@ -1,4 +1,5 @@
 import data from '../cascader/data'
+import ad from '../index/ad'
 
 const seasons = [
     ['王', '马', '蔡'],
@@ -26,10 +27,30 @@ const provinceLite = [{
     label: '四川省',
 }]
 
-import ad from '../index/ad'
+const fieldNamesOptions = [
+    {
+        labelT: '选项一',
+        valueT: '1',
+    },
+    {
+        labelT: '选项二',
+        valueT: '2',
+    },
+    {
+        labelT: '选项三',
+        valueT: '3',
+        disabledT: true,
+    },
+]
 
 ad({
     data: {
+        fieldNames: {
+            label: 'labelT',
+            value: 'valueT',
+            disabled: 'disabledT',
+        },
+        fieldNamesOptions,
         value1: ['320000', '320800', '320831'],
         value2: [],
         value3: [],
@@ -40,6 +61,7 @@ ad({
         displayValue2: '请选择',
         displayValue3: '请选择',
         displayValue4: '请选择',
+        displayValue5: '请选择',
         options: [],
         seasons,
     },

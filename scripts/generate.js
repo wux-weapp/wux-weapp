@@ -79,7 +79,7 @@ function getFileString(snippet, opts) {
 
 function getOptions(files) {
     var exclude = ['countdown', 'countup'];
-    var include = ['actionsheet', 'backdrop', 'toast', 'loading', 'dialog', 'form', 'toptips', 'gallery', 'notification', 'keyboard', 'select', 'calendar', 'refresher'];
+    var include = ['actionsheet', 'app', 'backdrop', 'toast', 'loading', 'dialog', 'form', 'toptips', 'gallery', 'index', 'notification', 'keyboard', 'select', 'calendar', 'refresher'];
     var importFiles = exclude.filter(function(v) { return files.includes(v) });
     var exportFiles = files.filter(function(v) { return include.includes(v) });
     return {

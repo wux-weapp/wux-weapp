@@ -1,5 +1,10 @@
-<wux-index height="100%" bind:change="onChange">
+<wux-index id="wux-index" height="100%" indicatorPosition="{{ indicatorPosition }}" bind:change="onChange">
     <wux-index-item wx:for="{{ alphabet }}" wx:key="index" name="{{ item.initial }}">
         <view class="demo-item" wx:for="{{ item.cells }}" wx:for-item="cell" wx:for-index="cellIndex" wx:key="cellIndex">{{ cell }}</view>
     </wux-index-item>
 </wux-index>
+<view class="demo-btn">
+    <wux-button block type="light" bindclick="setIndicator">set indicator to {{ indicatorPosition === 'center' ? 'right' : 'center' }}</wux-button>
+    <wux-button block type="light" bindclick="scrollToH">scroll to H by index</wux-button>
+    <wux-button block type="light" bindclick="scrollToZ">scroll to Z by name</wux-button>
+</view>

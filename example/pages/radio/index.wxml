@@ -4,8 +4,9 @@
         <view class="page__desc">单选框</view>
     </view>
     <view class="page__bd">
+        <wux-segmented-control defaultCurrent="1" values="{{ ['left', 'right'] }}" bind:change="onSegmentedControlChange" />
         <form bindsubmit="formSubmit">
-            <wux-radio-group name="a" value="{{ value1 }}" title="Default" bind:change="onChange1">
+            <wux-radio-group iconPosition="{{ iconPosition }}" name="a" value="{{ value1 }}" title="Default" bind:change="onChange1">
                 <wux-radio color="light" title="Light" value="1" />
                 <wux-radio color="stable" title="Stable" value="2" />
                 <wux-radio color="positive" title="Positive" value="3" />
@@ -16,30 +17,38 @@
                 <wux-radio color="royal" title="Royal" value="8" />
                 <wux-radio color="dark" title="Dark" value="9" />
             </wux-radio-group>
-            <wux-radio-group name="b" value="{{ value2 }}" title="Label" bind:change="onChange2">
+            <wux-radio-group iconPosition="{{ iconPosition }}" name="b" value="{{ value2 }}" title="Label" bind:change="onChange2">
                 <wux-radio title="Java" label="details" value="1" />
                 <wux-radio title="PHP" label="details" value="2" />
             </wux-radio-group>
-            <wux-radio-group name="c" value="{{ value3 }}" title="Thumb" bind:change="onChange3">
+            <wux-radio-group iconPosition="{{ iconPosition }}" name="c" value="{{ value3 }}" title="Thumb" bind:change="onChange3">
                 <wux-radio thumb="http://cdn.skyvow.cn/logo.png" title="Java" value="1" />
                 <wux-radio thumb="http://cdn.skyvow.cn/logo.png" title="PHP" value="2" />
             </wux-radio-group>
-            <wux-radio-group name="d" value="{{ value4 }}" title="Trigger onChange" bind:change="onChange4">
+            <wux-radio-group iconPosition="{{ iconPosition }}" name="d" value="{{ value4 }}" title="Trigger onChange" bind:change="onChange4">
                 <wux-radio title="Java" value="1" />
                 <wux-radio title="PHP" value="2" />
             </wux-radio-group>
-            <wux-radio-group name="e" title="Disabled & readOnly" value="{{ value4 }}" bind:change="onChange4">
+            <wux-radio-group iconPosition="{{ iconPosition }}" name="e" title="Disabled & readOnly" value="{{ value4 }}" bind:change="onChange4">
                 <wux-radio title="Java" value="1" disabled />
                 <wux-radio title="PHP" value="2" />
                 <wux-radio title="AV" value="3" readOnly />
             </wux-radio-group>
-            <wux-radio-group name="f" disabled value="{{ value4 }}" title="Disable for the radio group" bind:change="onChange4">
+            <wux-radio-group iconPosition="{{ iconPosition }}" name="f" disabled value="{{ value4 }}" title="Disable for the radio group" bind:change="onChange4">
                 <wux-radio title="Java" value="1" />
                 <wux-radio title="PHP" value="2" />
             </wux-radio-group>
-            <wux-radio-group name="g" readOnly value="{{ value5 }}" options="{{ options }}" title="ReadOnly for the radio group" bind:change="onChange5" />
-            <wux-radio-group name="h" value="{{ value5 }}" options="{{ options }}" title="Options" bind:change="onChange5" />
-            <wux-radio-group name="i" mode="card" value="{{ value5 }}" options="{{ options }}" title="Card List" bind:change="onChange5" />
+            <wux-radio-group iconPosition="{{ iconPosition }}" name="g" readOnly value="{{ value5 }}" options="{{ options }}" title="ReadOnly for the radio group" bind:change="onChange5" />
+            <wux-radio-group iconPosition="{{ iconPosition }}" name="h" value="{{ value5 }}" options="{{ options }}" title="Options" bind:change="onChange5" />
+            <wux-radio-group iconPosition="{{ iconPosition }}" name="i" iconSize="23" iconOn="success" iconOff="circle" value="{{ value5 }}" options="{{ options }}" title="Custom icon style" bind:change="onChange5" />
+            <wux-radio-group iconPosition="{{ iconPosition }}" name="j" mode="card" value="{{ value5 }}" options="{{ options }}" title="Card List" bind:change="onChange5" />
+            <wux-cell-group title="配合 List 使用（非 radioGroup）">
+                <block wx:for="{{ options }}" wx:for-item="option" wx:key="value">
+                    <wux-cell data-radio-ref="{{ 'radio_ref_' + index }}" bind:click="onItemClick" title="{{ option.title }}">
+                        <wux-radio slot="footer" id="{{ 'radio_ref_' + index }}" value="{{ option.value }}" checked="{{ value6 === option.value }}" />
+                    </wux-cell>
+                </block>
+            </wux-cell-group>
             <view class="btn-area">
                 <button formType="submit">Submit</button>
             </view>

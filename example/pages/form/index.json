@@ -1,6 +1,8 @@
 {
     "navigationBarTitleText": "Form",
     "usingComponents": {
+        "wux-segmented-control": "../../dist/segmented-control/index",
+        "wux-touch-view": "../../dist/touch-view/index",
         "wux-cell-group": "../../dist/cell-group/index",
         "wux-cell": "../../dist/cell/index",
         "wux-form": "../../dist/form/index",
@@ -14,6 +16,8 @@
         "wux-checkbox": "../../dist/checkbox/index",
         "wux-radio-group": "../../dist/radio-group/index",
         "wux-radio": "../../dist/radio/index",
+        "wux-selectable": "../../dist/selectable/index",
+        "wux-selector-group": "../../dist/selector-group/index",
         "wux-switch": "../../dist/switch/index",
         "wux-picker": "../../dist/picker/index",
         "wux-date-picker": "../../dist/date-picker/index",

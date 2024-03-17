@@ -8,6 +8,8 @@
         <wux-picker-view options="{{ options[0] }}" />
         <view class="sub-title">Loading</view>
         <wux-picker-view options="{{ options[0] }}" loading />
+        <view class="sub-title">Custom FieldNames</view>
+        <wux-picker-view defaultFieldNames="{{ fieldNames }}" options="{{ fieldNamesOptions }}" />
         <view class="sub-title">Controlled</view>
         <wux-picker-view value="{{ value }}" controlled options="{{ options[1] }}" bind:valueChange="onValueChange" />
     </view>

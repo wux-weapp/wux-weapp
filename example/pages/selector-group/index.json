@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "SelectorGroup",
+    "usingComponents": {
+        "wux-selector-group": "../../dist/selector-group/index"
+    }
+}

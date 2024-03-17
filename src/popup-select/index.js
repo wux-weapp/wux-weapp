@@ -1,7 +1,7 @@
 import baseComponent from '../helpers/baseComponent'
-import popupMixin from '../helpers/popupMixin'
-import nextTick from '../helpers/nextTick'
-import { POPUP_SELECTOR, notFoundContent, getNotFoundContent, flattenOptions } from './utils'
+import popupMixin from '../helpers/mixins/popupMixin'
+import { nextTick } from '../helpers/hooks/useNativeAPI'
+import { POPUP_SELECTOR, getDefaultProps, notFoundContent, getNotFoundContent, flattenOptions } from './utils'
 
 baseComponent({
     behaviors: [popupMixin(POPUP_SELECTOR)],
@@ -9,22 +9,6 @@ baseComponent({
         prefixCls: {
             type: String,
             value: POPUP_SELECTOR.substring(1),
-        },
-        value: {
-            type: [String, Array],
-            value: '',
-        },
-        options: {
-            type: Array,
-            value: [],
-        },
-        multiple: {
-            type: Boolean,
-            value: false,
-        },
-        max: {
-            type: Number,
-            value: -1,
         },
         virtualized: {
             type: Boolean,
@@ -34,6 +18,7 @@ baseComponent({
             type: null,
             value: { ...notFoundContent },
         },
+        ...getDefaultProps(),
     },
     data: {
         mergedOptions: [],
@@ -95,7 +80,7 @@ baseComponent({
             return -1
         },
         scrollToItem(index) {
-            const menuRef = this.selectComponent(POPUP_SELECTOR)
+            const menuRef = this.querySelector(POPUP_SELECTOR)
             if (menuRef) {
                 menuRef.scrollToItem(index)
             }
@@ -110,10 +95,10 @@ baseComponent({
 
             // collect field component & forceUpdate
             if (this.hasFieldDecorator) {
-                const field = this.getFieldElem()
-                if (field) {
-                    newValue = field.data.value
-                    field.changeValue(newValue)
+                const fieldContext = this.getFieldContext()
+                if (fieldContext) {
+                    newValue = fieldContext.data.value
+                    fieldContext.changeValue(newValue)
                 }
             }
 
@@ -131,7 +116,7 @@ baseComponent({
         getPickerValue(value = this.data.inputValue) {
             const { virtualized, mergedOptions } = this.data
             const cols = virtualized ? mergedOptions : undefined
-            this.picker = this.picker || this.selectComponent(POPUP_SELECTOR)
+            this.picker = this.picker || this.querySelector(POPUP_SELECTOR)
             return this.picker && this.picker.getValue(value, cols)
         },
         onSelectChange(e) {

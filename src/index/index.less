@@ -11,49 +11,84 @@
         top: 50%;
         right: 0;
         transform: translate3d(0, -50%, 0);
-        display: flex;
-        max-height: 100%;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    &__nav-row {
         cursor: pointer;
-        width: auto;
-        text-align: right;
-        position: relative;
-        padding: 0 6px;
-    }
+        user-select: none;
+        text-align: center;
 
-    &__nav-item {
-        display: inline-flex;
-        width: 16px;
-        height: 16px;
-        line-height: 16px;
-        font-size: 12px;
-        justify-content: center;
-        align-items: center;
+        &-row {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            height: 100%;
+            width: 100%;
+            position: relative;
+            line-height: @index-nav-size;
+            font-size: @index-nav-font-size;
+        }
 
-        &--current {
-            color: @text-color-inverse;
-            background-color: @balanced;
-            border-radius: 50%;
+        &-col {
+            padding: @index-nav-padding / 2 @index-nav-padding;
+            line-height: inherit;
+            font-size: inherit;
+        }
+
+        &-item {
+            display: inline-flex;
+            width: @index-nav-size;
+            height: @index-nav-size;
+            line-height: inherit;
+            font-size: inherit;
+            justify-content: center;
+            align-items: center;
+
+            &--current {
+                color: @text-color-inverse;
+                background-color: @balanced;
+                border-radius: 50%;
+            }
         }
     }
 
     &__indicator {
-        position: fixed;
         width: @index-indicator-size;
         height: @index-indicator-size;
         line-height: @index-indicator-size;
-        top: 50%;
-        left: 50%;
-        transform: translate3d(-50%, -50%, 0);
         text-align: center;
         background-color: @index-indicator-bg;
         border-radius: @index-indicator-border-radius;
         color: @index-indicator-color;
         font-size: @index-indicator-font-size;
+
+        &--center {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%, -50%, 0);
+        }
+
+        &--right {
+            position: absolute;
+            top: calc(@index-nav-size / 2 + @index-nav-padding / 2);
+            right: 100%;
+            border-radius: 50%;
+            transform: translateY(-50%);
+            margin-right: calc(@index-nav-size - 1px);
+            background-color: @balanced;
+
+            &::before {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                border-radius: 50% 0% 50% 50%;
+                content: '';
+                background-color: inherit;
+                left: 0;
+                top: 0;
+                transform: rotate(45deg);
+                z-index: -1;
+            }
+        }
     }
 }

@@ -21,6 +21,7 @@
             id="wux-select"
             value="{{ inputValue }}"
             options="{{ mergedOptions }}"
+            iconPosition="{{ iconPosition }}"
             multiple="{{ multiple }}"
             max="{{ max }}"
             bind:selectChange="onSelectChange"
@@ -30,6 +31,7 @@
             id="wux-select"
             value="{{ inputValue }}"
             options="{{ mergedOptions }}"
+            iconPosition="{{ iconPosition }}"
             multiple="{{ multiple }}"
             max="{{ max }}"
             bind:selectChange="onSelectChange"
@@ -49,22 +51,3 @@
     </view>
 </wux-popup>
 <slot></slot>
-<wxs module="common">
-    module.exports = {
-        getValue: function(values, type) {
-            if (type === 'radio') {
-                if (values.constructor === 'Array') {
-                    return values[0] || ''
-                }
-                return values || ''
-            }
-            return values || []
-        },
-        getChecked: function(values, option, type) {
-            if (type === 'radio') {
-                return this.getValue(values, type) === option.value
-            }
-            return values.indexOf(option.value) !== -1
-        }
-    }
-</wxs>

@@ -67,18 +67,18 @@
         <view class="sub-title">With Badge</view>
         <wux-tabbar defaultCurrent="1" position="bottom" safeArea backgroundColor="#000">
             <wux-tabbar-item title="Tab 1">
-                <wux-badge count="1" slot="icon-on">
+                <wux-badge wux-class-badge="tabbar-icon-badge" count="1" slot="icon-on">
                     <wux-icon wux-class="icon" type="ios-home" size="22" />
                 </wux-badge>
-                <wux-badge count="1" slot="icon-off">
+                <wux-badge wux-class-badge="tabbar-icon-badge" count="1" slot="icon-off">
                     <wux-icon wux-class="icon" type="ios-home" size="22" />
                 </wux-badge>
             </wux-tabbar-item>
             <wux-tabbar-item title="Tab 2">
-                <wux-badge dot slot="icon-on">
+                <wux-badge wux-class-badge="tabbar-icon-badge" dot slot="icon-on">
                     <wux-icon wux-class="icon" type="ios-home" size="22" />
                 </wux-badge>
-                <wux-badge dot slot="icon-off">
+                <wux-badge wux-class-badge="tabbar-icon-badge" dot slot="icon-off">
                     <wux-icon wux-class="icon" type="ios-home" size="22" />
                 </wux-badge>
             </wux-tabbar-item>

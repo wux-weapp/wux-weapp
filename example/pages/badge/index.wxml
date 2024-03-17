@@ -5,12 +5,12 @@
     </view>
     <view class="page__bd">
         <view class="example">
-            <wux-badge dot="{{ true }}">
+            <wux-badge dot>
                 <view class="example__badge"></view>
             </wux-badge>
         </view>
         <view class="example">
-            <wux-badge count="0" show-zero="{{ true }}">
+            <wux-badge count="0" show-zero>
                 <view class="example__badge"></view>
             </wux-badge>
         </view>
@@ -25,7 +25,7 @@
             </wux-badge>
         </view>
         <view class="example">
-            <wux-badge count="9999" overflow-count="1024">
+            <wux-badge count="9999" overflow-count="1024" hide-shadow>
                 <view class="example__badge"></view>
             </wux-badge>
         </view>
@@ -33,8 +33,12 @@
             <wux-badge count="66" />
         </view>
         <view class="example">
+            <wux-badge title="新消息!" />
+        </view>
+        <view class="example">
             <wux-badge count="88" wux-class-badge="bg-green" />
         </view>
+        <view></view>
         <view class="example">
             <wux-badge status="success" />
         </view>
@@ -48,7 +52,44 @@
             <wux-badge status="processing" />
         </view>
         <view class="example">
+            <wux-badge status="warning" />
+        </view>
+        <view></view>
+        <view class="example">
+            <wux-badge status="success" text="Success" />
+        </view>
+        <view class="example">
+            <wux-badge status="error" text="Error" />
+        </view>
+        <view class="example">
+            <wux-badge status="default" text="Default" />
+        </view>
+        <view class="example">
+            <wux-badge status="processing" text="Processing" />
+        </view>
+        <view class="example">
             <wux-badge status="warning" text="Warning" />
+        </view>
+        <view></view>
+        <view class="example">
+            <wux-badge dot position="topLeft" backgroundColor="#52c41a">
+                <view class="example__badge"></view>
+            </wux-badge>
+        </view>
+        <view class="example">
+            <wux-badge dot position="topRight" backgroundColor="#1890ff">
+                <view class="example__badge"></view>
+            </wux-badge>
+        </view>
+        <view class="example">
+            <wux-badge dot position="bottomLeft" backgroundColor="#f5222d">
+                <view class="example__badge"></view>
+            </wux-badge>
+        </view>
+        <view class="example">
+            <wux-badge dot position="bottomRight" backgroundColor="#faad14">
+                <view class="example__badge"></view>
+            </wux-badge>
         </view>
     </view>
 </view>

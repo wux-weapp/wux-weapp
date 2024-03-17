@@ -1,9 +1,39 @@
+import ad from '../index/ad'
 import data from './data'
 
-import ad from '../index/ad'
+const fieldNamesOptions = [
+    {
+        labelT: '选项一',
+        valueT: '1',
+        childrenT: [{
+            labelT: '选项一(1)',
+            valueT: '11',
+        }],
+    },
+    {
+        labelT: '选项二',
+        valueT: '2',
+        childrenT: [{
+            labelT: '选项二(2)',
+            valueT: '22',
+        }],
+    },
+    {
+        labelT: '选项三',
+        valueT: '3',
+        disabledT: true,
+    },
+]
 
 ad({
     data: {
+        fieldNames: {
+            label: 'labelT',
+            value: 'valueT',
+            disabled: 'disabledT',
+            children: 'childrenT',
+        },
+        fieldNamesOptions,
         options1: data,
         value2: ['浙江', '温州', '鹿城区'],
         options2: data,

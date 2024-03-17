@@ -4,163 +4,95 @@
         <view class="page__desc">表单</view>
     </view>
     <view class="page__bd">
-        <view class="sub-title">Default Form</view>
-        <form bindsubmit="formSubmit">
-            <wux-checkbox-group name="checkbox" value="{{ checkbox }}" title="Checkbox" bind:change="onCheckboxChange">
-                <wux-checkbox title="Java" value="1" />
-                <wux-checkbox title="PHP" value="2" />
-            </wux-checkbox-group>
-            <wux-radio-group name="radio" value="{{ radio }}" title="Radio" bind:change="onRadioChange">
-                <wux-radio title="Java" value="1" />
-                <wux-radio title="PHP" value="2" />
-            </wux-radio-group>
-            <wux-cell-group title="Switch">
-                <wux-cell>
-                    <wux-switch name="switch" slot="footer" value="{{ switch }}" bind:change="onSwitchChange" />
-                </wux-cell>
-            </wux-cell-group>
-            <wux-cell-group title="Input">
-                <wux-cell hover-class="none">
-                    <wux-field name="input" initialValue="123">
-                        <wux-input label="Input" />
-                    </wux-field>
-                </wux-cell>
-            </wux-cell-group>
-            <wux-cell-group title="Rater">
-                <wux-cell hover-class="none">
-                    <wux-field name="rater" initialValue="{{ 2 }}" slot="footer">
-                        <wux-rater />
-                    </wux-field>
-                </wux-cell>
-            </wux-cell-group>
-            <wux-cell-group title="InputNumber">
-                <wux-cell hover-class="none">
-                    <wux-field name="inputNumber" initialValue="{{ 20 }}">
-                        <wux-input-number />
-                    </wux-field>
-                </wux-cell>
-            </wux-cell-group>
-            <wux-cell-group title="Textarea">
-                <wux-cell hover-class="none">
-                    <wux-field name="textarea" initialValue="456">
-                        <wux-textarea rows="3" />
-                    </wux-field>
-                </wux-cell>
-            </wux-cell-group>
-            <wux-cell-group title="Slider">
-                <wux-cell hover-class="none">
-                    <wux-field name="slider" initialValue="{{ [10, 80] }}">
-                        <wux-slider />
-                    </wux-field>
-                </wux-cell>
-            </wux-cell-group>
-            <wux-cell-group title="Picker">
-                <wux-field name="picker" initialValue="{{ picker }}">
-                    <wux-picker options="{{ options1 }}" cascade bind:change="onValueChange">
-                        <wux-cell title="Picker" is-link extra="{{ picker }}"></wux-cell>
-                    </wux-picker>
-                </wux-field>
-            </wux-cell-group>
-            <wux-cell-group title="DatePicker">
-                <wux-field name="datePicker" initialValue="{{ datePicker }}">
-                    <wux-date-picker bind:change="onDatePickerChange">
-                        <wux-cell title="DatePicker" is-link extra="{{ datePicker }}"></wux-cell>
-                    </wux-date-picker>
-                </wux-field>
-            </wux-cell-group>
-            <wux-cell-group title="PopupSelect">
-                <wux-field name="popupSelect" initialValue="{{ popupSelect }}">
-                    <wux-popup-select options="{{ options2 }}" bind:change="onPopupSelectChange">
-                        <wux-cell title="PopupSelect" is-link extra="{{ popupSelect }}"></wux-cell>
-                    </wux-popup-select>
-                </wux-field>
-            </wux-cell-group>
-            <view class="btn-area">
-                <button formType="submit">Default Form Submit</button>
-            </view>
-        </form>
-        <view class="sub-title">Wux Form</view>
-        <wux-form id="wux-form" bind:change="onValuesChange">
-            <wux-field name="checkbox" initialValue="{{ checkbox }}">
-                <wux-checkbox-group>
-                    <wux-checkbox title="Java" value="1" />
-                    <wux-checkbox title="PHP" value="2" />
+        <wux-segmented-control values="{{ ['horizontal', 'vertical'] }}" bind:change="onSegmentedControlChange" />
+        <wux-form
+            id="wux-form"
+            layout="{{ layout }}"
+            title="{{ layout === 'horizontal' ? '水平布局表单' : '竖直布局表单' }}"
+            validateMessages="{{ validateMessages }}"
+            bind:change="onValuesChange"
+            bind:fieldsChange="onFieldsChange"
+        >
+            <wux-field name="name" label="姓名" initialValue="WuxUI" rules="{{ [{ required: true, message: '姓名不能为空' }, { type: 'string', min: 2, message: '姓名最少2个字符' }] }}">
+                <wux-input placeholder="请输入姓名" clear />
+            </wux-field>
+            <wux-field name="picker" label="城市" initialValue="{{ [] }}" trigger="onConfirm" rules="{{ [{ required: true, type: 'array' }] }}" isLink>
+                <wux-picker options="{{ options1 }}" cascade bind:confirm="onPickerChange">
+                    <wux-touch-view>{{ pickerLabel || '请选择城市' }}</wux-touch-view>
+                </wux-picker>
+            </wux-field>
+            <wux-field name="address" label="地址" help="详情地址">
+                <wux-textarea placeholder="请输入地址" hasCount rows="2" maxlength="100" clear />
+            </wux-field>
+            <wux-field name="checkbox" label="商品" initialValue="{{ [] }}" rules="{{ [{ required: true, max: 2, type: 'array' }] }}" >
+                <wux-checkbox-group bind:change="onCheckboxChange">
+                    <wux-checkbox title="兔头" value="1" />
+                    <wux-checkbox title="兔腿" value="2" />
+                    <wux-checkbox title="整兔" value="3" />
                 </wux-checkbox-group>
             </wux-field>
-            <wux-field name="radio" initialValue="{{ radio }}">
-                <wux-radio-group title="Radio">
-                    <wux-radio title="Java" value="1" />
-                    <wux-radio title="PHP" value="2" />
+            <wux-field name="radio" label="口味" initialValue="{{ '' }}" rules="{{ [{ required: true }] }}">
+                <wux-radio-group withListComponent="{{ false }}" bind:change="onRadioChange">
+                    <wux-radio title="烟熏" value="1" />
+                    <wux-radio title="风干" value="2" />
                 </wux-radio-group>
             </wux-field>
-            <wux-cell-group title="Switch">
-                <wux-cell>
-                    <wux-field name="switch" initialValue="{{ switch }}" valuePropName="inputChecked" slot="footer">
-                        <wux-switch />
-                    </wux-field>
-                </wux-cell>
-            </wux-cell-group>
-            <wux-cell-group title="Input">
-                <wux-cell hover-class="none">
-                    <wux-field name="input" initialValue="123">
-                        <wux-input label="Input" />
-                    </wux-field>
-                </wux-cell>
-            </wux-cell-group>
-            <wux-cell-group title="Rater">
-                <wux-cell hover-class="none">
-                    <wux-field name="rater" initialValue="{{ 2 }}" slot="footer">
-                        <wux-rater />
-                    </wux-field>
-                </wux-cell>
-            </wux-cell-group>
-            <wux-cell-group title="InputNumber">
-                <wux-cell hover-class="none">
-                    <wux-field name="inputNumber" initialValue="{{ 20 }}">
-                        <wux-input-number />
-                    </wux-field>
-                </wux-cell>
-            </wux-cell-group>
-            <wux-cell-group title="Textarea">
-                <wux-cell hover-class="none">
-                    <wux-field name="textarea" initialValue="456">
-                        <wux-textarea rows="3" />
-                    </wux-field>
-                </wux-cell>
-            </wux-cell-group>
-            <wux-cell-group title="Slider">
-                <wux-cell hover-class="none">
-                    <wux-field name="slider" initialValue="{{ [10, 80] }}">
-                        <wux-slider />
-                    </wux-field>
-                </wux-cell>
-            </wux-cell-group>
-            <wux-cell-group title="Picker">
-                <wux-field name="picker" initialValue="{{ picker }}">
-                    <wux-picker options="{{ options1 }}" cascade>
-                        <wux-cell title="Picker" is-link extra="{{ picker }}"></wux-cell>
-                    </wux-picker>
-                </wux-field>
-            </wux-cell-group>
-            <wux-cell-group title="DatePicker">
-                <wux-field name="datePicker" initialValue="{{ datePicker }}">
-                    <wux-date-picker>
-                        <wux-cell title="DatePicker" is-link extra="{{ datePicker }}"></wux-cell>
-                    </wux-date-picker>
-                </wux-field>
-            </wux-cell-group>
-            <wux-cell-group title="PopupSelect">
-                <wux-field name="popupSelect" initialValue="{{ popupSelect }}">
-                    <wux-popup-select options="{{ options2 }}">
-                        <wux-cell title="PopupSelect" is-link extra="{{ popupSelect }}"></wux-cell>
-                    </wux-popup-select>
-                </wux-field>
-            </wux-cell-group>
-            <view class="btn-area">
-                <button bindtap="onSubmit">Wux Form Submit</button>
+            <wux-field name="rater" label="辣度" initialValue="{{ 2 }}" childElementPosition="{{ layout === 'horizontal' ? 'right' : 'none' }}">
+                <wux-rater />
+            </wux-field>
+            <wux-field name="inputNumber" label="数量" initialValue="{{ 2 }}" rules="{{ [{ min: 1, max: 5, type: 'number' }] }}" childElementPosition="{{ layout === 'horizontal' ? 'right' : 'none' }}">
+                <wux-input-number />
+            </wux-field>
+            <wux-field name="slider" label="运费险" initialValue="{{ [10] }}">
+                <wux-slider step="10" showMark />
+            </wux-field>
+            <wux-field name="switch" label="送货上门" initialValue="{{ switch }}" valuePropName="inputChecked" childElementPosition="{{ layout === 'horizontal' ? 'right' : 'none' }}">
+                <wux-switch />
+            </wux-field>
+            <wux-field name="datePicker" label="送货日期（带清除图标）" initialValue="{{ [] }}" trigger="onConfirm" rules="{{ [{ required: true, type: 'array' }] }}" isLink="{{ !datePickerLabel }}" align="center" labelWrap>
+                <wux-date-picker mode="date" bind:confirm="onDatePickerChange">
+                    <wux-touch-view>{{ datePickerLabel || '请选择日期' }}</wux-touch-view>
+                </wux-date-picker>
+                <icon slot="arrow" type="clear" color="#B2B2B2" size="14" bindtap="onArrowClick" wx:if="{{ datePickerLabel }}" />
+            </wux-field>
+            <wux-field name="popupSelect" label="快递服务" initialValue="{{ '' }}" trigger="onConfirm" rules="{{ [{ required: true }] }}" isLink>
+                <wux-popup-select options="{{ options2 }}" bind:confirm="onPopupSelectChange" >
+                    <wux-touch-view>{{ popupSelectLabel || '请选择快递' }}</wux-touch-view>
+                </wux-popup-select>
+            </wux-field>
+            <wux-field name="selectorGroup" label="付款方式" initialValue="{{ [] }}" rules="{{ [{ required: true }] }}">
+                <wux-selector-group columns="2" options="{{ ['到柜支付', '先寄后付'] }}" />
+            </wux-field>
+            <wux-field name="code" label="验证码" rules="{{ [{ required: true }, { validator: 'checkCode' }] }}">
+                <wux-input placeholder="请输入验证码" clear />
+                <text slot="extra" style="color: #387ef5; padding-left: 12px;" bindtap="onSendCode">发送验证码</text>
+            </wux-field>
+            <wux-field name="password" label="密码" initialValue="" rules="{{ [{ required: true }, { validator: 'validateToNextPassword' }] }}">
+                <wux-input placeholder="请输入密码" clear password visibilityToggle />
+            </wux-field>
+            <wux-field name="confirm" label="确认密码" initialValue="" rules="{{ [{ required: true }, { validator: 'compareToFirstPassword' }] }}">
+                <wux-input placeholder="请输入确认密码" clear password visibilityToggle bind:blur="handleConfirmBlur" />
+            </wux-field>
+            <wux-field name="author" label="禁用" disabled>
+                <wux-input placeholder="被禁用的输入框" />
+            </wux-field>
+            <wux-field name="website" label="只读" readOnly>
+                <wux-input placeholder="只读模式的输入框" />
+            </wux-field>
+            <wux-field name="id" label="编号" initialValue="{{ '0001' }}" hidden>
+                <wux-input />
+            </wux-field>
+            <wux-field name="email" label="邮箱" initialValue="" rules="{{ !checkEmail ? [] : [{ type: 'email', message: '输入的邮箱无效！' }, { required: true, message: '请输入您的邮箱！' }] }}">
+                <wux-input placeholder="请输入邮箱" clear />
+            </wux-field>
+            <wux-field name="agreement" initialValue="{{ false }}" valuePropName="inputChecked">
+                <wux-selectable bind:change="onSelectableChange">邮箱是必填的</wux-selectable>
+            </wux-field>
+            <view slot="footer" class="btn-area btn-area_auto">
+                <button type="primary" bindtap="onSubmit">Wux Form Submit</button>
                 <button bindtap="onReset">Wux Form Reset</button>
-                <button bindtap="onFill">Fill Form</button>
+                <button bindtap="onFill">Fill in the code</button>
             </view>
-        </wux-form>
+        </wux-form>        
     </view>
 </view>

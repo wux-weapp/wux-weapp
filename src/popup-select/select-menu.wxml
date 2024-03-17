@@ -2,6 +2,7 @@
     <wux-radio-group
         id="wux-select"
         value="{{ common.getValue(value, 'radio') }}"
+        iconPosition="{{ iconPosition || 'right' }}"
         bind:change="onValueChange"
         wx:if="{{ !multiple }}"
     >
@@ -20,8 +21,8 @@
                 thumb="{{ option.thumb || '' }}"
                 title="{{ option.title || '' }}"
                 label="{{ option.label || '' }}"
-                value="{{ option.value }}"
-                checked="{{ common.getChecked(value, option, 'radio') }}"
+                value="{{ option.value || '' }}"
+                checked="{{ common.getChecked(value, option.value, 'radio') }}"
                 disabled="{{ option.disabled }}"
                 color="{{ option.color || 'balanced' }}"
                 data-index="{{ index }}"
@@ -33,6 +34,7 @@
     <wux-checkbox-group
         id="wux-select"
         value="{{ common.getValue(value) }}"
+        iconPosition="{{ iconPosition || 'left' }}"
         bind:change="onValueChange"
         wx:else
     >
@@ -51,8 +53,8 @@
                 title="{{ option.title || '' }}"
                 label="{{ option.label || '' }}"
                 extra="{{ option.extra || '' }}"
-                value="{{ option.value }}"
-                checked="{{ common.getChecked(value, option) }}"
+                value="{{ option.value || '' }}"
+                checked="{{ common.getChecked(value, option.value) }}"
                 disabled="{{ option.disabled }}"
                 color="{{ option.color || 'balanced' }}"
                 data-index="{{ index }}"
@@ -62,22 +64,4 @@
         </block>
     </wux-checkbox-group>
 </scroll-view>
-<wxs module="common">
-    module.exports = {
-        getValue: function(values, type) {
-            if (type === 'radio') {
-                if (values.constructor === 'Array') {
-                    return values[0] || ''
-                }
-                return values || ''
-            }
-            return values || []
-        },
-        getChecked: function(values, option, type) {
-            if (type === 'radio') {
-                return this.getValue(values, type) === option.value
-            }
-            return values.indexOf(option.value) !== -1
-        }
-    }
-</wxs>
+<wxs src="../helpers/wxs/common.wxs" module="common" />

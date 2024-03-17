@@ -1,5 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
-import { POPUP_SELECTOR } from './utils'
+import { POPUP_SELECTOR, getDefaultProps } from './utils'
 
 baseComponent({
     useExport: true,
@@ -8,22 +8,7 @@ baseComponent({
             type: Number,
             value: 270,
         },
-        value: {
-            type: [String, Array],
-            value: '',
-        },
-        options: {
-            type: Array,
-            value: [],
-        },
-        multiple: {
-            type: Boolean,
-            value: false,
-        },
-        max: {
-            type: Number,
-            value: -1,
-        },
+        ...getDefaultProps(),
     },
     data: {
         scrollTop: 0,
@@ -37,7 +22,7 @@ baseComponent({
             this.triggerEvent('selectChange', this.getValue(value))
         },
         getValue(value = this.data.value, cols = this.data.options) {
-            this.picker = this.picker || this.selectComponent(POPUP_SELECTOR)
+            this.picker = this.picker || this.querySelector(POPUP_SELECTOR)
             return this.picker && this.picker.getValue(value, cols)
         },
         expose() {
@@ -60,7 +45,7 @@ baseComponent({
                     }
                 }
                 const getBoundingClientRect = (cb) => {
-                    const ref = this.selectComponent(POPUP_SELECTOR)
+                    const ref = this.querySelector(POPUP_SELECTOR)
                     return ref && ref.getBoundingClientRect && ref.getBoundingClientRect(cb)
                 }
                 getBoundingClientRect((height) => {

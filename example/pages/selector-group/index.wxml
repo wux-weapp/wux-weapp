@@ -1,0 +1,32 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">SelectorGroup</view>
+        <view class="page__desc">选择组</view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+        <view class="sub-title">简单 options</view>
+        <wux-selector-group options="{{ stringOptions }}" defaultValue="{{ value1 }}" />
+        <view class="sub-title">单选</view>
+        <wux-selector-group options="{{ options }}" defaultValue="{{ value2 }}" />
+        <view class="sub-title">多选</view>
+        <wux-selector-group options="{{ options }}" defaultValue="{{ value3 }}" multiple />
+        <view class="sub-title">可选 theme</view>
+        <wux-selector-group theme="positive" options="{{ options }}" defaultValue="{{ value2 }}" />
+        <view class="sub-title">两列布局</view>
+        <wux-selector-group columns="2" options="{{ options }}" defaultValue="{{ value2 }}" />
+        <view class="sub-title">禁用状态</view>
+        <wux-selector-group options="{{ disabledOptions }}" defaultValue="{{ value2 }}" />
+        <view class="sub-title">选项带描述</view>
+        <wux-selector-group options="{{ descriptionOptions }}" defaultValue="{{ value2 }}" />
+        <view class="sub-title">自定义 FieldName</view>
+        <wux-selector-group options="{{ fieldNamesOptions }}" defaultValue="{{ value2 }}" defaultFieldNames="{{ fieldNames }}" />
+        <view class="sub-title">圆角样式</view>
+        <wux-selector-group options="{{ options }}" defaultValue="{{ value2 }}" shape="rounded" />
+        <view class="sub-title">不显示对角</view>
+        <wux-selector-group options="{{ options }}" defaultValue="{{ value2 }}" showCheckMark="{{ false }}" />
+        <view class="sub-title">Controlled</view>
+        <wux-selector-group options="{{ options }}" value="{{ value4 }}" controlled bind:change="onChange" />
+        <view class="sub-title">必须选择一项</view>
+        <wux-selector-group options="{{ options }}" value="{{ value5 }}" controlled bind:change="onRadioChange" />
+    </view>
+</view>

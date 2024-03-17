@@ -19,6 +19,9 @@
             <wux-picker options="{{ asyncOptions }}" value="{{ value4 }}" cascade cols="{{ asyncCols }}" loading="{{ loading }}" data-index="4" bind:confirm="onConfirm" bind:valueChange="onValueChange">
                 <wux-cell title="Multiple & async" is-link extra="{{ displayValue4 }}"></wux-cell>
             </wux-picker>
+            <wux-picker defaultFieldNames="{{ fieldNames }}" options="{{ fieldNamesOptions }}" data-index="5" bind:confirm="onConfirm" bind:valueChange="onValueChange">
+                <wux-cell title="Custom FieldNames" is-link extra="{{ displayValue5 }}"></wux-cell>
+            </wux-picker>
         </wux-cell-group>
         <view class="button-sp-area">
             <wux-button block type="light" bind:click="onClick">Button click - {{ displayValue1 }}</wux-button>

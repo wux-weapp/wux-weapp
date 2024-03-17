@@ -1,26 +1,17 @@
-import computedBehavior from './computedBehavior'
-import relationsBehavior from './relationsBehavior'
-import safeAreaBehavior from './safeAreaBehavior'
-import safeSetDataBehavior from './safeSetDataBehavior'
-import funcBehavior from './funcBehavior'
-import compareVersion from './compareVersion'
+import computedBehavior from './mixins/computedBehavior'
+import relationsBehavior from './mixins/relationsBehavior'
+import safeSetDataBehavior from './mixins/safeSetDataBehavior'
+import funcBehavior from './mixins/funcBehavior'
+import { warningUnChecked } from './shared/warningUnChecked'
 
-const { platform, SDKVersion } = wx.getSystemInfoSync()
-const libVersion = '2.6.6'
-
-// check SDKVersion
-if (platform === 'devtools' && compareVersion(SDKVersion, libVersion) < 0) {
-    if (wx && wx.showModal) {
-        wx.showModal({
-            title: '提示',
-            content: `当前基础库版本（${SDKVersion}）过低，无法使用 Wux Weapp 组件库，请更新基础库版本 >=${libVersion} 后重试。`,
-        })
-    }
-}
+warningUnChecked()
 
 const baseComponent = (options = {}) => {
     // add default externalClasses
     options.externalClasses = [
+        'wux-class-a',
+        'wux-class-b',
+        'wux-class-c',
         'wux-class',
         'wux-hover-class',
         ...(options.externalClasses = options.externalClasses || []),
@@ -28,17 +19,11 @@ const baseComponent = (options = {}) => {
 
     // add default behaviors
     options.behaviors = [
-        relationsBehavior,
         safeSetDataBehavior,
         ...(options.behaviors = options.behaviors || []),
+        relationsBehavior,
         computedBehavior, // make sure it's triggered
     ]
-
-    // use safeArea
-    if (options.useSafeArea) {
-        options.behaviors = [...options.behaviors, safeAreaBehavior]
-        delete options.useSafeArea
-    }
 
     // use func
     if (options.useFunc) {

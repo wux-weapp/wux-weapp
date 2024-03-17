@@ -1,7 +1,8 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import styleToCssString from '../helpers/styleToCssString'
-import { toDataURL, getCanvas } from '../helpers/canvasPolyfill'
+import classNames from '../helpers/libs/classNames'
+import styleToCssString from '../helpers/libs/styleToCssString'
+import { getSystemInfoSync } from '../helpers/hooks/useNativeAPI'
+import { toDataURL, getCanvasRef } from '../helpers/hooks/useCanvasAPI'
 
 import qrjs from './qr.js/index'
 
@@ -186,12 +187,12 @@ baseComponent({
                 }
             }
             const canvasId = `${prefixCls}__canvas`
-            const renderCanvas = () => getCanvas({ canvasId }, this).then((canvas) => {
+            const renderCanvas = () => getCanvasRef(canvasId, this).then((canvas) => {
                 // always cache node
                 this.canvas = canvas
 
                 const ctx = canvas.getContext('2d')
-                const ratio = wx.getSystemInfoSync().pixelRatio
+                const ratio = getSystemInfoSync(['window']).pixelRatio
                 const canvasWidth = width * ratio
                 const canvasHeight = height * ratio
 

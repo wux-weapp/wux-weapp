@@ -35,6 +35,17 @@
   bind:tabsChange="onTabsChange3"
 />
 
+<wux-cascader
+  visible="{{ visible4 }}"
+  default-value="{{ value4 }}"
+  title="所在地区"
+  options="{{ fieldNamesOptions }}"
+  defaultFieldNames="{{ fieldNames }}"
+  bind:close="onClose4"
+  bind:change="onChange4"
+  bind:confirm="onConfirm4"
+/>
+
 <view class="page">
     <view class="page__hd">
         <view class="page__title">Cascader</view>
@@ -45,6 +56,7 @@
     		<wux-cell title="Default" extra="{{ title1 }}" bind:click="onOpen1"></wux-cell>
     		<wux-cell title="Async" extra="{{ title2 }}" bind:click="onOpen2"></wux-cell>
     		<wux-cell title="Controlled" extra="{{ title3 }}" bind:click="onOpen3"></wux-cell>
+    		<wux-cell title="Custom FieldName" extra="{{ title4 }}" bind:click="onOpen4"></wux-cell>
     	</wux-cell-group>
     </view>
 </view>

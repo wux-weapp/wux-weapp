@@ -1,5 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
-import styleToCssString from '../helpers/styleToCssString'
+import styleToCssString from '../helpers/libs/styleToCssString'
 
 baseComponent({
     relations: {

@@ -1,6 +1,7 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import eventsMixin from '../helpers/eventsMixin'
+import classNames from '../helpers/libs/classNames'
+import eventsMixin from '../helpers/mixins/eventsMixin'
+import { useRectAll } from '../helpers/hooks/useDOM'
 
 baseComponent({
     behaviors: [eventsMixin()],
@@ -129,14 +130,14 @@ baseComponent({
         },
         updateHalfStarValue(index, x, cb) {
             const { prefixCls } = this.data
-            const query = wx.createSelectorQuery().in(this)
-            query.selectAll(`.${prefixCls}__star`).boundingClientRect((rects) => {
-                if (rects.filter((n) => !n).length) return
-                const { left, width } = rects[index]
-                const has = (x - left) < width / 2
-                const value = has ? index + .5 : index + 1
-                cb.call(this, value, index)
-            }).exec()
+            useRectAll(`.${prefixCls}__star`, this)
+                .then((rects) => {
+                    if (rects.filter((n) => !n).length) return
+                    const { left, width } = rects[index]
+                    const has = (x - left) < width / 2
+                    const value = has ? index + .5 : index + 1
+                    cb.call(this, value, index)
+                })
         },
         onTap(e) {
             const { index } = e.currentTarget.dataset
@@ -171,25 +172,25 @@ baseComponent({
             if (!disabled && allowTouchMove) {
                 const x = e.changedTouches[0].pageX
                 const { prefixCls } = this.data
-                const query = wx.createSelectorQuery().in(this)
-                query.selectAll(`.${prefixCls}__star`).boundingClientRect((rects) => {
-                    if (rects.filter((n) => !n).length) return
-                    const { left, width } = rects[0]
-                    const maxWidth = rects.map((n) => n.width).reduce((a, b) => a + b)
-                    const diff = x - left
-                    let value = Math.ceil(diff / width)
+                useRectAll(`.${prefixCls}__star`, this)
+                    .then((rects) => {
+                        if (rects.filter((n) => !n).length) return
+                        const { left, width } = rects[0]
+                        const maxWidth = rects.map((n) => n.width).reduce((a, b) => a + b)
+                        const diff = x - left
+                        let value = Math.ceil(diff / width)
 
-                    // 判断是否在组件宽度范围内
-                    if (diff > 0 && diff < maxWidth) {
-                        const index = value - 1
-                        if (allowHalf) {
-                            const star = rects[index]
-                            const has = (x - star.left) < star.width / 2
-                            value = has ? value - .5 : value
+                        // 判断是否在组件宽度范围内
+                        if (diff > 0 && diff < maxWidth) {
+                            const index = value - 1
+                            if (allowHalf) {
+                                const star = rects[index]
+                                const has = (x - star.left) < star.width / 2
+                                value = has ? value - .5 : value
+                            }
+                            this.onChange(value, index)
                         }
-                        this.onChange(value, index)
-                    }
-                }).exec()
+                    })
             }
         },
     },

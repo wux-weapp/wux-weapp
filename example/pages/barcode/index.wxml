@@ -12,7 +12,17 @@
         </wux-cell-group>
         <view class="sub-title">提示：扫描只能识别有效的条形码</view>
         <view class="barcode">
-            <wux-barcode number="{{ number }}" options="{{ options }}" width="200" height="100" />
+            <wux-barcode
+                number="{{ number }}"
+                options="{{ options }}"
+                width="200"
+                height="100"
+                bind:valid="onValid"
+                bind:invalid="onInvalid"
+                bind:success="onSuccess"
+                bind:error="onError"
+                bind:load="onLoad"
+            />
         </view>
     </view>
 </view>

@@ -1,7 +1,8 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import shallowEqual from '../helpers/shallowEqual'
-import { defaultFieldNames, props } from './props'
+import classNames from '../helpers/libs/classNames'
+import shallowEqual from '../helpers/libs/shallowEqual'
+import fieldNamesBehavior from '../helpers/mixins/fieldNamesBehavior'
+import { props } from './props'
 import {
     getRealCols,
     getRealValues,
@@ -10,15 +11,15 @@ import {
 } from './utils'
 
 baseComponent({
+    behaviors: [fieldNamesBehavior],
     properties: props,
     data: {
         inputValue: [],
         cols: [],
-        fieldNames: { ...defaultFieldNames },
     },
     observers: {
         ['value, options'](value, options) {
-            const fieldNames = Object.assign({}, defaultFieldNames, this.data.defaultFieldNames)
+            const fieldNames = this.getFieldNames()
             const cols = getRealCols(options, fieldNames)
 
             if (!shallowEqual(this.data.cols, cols)) {
@@ -41,8 +42,8 @@ baseComponent({
             this.updated(inputValue, isForce)
         },
         getValue(value = this.data.inputValue, cols = this.data.cols) {
-            const { fieldNames } = this.data
-            const inputValue = getRealValues(value, cols, fieldNames)
+            const fieldNames = this.getFieldNames()
+            const inputValue = getRealValues(Array.isArray(value) ? value : [], cols, fieldNames)
             const selectedValue = [...inputValue]
             const selectedIndex = getIndexesFromValues(inputValue, cols, fieldNames)
             const displayValue = getLabelsFromIndexes(selectedIndex, cols, fieldNames.label)
@@ -92,10 +93,10 @@ baseComponent({
     },
     attached() {
         const { value, options } = this.data
-        const fieldNames = Object.assign({}, defaultFieldNames, this.data.defaultFieldNames)
+        const fieldNames = this.getFieldNames()
         const cols = getRealCols(options, fieldNames)
 
-        this.setData({ cols, fieldNames })
+        this.setData({ cols })
         this.setValue(value)
     },
 })

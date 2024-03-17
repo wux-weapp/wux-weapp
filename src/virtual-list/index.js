@@ -1,7 +1,8 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import styleToCssString from '../helpers/styleToCssString'
-import debounce from '../helpers/debounce'
+import classNames from '../helpers/libs/classNames'
+import styleToCssString from '../helpers/libs/styleToCssString'
+import { debounce } from '../helpers/shared/debounce'
+import { useRect } from '../helpers/hooks/useDOM'
 import { mapVirtualToProps, getVisibleItemBounds } from './utils'
 
 baseComponent({
@@ -113,7 +114,7 @@ baseComponent({
          */
         updated(itemHeight = this.data.itemHeight) {
             const { startIndex } = this.data
-            const elements = this.getRelationNodes('../virtual-item/index')
+            const elements = this.getRelationsByName('../virtual-item/index')
             if (elements.length > 0) {
                 elements.forEach((element, index) => {
                     element.updated(startIndex + index, itemHeight)
@@ -294,16 +295,11 @@ baseComponent({
                 callback.call(this)
                 return
             }
-            const className = `.${this.data.prefixCls}`
-            wx
-                .createSelectorQuery()
-                .in(this)
-                .select(className)
-                .boundingClientRect((rect) => {
+            useRect(`.${this.data.prefixCls}`, this)
+                .then((rect) => {
                     if (!rect) return
                     this.setData({ offsetTop: rect.top }, callback)
                 })
-                .exec()
         },
     },
     created() {

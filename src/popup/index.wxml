@@ -31,6 +31,10 @@
             <view class="wux-close-class {{ classes.close }}" wx:if="{{ closable }}" bindtap="close">
                 <text class="{{ classes.x }}"></text>
             </view>
+            <wux-safe-area
+                safeArea="{{ safeArea }}"
+                wx:if="{{ safeArea && position === 'bottom' }}"
+            />
         </view>
     </wux-animation-group>
 </view>

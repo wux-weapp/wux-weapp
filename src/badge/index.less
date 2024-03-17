@@ -9,8 +9,8 @@
 
     &__count {
         position: absolute;
-        transform: translateX(50%);
-        top: -6px;
+        transform: translate(50%, -50%);
+        top: 0;
         right: 0;
         height: @badge-height;
         border-radius: @badge-height / 2;
@@ -23,7 +23,7 @@
         padding: 0 5px;
         font-size: @badge-font-size;
         white-space: nowrap;
-        transform-origin: -10% center;
+        transform-origin: 100% 0%;
         z-index: 10;
         box-shadow: 0 0 0 1px @shadow-color-inverse;
         box-sizing: border-box;
@@ -34,14 +34,35 @@
         .square(@badge-dot-size);
 
         position: absolute;
-        transform: translateX(-50%);
-        transform-origin: 0 center;
-        top: -4px;
-        right: -8px;
+        transform: translate(50%, -50%);
+        transform-origin: 100% 0%;
+        top: 0;
+        right: 0;
         border-radius: 100%;
         background: @badge-bg;
         z-index: 10;
         box-shadow: 0 0 0 1px @shadow-color-inverse;
+    }
+
+    &--position-topLeft &__count,
+    &--position-topLeft &__dot {
+        right: 100%;
+    }
+
+    &--position-bottomRight &__count,
+    &--position-bottomRight &__dot {
+        top: 100%;
+    }
+
+    &--position-bottomLeft &__count,
+    &--position-bottomLeft &__dot {
+        top: 100%;
+        right: 100%;
+    }
+
+    &--hide-shadow &__count,
+    &--hide-shadow &__dot {
+        box-shadow: none !important;
     }
 
     &__status {

@@ -18,13 +18,13 @@
         position: relative;
         background-color: @cell-bg;
         overflow: hidden;
+    }
 
-        &::after {
-            .hairline(@border-color-split);
+    &--has-line > &__bd::after {
+        .hairline(@border-color-split);
 
-            border-top-width: @border-width-base;
-            border-bottom-width: @border-width-base;
-        }
+        border-top-width: @border-width-base;
+        border-bottom-width: @border-width-base;
     }
 
     &__ft {
@@ -33,17 +33,17 @@
         color: @text-color-secondary;
     }
 
-    &--card &__hd {
+    &--card > &__hd {
         padding-left: 0;
         padding-right: 0;
     }
 
-    &--card &__bd,
-    &--card &__ft {
+    &--card > &__bd,
+    &--card > &__ft {
         border-radius: @cell-group-bd-radius;
 
         &::after {
-            display: none;
+            display: none !important;
         }
     }
 }

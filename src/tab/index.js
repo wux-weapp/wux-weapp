@@ -1,6 +1,7 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import { getDefaultContext } from '../helpers/getDefaultContext'
+import classNames from '../helpers/libs/classNames'
+import { getDefaultContext } from '../helpers/shared/getDefaultContext'
+import { useRect } from '../helpers/hooks/useDOM'
 import { props as tabsProps } from '../tabs/props'
 
 const defaultContext = getDefaultContext(tabsProps, [
@@ -64,20 +65,19 @@ baseComponent({
         activeTabRef() {
             return new Promise((resolve) => {
                 const { prefixCls } = this.data
-                const query = wx.createSelectorQuery().in(this)
-                query.select(`.${prefixCls}`).boundingClientRect((activeTab) => {
-                    const activeTabLeft = activeTab.left
-                    const activeTabWidth = activeTab.width
-                    const activeTabTop = activeTab.top
-                    const activeTabHeight = activeTab.height
-                    resolve({
-                        activeTabLeft,
-                        activeTabWidth,
-                        activeTabTop,
-                        activeTabHeight,
+                useRect(`.${prefixCls}`, this)
+                    .then((activeTab) => {
+                        const activeTabLeft = activeTab.left
+                        const activeTabWidth = activeTab.width
+                        const activeTabTop = activeTab.top
+                        const activeTabHeight = activeTab.height
+                        resolve({
+                            activeTabLeft,
+                            activeTabWidth,
+                            activeTabTop,
+                            activeTabHeight,
+                        })
                     })
-                })
-                query.exec()
             })
         },
         changeCurrent({ current, context = defaultContext }) {
@@ -88,7 +88,7 @@ baseComponent({
         },
         onTap() {
             const { key, disabled } = this.data
-            const parent = this.getRelationNodes('../tabs/index')[0]
+            const parent = this.getRelationsByName('../tabs/index')[0]
 
             if (disabled || !parent) return
 

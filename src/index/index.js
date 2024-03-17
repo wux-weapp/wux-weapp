@@ -1,23 +1,26 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import styleToCssString from '../helpers/styleToCssString'
-import { getSystemInfo } from '../helpers/checkIPhoneX'
+import classNames from '../helpers/libs/classNames'
+import warning from '../helpers/libs/warning'
+import styleToCssString from '../helpers/libs/styleToCssString'
+import { vibrateShort } from '../helpers/hooks/useNativeAPI'
+import { useRectAll } from '../helpers/hooks/useDOM'
 
-const findActiveByIndex = (current, currentName, sections) => {
-    return sections.filter((section) => (
-        section.index === current &&
-            section.name === currentName
+const findActiveByIndex = (current, currentName, children) => {
+    return children.filter((child) => (
+        child.index === current &&
+            child.name === currentName
     ))[0]
 }
   
-const findActiveByPosition = (scrollTop, offsetY, sections) => {
-    return sections.filter((section) => (
-        scrollTop < (section.top + section.height - offsetY) &&
-            scrollTop >= (section.top - offsetY)
+const findActiveByPosition = (scrollTop, offsetY, children) => {
+    return children.filter((child) => (
+        scrollTop < (child.top + child.height - offsetY) &&
+            scrollTop >= (child.top - offsetY)
     ))[0]
 }
 
 baseComponent({
+    useExport: true,
     relations: {
         '../index-item/index': {
             type: 'child',
@@ -40,31 +43,43 @@ baseComponent({
             type: Boolean,
             value: true,
         },
+        indicatorPosition: {
+            type: String,
+            value: 'center',
+        },
         parentOffsetTop: {
             type: Number,
             value: 0,
         },
     },
     data: {
+        colHight: 0,
+        points: [],
         scrollTop: 0,
-        sections: [],
+        children: [],
         moving: false,
         current: 0,
         currentName: '',
+        currentBrief: '',
         extStyle: '',
+        indicatorStyle: '',
     },
     computed: {
-        classes: ['prefixCls', function(prefixCls) {
+        classes: ['prefixCls, indicatorPosition', function(prefixCls, indicatorPosition) {
             const wrap = classNames(prefixCls)
             const nav = `${prefixCls}__nav`
             const navRow = `${prefixCls}__nav-row`
+            const navCol = `${prefixCls}__nav-col`
             const navItem = `${prefixCls}__nav-item`
-            const indicator = `${prefixCls}__indicator`
+            const indicator = classNames(`${prefixCls}__indicator`, {
+                [`${prefixCls}__indicator--${indicatorPosition}`]: indicatorPosition,
+            })
 
             return {
                 wrap,
                 nav,
                 navRow,
+                navCol,
                 navItem,
                 indicator,
             }
@@ -87,7 +102,7 @@ baseComponent({
          * 更新元素
          */
     	updated() {
-            const elements = this.getRelationNodes('../index-item/index')
+            const elements = this.getRelationsByName('../index-item/index')
 
             if (elements.length > 0) {
                 elements.forEach((element, index) => {
@@ -98,29 +113,33 @@ baseComponent({
                 setTimeout(this.getNavPoints.bind(this))
             }
 
-            if (this.data.sections.length !== elements.length) {
-                this.setData({
-                    sections: elements.map((element) => element.data),
-                })
-            }
+            this.updateChildren()
         },
         /**
          * 设置当前激活的元素
          */
         setActive(current, currentName) {
             if (current !== this.data.current || currentName !== this.data.currentName) {
-                const target = findActiveByIndex(current, currentName, this.data.sections)
+                const target = findActiveByIndex(current, currentName, this.data.children)
+                const currentBrief = target !== undefined ? target.brief : currentName.charAt(0)
                 if (target !== undefined) {
+                    const { colHight, indicatorPosition } = this.data
+                    const indicatorStyle = indicatorPosition === 'right'
+                        ? styleToCssString({ top: current * colHight + colHight / 2 })
+                        : ''
+
                     this.setData({
                         current,
                         currentName,
+                        currentBrief,
                         scrollTop: target.top - this.data.parentOffsetTop,
+                        indicatorStyle,
                     })
                 }
 
                 // 振动反馈
-                this.vibrateShort()
-                this.triggerEvent('change', { index: current, name: currentName })
+                vibrateShort()
+                this.triggerEvent('change', { index: current, name: currentName, brief: currentBrief })
             }
         },
         /**
@@ -146,7 +165,7 @@ baseComponent({
         /**
          * 手指触摸动作结束
          */
-        onTouchEnd(e) {
+        onTouchEnd() {
             if (!this.data.moving) return
             setTimeout(() => this.setData({ moving: false }), 300)
         },
@@ -155,43 +174,23 @@ baseComponent({
          */
         onScroll(e) {
             if (this.data.moving) return
-
-            if (!this.checkActiveIndex) {
-                const { run: checkActiveIndex } = this.useThrottleFn((data, event) => {
-                    const target = findActiveByPosition(event.detail.scrollTop, data.parentOffsetTop, data.sections)
-                    if (target !== undefined) {
-                        const current = target.index
-                        const currentName = target.name
-                        if (current !== data.current || currentName !== data.currentName) {
-                            this.setData({
-                                current,
-                                currentName,
-                            })
-                            this.triggerEvent('change', { index: current, name: currentName })
-                        }
-                    }
-                }, 50, { trailing: true, leading: true })
-                this.checkActiveIndex = checkActiveIndex
-            }
-
             this.checkActiveIndex.call(this, this.data, e)
         },
         /**
          * 获取右侧导航对应的坐标
          */
         getNavPoints() {
-            const className = `.${this.data.prefixCls}__nav-item`
-            wx
-                .createSelectorQuery()
-                .in(this)
-                .selectAll(className)
-                .boundingClientRect((rects) => {
-                    if (rects.filter((n) => !n).length) return
+            const navColCls = `.${this.data.prefixCls}__nav-col`
+            const navItemCls = `.${this.data.prefixCls}__nav-item`
+
+            useRectAll([navColCls, navItemCls], this)
+                .then(([cols, items]) => {
+                    if (!cols.length && !items.length) return
                     this.setData({
-                        points: rects.map((n) => ({ ...n, offsets: [n.top, n.top + n.height] })),
+                        colHight: cols[0].height,
+                        points: items.map((n) => ({ ...n, offsets: [n.top, n.top + n.height] })),
                     })
                 })
-                .exec()
         },
         /**
          * 根据坐标获得对应的元素
@@ -214,17 +213,77 @@ baseComponent({
 
             return target
         },
+        getInternalHooks(key) {
+            if (key === 'INDEX_HOOK_MARK') {
+                return {
+                    updateChildren: this.updateChildren.bind(this),
+                }
+            }
+            warning(
+                false,
+                '`getInternalHooks` is internal usage of the <index />. Should not call directly.'
+            )
+            return null
+        },
+        expose() {
+            const scrollTo = (index) => {
+                const { children } = this.data
+                const child = typeof index === 'number'
+                    ? children.filter((child) => (child.index === index))[0]
+                    : children.filter((child) => (child.name === index))[0]
+                if (child) {
+                    this.setData({ moving: true })
+                    this.setActive(child.index, child.name)
+                    setTimeout(() => this.setData({ moving: false }), 300)
+                }
+            }
+
+            return {
+                scrollTo,
+                getInternalHooks: this.getInternalHooks.bind(this),
+            }
+        },
     },
     created() {
-        const systemInfo = getSystemInfo()
-        this.vibrateShort = () => {
-            if (systemInfo.platform !== 'devtools') {
-                wx.vibrateShort()
+        const { run: checkActiveIndex } = this.useThrottleFn((data, event) => {
+            const target = findActiveByPosition(event.detail.scrollTop, data.parentOffsetTop, data.children)
+            if (target !== undefined) {
+                const current = target.index
+                const currentName = target.name
+                const currentBrief = target.brief
+                if (current !== data.current || currentName !== data.currentName) {
+                    this.setData({
+                        current,
+                        currentName,
+                        currentBrief,
+                    })
+                    this.triggerEvent('change', { index: current, name: currentName, brief: currentBrief })
+                }
             }
-        }
+        }, 50, { trailing: true, leading: true })
+
+        this.checkActiveIndex = checkActiveIndex
+
+        const propsFilter = (props) => ({
+            name: props.name,
+            index: props.index,
+            top: props.top,
+            height: props.height,
+            brief: props.brief,
+        })
+        const { run: updateChildren } = this.useThrottleFn(() => {
+            const nodeList = this.getRelationsByName('../index-item/index')
+            const children = nodeList.map((node) => propsFilter(node.data))
+            this.setData({
+                children,
+            })
+        }, 50, { trailing: true, leading: true })
+
+        this.updateChildren = updateChildren
     },
     ready() {
         this.updateStyle()
         this.getNavPoints()
+        this.updateChildren()
     },
 })

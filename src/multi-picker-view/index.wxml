@@ -5,7 +5,7 @@
             wx:for-item="col"
             wx:key="index"
             prefixCls="{{ pickerPrefixCls }}"
-            value="{{ inputValue[index] }}"
+            value="{{ inputValue[index] || '' }}"
             controlled
             itemHeight="{{ itemHeight }}"
             itemStyle="{{ itemStyle }}"

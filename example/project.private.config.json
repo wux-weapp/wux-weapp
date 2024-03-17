@@ -4,15 +4,92 @@
     "miniprogram": {
       "list": [
         {
-          "name": "e-sign",
-          "pathName": "pages/e-sign/index",
+          "name": "selector-group",
+          "pathName": "pages/selector-group/index",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
-          "name": "calendar",
-          "pathName": "pages/calendar/index",
+          "name": "keyboard",
+          "pathName": "pages/keyboard/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "badge",
+          "pathName": "pages/badge/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "layout",
+          "pathName": "pages/layout/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "safe-area",
+          "pathName": "pages/safe-area/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "circle",
+          "pathName": "pages/circle/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "barcode",
+          "pathName": "pages/barcode/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "refresher",
+          "pathName": "pages/refresher/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "avatar",
+          "pathName": "pages/avatar/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "skeleton",
+          "pathName": "pages/skeleton/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "selectable",
+          "pathName": "pages/selectable/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "popover",
+          "pathName": "pages/popover/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "e-sign",
+          "pathName": "pages/e-sign/index",
           "query": "",
           "launchMode": "default",
           "scene": null
@@ -38,12 +115,6 @@
         {
           "name": "date-picker",
           "pathName": "pages/date-picker/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "select",
-          "pathName": "pages/select/index",
           "query": "",
           "scene": null
         },

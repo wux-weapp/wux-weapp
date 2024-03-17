@@ -8,7 +8,7 @@
 			class="{{ classes.item }}"
 			value="{{ inputValue }}"
 			type="{{ type }}"
-			password="{{ password }}"
+			password="{{ !internalVisible ? password : false }}"
 			placeholder="{{ placeholder }}"
 			placeholder-style="{{ internalPlaceholderStyle }}"
 			placeholder-class="{{ placeholderClass }}"
@@ -45,6 +45,7 @@
 	<view class="{{ classes.clear }}" bindtap="onClear" wx:if="{{ shouldShowClear }}">
 		<icon type="clear" color="#B2B2B2" size="14" />
 	</view>
+	<view class="{{ classes.eye }}" bindtap="onInternalVisibleChange" wx:if="{{ password && visibilityToggle }}"></view>
 	<view class="{{ classes.error }}" bindtap="onError" wx:if="{{ error }}">
 		<icon type="warn" color="#ef473a" size="14" />
 	</view>

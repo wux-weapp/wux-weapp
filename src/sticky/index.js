@@ -1,5 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
+import classNames from '../helpers/libs/classNames'
 
 baseComponent({
     relations: {
@@ -32,7 +32,7 @@ baseComponent({
     },
     methods: {
         onScroll(scrollTop = this.data.scrollTop) {
-            const elements = this.getRelationNodes('../sticky-item/index')
+            const elements = this.getRelationsByName('../sticky-item/index')
             if (elements.length > 0) {
                 elements.forEach((element, index) => {
                     element.onScroll(scrollTop)
@@ -40,7 +40,7 @@ baseComponent({
             }
         },
     	updated() {
-    		const elements = this.getRelationNodes('../sticky-item/index')
+    		const elements = this.getRelationsByName('../sticky-item/index')
             if (elements.length > 0) {
                 elements.forEach((element, index) => {
 				    element.updated(index)

@@ -4,8 +4,9 @@
         <view class="page__desc">复选框</view>
     </view>
     <view class="page__bd">
+        <wux-segmented-control values="{{ ['left', 'right'] }}" bind:change="onSegmentedControlChange" />
         <form bindsubmit="formSubmit">
-            <wux-checkbox-group name="a" value="{{ value1 }}" title="Default" bind:change="onChange1">
+            <wux-checkbox-group iconPosition="{{ iconPosition }}" name="a" value="{{ value1 }}" title="Default" bind:change="onChange1">
                 <wux-checkbox color="light" title="Light" value="1" />
                 <wux-checkbox color="stable" title="Stable" value="2" />
                 <wux-checkbox color="positive" title="Positive" value="3" />
@@ -16,30 +17,38 @@
                 <wux-checkbox color="royal" title="Royal" value="8" />
                 <wux-checkbox color="dark" title="Dark" value="9" />
             </wux-checkbox-group>
-            <wux-checkbox-group name="b" value="{{ value2 }}" title="Label" bind:change="onChange2">
+            <wux-checkbox-group iconPosition="{{ iconPosition }}" name="b" value="{{ value2 }}" title="Label" bind:change="onChange2">
                 <wux-checkbox title="Java" label="details" value="1" />
                 <wux-checkbox title="PHP" label="details" value="2" />
             </wux-checkbox-group>
-            <wux-checkbox-group name="c" value="{{ value3 }}" title="Extra" bind:change="onChange3">
+            <wux-checkbox-group iconPosition="{{ iconPosition }}" name="c" value="{{ value3 }}" title="Extra" bind:change="onChange3">
                 <wux-checkbox title="Java" extra="extra" value="1" />
                 <wux-checkbox title="PHP" extra="extra" value="2" />
             </wux-checkbox-group>
-            <wux-checkbox-group name="d" value="{{ value4 }}" title="Trigger onChange" bind:change="onChange4">
+            <wux-checkbox-group iconPosition="{{ iconPosition }}" name="d" value="{{ value4 }}" title="Trigger onChange" bind:change="onChange4">
                 <wux-checkbox title="Java" value="1" />
                 <wux-checkbox title="PHP" value="2" />
             </wux-checkbox-group>
-            <wux-checkbox-group name="e" value="{{ value4 }}" title="Disabled & readOnly" bind:change="onChange4">
+            <wux-checkbox-group iconPosition="{{ iconPosition }}" name="e" value="{{ value4 }}" title="Disabled & readOnly" bind:change="onChange4">
                 <wux-checkbox title="Java" value="1" disabled />
                 <wux-checkbox title="PHP" value="2" />
                 <wux-checkbox title="AV" value="3" readOnly />
             </wux-checkbox-group>
-            <wux-checkbox-group name="f" disabled value="{{ value4 }}" title="Disable for the checkbox group" bind:change="onChange4">
+            <wux-checkbox-group iconPosition="{{ iconPosition }}" name="f" disabled value="{{ value4 }}" title="Disable for the checkbox group" bind:change="onChange4">
                 <wux-checkbox title="Java" value="1" />
                 <wux-checkbox title="PHP" value="2" />
             </wux-checkbox-group>
-            <wux-checkbox-group name="g" readOnly value="{{ value5 }}" options="{{ options }}" title="ReadOnly for the checkbox group" bind:change="onChange5" />
-            <wux-checkbox-group name="h" value="{{ value5 }}" options="{{ options }}" title="Options" bind:change="onChange5" />
-            <wux-checkbox-group name="i" mode="card" value="{{ value5 }}" options="{{ options }}" title="Card List" bind:change="onChange5" />
+            <wux-checkbox-group iconPosition="{{ iconPosition }}" name="g" readOnly value="{{ value5 }}" options="{{ options }}" title="ReadOnly for the checkbox group" bind:change="onChange5" />
+            <wux-checkbox-group iconPosition="{{ iconPosition }}" name="h" value="{{ value5 }}" options="{{ options }}" title="Options" bind:change="onChange5" />
+            <wux-checkbox-group iconPosition="{{ iconPosition }}" name="i" iconSize="16" iconOn="success_no_circle" iconOff="" value="{{ value5 }}" options="{{ options }}" title="Custom icon style" bind:change="onChange5" />
+            <wux-checkbox-group iconPosition="{{ iconPosition }}" name="j" mode="card" value="{{ value5 }}" options="{{ options }}" title="Card List" bind:change="onChange5" />
+            <wux-cell-group title="配合 List 使用（非 checkboxGroup）">
+                <block wx:for="{{ options }}" wx:for-item="option" wx:key="value">
+                    <wux-cell data-checkbox-ref="{{ 'checkbox_ref_' + index }}" bind:click="onItemClick" title="{{ option.title }}">
+                        <wux-checkbox slot="header" id="{{ 'checkbox_ref_' + index }}" value="{{ option.value }}" />
+                    </wux-cell>
+                </block>
+            </wux-cell-group>
             <view class="btn-area">
                 <button formType="submit">Submit</button>
             </view>

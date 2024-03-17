@@ -5,9 +5,11 @@
     </view>
     <view class="page__bd page__bd_spacing">
     	<view class="sub-title">Color</view>
-    	<wux-circle percent="80" color="#33cd5f">#33cd5f</wux-circle>
+    	<wux-circle percent="80" color="#387ef5">#387ef5</wux-circle>
     	<view class="sub-title">BackgroundColor</view>
     	<wux-circle percent="80" background-color="#ef473a">#ef473a</wux-circle>
+    	<view class="sub-title">Size</view>
+    	<wux-circle percent="80" size="90">80%</wux-circle>
     	<view class="sub-title">Other</view>
     	<wux-circle percent="{{ percent }}">{{ percent + '%' }}</wux-circle>
     	<wux-button block type="light" bind:click="add">Add</wux-button>

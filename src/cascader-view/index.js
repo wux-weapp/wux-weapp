@@ -1,17 +1,13 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import styleToCssString from '../helpers/styleToCssString'
-import arrayTreeFilter from '../helpers/arrayTreeFilter'
+import classNames from '../helpers/libs/classNames'
+import styleToCssString from '../helpers/libs/styleToCssString'
+import arrayTreeFilter from '../helpers/libs/arrayTreeFilter'
+import fieldNamesBehavior from '../helpers/mixins/fieldNamesBehavior'
 
 const WUX_CASCADER_VIEW = 'wux-cascader-view'
-const defaultFieldNames = {
-    label: 'label',
-    value: 'value',
-    children: 'children',
-    disabled: 'disabled',
-}
 
 baseComponent({
+    behaviors: [fieldNamesBehavior],
     externalClasses: ['wux-scroll-view-class'],
     properties: {
         prefixCls: {
@@ -46,10 +42,6 @@ baseComponent({
             type: [String, Number],
             value: 'auto',
         },
-        defaultFieldNames: {
-            type: Object,
-            value: { ...defaultFieldNames },
-        },
         skipAnimation: {
             type: Boolean,
             value: false,
@@ -61,7 +53,6 @@ baseComponent({
         bodyStyle: '',
         activeValue: [],
         showOptions: [],
-        fieldNames: undefined,
         scrollViewStyle: '',
     },
     computed: {
@@ -254,10 +245,11 @@ baseComponent({
          * 选择完成时的回调函数
          */
         onChange(currentOptions = {}, activeValue = []) {
+            const childrenKeyName = this.getFieldName('children')
             const values = this.getValue(activeValue)
 
             // 判断是否异步加载
-            if (currentOptions && currentOptions.isLeaf === false && !currentOptions.children) {
+            if (currentOptions && currentOptions.isLeaf === false && !currentOptions[childrenKeyName]) {
                 this.triggerEvent('change', { ...values })
                 this.triggerEvent('load', { value: values.value, options: values.options })
                 return
@@ -270,13 +262,13 @@ baseComponent({
             const optionIndex = Math.max(0, activeValue.length - 1)
             const activeOptions = this.getActiveOptions(activeValue)
             const currentOptions = activeOptions[optionIndex]
-            const valueKeyName = this.getFieldName('value')
+            const valueName = this.getFieldName('value')
             const childrenKeyName = this.getFieldName('children')
             const hasChildren = currentOptions && currentOptions[childrenKeyName] && currentOptions[childrenKeyName].length > 0
-            const options = activeOptions.filter((n) => n[valueKeyName] !== WUX_CASCADER_VIEW)
-            const value = options.map((n) => n[valueKeyName])
+            const options = activeOptions.filter((n) => n[valueName] !== WUX_CASCADER_VIEW)
+            const value = options.map((n) => n[valueName])
 
-            if (currentOptions && currentOptions.isLeaf === false && !currentOptions.children) {
+            if (currentOptions && currentOptions.isLeaf === false && !currentOptions[childrenKeyName]) {
                 return {
                     value,
                     options,
@@ -289,12 +281,6 @@ baseComponent({
                 options,
                 done: !hasChildren,
             }
-        },
-        getFieldName(name) {
-            const { defaultFieldNames, fieldNames } = this.data
-            return typeof fieldNames !== 'undefined'
-                ? fieldNames[name]
-                : defaultFieldNames[name]
         },
         updateStyle(height) {
             const scrollViewStyle = styleToCssString({
@@ -311,9 +297,8 @@ baseComponent({
     attached() {
         const { defaultValue, value, controlled, height } = this.data
         const activeValue = controlled ? value : defaultValue
-        const fieldNames = Object.assign({}, defaultFieldNames, this.data.defaultFieldNames)
 
-        this.setData({ activeValue, fieldNames })
+        this.setData({ activeValue })
         this.getCurrentOptions(activeValue)
         this.updateStyle(height)
     },
