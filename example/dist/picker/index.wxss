@@ -20,7 +20,6 @@
 }
 .wux-popup-picker__inner {
   height: 88rpx;
-  display: -ms-flexbox;
   display: flex;
   text-align: center
 }
@@ -54,4 +53,7 @@
 }
 .wux-popup-picker__button--hover {
   background-color: #ececec
+}
+.wux-popup-picker__button--disabled {
+  opacity: .3
 }

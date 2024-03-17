@@ -1,2 +1,86 @@
 @import "../styles/mixins/index.less";
 @import "../styles/themes/index.less";
+
+.@{wux-prefix}-field {
+    &__child {
+        display: flex;
+
+        &--position-right {
+            justify-content: flex-end;
+        }
+
+        &--position-normal {
+            justify-content: normal;
+        }
+    }
+
+    &__label {
+        position: relative;
+        margin-left: 0;
+        margin-bottom: 0;
+        margin-right: @margin-component-base;
+        text-align: left;
+        white-space: nowrap;
+        // overflow: hidden;
+        width: 105px;
+
+        &--wrap {
+            white-space: normal;
+        }
+    }
+
+    &__label-help {
+        margin-left: @margin-component-base;
+        cursor: pointer;
+    }
+
+    &__feedback-message {
+        color: @assertive;
+        margin-top: @margin-component-base;
+    }
+
+    &__required-asterisk {
+        display: inline-block;
+        position: absolute;
+        left: -0.6em;
+        top: 0;
+        font-family: SimSun, sans-serif;
+        color: @assertive;
+    }
+
+    &__required-text {
+        display: inline-block;
+        margin-left: @margin-component-base;
+        color: @text-color-secondary;
+    }
+
+    // &__extra {
+    //     padding-left: @margin-component-lg;
+    // }
+
+    &__arrow {
+        display: flex;
+    }
+}
+
+.vertical .@{wux-prefix}-field {
+    &__label {
+        margin-right: 0;
+        margin-bottom: @margin-component-base;
+
+        &--wrap {
+            white-space: normal;
+            width: auto;
+        }
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+.disabled,
+.readOnly {
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+}

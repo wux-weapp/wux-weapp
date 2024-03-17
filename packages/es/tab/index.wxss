@@ -1,12 +1,8 @@
 .wux-tabs__tab {
-  -ms-flex: 1;
   flex: 1;
-  display: -ms-flexbox;
   display: flex;
   width: 100%;
-  -ms-flex-pack: center;
   justify-content: center;
-  -ms-flex-align: center;
   align-items: center;
   text-align: center;
   position: relative;
@@ -42,7 +38,6 @@
   color: #33cd5f
 }
 .wux-tabs__tab--horizontal.wux-tabs__tab--scroll {
-  display: -ms-inline-flexbox;
   display: inline-flex;
   width: auto
 }

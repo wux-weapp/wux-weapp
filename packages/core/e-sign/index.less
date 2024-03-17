@@ -1,0 +1,27 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-e-sign {
+    padding: @e-sign-padding;
+
+    &__bd {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px dotted @border-color-base;
+        border-radius: @e-sign-bd-border-radius;
+        overflow: hidden;
+    }
+
+    &__ft {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__button {
+        padding-left: @button-padding-lg;
+        padding-right: @button-padding-lg;
+        margin-top: @margin-component-lg;
+        margin-left: @margin-component-lg;
+    }
+}

@@ -1,0 +1,12 @@
+{
+  "component": true,
+  "usingComponents": {
+      "wux-cell": "../cell/index",
+      "wux-radio": "../radio/index",
+      "wux-radio-group": "../radio-group/index",
+      "wux-checkbox": "../checkbox/index",
+      "wux-checkbox-group": "../checkbox-group/index",
+      "wux-virtual-list": "../virtual-list/index",
+      "wux-virtual-item": "../virtual-item/index"
+  }
+}

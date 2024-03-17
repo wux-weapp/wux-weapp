@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
+import classNames from '../helpers/libs/classNames'
+import { useRect } from '../helpers/hooks/useDOM'
 
 const defaultAction = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAQAAAAAYLlVAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAHdElNRQfhBAQLCR5MtjrbAAAAjUlEQVRo3u3ZMRKAIAxEUbDirp4nXnctFFDHBtDQ/O1Nnk6aHUMgZCBKMkmmNAtgOmL9M+IQQGVM95zljy8DAAAAAAAAAAAAAACALsDZcppSx7Q+WdtUvA5xffUtrjeA8/qQ21S9gc15/3Nfzw0M5O0G2kM5BQAAAAAAAAAAAAAAQGk33q0qZ/p/Q/JFdmei9usomnwIAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE3LTA0LTA0VDExOjA5OjMwKzA4OjAw1U4c3wAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNy0wNC0wNFQxMTowOTozMCswODowMKQTpGMAAAAASUVORK5CYII='
 
@@ -184,26 +185,6 @@ baseComponent({
                 this.onChange(false)
             }
         },
-        /**
-         * 获取界面上的节点信息
-         */
-        getRect(selector, all) {
-            return new Promise((resolve) => {
-                wx
-                    .createSelectorQuery()
-                    .in(this)[all ? 'selectAll' : 'select'](selector)
-                    .boundingClientRect((rect) => {
-                        if (all && Array.isArray(rect) && rect.length) {
-                            resolve(rect)
-                        }
-
-                        if (!all && rect) {
-                            resolve(rect)
-                        }
-                    })
-                    .exec()
-            })
-        },
         forceUpdateButtonStyle() {
             this.updateButtonStyle(!this.data.buttonVisible)
         },
@@ -230,7 +211,7 @@ baseComponent({
             }
 
             // 更新样式
-            this.getRect(`.${prefixCls}__action`).then((rect) => {
+            useRect(`.${prefixCls}__action`, this).then((rect) => {
                 switch (direction) {
                         case 'horizontal':
                         case 'vertical':

@@ -1,0 +1,21 @@
+.wux-e-sign {
+  padding: 20rpx
+}
+.wux-e-sign__bd {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2rpx dotted #e8e8e8;
+  border-radius: 12rpx;
+  overflow: hidden
+}
+.wux-e-sign__ft {
+  display: flex;
+  justify-content: flex-end
+}
+.wux-e-sign__button {
+  padding-left: 32rpx;
+  padding-right: 32rpx;
+  margin-top: 20rpx;
+  margin-left: 20rpx
+}

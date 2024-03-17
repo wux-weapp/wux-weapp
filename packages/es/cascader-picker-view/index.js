@@ -1,9 +1,11 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import arrayTreeFilter from '../helpers/arrayTreeFilter'
-import { defaultFieldNames, props } from '../multi-picker-view/props'
+import classNames from '../helpers/libs/classNames'
+import arrayTreeFilter from '../helpers/libs/arrayTreeFilter'
+import fieldNamesBehavior from '../helpers/mixins/fieldNamesBehavior'
+import { props } from '../multi-picker-view/props'
 
 baseComponent({
+    behaviors: [fieldNamesBehavior],
     properties: {
         ...props,
         cols: {
@@ -14,23 +16,24 @@ baseComponent({
     data: {
         inputValue: [],
         showOptions: [],
-        fieldNames: defaultFieldNames,
     },
     observers: {
         inputValue(newVal) {
-            this.fixFieldName()
-
             // HACK: 去掉不必要的属性，防止数据溢出
-            const value = this.getFieldName('value')
-            const label = this.getFieldName('label')
+            const valueName = this.getFieldName('value')
+            const labelName = this.getFieldName('label')
+            const disabledName = this.getFieldName('disabled')
             const showOptions = this.getShowOptions(newVal).reduce((acc, option) => (
-                [...acc, option.map((v) => ({ [value]: v[value], [label]: v[label], disabled: !!v.disabled }))]
+                [...acc, option.map((v) => ({
+                    [valueName]: v[valueName],
+                    [labelName]: v[labelName],
+                    [disabledName]: !!v[disabledName],
+                }))]
             ), [])
 
             this.setData({ showOptions })
         },
         ['value, options, cols'](value, options, cols) {
-            this.fixFieldName()
             this.setValue(value, options, cols)
         },
     },
@@ -57,9 +60,9 @@ baseComponent({
             this.triggerEvent('valueChange', { ...values, index })
         },
         getValue(value = this.data.inputValue) {
-            const newValue = this.getRealValue(this.data.options, value)
+            const newValue = this.getRealValue(this.data.options, Array.isArray(value) ? value : [])
             const newShowOptions = this.getShowOptions(newValue)
-            this.picker = this.picker || this.selectComponent('#wux-picker')
+            this.picker = this.picker || this.querySelector('#wux-picker')
             return this.picker.getValue(newValue, newShowOptions)
         },
         getNextValue(activeValue, index) {
@@ -130,26 +133,10 @@ baseComponent({
 
             return [options, ...result].filter((_, i) => i < cols)
         },
-        getFieldName(name) {
-            return this.data.fieldNames[name]
-        },
-        /**
-         * Allways set fieldNames
-         * Because `observers` always takes precedence over `attached` on first mount
-         * HACK: https://github.com/wux-weapp/wux-weapp/issues/352
-         */
-        fixFieldName() {
-            if (!this.hasFieldName) {
-                const fieldNames = Object.assign({}, defaultFieldNames, this.data.defaultFieldNames)
-                this.setData({ fieldNames })
-                this.hasFieldName = true
-            }
-        },
     },
     attached() {
         const { value, options, cols } = this.data
 
-        this.fixFieldName()
         this.setValue(value, options, cols)
     },
 })

@@ -87,10 +87,12 @@
 </view>
 
 <wxs module="common">
+    var util = require("../helpers/wxs/util.wxs")
+
     module.exports = {
         getOptions: function(options) {
             return options.map(function(option) {
-                if (option.constructor === 'String') {
+                if (util.type(option) === 'string') {
                     return {
                         title: option,
                         value: option,
@@ -105,8 +107,8 @@
             })
         },
         getChecked: function(values, value) {
-            if (!values || !values.length) return false
-            if (values.constructor === 'Array') {
+            if (!values || !values.length) { return false }
+            if (util.type(values) === 'array') {
                 return values.indexOf(value) !== -1
             }
             return values === value

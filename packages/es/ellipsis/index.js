@@ -1,13 +1,9 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import styleToCssString from '../helpers/styleToCssString'
-import runes2 from '../helpers/runes2'
-
-function pxToNumber(value) {
-    if (!value) return 0
-    const match = value.match(/^\d*(\.\d*)?/)
-    return match ? Number(match[0]) : 0
-}
+import classNames from '../helpers/libs/classNames'
+import styleToCssString from '../helpers/libs/styleToCssString'
+import runes2 from '../helpers/libs/runes2'
+import { pxToNumber } from '../helpers/shared/pxToNumber'
+import { useRef, useComputedStyle } from '../helpers/hooks/useDOM'
 
 function getSubString(chars, start, end) {
     return chars.slice(start, end).join('')
@@ -154,7 +150,7 @@ baseComponent({
                     ))
                 ))
                 .then(([root, container]) => {
-                    if (container.offsetHeight <= root.maxHeight) {
+                    if (container.clientHeight <= root.maxHeight) {
                         setExceeded(false)
                     } else {
                         setExceeded(true)
@@ -194,7 +190,7 @@ baseComponent({
                     ])
                 ))
                 .then(([root, container]) => {
-                    if (container.offsetHeight <= root.maxHeight) {
+                    if (container.clientHeight <= root.maxHeight) {
                         if (props.direction === 'end') {
                             return this.check(middle, right, props)
                         } else {
@@ -243,7 +239,7 @@ baseComponent({
                     ])
                 ))
                 .then(([root, container]) => {
-                    if (container.offsetHeight <= root.maxHeight) {
+                    if (container.clientHeight <= root.maxHeight) {
                         return this.checkMiddle(
                             [leftPartMiddle, leftPart[1]],
                             [rightPart[0], rightPartMiddle],
@@ -264,39 +260,20 @@ baseComponent({
             })
         },
         getContainerRef() {
-            return new Promise((resolve) => {
-                const { prefixCls } = this.data
-                const query = wx.createSelectorQuery().in(this)
-                query
-                    .select(`.${prefixCls}--container`)
-                    .fields({
-                        size: true,
-                        computedStyle: ['width', 'height'],
-                    })
-                query.exec(([container]) => {
-                    resolve({
-                        offsetWidth: pxToNumber(container.width),
-                        offsetHeight: pxToNumber(container.height),
-                    })
-                })
-            })
+            const { prefixCls } = this.data
+            return useRef(`.${prefixCls}--container`, this)
         },
         getRootRef() {
-            return new Promise((resolve) => {
-                const { prefixCls, rows } = this.data
-                const query = wx.createSelectorQuery().in(this)
-                query
-                    .select(`.${prefixCls}`)
-                    .fields({
-                        computedStyle: [
-                            'width',
-                            'wordBreak',
-                            'lineHeight',
-                            'paddingTop',
-                            'paddingBottom',
-                        ],
-                    })
-                query.exec(([originStyle]) => {
+            const { prefixCls, rows } = this.data
+            const computedStyle = [
+                'width',
+                'wordBreak',
+                'lineHeight',
+                'paddingTop',
+                'paddingBottom',
+            ]
+            return useComputedStyle(`.${prefixCls}`, computedStyle, this)
+                .then((originStyle) => {
                     const width = pxToNumber(originStyle.width)
                     const lineHeight = pxToNumber(originStyle.lineHeight)
                     const maxHeight = Math.floor(
@@ -304,13 +281,12 @@ baseComponent({
                         pxToNumber(originStyle.paddingTop) +
                         pxToNumber(originStyle.paddingBottom)
                     )
-                    resolve({
+                    return {
                         width,
                         wordBreak: originStyle.wordBreak,
                         maxHeight,
-                    })
+                    }
                 })
-            })
         },
     },
     attached() {

@@ -13,7 +13,7 @@
   background-color: #fff;
   overflow: hidden
 }
-.wux-cell-group__bd::after {
+.wux-cell-group--has-line > .wux-cell-group__bd::after {
   content: " ";
   position: absolute;
   top: 0;
@@ -33,15 +33,15 @@
   font-size: 28rpx;
   color: rgba(0,0,0,.45)
 }
-.wux-cell-group--card .wux-cell-group__hd {
+.wux-cell-group--card > .wux-cell-group__hd {
   padding-left: 0;
   padding-right: 0
 }
-.wux-cell-group--card .wux-cell-group__bd,
-.wux-cell-group--card .wux-cell-group__ft {
+.wux-cell-group--card > .wux-cell-group__bd,
+.wux-cell-group--card > .wux-cell-group__ft {
   border-radius: 12rpx
 }
-.wux-cell-group--card .wux-cell-group__bd::after,
-.wux-cell-group--card .wux-cell-group__ft::after {
-  display: none
+.wux-cell-group--card > .wux-cell-group__bd::after,
+.wux-cell-group--card > .wux-cell-group__ft::after {
+  display: none!important
 }

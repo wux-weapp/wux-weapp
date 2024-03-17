@@ -1,0 +1,67 @@
+<scroll-view scroll-y scroll-top="{{ scrollTop }}" style="max-height: {{ height + 'px' }};" wx:if="{{ options.length > 0 }}">
+    <wux-radio-group
+        id="wux-select"
+        value="{{ common.getValue(value, 'radio') }}"
+        iconPosition="{{ iconPosition || 'right' }}"
+        bind:change="onValueChange"
+        wx:if="{{ !multiple }}"
+    >
+        <block wx:for="{{ options }}" wx:for-item="option" wx:key="value" wx:if="{{ options.length > 0 }}">
+            <wux-cell
+                title="{{ option.title }}"
+                hoverClass="none"
+                data-group="{{ option.isGroup }}"
+                wx:if="{{ option.isGroup }}"
+            />
+            <wux-radio
+                wrapStyle="{{ option.isGroupOption ? { paddingLeft: 30 } : '' }}"
+                prefixCls="{{ option.prefixCls || 'wux-radio' }}"
+                cellPrefixCls="{{ option.cellPrefixCls || 'wux-cell' }}"
+                selectablePrefixCls="{{ option.selectablePrefixCls || 'wux-selectable' }}"
+                thumb="{{ option.thumb || '' }}"
+                title="{{ option.title || '' }}"
+                label="{{ option.label || '' }}"
+                value="{{ option.value || '' }}"
+                checked="{{ common.getChecked(value, option.value, 'radio') }}"
+                disabled="{{ option.disabled }}"
+                color="{{ option.color || 'balanced' }}"
+                data-index="{{ index }}"
+                data-group-option="{{ option.isGroupOption }}"
+                wx:else
+            />
+        </block>
+    </wux-radio-group>
+    <wux-checkbox-group
+        id="wux-select"
+        value="{{ common.getValue(value) }}"
+        iconPosition="{{ iconPosition || 'left' }}"
+        bind:change="onValueChange"
+        wx:else
+    >
+        <block wx:for="{{ options }}" wx:for-item="option" wx:key="value" wx:if="{{ options.length > 0 }}">
+            <wux-cell
+                title="{{ option.title }}"
+                hoverClass="none"
+                data-group="{{ option.isGroup }}"
+                wx:if="{{ option.isGroup }}"
+            />
+            <wux-checkbox
+                wrapStyle="{{ option.isGroupOption ? { paddingLeft: 30 } : '' }}"
+                prefixCls="{{ option.prefixCls || 'wux-checkbox' }}"
+                cellPrefixCls="{{ option.cellPrefixCls || 'wux-cell' }}"
+                selectablePrefixCls="{{ option.selectablePrefixCls || 'wux-selectable' }}"
+                title="{{ option.title || '' }}"
+                label="{{ option.label || '' }}"
+                extra="{{ option.extra || '' }}"
+                value="{{ option.value || '' }}"
+                checked="{{ common.getChecked(value, option.value) }}"
+                disabled="{{ option.disabled }}"
+                color="{{ option.color || 'balanced' }}"
+                data-index="{{ index }}"
+                data-group-option="{{ option.isGroupOption }}"
+                wx:else
+            />
+        </block>
+    </wux-checkbox-group>
+</scroll-view>
+<wxs src="../helpers/wxs/common.wxs" module="common" />

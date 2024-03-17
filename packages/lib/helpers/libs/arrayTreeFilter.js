@@ -1,0 +1,1 @@
+"use strict";function arrayTreeFilter(e,r,t){(t=t||{}).childrenKeyName=t.childrenKeyName||"children";var a=e||[],l=[],i=0;do{var n=a.filter(function(e){return r(e,i)})[0]}while(n&&(l.push(n),a=n[t.childrenKeyName]||[],i+=1,0<a.length));return l}Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var _default=exports.default=arrayTreeFilter;

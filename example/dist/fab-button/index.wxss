@@ -41,11 +41,8 @@
   color: #fff;
   overflow: visible;
   transition-duration: .3s;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-align: center;
   align-items: center;
-  -ms-flex-pack: center;
   justify-content: center;
   box-shadow: 0 0 8rpx rgba(0,0,0,.14),0 8rpx 16rpx rgba(0,0,0,.28);
   right: 0;
@@ -97,11 +94,8 @@
   overflow: visible;
   background-color: #33cd5f!important;
   transition-duration: .3s;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-align: center;
   align-items: center;
-  -ms-flex-pack: center;
   justify-content: center;
   box-shadow: 0 0 8rpx rgba(0,0,0,.14),0 8rpx 16rpx rgba(0,0,0,.28);
   position: absolute;

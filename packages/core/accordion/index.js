@@ -1,5 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
+import classNames from '../helpers/libs/classNames'
 
 baseComponent({
     relations: {
@@ -74,7 +74,7 @@ baseComponent({
         },
         onTap() {
             const { index, disabled } = this.data
-            const parent = this.getRelationNodes('../accordion-group/index')[0]
+            const parent = this.getRelationsByName('../accordion-group/index')[0]
 
             if (disabled || !parent) return
 

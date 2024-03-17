@@ -1,6 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import eventsMixin from '../helpers/eventsMixin'
+import classNames from '../helpers/libs/classNames'
+import eventsMixin from '../helpers/mixins/eventsMixin'
 import NP from './utils'
 
 const MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER || Math.pow(2, 53) - 1

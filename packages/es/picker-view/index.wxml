@@ -13,18 +13,19 @@
         <view class="wux-mask-class {{ maskClass }} {{ classes.mask }}" style="{{ styles.mask }} {{ extMaskStyle }}"></view>
         <view class="wux-indicator-class {{ indicatorClass }} {{ classes.indicator }}" style="{{ styles.indicator }} {{ extIndicatorStyle }}"></view>
         <view class="wux-content-class {{ classes.content }}" style="{{ styles.content }} {{ contentStyle }}">
-            <block wx:for="{{ cols }}" wx:for-item="col" wx:key="{{ fieldNames.value }}">
+            <block wx:for="{{ common.getOptions(cols, fieldNames) }}" wx:for-item="option" wx:key="__comp_unique_key">
                 <view
                     style="{{ styles.item }} {{ extItemStyle }}"
-                    class="{{ classes.item }} {{ col.disabled ? prefixCls + '__item--disabled' : '' }} {{ selectedIndex === index ? prefixCls + '__item--selected' : '' }}"
-                    data-value="{{ col[fieldNames.value] }}"
+                    class="{{ classes.item }} {{ !!option[fieldNames.disabled] ? prefixCls + '__item--disabled' : '' }} {{ selectedIndex === index ? prefixCls + '__item--selected' : '' }}"
+                    data-value="{{ option[fieldNames.value] }}"
                     data-index="{{ index }}"
-                    data-disabled="{{ !!col.disabled }}"
+                    data-disabled="{{ !!option[fieldNames.disabled] }}"
                     catchtap="onItemClick"
                 >
-                    {{ col[fieldNames.label] }}
+                    {{ option[fieldNames.label] }}
                 </view>
             </block>
         </view>
     </view>
 </wux-spin>
+<wxs src="../helpers/wxs/common.wxs" module="common" />

@@ -1,31 +1,27 @@
 .wux-tabbar-item {
-  -ms-flex: 1;
   flex: 1;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: center;
   justify-content: center;
-  -ms-flex-align: center;
   align-items: center;
-  -ms-flex-direction: column;
   flex-direction: column;
   text-align: center;
   width: 100%;
   height: 100%;
   color: #80848f;
-  padding: 6rpx 0 0;
+  padding: 10rpx 0;
   box-sizing: border-box;
   float: left
 }
 .wux-tabbar-item__icon {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: center;
-  justify-content: center
+  justify-content: center;
+  font-size: 44rpx;
+  height: 44rpx;
+  line-height: 1
 }
 .wux-tabbar-item__title {
   font-size: 24rpx;
-  margin: 6rpx 0 0;
+  margin: 4rpx 0 0;
   line-height: 1;
   text-align: center
 }

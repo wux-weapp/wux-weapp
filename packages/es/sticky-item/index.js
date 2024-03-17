@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
+import classNames from '../helpers/libs/classNames'
+import { useRect } from '../helpers/hooks/useDOM'
 
 baseComponent({
     relations: {
@@ -48,7 +49,7 @@ baseComponent({
     },
     methods: {
         onScroll(scrollTop) {
-            const parent = this.getRelationNodes('../sticky/index')[0]
+            const parent = this.getRelationsByName('../sticky/index')[0]
             const { top, height, index } = this.data
             const isFixed = scrollTop >= top && scrollTop < top + height
 
@@ -63,21 +64,15 @@ baseComponent({
             }
         },
     	updated(index) {
-            const className = `.${this.data.prefixCls}`
-    		wx
-                .createSelectorQuery()
-                .in(this)
-                .select(className)
-                .boundingClientRect((rect) => {
+            useRect(`.${this.data.prefixCls}`, this)
+                .then((rect) => {
                     if (!rect) return
-
                     this.setData({
                         top: rect.top,
                         height: rect.height,
                         index,
                     })
                 })
-                .exec()
     	},
     },
 })

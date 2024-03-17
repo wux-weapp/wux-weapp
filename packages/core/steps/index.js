@@ -1,5 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
+import classNames from '../helpers/libs/classNames'
 
 baseComponent({
     relations: {
@@ -31,7 +31,7 @@ baseComponent({
     },
     methods: {
         updateCurrent() {
-            const elements = this.getRelationNodes('../step/index')
+            const elements = this.getRelationsByName('../step/index')
             const { current, direction } = this.data
 
             if (elements.length > 0) {

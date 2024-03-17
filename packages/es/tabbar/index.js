@@ -1,7 +1,7 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import styleToCssString from '../helpers/styleToCssString'
-import { safeAreaInset, checkIPhoneX } from '../helpers/checkIPhoneX'
+import classNames from '../helpers/libs/classNames'
+import styleToCssString from '../helpers/libs/styleToCssString'
+import { safeAreaProps } from '../helpers/mixins/safeAreaBehavior'
 
 baseComponent({
     relations: {
@@ -41,10 +41,7 @@ baseComponent({
             type: String,
             value: '',
         },
-        safeArea: {
-            type: Boolean,
-            value: false,
-        },
+        ...safeAreaProps,
     },
     data: {
         tabbarStyle: '',
@@ -56,9 +53,11 @@ baseComponent({
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--${position}`]: position,
             })
+            const tabbar = `${prefixCls}-wrap`
 
             return {
                 wrap,
+                tabbar,
             }
         }],
     },
@@ -68,8 +67,8 @@ baseComponent({
                 this.updated(newVal)
             }
         },
-        ['backgroundColor, position, safeArea'](...args) {
-            this.updateStyle(...args)
+        backgroundColor(newVal) {
+            this.updateStyle(newVal)
         },
     },
     methods: {
@@ -81,7 +80,7 @@ baseComponent({
             this.changeCurrent(activeKey)
         },
         changeCurrent(activeKey) {
-            const elements = this.getRelationNodes('../tabbar-item/index')
+            const elements = this.getRelationsByName('../tabbar-item/index')
 
             if (elements.length > 0) {
                 elements.forEach((element, index) => {
@@ -111,29 +110,23 @@ baseComponent({
 
             this.emitEvent(activeKey)
         },
-        updateStyle(backgroundColor, position, safeArea) {
-            const tabbarStyle = {
+        updateStyle(backgroundColor) {
+            const tabbarStyle = styleToCssString({
                 backgroundColor,
-            }
-
-            // check iphonex & enable safeArea
-            if (checkIPhoneX() && safeArea) {
-                if (['bottom', 'top'].includes(position)) {
-                    const field = position === 'bottom' ? 'paddingBottom' : 'paddingTop'
-                    tabbarStyle[field] = `${safeAreaInset[position]}px`
-                }
-            }
-            
-            this.setData({
-                tabbarStyle: styleToCssString(tabbarStyle),
             })
+            
+            if (tabbarStyle !== this.data.tabbarStyle) {
+                this.setData({
+                    tabbarStyle,
+                })
+            }
         },
     },
     ready() {
-        const { defaultCurrent, current, controlled, backgroundColor, position, safeArea } = this.data
+        const { defaultCurrent, current, controlled, backgroundColor } = this.data
         const activeKey = controlled ? current : defaultCurrent
 
         this.updated(activeKey)
-        this.updateStyle(backgroundColor, position, safeArea)
+        this.updateStyle(backgroundColor)
     },
 })

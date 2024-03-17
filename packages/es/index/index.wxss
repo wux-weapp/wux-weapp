@@ -8,33 +8,36 @@
   top: 50%;
   right: 0;
   transform: translate3d(0,-50%,0);
-  display: -ms-flexbox;
-  display: flex;
-  max-height: 100%;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-pack: center;
-  justify-content: center
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  text-align: center
 }
 .wux-index__nav-row {
-  cursor: pointer;
-  width: auto;
-  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  height: 100%;
+  width: 100%;
   position: relative;
-  padding: 0 12rpx
+  line-height: 32rpx;
+  font-size: 24rpx
+}
+.wux-index__nav-col {
+  padding: 6rpx 12rpx;
+  line-height: inherit;
+  font-size: inherit
 }
 .wux-index__nav-item {
-  display: -ms-inline-flexbox;
   display: inline-flex;
   width: 32rpx;
   height: 32rpx;
-  line-height: 32rpx;
-  font-size: 24rpx;
-  -ms-flex-pack: center;
+  line-height: inherit;
+  font-size: inherit;
   justify-content: center;
-  -ms-flex-align: center;
   align-items: center
 }
 .wux-index__nav-item--current {
@@ -43,16 +46,39 @@
   border-radius: 50%
 }
 .wux-index__indicator {
-  position: fixed;
   width: 100rpx;
   height: 100rpx;
   line-height: 100rpx;
-  top: 50%;
-  left: 50%;
-  transform: translate3d(-50%,-50%,0);
   text-align: center;
   background-color: rgba(0,0,0,.7);
   border-radius: 12rpx;
   color: #fff;
   font-size: 48rpx
+}
+.wux-index__indicator--center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%,-50%,0)
+}
+.wux-index__indicator--right {
+  position: absolute;
+  top: calc(22rpx);
+  right: 100%;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  margin-right: calc(30rpx);
+  background-color: #33cd5f
+}
+.wux-index__indicator--right::before {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50% 0 50% 50%;
+  content: '';
+  background-color: inherit;
+  left: 0;
+  top: 0;
+  transform: rotate(45deg);
+  z-index: -1
 }

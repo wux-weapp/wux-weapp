@@ -1,0 +1,28 @@
+<view
+    class="wux-class {{ classes.wrap }}"
+    data-selector-value="{{ inputValue }}"
+    data-selector-col-value="{{ fieldNames.value }}"
+    data-selector-col-label="{{ fieldNames.label }}"
+    style="{{ extStyle }}"
+>
+    <view class="{{ classes.grid }}">
+        <block wx:for="{{ common.getOptions(options, fieldNames) }}" wx:for-item="option" wx:key="__comp_unique_key">
+            <view class="{{ classes.gridItem }} {{ common.getChecked(inputValue, option[fieldNames.value]) ? prefixCls + '__grid-item--current' : '' }} {{ !!option[fieldNames.disabled] ? prefixCls + '__grid-item--disabled' : '' }}" aria-role="option" aria-selected="{{ common.getChecked(inputValue, option[fieldNames.value]) }}">
+                <text>{{ option[fieldNames.label] }}</text>
+                <view class="{{ classes.desc }}" wx:if="{{ option.desc }}">{{ option.desc }}</view>
+                <view class="{{ classes.checkMark }}" wx:if="{{ showCheckMark }}">
+                    <icon class="{{ classes.checkMarkIcon }}" type="success_no_circle" size="7" color="#fff" />
+                </view>
+                <wux-selectable
+                    wux-class="{{ classes.selectable }}"
+                    value="{{ option[fieldNames.value] || '' }}"
+                    checked="{{ common.getChecked(inputValue, option[fieldNames.value]) }}"
+                    disabled="{{ !!option[fieldNames.disabled] }}"
+                    controlled
+                    bind:change="onCheckboxChange"
+                />
+            </view>
+        </block>
+    </view>
+</view>
+<wxs src="../helpers/wxs/common.wxs" module="common" />

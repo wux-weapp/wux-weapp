@@ -1,5 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
+import classNames from '../helpers/libs/classNames'
 
 baseComponent({
     relations: {
@@ -12,7 +12,7 @@ baseComponent({
     },
     methods: {
         updated() {
-            const elements = this.getRelationNodes('../swipe-action/index')
+            const elements = this.getRelationsByName('../swipe-action/index')
             if (elements.length > 0) {
                 elements.forEach((element, index) => {
                     element.updated(index)
@@ -20,7 +20,7 @@ baseComponent({
             }
         },
         onCloseSwipe(current) {
-            const elements = this.getRelationNodes('../swipe-action/index')
+            const elements = this.getRelationsByName('../swipe-action/index')
             if (elements.length > 0) {
                 elements.forEach((element, index) => {
                     if (current !== index) {

@@ -1,9 +1,7 @@
 .wux-alert {
   padding: 20rpx 30rpx;
   position: relative;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-align: center;
   align-items: center;
   border-radius: 4rpx;
   font-size: 28rpx
@@ -15,7 +13,6 @@
   margin-right: 10rpx
 }
 .wux-alert__bd {
-  -ms-flex: 1;
   flex: 1
 }
 .wux-alert__text {

@@ -1,5 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
+import classNames from '../helpers/libs/classNames'
 
 baseComponent({
     relations: {
@@ -44,7 +44,7 @@ baseComponent({
     },
     methods: {
         changeCurrent() {
-            const elements = this.getRelationNodes('../grid/index')
+            const elements = this.getRelationsByName('../grid/index')
             const { col, bordered, square } = this.data
             const colNum = parseInt(col) > 0 ? parseInt(col) : 1
             const width = `${100 / colNum}%`

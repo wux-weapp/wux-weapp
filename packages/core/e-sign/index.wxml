@@ -1,0 +1,38 @@
+<view class="wux-class {{ classes.wrap }}">
+  <view class="{{ classes.bd }}" style="{{ bodyStyle }}">
+    <canvas
+      type="2d"
+      id="{{ prefixCls }}"
+      style="width: 100%; height: 100%;"
+      catchtouchstart="onTouchStart"
+      catchtouchmove="onTouchMove"
+      catchtouchend="onTouchEnd"
+    >
+    </canvas>
+  </view>
+  <view class="{{ classes.ft }}">
+    <block wx:if="{{ hasFooter }}">
+      <wux-button
+        wux-class="{{ classes.button }}"
+        size="small"
+        type="light"
+        bindtap="clear"
+        wx:if="{{ cancelText }}"
+      >
+        {{ cancelText }}
+      </wux-button>
+      <wux-button
+        wux-class="{{ classes.button }}"
+        size="small"
+        type="balanced"
+        bindtap="submit"
+        wx:if="{{ confirmText }}"
+      >
+        {{ confirmText }}
+      </wux-button>
+    </block>
+    <block wx:else>
+      <slot name="footer"></slot>
+    </block>
+  </view>
+</view>

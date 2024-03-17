@@ -1,0 +1,119 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.selector-group(@theme, @color) {
+    &--@{theme} &__grid-item--current {
+        color: @color;
+        background-color: fade(lighten(@color, 30%), 40%);
+    }
+
+    &--@{theme} &__check-mark {
+        border-bottom-color: @color;
+        border-right-color: @color;
+    }
+}
+
+.@{wux-prefix}-selector-group {
+    --selector-group-columns: 3;
+    --selector-group-column-gap: 8px;
+
+    overflow: hidden;
+    font-size: @font-size-base;
+    line-height: @line-height-base;
+
+    &__grid {
+        display: grid;
+        grid-gap: 10px;
+        grid-column-gap: var(--selector-group-column-gap, 8px);
+        column-gap: var(--selector-group-column-gap, 8px);
+        grid-row-gap: var(--selector-group-column-gap, 8px);
+        row-gap: var(--selector-group-column-gap, 8px);
+        grid-template-columns: repeat(var(--selector-group-columns, 3), minmax(0, 1fr));
+        align-items: stretch;
+
+        &-item {
+            padding: 8px 16px;
+            position: relative;
+            background-color: @background-color-base;
+            border: none;
+            border-radius: @border-radius-sm;
+            color: @heading-color;
+            opacity: 1;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+            overflow: hidden;
+            vertical-align: top;
+
+            &--rounded {
+                border-radius: 100px;
+            }
+
+            &--rectangular {
+                border-radius: 0;
+            }
+
+            &--current {
+                color: @balanced;
+                background-color: fade(lighten(@balanced, 30%), 40%);
+                border: none;
+            }
+
+            &--disabled {
+                opacity: @disabled-opacity;
+            }
+        }
+    }
+
+    &__desc {
+        font-size: @font-size-sm;
+        color: @text-color-secondary;
+    }
+
+    &__check-mark {
+        display: none;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 0;
+        height: 0;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid @balanced;
+        border-left: 10px solid transparent;
+        border-right: 10px solid @balanced;
+
+        &-icon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 6px;
+            width: 8px;
+        }
+    }
+
+    &__grid-item--current:not(&__grid-item--rounded) &__check-mark {
+        display: block;
+    }
+
+    &__selectable {
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        border: 0 none;
+        appearance: none;
+    }
+
+    .selector-group(light, @light-inverse);
+    .selector-group(stable, @stable-inverse);
+    .selector-group(positive, @positive);
+    .selector-group(calm, @calm);
+    .selector-group(assertive, @assertive);
+    .selector-group(balanced, @balanced);
+    .selector-group(energized, @energized);
+    .selector-group(royal, @royal);
+    .selector-group(dark, @dark);
+}

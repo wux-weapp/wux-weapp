@@ -3,11 +3,8 @@
 }
 .wux-select__prompt {
   position: relative;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: center;
   justify-content: center;
-  -ms-flex-align: center;
   align-items: center;
   min-height: 270rpx;
   padding: 48rpx 24rpx;
@@ -35,7 +32,6 @@
 }
 .wux-select__inner {
   height: 88rpx;
-  display: -ms-flexbox;
   display: flex;
   text-align: center
 }
@@ -69,4 +65,7 @@
 }
 .wux-select__button--hover {
   background-color: #ececec
+}
+.wux-select__button--disabled {
+  opacity: .3
 }

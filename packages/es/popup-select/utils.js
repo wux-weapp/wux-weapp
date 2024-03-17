@@ -1,5 +1,30 @@
 import { defaultIcon } from '../prompt/props'
 
+export const POPUP_SELECTOR = '#wux-select'
+
+export const getDefaultProps = () => ({
+    value: {
+        type: [String, Array],
+        value: '',
+    },
+    options: {
+        type: Array,
+        value: [],
+    },
+    iconPosition: {
+        type: String,
+        value: '',
+    },
+    multiple: {
+        type: Boolean,
+        value: false,
+    },
+    max: {
+        type: Number,
+        value: -1,
+    },
+})
+
 export const notFoundContent = {
     icon: defaultIcon,
     title: '',
@@ -42,23 +67,23 @@ export function getRealValue(options = [], value = '', multiple = false) {
     return newValue.filter((n) => values.includes(n))
 }
 
-export const defaultFieldNames = {
+export const DEFAULT_FIELD_NAMES = {
     title: 'title',
     value: 'value',
     options: 'options',
 }
 
 export function fillFieldNames(fieldNames = {}) {
-    const { title, value, options } = { ...defaultFieldNames, ...fieldNames }
+    const { title, value, options } = { ...DEFAULT_FIELD_NAMES, ...fieldNames }
   
     return {
-        title: title || defaultFieldNames.title,
-        value: value || defaultFieldNames.value,
-        options: options || defaultFieldNames.options,
+        title: title || DEFAULT_FIELD_NAMES.title,
+        value: value || DEFAULT_FIELD_NAMES.value,
+        options: options || DEFAULT_FIELD_NAMES.options,
     }
 }
 
-export function flattenOptions(options, { fieldNames = defaultFieldNames } = {}) {
+export function flattenOptions(options, { fieldNames = DEFAULT_FIELD_NAMES } = {}) {
     const flattenList = []
 
     const {

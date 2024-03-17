@@ -1,8 +1,4 @@
-export const defaultFieldNames = {
-    label: 'label',
-    value: 'value',
-    children: 'children',
-}
+import { fieldNamesProps } from '../helpers/mixins/fieldNamesBehavior'
 
 export const props = {
     prefixCls: {
@@ -49,10 +45,6 @@ export const props = {
         type: String,
         value: 'center',
     },
-    defaultFieldNames: {
-        type: Object,
-        value: defaultFieldNames,
-    },
     loading: {
         type: Boolean,
         value: false,
@@ -61,4 +53,5 @@ export const props = {
         type: Array,
         value: [],
     },
+    ...fieldNamesProps,
 }

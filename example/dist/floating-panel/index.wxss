@@ -4,11 +4,8 @@
   bottom: 0;
   left: 0;
   width: 100vw;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -ms-touch-action: none;
   touch-action: none
 }
 .wux-floating-panel::after {
@@ -21,19 +18,14 @@
   background: #fff
 }
 .wux-floating-panel__hd {
-  -ms-flex: none;
   flex: none;
   height: 56rpx;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: center;
   justify-content: center;
-  -ms-flex-align: center;
   align-items: center;
   cursor: grab;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   background-color: #fff;
   border-top-left-radius: 12rpx;
@@ -46,7 +38,6 @@
   background: #ccc
 }
 .wux-floating-panel__bd {
-  -ms-flex: 1 1;
   flex: 1 1;
   overflow-y: scroll;
   background: #fff

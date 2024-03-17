@@ -2,8 +2,12 @@
   position: relative;
   z-index: 500;
   width: 100%;
-  min-height: 92rpx;
   background-color: #fff;
+  box-sizing: border-box
+}
+.wux-tabbar-wrap {
+  width: 100%;
+  min-height: 92rpx;
   box-sizing: border-box
 }
 .wux-tabbar--bottom {

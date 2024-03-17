@@ -2,6 +2,7 @@
     "component": true,
     "usingComponents": {
         "wux-animation-group": "../animation-group/index",
-        "wux-backdrop": "../backdrop/index"
+        "wux-backdrop": "../backdrop/index",
+        "wux-safe-area": "../safe-area/index"
     }
 }

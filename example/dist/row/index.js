@@ -1,5 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
+import classNames from '../helpers/libs/classNames'
 
 baseComponent({
     relations: {
@@ -35,7 +35,7 @@ baseComponent({
     },
     methods: {
     	updateStyle(gutter = this.data.gutter) {
-    		const elements = this.getRelationNodes('../col/index')
+    		const elements = this.getRelationsByName('../col/index')
             const rowStyle = gutter > 0 ? `margin-left: ${gutter / -2}px; margin-right: ${gutter / -2}px` : ''
     		const colStyle = gutter > 0 ? `padding-left: ${gutter / 2}px; padding-right: ${gutter / 2}px` : ''
 

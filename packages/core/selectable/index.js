@@ -1,10 +1,18 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import styleToCssString from '../helpers/styleToCssString'
+import classNames from '../helpers/libs/classNames'
+import styleToCssString from '../helpers/libs/styleToCssString'
 import { isPresetColor } from '../helpers/colors'
+import eventsMixin from '../helpers/mixins/eventsMixin'
 
 baseComponent({
+    useField: true,
     externalClasses: ['wux-input-class'],
+    behaviors: [eventsMixin()],
+    relations: {
+        '../field/index': {
+            type: 'ancestor',
+        },
+    },
     properties: {
         prefixCls: {
             type: String,
@@ -61,11 +69,45 @@ baseComponent({
                 })
             },
         },
+        iconSize: {
+            type: String,
+            value: '',
+        },
+        iconOn: {
+            type: String,
+            value: '',
+        },
+        iconOff: {
+            type: String,
+            value: '',
+        },
     },
     data: {
         inputChecked: false,
         inputColor: '',
         extStyle: '',
+        innerIconSize: '23',
+        innerIconOn: 'success',
+        innerIconOff: 'circle',
+    },
+    observers: {
+        ['type, iconSize, iconOn, iconOff'](type, iconSize, iconOn, iconOff) {
+            const useDefaultSize = iconSize === ''
+            const useDefaultIcon = iconOn === '' && iconOff === ''
+            if (type === 'checkbox') {
+                this.setData({
+                    innerIconSize: useDefaultSize ? 23 : parseInt(iconSize),
+                    innerIconOn: useDefaultIcon ? 'success' : iconOn,
+                    innerIconOff: useDefaultIcon ? 'circle' : iconOff,
+                })
+            } else if (type === 'radio') {
+                this.setData({
+                    innerIconSize: useDefaultSize ? 16 : parseInt(iconSize),
+                    innerIconOn: useDefaultIcon ? 'success_no_circle' : iconOn,
+                    innerIconOff: useDefaultIcon ? '' : iconOff,
+                })
+            }
+        },
     },
     computed: {
         classes: ['prefixCls, inputChecked, disabled, readOnly', function(prefixCls, inputChecked, disabled, readOnly) {
@@ -86,6 +128,7 @@ baseComponent({
     },
     methods: {
         updated(inputChecked) {
+            if (this.hasFieldDecorator) return
             if (this.data.inputChecked !== inputChecked) {
                 this.setData({
                     inputChecked,
@@ -97,6 +140,7 @@ baseComponent({
             const item = {
                 checked: !inputChecked,
                 value,
+                type: 'checkbox',
             }
 
             if (disabled || readOnly) return

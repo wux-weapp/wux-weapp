@@ -1,0 +1,11 @@
+<view
+    class="{{ classes.wrap }}"
+    hover-class="{{ classes.hover }}"
+    hover-stop-propagation="{{ hoverStopPropagation }}"
+    hover-start-time="{{ hoverStartTime }}"
+    hover-stay-time="{{ hoverStayTime }}"
+    catchtap="onClick"
+    style="{{ extStyle }}"
+>
+    <slot></slot>
+</view>

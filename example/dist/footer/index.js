@@ -1,6 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import withNativeRoutes from '../helpers/withNativeRoutes'
+import classNames from '../helpers/libs/classNames'
+import { useNativeRoute } from '../helpers/hooks/useNativeRoute'
 
 baseComponent({
     properties: {
@@ -59,7 +59,7 @@ baseComponent({
 
             if (link) {
                 if (link.url !== undefined) {
-                    withNativeRoutes({
+                    useNativeRoute({
                         url: link.url,
                         openType: link.openType,
                         delta: link.delta,

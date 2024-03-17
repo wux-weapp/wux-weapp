@@ -1,0 +1,46 @@
+var util = require("./util.wxs")
+
+var getOptions = function(options, fieldNames) {
+    var isObject = util.type(fieldNames) === 'object'
+    var labelName = isObject ? fieldNames.label : 'label'
+    var valueName = isObject ? fieldNames.value : 'value'
+    return options.map(function(option, index) {
+        if (util.type(option) === 'string') {
+            var newOption = {}
+            newOption.index = index
+            newOption[labelName] = option
+            newOption[valueName] = option
+            return newOption
+        }
+        option.index = index
+        return option
+    }).map(function(option, index) {
+        // 因为 wx:key 使用动态绑定会有 warn 提示，所以在这里使用内置的字段
+        option['__comp_unique_key'] = 
+            option[valueName] !== undefined ? option[valueName] : index
+        return option
+    })
+}
+
+var getValue = function(values, type) {
+    if (type === 'radio') {
+        if (util.type(values) === 'array') {
+            return values[0] || ''
+        }
+        return values || ''
+    }
+    return values || []
+}
+
+var getChecked = function(values, value, type) {
+    if (type === 'radio') {
+        return getValue(values, type) === value
+    }
+    return getValue(values, type).indexOf(value) !== -1
+}
+
+module.exports = {
+    getOptions: getOptions,
+    getValue: getValue,
+    getChecked: getChecked
+}

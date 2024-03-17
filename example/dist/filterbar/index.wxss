@@ -30,7 +30,6 @@
   z-index: 1000
 }
 .wux-filterbar__bd {
-  display: -ms-flexbox;
   display: flex;
   position: relative;
   background-color: #fafafa;
@@ -56,7 +55,6 @@
 .wux-filterbar__item {
   position: relative;
   display: block;
-  -ms-flex: 1;
   flex: 1;
   padding: 0 10rpx;
   width: auto;
@@ -197,9 +195,7 @@
   color: #252525;
   font-size: 30rpx;
   overflow-x: hidden;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-align: center;
   align-items: center
 }
 .wux-filterbar__panel-selected {
@@ -208,7 +204,6 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   word-wrap: normal;
-  -ms-flex: 1;
   flex: 1;
   text-align: right;
   font-size: 26rpx;

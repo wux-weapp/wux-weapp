@@ -1,5 +1,4 @@
 .wux-segment {
-  display: -ms-flexbox;
   display: flex;
   border-radius: 12rpx;
   overflow: hidden;
@@ -11,13 +10,9 @@
   opacity: .3
 }
 .wux-segment__item {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex: 1;
   flex: 1;
-  -ms-flex-pack: center;
   justify-content: center;
-  -ms-flex-align: center;
   align-items: center;
   color: #33cd5f;
   font-size: 28rpx;

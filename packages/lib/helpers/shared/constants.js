@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.FIELD_META_PROP=exports.FIELD_DATA_PROP=exports.DEFAULT_TRIGGER=void 0;var FIELD_META_PROP=exports.FIELD_META_PROP="__dataFieldMeta",FIELD_DATA_PROP=exports.FIELD_DATA_PROP="__dataFieldData",DEFAULT_TRIGGER=exports.DEFAULT_TRIGGER="onChange";

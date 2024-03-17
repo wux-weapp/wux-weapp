@@ -53,13 +53,9 @@
   text-align: center;
   padding: 40rpx 20rpx;
   box-sizing: border-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -ms-flex-pack: center;
   justify-content: center;
-  -ms-flex-align: center;
   align-items: center
 }
 .wux-grid--square .wux-grid__content {

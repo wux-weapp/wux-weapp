@@ -1,5 +1,5 @@
 <button
-    class="wux-class {{ classes.wrap }}"
+    class="wux-class wux-class-a wux-class-b wux-class-c {{ classes.wrap }}"
     disabled="{{ disabled }}"
     open-type="{{ openType }}"
     hover-class="{{ !disabled ? classes.hover : 'none' }}"
@@ -32,14 +32,27 @@
         </block>
     </view>
     <view class="{{ classes.bd }}">
-        <view wx:if="{{ title }}" class="{{ classes.text }}">{{ title }}</view>
-        <view wx:if="{{ label }}" class="{{ classes.desc }}">{{ label }}</view>
+        <view class="{{ classes.text }}">
+            <block wx:if="{{ title }}">{{ title }}</block>
+            <block wx:else>
+                <slot name="title"></slot>
+            </block>
+        </view>
         <slot></slot>
+        <view class="{{ classes.desc }}">
+            <block wx:if="{{ label }}">{{ label }}</block>
+            <block wx:else>
+                <slot name="label"></slot>
+            </block>
+        </view>
     </view>
     <view class="{{ classes.ft }}">
         <block wx:if="{{ extra }}">{{ extra }}</block>
         <block wx:else>
             <slot name="footer"></slot>
         </block>
+        <view class="{{ classes.arrow }}" wx:if="{{ !isLink }}">
+            <slot name="arrow"></slot>
+        </view>
     </view>
 </button>

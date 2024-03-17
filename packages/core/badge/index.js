@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
+import classNames from '../helpers/libs/classNames'
+import styleToCssString from '../helpers/libs/styleToCssString'
 
 baseComponent({
     externalClasses: ['wux-class-badge'],
@@ -11,7 +12,6 @@ baseComponent({
         count: {
             type: Number,
             value: 0,
-            observer: 'updated',
         },
         overflowCount: {
             type: Number,
@@ -33,13 +33,44 @@ baseComponent({
             type: String,
             value: '',
         },
+        position: {
+            type: String,
+            value: 'topRight',
+        },
+        backgroundColor: {
+            type: String,
+            value: '#ed3f14',
+        },
+        hideShadow: {
+            type: Boolean,
+            value: false,
+        },
+        title: {
+            type: String,
+            value: '',
+        },
     },
     data: {
         finalCount: 0,
+        badgeStyle: '',
+    },
+    observers: {
+        ['count, overflowCount'](count, overflowCount) {
+            this.updated({
+                count,
+                overflowCount,
+            })
+        },
+        backgroundColor(newVal) {
+            this.updateStyle(newVal)
+        },
     },
     computed: {
-        classes: ['prefixCls, status', function(prefixCls, st) {
-            const wrap = classNames(prefixCls)
+        classes: ['prefixCls, position, hideShadow, status', function(prefixCls, position, hideShadow, st) {
+            const wrap = classNames(prefixCls, {
+                [`${prefixCls}--position-${position}`]: position,
+                [`${prefixCls}--hide-shadow`]: hideShadow,
+            })
             const status = `${prefixCls}__status`
             const statusDot = classNames(`${prefixCls}__status-dot`, {
                 [`${prefixCls}__status-dot--${st}`]: st,
@@ -59,13 +90,24 @@ baseComponent({
         }],
     },
     methods: {
-        updated(count = this.data.count) {
-            const { overflowCount } = this.data
+        updated(props = this.data) {
+            const { count, overflowCount } = props
             const finalCount = count >= overflowCount ? `${overflowCount}+` : count
 
             this.setData({
                 finalCount,
             })
+        },
+        updateStyle(backgroundColor) {
+            const badgeStyle = styleToCssString({
+                backgroundColor,
+            })
+            
+            if (badgeStyle !== this.data.badgeStyle) {
+                this.setData({
+                    badgeStyle,
+                })
+            }
         },
     },
 })

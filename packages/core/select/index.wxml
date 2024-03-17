@@ -6,6 +6,7 @@
     multiple="{{ multiple }}"
     max="{{ max }}"
     notFoundContent="{{ notFoundContent }}"
+    virtualized="{{ virtualized }}"
     toolbar="{{ toolbar }}"
     visible="{{ visible }}"
     controlled

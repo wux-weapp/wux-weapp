@@ -1,5 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
-import styleToCssString from '../helpers/styleToCssString'
+import styleToCssString from '../helpers/libs/styleToCssString'
 
 baseComponent({
     relations: {
@@ -21,7 +21,13 @@ baseComponent({
         updated(index, height) {
             this.setData({
                 index,
-                wrapStyle: styleToCssString({ height }),
+                wrapStyle: styleToCssString({
+                    position: 'absolute',
+                    left: 0,
+                    top: index * height,
+                    width: '100%',
+                    height,
+                }),
             })
         },
     },

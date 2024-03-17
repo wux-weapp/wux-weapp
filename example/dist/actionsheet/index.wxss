@@ -64,11 +64,8 @@
   color: #007aff;
   font-size: 42rpx;
   line-height: 96rpx;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-align: center;
   align-items: center;
-  -ms-flex-pack: center;
   justify-content: center
 }
 .wux-actionsheet__button--hover {

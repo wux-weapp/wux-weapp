@@ -1,1 +1,73 @@
-<slot></slot>
+<block wx:if="{{ context.layout !== 'none' }}">
+    <wux-cell
+        id="wux-cell"
+        data-index="{{ index }}"
+        wux-class="{{ (disabled || context.disabled) ? 'disabled' : (readOnly || context.readOnly) ? 'readOnly' : classes.wrap }}"
+        wux-class-a="{{ context.layout }}"
+        wux-class-b="{{ validateClasses }}"
+        wux-class-c="{{ hidden ? 'hidden' : '' }}"
+        prefixCls="{{ cellPrefixCls }}"
+        hasLine="{{ !isLast }}"
+        isLink="{{ isLink }}"
+        disabled="{{ disabled || context.disabled }}"
+        align="{{ align }}"
+        hover-class="none"
+    >
+        <view slot="header" class="{{ classes.label }}" wx:if="{{ context.layout === 'horizontal' && (!!label || mergedRequired || !!help) }}">
+            <text>{{ label }}</text>
+            <block wx:if="{{ mergedRequired }}">
+                <view class="{{ classes.asterisk }}" wx:if="{{ context.requiredMarkStyle === 'asterisk' }}">{{ context.asteriskText }}</view>
+                <view class="{{ classes.text }}" wx:elif="{{ context.requiredMarkStyle === 'text-required' }}">({{ context.requiredText }})</view>
+            </block>
+            <block wx:else>
+                <view class="{{ classes.text }}" wx:if="{{ context.requiredMarkStyle === 'text-optional' }}">({ context.optionalText })</view>
+            </block>
+            <block wx:if="{{ !!help }}">
+                <icon class="{{ classes.labelHelp }}" type="info_circle" color="#B2B2B2" size="14" catchtap="setPopoverVisible" />
+            </block>
+        </view>
+        <view slot="title" class="{{ classes.label }}" wx:elif="{{ context.layout === 'vertical' && (!!label || mergedRequired || !!help) }}">
+            <text>{{ label }}</text>
+            <block wx:if="{{ mergedRequired }}">
+                <view class="{{ classes.asterisk }}" wx:if="{{ context.requiredMarkStyle === 'asterisk' }}">{{ context.asteriskText }}</view>
+                <view class="{{ classes.text }}" wx:elif="{{ context.requiredMarkStyle === 'text-required' }}">({{ context.requiredText }})</view>
+            </block>
+            <block wx:else>
+                <view class="{{ classes.text }}" wx:if="{{ context.requiredMarkStyle === 'text-optional' }}">({ context.optionalText })</view>
+            </block>
+            <block wx:if="{{ !!help }}">
+                <icon class="{{ classes.labelHelp }}" type="info_circle" color="#B2B2B2" size="14" catchtap="setPopoverVisible" />
+            </block>
+        </view>
+        <view class="{{ classes.child }}" wx:if="{{ childElementPosition !== 'none' }}">
+            <slot></slot>
+        </view>
+        <block wx:else>
+            <slot></slot>
+        </block>
+        <view slot="label" wx:if="{{ hasFeedback && feedbackMessage.length > 0 }}">
+            <view class="{{ classes.feedback }}" wx:for="{{ feedbackMessage }}" wx:for-item="h" wx:key="index">{{ h }}</view>
+        </view>
+        <view slot="footer" class="{{ classes.extra }}" wx:if="{{ extra }}">{{ extra }}</view>
+        <view slot="footer" class="{{ classes.extra }}" wx:else>
+            <slot name="extra"></slot>
+        </view>
+        <view slot="arrow" class="{{ classes.arrow }}" wx:if="{{ !isLink }}">
+            <slot name="arrow"></slot>
+        </view>
+        <wux-popover
+            visible="{{ popoverVisible }}"
+            controlled
+            theme="dark"
+            placement="top"
+            content="{{ help }}"
+            useSlot="{{ false }}"
+            slotRect="{{ slotRect }}"
+            relativeRect="{{ relativeRect }}"
+            wx:if="{{ help }}"
+        />
+    </wux-cell>
+</block>
+<block wx:else>
+    <slot></slot>
+</block>

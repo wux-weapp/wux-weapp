@@ -1,4 +1,5 @@
-import { toDataURL, getCanvas } from '../helpers/canvasPolyfill'
+import { getSystemInfoSync } from '../helpers/hooks/useNativeAPI'
+import { toDataURL, getCanvasRef } from '../helpers/hooks/useCanvasAPI'
 
 /**
  * 获取范围内的随机数
@@ -36,7 +37,7 @@ const randomColor = (min, max) => {
  */
 const render = (ctx, props = {}) => {
     const { str, num, width, height, bgColor, fontColor, hasPoint, hasLine } = props
-    const ratio = wx.getSystemInfoSync().pixelRatio
+    const ratio = getSystemInfoSync(['window']).pixelRatio
     let vcode = ''
 
     // 绘制矩形，并设置填充色
@@ -136,9 +137,9 @@ Component({
             const setBase64Url = ({ value, base64Url }) => {
                 this.triggerEvent('change', { value, base64Url })
             }
-            const renderCanvas = () => getCanvas({ canvasId }, this).then((canvas) => {
+            const renderCanvas = () => getCanvasRef(canvasId, this).then((canvas) => {
                 const ctx = canvas.getContext('2d')
-                const ratio = wx.getSystemInfoSync().pixelRatio
+                const ratio = getSystemInfoSync(['window']).pixelRatio
                 const canvasWidth = width * ratio
                 const canvasHeight = height * ratio
 

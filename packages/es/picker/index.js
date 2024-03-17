@@ -1,5 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
-import popupMixin from '../helpers/popupMixin'
+import popupMixin from '../helpers/mixins/popupMixin'
 import { props } from '../multi-picker-view/props'
 
 baseComponent({

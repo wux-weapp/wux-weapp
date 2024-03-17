@@ -10,6 +10,14 @@
     align-items: center;
     background: @cell-bg;
 
+    &--align-flex-start {
+        align-items: flex-start;
+    }
+
+    &--align-center {
+        align-items: center;
+    }
+
     &--has-line&::after {
         .setBottomLine(@border-color-split);
 
@@ -51,12 +59,21 @@
     }
 
     &__ft {
+        display: flex;
+        align-self: center;
         text-align: right;
         color: @text-color-secondary;
     }
 
-    &--access &__ft {
-        padding-right: 17px;
+    &__arrow:not(:empty) {
+        flex: none;
+        display: flex;
+        align-items: center;
+        margin-left: @margin-component-base;
+    }
+
+    &--access > &__ft {
+        padding-right: 19px;
         position: relative;
 
         &::after {

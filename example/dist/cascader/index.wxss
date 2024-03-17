@@ -2,9 +2,7 @@
   width: 100%;
   overflow: hidden;
   position: relative;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: column;
   flex-direction: column;
   font-size: 28rpx;
   line-height: 1.5;
@@ -12,7 +10,6 @@
 }
 .wux-cascader__hd {
   position: relative;
-  -ms-flex: none;
   flex: none;
   width: 100%
 }
@@ -30,7 +27,6 @@
 }
 .wux-cascader__bd {
   position: relative;
-  -ms-flex: auto;
   flex: auto;
   width: 100%;
   height: 100%
@@ -57,7 +53,6 @@
 }
 .wux-cascader__inner {
   height: 88rpx;
-  display: -ms-flexbox;
   display: flex;
   text-align: center
 }
@@ -91,4 +86,7 @@
 }
 .wux-cascader__button--hover {
   background-color: #ececec
+}
+.wux-cascader__button--disabled {
+  opacity: .3
 }

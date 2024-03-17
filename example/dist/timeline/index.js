@@ -1,5 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
+import classNames from '../helpers/libs/classNames'
 
 baseComponent({
     relations: {
@@ -26,7 +26,7 @@ baseComponent({
     },
     methods: {
     	updateIsLastElement() {
-            const elements = this.getRelationNodes('../timeline-item/index')
+            const elements = this.getRelationsByName('../timeline-item/index')
             if (elements.length > 0) {
                 const lastIndex = elements.length - 1
                 const { pending, position } = this.data

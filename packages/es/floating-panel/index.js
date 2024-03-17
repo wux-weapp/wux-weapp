@@ -1,10 +1,10 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import nearest from '../helpers/nearest'
-import styleToCssString from '../helpers/styleToCssString'
-import { getTouchPoints, getPointsNumber } from '../helpers/gestures'
-import { getSystemInfo } from '../helpers/checkIPhoneX'
-import { rubberbandIfOutOfBounds } from '../helpers/rubberband'
+import classNames from '../helpers/libs/classNames'
+import styleToCssString from '../helpers/libs/styleToCssString'
+import { nearest } from '../helpers/shared/nearest'
+import { getTouchPoints, getPointsNumber } from '../helpers/shared/gestures'
+import { getSystemInfoSync } from '../helpers/hooks/useNativeAPI'
+import { rubberbandIfOutOfBounds } from '../helpers/shared/rubberband'
 
 baseComponent({
     useExport: true,
@@ -119,7 +119,7 @@ baseComponent({
     },
     attached() {
         const defaultAnchors = this.data.defaultAnchors.filter(x => typeof x === 'number').filter(x => x > 0)
-        const possibles = defaultAnchors.length === 0 ? [-getSystemInfo().windowHeight] : defaultAnchors.map(x => -x)
+        const possibles = defaultAnchors.length === 0 ? [-getSystemInfoSync(['window']).windowHeight] : defaultAnchors.map(x => -x)
         const bounds = {
             top: Math.round(possibles[possibles.length - 1]),
             bottom: Math.round(possibles[0]),

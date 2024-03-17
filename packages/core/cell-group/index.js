@@ -1,6 +1,7 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import styleToCssString from '../helpers/styleToCssString'
+import classNames from '../helpers/libs/classNames'
+import styleToCssString from '../helpers/libs/styleToCssString'
+import { useRect } from '../helpers/hooks/useDOM'
 
 baseComponent({
     options: {
@@ -40,14 +41,19 @@ baseComponent({
                 })
             },
         },
+        hasLine: {
+            type: Boolean,
+            value: true,
+        },
     },
     data: {
         internalBodyStyle: '',
     },
     computed: {
-        classes: ['prefixCls, mode', function(prefixCls, mode) {
+        classes: ['prefixCls, mode, hasLine', function(prefixCls, mode, hasLine) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--card`]: mode === 'card',
+                [`${prefixCls}--has-line`]: hasLine,
             })
             const hd = `${prefixCls}__hd`
             const bd = `${prefixCls}__bd`
@@ -63,7 +69,7 @@ baseComponent({
     },
     methods: {
         updateIsLastElement() {
-            const elements = this.getRelationNodes('../cell/index')
+            const elements = this.getRelationsByName('../cell/index')
             if (elements.length > 0) {
                 const lastIndex = elements.length - 1
                 elements.forEach((element, index) => {
@@ -72,16 +78,11 @@ baseComponent({
             }
         },
         getBoundingClientRect(callback) {
-            const className = `.${this.data.prefixCls}`
-            wx
-                .createSelectorQuery()
-                .in(this)
-                .select(className)
-                .boundingClientRect((rect) => {
+            useRect(`.${this.data.prefixCls}`, this)
+                .then((rect) => {
                     if (!rect) return
-                    callback.call(this, rect.height)
+                    callback.call(this, rect.height, rect)
                 })
-                .exec()
         },
     },
 })

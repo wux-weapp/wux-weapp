@@ -1,128 +1,132 @@
 import baseComponent from '../helpers/baseComponent'
-import popupMixin from '../helpers/popupMixin'
-import { notFoundContent, getNotFoundContent, getSelectIndex, getRealValue, flattenOptions } from './utils'
+import popupMixin from '../helpers/mixins/popupMixin'
+import { nextTick } from '../helpers/hooks/useNativeAPI'
+import { POPUP_SELECTOR, getDefaultProps, notFoundContent, getNotFoundContent, flattenOptions } from './utils'
 
 baseComponent({
-    behaviors: [popupMixin('#wux-select')],
+    behaviors: [popupMixin(POPUP_SELECTOR)],
     properties: {
         prefixCls: {
             type: String,
-            value: 'wux-select',
+            value: POPUP_SELECTOR.substring(1),
         },
-        value: {
-            type: [String, Array],
-            value: '',
-        },
-        options: {
-            type: Array,
-            value: [],
-        },
-        multiple: {
+        virtualized: {
             type: Boolean,
             value: false,
         },
-        max: {
-            type: Number,
-            value: -1,
-        },
         notFoundContent: {
             type: null,
-            value: notFoundContent,
-            observer(newVal) {
-                this.setData({
-                    mergedNotFoundContent: getNotFoundContent(newVal),
-                })
-            },
+            value: { ...notFoundContent },
         },
+        ...getDefaultProps(),
     },
     data: {
-        scrollTop: 0,
         mergedOptions: [],
-        mergedNotFoundContent: null,
+        mergedOptionsValueMap: new Map(),
+        mergedNotFoundContent: { ...notFoundContent },
     },
     observers: {
         ['options, multiple'](options, multiple) {
             const mergedOptions = flattenOptions(options)
-            const inputValue = this.getRealValue(mergedOptions, this.data.inputValue, multiple)
-            this.setData({
-                inputValue,
-                mergedOptions,
+            
+            const mergedOptionsValueMap = new Map()
+            mergedOptions.forEach((option, index) => {
+                mergedOptionsValueMap.set(option.value, { option, index })
             })
+
+            this.setData({
+                mergedOptions,
+                mergedOptionsValueMap,
+            })
+        },
+        notFoundContent(notFoundContent) {
+            this.renderEmpty(notFoundContent)
         },
     },
     methods: {
-        getRealValue(options = this.data.mergedOptions, value = this.data.inputValue, multiple = this.data.multiple) {
-            return getRealValue(options, value, multiple)
-        },
-        updated(value, isForce) {
-            if (!this.hasFieldDecorator || isForce) {
-                const inputValue = this.getRealValue(this.data.mergedOptions, value)
-                if (this.data.inputValue !== inputValue) {
-                    this.setData({ inputValue })
-                }
+        renderEmpty(notFoundContent) {
+            const mergedNotFoundContent = getNotFoundContent(notFoundContent)
+            if (this.data.mergedNotFoundContent !== mergedNotFoundContent) {
+                this.setData({ mergedNotFoundContent })
             }
         },
-        setVisibleState(popupVisible, callback = () => {}) {
-            if (this.data.popupVisible !== popupVisible) {
-                const params = {
-                    mounted: true,
-                    inputValue: this.getRealValue(this.data.mergedOptions, this.data.value), // forceUpdate
-                    popupVisible,
-                }
-                this.setData(popupVisible ? params : { popupVisible }, () => {
-                    // collect field component & forceUpdate
-                    if (popupVisible) {
-                        let newValue = params.inputValue
-                        let field = this.getFieldElem()
-                        if (this.hasFieldDecorator && field) {
-                            newValue = field.data.value
-                            field.changeValue(newValue)
-                        }
-
-                        // scroll into view
-                        this.getBoundingClientRect((height) => {
-                            this.scrollIntoView(newValue, height)
-                        })
-                    }
-                    callback()
-                })
+        updated(inputValue, isForce) {
+            if (this.hasFieldDecorator && !isForce) { return }
+            if (this.data.inputValue !== inputValue) {
+                this.setData({ inputValue })
             }
         },
-        onValueChange(e) {
-            if (!this.data.mounted) return
-            const { options, max, multiple } = this.data
-            const { selectedValue: value } = e.detail
-            if (multiple && max >= 1 && max < value.length) return
+        getIndexRef(props = this.data) {
+            if (props.multiple) {
+                const len = props.value.length
+                if (
+                    props.value.length > 0 &&
+                    props.mergedOptionsValueMap.has(props.value[len - 1])
+                ) {
+                    const { index } = props.mergedOptionsValueMap.get(
+                        props.value[len - 1]
+                    )
+                    return index
+                }
+            } else {
+                if (
+                    props.value &&
+                    props.mergedOptionsValueMap.has(props.value)
+                ) {
+                    const { index } = props.mergedOptionsValueMap.get(props.value)
+                    return index
+                }
+            }
+            return -1
+        },
+        scrollToItem(index) {
+            const menuRef = this.querySelector(POPUP_SELECTOR)
+            if (menuRef) {
+                menuRef.scrollToItem(index)
+            }
+        },
+        onShow() {
+            const { value } = this.data
+            let newValue = this.data.inputValue
 
-            this.setScrollValue(value)
+            if (newValue !== value) {
+                newValue = value
+            }
+
+            // collect field component & forceUpdate
+            if (this.hasFieldDecorator) {
+                const fieldContext = this.getFieldContext()
+                if (fieldContext) {
+                    newValue = fieldContext.data.value
+                    fieldContext.changeValue(newValue)
+                }
+            }
+
+            if (this.data.inputValue !== newValue) {
+                this.updated(newValue)
+            }
+
+            nextTick(() => {
+                const index = this.getIndexRef({ ...this.data, value: newValue  })
+                if (index !== -1) {
+                    this.scrollToItem(index)
+                }
+            })
+        },
+        getPickerValue(value = this.data.inputValue) {
+            const { virtualized, mergedOptions } = this.data
+            const cols = virtualized ? mergedOptions : undefined
+            this.picker = this.picker || this.querySelector(POPUP_SELECTOR)
+            return this.picker && this.picker.getValue(value, cols)
+        },
+        onSelectChange(e) {
+            if (!this.mounted) { return }
+            const { value } = e.detail
             this.updated(value, true)
-            this.triggerEvent('valueChange', this.formatPickerValue({ ...e.detail, value }))
-        },
-        scrollIntoView(value, height) {
-            const { options, multiple } = this.data
-            const index = getSelectIndex(options, value, multiple)
-            const nums = options.length
-
-            // scroll into view
-            let activeIndex = Array.isArray(index) ? index[index.length - 1] : index
-            if (activeIndex === -1 || activeIndex === undefined) {
-                activeIndex = 0
-            }
-
-            // set scrollTop
-            const scrollTop = nums >= 1 ? parseFloat(height / nums * activeIndex) : 0
-
-            if (this.data.scrollTop !== scrollTop) {
-                this.setData({ scrollTop })
-            }
-        },
-        getBoundingClientRect(callback) {
-            return this.selectComponent('#wux-select').getBoundingClientRect(callback)
+            this.triggerEvent('valueChange', this.formatPickerValue({ ...e.detail }))
         },
     },
     ready() {
-        this.setData({
-            mergedNotFoundContent: getNotFoundContent(this.data.notFoundContent),
-        })
+        this.renderEmpty(this.data.notFoundContent)
     },
 })

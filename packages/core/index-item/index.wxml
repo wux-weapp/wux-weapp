@@ -1,5 +1,5 @@
-<view class="wux-class {{ classes.wrap }}">
-    <view class="{{ classes.hd }}">{{ name }}</view>
+<view class="wux-class {{ classes.wrap }}" data-index="{{ index }}" data-name="{{ name }}" data-brief="{{ brief }}">
+    <view class="{{ classes.hd }}">{{ name || brief }}</view>
     <view class="{{ classes.bd }}">
         <slot></slot>
     </view>

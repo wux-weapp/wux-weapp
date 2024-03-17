@@ -6,8 +6,8 @@
 }
 .wux-badge__count {
   position: absolute;
-  transform: translateX(50%);
-  top: -12rpx;
+  transform: translate(50%,-50%);
+  top: 0;
   right: 0;
   height: 36rpx;
   border-radius: 18rpx;
@@ -19,7 +19,7 @@
   padding: 0 10rpx;
   font-size: 24rpx;
   white-space: nowrap;
-  transform-origin: -10% center;
+  transform-origin: 100% 0;
   z-index: 10;
   box-shadow: 0 0 0 2rpx #fff;
   box-sizing: border-box;
@@ -29,14 +29,31 @@
   width: 16rpx;
   height: 16rpx;
   position: absolute;
-  transform: translateX(-50%);
-  transform-origin: 0 center;
-  top: -8rpx;
-  right: -16rpx;
+  transform: translate(50%,-50%);
+  transform-origin: 100% 0;
+  top: 0;
+  right: 0;
   border-radius: 100%;
   background: #ed3f14;
   z-index: 10;
   box-shadow: 0 0 0 2rpx #fff
+}
+.wux-badge--position-topLeft .wux-badge__count,
+.wux-badge--position-topLeft .wux-badge__dot {
+  right: 100%
+}
+.wux-badge--position-bottomRight .wux-badge__count,
+.wux-badge--position-bottomRight .wux-badge__dot {
+  top: 100%
+}
+.wux-badge--position-bottomLeft .wux-badge__count,
+.wux-badge--position-bottomLeft .wux-badge__dot {
+  top: 100%;
+  right: 100%
+}
+.wux-badge--hide-shadow .wux-badge__count,
+.wux-badge--hide-shadow .wux-badge__dot {
+  box-shadow: none!important
 }
 .wux-badge__status {
   line-height: inherit;

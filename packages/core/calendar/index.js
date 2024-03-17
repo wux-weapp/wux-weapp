@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
+import classNames from '../helpers/libs/classNames'
+import { useRect } from '../helpers/hooks/useDOM'
 
 const defaults = {
     prefixCls: 'wux-calendar',
@@ -215,26 +216,25 @@ baseComponent({
             this.$$setData({ swiping: true })
 
             const { prefixCls } = this.data
-            const query = wx.createSelectorQuery().in(this)
-            query.select(`.${prefixCls}__months-content`).boundingClientRect((rect) => {
+            useRect(`.${prefixCls}__months-content`, this)
+                .then((rect) => {
 
-                // 由于 boundingClientRect 为异步方法，某些情况下其回调函数在 onTouchEnd 之后触发，导致 wrapperTranslate 计算错误
-                // 所以判断 this.isMoved = false 时阻止回调函数的执行
-                if (!rect || !this.isMoved) return
+                    // 由于 boundingClientRect 为异步方法，某些情况下其回调函数在 onTouchEnd 之后触发，导致 wrapperTranslate 计算错误
+                    // 所以判断 this.isMoved = false 时阻止回调函数的执行
+                    if (!rect || !this.isMoved) return
 
-                this.move = getTouchPosition(e)
-                this.touchesDiff = this.isH ? this.move.x - this.start.x : this.move.y - this.start.y
+                    this.move = getTouchPosition(e)
+                    this.touchesDiff = this.isH ? this.move.x - this.start.x : this.move.y - this.start.y
 
-                const { width, height } = rect
-                const percentage = this.touchesDiff / (this.isH ? width : height)
-                const currentTranslate = (this.monthsTranslate + percentage) * 100
-                const transform = getTransform(currentTranslate, this.isH)
+                    const { width, height } = rect
+                    const percentage = this.touchesDiff / (this.isH ? width : height)
+                    const currentTranslate = (this.monthsTranslate + percentage) * 100
+                    const transform = getTransform(currentTranslate, this.isH)
 
-                this.$$setData({
-                    wrapperTranslate: `transition-duration: 0s; ${transform}`,
+                    this.$$setData({
+                        wrapperTranslate: `transition-duration: 0s; ${transform}`,
+                    })
                 })
-            })
-            query.exec()
         },
         /**
          * 手指触摸动作结束

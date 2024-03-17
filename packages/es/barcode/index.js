@@ -1,4 +1,6 @@
 import barcode from './barcode'
+import { getSystemInfoSync } from '../helpers/hooks/useNativeAPI'
+import { toDataURL, getCanvasRef } from '../helpers/hooks/useCanvasAPI'
 
 const defalutOptions = {
     number: true,
@@ -24,25 +26,88 @@ Component({
         number: {
             type: String,
             value: '',
-            observer(newVal) {
-                this.draw({
-                    number: newVal,
-                })
-            },
         },
         options: {
             type: Object,
-            value: defalutOptions,
+            value: { ...defalutOptions },
         },
         canvasId: {
             type: String,
             value: 'wux-barcode',
         },
     },
+    observers: {
+        ['canvasId, number, width, height, options'](...args) {
+            const [
+                canvasId,
+                number,
+                width,
+                height,
+                options,
+            ] = args
+
+            this.draw({
+                canvasId,
+                number,
+                width,
+                height,
+                options,
+            })
+        },
+    },
     methods: {
         draw(opts = {}) {
-            const { canvasId, number, width, height, options } = Object.assign({}, this.data, opts)
-            new barcode(canvasId, number, Object.assign({ width, height }, options), this)
+            const props = {
+                ...this.data,
+                ...opts,
+            }
+
+            const {
+                canvasId,
+                number: value,
+                width,
+                height,
+                options: oldOptions,
+            } = props
+            
+            const {
+                number,
+                prefix,
+                color,
+                debug,
+            } = {
+                ...defalutOptions,
+                ...oldOptions,
+            }
+
+            const options = {
+                number,
+                prefix,
+                color,
+                debug,
+            }
+            
+            getCanvasRef(canvasId, this).then((canvas) => {
+                ['onValid', 'onInvalid', 'onSuccess', 'onError'].forEach((method) => {
+                    const oldCb = oldOptions[method]
+                    options[method] = () => {
+                        if (oldCb) {
+                            oldCb()
+                        }
+                        if (method === 'onSuccess') {
+                            toDataURL({ width, height }, canvas)
+                                .then((base64Url) => {
+                                    const ctx = canvas.getContext('2d')
+                                    ctx.restore()
+                                    this.triggerEvent('load', { base64Url })
+                                })
+                        }
+                        this.triggerEvent(method.replace(/^on/, '').toLocaleLowerCase())
+                    }
+                })
+
+                new barcode(canvas, getSystemInfoSync(['window']).pixelRatio, value, Object.assign({ width, height }, options))
+            })
         },
     },
 })

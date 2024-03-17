@@ -1,1 +1,18 @@
-<slot></slot>
+<block wx:if="{{ layout !== 'none' }}">
+    <wux-cell-group
+        wux-class="{{ classes.wrap }}"
+        prefixCls="{{ cellGroupPrefixCls }}"
+        title="{{ title }}"
+        label="{{ label }}"
+        mode="{{ mode }}"
+        bodyStyle="{{ { overflow: 'visible', ...bodyStyle } }}"
+    >
+        <slot></slot>
+    </wux-cell-group>
+    <view class="{{ classes.footer }}">
+        <slot name="footer"></slot>
+    </view>
+</block>
+<block wx:else>
+    <slot></slot>
+</block>

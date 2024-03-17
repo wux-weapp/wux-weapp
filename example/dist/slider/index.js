@@ -1,8 +1,9 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import eventsMixin from '../helpers/eventsMixin'
-import styleToCssString from '../helpers/styleToCssString'
-import { getTouchPoints, getPointsNumber } from '../helpers/gestures'
+import classNames from '../helpers/libs/classNames'
+import eventsMixin from '../helpers/mixins/eventsMixin'
+import styleToCssString from '../helpers/libs/styleToCssString'
+import { getTouchPoints, getPointsNumber } from '../helpers/shared/gestures'
+import { useRect } from '../helpers/hooks/useDOM'
 
 /**
  * 获取小数位数
@@ -218,7 +219,7 @@ baseComponent({
             this.setData({ isMoved: true })
             this.moveX = getTouchPoints(e).x
 
-            this.getRect(`.${prefixCls}__rail`).then((rect) => {
+            useRect(`.${prefixCls}__rail`, this).then((rect) => {
                 if (!rect || !this.isMoved) return
 
                 const diffX = (this.moveX - this.startX) / rect.width * 100
@@ -264,26 +265,6 @@ baseComponent({
             const { offsets } = this.data
             const value = this.getValue(offsets)
             this.triggerEvent('afterChange', { offsets, value })
-        },
-        /**
-         * 获取界面上的节点信息
-         */
-        getRect(selector, all) {
-            return new Promise((resolve) => {
-                wx
-                    .createSelectorQuery()
-                    .in(this)[all ? 'selectAll' : 'select'](selector)
-                    .boundingClientRect((rect) => {
-                        if (all && Array.isArray(rect) && rect.length) {
-                            resolve(rect)
-                        }
-
-                        if (!all && rect) {
-                            resolve(rect)
-                        }
-                    })
-                    .exec()
-            })
         },
         /**
          * 计算选中值
@@ -356,7 +337,7 @@ baseComponent({
         onRailClick(e) {
             if (this.data.disabled || getPointsNumber(e) > 1) return
             const { prefixCls, min, max, inputValue: sliderValue } = this.data
-            this.getRect(`.${prefixCls}__rail-wrap`).then((rect) => {
+            useRect(`.${prefixCls}__rail-wrap`, this).then((rect) => {
                 const position = ((getTouchPoints(e).x - rect.left) / Math.ceil(rect.width)) * (max - min) + min
                 const targetValue = this.getValueByPosition(position)
                 const indexLength = sliderValue.length - 1

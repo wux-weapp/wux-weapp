@@ -1,6 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import styleToCssString from '../helpers/styleToCssString'
+import classNames from '../helpers/libs/classNames'
+import styleToCssString from '../helpers/libs/styleToCssString'
 import { colors } from '../helpers/colors'
 
 const defaultColors = {

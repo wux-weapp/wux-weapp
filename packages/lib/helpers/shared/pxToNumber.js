@@ -1,0 +1,1 @@
+"use strict";function pxToNumber(e){return e?"number"==typeof e?e:(e=e.match(/^\d*(\.\d*)?/))?Number(e[0]):0:0}Object.defineProperty(exports,"__esModule",{value:!0}),exports.pxToNumber=pxToNumber;

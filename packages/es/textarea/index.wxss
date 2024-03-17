@@ -1,8 +1,6 @@
 .wux-textarea {
   position: relative;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-align: center;
   align-items: center
 }
 .wux-textarea__label {
@@ -12,11 +10,9 @@
   white-space: nowrap;
   overflow: hidden;
   width: 210rpx;
-  -ms-flex-item-align: start;
   align-self: flex-start
 }
 .wux-textarea__control {
-  -ms-flex: 1;
   flex: 1
 }
 .wux-textarea__item {
@@ -63,4 +59,7 @@
 }
 .wux-textarea--has-count .wux-textarea__control {
   padding-bottom: 20rpx
+}
+.wux-textarea__keyboard-accessory {
+  max-height: 400rpx
 }

@@ -1,6 +1,5 @@
 .wux-input-number {
   position: relative;
-  display: -ms-flexbox;
   display: flex
 }
 .wux-input-number__input {
@@ -29,11 +28,8 @@
   color: #33cd5f;
   border: 2rpx solid #e8e8e8;
   box-sizing: border-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-align: center;
   align-items: center;
-  -ms-flex-pack: center;
   justify-content: center
 }
 .wux-input-number__selector--disabled {

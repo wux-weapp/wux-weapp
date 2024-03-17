@@ -1,6 +1,7 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import { getTouchPoints, getPointsNumber, getSwipeDirection } from '../helpers/gestures'
+import classNames from '../helpers/libs/classNames'
+import { getTouchPoints, getPointsNumber, getSwipeDirection } from '../helpers/shared/gestures'
+import { useRect } from '../helpers/hooks/useDOM'
 
 baseComponent({
     relations: {
@@ -80,7 +81,7 @@ baseComponent({
             }
         },
         onCloseSwipe() {
-            const parent = this.getRelationNodes('../swipe-action-group/index')[0]
+            const parent = this.getRelationsByName('../swipe-action-group/index')[0]
 
             if (parent) {
                 parent.onCloseSwipe(this.data.index)
@@ -111,14 +112,12 @@ baseComponent({
         },
         updateBtns() {
             const { prefixCls } = this.data
-            const query = wx.createSelectorQuery().in(this)
-            query.select(`.${prefixCls}__actions--left`).boundingClientRect()
-            query.select(`.${prefixCls}__actions--right`).boundingClientRect()
-            query.exec((rects) => {
-                const [left, right] = rects
-                this.btnsLeftWidth = left ? left.width : 0
-                this.btnsRightWidth = right ? right.width : 0
-            })
+            useRect([`.${prefixCls}__actions--left`, `.${prefixCls}__actions--right`], this)
+                .then((rects) => {
+                    const [left, right] = rects
+                    this.btnsLeftWidth = left ? left.width : 0
+                    this.btnsRightWidth = right ? right.width : 0
+                })
         },
         onTap(e) {
             const { type } = e.currentTarget.dataset

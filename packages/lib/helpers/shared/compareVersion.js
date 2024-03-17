@@ -1,0 +1,1 @@
+"use strict";function compareVersion(e,r){for(var t=e.split("."),n=r.split("."),o=Math.max(t.length,n.length);t.length<o;)t.push("0");for(;n.length<o;)n.push("0");for(var s=0;s<o;s++){var p=parseInt(t[s]),a=parseInt(n[s]);if(a<p)return 1;if(p<a)return-1}return 0}Object.defineProperty(exports,"__esModule",{value:!0}),exports.compareVersion=compareVersion;

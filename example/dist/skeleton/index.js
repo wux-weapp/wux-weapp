@@ -1,5 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
+import classNames from '../helpers/libs/classNames'
 
 baseComponent({
     relations: {
@@ -40,8 +40,8 @@ baseComponent({
     },
     methods: {
         updated(active = this.data.active) {
-            const avatar = this.getRelationNodes('../skeleton-avatar/index')
-            const paragraph = this.getRelationNodes('../skeleton-paragraph/index')
+            const avatar = this.getRelationsByName('../skeleton-avatar/index')
+            const paragraph = this.getRelationsByName('../skeleton-paragraph/index')
 
             if (avatar.length > 0) {
                 avatar.forEach((element) => {

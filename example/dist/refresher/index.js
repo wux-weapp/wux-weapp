@@ -1,5 +1,7 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
+import classNames from '../helpers/libs/classNames'
+import { getSystemInfoSync } from '../helpers/hooks/useNativeAPI'
+import { useRect } from '../helpers/hooks/useDOM'
 
 const defaultStyle = 'transition: transform .4s; transform: translate3d(0px, 0px, 0px) scale(1);'
 
@@ -350,53 +352,53 @@ baseComponent({
             if (this.isMoved) return
 
             // 获取节点高度
-            const query = wx.createSelectorQuery()
-            query.select(`#${this.id}`).boundingClientRect((res) => {
-                const newContentHeight = res.height
+            useRect(`#${this.id}`)
+                .then((res) => {
+                    const newContentHeight = res.height
 
-                if (this.data.newContentHeight !== newContentHeight) {
-                    this.setData({ newContentHeight })
-                }
-
-                const {
-                    oldContentHeight,
-                    windowHeight,
-                    distance,
-                    loading,
-                    noData,
-                } = this.data
-
-                if (windowHeight && !this.isRefreshing()) {
-                    // 到临界点时触发上拉加载
-                    // 防止节点高度一致时引发重复加载
-                    if (
-                        n > newContentHeight - windowHeight - (distance * 1.5) &&
-                        loading === false &&
-                        noData === false && newContentHeight !== oldContentHeight
-                    ) {
-                        this.setData({
-                            loading: true,
-                            refreshing: false,
-                            oldContentHeight: newContentHeight,
-                        })
-                        this.triggerEvent('loadmore')
-                    } else if (
-                        loading === false &&
-                        noData === false
-                    ) {
-                        // 隐藏上拉加载动画
-                        this.hide()
-
-                    } else if (loading === true) {
-                        // 如果在加载中，保持内容的高度一致，以此来防止临界点重复加载
-                        this.setData({
-                            oldContentHeight: newContentHeight,
-                        })
+                    if (this.data.newContentHeight !== newContentHeight) {
+                        this.setData({ newContentHeight })
                     }
 
-                    this.deactivate()
-                }
-            }).exec()
+                    const {
+                        oldContentHeight,
+                        windowHeight,
+                        distance,
+                        loading,
+                        noData,
+                    } = this.data
+
+                    if (windowHeight && !this.isRefreshing()) {
+                        // 到临界点时触发上拉加载
+                        // 防止节点高度一致时引发重复加载
+                        if (
+                            n > newContentHeight - windowHeight - (distance * 1.5) &&
+                            loading === false &&
+                            noData === false && newContentHeight !== oldContentHeight
+                        ) {
+                            this.setData({
+                                loading: true,
+                                refreshing: false,
+                                oldContentHeight: newContentHeight,
+                            })
+                            this.triggerEvent('loadmore')
+                        } else if (
+                            loading === false &&
+                            noData === false
+                        ) {
+                            // 隐藏上拉加载动画
+                            this.hide()
+
+                        } else if (loading === true) {
+                            // 如果在加载中，保持内容的高度一致，以此来防止临界点重复加载
+                            this.setData({
+                                oldContentHeight: newContentHeight,
+                            })
+                        }
+
+                        this.deactivate()
+                    }
+                })
         },
         noop() {},
     },
@@ -405,12 +407,11 @@ baseComponent({
         this.activated = false
     },
     attached() {
-        wx.getSystemInfo({
-            success: (res) => {
-                this.setData({
-                    windowHeight: res.windowHeight,
-                })
-            },
-        })
+        const windowHeight = getSystemInfoSync(['window']).windowHeight
+        if (this.data.windowHeight !== windowHeight) {
+            this.setData({
+                windowHeight,
+            })
+        }
     },
 })

@@ -1,5 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
+import classNames from '../helpers/libs/classNames'
 import locales from './locales/index'
 import { props } from './props'
 
@@ -442,7 +442,7 @@ baseComponent({
             this.updated(inputValue)
         },
         getValue(value = this.data.inputValue, cols = this.data.cols) {
-            this.picker = this.picker || this.selectComponent('#wux-picker')
+            this.picker = this.picker || this.querySelector('#wux-picker')
             return {
                 ...this.picker.getValue(value, cols),
                 date: +this.getDate(),

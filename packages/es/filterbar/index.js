@@ -1,5 +1,5 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
+import classNames from '../helpers/libs/classNames'
 import { $wuxBackdrop } from '../index'
 
 function getLabels(children = []) {

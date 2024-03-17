@@ -1,69 +1,70 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import styleToCssString from '../helpers/styleToCssString'
+import classNames from '../helpers/libs/classNames'
+import styleToCssString from '../helpers/libs/styleToCssString'
 import { $wuxBackdrop } from '../index'
+import { useRect, useScrollOffset } from '../helpers/hooks/useDOM'
 
-const getPlacements = ([a, s, b] = rects, placement = 'top') => {
+const getPlacements = ([a, s, b, r] = rects, placement = 'top') => {
     switch (placement) {
             case 'topLeft':
                 return {
-                    top: s.scrollTop + a.top - b.height - 4,
-                    left: s.scrollLeft + a.left,
+                    top: !r ? s.scrollTop + a.top - b.height - 4 : a.top - b.height - r.top,
+                    left: !r ? s.scrollLeft + a.left : a.left,
                 }
             case 'top':
                 return {
-                    top: s.scrollTop + a.top - b.height - 4,
-                    left: s.scrollLeft + a.left + (a.width - b.width) / 2,
+                    top: !r ? s.scrollTop + a.top - b.height - 4 : a.top - b.height - r.top,
+                    left: !r ? s.scrollLeft + a.left + (a.width - b.width) / 2 : a.left + (a.width - b.width) / 2,
                 }
             case 'topRight':
                 return {
-                    top: s.scrollTop + a.top - b.height - 4,
-                    left: s.scrollLeft + a.left + a.width - b.width,
+                    top: !r ? s.scrollTop + a.top - b.height - 4 : a.top - b.height - r.top,
+                    left: !r ? s.scrollLeft + a.left + a.width - b.width : a.left + a.width - b.width,
                 }
             case 'rightTop':
                 return {
-                    top: s.scrollTop + a.top,
-                    left: s.scrollLeft + a.left + a.width + 4,
+                    top: !r ?  s.scrollTop + a.top : a.top - r.top,
+                    left: !r ? s.scrollLeft + a.left + a.width + 4 : a.left + a.width,
                 }
             case 'right':
                 return {
-                    top: s.scrollTop + a.top + (a.height - b.height) / 2,
-                    left: s.scrollLeft + a.left + a.width + 4,
+                    top: !r ? s.scrollTop + a.top + (a.height - b.height) / 2 : a.top + (a.height - b.height) / 2 - r.top,
+                    left: !r ? s.scrollLeft + a.left + a.width + 4 : a.left + a.width,
                 }
             case 'rightBottom':
                 return {
-                    top: s.scrollTop + a.top + a.height - b.height,
-                    left: s.scrollLeft + a.left + a.width + 4,
+                    top: !r ? s.scrollTop + a.top + a.height - b.height : a.top + a.height - b.height - r.top,
+                    left: !r ? s.scrollLeft + a.left + a.width + 4 : a.left + a.width,
                 }
             case 'bottomRight':
                 return {
-                    top: s.scrollTop + a.top + a.height + 4,
-                    left: s.scrollLeft + a.left + a.width - b.width,
+                    top: !r ? s.scrollTop + a.top + a.height + 4 : a.top + a.height - r.top,
+                    left: !r ? s.scrollLeft + a.left + a.width - b.width : a.left + a.width - b.width,
                 }
             case 'bottom':
                 return {
-                    top: s.scrollTop + a.top + a.height + 4,
-                    left: s.scrollLeft + a.left + (a.width - b.width) / 2,
+                    top: !r ? s.scrollTop + a.top + a.height + 4 : a.top + a.height - r.top,
+                    left: !r ? s.scrollLeft + a.left + (a.width - b.width) / 2 : a.left + (a.width - b.width) / 2,
                 }
             case 'bottomLeft':
                 return {
-                    top: s.scrollTop + a.top + a.height + 4,
-                    left: s.scrollLeft + a.left,
+                    top: !r ? s.scrollTop + a.top + a.height + 4 : a.top + a.height - r.top,
+                    left: !r ? s.scrollLeft + a.left : a.left,
                 }
             case 'leftBottom':
                 return {
-                    top: s.scrollTop + a.top + a.height - b.height,
-                    left: s.scrollLeft + a.left - b.width - 4,
+                    top: !r ? s.scrollTop + a.top + a.height - b.height : a.top + a.height - b.height - r.top,
+                    left: !r ? s.scrollLeft + a.left - b.width - 4 : a.left - b.width,
                 }
             case 'left':
                 return {
-                    top: s.scrollTop + a.top + (a.height - b.height) / 2,
-                    left: s.scrollLeft + a.left - b.width - 4,
+                    top: !r ? s.scrollTop + a.top + (a.height - b.height) / 2 : a.top + (a.height - b.height) / 2 - r.top,
+                    left: !r ? s.scrollLeft + a.left - b.width - 4 : a.left - b.width,
                 }
             case 'leftTop':
                 return {
-                    top: s.scrollTop + a.top,
-                    left: s.scrollLeft + a.left - b.width - 4,
+                    top: !r ? s.scrollTop + a.top : a.top - r.top,
+                    left: !r ? s.scrollLeft + a.left - b.width - 4 : a.left - b.width,
                 }
             default:
                 return {
@@ -137,6 +138,18 @@ baseComponent({
             type: Boolean,
             value: true,
         },
+        useSlot: {
+            type: Boolean,
+            value: true,
+        },
+        slotRect: {
+            type: Object,
+            value: null,
+        },
+        relativeRect: {
+            type: Object,
+            value: null,
+        },
     },
     data: {
         extStyle: '',
@@ -175,21 +188,30 @@ baseComponent({
             }
         },
         getPopoverStyle() {
-            const { prefixCls, placement } = this.data
-            const query = wx.createSelectorQuery().in(this)
-            query.select(`.${prefixCls}__element`).boundingClientRect()
-            query.selectViewport().scrollOffset()
-            query.select(`.${prefixCls}`).boundingClientRect()
-            query.exec((rects) => {
-                if (rects.filter((n) => !n).length) return
+            const { prefixCls, placement, slotRect, relativeRect } = this.data
+            const promises = []
+            if (this.data.useSlot) {
+                promises.push(
+                    useRect(`.${prefixCls}__element`, this)
+                )
+            }
+            promises.push(useScrollOffset(this))
+            promises.push(useRect(`.${prefixCls}`, this))
 
-                const placements = getPlacements(rects, placement)
-                const popoverStyle = styleToCssString(placements)
+            Promise.all(promises)
+                .then((rects) => {
+                    if (rects.filter((n) => !n).length) return
+                    const res = rects.length === 3
+                        ? [...rects, relativeRect]
+                        : [slotRect, ...rects, relativeRect]
 
-                this.setData({
-                    popoverStyle,
+                    const placements = getPlacements(res, placement)
+                    const popoverStyle = styleToCssString(placements)
+
+                    this.setData({
+                        popoverStyle,
+                    })
                 })
-            })
         },
         /**
          * 当组件进入过渡的开始状态时，设置气泡框位置信息
@@ -231,7 +253,6 @@ baseComponent({
         if (this.data.mask) {
             this.$wuxBackdrop = $wuxBackdrop('#wux-backdrop', this)
         }
-
         this.updated(popoverVisible)
     },
 })

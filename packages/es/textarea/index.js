@@ -1,7 +1,8 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import eventsMixin from '../helpers/eventsMixin'
-import styleToCssString from '../helpers/styleToCssString'
+import classNames from '../helpers/libs/classNames'
+import eventsMixin from '../helpers/mixins/eventsMixin'
+import styleToCssString from '../helpers/libs/styleToCssString'
+import { useRect } from '../helpers/hooks/useDOM'
 import { nativeTextareaProps } from './props'
 
 const defaultEvents = {
@@ -107,6 +108,7 @@ baseComponent({
             const extra = `${prefixCls}__extra`
             const count = `${prefixCls}__count`
             const current = `${prefixCls}__current`
+            const keyboardAccessory = `${prefixCls}__keyboard-accessory`
 
             return {
                 wrap,
@@ -118,6 +120,7 @@ baseComponent({
                 extra,
                 count,
                 current,
+                keyboardAccessory,
             }
         }],
     },
@@ -137,10 +140,8 @@ baseComponent({
             const { prefixCls, inputRows } = this.data
 
             if (inputRows !== rows) {
-                wx
-                    .createSelectorQuery()
-                    .in(this).select(`.${prefixCls}__item`)
-                    .boundingClientRect((rect) => {
+                useRect(`.${prefixCls}__item`, this)
+                    .then((rect) => {
                         if (rect) {
                             const lineHeight = inputRows > 1 ? rect.height / inputRows : rect.height
                             const inputHeight = lineHeight * rows
@@ -151,7 +152,6 @@ baseComponent({
                             })
                         }
                     })
-                    .exec()
             }
         },
         updated(inputValue) {

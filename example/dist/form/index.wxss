@@ -1,0 +1,3 @@
+.wux-form__footer {
+  padding: 40rpx 24rpx
+}

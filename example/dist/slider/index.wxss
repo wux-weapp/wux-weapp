@@ -1,14 +1,11 @@
 .wux-slider {
   position: relative;
   z-index: 1;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-align: center;
   align-items: center
 }
 .wux-slider__rail-wrap {
   position: relative;
-  -ms-flex: 1;
   flex: 1;
   width: 100%;
   padding: 30rpx 0

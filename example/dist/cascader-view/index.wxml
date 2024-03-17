@@ -10,7 +10,7 @@
             wx:if="{{ activeOptions.length }}"
         >
              <block wx:for="{{ activeOptions }}" wx:key="index">
-                <wux-tab key="{{ index + '' }}" title="{{ item[fieldNames['label']] + '' }}"></wux-tab>
+                <wux-tab key="{{ index + '' }}" title="{{ item[fieldNames.label] + '' }}"></wux-tab>
              </block>
         </wux-tabs>
     </view>
@@ -25,12 +25,12 @@
                         bind:change="onItemSelect"
                         wx:if="{{ option.length }}"
                     >
-                        <block wx:for="{{ option }}" wx:key="index">
+                        <block wx:for="{{ common.getOptions(option, fieldNames) }}" wx:key="__comp_unique_key">
                             <wux-radio
                                 color="assertive"
-                                title="{{ item[fieldNames['label']] + '' }}"
-                                value="{{ item[fieldNames['value']] }}"
-                                disabled="{{ item[fieldNames['disabled']] }}"
+                                title="{{ item[fieldNames.label] + '' }}"
+                                value="{{ item[fieldNames.value] + '' }}"
+                                disabled="{{ !!item[fieldNames.disabled] }}"
                             />
                         </block>
                     </wux-radio-group>
@@ -39,3 +39,4 @@
         </block>
     </view>
 </view>
+<wxs src="../helpers/wxs/common.wxs" module="common" />

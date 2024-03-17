@@ -1,7 +1,6 @@
 .wux-search-bar {
   position: relative;
   padding: 16rpx 20rpx;
-  display: -ms-flexbox;
   display: flex;
   box-sizing: border-box;
   background-color: #efeff4
@@ -32,7 +31,6 @@
 }
 .wux-search-bar__form {
   position: relative;
-  -ms-flex: 1;
   flex: 1;
   width: 100%;
   height: 56rpx;
@@ -62,11 +60,8 @@
   background: 0 0
 }
 .wux-search-bar__label {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: center;
   justify-content: center;
-  -ms-flex-align: center;
   align-items: center;
   position: absolute;
   top: 2rpx;

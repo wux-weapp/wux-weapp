@@ -1,6 +1,6 @@
 
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
+import classNames from '../helpers/libs/classNames'
 import { props } from './props'
 
 baseComponent({

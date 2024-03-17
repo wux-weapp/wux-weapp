@@ -1,6 +1,7 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import styleToCssString from '../helpers/styleToCssString'
+import classNames from '../helpers/libs/classNames'
+import styleToCssString from '../helpers/libs/styleToCssString'
+import { useRect } from '../helpers/hooks/useDOM'
 
 baseComponent({
     properties: {
@@ -56,21 +57,23 @@ baseComponent({
     methods: {
         setScale() {
             const { prefixCls } = this.data
-            const query = wx.createSelectorQuery().in(this)
-            query.select(`.${prefixCls}`).boundingClientRect()
-            query.select(`.${prefixCls}__string`).boundingClientRect()
-            query.exec((rects) => {
-                if (rects.filter((n) => !n).length) return
+            useRect([`.${prefixCls}`, `.${prefixCls}__string`], this)
+                .then(([parent, child]) => {
+                    const offset = parent.width - 8 < child.width
+                    const childrenScale = offset ? (parent.width - 8) / child.width : 1
+                    const childrenStyle = childrenScale !== 1
+                        ? styleToCssString({
+                            position: 'absolute',
+                            display: 'inline-block',
+                            transform: `scale(${childrenScale})`,
+                            left: `calc(50% - ${Math.round(child.width / 2)}px)`,
+                        })
+                        : ''
 
-                const [parent, child] = rects
-                const offset = parent.width - 8 < child.width
-                const childrenScale = offset ? (parent.width - 8) / child.width : 1
-                const childrenStyle = childrenScale !== 1 ? `position: absolute; display: inline-block; transform: scale(${childrenScale}); left: calc(50% - ${Math.round(child.width / 2)}px)` : ''
-
-                this.setData({
-                    childrenStyle,
+                    this.setData({
+                        childrenStyle,
+                    })
                 })
-            })
         },
     },
     ready() {

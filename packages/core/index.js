@@ -1,13 +1,13 @@
 /**
- * Wux Weapp 3.10.0
+ * Wux Weapp 3.10.1
  * 一套组件化、可复用、易扩展的微信小程序 UI 组件库
  * https://github.com/wux-weapp/wux-weapp#readme
  *
- * Copyright 2017-2023 skyvow
+ * Copyright 2017-2024 skyvow
  *
  * Released under the MIT License
  *
- * Released on: 2023-7-13
+ * Released on: 2024-3-18
  */
 
 import $wuxCountDown from './countdown/index'
@@ -28,9 +28,10 @@ export const getCtx = (selector, ctx = getCurrentPages()[getCurrentPages().lengt
     return componentCtx
 }
 
-const version = '3.10.0'
+const version = '3.10.1'
 const $wuxActionSheet = (selector = '#wux-actionsheet', ctx) => getCtx(selector, ctx)
 const $wuxBackdrop = (selector = '#wux-backdrop', ctx) => getCtx(selector, ctx)
+const $wuxApp = (selector = '#wux-app', ctx) => getCtx(selector, ctx)
 const $wuxDialog = (selector = '#wux-dialog', ctx) => getCtx(selector, ctx)
 const $wuxLoading = (selector = '#wux-loading', ctx) => getCtx(selector, ctx)
 const $wuxNotification = (selector = '#wux-notification', ctx) => getCtx(selector, ctx)
@@ -39,6 +40,7 @@ const $wuxToptips = (selector = '#wux-toptips', ctx) => getCtx(selector, ctx)
 const $wuxCalendar = (selector = '#wux-calendar', ctx) => getCtx(selector, ctx)
 const $wuxForm = (selector = '#wux-form', ctx) => getCtx(selector, ctx)
 const $wuxGallery = (selector = '#wux-gallery', ctx) => getCtx(selector, ctx)
+const $wuxIndex = (selector = '#wux-index', ctx) => getCtx(selector, ctx)
 const $wuxKeyBoard = (selector = '#wux-keyboard', ctx) => getCtx(selector, ctx)
 const $startWuxRefresher = (selector = '#wux-refresher', ctx) => getCtx(selector, ctx).triggerRefresh()
 const $stopWuxRefresher = (selector = '#wux-refresher', ctx) => getCtx(selector, ctx).finishPullToRefresh()
@@ -51,6 +53,7 @@ export {
 	$wuxCountUp,
 	$wuxActionSheet,
 	$wuxBackdrop,
+	$wuxApp,
 	$wuxDialog,
 	$wuxLoading,
 	$wuxNotification,
@@ -59,6 +62,7 @@ export {
 	$wuxCalendar,
 	$wuxForm,
 	$wuxGallery,
+	$wuxIndex,
 	$wuxKeyBoard,
 	$startWuxRefresher,
 	$stopWuxRefresher,

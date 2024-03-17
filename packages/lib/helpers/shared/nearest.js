@@ -1,0 +1,1 @@
+"use strict";function nearest(e,r){return e.reduce(function(e,t){return Math.abs(e-r)<Math.abs(t-r)?e:t})}Object.defineProperty(exports,"__esModule",{value:!0}),exports.nearest=nearest;

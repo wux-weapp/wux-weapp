@@ -4,7 +4,8 @@
         <view class="{{ classes.statusDot }}"></view>
         <view class="{{ classes.statusText }}" wx:if="{{ text }}">{{ text }}</view>
     </view>
-    <view class="{{ classes.dot }}" wx:elif="{{ dot }}"></view>
-    <view class="{{ classes.count }} wux-class-badge" wx:elif="{{ showZero && count === 0 }}">{{ finalCount }}</view>
-    <view class="{{ classes.count }} wux-class-badge" wx:elif="{{ count !== 0 }}">{{ finalCount }}</view>
+    <view class="{{ classes.count }} wux-class-badge" style="{{ badgeStyle }}" wx:elif="{{ title }}">{{ title }}</view>
+    <view class="{{ classes.dot }} wux-class-badge" style="{{ badgeStyle }}" wx:elif="{{ dot }}"></view>
+    <view class="{{ classes.count }} wux-class-badge" style="{{ badgeStyle }}" wx:elif="{{ showZero && count === 0 }}">{{ finalCount }}</view>
+    <view class="{{ classes.count }} wux-class-badge" style="{{ badgeStyle }}" wx:elif="{{ count !== 0 }}">{{ finalCount }}</view>
 </view>

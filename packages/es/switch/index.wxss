@@ -3,8 +3,6 @@
   vertical-align: middle;
   box-sizing: border-box;
   position: relative;
-  -ms-flex-item-align: center;
-  -ms-grid-row-align: center;
   align-self: center;
   cursor: pointer
 }
@@ -58,11 +56,8 @@
 .wux-switch__text {
   position: relative;
   z-index: 10;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: center;
   justify-content: center;
-  -ms-flex-align: center;
   align-items: center;
   height: 100%;
   transition: margin .2s;

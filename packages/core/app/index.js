@@ -1,7 +1,8 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import styleToCssString from '../helpers/styleToCssString'
-import { omit } from '../helpers/omit'
+import classNames from '../helpers/libs/classNames'
+import styleToCssString from '../helpers/libs/styleToCssString'
+import warning from '../helpers/libs/warning'
+import { omit } from '../helpers/shared/omit'
 import { defaults as dialogConfig, defaultOptions as dialogOptions } from '../dialog/utils'
 import { defaults as loadingConfig } from '../loading/utils'
 import { defaults as notificationConfig } from '../notification/utils'
@@ -22,16 +23,16 @@ const appConfig = {
     toptips: omit(toptipsConfig, ['success']),
 }
 
-const warning = (valid, componentName) => {
+const warningUnhooked = (valid, componentName) => {
     if (!valid && console !== undefined) {
-        console.error(`[Warning: ${componentName}] 无法找到对应的组件，请按文档说明使用组件`)
+        warning(false, `<${componentName} /> 无法找到对应的组件，请按文档说明使用组件`)
     }
 }
 
-const useRef = (componentName, vm) => {
+const useComponentRef = (componentName, vm) => {
     const { prefixCls, uuid } = vm.data
     const selector =  `#${prefixCls}__${componentName}-${uuid}`
-    const componentCtx = vm.selectComponent(selector)
+    const componentCtx = vm.querySelector(selector)
 
     return {
         current: componentCtx,
@@ -39,13 +40,13 @@ const useRef = (componentName, vm) => {
 }
 
 const useDialog = (props, vm) => {
-    const holderRef = useRef('dialog', vm)
+    const holderRef = useComponentRef('dialog', vm)
     const wrapAPI = {}
     const keys = ['show', 'open', 'alert', 'confirm', 'prompt']
     keys.forEach((type) => {
         wrapAPI[type] = (config) => {
             if (!holderRef.current) {
-                warning(false, 'Dialog')
+                warningUnhooked(false, 'Dialog')
                 const fakeResult = () => {}
                 fakeResult.then = () => {}
                 return fakeResult
@@ -60,10 +61,10 @@ const useDialog = (props, vm) => {
 }
 
 const useLoading = (props, vm) => {
-    const holderRef = useRef('loading', vm)
+    const holderRef = useComponentRef('loading', vm)
     const show = (config) => {
         if (!holderRef.current) {
-            warning(false, 'Loading')
+            warningUnhooked(false, 'Loading')
             const fakeResult = () => {}
             fakeResult.then = () => {}
             return fakeResult
@@ -82,10 +83,10 @@ const useLoading = (props, vm) => {
 }
 
 const useNotification = (props, vm) => {
-    const holderRef = useRef('notification', vm)
+    const holderRef = useComponentRef('notification', vm)
     const show = (config) => {
         if (!holderRef.current) {
-            warning(false, 'Notification')
+            warningUnhooked(false, 'Notification')
             const fakeResult = () => {}
             fakeResult.then = () => {}
             return fakeResult
@@ -104,13 +105,13 @@ const useNotification = (props, vm) => {
 }
 
 const useToast = (props, vm) => {
-    const holderRef = useRef('toast', vm)
+    const holderRef = useComponentRef('toast', vm)
     const wrapAPI = {}
     const keys = ['show', 'success', 'warning', 'info', 'error']
     keys.forEach((type) => {
         wrapAPI[type] = (config) => {
             if (!holderRef.current) {
-                warning(false, 'Toast')
+                warningUnhooked(false, 'Toast')
                 const fakeResult = () => {}
                 fakeResult.then = () => {}
                 return fakeResult
@@ -125,13 +126,13 @@ const useToast = (props, vm) => {
 }
 
 const useToptips = (props, vm) => {
-    const holderRef = useRef('toptips', vm)
+    const holderRef = useComponentRef('toptips', vm)
     const wrapAPI = {}
     const keys = ['show', 'success', 'warn', 'info', 'error']
     keys.forEach((type) => {
         wrapAPI[type] = (config) => {
             if (!holderRef.current) {
-                warning(false, 'Toptips')
+                warningUnhooked(false, 'Toptips')
                 const fakeResult = () => {}
                 fakeResult.then = () => {}
                 return fakeResult

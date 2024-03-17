@@ -33,7 +33,9 @@
 			bindkeyboardheightchange="onKeyboardHeightChange"
 			style="{{ inputRows > 1 && !!inputHeight ? 'height: ' + inputHeight + 'px' : '' }}"
 		>
-			<slot name="keyboard-accessory"></slot>
+			<keyboard-accessory class="{{ classes.keyboardAccessory }}" style="max-height: 200px;">
+				<slot name="keyboard-accessory"></slot>
+			</keyboard-accessory>
 		</textarea>
 	</view>
 	<view class="{{ classes.clear }}" bindtap="onClear" wx:if="{{ clear && !disabled && inputValue && inputValue.length > 0 }}">
@@ -47,6 +49,6 @@
 		<slot name="footer"></slot>
 	</block>
 	<view class="{{ classes.count }}" wx:if="{{ hasCount }}">
-		<text class="{{ classes.current }}">{{ inputValue.length }}</text>/{{ maxlength === -1 ? '∞' : maxlength }}
+		<text class="{{ classes.current }}">{{ inputValue ? inputValue.length : 0 }}</text>/{{ maxlength === -1 ? '∞' : maxlength }}
 	</view>
 </view>

@@ -1,3 +1,6 @@
 {
-    "component": true
+    "component": true,
+    "usingComponents": {
+        "wux-cell-group": "../cell-group/index"
+    }
 }

@@ -1,22 +1,11 @@
 import baseComponent from '../helpers/baseComponent'
-import eventsMixin from '../helpers/eventsMixin'
+import eventsMixin from '../helpers/mixins/eventsMixin'
+import { nextTick } from '../helpers/hooks/useNativeAPI'
+import * as common from '../helpers/wxs/common'
 import { props } from './props'
 
-function getOptions(options = []) {
-    return options.map((option, index) => {
-        if (typeof option === 'string') {
-            return {
-                title: option,
-                value: option,
-                index,
-            }
-        }
-        return {
-            ...option,
-            index,
-        }
-    })
-}
+const fieldNames = { lable: 'title', value: 'value' }
+const getOptions = (options) => common.getOptions(options, fieldNames)
 
 function getCheckedValues(newVal, oldVal = []) {
     let checkedValues = [...oldVal]
@@ -40,6 +29,7 @@ baseComponent({
     },
     properties: props,
     data: {
+        fieldNames,
         inputValue: [],
         keys: [],
     },
@@ -47,15 +37,39 @@ baseComponent({
         value(newVal) {
             if (this.hasFieldDecorator) return
             this.updated(newVal)
-            this.changeValue(newVal)
+            this.changeValue({ value: newVal })
         },
         inputValue(newVal) {
             if (this.hasFieldDecorator) {
-                this.changeValue(newVal)
+                this.changeValue({ value: newVal })
             }
         },
-        ['options, disabled, readOnly, prefixCls'](options, disabled, readOnly, prefixCls) {
-            this.changeValue(this.data.inputValue, options, disabled, readOnly, prefixCls)
+        ['options, disabled, readOnly, hasLine, withListComponent, iconPosition, iconSize, iconOn, iconOff, prefixCls'](...args) {
+            const [
+                options,
+                disabled,
+                readOnly,
+                hasLine,
+                withListComponent,
+                iconPosition,
+                iconSize,
+                iconOn,
+                iconOff,
+                prefixCls,
+            ] = args
+            this.changeValue({
+                value: this.data.inputValue,
+                options,
+                disabled,
+                readOnly,
+                hasLine,
+                withListComponent,
+                iconPosition,
+                iconSize,
+                iconOn,
+                iconOff,
+                prefixCls,
+            })
         },
     },
     methods: {
@@ -64,13 +78,25 @@ baseComponent({
                 this.setData({ inputValue })
             }
         },
-        changeValue(
-            value = this.data.inputValue,
-            options = this.data.options,
-            disabled = this.data.disabled,
-            readOnly = this.data.readOnly,
-            prefixCls = this.data.prefixCls,
-        ) {
+        changeValue(props = {}) {
+            const {
+                value,
+                options,
+                disabled,
+                readOnly,
+                hasLine,
+                withListComponent,
+                iconPosition,
+                iconSize,
+                iconOn,
+                iconOff,
+                prefixCls,
+            } = {
+                ...this.data,
+                value: this.data.inputValue,
+                ...props,
+            }
+
             const showOptions = getOptions(options)
 
             const setChildrenValues = (children) => {
@@ -84,6 +110,14 @@ baseComponent({
                         child.changeValue(active, index, isLast, {
                             disabled,
                             readOnly,
+                            hasLine,
+                            // 如果使用 <Field /> 组件包裹时，子组件的 hasLine 属性无效
+                            hasFieldDecorator: !!this.hasFieldDecorator,
+                            withListComponent,
+                            iconPosition,
+                            iconSize,
+                            iconOn,
+                            iconOff,
                         })
                         keys.push(child.data)
                     })
@@ -96,10 +130,10 @@ baseComponent({
                 }
             }
 
-            wx.nextTick(() => {
+            nextTick(() => {
                 const elements = showOptions.length > 0
-                    ? this.selectAllComponents(`.${prefixCls}__checkbox`)
-                    : this.getRelationNodes('../checkbox/index')
+                    ? this.querySelectorAll(`.${prefixCls}__checkbox`)
+                    : this.getRelationsByName('../checkbox/index')
 
                 setChildrenValues(elements)
             })
@@ -145,7 +179,7 @@ baseComponent({
             }
         },
         getBoundingClientRect(callback) {
-            this.cellGroup = this.cellGroup || this.selectComponent('#wux-cell-group')
+            this.cellGroup = this.cellGroup || this.querySelector('#wux-cell-group')
             return this.cellGroup && this.cellGroup.getBoundingClientRect(callback)
         },
     },

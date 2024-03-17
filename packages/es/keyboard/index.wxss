@@ -6,11 +6,8 @@
 }
 .wux-keyboard__hd {
   height: 80rpx;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: center;
   justify-content: center;
-  -ms-flex-align: center;
   align-items: center;
   color: #1f2324;
   font-size: 30rpx;
@@ -30,7 +27,6 @@
 }
 .wux-keyboard__bd {
   margin: 30rpx 80rpx;
-  display: -ms-flexbox;
   display: flex;
   position: relative;
   background-color: #fff
@@ -44,14 +40,10 @@
   box-sizing: border-box
 }
 .wux-keyboard__label {
-  -ms-flex: 1;
   flex: 1;
   position: relative;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: center;
   justify-content: center;
-  -ms-flex-align: center;
   align-items: center;
   height: 100rpx
 }
@@ -115,22 +107,17 @@
   background-color: #fff
 }
 .wux-keyboard__number {
-  display: -ms-flexbox;
   display: flex;
   width: 100%
 }
 .wux-keyboard__text {
-  display: -ms-flexbox;
   display: flex;
   width: 1%;
-  -ms-flex: 1;
   flex: 1;
   color: #222;
   height: 50px;
   position: relative;
-  -ms-flex-pack: center;
   justify-content: center;
-  -ms-flex-align: center;
   align-items: center;
   overflow: hidden
 }

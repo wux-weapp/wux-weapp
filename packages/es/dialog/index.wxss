@@ -15,7 +15,6 @@
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
   display: block;
-  -ms-flex: 1;
   flex: 1;
   color: #33cd5f!important;
   position: relative
@@ -105,9 +104,7 @@
   box-sizing: border-box
 }
 .wux-dialog__buttons {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex: 1;
   flex: 1
 }
 .wux-dialog__buttons--horizontal .wux-dialog__button::after {

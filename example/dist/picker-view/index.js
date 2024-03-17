@@ -1,10 +1,11 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import shallowEqual from '../helpers/shallowEqual'
-import styleToCssString from '../helpers/styleToCssString'
-import { getTouchPoints, getPointsNumber } from '../helpers/gestures'
-import { getSystemInfo } from '../helpers/checkIPhoneX'
-import { defaultFieldNames, props } from './props'
+import classNames from '../helpers/libs/classNames'
+import shallowEqual from '../helpers/libs/shallowEqual'
+import styleToCssString from '../helpers/libs/styleToCssString'
+import fieldNamesBehavior from '../helpers/mixins/fieldNamesBehavior'
+import { getTouchPoints, getPointsNumber } from '../helpers/shared/gestures'
+import { vibrateShort } from '../helpers/hooks/useNativeAPI'
+import {  props } from './props'
 import {
     getRealCol,
     getRealValue,
@@ -17,6 +18,7 @@ function getStyles(value) {
 }
 
 baseComponent({
+    behaviors: [fieldNamesBehavior],
     properties: props,
     data: {
         inputValue: null,
@@ -27,7 +29,6 @@ baseComponent({
         extItemStyle: '',
         extMaskStyle: '',
         contentStyle: '',
-        fieldNames: defaultFieldNames,
         itemCount: 7, // 默认显示的子元素个数
         styles: {},
     },
@@ -71,7 +72,7 @@ baseComponent({
         },
         ['value, options'](value, options) {
             const { controlled } = this.data
-            const fieldNames = Object.assign({}, defaultFieldNames, this.data.defaultFieldNames)
+            const fieldNames = this.getFieldNames()
             const cols = getRealCol(options, fieldNames)
 
             if (!shallowEqual(this.data.cols, cols)) {
@@ -135,7 +136,7 @@ baseComponent({
             this.updated(inputValue, isForce)
         },
         getValue(value = this.data.inputValue, cols = this.data.cols) {
-            const { fieldNames } = this.data
+            const fieldNames = this.getFieldNames()
             const inputValue = getRealValue(value, cols, fieldNames) || null
             const selectedValue = inputValue
             const selectedIndex = getIndexFromValue(value, cols, fieldNames)
@@ -196,7 +197,8 @@ baseComponent({
 
             // check disabled & reset
             const child = this.getChildMeta(targetY, itemHeight)
-            if (child && !child.disabled) {
+            const disabledName = this.getFieldName('disabled')
+            if (child && !child[disabledName]) {
                 this.scrollTo(targetY, time < .3 ? .3 : time)
             } else {
                 this.select(this.data.inputValue, itemHeight, (y) => this.scrollTo(y, 0, false))
@@ -253,7 +255,8 @@ baseComponent({
          * 设置选择器
          */
         select(value, itemHeight, scrollTo) {
-            const { cols: children, fieldNames } = this.data
+            const fieldNames = this.getFieldNames()
+            const { cols: children } = this.data
             const index = getIndexFromValue(value, children, fieldNames)
             this.selectByIndex(index, itemHeight, scrollTo)
         },
@@ -275,7 +278,7 @@ baseComponent({
          * 获取子元素的属性
          */
         getChildMeta(top, itemHeight) {
-            const { cols: children, fieldNames } = this.data
+            const { cols: children } = this.data
             const index = this.computeChildIndex(top, itemHeight, children.length)
             const child = children[index]
             return child
@@ -286,10 +289,11 @@ baseComponent({
         scrollingComplete() {
             const top = this.scrollY
             if (top >= 0) {
-                const { itemHeight, fieldNames } = this.data
+                const valueName = this.getFieldName('value')
+                const { itemHeight } = this.data
                 const child = this.getChildMeta(top, itemHeight)
                 if (child) {
-                    const inputValue = child[fieldNames.value]
+                    const inputValue = child[valueName]
                     if (this.data.inputValue !== inputValue) {
                         this.fireValueChange(inputValue)
                     }
@@ -302,18 +306,19 @@ baseComponent({
         onScrollChange() {
             const top = this.scrollY
             if (top >= 0) {
-                const { cols: children, itemHeight, fieldNames } = this.data
+                const valueName = this.getFieldName('value')
+                const { cols: children, itemHeight } = this.data
                 const index = this.computeChildIndex(top, itemHeight, children.length)
                 if (this.scrollValue !== index) {
                     this.scrollValue = index
                     const child = children[index]
                     if (child) {
-                        const values = this.getValue(child[fieldNames.value])
+                        const values = this.getValue(child[valueName])
                         this.triggerEvent('scrollChange', values)
                     }
 
                     // 振动反馈
-                    this.vibrateShort()
+                    vibrateShort()
                 }
             }
         },
@@ -327,17 +332,10 @@ baseComponent({
             this.triggerEvent('valueChange', this.getValue(value))
 
             // 振动反馈
-            this.vibrateShort()
+            vibrateShort()
         },
     },
     created() {
-        const systemInfo = getSystemInfo()
-        this.vibrateShort = () => {
-            if (systemInfo.platform !== 'devtools') {
-                wx.vibrateShort()
-            }
-        }
-
         this.scrollValue = undefined
         this.scrollY = -1
         this.lastY = 0
@@ -371,11 +369,11 @@ baseComponent({
     attached() {
         const { defaultValue, value, controlled, options, itemHeight } = this.data
         const inputValue = controlled ? value : defaultValue
-        const fieldNames = Object.assign({}, defaultFieldNames, this.data.defaultFieldNames)
+        const fieldNames = this.getFieldNames()
         const cols = getRealCol(options, fieldNames)
         
         this.updatedStyles(itemHeight)
-        this.setData({ cols, fieldNames })
+        this.setData({ cols })
         this.setValue(inputValue, true)
     },
 })

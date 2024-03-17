@@ -1,5 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
+import classNames from '../helpers/libs/classNames'
+import { chooseMedia, uploadFile } from '../helpers/hooks/useNativeAPI'
 
 baseComponent({
     properties: {
@@ -184,8 +185,7 @@ baseComponent({
             } = this.data
             const { uploadCount: count } = this.calcValue(uploadCount, uploadMax - fileList.length)
             const success = (res) => {
-                res.tempFilePaths = res.tempFilePaths || [res.tempFilePath]
-                this.tempFilePaths = res.tempFilePaths.map((item) => ({ url: item, uid: this.getUid() }))
+                this.tempFilePaths = res.tempFiles.map((item) => ({ url: item.tempFilePath, uid: this.getUid() }))
                 this.triggerEvent('before', {...res, fileList })
 
                 // 判断是否取消默认的上传行为
@@ -199,7 +199,8 @@ baseComponent({
 
             // choose video
             if (isVideo) {
-                wx.chooseVideo({
+                chooseMedia({
+                    mediaType: ['video'],
                     sourceType,
                     compressed,
                     maxDuration,
@@ -211,7 +212,8 @@ baseComponent({
             }
 
             // choose image
-            wx.chooseImage({
+            chooseMedia({
+                mediaType: ['image'],
                 count,
                 sizeType,
                 sourceType,
@@ -344,7 +346,7 @@ baseComponent({
 
             this.onStart(file)
 
-            this.uploadTask[uid] = wx.uploadFile({
+            this.uploadTask[uid] = uploadFile({
                 url,
                 filePath,
                 name,

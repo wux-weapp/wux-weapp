@@ -23,7 +23,6 @@
 }
 .wux-select__inner {
   height: 88rpx;
-  display: -ms-flexbox;
   display: flex;
   text-align: center
 }
@@ -57,4 +56,7 @@
 }
 .wux-select__button--hover {
   background-color: #ececec
+}
+.wux-select__button--disabled {
+  opacity: .3
 }

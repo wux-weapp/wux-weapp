@@ -1,0 +1,40 @@
+@import "../styles/mixins/index.less";
+@import "../styles/themes/index.less";
+
+.@{wux-prefix}-safe-area {
+    --safe-area-inset-top: @safe-area-inset-top;
+    --safe-area-inset-bottom: @safe-area-inset-bottom;
+    --safe-area-multiple: @safe-area-multiple;
+
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+
+    &--position-top {
+        padding-top: calc(~"var(--safe-area-inset-top) * var(--safe-area-multiple)");
+    }
+
+    &--position-top&--supports {
+        @supports (padding-top: constant(safe-area-inset-top)) {
+            padding-top: calc(~"constant(safe-area-inset-top) * var(--safe-area-multiple)");
+        }
+
+        @supports (padding-top: env(safe-area-inset-top)) {
+            padding-top: calc(~"env(safe-area-inset-top) * var(--safe-area-multiple)");
+        }
+    }
+
+    &--position-bottom {
+        padding-bottom: calc(~"var(--safe-area-inset-bottom) * var(--safe-area-multiple)");
+    }
+
+    &--position-bottom&--supports {
+        @supports (padding-bottom: constant(safe-area-inset-bottom)) {
+            padding-bottom: calc(~"constant(safe-area-inset-bottom) * var(--safe-area-multiple)");
+        }
+
+        @supports (padding-bottom: env(safe-area-inset-bottom)) {
+            padding-bottom: calc(~"env(safe-area-inset-bottom) * var(--safe-area-multiple)");
+        }
+    }
+}

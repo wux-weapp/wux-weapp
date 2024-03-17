@@ -1,8 +1,9 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import styleToCssString from '../helpers/styleToCssString'
-import eventsMixin from '../helpers/eventsMixin'
-import withNativeRoutes from '../helpers/withNativeRoutes'
+import classNames from '../helpers/libs/classNames'
+import styleToCssString from '../helpers/libs/styleToCssString'
+import eventsMixin from '../helpers/mixins/eventsMixin'
+import { useNativeRoute } from '../helpers/hooks/useNativeRoute'
+import { useRect } from '../helpers/hooks/useDOM'
 
 const defaultEvents = {
     onClick() {},
@@ -123,18 +124,23 @@ baseComponent({
                 })
             },
         },
+        align: {
+            type: String,
+            value: 'center',
+        },
     },
     data: {
         isLast: false,
         extStyle: '',
     },
     computed: {
-        classes: ['prefixCls, hoverClass, isLast, hasLine, isLink, disabled', function(prefixCls, hoverClass, isLast, hasLine, isLink, disabled) {
+        classes: ['prefixCls, hoverClass, isLast, hasLine, isLink, disabled, align', function(prefixCls, hoverClass, isLast, hasLine, isLink, disabled, align) {
             const wrap = classNames(prefixCls, {
                 [`${prefixCls}--last`]: isLast,
                 [`${prefixCls}--has-line`]: hasLine,
                 [`${prefixCls}--access`]: isLink,
                 [`${prefixCls}--disabled`]: disabled,
+                [`${prefixCls}--align-${align}`]: align,
             })
             const hd = `${prefixCls}__hd`
             const thumb = `${prefixCls}__thumb`
@@ -142,6 +148,7 @@ baseComponent({
             const text = `${prefixCls}__text`
             const desc = `${prefixCls}__desc`
             const ft = `${prefixCls}__ft`
+            const arrow = `${prefixCls}__arrow`
             const hover = hoverClass && hoverClass !== 'default' ? hoverClass : `${prefixCls}--hover`
 
             return {
@@ -152,6 +159,7 @@ baseComponent({
                 text,
                 desc,
                 ft,
+                arrow,
                 hover,
             }
         }],
@@ -162,7 +170,7 @@ baseComponent({
             if (!disabled) {
                 this.triggerEvent('click')
                 if (isLink && url) {
-                    withNativeRoutes({
+                    useNativeRoute({
                         url,
                         openType,
                         delta,
@@ -194,6 +202,13 @@ baseComponent({
         updateIsLastElement(isLast) {
             if(isLast === this.data.isLast) return;
             this.setData({ isLast })
+        },
+        getBoundingClientRect(callback) {
+            useRect(`.${this.data.prefixCls}`, this)
+                .then((rect) => {
+                    if (!rect) return
+                    callback.call(this, rect.height, rect)
+                })
         },
     },
 })

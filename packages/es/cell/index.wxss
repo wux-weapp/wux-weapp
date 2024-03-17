@@ -16,9 +16,7 @@
   -webkit-tap-highlight-color: transparent;
   padding: 20rpx 30rpx;
   position: relative;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-align: center;
   align-items: center;
   background: #fff
 }
@@ -33,6 +31,12 @@
   border-radius: 0;
   transform: none;
   transform-origin: 0 0
+}
+.wux-cell--align-flex-start {
+  align-items: flex-start
+}
+.wux-cell--align-center {
+  align-items: center
 }
 .wux-cell--has-line.wux-cell::after {
   content: " ";
@@ -63,7 +67,6 @@
   margin-right: 10rpx
 }
 .wux-cell__bd {
-  -ms-flex: 1;
   flex: 1
 }
 .wux-cell__text {
@@ -76,14 +79,22 @@
   color: rgba(0,0,0,.45)
 }
 .wux-cell__ft {
+  display: flex;
+  align-self: center;
   text-align: right;
   color: rgba(0,0,0,.45)
 }
-.wux-cell--access .wux-cell__ft {
-  padding-right: 34rpx;
+.wux-cell__arrow:not(:empty) {
+  flex: none;
+  display: flex;
+  align-items: center;
+  margin-left: 10rpx
+}
+.wux-cell--access > .wux-cell__ft {
+  padding-right: 38rpx;
   position: relative
 }
-.wux-cell--access .wux-cell__ft::after {
+.wux-cell--access > .wux-cell__ft::after {
   content: " ";
   display: inline-block;
   width: 30rpx;

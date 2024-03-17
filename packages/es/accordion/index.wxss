@@ -9,9 +9,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-align: center;
   align-items: center
 }
 .wux-accordion__hd::after {

@@ -1,6 +1,6 @@
 import baseComponent from '../helpers/baseComponent'
-import classNames from '../helpers/classNames'
-import eventsMixin from '../helpers/eventsMixin'
+import classNames from '../helpers/libs/classNames'
+import eventsMixin from '../helpers/mixins/eventsMixin'
 import { isPresetColor } from '../helpers/colors'
 
 baseComponent({

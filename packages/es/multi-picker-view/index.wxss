@@ -1,8 +1,5 @@
 .wux-picker {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-align: center;
   align-items: center;
-  -ms-flex-direction: row;
   flex-direction: row
 }

@@ -1,0 +1,78 @@
+<wux-virtual-list
+    id="wux-virtual-list"
+    height="{{ height }}"
+    itemHeight="{{ 46 }}"
+    itemBuffer="{{ 12 }}"
+    bind:change="onVirtualChange"
+    wx:if="{{ options.length > 0 }}"
+>
+    <wux-radio-group
+        id="wux-select"
+        bodyStyle="{{ { position: 'unset' } }}"
+        value="{{ common.getValue(value, 'radio') }}"
+        iconPosition="{{ iconPosition || 'right' }}"
+        bind:change="onValueChange"
+        wx:if="{{ !multiple }}"
+    >   
+        <wux-virtual-item wx:for="{{ virtual.items }}" wx:for-item="option" wx:key="value" wx:if="{{ virtual && virtual.items.length > 0 }}">
+            <wux-cell
+                wrapStyle="{{ { height: 46 } }}"
+                title="{{ option.title }}"
+                hoverClass="none"
+                data-group="{{ option.isGroup }}"
+                wx:if="{{ option.isGroup }}"
+            />
+            <wux-radio
+                wrapStyle="{{ option.isGroupOption ? { paddingLeft: 30, height: 46 } : { height: 46 } }}"
+                prefixCls="{{ option.prefixCls || 'wux-radio' }}"
+                cellPrefixCls="{{ option.cellPrefixCls || 'wux-cell' }}"
+                selectablePrefixCls="{{ option.selectablePrefixCls || 'wux-selectable' }}"
+                thumb="{{ option.thumb || '' }}"
+                title="{{ option.title || '' }}"
+                label="{{ option.label || '' }}"
+                value="{{ option.value || '' }}"
+                checked="{{ common.getChecked(value, option.value, 'radio') }}"
+                disabled="{{ option.disabled }}"
+                color="{{ option.color || 'balanced' }}"
+                data-index="{{ startIndex + index }}"
+                data-group-option="{{ option.isGroupOption }}"
+                wx:else
+            />
+        </wux-virtual-item>
+    </wux-radio-group>
+    <wux-checkbox-group
+        id="wux-select"
+        bodyStyle="{{ { position: 'unset' } }}"
+        value="{{ common.getValue(value) }}"
+        iconPosition="{{ iconPosition || 'left' }}"
+        bind:change="onValueChange"
+        wx:else
+    >
+        <wux-virtual-item wx:for="{{ virtual.items }}" wx:for-item="option" wx:key="value" wx:if="{{ virtual && virtual.items.length > 0 }}">
+            <wux-cell
+                wrapStyle="{{ { height: 46 } }}"
+                title="{{ option.title }}"
+                hoverClass="none"
+                data-group="{{ option.isGroup }}"
+                wx:if="{{ option.isGroup }}"
+            />
+            <wux-checkbox
+                wrapStyle="{{ option.isGroupOption ? { paddingLeft: 30, height: 46 } : { height: 46 } }}"
+                prefixCls="{{ option.prefixCls || 'wux-checkbox' }}"
+                cellPrefixCls="{{ option.cellPrefixCls || 'wux-cell' }}"
+                selectablePrefixCls="{{ option.selectablePrefixCls || 'wux-selectable' }}"
+                title="{{ option.title || '' }}"
+                label="{{ option.label || '' }}"
+                extra="{{ option.extra || '' }}"
+                value="{{ option.value || '' }}"
+                checked="{{ common.getChecked(value, option.value) }}"
+                disabled="{{ option.disabled }}"
+                color="{{ option.color || 'balanced' }}"
+                data-index="{{ startIndex + index }}"
+                data-group-option="{{ option.isGroupOption }}"
+                wx:else
+            />
+        </wux-virtual-item>
+    </wux-checkbox-group>
+</wux-virtual-list>
+<wxs src="../helpers/wxs/common.wxs" module="common" />

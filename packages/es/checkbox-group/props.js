@@ -39,4 +39,28 @@ export const props = {
         type: [String, Object],
         value: '',
     },
+    hasLine: {
+        type: Boolean,
+        value: true,
+    },
+    withListComponent: {
+        type: Boolean,
+        value: true,
+    },
+    iconPosition: {
+        type: String,
+        value: 'left',
+    },
+    iconSize: {
+        type: String,
+        value: '',
+    },
+    iconOn: {
+        type: String,
+        value: '',
+    },
+    iconOff: {
+        type: String,
+        value: '',
+    },
 }
