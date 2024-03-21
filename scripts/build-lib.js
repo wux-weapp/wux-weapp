@@ -38,7 +38,7 @@ paths.copy.src = [
     ...files.map((v) => `${srcPath}/${v}/**`),
     `!${srcPath}/**/*.less`,
     `!${srcPath}/icon/fonts/**`,
-    // `${srcPath}/helpers/**`,
+    `${srcPath}/helpers/**/*.wxs`,
     // `${srcPath}/index.js`,
     `${srcPath}/config.json`,
 ]
