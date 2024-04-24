@@ -1,3 +1,5 @@
+import warning from '../helpers/libs/warning'
+
 export const DATETIME = 'datetime'
 export const DATE = 'date'
 export const TIME = 'time'
@@ -37,6 +39,23 @@ export function isTillNow(value) {
     return value && (value.tillNow || value[0] === TILL_NOW)
 }
 
+export const modeRecord = {
+    datetime: 'yyyy-MM-dd hh:mm',
+    date: 'yyyy-MM-dd',
+    year: 'yyyy',
+    month: 'yyyy-MM',
+    time: 'hh:mm',
+}
+
+export const makePattern = (str) => new RegExp(`^${str.replace(/[a-zA-Z]/g, '\\d')}$`)
+
+export const isDateString = (value) =>
+    Object.keys(modeRecord).some((key) => makePattern(modeRecord[key]).test(value))
+
+export function isInvalidDate(date) {
+    return isNaN(Date.parse(date)) && isNaN(new Date(date).getTime())
+}
+
 export function convertStringArrayToDate(value, props = {}) {
     // Till Now
     if (isTillNow(value)) {
@@ -45,13 +64,36 @@ export function convertStringArrayToDate(value, props = {}) {
 
     // dateString or Unix 时间戳
     if (!Array.isArray(value)) {
-        if (typeof value === 'string') {
+        const originalValue = value
+
+        if (typeof value === 'string' && isDateString(value)) {
+            const now = new Date()
+            // fix yyyy to yyyy-MM-dd
+            if (makePattern(modeRecord.year).test(value)) {
+                value = `${value}-${now.getMonth()}-${now.getDate()}`
+            }
+            // fix yyyy-MM to yyyy-MM-dd
+            if (makePattern(modeRecord.month).test(value)) {
+                value = `${value}-${now.getDate()}`
+            }
+            // fix hh:mm to yyyy-MM-dd hh:mm
+            if (makePattern(modeRecord.time).test(value)) {
+                value = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()} ${value}`
+            }
+            // fix ios
             value = value.replace(/\-/g, '/')
-        }
-        if (!isNaN(parseInt(value))) {
+        } else if (!isNaN(parseInt(value))) {
             value = parseInt(value)
         }
-        return new Date(value)
+
+        const newDate = new Date(value)
+
+        if (isInvalidDate(newDate)) {
+            warning(false, `${originalValue} not a date.`)
+            return new Date()
+        }
+
+        return newDate
     }
 
     const { mode, use12Hours } = props

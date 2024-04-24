@@ -180,10 +180,23 @@ baseComponent({
             }
             return date
         },
+        isValidStringArray(value) {
+            if (!value) { return false }
+            if (value instanceof Date) { return true }
+            if (typeof value === 'string' || typeof value === 'number') {
+                return value.toString().length > 0
+            }
+            if (Array.isArray(value)) {
+                return value.length > 0
+            }
+            return true
+        },
         getDate(d) {
             const date = d ? d : this.data.value
             return this.clipDate(
-                date ? convertStringArrayToDate(date, this.data) : this.getMinDate()
+                this.isValidStringArray(date)
+                    ? convertStringArrayToDate(date, this.data)
+                    : this.getMinDate()
             )
         },
         getDateData(date) {
