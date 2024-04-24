@@ -37,6 +37,20 @@
         font-size: 12px;
     }
 
+    &__ft {
+        display: flex;
+        align-self: center;
+        text-align: right;
+    }
+
+    &__closable:not(:empty) {
+        flex: none;
+        display: flex;
+        align-items: center;
+        margin-left: @margin-component-base;
+        cursor: pointer;
+    }
+
     .alert(light, @alert-light-bg);
     .alert(stable, @alert-stable-bg);
     .alert(positive, @alert-positive-bg);

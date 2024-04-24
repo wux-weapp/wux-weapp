@@ -16,7 +16,9 @@
   -webkit-tap-highlight-color: transparent;
   padding: 20rpx 30rpx;
   position: relative;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-align: center;
   align-items: center;
   background: #fff
 }
@@ -33,9 +35,11 @@
   transform-origin: 0 0
 }
 .wux-cell--align-flex-start {
+  -ms-flex-align: start;
   align-items: flex-start
 }
 .wux-cell--align-center {
+  -ms-flex-align: center;
   align-items: center
 }
 .wux-cell--has-line.wux-cell::after {
@@ -58,7 +62,8 @@
   background-color: #ececec!important
 }
 .wux-cell--disabled {
-  opacity: .3
+  opacity: .3;
+  cursor: not-allowed
 }
 .wux-cell__thumb {
   width: 40rpx;
@@ -67,6 +72,7 @@
   margin-right: 10rpx
 }
 .wux-cell__bd {
+  -ms-flex: 1;
   flex: 1
 }
 .wux-cell__text {
@@ -79,14 +85,19 @@
   color: rgba(0,0,0,.45)
 }
 .wux-cell__ft {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-item-align: center;
   align-self: center;
   text-align: right;
   color: rgba(0,0,0,.45)
 }
 .wux-cell__arrow:not(:empty) {
+  -ms-flex: none;
   flex: none;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-align: center;
   align-items: center;
   margin-left: 10rpx
 }

@@ -1,1 +1,1 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.bound=void 0;var bound=exports.bound=function(e,o,t){var r=e;return void 0!==o&&(r=Math.max(e,o)),r=void 0!==t?Math.min(r,t):r};
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.bound=void 0;var bound=function(o,e,t){var r=o;return void 0!==e&&(r=Math.max(o,e)),void 0!==t&&(r=Math.min(r,t)),r};exports.bound=bound;

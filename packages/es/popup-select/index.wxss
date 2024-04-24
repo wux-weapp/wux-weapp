@@ -3,8 +3,11 @@
 }
 .wux-select__prompt {
   position: relative;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: center;
   justify-content: center;
+  -ms-flex-align: center;
   align-items: center;
   min-height: 270rpx;
   padding: 48rpx 24rpx;
@@ -32,6 +35,7 @@
 }
 .wux-select__inner {
   height: 88rpx;
+  display: -ms-flexbox;
   display: flex;
   text-align: center
 }
@@ -53,7 +57,8 @@
   height: 88rpx;
   line-height: 88rpx;
   padding: 0 30rpx;
-  z-index: 10
+  z-index: 10;
+  cursor: pointer
 }
 .wux-select__button--cancel {
   left: 0;
@@ -67,5 +72,6 @@
   background-color: #ececec
 }
 .wux-select__button--disabled {
-  opacity: .3
+  opacity: .3;
+  cursor: not-allowed
 }

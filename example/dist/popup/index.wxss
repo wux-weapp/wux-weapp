@@ -30,6 +30,7 @@
   position: relative;
   line-height: 96rpx;
   font-size: 36rpx;
+  display: -ms-flexbox;
   display: flex
 }
 .wux-popup__close {
@@ -42,11 +43,16 @@
   right: 12rpx;
   height: 42rpx;
   width: 42rpx;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: center;
   justify-content: center;
-  align-items: center
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer
 }
 .wux-popup__close-x {
+  cursor: pointer;
   display: inline-block;
   width: 30rpx;
   height: 30rpx;

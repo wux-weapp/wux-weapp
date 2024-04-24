@@ -1,6 +1,9 @@
 .wux-footer {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -ms-flex-align: center;
   align-items: center;
   background-color: #fff;
   color: rgba(0,0,0,.65);
@@ -20,13 +23,17 @@
   cursor: pointer
 }
 .wux-footer__content {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-align: center;
   align-items: center;
   margin: 20rpx 0;
   color: rgba(0,0,0,.45)
 }
 .wux-footer__chips {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-align: center;
   align-items: center;
   white-space: nowrap;
   margin: 20rpx 0

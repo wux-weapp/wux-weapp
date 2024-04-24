@@ -138,6 +138,7 @@ baseComponent({
             const form = `${prefixCls}__form`
             const box = `${prefixCls}__box`
             const search = `${prefixCls}__search`
+            const control = `${prefixCls}__control`
             const input = `${prefixCls}__input`
             const clear = `${prefixCls}__clear`
             const label = `${prefixCls}__label`
@@ -150,6 +151,7 @@ baseComponent({
                 form,
                 box,
                 search,
+                control,
                 input,
                 clear,
                 label,

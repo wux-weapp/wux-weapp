@@ -1,1 +1,1 @@
-.wux-radio__selectable{position:static!important}.wux-radio__icon-position{display:flex;align-items:center}.wux-radio__icon-selectable{min-width:52rpx;margin-right:30rpx}.wux-radio__thumb{width:40rpx;height:40rpx;display:block;margin-right:10rpx}
+.wux-radio__selectable{position:static!important}.wux-radio__icon-position{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}.wux-radio__icon-selectable{min-width:52rpx;margin-right:30rpx}.wux-radio__thumb{width:40rpx;height:40rpx;display:block;margin-right:10rpx}

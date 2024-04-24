@@ -2,7 +2,9 @@
   position: relative;
   min-height: 192rpx;
   padding-bottom: 12rpx;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-direction: column;
   flex-direction: column;
   background-color: #fff
 }
@@ -43,9 +45,11 @@
 }
 .wux-card__hd {
   position: relative;
+  display: -ms-flexbox;
   display: flex;
   font-size: 34rpx;
   padding: 18rpx 30rpx;
+  -ms-flex-align: center;
   align-items: center
 }
 .wux-card__hd::before {
@@ -61,6 +65,7 @@
   transform: scaleY(.5)
 }
 .wux-card__content {
+  -ms-flex: 1;
   flex: 1;
   text-align: left;
   color: #000
@@ -76,6 +81,7 @@
   vertical-align: middle
 }
 .wux-card__extra {
+  -ms-flex: 1;
   flex: 1;
   text-align: right;
   font-size: 34rpx;
@@ -89,6 +95,7 @@
   min-height: 80rpx
 }
 .wux-card__ft {
+  display: -ms-flexbox;
   display: flex;
   font-size: 28rpx;
   color: rgba(0,0,0,.45);
@@ -96,10 +103,13 @@
 }
 .wux-card__actions {
   position: relative;
+  display: -ms-flexbox;
   display: flex;
   line-height: 100rpx;
   margin-top: 12rpx;
+  -ms-flex-pack: center;
   justify-content: center;
+  -ms-flex-align: center;
   align-items: center
 }
 .wux-card__actions::before {
@@ -117,6 +127,7 @@
 .wux-card__action {
   position: relative;
   display: block;
+  -ms-flex: 1;
   flex: 1;
   color: #33cd5f;
   text-align: center
@@ -176,5 +187,6 @@
   background-color: #ececec!important
 }
 .wux-card__action--disabled {
-  opacity: .3
+  opacity: .3;
+  cursor: not-allowed
 }

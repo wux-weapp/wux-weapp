@@ -59,7 +59,8 @@
   border: 2rpx solid transparent
 }
 .wux-button--disabled {
-  opacity: .4!important
+  opacity: .4!important;
+  cursor: not-allowed!important
 }
 .wux-button--small {
   padding: 4rpx 8rpx 2rpx;

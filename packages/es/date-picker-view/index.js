@@ -2,97 +2,23 @@ import baseComponent from '../helpers/baseComponent'
 import classNames from '../helpers/libs/classNames'
 import locales from './locales/index'
 import { props } from './props'
-
-const DATETIME = 'datetime'
-const DATE = 'date'
-const TIME = 'time'
-const MONTH = 'month'
-const YEAR = 'year'
-const ONE_DAY = 24 * 60 * 60 * 1000
-
-function fomartArray(min, max, step = 1) {
-    let i = min
-    let result = []
-    while (i <= max) {
-        result.push(i)
-        i+=step
-    }
-    return result
-}
-
-function getDaysInMonth(date) {
-    return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate()
-}
-
-function pad(n) {
-    return n < 10 ? `0${n}` : n + ''
-}
-
-function cloneDate(date) {
-    return new Date(+date)
-}
-
-function setMonth(date, month) {
-    date.setDate(Math.min(date.getDate(), getDaysInMonth(new Date(date.getFullYear(), month))))
-    date.setMonth(month)
-}
-
-function valueToDate(value, props = {}) {
-    if (!Array.isArray(value)) {
-        if (typeof value === 'string') {
-            value = value.replace(/\-/g, '/')
-        }
-        if (!isNaN(Number(value))) {
-            value = Number(value)
-        }
-        return new Date(value)
-    }
-
-    const { mode, use12Hours } = props
-    const now = new Date()
-    const year = now.getFullYear()
-    const month = now.getMonth()
-    const day = now.getDate()
-    const newValue = value.map((v) => Number(v))
-    if (use12Hours && [DATETIME, TIME].includes(mode)) {
-        const hourIndex = mode === DATETIME ? 3 : 0
-        const ampmIndex = newValue.length - 1
-        const ampm = Number(newValue[ampmIndex])
-        let nhour = Number(newValue[hourIndex])
-
-        if (ampm === 1) {
-            if (nhour <= 12) {
-                nhour += 12
-            }
-            nhour = nhour >= 24 ? 0 : nhour
-        } else {
-            if (nhour === 0) {
-                nhour = 12
-            }
-            if (nhour > 12) {
-                nhour -= 12
-            }
-            nhour = nhour >= 12 ? 0 : nhour
-        }
-
-        newValue.splice(hourIndex, 1, nhour)
-        newValue.splice(ampmIndex, 1)
-    }
-    if (mode === TIME) {
-        newValue.unshift(day)
-        newValue.unshift(month)
-        newValue.unshift(year)
-    } else if (mode === MONTH) {
-        newValue.push(day)
-    } else if (mode === YEAR) {
-        newValue.push(month)
-        newValue.push(day)
-    }
-    while (newValue.length <= 6) {
-        newValue.push(0)
-    }
-    return new Date(...newValue)
-}
+import {
+    DATETIME,
+    DATE,
+    TIME,
+    MONTH,
+    YEAR,
+    ONE_DAY,
+    TILL_NOW,
+    fomartArray,
+    getDaysInMonth,
+    pad,
+    cloneDate,
+    setMonth,
+    isTillNow,
+    convertStringArrayToDate,
+    convertDateToStringArray,
+} from './utils'
 
 baseComponent({
     properties: props,
@@ -101,14 +27,11 @@ baseComponent({
         options: [],
     },
     observers: {
-        inputValue() {
-            this.updatedCols()
+        inputValue(inputValue) {
+            this.updatedCols(inputValue)
         },
-        value(value) {
+        ['value, mode, minuteStep, use12Hours, minDate, maxDate, minHour, maxHour, minMinute, maxMinute, lang'](value) {
             this.setValue(value)
-        },
-        ['mode, minuteStep, use12Hours, minDate, maxDate, minHour, maxHour, minMinute, maxMinute, lang']() {
-            this.setValue(this.data.inputValue)
         },
     },
     methods: {
@@ -125,22 +48,28 @@ baseComponent({
             return this.defaultMaxDate
         },
         getMinDate() {
-            return this.data.minDate ? valueToDate(this.data.minDate, this.data) : this.getDefaultMinDate()
+            return this.data.minDate
+                ? convertStringArrayToDate(this.data.minDate, this.data)
+                : this.getDefaultMinDate()
         },
         getMaxDate() {
-            return this.data.maxDate ? valueToDate(this.data.maxDate, this.data) : this.getDefaultMaxDate()
+            return this.data.maxDate
+                ? convertStringArrayToDate(this.data.maxDate, this.data)
+                : this.getDefaultMaxDate()
         },
         getDateMember(type = 'min', member = 'year') {
-            const methods = {
+            const internalHooks = {
                 min: 'getMinDate',
                 max: 'getMaxDate',
+            }
+            const publicHooks = {
                 year: 'getFullYear',
                 month: 'getMonth',
                 day: 'getDate',
                 hour: 'getHours',
                 minute: 'getMinutes',
             }
-            return this[methods[type]]()[methods[member]]()
+            return this[internalHooks[type]]()[publicHooks[member]]()
         },
         getDisplayHour(rawHour) {
             // 12 hour am (midnight 00:00) -> 12 hour pm (noon 12:00) -> 12 hour am (midnight 00:00)
@@ -176,26 +105,26 @@ baseComponent({
         getNewDate(values, index) {
             const value = parseInt(values[index], 10)
             const { mode } = this.data
-            let newValue = cloneDate(this.getDate())
+            let newDate = cloneDate(this.getDate())
             if (mode === DATETIME || mode === DATE || mode === YEAR || mode === MONTH) {
                 switch (index) {
                         case 0:
-                            newValue.setFullYear(value)
+                            newDate.setFullYear(value)
                             break
                         case 1:
-                            setMonth(newValue, value)
+                            setMonth(newDate, value)
                             break
                         case 2:
-                            newValue.setDate(value)
+                            newDate.setDate(value)
                             break
                         case 3:
-                            this.setHours(newValue, value)
+                            this.setHours(newDate, value)
                             break
                         case 4:
-                            newValue.setMinutes(value)
+                            newDate.setMinutes(value)
                             break
                         case 5:
-                            this.setAmPm(newValue, value)
+                            this.setAmPm(newDate, value)
                             break
                         default:
                             break
@@ -203,19 +132,19 @@ baseComponent({
             } else if (mode === TIME) {
                 switch (index) {
                         case 0:
-                            this.setHours(newValue, value)
+                            this.setHours(newDate, value)
                             break
                         case 1:
-                            newValue.setMinutes(value)
+                            newDate.setMinutes(value)
                             break
                         case 2:
-                            this.setAmPm(newValue, value)
+                            this.setAmPm(newDate, value)
                             break
                         default:
                             break
                 }
             }
-            return this.clipDate(newValue)
+            return this.clipDate(newDate)
         },
         clipDate(date) {
             const { mode } = this.data
@@ -253,7 +182,9 @@ baseComponent({
         },
         getDate(d) {
             const date = d ? d : this.data.value
-            return this.clipDate(date ? valueToDate(date, this.data) : this.getMinDate())
+            return this.clipDate(
+                date ? convertStringArrayToDate(date, this.data) : this.getMinDate()
+            )
         },
         getDateData(date) {
             const { mode, lang } = this.data
@@ -289,7 +220,9 @@ baseComponent({
             }
 
             const minDay = minDateYear === selYear && minDateMonth === selMonth ? minDateDay : 1
-            const maxDay = maxDateYear === selYear && maxDateMonth === selMonth ? maxDateDay : getDaysInMonth(date)
+            const maxDay = maxDateYear === selYear && maxDateMonth === selMonth
+                ? maxDateDay
+                : getDaysInMonth(date)
 
             const days = fomartArray(minDay, maxDay).map((i) => ({
                 value: i + '',
@@ -376,58 +309,56 @@ baseComponent({
 
             return [hours, minutes].concat(use12Hours ? [ampm] : [])
         },
-        getValueCols(d) {
-            const { mode, use12Hours } = this.data
+        generateDatePickerColumns(selected, d) {
+            const { mode, tillNow, lang } = this.data
+            const locale = locales[lang]
             const date = this.getDate(d)
             let cols = []
-            let value = []
 
             if (mode === YEAR) {
-                return {
-                    cols: this.getDateData(date),
-                    value: [date.getFullYear() + ''],
-                }
+                cols = this.getDateData(date)
             }
 
             if (mode === MONTH) {
-                return {
-                    cols: this.getDateData(date),
-                    value: [date.getFullYear() + '', date.getMonth() + ''],
-                }
+                cols = this.getDateData(date)
             }
 
             if (mode === DATETIME || mode === DATE) {
                 cols = this.getDateData(date)
-                value = [date.getFullYear() + '', date.getMonth() + '', date.getDate() + '']
             }
 
             if (mode === DATETIME || mode === TIME) {
                 cols = cols.concat(this.getTimeData(date))
-                const hour = date.getHours()
-                const selMinute = date.getMinutes()
-                let dtValue = [hour + '', selMinute + '']
-                let nhour = hour
-                if (use12Hours) {
-                    nhour = hour === 0 ? 12 : (hour > 12 ? hour - 12 : hour)
-                    dtValue = [nhour + '', selMinute + '', (hour >= 12 ? 1 : 0) + '']
-                }
-                value = value.concat(dtValue)
             }
 
-            return {
-                value,
-                cols,
+            // Till Now
+            if (tillNow) {
+                cols[0].push({
+                    label: locale.tillNow,
+                    value: TILL_NOW,
+                })
+
+                if (selected && selected[0] === TILL_NOW) {
+                    cols.forEach((_, i) => {
+                        if (i >= 1) {
+                            cols[i] = []
+                        }
+                    })
+                }
             }
+
+            return cols
         },
         onValueChange(e) {
             const { value, index } = e.detail
-            const newDate = this.getNewDate(value, index)
-            const { value: newValue, cols: newCols } = this.getValueCols(newDate)
-            const values = this.getValue(newValue, newCols)
-            this.triggerEvent('valueChange', { ...e.detail, ...values, date: +newDate })
+            const tillNow = value[0] === TILL_NOW
+            const newDate = tillNow ? this.getDate(new Date()) : this.getNewDate(value, index)
+            const newCols = this.generateDatePickerColumns(value, newDate)
+            const values = this.getValue(value, newCols)
+            this.triggerEvent('valueChange', { ...e.detail, ...values, date: +newDate, tillNow })
         },
-        updatedCols() {
-            const { cols } = this.getValueCols()
+        updatedCols(inputValue) {
+            const cols = this.generateDatePickerColumns(inputValue)
             this.setData({ cols })
         },
         updated(inputValue) {
@@ -437,15 +368,42 @@ baseComponent({
                 })
             }
         },
-        setValue(value = this.data.inputValue) {
-            const { value: inputValue } = this.getValueCols()
+        setValue(v) {
+            const inputValue = this.fixValue(v)
             this.updated(inputValue)
+        },
+        fixValue(v) {
+            const props = this.data
+            const { mode, use12Hours } = props
+            let inputValue = []
+            if (isTillNow(v)) {
+                // Till Now
+                inputValue = [TILL_NOW, '', '' , '', '', '']
+                if (mode === YEAR) {
+                    inputValue = inputValue.slice(0, 1)
+                } else if (mode === MONTH) {
+                    inputValue = inputValue.slice(0, 2)
+                } else if (mode === DATE) {
+                    inputValue = inputValue.slice(0, 3)
+                } else if (mode === TIME) {
+                    inputValue = inputValue.slice(0, !use12Hours ? 2 : 3)
+                } else if (mode === DATETIME) {
+                    inputValue = inputValue.slice(0, !use12Hours ? 5 : 6)
+                }
+            } else {
+                inputValue = convertDateToStringArray(this.getDate(v), props)
+            }
+            return inputValue
         },
         getValue(value = this.data.inputValue, cols = this.data.cols) {
             this.picker = this.picker || this.querySelector('#wux-picker')
+            const newValue = this.fixValue(value)
+            const values = this.picker.getValue(newValue, cols)
+            const tillNow = values.value[0] === TILL_NOW
             return {
-                ...this.picker.getValue(value, cols),
+                ...values,
                 date: +this.getDate(),
+                tillNow,
             }
         },
     },

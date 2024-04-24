@@ -1,6 +1,7 @@
 .wux-search-bar {
   position: relative;
   padding: 16rpx 20rpx;
+  display: -ms-flexbox;
   display: flex;
   box-sizing: border-box;
   background-color: #efeff4
@@ -31,6 +32,7 @@
 }
 .wux-search-bar__form {
   position: relative;
+  -ms-flex: 1;
   flex: 1;
   width: 100%;
   height: 56rpx;
@@ -48,20 +50,32 @@
   box-sizing: border-box;
   z-index: 1
 }
-.wux-search-bar__input {
-  padding: 8rpx 0;
-  width: 100%;
+.wux-search-bar__control {
   height: 56rpx;
+  padding: 8rpx 0;
+  box-sizing: border-box
+}
+.wux-search-bar__input {
+  width: 100%;
+  height: 100%;
   min-height: inherit;
   border: 0;
   font-size: 28rpx;
-  line-height: 56rpx;
-  box-sizing: border-box;
-  background: 0 0
+  line-height: 1;
+  color: rgba(0,0,0,.65);
+  text-align: left;
+  background: 0 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-sizing: border-box
 }
 .wux-search-bar__label {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: center;
   justify-content: center;
+  -ms-flex-align: center;
   align-items: center;
   position: absolute;
   top: 2rpx;
@@ -84,7 +98,8 @@
   margin-left: 20rpx;
   line-height: 56rpx;
   color: #33cd5f;
-  white-space: nowrap
+  white-space: nowrap;
+  cursor: pointer
 }
 .wux-search-bar__icon {
   vertical-align: middle
@@ -92,15 +107,17 @@
 .wux-search-bar__search {
   position: absolute;
   left: 20rpx;
-  top: 16rpx
+  top: 14rpx
 }
 .wux-search-bar__clear {
   display: block;
   position: absolute;
-  top: 16rpx;
+  top: 14rpx;
   right: 0;
-  padding: 0 20rpx
+  padding: 0 20rpx;
+  cursor: pointer
 }
 .wux-search-bar--disabled {
-  opacity: .3
+  opacity: .3;
+  cursor: not-allowed
 }

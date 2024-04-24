@@ -9,15 +9,17 @@
     >
         <wux-icon wux-class="{{ classes.icon }}" type="ios-remove"></wux-icon>
     </view>
-    <input
-        bindinput="onInput"
-        bindfocus="onFocus"
-        bindblur="onBlur"
-        value="{{ inputValue }}"
-        disabled="{{ disabled || readOnly }}"
-        type="digit"
-        class="wux-input-class {{ classes.input }}"
-    />
+    <view class="wux-control-class {{ classes.control }}">
+        <input
+            bindinput="onInput"
+            bindfocus="onFocus"
+            bindblur="onBlur"
+            value="{{ inputValue }}"
+            disabled="{{ disabled || readOnly }}"
+            type="digit"
+            class="wux-input-class {{ classes.input }}"
+        />
+    </view>
     <view
         bindlongpress="onLongpress"
         bindtap="onTap"

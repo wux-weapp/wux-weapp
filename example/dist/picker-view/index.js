@@ -41,6 +41,7 @@ baseComponent({
             const indicator = `${prefixCls}__indicator`
             const content = `${prefixCls}__content`
             const item = `${prefixCls}__item`
+            const image = `${prefixCls}__image`
 
             return {
                 wrap,
@@ -48,6 +49,7 @@ baseComponent({
                 indicator,
                 content,
                 item,
+                image,
             }
         }],
     },
@@ -106,12 +108,14 @@ baseComponent({
 
             const wrap = `height: ${itemHeight * this.data.itemCount}px;`
             const item = `line-height: ${itemHeight}px; height: ${itemHeight}px;`
+            const image = `width: ${itemHeight * .6}px; height: ${itemHeight * .6}px;`
             const content = `padding: ${itemHeight * num}px 0;`
             const indicator = `top: ${itemHeight * num}px; height: ${itemHeight}px;`
             const mask = `background-size: 100% ${itemHeight * num}px;`
             const styles = {
                 wrap,
                 item,
+                image,
                 content,
                 indicator,
                 mask,

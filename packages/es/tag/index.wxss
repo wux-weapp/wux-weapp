@@ -4,7 +4,9 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  display: -ms-inline-flexbox;
   display: inline-flex;
+  -ms-flex-align: center;
   align-items: center;
   line-height: 40rpx;
   height: 44rpx;

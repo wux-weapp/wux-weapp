@@ -8,6 +8,7 @@
 
     &--disabled {
         opacity: @disabled-opacity;
+        cursor: not-allowed;
     }
 
     &--picture-card {
@@ -21,6 +22,7 @@
             transition: border-color .3s ease;
             box-sizing: border-box;
             float: left;
+            cursor: pointer;
         }
 
         .@{wux-prefix}-upload__button {
@@ -59,6 +61,7 @@
             border: @border-width-base @upload-success-border-style @upload-normal-border-color;
             position: relative;
             box-sizing: border-box;
+            cursor: pointer;
 
             &--uploading {
                 border-style: @upload-normal-border-style;
@@ -87,6 +90,7 @@
             z-index: 2;
             background-repeat: no-repeat;
             background-size: @upload-icon-size auto;
+            cursor: pointer;
 
             .encoded-svg-background(upload_delete);
         }

@@ -1,6 +1,7 @@
 .wux-image {
   position: relative;
   overflow: hidden;
+  display: -ms-flexbox;
   display: flex;
   box-sizing: border-box
 }
@@ -72,8 +73,11 @@
   z-index: 20
 }
 .wux-image__mask--text {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-align: center;
   align-items: center;
+  -ms-flex-pack: center;
   justify-content: center
 }
 .wux-image__text {

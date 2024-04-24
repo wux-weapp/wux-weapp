@@ -3,6 +3,8 @@
   vertical-align: middle;
   box-sizing: border-box;
   position: relative;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
   align-self: center;
   cursor: pointer
 }
@@ -51,13 +53,17 @@
   left: calc(100% - 60rpx - 2rpx / 2)
 }
 .wux-switch__input--disabled {
-  opacity: .3
+  opacity: .3;
+  cursor: not-allowed
 }
 .wux-switch__text {
   position: relative;
   z-index: 10;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: center;
   justify-content: center;
+  -ms-flex-align: center;
   align-items: center;
   height: 100%;
   transition: margin .2s;

@@ -102,6 +102,7 @@
 
         &--disabled {
             opacity: @disabled-opacity !important;
+            cursor: not-allowed !important;
         }
     }
 
@@ -126,5 +127,9 @@
 
         display: inline-block;
         margin-right: 10px;
+    }
+
+    &__text {
+        cursor: pointer;
     }
 }

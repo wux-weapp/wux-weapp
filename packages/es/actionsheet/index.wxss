@@ -64,8 +64,11 @@
   color: #007aff;
   font-size: 42rpx;
   line-height: 96rpx;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-align: center;
   align-items: center;
+  -ms-flex-pack: center;
   justify-content: center
 }
 .wux-actionsheet__button--hover {
@@ -81,7 +84,8 @@
   font-weight: 500
 }
 .wux-actionsheet__button--disabled {
-  opacity: .3!important
+  opacity: .3!important;
+  cursor: not-allowed!important
 }
 .wux-actionsheet__group .wux-actionsheet__button {
   border-top: none
@@ -110,4 +114,7 @@
   height: 48rpx;
   display: inline-block;
   margin-right: 20rpx
+}
+.wux-actionsheet__text {
+  cursor: pointer
 }

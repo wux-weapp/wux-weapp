@@ -43,7 +43,7 @@ const defaultEvents = {
 
 baseComponent({
     behaviors: [eventsMixin({ defaultEvents })],
-    externalClasses: ['wux-sub-class', 'wux-input-class', 'wux-add-class'],
+    externalClasses: ['wux-sub-class', 'wux-control-class', 'wux-input-class', 'wux-add-class'],
     relations: {
         '../field/index': {
             type: 'ancestor',
@@ -124,6 +124,7 @@ baseComponent({
                 [`${prefixCls}__selector--disabled`]: disabledMax,
             })
             const icon = `${prefixCls}__icon`
+            const control = `${prefixCls}__control`
             const input = classNames(`${prefixCls}__input`, {
                 [`${prefixCls}__input--disabled`]: disabled,
                 [`${prefixCls}__input--readonly`]: readOnly,
@@ -134,6 +135,7 @@ baseComponent({
                 sub,
                 add,
                 icon,
+                control,
                 input,
             }
         }],

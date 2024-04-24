@@ -1,14 +1,19 @@
 .wux-tabs__tab {
+  -ms-flex: 1;
   flex: 1;
+  display: -ms-flexbox;
   display: flex;
   width: 100%;
+  -ms-flex-pack: center;
   justify-content: center;
+  -ms-flex-align: center;
   align-items: center;
   text-align: center;
   position: relative;
   box-sizing: border-box;
   font-size: 28rpx;
-  padding: 0 30rpx
+  padding: 0 30rpx;
+  cursor: pointer
 }
 .wux-tabs__tab-bar {
   display: block;
@@ -38,11 +43,13 @@
   color: #33cd5f
 }
 .wux-tabs__tab--horizontal.wux-tabs__tab--scroll {
+  display: -ms-inline-flexbox;
   display: inline-flex;
   width: auto
 }
 .wux-tabs__tab--disabled {
-  opacity: .3
+  opacity: .3;
+  cursor: not-allowed
 }
 .wux-tabs__tab--light .wux-tabs__tab-bar {
   background: #ddd

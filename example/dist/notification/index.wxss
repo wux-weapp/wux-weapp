@@ -12,8 +12,10 @@
   background-color: rgba(0,0,0,.85)
 }
 .wux-notification__content {
+  display: -ms-flexbox;
   display: flex;
   padding: .3rem .6rem 1rem .6rem;
+  -ms-flex-align: start;
   align-items: flex-start
 }
 .wux-notification__hd {

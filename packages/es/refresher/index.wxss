@@ -36,6 +36,7 @@
 }
 .wux-refresher__icon-pulling {
   width: 100%;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transform-style: preserve-3d;
   padding: 14rpx 0;
@@ -47,6 +48,7 @@
 }
 .wux-refresher__icon-refreshing {
   width: 100%;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transform-style: preserve-3d;
   padding: 14rpx 0;
@@ -128,8 +130,11 @@
   top: 50%;
   transform: translateY(-50%);
   color: rgba(0,0,0,.65);
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-align: center;
   align-items: center;
+  -ms-flex-pack: center;
   justify-content: center
 }
 @keyframes refresh-spin {

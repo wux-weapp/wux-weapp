@@ -1,8 +1,11 @@
 .wux-progress {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-align: center;
   align-items: center
 }
 .wux-progress__outer {
+  -ms-flex: 1;
   flex: 1
 }
 .wux-progress__inner {

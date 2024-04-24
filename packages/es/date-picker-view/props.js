@@ -83,4 +83,8 @@ export const props = {
         type: String,
         value: 'zh_CN',
     },
+    tillNow: {
+        type: Boolean,
+        value: false,
+    },
 }

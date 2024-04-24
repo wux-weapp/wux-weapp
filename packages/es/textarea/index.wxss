@@ -1,6 +1,8 @@
 .wux-textarea {
   position: relative;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-align: center;
   align-items: center
 }
 .wux-textarea__label {
@@ -10,9 +12,11 @@
   white-space: nowrap;
   overflow: hidden;
   width: 210rpx;
+  -ms-flex-item-align: start;
   align-self: flex-start
 }
 .wux-textarea__control {
+  -ms-flex: 1;
   flex: 1
 }
 .wux-textarea__item {
@@ -41,7 +45,8 @@
   display: block
 }
 .wux-textarea--disabled {
-  opacity: .3
+  opacity: .3;
+  cursor: not-allowed
 }
 .wux-textarea--error .wux-textarea__control {
   color: #ef473a

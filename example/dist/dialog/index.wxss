@@ -15,6 +15,7 @@
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
   display: block;
+  -ms-flex: 1;
   flex: 1;
   color: #33cd5f!important;
   position: relative
@@ -71,7 +72,8 @@
   background-color: #ececec!important
 }
 .wux-dialog__button--disabled {
-  opacity: .3
+  opacity: .3;
+  cursor: not-allowed
 }
 .wux-dialog__prompt {
   position: relative;
@@ -95,16 +97,22 @@
   border-left-width: 1PX;
   border-radius: 12rpx
 }
-.wux-dialog__input {
+.wux-dialog__control {
   padding: 8rpx 12rpx;
   height: 72rpx;
-  line-height: 1;
+  box-sizing: border-box
+}
+.wux-dialog__input {
+  height: 100%;
   width: 100%;
+  line-height: 1;
   text-align: left;
   box-sizing: border-box
 }
 .wux-dialog__buttons {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex: 1;
   flex: 1
 }
 .wux-dialog__buttons--horizontal .wux-dialog__button::after {

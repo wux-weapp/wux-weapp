@@ -40,7 +40,7 @@
         width: 100%;
         border: 0;
         outline: 0;
-        -webkit-appearance: none;
+        appearance: none;
         background-color: transparent;
         font-size: inherit;
         color: inherit;
@@ -80,6 +80,7 @@
 
     &--disabled {
         opacity: @disabled-opacity;
+        cursor: not-allowed;
     }
 
     &--error &__control {

@@ -1,10 +1,13 @@
 .wux-field__child {
+  display: -ms-flexbox;
   display: flex
 }
 .wux-field__child--position-right {
+  -ms-flex-pack: end;
   justify-content: flex-end
 }
 .wux-field__child--position-normal {
+  -ms-flex-pack: normal;
   justify-content: normal
 }
 .wux-field__label {
@@ -41,6 +44,7 @@
   color: rgba(0,0,0,.45)
 }
 .wux-field__arrow {
+  display: -ms-flexbox;
   display: flex
 }
 .vertical .wux-field__label {

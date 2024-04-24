@@ -1,6 +1,8 @@
 .wux-input {
   position: relative;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-align: center;
   align-items: center
 }
 .wux-input__label {
@@ -25,6 +27,7 @@
   content: "*"
 }
 .wux-input__control {
+  -ms-flex: 1;
   flex: 1
 }
 .wux-input__item {
@@ -32,6 +35,8 @@
   border: 0;
   outline: 0;
   -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   background-color: transparent;
   font-size: inherit;
   color: inherit;
@@ -40,9 +45,11 @@
   line-height: 1.47058824
 }
 .wux-input__clear {
+  display: -ms-flexbox;
   display: flex
 }
 .wux-input__eye {
+  display: -ms-flexbox;
   display: flex;
   width: 32rpx;
   height: 32rpx;
@@ -55,6 +62,7 @@
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D%2264%2064%20896%20896%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20focusable%3D%22false%22%20class%3D%22%22%20data-icon%3D%22eye-invisible%22%20width%3D%221em%22%20height%3D%221em%22%20fill%3D%22rgba(0%2C%200%2C%200%2C%200.45)%22%20aria-hidden%3D%22true%22%3E%3Cpath%20d%3D%22M942.2%20486.2Q889.47%20375.11%20816.7%20305l-50.88%2050.88C807.31%20395.53%20843.45%20447.4%20874.7%20512%20791.5%20684.2%20673.4%20766%20512%20766q-72.67%200-133.87-22.38L323%20798.75Q408%20838%20512%20838q288.3%200%20430.2-300.3a60.29%2060.29%200%200%200%200-51.5zm-63.57-320.64L836%20122.88a8%208%200%200%200-11.32%200L715.31%20232.2Q624.86%20186%20512%20186q-288.3%200-430.2%20300.3a60.3%2060.3%200%200%200%200%2051.5q56.69%20119.4%20136.5%20191.41L112.48%20835a8%208%200%200%200%200%2011.31L155.17%20889a8%208%200%200%200%2011.31%200l712.15-712.12a8%208%200%200%200%200-11.32zM149.3%20512C232.6%20339.8%20350.7%20258%20512%20258c54.54%200%20104.13%209.36%20149.12%2028.39l-70.3%2070.3a176%20176%200%200%200-238.13%20238.13l-83.42%2083.42C223.1%20637.49%20183.3%20582.28%20149.3%20512zm246.7%200a112.11%20112.11%200%200%201%20146.2-106.69L401.31%20546.2A112%20112%200%200%201%20396%20512z%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M508%20624c-3.46%200-6.87-.16-10.25-.47l-52.82%2052.82a176.09%20176.09%200%200%200%20227.42-227.42l-52.82%2052.82c.31%203.38.47%206.79.47%2010.25a111.94%20111.94%200%200%201-112%20112z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E")
 }
 .wux-input__error {
+  display: -ms-flexbox;
   display: flex;
   margin-left: 10rpx
 }
@@ -63,7 +71,8 @@
   margin-left: 10rpx
 }
 .wux-input--disabled {
-  opacity: .3
+  opacity: .3;
+  cursor: not-allowed
 }
 .wux-input--error .wux-input__control {
   color: #ef473a

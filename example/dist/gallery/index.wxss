@@ -13,11 +13,15 @@
   height: 100%
 }
 .wux-gallery__item {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -ms-flex-pack: center;
   justify-content: center
 }
 .wux-gallery__img {
+  -ms-flex: none;
   flex: none;
   width: 100%;
   height: 100%
@@ -49,8 +53,11 @@
   text-align: center
 }
 .wux-gallery__del {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: center;
   justify-content: center;
+  -ms-flex-align: center;
   align-items: center;
   padding: 36rpx 0
 }

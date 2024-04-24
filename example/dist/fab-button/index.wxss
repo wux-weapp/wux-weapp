@@ -1,6 +1,7 @@
 .wux-fab-button {
   position: fixed;
-  z-index: 1020
+  z-index: 1020;
+  cursor: pointer
 }
 .wux-fab-button--center {
   left: 50%;
@@ -41,8 +42,11 @@
   color: #fff;
   overflow: visible;
   transition-duration: .3s;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-align: center;
   align-items: center;
+  -ms-flex-pack: center;
   justify-content: center;
   box-shadow: 0 0 8rpx rgba(0,0,0,.14),0 8rpx 16rpx rgba(0,0,0,.28);
   right: 0;
@@ -94,8 +98,11 @@
   overflow: visible;
   background-color: #33cd5f!important;
   transition-duration: .3s;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-align: center;
   align-items: center;
+  -ms-flex-pack: center;
   justify-content: center;
   box-shadow: 0 0 8rpx rgba(0,0,0,.14),0 8rpx 16rpx rgba(0,0,0,.28);
   position: absolute;
@@ -123,7 +130,8 @@
   opacity: .8!important
 }
 .wux-fab-button__button--disabled {
-  opacity: .3!important
+  opacity: .3!important;
+  cursor: not-allowed!important
 }
 .wux-fab-button__button--hide-shadow {
   box-shadow: none!important

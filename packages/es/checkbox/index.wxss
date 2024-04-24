@@ -2,7 +2,9 @@
   position: static!important
 }
 .wux-checkbox__icon-position {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-align: center;
   align-items: center
 }
 .wux-checkbox__icon-selectable {
@@ -10,6 +12,8 @@
   margin-right: 16rpx
 }
 .wux-checkbox__extra {
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
   align-self: center;
   text-align: left;
   color: rgba(0,0,0,.45);

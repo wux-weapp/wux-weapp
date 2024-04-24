@@ -1,7 +1,10 @@
 .wux-prompt {
+  display: -ms-flexbox;
   display: flex;
   height: 100%;
+  -ms-flex-align: center;
   align-items: center;
+  -ms-flex-pack: center;
   justify-content: center;
   color: rgba(0,0,0,.45);
   background-color: #f2f3f4

@@ -56,6 +56,7 @@
 .wux-step__icon {
   box-sizing: border-box;
   font-size: 24rpx;
+  line-height: 44rpx;
   width: 48rpx;
   height: 100%;
   border-radius: 50%;

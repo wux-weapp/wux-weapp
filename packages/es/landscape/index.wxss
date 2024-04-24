@@ -17,9 +17,11 @@
 .wux-landscape__close {
   position: relative;
   display: inline-block;
-  margin-top: 10rpx
+  margin-top: 10rpx;
+  cursor: pointer
 }
 .wux-landscape__close-x {
+  cursor: pointer;
   display: inline-block;
   width: 48rpx;
   height: 48rpx;

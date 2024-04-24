@@ -11,7 +11,7 @@
     <view wx:if="{{ content || prompt }}">
         <text>{{ content }}</text>
         <view class="{{ classes.prompt }}" wx:if="{{ prompt }}">
-            <label>
+            <view class="{{ classes.control }}">
                 <input
                     type="{{ prompt.fieldtype }}"
                     class="{{ classes.input }}"
@@ -21,7 +21,7 @@
                     maxlength="{{ maxlength }}"
                     bindinput="bindinput"
                 />
-            </label>
+            </view>
         </view>
     </view>
     <view slot="footer" class="{{ classes.buttons }}">

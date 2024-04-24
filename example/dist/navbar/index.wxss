@@ -1,5 +1,7 @@
 .wux-navbar {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-align: center;
   align-items: center;
   height: 90rpx;
   background-color: #fff;
@@ -8,8 +10,11 @@
 .wux-navbar__left,
 .wux-navbar__right,
 .wux-navbar__title {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-align: center;
   align-items: center;
+  -ms-flex: 1;
   flex: 1;
   height: 100%
 }
@@ -18,11 +23,13 @@
   font-size: 28rpx
 }
 .wux-navbar__title {
+  -ms-flex-pack: center;
   justify-content: center;
   font-size: 32rpx;
   white-space: nowrap
 }
 .wux-navbar__right {
+  -ms-flex-pack: end;
   justify-content: flex-end;
   font-size: 28rpx;
   margin-right: 20rpx

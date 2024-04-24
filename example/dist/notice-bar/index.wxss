@@ -5,6 +5,7 @@
   font-size: 28rpx;
   line-height: 72rpx;
   color: #f76a24;
+  display: -ms-flexbox;
   display: flex;
   padding: 0 20rpx
 }
@@ -19,10 +20,13 @@
   margin-left: 20rpx
 }
 .wux-notice-bar__hd {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-align: center;
   align-items: center
 }
 .wux-notice-bar__bd {
+  -ms-flex: 1;
   flex: 1;
   width: 100%;
   width: auto;
@@ -40,6 +44,9 @@
   display: inline-block
 }
 .wux-notice-bar__ft {
+  display: -ms-flexbox;
   display: flex;
-  align-items: center
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer
 }

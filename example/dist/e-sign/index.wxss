@@ -2,15 +2,20 @@
   padding: 20rpx
 }
 .wux-e-sign__bd {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: center;
   justify-content: center;
+  -ms-flex-align: center;
   align-items: center;
   border: 2rpx dotted #e8e8e8;
   border-radius: 12rpx;
   overflow: hidden
 }
 .wux-e-sign__ft {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: end;
   justify-content: flex-end
 }
 .wux-e-sign__button {

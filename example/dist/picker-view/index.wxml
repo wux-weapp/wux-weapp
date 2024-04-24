@@ -22,7 +22,12 @@
                     data-disabled="{{ !!option[fieldNames.disabled] }}"
                     catchtap="onItemClick"
                 >
-                    {{ option[fieldNames.label] }}
+                    <block wx:if="{{ !option.labelImage }}">
+                        {{ option[fieldNames.label] }}
+                    </block>
+                    <block wx:else>
+                        <image class="{{ classes.image }}" src="{{ option.labelImage }}" style="{{ styles.image }}" />
+                    </block>
                 </view>
             </block>
         </view>

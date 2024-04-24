@@ -4,6 +4,7 @@
   height: 476rpx;
   overflow: hidden;
   width: 100%;
+  -ms-flex: 1;
   flex: 1
 }
 .wux-picker-col--left {
@@ -20,7 +21,8 @@
   position: absolute;
   left: 0;
   width: 100%;
-  z-index: 3
+  z-index: 3;
+  pointer-events: none
 }
 .wux-picker-col__mask {
   top: 0;
@@ -66,9 +68,16 @@
   top: 0;
   width: 100%;
   z-index: 1;
-  padding: 204rpx 0
+  padding: 204rpx 0;
+  cursor: grab
 }
 .wux-picker-col__item {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
   font-size: 32rpx;
   height: 68rpx;
   line-height: 68rpx;
@@ -78,8 +87,17 @@
   overflow: hidden
 }
 .wux-picker-col__item--disabled {
-  opacity: .3
+  opacity: .3;
+  cursor: not-allowed
 }
 .wux-picker-col__item--selected {
   font-size: 34rpx
+}
+.wux-picker-col__item--selected .wux-picker-col__image {
+  transform: scale(1.1)
+}
+.wux-picker-col__image {
+  display: inline-block;
+  height: calc(40.8rpx);
+  width: calc(40.8rpx)
 }

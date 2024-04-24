@@ -8,6 +8,7 @@ baseComponent({
     computed: {
         classes: ['prefixCls, buttons, verticalButtons', function(prefixCls, btns, verticalButtons) {
             const prompt = `${prefixCls}__prompt`
+            const control = `${prefixCls}__control`
             const input = `${prefixCls}__input`
             const buttons = classNames(`${prefixCls}__buttons`, {
                 [`${prefixCls}__buttons--${verticalButtons ? 'vertical' : 'horizontal'}`]: true,
@@ -29,6 +30,7 @@ baseComponent({
 
             return {
                 prompt,
+                control,
                 input,
                 buttons,
                 button,

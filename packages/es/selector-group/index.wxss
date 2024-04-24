@@ -6,14 +6,16 @@
   line-height: 1.5
 }
 .wux-selector-group__grid {
+  display: -ms-grid;
   display: grid;
   grid-gap: 20rpx;
   grid-column-gap: var(--selector-group-column-gap,16rpx);
-  -moz-column-gap: var(--selector-group-column-gap,16rpx);
   column-gap: var(--selector-group-column-gap,16rpx);
   grid-row-gap: var(--selector-group-column-gap,16rpx);
   row-gap: var(--selector-group-column-gap,16rpx);
+  -ms-grid-columns: (minmax(0,1fr)) [var];
   grid-template-columns: repeat(var(--selector-group-columns,3),minmax(0,1fr));
+  -ms-flex-align: stretch;
   align-items: stretch
 }
 .wux-selector-group__grid-item {
@@ -42,7 +44,8 @@
   border: none
 }
 .wux-selector-group__grid-item--disabled {
-  opacity: .3
+  opacity: .3;
+  cursor: not-allowed
 }
 .wux-selector-group__desc {
   font-size: 24rpx;

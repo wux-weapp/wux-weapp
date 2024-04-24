@@ -11,14 +11,20 @@
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   text-align: center
 }
 .wux-index__nav-row {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -ms-flex-pack: center;
   justify-content: center;
+  -ms-flex-align: center;
   align-items: center;
+  -ms-flex-negative: 0;
   flex-shrink: 0;
   height: 100%;
   width: 100%;
@@ -32,12 +38,15 @@
   font-size: inherit
 }
 .wux-index__nav-item {
+  display: -ms-inline-flexbox;
   display: inline-flex;
   width: 32rpx;
   height: 32rpx;
   line-height: inherit;
   font-size: inherit;
+  -ms-flex-pack: center;
   justify-content: center;
+  -ms-flex-align: center;
   align-items: center
 }
 .wux-index__nav-item--current {

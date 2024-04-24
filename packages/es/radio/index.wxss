@@ -2,7 +2,9 @@
   position: static!important
 }
 .wux-radio__icon-position {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-align: center;
   align-items: center
 }
 .wux-radio__icon-selectable {

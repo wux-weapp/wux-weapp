@@ -29,6 +29,7 @@
         left: 0;
         width: 100%;
         z-index: 3;
+        pointer-events: none;
     }
 
     &__mask {
@@ -62,9 +63,13 @@
         width: 100%;
         z-index: 1;
         padding: @picker-item-height * 3 0;
+        cursor: grab;
     }
 
     &__item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         font-size: @font-size-lg;
         height: @picker-item-height;
         line-height: @picker-item-height;
@@ -75,10 +80,21 @@
 
         &--disabled {
             opacity: @disabled-opacity;
+            cursor: not-allowed;
         }
 
         &--selected {
             font-size: @font-size-lg + 1px;
+
+            .@{wux-prefix}-picker-col__image {
+                transform: scale(1.1);
+            }
         }
+    }
+
+    &__image {
+        display: inline-block;
+        height: calc(@picker-item-height * .6);
+        width: calc(@picker-item-height * .6);
     }
 }

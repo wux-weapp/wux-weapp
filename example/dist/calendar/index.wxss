@@ -37,15 +37,20 @@
 }
 .wux-calendar__toolbar {
   height: 2.2rem;
+  display: -ms-flexbox;
   display: flex;
   text-align: center
 }
 .wux-calendar__picker {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-align: center;
   align-items: center;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   width: 50%;
   max-width: 400rpx;
+  -ms-flex-negative: 10;
   flex-shrink: 10;
   display: block;
   line-height: 2.2rem
@@ -55,7 +60,8 @@
   width: 25%;
   height: 2.2rem;
   line-height: 2rem;
-  min-width: 72rpx
+  min-width: 72rpx;
+  cursor: pointer
 }
 .wux-calendar__icon {
   display: inline-block;
@@ -75,6 +81,7 @@
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2015%2015'%3E%3Cg%3E%3Cpath%20fill%3D'%23007aff'%20d%3D'M14%2C1.6v11.8L2.2%2C7.6L14%2C1.6%20M15%2C0L0%2C7.6L15%2C15V0L15%2C0z'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E")
 }
 .wux-calendar__value {
+  -ms-flex-negative: 1;
   flex-shrink: 1;
   position: relative;
   overflow: hidden;
@@ -86,6 +93,7 @@
 .wux-calendar__weekdays {
   height: 36rpx;
   background: #f7f7f8;
+  display: -ms-flexbox;
   display: flex;
   font-size: 22rpx;
   box-sizing: border-box;
@@ -107,6 +115,7 @@
   height: calc(82%)
 }
 .wux-calendar__weekday {
+  -ms-flex-negative: 1;
   flex-shrink: 1;
   width: 14.28571429%;
   width: calc(14.28571429%);
@@ -122,13 +131,16 @@
 .wux-calendar__months-content {
   width: 100%;
   height: 100%;
+  display: -ms-flexbox;
   display: flex;
   position: relative;
   -webkit-backface-visibility: hidden;
   transform: translate3d(0,0,0)
 }
 .wux-calendar__month {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-direction: column;
   flex-direction: column;
   width: 100%;
   height: 100%;
@@ -139,7 +151,9 @@
 .wux-calendar__days {
   height: 16.66666667%;
   height: calc(16.66666667%);
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-negative: 1;
   flex-shrink: 1;
   width: 100%;
   position: relative
@@ -160,9 +174,13 @@
   display: none
 }
 .wux-calendar__day {
+  -ms-flex-negative: 1;
   flex-shrink: 1;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: center;
   justify-content: center;
+  -ms-flex-align: center;
   align-items: center;
   box-sizing: border-box;
   width: 14.28571429%;
@@ -190,6 +208,7 @@
   color: #fff
 }
 .wux-calendar__text {
+  cursor: pointer;
   display: inline-block;
   border-radius: 100%;
   width: 60rpx;

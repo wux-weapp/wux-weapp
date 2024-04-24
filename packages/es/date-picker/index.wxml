@@ -39,6 +39,7 @@
             minMinute="{{ minMinute }}"
             maxMinute="{{ maxMinute }}"
             lang="{{ lang }}"
+            tillNow="{{ tillNow }}"
             bind:valueChange="onValueChange"
         />
     </view>

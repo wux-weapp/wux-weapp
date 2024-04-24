@@ -20,6 +20,7 @@
 }
 .wux-date-picker__inner {
   height: 88rpx;
+  display: -ms-flexbox;
   display: flex;
   text-align: center
 }
@@ -41,7 +42,8 @@
   height: 88rpx;
   line-height: 88rpx;
   padding: 0 30rpx;
-  z-index: 10
+  z-index: 10;
+  cursor: pointer
 }
 .wux-date-picker__button--cancel {
   left: 0;
@@ -55,5 +57,6 @@
   background-color: #ececec
 }
 .wux-date-picker__button--disabled {
-  opacity: .3
+  opacity: .3;
+  cursor: not-allowed
 }

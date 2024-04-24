@@ -1,6 +1,7 @@
 .wux-swipe {
   overflow: hidden;
-  position: relative
+  position: relative;
+  cursor: grab
 }
 .wux-swipe__cover {
   position: absolute;
@@ -14,6 +15,7 @@
   position: absolute;
   top: 0;
   bottom: 0;
+  display: -ms-flexbox;
   display: flex;
   overflow: hidden;
   white-space: nowrap;
@@ -26,10 +28,14 @@
   right: 0
 }
 .wux-swipe__action {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-align: center;
   align-items: center;
+  -ms-flex-pack: center;
   justify-content: center;
-  overflow: hidden
+  overflow: hidden;
+  cursor: pointer
 }
 .wux-swipe__text {
   padding: 0 16rpx

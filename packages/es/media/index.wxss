@@ -1,22 +1,28 @@
 .wux-media {
   position: relative;
+  display: -ms-flexbox;
   display: flex;
   padding: 30rpx;
   overflow: hidden
 }
 .wux-media--align-flex-start {
+  -ms-flex-align: start;
   align-items: flex-start
 }
 .wux-media--align-flex-end {
+  -ms-flex-align: end;
   align-items: flex-end
 }
 .wux-media--align-center {
+  -ms-flex-align: center;
   align-items: center
 }
 .wux-media--align-stretch {
+  -ms-flex-align: stretch;
   align-items: stretch
 }
 .wux-media--align-baseline {
+  -ms-flex-align: baseline;
   align-items: baseline
 }
 .wux-media__hd {
@@ -31,6 +37,7 @@
   vertical-align: top
 }
 .wux-media__bd {
+  -ms-flex: 1;
   flex: 1;
   min-width: 0
 }
