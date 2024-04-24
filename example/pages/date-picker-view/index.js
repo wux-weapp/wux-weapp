@@ -21,7 +21,7 @@ ad({
         value5: [hour, minute],
         value6: [year, month, day, hour, minute, '1'],
         value7: [hour, minute, '1'],
-        value8: [2029, 0, 1, 0, 0],
+        value8: ['2029', '0', '1', '0', '0'],
         lang: 'zh_CN',
     },
     onChange(e) {
