@@ -38,6 +38,7 @@
 
         &--disabled {
             opacity: @disabled-opacity;
+            cursor: not-allowed;
         }
     }
 
@@ -56,11 +57,16 @@
         }
     }
 
-    &__input {
+    &__control {
         padding: 4px 6px;
         height: 36px;
-        line-height: 1;
+        box-sizing: border-box;
+    }
+
+    &__input {
+        height: 100%;
         width: 100%;
+        line-height: 1;
         text-align: left;
         box-sizing: border-box;
     }

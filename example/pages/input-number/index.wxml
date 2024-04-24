@@ -84,7 +84,7 @@
         </wux-cell-group>
         <wux-cell-group title="自定义样式">
             <wux-cell title="数量" hover-class="none">
-                <wux-input-number wux-sub-class="sub" wux-input-class="input" wux-add-class="add" slot="footer" />
+                <wux-input-number wux-sub-class="sub" wux-control-class="control" wux-input-class="input" wux-add-class="add" slot="footer" />
             </wux-cell>
         </wux-cell-group>
         <wux-cell-group title="设置步长为0.5">

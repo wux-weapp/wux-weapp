@@ -12,5 +12,7 @@
         <wux-multi-picker-view defaultFieldNames="{{ fieldNames }}" options="{{ fieldNamesOptions }}" />
         <view class="sub-title">Loading</view>
         <wux-multi-picker-view options="{{ options }}" loading />
+        <view class="sub-title">Custom Image</view>
+        <wux-multi-picker-view options="{{ imageOptions }}" />
     </view>
 </view>

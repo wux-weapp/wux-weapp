@@ -38,6 +38,22 @@ const fieldNamesOptions = [
     ],
 ]
 
+const imageOptions = [
+    ['周一', '周二', '周三', '周四', '周五'],
+    [
+        {
+            label: '白天',
+            labelImage: '../../assets/images/daytime.png',
+            value: 'daytime',
+        },
+        {
+            label: '夜晚',
+            labelImage: '../../assets/images/night.png',
+            value: 'night',
+        },
+    ],
+]
+
 ad({
     data: {
         value: ['蔡', '🏀'],
@@ -48,6 +64,7 @@ ad({
             disabled: 'disabledT',
         },
         fieldNamesOptions,
+        imageOptions,
     },
     onValueChange(e) {
         this.setData({ value: e.detail.value })

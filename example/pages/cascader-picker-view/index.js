@@ -27,6 +27,33 @@ const fieldNamesOptions = [
     },
 ]
 
+const imageOptions = [
+    {
+        label: '周一',
+        value: '周一',
+        children: [
+            {
+                label: '白天',
+                labelImage: '../../assets/images/daytime.png',
+                value: 'daytime',
+            },
+            {
+                label: '夜晚',
+                labelImage: '../../assets/images/night.png',
+                value: 'night',
+            },
+        ],
+    },
+    {
+        label: '周二',
+        value: '周二',
+    },
+    {
+        label: '周三',
+        value: '周三',
+    },
+]
+
 ad({
     data: {
         fieldNames: {
@@ -36,6 +63,7 @@ ad({
             children: 'childrenT',
         },
         fieldNamesOptions,
+        imageOptions,
         value1: [],
         value2: [],
         value3: [],

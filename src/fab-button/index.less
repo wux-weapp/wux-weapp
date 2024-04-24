@@ -12,6 +12,7 @@
 .@{wux-prefix}-fab-button {
     position: fixed;
     z-index: @z-index-fab-button;
+    cursor: pointer;
 
     &--center {
         left: 50%;
@@ -126,6 +127,7 @@
 
         &--disabled {
             opacity: @disabled-opacity !important;
+            cursor: not-allowed !important;
         }
 
         &--hide-shadow {

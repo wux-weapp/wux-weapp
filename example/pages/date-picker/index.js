@@ -23,6 +23,7 @@ ad({
         value7: [hour, minute, '1'],
         value8: [],
         value9: [],
+        value10: [2029, 0, 1, 0, 0],
         displayValue1: '请选择',
         displayValue2: '请选择',
         displayValue3: '请选择',
@@ -32,6 +33,7 @@ ad({
         displayValue7: '请选择',
         displayValue8: '请选择',
         displayValue9: '请选择',
+        displayValue10: '请选择',
         lang: 'zh_CN',
     },
     onChange(e) {
@@ -45,7 +47,7 @@ ad({
     },
     setValue(values, key, mode) {
         this.setData({
-            [`value${key}`]: values.value,
+            [`value${key}`]: !values.tillNow ? values.value : { tillNow: true },
             [`displayValue${key}`]: values.label,
             // [`displayValue${key}`]: values.displayValue.join(' '),
         })

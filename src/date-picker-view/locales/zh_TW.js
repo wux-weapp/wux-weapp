@@ -6,4 +6,5 @@ export default {
     minute: '分',
     am: '上午',
     pm: '下午',
+    tillNow: '至今',
 }

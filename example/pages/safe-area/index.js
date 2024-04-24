@@ -1,7 +1,10 @@
 import ad from '../index/ad'
 
+const isPC = () => ['mac', 'windows'].includes(wx.getDeviceInfo().platform)
+
 ad({
     data: {
+        isPC: isPC(),
         visible: true,
     },
     onClose(e) {

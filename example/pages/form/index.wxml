@@ -65,7 +65,7 @@
             </wux-field>
             <wux-field name="code" label="验证码" rules="{{ [{ required: true }, { validator: 'checkCode' }] }}">
                 <wux-input placeholder="请输入验证码" clear />
-                <text slot="extra" style="color: #387ef5; padding-left: 12px;" bindtap="onSendCode">发送验证码</text>
+                <text slot="extra" style="color: #387ef5; padding-left: 12px; cursor: pointer;" bindtap="onSendCode">发送验证码</text>
             </wux-field>
             <wux-field name="password" label="密码" initialValue="" rules="{{ [{ required: true }, { validator: 'validateToNextPassword' }] }}">
                 <wux-input placeholder="请输入密码" clear password visibilityToggle />

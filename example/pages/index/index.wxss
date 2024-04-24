@@ -65,6 +65,7 @@
     position: relative;
     padding: 20rpx 30rpx;
     color: #000;
+    cursor: pointer;
     background-color: #fff;
     box-sizing: border-box;
     padding-right: 60rpx;

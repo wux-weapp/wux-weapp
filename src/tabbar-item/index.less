@@ -20,6 +20,7 @@
     padding: 5px 0;
     box-sizing: border-box;
     float: left;
+    cursor: pointer;
 
     &__icon {
         display: flex;
@@ -42,6 +43,7 @@
 
     &--disabled {
         opacity: @disabled-opacity;
+        cursor: not-allowed;
     }
 
     .tabbar-style(light, @tabbar-light-bg);

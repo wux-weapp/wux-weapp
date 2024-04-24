@@ -24,11 +24,19 @@ baseComponent({
             const labelName = this.getFieldName('label')
             const disabledName = this.getFieldName('disabled')
             const showOptions = this.getShowOptions(newVal).reduce((acc, option) => (
-                [...acc, option.map((v) => ({
-                    [valueName]: v[valueName],
-                    [labelName]: v[labelName],
-                    [disabledName]: !!v[disabledName],
-                }))]
+                [...acc, option.map((v) => {
+                    const newOption = {
+                        [valueName]: v[valueName],
+                        [labelName]: v[labelName],
+                    }
+                    if (v[disabledName] !== undefined) {
+                        newOption[disabledName] = !!v[disabledName]
+                    }
+                    if (v.labelImage !== undefined) {
+                        newOption.labelImage = v.labelImage
+                    }
+                    return newOption
+                })]
             ), [])
 
             this.setData({ showOptions })

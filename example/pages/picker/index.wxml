@@ -22,6 +22,9 @@
             <wux-picker defaultFieldNames="{{ fieldNames }}" options="{{ fieldNamesOptions }}" data-index="5" bind:confirm="onConfirm" bind:valueChange="onValueChange">
                 <wux-cell title="Custom FieldNames" is-link extra="{{ displayValue5 }}"></wux-cell>
             </wux-picker>
+            <wux-picker options="{{ imageOptions }}" value="{{ value6 }}" data-index="6" bind:confirm="onConfirm" bind:valueChange="onValueChange">
+                <wux-cell title="Custom Image" is-link extra="{{ displayValue6 }}"></wux-cell>
+            </wux-picker>
         </wux-cell-group>
         <view class="button-sp-area">
             <wux-button block type="light" bind:click="onClick">Button click - {{ displayValue1 }}</wux-button>

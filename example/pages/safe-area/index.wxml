@@ -1,5 +1,5 @@
 <view class="page">
-    <wux-safe-area safeArea="top" wrapStyle="{{ { background: '#11c1f3' } }}" forceRender />
+    <wux-safe-area safeArea="top" wrapStyle="{{ { background: '#11c1f3' } }}" forceRender="{{ !isPC }}" />
     <view class="page__hd">
         <view class="page__title">SafeArea</view>
         <view class="page__desc">安全区</view>

@@ -72,4 +72,10 @@ ad({
             },
         })
     },
+    onRemoveChange(e) {
+        const { file, fileList } = e.detail
+        if (file.status !== 'remove') {
+            this.setData({ fileList })
+        }
+    },
 })

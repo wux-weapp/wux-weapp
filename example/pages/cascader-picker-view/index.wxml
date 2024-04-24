@@ -12,5 +12,7 @@
         <wux-cascader-picker-view value="{{ value3 }}" options="{{ province }}" cols="1" loading="{{ loading }}" bind:valueChange="onValueChange3" />
         <view class="sub-title">Custom FieldName</view>
         <wux-cascader-picker-view options="{{ fieldNamesOptions }}" defaultFieldNames="{{ fieldNames }}" />
+        <view class="sub-title">Custom Image</view>
+        <wux-cascader-picker-view options="{{ imageOptions }}" />
     </view>
 </view>

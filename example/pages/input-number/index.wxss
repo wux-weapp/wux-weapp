@@ -1,7 +1,11 @@
 /* pages/input-number/index.wxss */
-.input {
-    width: 120rpx !important;
+.control {
     border-color: transparent !important;
+    width: 120rpx !important;
+}
+
+.input {
+    color: red !important;
 }
 
 .sub,

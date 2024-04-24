@@ -42,6 +42,7 @@
         box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
         transform: translate3d(-50%, -50%, 0);
         transition: transform .2s;
+        cursor: grab;
 
         &::after {
             content: attr(data-meta);
@@ -105,5 +106,6 @@
 
     &--disabled {
         opacity: @disabled-opacity;
+        cursor: not-allowed;
     }
 }

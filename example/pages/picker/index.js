@@ -43,6 +43,22 @@ const fieldNamesOptions = [
     },
 ]
 
+const imageOptions = [
+    ['周一', '周二', '周三', '周四', '周五'],
+    [
+        {
+            label: '白天',
+            labelImage: '../../assets/images/daytime.png',
+            value: 'daytime',
+        },
+        {
+            label: '夜晚',
+            labelImage: '../../assets/images/night.png',
+            value: 'night',
+        },
+    ],
+]
+
 ad({
     data: {
         fieldNames: {
@@ -51,6 +67,7 @@ ad({
             disabled: 'disabledT',
         },
         fieldNamesOptions,
+        imageOptions,
         value1: ['320000', '320800', '320831'],
         value2: [],
         value3: [],
@@ -62,6 +79,7 @@ ad({
         displayValue3: '请选择',
         displayValue4: '请选择',
         displayValue5: '请选择',
+        displayValue6: '请选择',
         options: [],
         seasons,
     },

@@ -19,5 +19,7 @@
         <wux-date-picker-view use12Hours mode="datetime" lang="{{ lang }}" value="{{ value6 }}" data-index="6" bind:valueChange="onValueChange" />
         <view class="sub-title">Use12Hours & time {{ displayValue7 }}</view>
         <wux-date-picker-view use12Hours mode="time" lang="{{ lang }}" value="{{ value7 }}" data-index="7" bind:valueChange="onValueChange" />
+        <view class="sub-title">TillNow {{ displayValue8 }}</view>
+        <wux-date-picker-view tillNow lang="{{ lang }}" value="{{ value8 }}" data-index="8" bind:valueChange="onValueChange" />
     </view>
 </view>

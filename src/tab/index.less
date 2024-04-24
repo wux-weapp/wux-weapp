@@ -24,6 +24,7 @@
         font-size: @tabs-font-size;
         // color: @tabs-color;
         padding: 0 @tabs-scrolling-size;
+        cursor: pointer;
 
         &-bar {
             display: block;
@@ -64,6 +65,7 @@
 
         &--disabled {
             opacity: @disabled-opacity;
+            cursor: not-allowed;
         }
 
         .tab-style(light, @tabs-bar-light-bg);

@@ -40,6 +40,11 @@
                 <wux-cell title="Time" is-link extra="{{ displayValue9 }}"></wux-cell>
             </wux-date-picker>
         </wux-cell-group>
+        <wux-cell-group title="TillNow">
+            <wux-date-picker tillNow mode="datetime" value="{{ value10 }}" lang="{{ lang }}" data-index="10" data-mode="datetime" bind:confirm="onConfirm">
+                <wux-cell title="Datetime" is-link extra="{{ displayValue10 }}"></wux-cell>
+            </wux-date-picker>
+        </wux-cell-group>
         <view class="button-sp-area">
             <wux-button block type="light" bind:click="onClick">Button click - {{ displayValue1 }}</wux-button>
         </view>

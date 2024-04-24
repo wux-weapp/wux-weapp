@@ -12,5 +12,7 @@
         <wux-picker-view defaultFieldNames="{{ fieldNames }}" options="{{ fieldNamesOptions }}" />
         <view class="sub-title">Controlled</view>
         <wux-picker-view value="{{ value }}" controlled options="{{ options[1] }}" bind:valueChange="onValueChange" />
+        <view class="sub-title">Custom Image</view>
+        <wux-picker-view options="{{ imageOptions }}" />
     </view>
 </view>

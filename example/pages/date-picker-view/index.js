@@ -21,6 +21,7 @@ ad({
         value5: [hour, minute],
         value6: [year, month, day, hour, minute, '1'],
         value7: [hour, minute, '1'],
+        value8: [2029, 0, 1, 0, 0],
         lang: 'zh_CN',
     },
     onChange(e) {
@@ -34,7 +35,7 @@ ad({
     },
     setValue(values, key) {
         this.setData({
-            [`value${key}`]: values.value,
+            [`value${key}`]: !values.tillNow ? values.value : { tillNow: true },
             [`displayValue${key}`]: values.displayValue.join(' '),
         })
     },

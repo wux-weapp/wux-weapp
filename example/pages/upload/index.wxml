@@ -14,22 +14,22 @@
         </wux-upload>
         <view class="sub-title">Picture card & max = 4</view>
         <wux-upload listType="picture-card" defaultFileList="{{ fileList }}" max="4" url="your_server_address/api/upload_file" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete" bind:preview="onPreview">
-            <text>Upload</text>
+            <view>Upload</view>
         </wux-upload>
         <view class="sub-title">ShowUploadList = false</view>
         <wux-upload listType="picture-card" showUploadList="{{ false }}" url="your_server_address/api/upload_file" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete" bind:preview="onPreview">
             <image src="{{ imageUrl }}" wx:if="{{ imageUrl }}" />
-            <text wx:else>Upload</text>
+            <view wx:else>Upload</view>
         </wux-upload>
         <view class="sub-title">Progress = true</view>
         <progress percent="{{ progress }}" show-info />
         <wux-upload progress listType="picture-card" showUploadList="{{ false }}" url="your_server_address/api/upload_file" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete" bind:progress="onProgress" bind:preview="onPreview">
             <image src="{{ imageUrl }}" wx:if="{{ imageUrl }}" />
-            <text wx:else>Upload</text>
+            <view wx:else>Upload</view>
         </wux-upload>
         <view class="sub-title">Remove</view>
-        <wux-upload listType="picture-card" fileList="{{ fileList }}" controlled url="your_server_address/api/upload_file" bind:change="onChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete" bind:preview="onPreview" bind:remove="onRemove">
-            <text>Upload</text>
+        <wux-upload listType="picture-card" fileList="{{ fileList }}" controlled url="your_server_address/api/upload_file" bind:change="onRemoveChange" bind:success="onSuccess" bind:fail="onFail" bind:complete="onComplete" bind:preview="onPreview" bind:remove="onRemove">
+            <view>Upload</view>
         </wux-upload>
     </view>
 </view>

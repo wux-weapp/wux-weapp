@@ -21,6 +21,18 @@ const fieldNamesOptions = [
     },
 ]
 
+const imageOptions = [
+    {
+        label: '白天',
+        labelImage: '../../assets/images/daytime.png',
+        value: 'daytime',
+    },
+    {
+        label: '夜晚',
+        labelImage: '../../assets/images/night.png',
+        value: 'night',
+    },
+]
 
 ad({
     data: {
@@ -32,6 +44,7 @@ ad({
             disabled: 'disabledT',
         },
         fieldNamesOptions,
+        imageOptions,
     },
     onValueChange(e) {
         this.setData({ value: e.detail.value })

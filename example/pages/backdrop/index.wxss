@@ -13,4 +13,5 @@
     padding: 15px;
     background: #fff;
     border-radius: 6px;
+    box-sizing: border-box;
 }
