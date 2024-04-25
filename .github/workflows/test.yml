@@ -19,7 +19,8 @@ jobs:
         node-version: 16
         cache: 'pnpm'
 
-    - run: pnpm install
+    - name: Install dependencies
+      run: pnpm install
 
     - name: Run lint check
       run: pnpm run lint

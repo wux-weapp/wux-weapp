@@ -1,41 +1,34 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
-version: 2
+version: 2.1
+
 jobs:
-  build:
+  build: # this can be any name you choose
     docker:
-      # specify the version you desire here
-      - image: circleci/node:lts
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
-    working_directory: ~/wux-weapp
+      - image: node:16
+    resource_class: large
+    parallelism: 10
 
     steps:
       - checkout
-      - node/install-packages:
-          pkg-manager: pnpm
-
-      # Download and cache dependencies
       - restore_cache:
+          name: Restore pnpm Package Cache
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-
-      - run: pnpm install
-
+            - pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
+      - run:
+          name: Install pnpm package manager
+          command: |
+            corepack enable
+            corepack prepare pnpm@latest-9 --activate
+            pnpm config set store-dir .pnpm-store
+      - run:
+          name: Install Dependencies
+          command: |
+            pnpm install
       - save_cache:
+          name: Save pnpm Package Cache
+          key: pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
           paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
+            - .pnpm-store
       # run tests!
       - run:
-          command: pnpm run lint
           name: Run lint check
+          command: pnpm run lint
