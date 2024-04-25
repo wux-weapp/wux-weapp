@@ -8,12 +8,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@master
-    - name: Use Node.js 10.x
-      uses: actions/setup-node@v1
+    - uses: actions/checkout@v2
+    - name: Install pnpm
+
+      uses: pnpm/action-setup@v2
+    - name: Set node version to 16
+
+      uses: actions/setup-node@v2
       with:
-        version: 10.x
-    - name: test
-      run: |
-        npm install
-        npm run lint
+        node-version: 16
+        cache: 'pnpm'
+
+    - run: pnpm install
+
+    - name: Run lint check
+      run: pnpm run lint

@@ -27,10 +27,16 @@
     "gulp-util": "^3.0.8",
     "husky": "^3.1.0",
     "lint-staged": "^9.5.0",
+    "pnpm": "^7.11.0",
     "postcss-font-base64": "^1.0.5",
     "stylelint": "^12.0.0",
     "stylelint-config-standard": "^19.0.0",
     "through2": "^2.0.3"
+  },
+  "packageManager": "pnpm@7.11.0",
+  "engines": {
+    "node": ">=14",
+    "pnpm": ">=7"
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development gulp",
@@ -44,8 +50,8 @@
     "eslint:fix": "eslint src example --ext .js --fix",
     "stylelint": "stylelint \"{src,example}/**/*.less\" --syntax less",
     "stylelint:fix": "stylelint \"{src,example}/**/*.{wxss,less}\" --syntax less --fix",
-    "lint": "npm run eslint && npm run stylelint",
-    "lint:fix": "npm run eslint:fix && npm run stylelint:fix"
+    "lint": "pnpm run eslint && pnpm run stylelint",
+    "lint:fix": "pnpm run eslint:fix && pnpm run stylelint:fix"
   },
   "repository": {
     "type": "git",
@@ -58,10 +64,10 @@
   },
   "lint-staged": {
     "{src,example}/**/*.js": [
-      "npm run eslint"
+      "pnpm run eslint"
     ],
     "{src,example}/**/*.{wxss,less}": [
-      "npm run stylelint"
+      "pnpm run stylelint"
     ]
   },
   "keywords": [
